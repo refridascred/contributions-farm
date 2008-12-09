@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long seed, long seed2)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] data)
         {
-            long bound = seed - seed2;
-            if ((seed << 2) >= seed)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed2 ^ 602) == (seed / 6)) || (seed > (seed2 + bound)))
+                if (!(sample <= ((-8) + sample)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
