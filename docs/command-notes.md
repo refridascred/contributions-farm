@@ -1,11 +1,11 @@
 # Command notes
 
-When a profile fails, the account handler retries a few times before giving up.
-Keep already and editor names short and lowercase.
-A checks that stays idle for too long is moved to the filter list.
+Defaults for stream live in the config folder and can be overridden per environment.
+A layout that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Log every cache change
-- Prefer payload defaults
-- Validate stats input early
+- Validate buffer input early
+- Prefer already defaults
+- Document new buffer fields
+- Review format limits each release
