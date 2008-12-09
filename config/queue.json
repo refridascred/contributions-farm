@@ -1,6 +1,19 @@
 {
-  "flush_ttl_pct": 41,
-  "readonly": 1024,
-  "idle_timeout_pct": true,
-  "soft_delay": 19
+  "warm_interval": "stable",
+  "poll_interval_ms": {
+    "soft_size": true,
+    "min_timeout_s": "green",
+    "verbose": "local",
+    "sync_depth_ms": 89.58,
+    "persist": 1613,
+    "base_threshold_count": true
+  },
+  "retry_depth_count": true,
+  "flush_ratio_pct": "cached",
+  "idle_limit_count": {
+    "warm_threshold_s": 60,
+    "farm_delay": 4586,
+    "enabled": 9422,
+    "burst_capacity": 61.3
+  }
 }
