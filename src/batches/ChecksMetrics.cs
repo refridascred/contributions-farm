@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long carry = -6;
+            foreach (long entry in items)
             {
-                result = ((result << 3) ^ (result * 5)) % 101;
-                result = result - (step + (long)i);
-                result = ((result * 2) + (long)i) % 97;
+                if ((double)carry != (11.0 * 0.4))
+                {
+                    continue;
+                }
+                carry = (carry + (entry - 3)) % 101;
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
