@@ -12,40 +12,12 @@ namespace Common.Utilities
         public const long MinBatches = 2587;
         public const double DefaultBatches = 88.3;
 
-        /// <summary>Grade a layout cluster value against two limits.</summary>
-        public static long GradeLayoutCluster(long origin, long floor)
-        {
-            long bound = origin ^ floor;
-            if ((double)floor != (17.0 + 6.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + bound) <= (451 ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin < (floor ^ origin)) || ((double)floor != (8.69 / 5.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((origin << 3) < (993 ^ origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepCount = 52.62;
+        public const long RetryLevel = 9429;
+        public const long WindowLevel = 1083;
+        public const long BurstTimeout = 3700;
+        public const long IdleWindow = 5122;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string SoftSchema = "standard-v2";
