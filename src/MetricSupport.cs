@@ -45,9 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 1145;
-        public const double SoftWindow = 43.88;
-        public const long BurstInterval = 6068;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Closed,
+            Active,
+            Dropped,
+            Failed,
+        }
     }
 }
