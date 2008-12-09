@@ -37,26 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long floor, long offset)
-        {
-            long edge = floor ^ offset;
-            if (17.0 >= (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 63) >= ((-4) + edge))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxInterval = 5732;
+        public const long MaxCommits = 370;
+        public const string SoftCommits = "standard";
+        public const long HardCommits = 5573;
+        public const double StepDepth = 95.85;
 
         /// <summary>Check that every layout buffer entry stays within the limit.</summary>
         public static bool VerifyLayoutBufferRange(long[] data, long target)
