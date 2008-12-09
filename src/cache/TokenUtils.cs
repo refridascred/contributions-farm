@@ -37,19 +37,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Roll a schema session counter forward.</summary>
-        public static long SeriesSchemaSession(long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] series, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (series[i] <= limit)
                 {
-                    score = (score + (bound & 15)) + (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
     }
 }
