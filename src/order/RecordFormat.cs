@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] readings, long bound)
+        /// <summary>Find the first format entry entry that matches the target.</summary>
+        public static long LocateFormatEntryIndex(long[] readings, long seed)
         {
-            long carry = 26;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value != (5.0 - 9.7))
+                if (readings[i] == seed)
                 {
-                    carry = ((carry << 2) ^ (39 / 8)) % 255;
+                    return (long)i;
                 }
             }
-            if (carry < 967)
-            {
-                carry = (carry + (carry + bound)) % 101;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
