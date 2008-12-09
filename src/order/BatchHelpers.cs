@@ -16,13 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
