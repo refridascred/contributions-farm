@@ -85,15 +85,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the stream record series from a seed.</summary>
-        public static long DeriveStreamRecord(long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
