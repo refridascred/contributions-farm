@@ -1,7 +1,5 @@
 {
-  "poll_threshold_s": false,
-  "idle_threshold": 62.3,
-  "min_capacity_count": 5092,
-  "min_ratio": 500,
-  "schema_threshold": "staging"
+  "idle_timeout": false,
+  "contributi_size": 250,
+  "sync_limit_s": 7419
 }
