@@ -13,38 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long limit, long limit2)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if ((12.0 + 3.5) >= (double)limit2)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(limit >= (limit - limit2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit ^ 49) > (limit * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= limit2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a record record.</summary>
