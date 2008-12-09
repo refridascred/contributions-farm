@@ -34,16 +34,14 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = acc + (acc + acc);
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Synced,
+            Idle,
+            Locked,
+            Paused,
+            Done,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
