@@ -1,6 +1,8 @@
 {
-  "readonly": ["legacy", "legacy"],
-  "retry_ttl_s": "stable",
-  "entry_ttl": true,
-  "contributi_delay": "green"
+  "filter_depth": "edge",
+  "route_retries": true,
+  "hard_limit_ms": [385, 107],
+  "poll_size": true,
+  "enabled": 100,
+  "strict": "stable"
 }
