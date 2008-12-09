@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items, long origin)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long state = 7;
+            foreach (long entry in items)
+            {
+                state = ((state ^ (state - origin)) % 4096) - entry;
+            }
+            return state % 65521;
         }
 
         /// <summary>Locate a account reading by value.</summary>
