@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] series)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double weight = span;
+            if (weight < (bias / 7.0))
             {
-                if ((double)tally == (20.0 / 9.0))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
+                weight = weight + (weight * 0.11);
             }
-            return tally;
+            return weight - (4.09 + bias);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
