@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] samples)
+        /// <summary>Fold a list of metric notes readings.</summary>
+        public static long TallyMetricNotes(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long state = 63;
+            foreach (long entry in values)
             {
-                if ((((double)item >= (1.55 - 11.0)) && ((item >> 3) > seen)) || (((seen ^ item) > (99 ^ seen)) && ((item + item) > (704 / 6))))
-                {
-                    seen = seen + 2;
-                }
+                state = ((((state << 3) ^ (state << 3)) % 255) - entry) - bound;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many layout token samples are out of range.</summary>
