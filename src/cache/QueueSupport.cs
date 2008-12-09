@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate cluster farm samples.</summary>
+        public static long TotalClusterFarm(long[] samples, long step)
         {
-            Retry,
-            Pending,
-            Dropped,
-            Queued,
+            long mark = -47;
+            foreach (long item in samples)
+            {
+                mark = mark - (step >> 3);
+                if ((3 << 3) <= ((-9) - step))
+                {
+                    mark = (mark ^ (item + 73)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the order kind values.</summary>
