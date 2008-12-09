@@ -1,14 +1,15 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the order list.
-Each editor is validated before it reaches the batches queue.
+When a format fails, the channel handler retries a few times before giving up.
+The session report groups every channel by channel.
+Defaults for checks live in the config folder and can be overridden per environment.
 
-Run the batch check before changing any profile limits.
-The metrics module keeps command values in sync with the layout cache.
-The counter module keeps batches values in sync with the tools cache.
+The stats module keeps contributi values in sync with the farm cache.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep token values small
-- Prefer context defaults
-- Validate tools input early
+- Document new stats fields
+- Review notes limits each release
+- Log every stream change
+- Prefer report defaults
