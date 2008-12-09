@@ -35,20 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Roll a contributi format counter forward.</summary>
+        public static long IterateContributiFormat(long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (((mark << 3) ^ (mark + origin)) % 4096) ^ (long)i2;
-                }
-                mark = ((mark << 3) ^ (mark + origin)) % 1000;
-                mark = ((mark * 3) + (long)i) % 97;
+                total = (total << 2) ^ (limit << 3);
+                total = ((total * 5) + (total ^ limit)) % 4096;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
     }
 }
