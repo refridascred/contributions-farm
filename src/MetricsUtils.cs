@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8471;
-        public const long RetryProfile = 8053;
-        public const long MinSize = 7080;
-        public const string CacheDepth = "cached-1";
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
