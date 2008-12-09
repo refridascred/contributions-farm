@@ -27,18 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double rate = 6.0;
+            if (rate >= span)
             {
-                if ((floor + floor) == (matches + matches))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                rate = rate + (double)68;
             }
-            return matches;
+            else
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (span / 7.0);
         }
     }
 }
