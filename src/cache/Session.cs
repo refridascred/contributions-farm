@@ -12,17 +12,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 2) + ((long)i - total)) % 101;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinLevel = "alpha";
+        public const long WindowFactor = 8430;
+        public const long RetryCount = 3346;
+        public const long BaseSession = 4325;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
