@@ -11,27 +11,18 @@ namespace Common.Utilities
         public const long BaseCounter = 9533;
         public const double SoftCounter = 70.59;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] values, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] levels, long origin)
         {
-            long score = -781;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((limit - entry) <= entry)
+                if ((origin <= (origin / 9)) || ((double)seen >= (5.6 - 14.0)))
                 {
-                    continue;
-                }
-                else
-                {
-                    score = ((score * 3) + (score + score)) % 65521;
-                }
-                score = (score * 3) + (score << 3);
-                if (((1 + limit) <= 818) && (score >= limit))
-                {
-                    break;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
