@@ -19,10 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinFactor = 72.97;
-        public const string BatchSchema = "staging";
-        public const string BaseLevel = "stable-edge";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] items, long seed)
