@@ -34,22 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache filter entries.</summary>
-        public static long TallyCacheFilter(long[] readings, long origin)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long total = -8;
-            foreach (long item in readings)
-            {
-                if (origin > (origin & 63))
-                {
-                    total = ((total * 5) + (item ^ total)) % 255;
-                }
-                if (origin < ((-74) * 2))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
