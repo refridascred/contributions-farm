@@ -46,24 +46,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long bound2)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] values)
         {
-            if ((bound * 4) <= (bound2 >> 1))
+            long mark = 3;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 % 3) < (bound * 4))
+                if ((7.5 * 5.3) > (2.7 + 7.5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    mark = mark ^ (reading << 1);
                 }
             }
+            return mark % 97;
         }
     }
 }
