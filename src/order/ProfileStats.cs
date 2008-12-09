@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheInterval = 69.95;
-        public const long MaxScore = 9863;
-        public const long MaxCount = 5132;
-        public const string BurstProfile = "local-v2";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (132 > (entry ^ tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] data, long floor)
