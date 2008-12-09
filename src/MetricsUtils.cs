@@ -55,14 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every stats context entry stays within the limit.</summary>
+        public static bool VerifyStatsContextBounds(long[] data, long bound)
         {
-            Ready,
-            Locked,
-            Queued,
-            Paused,
-            New,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
