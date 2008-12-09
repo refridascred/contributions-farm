@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long HardCache = 1315;
         public const long RetryInterval = 6415;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchWidth = 6962;
-        public const string BatchOrder = "standard";
-        public const double BurstOrder = 50.67;
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long AuditNotesChannelMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count ^ (long)series.Length) < (count - datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
