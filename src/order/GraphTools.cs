@@ -65,18 +65,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] readings)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((tally - 261) < datum) && ((tally % 10) == (399 + (-139))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Retry,
+            Ready,
         }
     }
 }
