@@ -13,20 +13,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every filter githubfarm entry stays within the limit.</summary>
-        public static bool VerifyFilterGithubfarmLimits(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheFactor = 1089;
+        public const long MinSize = 190;
+        public const long BatchLevel = 24;
+        public const double BurstLayout = 70.48;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 5107;
