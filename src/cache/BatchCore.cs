@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Count the profile stream entries that pass the check.</summary>
+        public static long CountProfileStreamHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(5.0 <= (double)sample))
                 {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
