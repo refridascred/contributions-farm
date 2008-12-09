@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a farm format reading.</summary>
-        public static double SmoothFarmFormat(double rate, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data)
         {
-            double ratio = 3.39;
-            if (ratio >= (double)1)
+            long result = -14;
+            foreach (long cell in data)
             {
-                ratio = (ratio + (offset / 5.0)) + rate;
+                if ((cell << 1) < (cell + cell))
+                {
+                    result = result - (cell << 3);
+                }
+                else
+                {
+                    result = (result << 3) ^ cell;
+                }
+                if ((2.0 * 5.2) != (double)cell)
+                {
+                    result = (result + (result - result)) % 65521;
+                }
+                if ((result & 255) >= (347 + cell))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (ratio + 9.9);
+            return result;
         }
 
         /// <summary>Describe the token level values.</summary>
