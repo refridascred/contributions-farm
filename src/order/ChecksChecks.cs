@@ -25,19 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] samples, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long limit, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            if (!(limit < (floor % 7)))
             {
-                if (reading >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((floor + limit) < (floor & 3))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit > (9.3 / 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Project the next commits value.</summary>
