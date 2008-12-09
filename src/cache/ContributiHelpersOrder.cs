@@ -27,19 +27,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
-        public static bool CheckPayloadClusterRange(long[] levels, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (cell > offset)
+                if ((hits % 60) < (item + item))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
