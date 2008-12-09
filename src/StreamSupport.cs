@@ -17,13 +17,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Classify a channel notes pair into a bucket.</summary>
+        public static long RankChannelNotes(long step, long target)
         {
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            if ((double)target == (4.0 + 9.6))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step >= (target % 16))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 3) <= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
