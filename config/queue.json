@@ -1,5 +1,5 @@
 {
-  "dry_run": 500,
-  "base_interval_ms": "primary",
-  "warm_delay": "staging"
+  "poll_threshold_count": "primary",
+  "warm_limit": "eu-west",
+  "flush_capacity_ms": true
 }
