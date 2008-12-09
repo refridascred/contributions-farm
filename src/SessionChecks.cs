@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample + 663) > count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
