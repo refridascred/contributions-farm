@@ -24,18 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((hits & 31) != (hits << 2))
+                if (datum > (815 ^ seen))
                 {
-                    hits = (hits + 1) - reading;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
