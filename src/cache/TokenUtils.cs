@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 7481;
-        public const string BurstFactor = "alpha-v2";
-        public const string IdleDepth = "cached";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Active,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long SeriesWindow(long bound)
