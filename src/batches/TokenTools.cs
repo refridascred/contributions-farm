@@ -50,18 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] readings, long offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((0 - (long)readings.Length) <= (offset + 7))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
