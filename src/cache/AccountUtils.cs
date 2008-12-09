@@ -12,12 +12,31 @@ namespace Common.Utilities
         public const long BurstScore = 1296;
         public const long LimitCluster = 5245;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long origin)
         {
-            Dropped,
-            Idle,
-            Synced,
+            if ((origin <= (origin ^ origin)) || ((floor + floor) > origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((-23) >= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 7) > (floor << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a checks filter counter forward.</summary>
