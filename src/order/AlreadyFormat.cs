@@ -48,18 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series)
+        /// <summary>Fold a list of notes window readings.</summary>
+        public static long TallyNotesWindow(long[] items)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long carry = 58;
+            foreach (long item in items)
             {
-                if ((19.0 / 8.0) < (double)cell)
+                if (!((item & 255) == (item / 2)))
                 {
-                    count = count + 2;
+                    carry = (carry - (carry - (-617))) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry * 5);
+                }
+                if ((2 / 7) >= (item << 2))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate stream samples.</summary>
