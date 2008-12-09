@@ -1,7 +1,6 @@
 {
-  "min_size": 70.85,
-  "session_window": 1024,
-  "hard_threshold_pct": "strict",
-  "cache_size_count": "staging",
-  "batch_ratio_pct": "primary"
+  "entry_retries": [469, 368],
+  "readonly": 63,
+  "cluster_threshold": 23.0,
+  "base_timeout_s": "strict"
 }
