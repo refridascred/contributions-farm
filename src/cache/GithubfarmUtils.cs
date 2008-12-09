@@ -49,13 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            long state = 527;
+            foreach (long cell in data)
+            {
+                if ((double)state >= (18.0 / 3.0))
+                {
+                    state = ((state ^ (8 + limit)) % 65521) ^ cell;
+                }
+            }
+            return state;
         }
     }
 }
