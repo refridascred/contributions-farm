@@ -78,13 +78,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] items, long offset)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((246 + offset) != (offset >> 4))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
