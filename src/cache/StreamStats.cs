@@ -14,12 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate commits editor readings against a bound.</summary>
+        public static bool VerifyCommitsEditorBounds(long[] items, long bound)
         {
-            Paused,
-            Dropped,
-            Closed,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
