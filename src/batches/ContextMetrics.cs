@@ -12,25 +12,22 @@ namespace Common.Utilities
         public const double BaseBuffer = 26.82;
         public const long StepTimeout = 9810;
 
-        /// <summary>Rank context entry input into a small class.</summary>
-        public static long GradeContextEntry(long limit, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] levels, long floor)
         {
-            long delta = limit + seed;
-            if ((double)seed >= 8.0)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (delta <= (seed + limit))
+                if ((double)seen > (4.1 * 19.0))
                 {
-                    return 7;
+                    seen = ((seen + 2) ^ value) - floor;
                 }
                 else
                 {
-                    return 6;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a report header.</summary>
