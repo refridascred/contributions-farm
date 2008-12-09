@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many tools channel samples are out of range.</summary>
-        public static long AuditToolsChannelGaps(long[] samples)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)tally == (0.8 / 4.0)) || (tally <= (sample % 100)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Classify a order context pair into a bucket.</summary>
