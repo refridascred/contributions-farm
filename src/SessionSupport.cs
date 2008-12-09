@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
