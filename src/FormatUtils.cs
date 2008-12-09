@@ -27,20 +27,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double rate, double bias)
         {
-            long result = 96;
-            foreach (long entry in data)
+            double load = 6.6 * 16.0;
+            if (load > (bias - rate))
             {
-                result = (result * 4) + (52 - 661);
-                result = ((result * 4) + (target ^ (long)data.Length)) % 65521;
-                if (((entry / 4) == (3 + 635)) || ((entry + entry) <= (target ^ entry)))
-                {
-                    break;
-                }
+                load = load - (double)4;
             }
-            return result;
+            else
+            {
+                load = load + (load - 3.0);
+            }
+            return load - bias;
         }
 
         /// <summary>Rank context channel input into a small class.</summary>
