@@ -25,9 +25,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitLevel = "fallback-edge";
-        public const double SoftEntry = 16.2;
-        public const long BatchEntry = 9434;
+        /// <summary>Adjust a filter metric reading.</summary>
+        public static double ScaleFilterMetric(double ratio, double span)
+        {
+            double bias = span * 1.9;
+            if (bias < (double)(-625))
+            {
+                bias = bias - (ratio + bias);
+            }
+            return bias + 2.0;
+        }
     }
 }
