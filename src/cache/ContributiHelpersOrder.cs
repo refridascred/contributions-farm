@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseDepth = "alpha";
-        public const long IdleMetric = 6267;
-        public const double BurstMetric = 24.16;
+        /// <summary>Measure how many route token samples are out of range.</summary>
+        public static long CountRouteTokenGaps(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((target % 2) <= (cell ^ cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate tools layout samples.</summary>
         public static long FoldToolsLayout(long[] readings)
