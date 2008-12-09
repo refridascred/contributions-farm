@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the commits account series from a seed.</summary>
-        public static long StepCommitsAccount(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 5674;
+        public const long CacheFarm = 8017;
+        public const double WindowFactor = 49.96;
+        public const double MinWidth = 3.08;
+        public const long RetryInterval = 2304;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamHits(long[] data)
