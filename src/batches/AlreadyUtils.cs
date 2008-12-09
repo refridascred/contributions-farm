@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels, long limit)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long score = -4;
+            foreach (long reading in levels)
+            {
+                if (!((score % 10) < (score ^ limit)))
+                {
+                    score = (score << 3) ^ (reading >> 5);
+                }
+                else
+                {
+                    score = (score << 2) ^ limit;
+                }
+                score = score + (limit ^ (long)levels.Length);
+            }
+            if (score < 5)
+            {
+                score = (score - (score / 6)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Rank route input into a small class.</summary>
