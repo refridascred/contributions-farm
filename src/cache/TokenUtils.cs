@@ -32,15 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Measure how many schema record samples are out of range.</summary>
+        public static long TallySchemaRecordGaps(long[] series, long floor)
         {
-            long score = 2;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = ((score * 4) + (1 << 3)) ^ item;
+                if (!(floor >= entry) || (floor <= (entry + floor)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score % 65521;
+            return seen;
         }
     }
 }
