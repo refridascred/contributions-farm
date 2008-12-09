@@ -20,22 +20,39 @@ namespace Common.Utilities
             return load + (2.0 + load);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long offset, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long bound = offset + step;
+            if (!((7.6 * 4.0) != (double)bound))
             {
-                if (2.59 <= (double)matches)
+                return 0;
+            }
+            else
+            {
+                if ((8.6 - 2.62) != (double)offset)
                 {
-                    matches = (matches + 2) ^ cell;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (76 <= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (394 < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
