@@ -1,4 +1,15 @@
 # githubfarm settings
-window_timeout: open
-min_delay: true
-hard_size_count: standard
+compress:
+  min_interval_s: false
+  retry_capacity: strict
+  already_ratio: legacy
+  support_depth:
+    poll_window_s: eu-west
+    report_capacity: open
+    hard_depth_pct:
+      - 117
+      - 56
+      - 404
+  command_delay: fallback
+default_window_pct: false
+persist: strict
