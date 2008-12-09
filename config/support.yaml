@@ -1,17 +1,4 @@
 # support settings
-cache_interval_s: false
-batch_interval_count: cached
-enabled:
-  min_timeout_s: 7241
-  readonly: 3.49
-  idle_window_s:
-    - 25
-    - 120
-    - 148
-  warm_capacity: false
-  batch_interval_count:
-    command_ratio: 45
-    schema_ttl: legacy
-    min_window_ms: 83.83
-retry_window_pct: 30
-idle_ratio: 29.45
+contributi_retries: 8213
+compress: staging
+batch_limit_ms: 50.85
