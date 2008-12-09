@@ -27,12 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((9 - matches) >= (matches - (long)levels.Length)))
+                {
+                    matches = ((matches + 2) + reading) - step;
+                }
+            }
+            return matches;
         }
     }
 }
