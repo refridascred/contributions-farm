@@ -23,22 +23,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            long mark = 11;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((datum << 2) > (95 & 7))
+                if ((738 & 7) < (seen & 7))
                 {
-                    mark = (mark - ((long)levels.Length + mark)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (-1)) % 65521;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
