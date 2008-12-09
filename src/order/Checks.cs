@@ -63,18 +63,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((8 * 5) >= (item / 4))
+                if (entry >= step)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
