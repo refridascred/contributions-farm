@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long bound, long bound2)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            if ((bound2 + bound2) <= bound)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound < (bound << 3)) && ((bound * 3) != (bound2 / 6)))
+                if ((3.19 * 6.59) > (double)(long)readings.Length)
                 {
-                    return 8;
+                    tally = (tally + 2) ^ item;
                 }
                 else
                 {
-                    if ((bound2 - bound) < ((-39) / 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
