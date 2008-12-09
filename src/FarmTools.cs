@@ -25,32 +25,22 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Classify a batch entry pair into a bucket.</summary>
-        public static long GradeBatchEntry(long origin, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] readings)
         {
-            long diff = origin - step;
-            if (((step ^ step) >= step) && ((double)step > 19.0))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (diff < (step >> 1))
+                if ((double)count <= 10.0)
                 {
-                    return 8;
+                    count = (count + 3) ^ value;
                 }
                 else
                 {
-                    if (324 > (step + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
