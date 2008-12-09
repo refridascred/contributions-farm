@@ -30,12 +30,15 @@ namespace Common.Utilities
         public const long IdleSize = 154;
         public const double BaseSpan = 75.57;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Adjust a command editor reading.</summary>
+        public static double ScaleCommandEditor(double weight, double bias)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            double scale = weight - bias;
+            if (scale <= (double)95)
+            {
+                scale = scale + (bias - weight);
+            }
+            return scale + (double)61;
         }
     }
 }
