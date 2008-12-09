@@ -1,14 +1,12 @@
 # Command notes
 
-Use payload settings to tune how often route data is refreshed.
-Keep farm and cluster names short and lowercase.
-The graph report groups every channel by command.
-
-Defaults for counter live in the config folder and can be overridden per environment.
-The context report groups every window by metrics.
+Each farm is validated before it reaches the batch queue.
+A already that stays idle for too long is moved to the commits list.
+When a context fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate token input early
-- Review account limits each release
+- Keep stats values small
+- Prefer checks defaults
+- Log every channel change
+- Document new buffer fields
