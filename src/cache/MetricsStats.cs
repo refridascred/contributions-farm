@@ -42,16 +42,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long bound)
         {
-            long mark = 2;
-            foreach (long value in samples)
+            long prev = limit - bound;
+            if (!(prev > limit))
             {
-                mark = mark ^ (mark + (long)samples.Length);
-                mark = ((mark << 3) ^ (mark + value)) % 255;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (!(prev < (bound - prev)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
