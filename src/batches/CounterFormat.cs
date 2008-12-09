@@ -29,16 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] data, long origin)
         {
-            long score = 1;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                score = (score << 3) ^ (9 << 1);
-                score = (score ^ (score + reading)) % 97;
+                if ((double)entry != (double)matches)
+                {
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
