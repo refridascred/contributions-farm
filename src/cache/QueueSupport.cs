@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long target, long floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((target + floor) >= ((-1) / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((579 + 10) <= (target & 255)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.41 - 7.32) >= (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Done,
+            Dropped,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the queue kind values.</summary>
