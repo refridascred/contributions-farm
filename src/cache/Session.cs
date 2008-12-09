@@ -38,9 +38,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 2044;
-        public const double BurstLevel = 52.44;
-        public const long BaseBudget = 6848;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
