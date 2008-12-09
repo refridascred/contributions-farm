@@ -48,19 +48,20 @@ namespace Common.Utilities
         public const long DefaultSpan = 2048;
         public const double HardStats = 94.86;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double bias, double bias2)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            double gain = bias;
-            if (gain < gain)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - gain;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (((score * 2) + origin) % 101) - (long)i2;
+                    score = ((score * 3) + (score / 4)) % 97;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - (bias2 - gain);
+            return score;
         }
     }
 }
