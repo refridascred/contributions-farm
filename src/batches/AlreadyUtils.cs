@@ -28,24 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] levels, long limit)
         {
-            if (!((floor / 6) >= floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound > (floor & 15)) && (bound > (floor % 60)))
+                if (levels[i] > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
