@@ -42,31 +42,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Rank context channel input into a small class.</summary>
-        public static long RankContextChannel(long origin, long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            if ((origin * 4) <= (limit - 75))
+            double load = (double)(57 >> 1);
+            if (load <= (double)6)
             {
-                return 4;
+                load = ((load + (double)(-696)) - gain) + offset;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((origin + origin) == (limit % 7)) && ((limit - origin) > 50))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((8 * 5) < (limit - limit)) || ((origin + limit) < (limit ^ 12)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                load = (load - (double)92) - (double)(long)i;
             }
+            return load + load;
         }
 
         /// <summary>Describe the cache class values.</summary>
