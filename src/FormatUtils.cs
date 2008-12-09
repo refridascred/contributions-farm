@@ -39,22 +39,31 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((seed + floor) > floor)
             {
-                if ((2.21 / 6.0) != (double)matches)
+                return 6;
+            }
+            else
+            {
+                if ((double)7 <= (double)floor)
                 {
-                    matches = ((matches + 2) + datum) - floor;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((544 * 3) <= floor) || ((floor - seed) < 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
