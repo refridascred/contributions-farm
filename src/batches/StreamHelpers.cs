@@ -27,13 +27,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Grade a tools checks value against two limits.</summary>
+        public static long BucketToolsChecks(long step, long target)
         {
-            Draft,
-            Closed,
-            Active,
-            Queued,
+            if ((target + target) == (step + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-592) + target) > (target + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
