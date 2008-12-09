@@ -1,8 +1,6 @@
 {
-  "retry_ttl": 250,
-  "strict": 62.82,
-  "soft_depth_pct": false,
-  "compress": "local",
-  "hard_ttl_count": [295, 306, 410],
-  "payload_window": 500
+  "hard_interval": "stable",
+  "max_capacity_pct": 18,
+  "soft_window_pct": true,
+  "sync_timeout": "staging"
 }
