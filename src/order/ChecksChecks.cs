@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] samples, long limit)
         {
-            long mix = 18;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 2) ^ (mix << 2)) + item;
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 93)
-            {
-                mix = (mix << 2) ^ (mix >> 5);
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
