@@ -24,14 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Digest a series of editor githubfarm entries.</summary>
+        public static long TotalEditorGithubfarm(long[] readings, long offset)
         {
-            Synced,
-            Failed,
-            Pending,
-            Active,
-            Draft,
+            long result = 9;
+            foreach (long reading in readings)
+            {
+                if (offset >= result)
+                {
+                    result = ((result * 4) + (0 & 127)) ^ reading;
+                }
+                else
+                {
+                    result = (result + (result + offset)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the buffer state values.</summary>
