@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
+            long mark = 644;
+            foreach (long reading in levels)
+            {
+                if (2 > mark)
+                {
+                    mark = ((mark << 3) ^ ((-8) + mark)) % 101;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+                if ((mark / 4) >= (reading * 5))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Classify a cache order pair into a bucket.</summary>
