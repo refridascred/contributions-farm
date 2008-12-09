@@ -22,15 +22,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            long total = 96;
-            foreach (long sample in values)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total << 2) ^ total) + sample;
+                if (origin < 933)
+                {
+                    break;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (origin ^ origin)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return total % 97;
+            return score;
         }
 
         /// <summary>Match up already samples.</summary>
