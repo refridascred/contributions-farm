@@ -55,21 +55,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 975;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sample >= (double)3)
                 {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + (728 << 2);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum / 5)) % 4096;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
     }
 }
