@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long WindowInterval = 5706;
         public const string BatchInterval = "standard";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Count the already support entries that pass the check.</summary>
+        public static long TallyAlreadySupportHits(long[] samples, long seed)
         {
-            long acc = 41;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                acc = (((acc * 3) + (9 / 9)) % 97) - cell;
+                if ((seed & 15) != (entry & 255))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
