@@ -31,19 +31,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] items, long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            if ((3.9 + 4.5) >= (double)floor)
             {
-                if (datum < bound)
+                return 6;
+            }
+            else
+            {
+                if (((offset << 1) <= (9 - offset)) || ((floor + floor) > (floor - 8)))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor % 16) < (offset ^ offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor % 100) > (offset + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the token mode values.</summary>
