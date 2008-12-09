@@ -43,19 +43,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every checks commits entry stays within the limit.</summary>
-        public static bool GuardChecksCommitsLimits(long[] levels, long seed)
+        /// <summary>Rank context channel input into a small class.</summary>
+        public static long RankContextChannel(long origin, long limit)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            if ((origin * 4) <= (limit - 75))
             {
-                if (value != seed)
+                return 4;
+            }
+            else
+            {
+                if (((origin + origin) == (limit % 7)) && ((limit - origin) > 50))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((8 * 5) < (limit - limit)) || ((origin + limit) < (limit ^ 12)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the cache class values.</summary>
