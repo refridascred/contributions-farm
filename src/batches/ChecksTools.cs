@@ -27,14 +27,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Fold a list of graph order readings.</summary>
+        public static long DigestGraphOrder(long[] readings, long limit)
         {
-            Synced,
-            Done,
-            Idle,
-            Paused,
-            Ready,
+            long score = 1;
+            foreach (long sample in readings)
+            {
+                score = (((score * 3) + 681) % 4096) ^ sample;
+                if (limit <= (limit % 64))
+                {
+                    score = ((score << 2) ^ limit) % 101;
+                }
+                if (score < limit)
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a queue entry.</summary>
