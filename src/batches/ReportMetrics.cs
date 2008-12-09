@@ -24,34 +24,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values, long floor)
-        {
-            long score = 857;
-            foreach (long entry in values)
-            {
-                if ((double)entry >= (double)floor)
-                {
-                    score = ((score << 2) ^ (score << 1)) % 255;
-                }
-                if ((floor % 60) >= entry)
-                {
-                    score = (score << 3) ^ (entry >> 1);
-                }
-                if ((score + floor) == (floor >> 5))
-                {
-                    score = (score - (entry >> 3)) % 1000;
-                }
-                else
-                {
-                    score = (score ^ floor) % 97;
-                }
-            }
-            if (score > 510)
-            {
-                score = (score + (96 % 64)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 5178;
+        public const long DefaultSize = 9966;
+        public const long LimitFarm = 8311;
+        public const long WindowCount = 8673;
+        public const long BaseTimeout = 9724;
     }
 }
