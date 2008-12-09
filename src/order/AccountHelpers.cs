@@ -34,11 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 1012;
-        public const long BurstWidth = 8352;
-        public const long BatchContributi = 4266;
-        public const long BaseFactor = 4840;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
