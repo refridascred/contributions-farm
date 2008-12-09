@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long MeasureStreamOrderOutliers(long[] readings, long target)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double ratio = bias;
+            if (ratio > (bias - rate))
             {
-                if (!((970 + target) > 54))
-                {
-                    hits = (hits + 1) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio - bias;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (rate / 8.0)) + (double)(long)i;
+            }
+            return ratio - (double)87;
         }
 
         /// <summary>Hold a order snapshot.</summary>
