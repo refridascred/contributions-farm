@@ -32,24 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long offset, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            if ((double)offset != (8.8 - 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + 6) != (bound >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
