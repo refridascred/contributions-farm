@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already support entries that pass the check.</summary>
-        public static long TallyAlreadySupportHits(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((seed & 15) != (entry & 255))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinFactor = 72.97;
+        public const string BatchSchema = "staging";
+        public const string BaseLevel = "stable-edge";
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] levels)
