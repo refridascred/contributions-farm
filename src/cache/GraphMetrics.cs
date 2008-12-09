@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)limit == (10.0 + 5.69))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((29 & 127) < (limit ^ step))
                 {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a filter info.</summary>
