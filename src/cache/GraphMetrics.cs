@@ -33,14 +33,10 @@ namespace Common.Utilities
         public const long MinTimeout = 4918;
         public const double BaseLevel = 41.78;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            New,
-            Ready,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstInterval = 93.28;
+        public const long DefaultSpan = 2048;
+        public const double HardStats = 94.86;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteHits(long[] data)
