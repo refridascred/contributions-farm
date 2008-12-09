@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long state = 76;
-            foreach (long sample in series)
-            {
-                state = ((state << 2) ^ (state + sample)) % 97;
-                if ((state * 3) > state)
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a order context pair into a bucket.</summary>
