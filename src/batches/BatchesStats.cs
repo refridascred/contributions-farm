@@ -56,19 +56,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] items, long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
