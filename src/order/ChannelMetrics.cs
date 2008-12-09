@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstFactor = 898;
+        public const long HardContext = 4700;
+        public const long RetrySpan = 4999;
+        public const long DefaultScore = 3929;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] items, long seed)
