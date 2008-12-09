@@ -31,38 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema counter value against two limits.</summary>
-        public static long GradeSchemaCounter(long seed, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] values)
         {
-            if ((offset + seed) > (offset + offset))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed >> 5) <= (38 + seed)) && (2.0 < (double)seed))
+                if ((182 >= cell) || (((cell & 255) == (cell - (long)values.Length)) && ((hits ^ 70) > (hits + hits))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ offset) <= (seed * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((4.0 / 6.0) > (double)offset) || ((offset << 3) >= (seed + offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
