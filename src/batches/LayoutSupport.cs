@@ -51,19 +51,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchDepth = "staging";
+        public const long RetryStream = 2856;
+        public const long BurstStream = 7070;
     }
 }
