@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue report measurements.</summary>
-        public static double SmoothQueueReport(double gain, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] data)
         {
-            double ratio = gain + (gain * 7.97);
-            if (ratio >= (floor / 6.0))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                ratio = ratio + (floor * 7.76);
+                if ((double)seen < (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 9.0) + (double)(long)i;
-            }
-            return ratio + (double)(-11);
+            return seen;
         }
     }
 }
