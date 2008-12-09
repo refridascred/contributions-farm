@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long bound, long bound2)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long limit)
         {
-            long span = bound ^ bound2;
-            if ((bound - 6) < (bound2 - bound2))
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound2 > span)
+                if (!((limit % 24) != ((long)i * 5)))
                 {
-                    return 3;
+                    continue;
                 }
-                else
-                {
-                    if (((1.7 / 2.0) == (double)bound) || ((bound2 * 3) != (span + span)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((63 / 6) <= bound2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
