@@ -34,11 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Digest a series of cache filter entries.</summary>
+        public static long FoldCacheFilter(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long sum = 824;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (double)sum)
+                {
+                    sum = ((sum * 5) + (sum + cell)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a account metric pair into a bucket.</summary>
