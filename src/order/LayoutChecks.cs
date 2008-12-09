@@ -56,13 +56,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] items, long target)
         {
-            Locked,
-            Queued,
-            Synced,
-            Paused,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((((matches + target) < (667 + matches)) || ((2.0 - 8.6) >= (double)matches)) && ((target < (matches * 3)) && ((double)matches != (3.76 + 8.1))))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
     }
 }
