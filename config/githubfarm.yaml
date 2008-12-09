@@ -1,25 +1,10 @@
 # githubfarm settings
-burst_size_pct: 13.13
-order_interval:
-  - 390
-  - 384
-order_capacity: 97
-warm_threshold_ms:
-  strict: false
-  burst_ttl: strict
-  contributi_capacity:
-    support_ratio: 500
-    base_ttl: true
-    checks_threshold:
-      - eu-west
-      - strict
-      - open
-      - edge
-  base_ttl_ms: standard
-  soft_timeout: true
-readonly:
-  - 437
-  - 197
-token_ratio:
-  - strict
-  - legacy
+batches_retries: 60
+burst_interval_count: green
+warm_window_s: false
+strict: 41.36
+farm_ratio:
+  - 282
+  - 318
+  - 45
+default_retries_pct: local
