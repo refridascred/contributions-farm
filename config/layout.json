@@ -1,8 +1,6 @@
 {
-  "default_depth": 46.14,
-  "payload_depth": 30,
-  "compress": "fallback",
-  "warm_interval": false,
-  "checks_ttl": "staging",
-  "enabled": "stable"
+  "audit": 28.56,
+  "batch_window_ms": true,
+  "cache_capacity_pct": true,
+  "counter_ttl": [157, 411, 193, 181]
 }
