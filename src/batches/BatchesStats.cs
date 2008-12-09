@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] data, long target)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((((9.9 / 7.0) >= (double)target) || ((tally - datum) >= (tally + target))) || (target < (datum * 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Locate a account reading by value.</summary>
