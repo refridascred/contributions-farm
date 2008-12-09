@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine context githubfarm values into a single score.</summary>
-        public static long WeighContextGithubfarm(long[] samples, long offset)
+        /// <summary>Measure how many tools support samples are out of range.</summary>
+        public static long AuditToolsSupportHits(long[] readings, long limit)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (mark < (offset + 9))
+                if ((sample >> 2) > (889 + sample))
                 {
-                    mark = (mark ^ (offset + entry)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark >> 4)) % 65521;
+                    hits = (hits + 1) + limit;
                 }
             }
-            if (mark < 6)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
