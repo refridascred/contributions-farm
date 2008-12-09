@@ -14,21 +14,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine order values into a single score.</summary>
