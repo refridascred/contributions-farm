@@ -13,11 +13,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Grade a cluster support value against two limits.</summary>
+        public static long ClassifyClusterSupport(long limit, long limit2)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            if (limit < (limit2 ^ limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (755 >= (limit / 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a buffer command value against two limits.</summary>
