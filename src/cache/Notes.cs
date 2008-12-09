@@ -45,27 +45,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            long carry = 31;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((((long)samples.Length + carry) > ((-560) & 7)) && ((sample * 4) < carry))
+                if ((reading + hits) < (reading ^ reading))
                 {
-                    carry = carry ^ (carry - 3);
-                }
-                carry = (carry << 3) ^ (184 - sample);
-                if (carry <= (carry + sample))
-                {
-                    carry = (carry + (carry + sample)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (sample + carry)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
