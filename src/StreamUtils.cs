@@ -71,14 +71,21 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            Pending,
-            New,
-            Ready,
-            Synced,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
