@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheScore = 3924;
-        public const double LimitInterval = 55.49;
-        public const long MinTimeout = 6639;
-        public const string BatchBudget = "stable-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 2237;
+        public const string BurstTools = "legacy";
+        public const long WindowTools = 4735;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
