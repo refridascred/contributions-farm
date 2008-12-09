@@ -43,23 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] samples)
         {
-            long score = 89;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                score = (score + value) % 65521;
-                if (score > (score & 15))
+                if ((8 * 5) >= (item / 4))
                 {
-                    score = (score - (76 + value)) % 4096;
-                }
-                else
-                {
-                    score = score ^ (value - value);
+                    count = count + 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
