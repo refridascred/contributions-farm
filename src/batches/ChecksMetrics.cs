@@ -40,14 +40,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Classify a account metric pair into a bucket.</summary>
+        public static long ClassifyAccountMetric(long origin, long step)
         {
-            Draft,
-            Closed,
-            Ready,
-            Stale,
-            Idle,
+            if (!(origin > (origin + origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step <= (17 - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin << 1) > step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch state values.</summary>
