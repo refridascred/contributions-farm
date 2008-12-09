@@ -1,5 +1,7 @@
 {
-  "already_depth": [496, 92, 285],
-  "sync_ratio": "stable",
-  "stats_capacity": false
+  "batch_delay_s": [484, 452, 380],
+  "command_ttl": true,
+  "max_delay": 100,
+  "readonly": "legacy",
+  "poll_capacity": "staging"
 }
