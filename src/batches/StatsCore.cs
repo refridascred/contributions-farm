@@ -37,27 +37,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long total = 0;
-            foreach (long sample in levels)
-            {
-                if (((-777) + 3) != (total - total))
-                {
-                    total = (total - (sample >> 3)) % 1000;
-                    total = (total + (total % 100)) % 97;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (total - (long)i) % 4096;
-                }
-                if (!((double)sample <= (double)total))
-                {
-                    total = ((total << 3) ^ (sample + sample)) % 97;
-                }
-            }
-            return total;
+            Locked,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a cache entry.</summary>
