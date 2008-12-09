@@ -16,11 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 1555;
-        public const double SoftDepth = 31.52;
-        public const long BatchFactor = 3998;
-        public const long BaseFilter = 5162;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
