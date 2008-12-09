@@ -14,12 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepLevel = 5900;
-        public const string HardCommits = "local-edge";
-        public const long LimitCommits = 4351;
-        public const long DefaultFactor = 3295;
-        public const string WindowScore = "alpha";
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Active,
+            New,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaBounds(long[] data, long floor)
