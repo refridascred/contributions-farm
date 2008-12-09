@@ -61,19 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long acc = 41;
-            foreach (long item in readings)
-            {
-                acc = ((acc - (7 << 3)) % 255) - item;
-            }
-            if (acc < 1)
-            {
-                acc = (acc << 2) ^ (floor + acc);
-            }
-            return acc % 1000;
+            Pending,
+            Done,
+            Ready,
         }
     }
 }
