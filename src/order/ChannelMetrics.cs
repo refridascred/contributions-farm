@@ -32,19 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] samples)
         {
-            long mark = 36;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark << 2) ^ (item - mark)) % 255;
+                if ((66 > (entry - seen)) || ((4.79 * 7.4) > (9.0 + 13.0)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark > 32)
-            {
-                mark = ((mark << 2) ^ (mark ^ mark)) % 255;
-            }
-            return mark;
+            return seen;
         }
     }
 }
