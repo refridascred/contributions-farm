@@ -1,8 +1,7 @@
 {
-  "strict": true,
-  "idle_interval_s": 35,
-  "burst_capacity_ms": "strict",
-  "soft_capacity_s": "eu-west",
-  "tools_threshold": 49,
-  "soft_ttl": 45.72
+  "hard_retries_ms": 64,
+  "persist": 64.51,
+  "checks_limit": ["green", "edge", "green", "latest"],
+  "cache_delay": "cached",
+  "sync_ttl_s": 80
 }
