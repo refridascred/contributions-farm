@@ -39,11 +39,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 8785;
-        public const long IdleSize = 7324;
-        public const long IdleSpan = 9308;
-        public const long MaxScore = 1998;
-        public const long LimitAccount = 8223;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long bound2)
+        {
+            if ((bound * 4) <= (bound2 >> 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound2 % 3) < (bound * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
