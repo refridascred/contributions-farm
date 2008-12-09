@@ -26,31 +26,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long floor, long floor2)
+        /// <summary>Audit contributi format readings against a rule.</summary>
+        public static long CountContributiFormatHits(long[] readings, long floor)
         {
-            if ((2.0 - 5.6) <= (double)floor2)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor2 + floor) != ((-99) & 3)) || (floor2 >= (floor + floor2)))
+                if ((entry * 4) < (floor / 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor2 ^ floor) >= (floor % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
