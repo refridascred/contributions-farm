@@ -98,19 +98,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate format cache samples.</summary>
