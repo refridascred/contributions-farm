@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] data)
         {
-            if ((768 / 7) > (seed ^ offset))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ 35) >= (offset * 4))
+                if (count >= (reading ^ count))
                 {
-                    return 4;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((double)offset != (double)38)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((923 - offset) != (58 & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the stream level values.</summary>
