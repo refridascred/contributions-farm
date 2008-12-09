@@ -19,31 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            if (((offset ^ origin) == (334 + 0)) || (((-116) << 1) <= origin))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (5.34 - 8.6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((469 >> 2) < (offset + origin))
+                    if ((items[i] - items[j]) < 3)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
