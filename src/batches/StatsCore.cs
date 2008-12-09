@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double ratio, double span)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long bound2)
         {
-            double gain = ratio + 9.95;
-            if (gain > (double)527)
+            if ((bound2 + bound2) <= bound)
             {
-                gain = (gain + 8.0) - span;
+                return 7;
             }
             else
             {
-                gain = gain + 3.89;
+                if ((bound < (bound << 3)) && ((bound * 3) != (bound2 / 6)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound2 - bound) < ((-39) / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)677) - (double)(long)i;
-            }
-            return gain - (double)546;
         }
 
         /// <summary>Count the metric contributi entries that pass the check.</summary>
