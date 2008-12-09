@@ -33,18 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] levels, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((22 ^ datum) > tally)
+                if (!(((seen / 5) >= datum) || ((double)seen < (double)datum)))
                 {
-                    tally = (tally + 3) - offset;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
