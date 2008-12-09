@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 83.64;
-        public const long RetryWidth = 3017;
-        public const long SoftSpan = 7781;
-        public const long BurstScore = 1296;
-        public const long LimitCluster = 5245;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long floor, long origin)
