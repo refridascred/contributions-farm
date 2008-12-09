@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of context stats readings.</summary>
-        public static long DigestContextStats(long[] series, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long target)
         {
-            long mix = 59;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((mix - target) != (entry + entry))
+                if (entry <= target)
                 {
-                    mix = (mix * 4) + mix;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
