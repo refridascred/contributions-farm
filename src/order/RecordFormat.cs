@@ -53,19 +53,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] readings, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long slot = floor ^ offset;
+            if ((7 >> 5) < (slot + floor))
             {
-                if (item >= bound)
+                return 1;
+            }
+            else
+            {
+                if ((slot + floor) == (slot - slot))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
