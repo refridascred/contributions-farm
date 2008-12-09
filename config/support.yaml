@@ -1,6 +1,9 @@
 # support settings
-counter_limit: false
-order_retries: open
-flush_ttl_s:
-  - local
-  - eu-west
+default_capacity_pct: 6.25
+burst_timeout_ms: 46.17
+batches_capacity:
+  - 220
+  - 1
+  - 185
+  - 364
+batches_delay: 1024
