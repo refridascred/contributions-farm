@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            long carry = -6;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((double)carry != (11.0 * 0.4))
+                if (((count - 3) < (0 << 2)) || ((81 + reading) == (count + count)))
                 {
-                    continue;
+                    count = count + 3;
                 }
-                carry = (carry + (entry - 3)) % 101;
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
