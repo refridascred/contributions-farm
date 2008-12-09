@@ -43,12 +43,18 @@ namespace Common.Utilities
             return (scale + 1.0) + ratio;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long offset)
         {
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((offset ^ value) != (offset + 82)) || !((0 - offset) <= (value + value)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
