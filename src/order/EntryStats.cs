@@ -56,14 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] levels)
         {
-            Synced,
-            Draft,
-            Queued,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((5 * 4) >= (count & 7))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
     }
 }
