@@ -34,11 +34,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstTimeout = 6266;
-        public const long DefaultScore = 1541;
-        public const double BatchBuffer = 70.23;
-        public const double DefaultSize = 5.62;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = mark + (mark - mark);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricLimits(long[] series, long step)
