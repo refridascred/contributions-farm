@@ -41,13 +41,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
