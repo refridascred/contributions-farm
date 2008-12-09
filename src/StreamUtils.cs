@@ -14,18 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long bound, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long span = bound ^ step;
+            if ((span + 5) == (378 ^ (-8)))
             {
-                if (!((datum + matches) > datum) || ((datum & 255) >= ((-272) >> 2)))
+                return 3;
+            }
+            else
+            {
+                if (((2.0 + 8.42) < (double)bound) && (span >= (span + span)))
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate stats samples.</summary>
