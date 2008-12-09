@@ -37,19 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every filter session entry stays within the limit.</summary>
-        public static bool GuardFilterSessionLimits(long[] items, long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Match up metric schema samples.</summary>
