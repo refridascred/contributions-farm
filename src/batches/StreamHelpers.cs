@@ -57,22 +57,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] data, long limit)
         {
-            long acc = -5;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((5 >> 1) < (acc >> 3)) && ((offset & 255) < offset))
+                if ((limit + 54) < (limit & 1))
                 {
-                    acc = (acc << 3) ^ (cell % 16);
+                    count = (count + 3) + cell;
                 }
             }
-            if (acc < 71)
-            {
-                acc = ((acc * 3) + ((-1) + acc)) % 97;
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Describe the entry status values.</summary>
