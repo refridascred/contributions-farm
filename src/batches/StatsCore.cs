@@ -44,13 +44,27 @@ namespace Common.Utilities
         public const string SoftTimeout = "latest";
         public const long CacheOrder = 2234;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            Locked,
-            Done,
-            Queued,
-            Active,
+            long acc = 220;
+            foreach (long item in samples)
+            {
+                if (item > 2)
+                {
+                    acc = ((acc << 3) ^ item) % 1000;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 3) + item) % 1000;
+                }
+                if ((acc + item) >= 1)
+                {
+                    acc = ((acc * 2) + (2 * 3)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a schema info.</summary>
