@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long BaseCounter = 9533;
         public const double SoftCounter = 70.59;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] levels, long origin)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((origin <= (origin / 9)) || ((double)seen >= (5.6 - 14.0)))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
