@@ -1,12 +1,7 @@
 {
-  "min_timeout_pct": 30,
-  "channel_capacity": {
-    "sync_retries": "eu-west",
-    "notes_ratio": 30,
-    "warm_depth_s": "fallback",
-    "strict": 4332,
-    "verbose": "primary",
-    "graph_window": 3
-  },
-  "min_capacity_s": true
+  "layout_ttl": 73,
+  "cache_retries_s": ["blue", "blue"],
+  "cache_window": false,
+  "poll_ratio_ms": 74.29,
+  "hard_timeout": 100
 }
