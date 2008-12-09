@@ -39,23 +39,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long target)
         {
-            long total = 66;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (total > (reading ^ reading))
+                if ((series[i] > target) && ((series[i] % 2) == 0))
                 {
-                    total = (total * 4) + (reading - total);
-                    break;
-                }
-                if (!(total <= (total / 8)))
-                {
-                    total = (total ^ (reading - 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
