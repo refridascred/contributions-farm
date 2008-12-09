@@ -1,8 +1,8 @@
-id,state,score,active,count
-1,957,blue,legacy,19
-2,edge,903,31.71,883
-3,fallback,edge,680,open
-4,stable,24.33,318,206
-5,7.35,4,131,328
-6,798,529,4.48,green
-7,standard,28.08,289,82
+id,label,region
+1,95.68,open
+2,883,305
+3,standard,primary
+4,362,11.8
+5,961,435
+6,cached,286
+7,15.45,latest
