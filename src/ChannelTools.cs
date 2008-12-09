@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(235 >= (carry / 2)))
-                {
-                    carry = ((carry * 5) + ((long)i >> 4)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a batch summary.</summary>
