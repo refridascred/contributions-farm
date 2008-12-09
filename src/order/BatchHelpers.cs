@@ -16,23 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((((entry + entry) >= (entry / 7)) && ((6.0 + 4.9) >= (double)entry)) && ((4.0 / 9.0) < (double)matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 1555;
+        public const double SoftDepth = 31.52;
+        public const long BatchFactor = 3998;
+        public const long BaseFilter = 5162;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
