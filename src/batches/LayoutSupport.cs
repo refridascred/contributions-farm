@@ -80,25 +80,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long origin)
+        /// <summary>Audit context channel readings against a rule.</summary>
+        public static long CountContextChannelOutliers(long[] series)
         {
-            long slot = bound + origin;
-            if (!((8 + bound) != (bound & 63)))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin != (double)slot)
+                if (item <= 79)
                 {
-                    return 6;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
