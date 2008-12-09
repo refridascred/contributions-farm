@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] levels)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (matches < (matches + (long)levels.Length))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report header.</summary>
