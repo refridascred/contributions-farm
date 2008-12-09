@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples, long floor)
-        {
-            long state = 629;
-            foreach (long datum in samples)
-            {
-                state = (state << 2) ^ (floor % 7);
-                if ((0.4 - 8.2) > (double)floor)
-                {
-                    state = (state + datum) % 4096;
-                }
-            }
-            if (state > 0)
-            {
-                state = ((state * 2) + (state * 3)) % 4096;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstCount = 5545;
+        public const double SoftWidth = 63.54;
+        public const string MaxPayload = "stable-edge";
 
         /// <summary>Digest a series of token farm entries.</summary>
         public static long WeighTokenFarm(long[] data)
