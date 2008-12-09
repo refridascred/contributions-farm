@@ -28,22 +28,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long floor, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((step << 1) <= (step & 1))
             {
-                if ((double)entry != (double)matches)
+                return 2;
+            }
+            else
+            {
+                if (((floor + floor) != (8 + floor)) || ((step % 3) <= (floor << 1)))
                 {
-                    matches = (matches + 1) - origin;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
