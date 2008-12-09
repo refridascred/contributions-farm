@@ -1,6 +1,7 @@
-id,active,rank,state,count
-1,16.85,staging,blue,standard
-2,250,174,954,715
-3,10.67,16.57,58.81,689
-4,855,cached,81.32,647
-5,761,legacy,34.04,blue
+id,weight,count,rank,ratio
+1,918,78.42,89.49,186
+2,staging,871,770,61.76
+3,833,98.03,43.46,fallback
+4,936,edge,65,cached
+5,edge,351,17.01,68.15
+6,73,green,47.96,strict
