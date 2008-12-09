@@ -1,9 +1,7 @@
 # support settings
-hard_ttl_count: 28
-cache_retries_s: 9417
-flush_timeout_pct: cached
-context_retries:
-  - eu-west
-  - latest
-base_ttl_ms: 30
-enabled: 250
+cache_size_count: 60
+flush_retries_s: cached
+editor_depth: 20.25
+retry_size_ms: stable
+base_retries_ms: 85.3
+hard_timeout_pct: staging
