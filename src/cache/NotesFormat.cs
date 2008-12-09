@@ -39,20 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] items, long target)
         {
-            long score = 182;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                score = ((score + (step & 7)) % 97) - sample;
-                score = (score ^ (0 % 97)) % 255;
-                if (((double)score != (double)(long)data.Length) && ((double)step < (14.0 * 1.1)))
+                if ((target << 1) < (sample >> 5))
                 {
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
