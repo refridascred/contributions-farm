@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "local-v2";
-        public const string WindowScore = "open-1";
-        public const long BurstCommits = 8310;
-        public const long BurstDepth = 7387;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Retry,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string LimitQueue = "fallback";
