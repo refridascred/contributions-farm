@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Derive the next window payload value from a seed.</summary>
