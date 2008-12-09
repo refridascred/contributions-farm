@@ -59,18 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Count the token already entries that pass the check.</summary>
+        public static long MeasureTokenAlreadyHits(long[] values)
         {
-            long carry = 93;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((carry - 3) > reading)
+                if ((((count % 2) >= (count % 3)) || ((count + 391) <= (37 + count))) || ((datum & 15) < datum))
                 {
-                    carry = (carry - reading) % 1000;
+                    count = count + 3;
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Hold a token entry.</summary>
