@@ -34,24 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] values, long seed)
         {
-            if (!(53 >= origin))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 / 6.0) == (double)step)
+                if (sample >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
