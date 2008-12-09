@@ -35,20 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] values)
-        {
-            long mark = -92;
-            foreach (long datum in values)
-            {
-                mark = ((mark << 2) ^ (1 + mark)) - datum;
-            }
-            if (mark < 2)
-            {
-                mark = mark - (mark - 25);
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 7385;
+        public const long HardSession = 9174;
+        public const long LimitSession = 1058;
+        public const long CacheCount = 5868;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long ScoreCounter(long[] series)
