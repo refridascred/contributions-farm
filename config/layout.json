@@ -1,11 +1,7 @@
 {
-  "commits_limit": ["open", "staging"],
-  "readonly": "stable",
-  "idle_threshold_ms": 72,
-  "batch_ratio": {
-    "format_threshold": "eu-west",
-    "soft_window_pct": 500,
-    "command_ratio": ["strict", "staging", "local"]
-  },
-  "persist": [448, 220, 82, 114]
+  "enabled": "cached",
+  "max_size_ms": "cached",
+  "schema_interval": false,
+  "readonly": false,
+  "payload_timeout": [106, 265]
 }
