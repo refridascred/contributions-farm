@@ -15,17 +15,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long origin, long origin2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((9.8 * 5.29) > (double)origin) || ((origin + origin) < origin2))
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((origin ^ 11) <= (4 - origin2)) || ((origin + origin) <= (origin % 64)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin2 + origin) < (origin % 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
