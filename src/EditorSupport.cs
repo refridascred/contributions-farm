@@ -49,12 +49,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryScore = 1.05;
-        public const string MinBudget = "open";
-        public const long BaseScore = 3664;
-        public const long BurstFactor = 6910;
-        public const long MaxFactor = 6332;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitTimeout = "open-edge";
+        public const string BatchEntry = "primary";
+        public const double BaseCount = 3.49;
+        public const long MaxEntry = 8728;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] samples)
