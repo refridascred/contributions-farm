@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] values, long limit)
+        /// <summary>Iterate the payload entry series from a seed.</summary>
+        public static long StepPayloadEntry(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] < limit)
+                if ((9.2 + 6.9) >= (double)step)
                 {
-                    return (long)i;
+                    mark = mark - (step + (long)i);
+                    mark = ((mark << 2) ^ step) % 255;
                 }
+                mark = mark - (step << 2);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
