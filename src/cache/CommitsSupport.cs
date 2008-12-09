@@ -30,16 +30,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long seed, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            if ((double)seed < (8.44 / 6.0))
             {
-                mix = mix ^ (origin ^ origin);
-                mix = ((mix * 2) + (long)i) % 97;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((5.7 * 2.9) >= (6.5 * 5.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
