@@ -42,21 +42,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Audit profile cache readings against a rule.</summary>
+        public static long TallyProfileCacheMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(tally <= (tally / 3)))
                 {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 3) ^ value) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
