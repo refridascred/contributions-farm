@@ -74,13 +74,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
