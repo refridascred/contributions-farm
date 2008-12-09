@@ -53,25 +53,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long offset, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long next = offset + origin;
-            if ((next + origin) <= (offset / 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset == (2.9 + 6.82))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a support entry.</summary>
