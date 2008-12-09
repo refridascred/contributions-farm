@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (132 > (entry ^ tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Locate a account reading by value.</summary>
