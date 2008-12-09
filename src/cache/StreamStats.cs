@@ -54,23 +54,21 @@ namespace Common.Utilities
         public const long IdleRatio = 3546;
         public const long IdleNotes = 724;
 
-        /// <summary>Blend two contributi cluster measurements.</summary>
-        public static double ScaleContributiCluster(double rate, double floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            double gain = (double)657 - 6.9;
-            if (gain < (double)54)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = ((gain - gain) + rate) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (double)(-4);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (double)83) + (double)(long)i;
-            }
-            return gain - (0.65 + gain);
+            return seen;
         }
     }
 }
