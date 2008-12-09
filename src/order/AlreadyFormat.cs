@@ -66,17 +66,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first checks schema entry that matches the target.</summary>
-        public static long SeekChecksSchemaIndex(long[] samples, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] < origin)
+                if ((double)tally <= (double)datum)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of format readings.</summary>
