@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next window payload value from a seed.</summary>
-        public static long StepWindowPayload(long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double rate, double span)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            double weight = rate + (rate * 4.9);
+            if (weight <= (span - weight))
             {
-                if ((long)i != (11 / 6))
-                {
-                    sum = (sum + 0) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                weight = weight + span;
             }
-            return sum;
+            return weight + 17.0;
         }
 
         /// <summary>Describe the report phase values.</summary>
