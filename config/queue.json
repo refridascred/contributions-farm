@@ -1,7 +1,14 @@
 {
-  "flush_timeout": 7837,
-  "retry_depth": "standard",
-  "burst_depth_pct": [282, 274, 7, 381],
-  "idle_size_ms": 70.27,
-  "batch_size": 62.55
+  "poll_interval_pct": false,
+  "farm_capacity": [99, 303, 483, 70],
+  "channel_limit": {
+    "poll_threshold": "green",
+    "poll_ratio": 46,
+    "burst_interval_count": 60,
+    "min_size_count": "staging",
+    "record_delay": "stable"
+  },
+  "readonly": 89.41,
+  "poll_delay_pct": 2386,
+  "poll_size_pct": "staging"
 }
