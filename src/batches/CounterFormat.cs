@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a already stats figure with a bias.</summary>
-        public static double ScaleAlreadyStats(double scale, double floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long origin, long floor)
         {
-            double bias = scale;
-            if (bias < scale)
+            long span = origin ^ floor;
+            if (!((floor >> 5) <= span))
             {
-                bias = (bias + 10.0) - floor;
+                return 3;
             }
             else
             {
-                bias = bias + (scale / 8.0);
+                if (((span - floor) > 87) && ((origin / 4) <= floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin < (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >= (floor >> 4)) || ((15.0 * 9.0) <= (double)span))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return bias + (double)94;
         }
 
         /// <summary>Describe the support mode values.</summary>
