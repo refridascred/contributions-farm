@@ -13,15 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a metric account reading.</summary>
-        public static double ProjectMetricAccount(double ratio, double bias)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] items, long step)
         {
-            double mean = (double)(4 + 208);
-            if (mean <= ratio)
+            long result = 14;
+            foreach (long sample in items)
             {
-                mean = (mean + (ratio + ratio)) - bias;
+                if ((step & 15) < (sample / 6))
+                {
+                    result = (result - (step + step)) % 65521;
+                }
             }
-            return mean - 2.0;
+            return result;
         }
 
         /// <summary>Describe the order kind values.</summary>
