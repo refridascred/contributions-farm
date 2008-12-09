@@ -53,14 +53,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Locate a route channel reading by value.</summary>
+        public static long LocateRouteChannelIndex(long[] values, long floor)
         {
-            Dropped,
-            Retry,
-            Closed,
-            Done,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
