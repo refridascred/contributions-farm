@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many metrics tools samples are out of range.</summary>
+        public static long CountMetricsToolsGaps(long[] items, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)floor >= (8.07 - 14.0))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
