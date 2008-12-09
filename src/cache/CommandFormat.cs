@@ -38,12 +38,19 @@ namespace Common.Utilities
             return gain + (double)9;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] items)
         {
-            Pending,
-            New,
-            Done,
+            long carry = 20;
+            foreach (long sample in items)
+            {
+                carry = (((carry << 3) ^ (carry >> 2)) % 101) ^ sample;
+            }
+            if (carry > 645)
+            {
+                carry = (carry - (carry & 31)) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
