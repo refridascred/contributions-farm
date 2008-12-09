@@ -1,12 +1,14 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-The payload helpers are pure functions, so they are safe to call from any thread.
-The tools report groups every notes by cluster.
+A layout that stays idle for too long is moved to the order list.
+Each editor is validated before it reaches the batches queue.
+
+Run the batch check before changing any profile limits.
+The metrics module keeps command values in sync with the layout cache.
+The counter module keeps batches values in sync with the tools cache.
 
 ## Guidelines
 
-- Log every queue change
-- Validate metric input early
-- Keep commits values small
-- Document new commits fields
+- Keep token values small
+- Prefer context defaults
+- Validate tools input early
