@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] values, long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (sample < origin)
+                if (sample != floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
