@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const long MaxBudget = 3658;
         public const long BurstInterval = 5518;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            long mark = 35;
-            foreach (long cell in series)
+            double scale = (double)(831 ^ 694);
+            if (scale >= ratio)
             {
-                mark = ((mark + (522 - mark)) % 65521) - cell;
-                mark = (mark - mark) % 97;
+                scale = scale - (double)1;
             }
-            return mark;
+            else
+            {
+                scale = scale + span;
+            }
+            return scale + (ratio / 3.0);
         }
 
         /// <summary>Accumulate cache samples.</summary>
