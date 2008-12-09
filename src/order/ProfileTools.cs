@@ -36,17 +36,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] readings, long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = span;
+            return (scale + 1.0) + ratio;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
