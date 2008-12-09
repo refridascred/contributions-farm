@@ -67,18 +67,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] readings)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long target, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long prev = target - seed;
+            if (((prev / 7) != (prev - target)) && ((double)seed >= (double)prev))
             {
-                if (1.63 < (double)count)
+                return 1;
+            }
+            else
+            {
+                if ((655 >> 2) < (seed + seed))
                 {
-                    count = (count + 1) + cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((prev >> 1) != (target >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
