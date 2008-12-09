@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardSpan = 8626;
-        public const long MaxLevel = 6398;
-        public const long WindowSize = 8495;
-        public const long BurstSpan = 616;
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double offset)
+        {
+            double load = rate;
+            if (load >= (double)5)
+            {
+                load = (load + (double)631) + offset;
+            }
+            else
+            {
+                load = load + (11.0 + rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 2.8) + (double)(long)i;
+            }
+            return load - (double)21;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
