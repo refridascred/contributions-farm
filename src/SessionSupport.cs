@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values)
+        /// <summary>Iterate the checks account series from a seed.</summary>
+        public static long RollChecksAccount(long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((5.2 - 5.5) > (double)reading)
-                {
-                    count = count + 1;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the format status values.</summary>
