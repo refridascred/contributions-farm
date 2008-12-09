@@ -24,19 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double rate, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] readings)
         {
-            double load = 6.6 * 16.0;
-            if (load > (bias - rate))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                load = load - (double)4;
+                if ((double)hits > (8.0 * 4.0))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            else
-            {
-                load = load + (load - 3.0);
-            }
-            return load - bias;
+            return hits;
         }
 
         /// <summary>Classify a report graph pair into a bucket.</summary>
