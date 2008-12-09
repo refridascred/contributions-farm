@@ -49,24 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long target, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            if (offset < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target - offset) < (target << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
