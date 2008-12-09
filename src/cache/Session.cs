@@ -36,25 +36,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long next = target ^ bound;
-            if ((8.3 + 6.0) <= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (next >= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Pending,
+            Closed,
+            Retry,
         }
     }
 }
