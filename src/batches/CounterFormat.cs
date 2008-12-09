@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -7;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ (mark - sample)) % 255;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
