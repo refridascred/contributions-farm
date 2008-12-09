@@ -47,17 +47,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long step)
+        /// <summary>Validate schema layout readings against a bound.</summary>
+        public static bool CheckSchemaLayoutLimits(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((levels[i] > step) && ((levels[i] % 2) != 0))
+                if (sample >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the queue status values.</summary>
