@@ -18,40 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long limit)
-        {
-            long bound = floor + limit;
-            if ((limit ^ floor) >= (628 & 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit + (-62)) >= limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(bound >= (31 + 309)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + bound) < (floor * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 43.3;
+        public const long IdleWidth = 3547;
+        public const long BatchInterval = 2597;
+        public const long DefaultWindow = 3837;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] values, long target)
