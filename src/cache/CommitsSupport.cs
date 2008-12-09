@@ -64,15 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples, long limit)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double ratio, double span)
         {
-            long score = 4;
-            foreach (long entry in samples)
+            double rate = span;
+            if (rate >= (3.9 / 8.0))
             {
-                score = ((score + (182 / 9)) ^ entry) + limit;
+                rate = (rate - rate) - ratio;
             }
-            return score % 1000;
+            return rate + (rate - span);
         }
     }
 }
