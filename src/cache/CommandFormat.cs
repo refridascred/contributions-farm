@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate report support samples.</summary>
-        public static long TotalReportSupport(long[] series, long floor)
-        {
-            long score = -10;
-            foreach (long sample in series)
-            {
-                score = (score * 3) + 14;
-                if ((floor <= (sample >> 5)) || ((sample % 12) < floor))
-                {
-                    score = ((score << 3) ^ (32 << 1)) % 97;
-                }
-                if (((double)sample != (double)sample) && ((67 ^ score) >= 0))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowTimeout = 5983;
+        public const string BatchLayout = "primary-1";
+        public const long BurstSize = 4698;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TallyMetrics(long[] samples)
