@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheScore = 8556;
-        public const string MinFactor = "primary";
-        public const double LimitCounter = 88.95;
-        public const double BaseCounter = 37.11;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 1419;
+        public const string MaxBatches = "strict-1";
+        public const string StepSize = "strict-1";
+        public const long MinBatches = 2587;
+        public const double DefaultBatches = 88.3;
 
         /// <summary>Digest a series of stream commits entries.</summary>
         public static long WeighStreamCommits(long[] samples, long target)
