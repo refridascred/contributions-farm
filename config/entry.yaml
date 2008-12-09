@@ -1,16 +1,23 @@
 # entry settings
-retry_interval:
-  - 313
-  - 185
-  - 195
-max_delay:
-  readonly: 77.89
-  burst_depth_ms: 88.1
-  burst_threshold_pct: 500
-  default_size_pct: 10.12
-  burst_ratio: 66.62
-  session_size: staging
-graph_delay:
-  - eu-west
-  - green
-  - blue
+cache_interval_count: legacy
+hard_interval: cached
+base_limit_count:
+  flush_limit:
+    - cached
+    - blue
+    - strict
+    - legacy
+  hard_ttl_ms: 67
+  verbose:
+    enabled: true
+    support_ttl: 9884
+    max_delay_pct:
+      - 231
+      - 142
+      - 121
+  base_threshold: primary
+  editor_limit: local
+  readonly: 33
+cache_capacity_s:
+  - legacy
+  - edge
