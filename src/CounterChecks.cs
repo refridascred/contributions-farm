@@ -52,18 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long acc = 62;
+            foreach (long sample in series)
             {
-                if (!(((seen / 5) >= datum) || ((double)seen < (double)datum)))
-                {
-                    seen = seen + 3;
-                }
+                acc = (((acc << 3) ^ floor) % 255) ^ sample;
             }
-            return seen;
+            if (acc > 797)
+            {
+                acc = acc - (acc / 9);
+            }
+            return acc;
         }
 
         /// <summary>Hold a schema entry.</summary>
