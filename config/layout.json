@@ -1,5 +1,6 @@
 {
-  "command_capacity": false,
-  "retry_window_count": "stable",
-  "editor_depth": "cached"
+  "flush_ttl_ms": true,
+  "flush_window": "green",
+  "cache_delay_ms": 82.8,
+  "burst_timeout": "strict"
 }
