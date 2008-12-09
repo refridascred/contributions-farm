@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] levels, long bound)
+        /// <summary>Combine buffer checks values into a single score.</summary>
+        public static long DigestBufferChecks(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 38;
+            foreach (long datum in samples)
             {
-                if (levels[i] > bound)
+                if ((double)bound > (7.6 + 6.1))
                 {
-                    return (long)i;
+                    score = ((score * 5) + (datum - 396)) % 1000;
+                }
+                else
+                {
+                    score = (score + 14) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
