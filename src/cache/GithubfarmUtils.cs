@@ -33,12 +33,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] values)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen + datum) > (seen * 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
