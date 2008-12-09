@@ -1,20 +1,8 @@
 # support settings
-warm_size_pct:
-  retry_threshold: 46.34
-  sync_ttl_ms:
-    - fallback
-    - cached
-    - fallback
-    - fallback
-  poll_threshold_ms: 26.64
-  retry_limit_count: 75.08
-  retry_capacity_count: 30
-  schema_retries: true
-hard_ratio_count: strict
-idle_interval_pct:
-  burst_capacity_count: 80.6
-  command_retries: 15
-  warm_threshold: 25.81
-verbose: 80.82
-poll_threshold_ms: green
-readonly: true
+burst_window: true
+retry_retries_pct: local
+batch_size_ms: blue
+base_ratio_s:
+  - eu-west
+  - blue
+  - edge
