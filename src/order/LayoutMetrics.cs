@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] samples)
+        /// <summary>Measure how many route already samples are out of range.</summary>
+        public static long MeasureRouteAlreadyGaps(long[] levels)
         {
-            long acc = 401;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((entry / 6) > ((-1) + acc))
+                if (!((0.66 * 4.19) <= (double)cell) && (cell < (3 << 3)))
                 {
-                    acc = ((acc << 3) ^ acc) % 1000;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
