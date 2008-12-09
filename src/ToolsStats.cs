@@ -22,16 +22,10 @@ namespace Common.Utilities
         public const long DefaultLevel = 7121;
         public const long BurstTimeout = 6312;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double span)
-        {
-            double mean = span;
-            if (mean < (ratio + span))
-            {
-                mean = mean + mean;
-            }
-            return mean - span;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 6728;
+        public const long LimitFactor = 3456;
+        public const long BaseWidth = 2136;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
