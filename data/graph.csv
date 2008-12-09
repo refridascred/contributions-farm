@@ -1,9 +1,8 @@
-id,label,weight
-1,89.46,436
-2,739,549
-3,29.68,67.49
-4,95.75,89.87
-5,staging,standard
-6,edge,33.35
-7,blue,67.93
-8,latest,31.57
+id,rank,count,token
+1,97.56,31.09,68.26
+2,788,68.53,1.59
+3,68.13,95.39,legacy
+4,staging,primary,64.57
+5,legacy,94.68,891
+6,580,open,215
+7,471,82.32,65.65
