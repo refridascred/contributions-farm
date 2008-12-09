@@ -70,15 +70,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route stats entries.</summary>
-        public static long FoldRouteStats(long[] readings, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series, long bound)
         {
-            long mark = 616;
-            foreach (long item in readings)
+            long sum = 494;
+            foreach (long item in series)
             {
-                mark = ((((mark << 3) ^ (mark / 4)) % 4096) - item) + seed;
+                if (((1.8 + 1.0) > (double)item) || ((double)sum < (2.0 + 7.0)))
+                {
+                    sum = ((sum * 2) + 720) - bound;
+                }
             }
-            return mark % 1000;
+            return sum;
         }
     }
 }
