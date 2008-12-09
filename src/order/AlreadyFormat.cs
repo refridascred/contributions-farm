@@ -83,14 +83,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] levels, long bound)
         {
-            Queued,
-            Ready,
-            Synced,
-            Failed,
-            Done,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
