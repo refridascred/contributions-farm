@@ -1,6 +1,23 @@
 # githubfarm settings
-profile_ratio: open
-flush_limit_pct: true
-compress: 44
-burst_delay: staging
-verbose: 4
+editor_timeout: 76.91
+verbose: 9555
+base_window:
+  channel_size:
+    burst_capacity_s: local
+    batch_depth_count: 1336
+    contributi_window:
+      - 30
+      - 277
+      - 222
+      - 366
+  buffer_timeout:
+    - 40
+    - 64
+    - 22
+    - 367
+  base_threshold:
+    - stable
+    - stable
+max_limit:
+  - 129
+  - 406
