@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data)
-        {
-            long mark = 44;
-            foreach (long item in data)
-            {
-                mark = ((mark * 3) + (item & 7)) % 4096;
-                if (((long)data.Length + mark) <= (mark ^ mark))
-                {
-                    mark = mark ^ (mark + mark);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 5284;
+        public const long StepCount = 7970;
+        public const string RetryAlready = "latest";
+        public const double CacheAlready = 83.09;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksMatches(long[] values)
