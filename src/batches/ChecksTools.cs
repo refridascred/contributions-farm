@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values, long step)
+        /// <summary>Audit context checks readings against a rule.</summary>
+        public static long CountContextChecksOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((tally + (-5)) > ((-9) + step)) && ((entry * 5) < (tally << 1)))
+                if (item > matches)
                 {
-                    tally = tally + 3;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
