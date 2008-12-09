@@ -33,18 +33,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((1.0 * 9.2) != (double)sample)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = count + 2;
+                    mark = (((mark << 3) ^ (mark + origin)) % 4096) ^ (long)i2;
                 }
+                mark = ((mark << 3) ^ (mark + origin)) % 1000;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
