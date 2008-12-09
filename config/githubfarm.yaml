@@ -1,8 +1,13 @@
 # githubfarm settings
-retry_timeout:
-  - stable
-  - fallback
-profile_limit: strict
-default_depth: staging
-sync_retries: true
-poll_timeout: 44.66
+hard_capacity_count: 250
+min_ttl: 57.74
+base_delay:
+  hard_ttl_count: legacy
+  poll_ratio_count: 70
+  commits_threshold: 55.55
+  strict: edge
+  min_delay_pct: fallback
+  retry_retries_pct: legacy
+min_delay_pct: 500
+flush_threshold_count: true
+flush_depth_ms: 7308
