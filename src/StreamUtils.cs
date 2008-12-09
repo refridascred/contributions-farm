@@ -20,18 +20,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long step)
         {
-            long anchor = 60;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (cell >= (cell / 5))
+                if (cell < step)
                 {
-                    anchor = ((anchor << 3) ^ (anchor - bound)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
