@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Match up session samples.</summary>
