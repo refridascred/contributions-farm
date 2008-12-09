@@ -40,27 +40,16 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine account notes values into a single score.</summary>
-        public static long FoldAccountNotes(long[] series, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long origin)
         {
-            long carry = -33;
-            foreach (long datum in series)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (floor <= (carry & 7))
-                {
-                    carry = ((carry * 3) + (545 ^ datum)) % 4096;
-                    continue;
-                }
-                if ((datum * 2) == (floor * 3))
-                {
-                    carry = carry + 66;
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
+                mix = mix ^ (origin ^ origin);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Locate a route channel reading by value.</summary>
