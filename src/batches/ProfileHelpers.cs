@@ -52,16 +52,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
