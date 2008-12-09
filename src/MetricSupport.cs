@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series, long target)
-        {
-            long carry = 45;
-            foreach (long datum in series)
-            {
-                if (datum < (carry + carry))
-                {
-                    carry = (carry ^ carry) % 65521;
-                }
-                else
-                {
-                    long matches = carry * 3;
-                    carry = carry ^ (matches + 187);
-                }
-                carry = ((carry << 3) ^ (target - target)) % 1000;
-                carry = carry - (target % 60);
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSize = 6563;
+        public const string HardAccount = "local";
+        public const long MaxWidth = 9571;
+        public const long LimitAccount = 1866;
+        public const string BatchWidth = "strict";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmOutliers(long[] items, long offset)
