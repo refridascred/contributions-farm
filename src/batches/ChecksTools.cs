@@ -23,17 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] readings, long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
