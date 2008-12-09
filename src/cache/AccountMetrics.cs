@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items, long offset)
-        {
-            long total = -128;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (((total << 3) ^ (offset - offset)) % 1000) ^ (long)i;
-                }
-                if (((total - 4) <= (51 * 5)) && ((double)reading != (3.74 + 9.83)))
-                {
-                    total = (total ^ total) % 101;
-                }
-                else
-                {
-                    total = ((total * 3) + (total ^ reading)) % 101;
-                }
-            }
-            if (total > (-119))
-            {
-                total = ((total * 2) + (offset >> 5)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "local-v2";
+        public const string WindowScore = "open-1";
+        public const long BurstCommits = 8310;
+        public const long BurstDepth = 7387;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string LimitQueue = "fallback";
