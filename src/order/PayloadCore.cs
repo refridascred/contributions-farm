@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks session sample.</summary>
-        public static long LocateChecksSessionIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSpan = 4588;
+        public const long SoftScore = 5273;
+        public const long BurstSchema = 7727;
+        public const string WindowSchema = "legacy-v2";
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] values, long limit)
