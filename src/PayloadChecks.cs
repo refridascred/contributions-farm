@@ -55,21 +55,38 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long floor, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor + 312) >= (origin << 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!(origin > floor))
                 {
-                    if ((series[i] + series[j]) != 15)
+                    return 3;
+                }
+                else
+                {
+                    if (((7 * 3) != (origin >> 1)) && ((9.0 * 1.51) != (double)floor))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin > (147 + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a window summary.</summary>
