@@ -27,23 +27,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of graph order readings.</summary>
-        public static long DigestGraphOrder(long[] readings, long limit)
+        /// <summary>Count window report pairs that satisfy a relation.</summary>
+        public static long PairWindowReportCount(long[] levels)
         {
-            long score = 1;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (((score * 3) + 681) % 4096) ^ sample;
-                if (limit <= (limit % 64))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score << 2) ^ limit) % 101;
-                }
-                if (score < limit)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
