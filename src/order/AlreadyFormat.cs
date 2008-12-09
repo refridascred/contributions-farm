@@ -73,14 +73,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Idle,
-            Retry,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheDepth = "alpha-v2";
+        public const long BaseQueue = 5940;
+        public const string RetryTimeout = "standard";
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] samples, long floor)
