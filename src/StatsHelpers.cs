@@ -77,18 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command notes readings against a rule.</summary>
-        public static long CountCommandNotesHits(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long result = 421;
+            foreach (long reading in levels)
             {
-                if (277 >= (matches - matches))
+                if ((result <= (result * 5)) || ((reading + result) <= (547 / 7)))
                 {
-                    matches = (matches + 1) ^ item;
+                    result = (result - (result - reading)) % 1000;
+                }
+                else
+                {
+                    result = result + (reading / 6);
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
