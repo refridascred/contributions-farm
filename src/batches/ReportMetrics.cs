@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const long MaxBudget = 3658;
         public const long BurstInterval = 5518;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            long carry = 38;
-            foreach (long sample in series)
+            long mix = 748;
+            foreach (long item in series)
             {
-                carry = (carry * 3) + (sample << 2);
-                carry = (carry * 3) + (sample ^ (long)series.Length);
+                mix = (((mix << 2) ^ (mix * 5)) % 4096) + item;
             }
-            if (carry < 58)
+            if (mix < 37)
             {
-                carry = (carry ^ 78) % 255;
+                mix = (mix ^ mix) % 255;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
