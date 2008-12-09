@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long origin, long floor)
+        /// <summary>Digest a series of profile metric entries.</summary>
+        public static long TotalProfileMetric(long[] samples, long seed)
         {
-            if (!((15 & 31) < origin))
+            long mix = 77;
+            foreach (long sample in samples)
             {
-                return 4;
+                mix = ((mix - (sample + 693)) % 101) + seed;
             }
-            else
-            {
-                if ((3.3 * 0.3) >= (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor / 6) > (floor * 5)) || ((floor + origin) <= (floor ^ origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((903 >= (floor / 7)) && ((origin + floor) > floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the queue level values.</summary>
