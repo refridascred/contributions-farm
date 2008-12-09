@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first format entry entry that matches the target.</summary>
-        public static long LocateFormatEntryIndex(long[] readings, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -7;
+            foreach (long value in series)
             {
-                if (readings[i] == seed)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    long seen = 247 + (0 + (long)i);
+                    sum = (sum - (seen - seen)) % 97;
+                }
+                sum = (sum ^ (value << 1)) % 101;
+                if ((value & 15) >= value)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 909)
+            {
+                sum = sum + (254 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of already tools entries.</summary>
