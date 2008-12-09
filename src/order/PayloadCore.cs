@@ -59,17 +59,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = bias / 8.0;
+            if (mean >= (ratio + ratio))
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mean = mean - ratio;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (bias - ratio);
         }
     }
 }
