@@ -1,6 +1,6 @@
-id,token,region
-1,358,green
-2,455,529
-3,134,blue
-4,55.41,82.88
-5,blue,local
+id,weight,level,count
+1,569,61.04,897
+2,fallback,930,open
+3,open,339,178
+4,strict,559,eu-west
+5,88.75,26,43.92
