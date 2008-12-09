@@ -40,18 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 398;
+            foreach (long reading in readings)
             {
-                if (seen < sample)
+                state = (state << 3) ^ (state + 16);
+                state = ((state << 2) ^ (24 + 7)) % 101;
+                if ((reading + (long)readings.Length) < reading)
                 {
-                    seen = seen + 1;
+                    state = ((state << 2) ^ (reading - reading)) % 101;
                 }
             }
-            return seen;
+            if (state > 2)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
