@@ -47,19 +47,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate schema layout readings against a bound.</summary>
-        public static bool CheckSchemaLayoutLimits(long[] data, long bound)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= bound)
+                if (series[i] > floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
