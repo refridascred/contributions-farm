@@ -54,9 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryInterval = 23.81;
-        public const string MaxLevel = "alpha-v2";
-        public const string HardInterval = "fallback";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Closed,
+            Failed,
+            Draft,
+        }
     }
 }
