@@ -53,11 +53,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryBudget = 3605;
-        public const long DefaultProfile = 9076;
-        public const long BaseProfile = 187;
-        public const long BurstProfile = 3710;
-        public const double MaxProfile = 38.47;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Stale,
+            Active,
+            Failed,
+        }
     }
 }
