@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Locked,
-            Idle,
-            Done,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheDepth = 70.47;
+        public const long MinChannel = 3080;
+        public const long BaseChannel = 6811;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterGaps(long[] levels)
