@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] readings, long step)
         {
-            long state = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                state = (state - state) + value;
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Grade a tools already value against two limits.</summary>
