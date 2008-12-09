@@ -42,15 +42,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Classify a batch cache pair into a bucket.</summary>
+        public static long RankBatchCache(long origin, long origin2)
         {
-            double mean = span;
-            for (int i = 0; i < 8; i++)
+            long bound = origin + origin2;
+            if ((double)origin != (double)bound)
             {
-                mean = (mean - (double)(long)i) + rate;
+                return 8;
             }
-            return mean + (span * 9.0);
+            else
+            {
+                if (!((bound >> 5) >= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound < (bound + origin2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order stats.</summary>
