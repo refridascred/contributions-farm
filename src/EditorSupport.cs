@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] series, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (value > limit)
+                if ((0.8 / 7.0) >= (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 1) - entry) - bound;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
