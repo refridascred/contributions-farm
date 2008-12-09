@@ -5,36 +5,29 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long step, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long limit)
         {
-            long step2 = step - offset;
-            if (((offset - step2) >= step2) || ((8.2 - 1.2) >= (double)step2))
+            long edge = target + limit;
+            if (!((edge * 3) <= (target + limit)))
             {
                 return 4;
             }
             else
             {
-                if ((3 <= offset) && (6.09 > (double)step2))
+                if ((double)limit == (2.8 / 4.0))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (step <= (offset + step))
+                    if (((-70) / 4) <= (edge + (-13)))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        if ((step ^ 50) >= step2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 8;
                     }
                 }
             }
