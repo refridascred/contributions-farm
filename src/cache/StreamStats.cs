@@ -34,11 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultDepth = "cached-1";
-        public const long HardTimeout = 4485;
-        public const long DefaultEntry = 6214;
-        public const double StepEntry = 61.21;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((5.0 + 4.0) >= (double)sample) || ((double)sample > (double)step))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleBudget = 9486;
