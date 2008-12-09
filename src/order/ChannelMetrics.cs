@@ -32,22 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if ((double)offset != (8.8 - 9.0))
             {
-                if ((66 > (entry - seen)) || ((4.79 * 7.4) > (9.0 + 13.0)))
+                return 4;
+            }
+            else
+            {
+                if ((bound + 6) != (bound >> 4))
                 {
-                    seen = seen + 1;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
