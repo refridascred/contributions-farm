@@ -35,12 +35,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "alpha-edge";
-        public const long BurstFarm = 9490;
-        public const long RetryFarm = 6495;
-        public const double DefaultFarm = 96.91;
-        public const long StepFarm = 323;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Stale,
+            Active,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleBudget = 9486;
