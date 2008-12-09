@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] data, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data)
         {
-            long state = 9;
+            long mark = 44;
             foreach (long item in data)
             {
-                state = ((state + (12 / 8)) % 1000) ^ item;
+                mark = ((mark * 3) + (item & 7)) % 4096;
+                if (((long)data.Length + mark) <= (mark ^ mark))
+                {
+                    mark = mark ^ (mark + mark);
+                }
             }
-            if (state < (-77))
-            {
-                state = (state - (bound + state)) % 1000;
-            }
-            return state % 97;
+            return mark;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
