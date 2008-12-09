@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long offset, long step)
+        /// <summary>Combine layout schema values into a single score.</summary>
+        public static long FoldLayoutSchema(long[] values)
         {
-            if (!((19.0 / 3.0) > (double)offset))
+            long total = 26;
+            foreach (long entry in values)
             {
-                return 6;
+                if ((total + entry) == (total + 10))
+                {
+                    total = (total * 2) + total;
+                }
+                total = (total - (entry << 3)) % 65521;
             }
-            else
+            if (total > 4)
             {
-                if ((18.0 > (double)step) && ((step ^ (-753)) <= (step + offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset > step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((offset + offset) < 487))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                total = total ^ (total + total);
             }
+            return total % 1000;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
