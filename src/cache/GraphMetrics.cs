@@ -50,21 +50,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 5;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = ((sum << 3) ^ sum) % 65521;
+                if ((sum >> 2) <= (value + 23))
                 {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (sum < 66)
+            {
+                sum = sum + origin;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Find the first batch metrics entry that matches the target.</summary>
