@@ -24,18 +24,39 @@ namespace Common.Utilities
             return weight2 + (double)823;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long step, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long bound = step ^ floor;
+            if ((floor + bound) == (floor << 2))
             {
-                if ((double)seen != (5.0 * 17.0))
+                return 4;
+            }
+            else
+            {
+                if (!(bound < floor))
                 {
-                    seen = (seen + 2) - entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((step >= (floor << 1)) && (8.5 < (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step & 1) >= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
