@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] items, long step)
         {
-            Ready,
-            Done,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry > (9.0 * 19.0))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next already value.</summary>
