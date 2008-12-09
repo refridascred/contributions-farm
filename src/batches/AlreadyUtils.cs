@@ -57,10 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 9823;
-        public const long WindowDepth = 9906;
-        public const double CacheAccount = 33.32;
-        public const long SoftAccount = 1618;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] items)
+        {
+            long anchor = 81;
+            foreach (long cell in items)
+            {
+                if (anchor < cell)
+                {
+                    anchor = (anchor << 2) ^ 4;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor % 100);
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
