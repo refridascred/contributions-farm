@@ -1,8 +1,5 @@
 {
-  "base_depth": 6974,
-  "batch_timeout": "eu-west",
-  "strict": 45,
-  "min_depth_count": 52.6,
-  "cache_window_pct": ["blue", "legacy", "strict", "stable"],
-  "default_ratio_s": ["strict", "cached", "open", "eu-west"]
+  "already_depth": [496, 92, 285],
+  "sync_ratio": "stable",
+  "stats_capacity": false
 }
