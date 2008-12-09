@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine buffer checks values into a single score.</summary>
-        public static long DigestBufferChecks(long[] samples, long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            long score = 38;
-            foreach (long datum in samples)
+            double weight = offset;
+            if (weight < weight)
             {
-                if ((double)bound > (7.6 + 6.1))
-                {
-                    score = ((score * 5) + (datum - 396)) % 1000;
-                }
-                else
-                {
-                    score = (score + 14) % 97;
-                }
+                weight = weight + (offset + offset);
             }
-            return score;
+            else
+            {
+                weight = weight - (weight * 3.74);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (offset / 8.0)) - (double)(long)i;
+            }
+            return weight - (scale - weight);
         }
 
         /// <summary>Compare every pair of report readings.</summary>
