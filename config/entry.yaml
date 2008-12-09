@@ -1,23 +1,11 @@
 # entry settings
-buffer_ttl:
-  burst_ratio_count:
-    buffer_retries: 9455
-    retry_window_s: edge
-    audit: false
-    metric_limit: staging
-  filter_delay: 15
-  cache_threshold_pct: 54
-  hard_capacity: cached
-readonly: strict
-default_timeout:
-  poll_threshold:
-    route_timeout: 79.21
-    warm_limit_pct: latest
-    idle_delay_ms: fallback
-    metric_depth: 77.59
-    readonly: 89.78
-    default_window: false
-  dry_run:
-    - cached
-    - latest
-  sync_interval_pct: true
+context_threshold: staging
+editor_window:
+  - strict
+  - stable
+min_size_pct: green
+contributi_interval:
+  burst_ttl: open
+  support_window: 32.79
+  audit: local
+  base_timeout: fallback
