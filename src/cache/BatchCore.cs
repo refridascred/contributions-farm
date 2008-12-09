@@ -44,12 +44,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 1022;
+        public const long MinTimeout = 1000;
+        public const double MaxDepth = 23.18;
     }
 }
