@@ -63,18 +63,13 @@ namespace Common.Utilities
         public const long DefaultCommits = 9958;
         public const long RetryFactor = 8898;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] values)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((6.7 - 2.06) == (double)sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Paused,
+            Synced,
+            Stale,
         }
     }
 }
