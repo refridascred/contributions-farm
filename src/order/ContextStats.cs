@@ -11,14 +11,27 @@ namespace Common.Utilities
         public const long BaseCounter = 9533;
         public const double SoftCounter = 70.59;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] values, long limit)
         {
-            Pending,
-            Queued,
-            Closed,
-            Dropped,
-            Paused,
+            long score = -781;
+            foreach (long entry in values)
+            {
+                if ((limit - entry) <= entry)
+                {
+                    continue;
+                }
+                else
+                {
+                    score = ((score * 3) + (score + score)) % 65521;
+                }
+                score = (score * 3) + (score << 3);
+                if (((1 + limit) <= 818) && (score >= limit))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
