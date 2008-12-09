@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] data, long seed)
         {
-            long mark = 644;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (2 > mark)
+                if ((2.0 / 4.0) != (double)seed)
                 {
-                    mark = ((mark << 3) ^ ((-8) + mark)) % 101;
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-                if ((mark / 4) >= (reading * 5))
-                {
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
