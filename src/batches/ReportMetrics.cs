@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long bound)
+        /// <summary>Count the counter report entries that pass the check.</summary>
+        public static long CountCounterReportGaps(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (reading > bound)
+                if (!(((floor >> 3) < (cell + 871)) && ((551 & 7) != (hits % 5))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
