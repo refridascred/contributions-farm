@@ -53,17 +53,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first metric cluster entry that matches the target.</summary>
-        public static long LookupMetricClusterIndex(long[] data, long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
