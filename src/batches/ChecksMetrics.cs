@@ -71,15 +71,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            New,
-            Queued,
-            Pending,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 8217;
+        public const long WindowSize = 4861;
+        public const long SoftWidth = 5973;
+        public const double SoftLevel = 50.29;
+        public const long MinToken = 2052;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] samples)
