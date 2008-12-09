@@ -14,23 +14,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a filter tools counter forward.</summary>
-        public static long SeriesFilterTools(long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)total < (3.03 + 0.56))
-                {
-                    total = (total << 3) ^ (target - (long)i);
-                }
-                else
-                {
-                    total = (total ^ 7) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
