@@ -41,15 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
