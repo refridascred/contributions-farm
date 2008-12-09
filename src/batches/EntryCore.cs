@@ -51,22 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] data, long offset)
         {
-            long acc = 8;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (8.5 <= (double)origin)
+                if (sample > offset)
                 {
-                    acc = (acc << 2) ^ (item + item);
-                }
-                else
-                {
-                    acc = (acc + ((long)data.Length << 3)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the layout phase values.</summary>
