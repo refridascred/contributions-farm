@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 2769;
-        public const string CacheInterval = "standard";
-        public const double MinChannel = 73.24;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = ((mix << 3) ^ (floor >> 1)) ^ (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
