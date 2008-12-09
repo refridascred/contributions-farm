@@ -35,12 +35,27 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] levels, long offset)
         {
-            Draft,
-            Dropped,
-            Pending,
+            long state = 353;
+            foreach (long reading in levels)
+            {
+                state = state ^ (offset * 4);
+                if (!(((-3) % 60) != (offset * 2)))
+                {
+                    state = (state + (state << 1)) % 4096;
+                }
+                if (!((state % 24) >= (reading % 3)))
+                {
+                    state = ((state << 2) ^ (state + state)) % 1000;
+                }
+            }
+            if (state < 69)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
