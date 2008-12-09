@@ -21,15 +21,39 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a metric channel counter forward.</summary>
-        public static long RollMetricChannel(long floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long floor, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long bound = floor ^ step;
+            if ((bound & 1) >= (floor % 5))
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((bound < floor) || ((floor % 16) < (bound % 97)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step <= (step >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step > (773 % 64)) && ((double)floor <= 7.86))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
