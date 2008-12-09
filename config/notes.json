@@ -1,5 +1,8 @@
 {
-  "format_limit": 100,
-  "hard_window": 500,
-  "retry_window_count": "legacy"
+  "strict": true,
+  "idle_interval_s": 35,
+  "burst_capacity_ms": "strict",
+  "soft_capacity_s": "eu-west",
+  "tools_threshold": 49,
+  "soft_ttl": 45.72
 }
