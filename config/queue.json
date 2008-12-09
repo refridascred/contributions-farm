@@ -1,5 +1,8 @@
 {
-  "min_interval_ms": 4779,
-  "warm_delay_count": 62.46,
-  "payload_size": true
+  "idle_delay": 60,
+  "githubfarm_size": ["cached", "local"],
+  "flush_limit_pct": 0.52,
+  "compress": 100,
+  "cache_ttl_pct": true,
+  "persist": false
 }
