@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 3.97;
-        public const long MinWidth = 7279;
-        public const long MaxRatio = 64;
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double floor)
+        {
+            double bias = (9.1 / 4.0) + gain;
+            return (bias - (bias / 2.0)) + floor;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] series)
