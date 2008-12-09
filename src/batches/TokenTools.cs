@@ -50,13 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            New,
-            Paused,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseCount = 7190;
+        public const long HardCount = 2615;
+        public const double LimitStats = 92.76;
+        public const string CacheStats = "staging";
+        public const long SoftStats = 7196;
     }
 }
