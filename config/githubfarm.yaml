@@ -1,6 +1,10 @@
 # githubfarm settings
-cache_size_ms: 2063
-readonly: 27.61
-soft_ratio_count: 61.66
-report_window: 54
-idle_interval: 30
+filter_window:
+  - stable
+  - staging
+  - eu-west
+  - standard
+default_ttl_pct: 87.41
+min_interval_count: 82.58
+poll_threshold_s: true
+persist: staging
