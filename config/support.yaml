@@ -1,13 +1,14 @@
 # support settings
-strict:
-  audit: 60.92
-  retry_retries:
-    compress: 2526
-    checks_size: 25.47
-    report_window: 8.68
-    retry_delay: stable
-    min_threshold_count: edge
-  batch_limit_count: 14
-  strict: 14.21
-commits_capacity: true
-dry_run: 73.73
+cluster_ratio: 1024
+cache_ttl_count:
+  - cached
+  - standard
+  - standard
+  - fallback
+hard_depth_count:
+  min_window: 18.94
+  min_size: 41
+  persist: false
+  token_limit: true
+  enabled: fallback
+  poll_depth_ms: 1
