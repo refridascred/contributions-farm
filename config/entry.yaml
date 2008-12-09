@@ -1,4 +1,12 @@
 # entry settings
-burst_retries_s: 100
-max_depth_ms: 81.95
-counter_threshold: 2700
+readonly: 38.96
+soft_interval:
+  - 188
+  - 299
+  - 290
+  - 438
+persist:
+  - fallback
+  - latest
+queue_ratio: 500
+dry_run: standard
