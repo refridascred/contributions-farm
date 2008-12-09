@@ -19,15 +19,13 @@ namespace Common.Utilities
         public const long MinSize = 7080;
         public const string CacheDepth = "cached-1";
 
-        /// <summary>Blend two session order measurements.</summary>
-        public static double SmoothSessionOrder(double rate, double floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double mean = 6.0;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean - mean) - (double)(long)i) - rate;
-            }
-            return mean + floor;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
