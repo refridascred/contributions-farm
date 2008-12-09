@@ -23,22 +23,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values, long step)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long acc = 8;
-            foreach (long value in values)
-            {
-                if (((value >> 2) <= (acc ^ acc)) && ((0.36 / 8.0) != (double)step))
-                {
-                    acc = (acc + (step << 1)) % 97;
-                }
-            }
-            if (acc > 647)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc;
+            Draft,
+            Closed,
+            Active,
+            Queued,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
