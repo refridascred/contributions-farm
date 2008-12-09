@@ -38,18 +38,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 2.4;
+        public const long IdleWindow = 2153;
+        public const long BatchWindow = 6592;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
