@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long IdleSize = 154;
         public const double BaseSpan = 75.57;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series, long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long carry = 55;
-            foreach (long entry in series)
-            {
-                carry = (carry + entry) % 101;
-            }
-            if (carry > 29)
-            {
-                carry = (carry * 5) + (step + carry);
-            }
-            return carry % 65521;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
