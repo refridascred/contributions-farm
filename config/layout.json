@@ -1,6 +1,12 @@
 {
-  "audit": 28.56,
-  "batch_window_ms": true,
-  "cache_capacity_pct": true,
-  "counter_ttl": [157, 411, 193, 181]
+  "retry_window": ["local", "local", "blue", "standard"],
+  "token_size": {
+    "flush_retries_s": false,
+    "strict": 91.99,
+    "min_depth_ms": [321, 203, 462, 245],
+    "verbose": 2704,
+    "sync_limit": true
+  },
+  "verbose": 9,
+  "farm_retries": "latest"
 }
