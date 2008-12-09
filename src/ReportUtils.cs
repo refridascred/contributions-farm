@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Accumulate metric schema samples.</summary>
+        public static long DigestMetricSchema(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 68;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + (86 + (long)i)) % 65521;
+                }
+                if ((sample + score) < offset)
+                {
+                    score = (score << 2) ^ (score << 2);
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
