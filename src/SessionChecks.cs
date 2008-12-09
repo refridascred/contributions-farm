@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string CacheEntry = "cached-edge";
         public const long BatchDepth = 8386;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long bound)
         {
-            Active,
-            Pending,
-            Queued,
-            Stale,
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc + (bound - acc)) % 4096;
+                acc = ((acc * 5) + (acc << 3)) % 4096;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
