@@ -64,38 +64,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long floor, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            if ((floor + 312) >= (origin << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(origin > floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((7 * 3) != (origin >> 1)) && ((9.0 * 1.51) != (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin > (147 + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
