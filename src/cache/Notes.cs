@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double scale, double span)
         {
-            bool ready = true;
-            foreach (long value in data)
+            double scale2 = scale;
+            if (scale2 > (span / 3.0))
             {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale2 = scale2 + scale;
             }
-            return ready;
+            else
+            {
+                scale2 = scale2 - (8.31 * 1.9);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (double)8) + (double)(long)i;
+            }
+            return scale2 - (double)(-7);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
