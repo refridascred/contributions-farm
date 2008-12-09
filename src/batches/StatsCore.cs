@@ -69,32 +69,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long step)
         {
-            long span = origin ^ bound;
-            if ((bound / 9) > (53 + 8))
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin <= (4 + bound)) && ((-8) > origin))
+                long offset = 444 ^ acc;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 8;
+                    acc = (acc + ((-47) - offset)) % 255;
+                    acc = (acc ^ ((long)i ^ (long)i2)) % 101;
                 }
-                else
-                {
-                    if ((span % 7) <= span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
