@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels, long bound)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long total = 716;
-            foreach (long reading in levels)
-            {
-                if ((bound & 3) <= (30 + bound))
-                {
-                    total = ((total * 5) + (bound & 7)) + reading;
-                }
-            }
-            return total;
+            Idle,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
