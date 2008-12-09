@@ -28,15 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double gain, double bias)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double bias2 = (double)9 / 7.0;
-            if (bias2 < 2.1)
-            {
-                bias2 = ((bias2 + 11.0) + gain) + bias;
-            }
-            return bias2 + (double)711;
+            Synced,
+            Draft,
+            New,
         }
     }
 }
