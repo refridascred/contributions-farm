@@ -22,13 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the record tools entries that pass the check.</summary>
+        public static long CountRecordToolsMatches(long[] items, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((193 + reading) != (seed - reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric record.</summary>
