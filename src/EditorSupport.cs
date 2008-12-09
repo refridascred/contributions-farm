@@ -49,31 +49,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long bound, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] items, long bound)
         {
-            if (((4.25 + 2.56) != (double)floor) || ((bound << 1) == (floor ^ 878)))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor * 2) <= (floor - bound)) || ((7.0 + 17.0) < (double)bound))
+                if (((double)bound > (double)463) && ((double)matches <= (4.37 + 1.4)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((361 >> 1) >= (floor + bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 1) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
