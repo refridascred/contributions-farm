@@ -40,21 +40,19 @@ namespace Common.Utilities
         public const long BatchContributi = 4266;
         public const long BaseFactor = 4840;
 
-        /// <summary>Match up schema support samples.</summary>
-        public static long MatchSchemaSupportCount(long[] data)
+        /// <summary>Check that every payload stream entry stays within the limit.</summary>
+        public static bool ValidatePayloadStreamLimits(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell != limit)
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
