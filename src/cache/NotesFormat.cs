@@ -32,13 +32,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] items, long offset)
         {
-            Ready,
-            Synced,
-            Retry,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
