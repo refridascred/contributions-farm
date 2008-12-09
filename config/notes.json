@@ -1,12 +1,8 @@
 {
-  "readonly": "eu-west",
-  "cache_retries": {
-    "layout_interval": true,
-    "strict": 1024,
-    "record_timeout": [170, 478, 257]
-  },
-  "flush_window_pct": true,
-  "cache_interval": "blue",
-  "flush_limit_count": 250,
-  "default_capacity_ms": 13.87
+  "buffer_ratio": "strict",
+  "verbose": "blue",
+  "window_interval": 72.15,
+  "token_retries": "fallback",
+  "strict": "fallback",
+  "base_timeout_s": ["stable", "eu-west", "strict"]
 }
