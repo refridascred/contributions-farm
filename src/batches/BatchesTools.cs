@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BurstCount = 9883;
         public const long MinNotes = 1720;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((reading + tally) <= tally))
+                if (data[i] < step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the tools state values.</summary>
