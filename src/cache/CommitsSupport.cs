@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Retry,
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
