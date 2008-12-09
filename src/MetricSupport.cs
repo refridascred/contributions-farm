@@ -54,11 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 7721;
-        public const long DefaultContext = 1362;
-        public const long IdleContext = 7092;
-        public const long BaseContext = 6109;
-        public const long WindowTimeout = 4806;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = (mix ^ (seed * 2)) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
