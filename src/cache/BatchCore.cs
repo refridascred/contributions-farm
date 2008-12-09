@@ -14,19 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long TallyAlreadyPayloadOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + tally) < (6 << 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleWidth = "standard-v2";
+        public const long BatchBudget = 5721;
+        public const long CacheLayout = 9569;
+        public const string IdleSpan = "latest-v2";
+        public const string DefaultCount = "staging-edge";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelRange(long[] items, long step)
