@@ -22,23 +22,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] readings, long step)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] samples, long origin)
         {
-            long total = 4;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total ^ (total - total)) % 1000) + cell;
-                if ((step + step) > (long)readings.Length)
+                if (samples[i] >= origin)
                 {
-                    total = (total - step) % 101;
+                    return (long)i;
                 }
             }
-            if (total < 651)
-            {
-                total = total ^ (total + step);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
