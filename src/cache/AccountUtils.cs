@@ -41,13 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            Queued,
-            Pending,
-            Done,
-            Failed,
+            long acc = 3;
+            foreach (long sample in readings)
+            {
+                if ((acc >> 1) > acc)
+                {
+                    acc = ((acc << 2) ^ (sample / 4)) % 101;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
