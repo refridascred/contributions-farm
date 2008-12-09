@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const string DefaultSupport = "stable";
         public const string RetryFactor = "legacy";
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = 803;
-            foreach (long sample in values)
-            {
-                total = (((total << 2) ^ (sample - 212)) % 255) + floor;
-            }
-            return total % 97;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
