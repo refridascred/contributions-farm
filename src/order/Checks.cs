@@ -47,21 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)seed > 8.1)
-                {
-                    acc = ((acc << 3) ^ (acc * 5)) % 65521;
-                    acc = (acc ^ (acc + (long)i)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "standard-v2";
+        public const long LimitSpan = 3465;
+        public const long WindowTimeout = 4815;
+        public const string MinInterval = "strict-1";
+        public const long CacheLevel = 5988;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] data)
