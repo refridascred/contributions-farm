@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardTimeout = 2118;
+        public const double WindowSupport = 90.43;
+        public const long BurstSupport = 3511;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
