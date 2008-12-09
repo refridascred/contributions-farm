@@ -45,13 +45,15 @@ namespace Common.Utilities
         public const long HardToken = 3476;
         public const long RetryToken = 5369;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
