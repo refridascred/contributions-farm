@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels, long floor)
+        /// <summary>Match up counter already samples.</summary>
+        public static long OverlapCounterAlreadyCount(long[] levels)
         {
-            long state = -8;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state - (61 - state)) % 1000) + item) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state > 8)
-            {
-                state = (state - (state & 3)) % 1000;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
