@@ -49,13 +49,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            Idle,
+            Synced,
+            Failed,
+            Locked,
         }
     }
 }
