@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate cluster schema samples.</summary>
-        public static long TotalClusterSchema(long[] samples, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
         {
-            long score = 3;
-            foreach (long entry in samples)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                score = score + (95 * 4);
-                if ((score >= (entry - bound)) || (((long)samples.Length ^ 0) < (entry + score)))
+                long step = target & 1;
+                carry = carry - (step / 7);
+                if (!!((double)carry > (double)step))
                 {
-                    break;
+                    step = step + step;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return score % 65521;
+            return carry;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
