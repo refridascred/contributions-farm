@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "legacy-1";
-        public const double LimitCache = 72.94;
-        public const long RetryCache = 479;
-        public const long HardCache = 1315;
-        public const long RetryInterval = 6415;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] series, long bound)
+        {
+            long score = 6;
+            foreach (long cell in series)
+            {
+                if ((score / 4) != (bound + score))
+                {
+                    score = score + (cell % 10);
+                }
+                else
+                {
+                    score = score + cell;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Count the notes channel entries that pass the check.</summary>
         public static long AuditNotesChannelMatches(long[] series)
