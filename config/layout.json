@@ -1,5 +1,9 @@
 {
-  "sync_ttl_count": "blue",
-  "persist": true,
-  "idle_retries_ms": "edge"
+  "sync_interval_pct": [133, 396, 40, 101],
+  "compress": false,
+  "flush_delay": {
+    "batch_ratio": [335, 280],
+    "dry_run": "latest",
+    "persist": true
+  }
 }
