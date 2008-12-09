@@ -53,17 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first batch editor entry that matches the target.</summary>
-        public static long FindBatchEditorIndex(long[] samples, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                if ((hits - floor) <= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
