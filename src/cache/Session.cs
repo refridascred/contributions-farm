@@ -20,17 +20,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first command farm entry that matches the target.</summary>
-        public static long SeekCommandFarmIndex(long[] data, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
