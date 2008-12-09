@@ -34,26 +34,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] data, long seed)
         {
-            long score = 821;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (bound <= (bound & 127))
+                if (entry > seed)
                 {
-                    score = ((score ^ (bound - 25)) % 4096) + cell;
-                }
-                else
-                {
-                    score = ((score * 5) + score) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 570)
-            {
-                score = (score << 2) ^ (score / 2);
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
