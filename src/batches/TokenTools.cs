@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] data)
+        /// <summary>Rank queue support input into a small class.</summary>
+        public static long BucketQueueSupport(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long next = bound - floor;
+            if (((double)bound > (2.3 - 17.0)) || (12 > (next * 5)))
             {
-                if ((double)seen <= (2.63 * 3.9))
+                return 8;
+            }
+            else
+            {
+                if (((next >> 3) >= (-299)) || ((next >> 4) <= (301 - bound)))
                 {
-                    seen = (seen + 3) ^ item;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((double)floor > 11.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
