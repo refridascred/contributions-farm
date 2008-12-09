@@ -26,16 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long anchor = 25;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (anchor + 9)) + entry;
-                anchor = (anchor << 2) ^ (564 ^ anchor);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
