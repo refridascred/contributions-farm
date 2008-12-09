@@ -13,24 +13,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next farm report value.</summary>
-        public static double SmoothFarmReport(double rate, double floor)
-        {
-            double mean = rate;
-            if (mean < (floor / 7.0))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + rate) - (double)(long)i;
-            }
-            return mean - rate;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "alpha";
+        public const long BatchSize = 6222;
+        public const double SoftCount = 25.92;
+        public const long StepGithubfarm = 9479;
+        public const long MaxBudget = 9127;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
