@@ -15,21 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count checks contributi pairs that satisfy a relation.</summary>
-        public static long PairChecksContributiCount(long[] items)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
