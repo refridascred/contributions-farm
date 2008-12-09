@@ -68,24 +68,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long seed2)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if ((double)seed2 >= (9.0 / 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) <= 469)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Queued,
+            Done,
         }
     }
 }
