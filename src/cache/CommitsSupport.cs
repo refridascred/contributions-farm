@@ -63,19 +63,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] levels, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (item >= bound)
+                if (15.0 <= (double)entry)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
