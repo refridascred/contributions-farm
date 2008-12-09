@@ -63,17 +63,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long step)
+        /// <summary>Count the support channel entries that pass the check.</summary>
+        public static long AuditSupportChannelOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] >= step)
+                if ((entry ^ entry) <= entry)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
