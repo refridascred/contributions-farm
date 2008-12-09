@@ -20,13 +20,28 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                double mean = 9.0;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = (((result * 2) + (seed + seed)) % 101) - (long)i2;
+                }
+                if ((mean + mean) > (2.9 - mean))
+                {
+                    result = (result * 5) + (seed + result);
+                }
+                else
+                {
+                    result = (result - (499 & 3)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics level values.</summary>
