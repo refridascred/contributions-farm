@@ -29,18 +29,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            long score = 58;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)values.Length >= (item >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ (item / 6)) % 97;
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return hits;
         }
     }
 }
