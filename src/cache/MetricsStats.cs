@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 5332;
+        public const double HardFactor = 11.46;
+        public const double WindowScore = 16.11;
+        public const long RetryFormat = 9707;
 
         /// <summary>Combine farm buffer values into a single score.</summary>
         public static long ScoreFarmBuffer(long[] values)
