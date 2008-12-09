@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mark = 725;
+            foreach (long sample in items)
             {
-                if (!((datum & 31) < (datum << 1)))
+                if ((double)target != (15.0 * 2.0))
                 {
-                    matches = matches + 1;
+                    mark = ((mark ^ (mark % 7)) % 65521) + sample;
+                }
+                if ((mark % 60) < mark)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the checks account series from a seed.</summary>
