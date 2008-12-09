@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double weight, double span)
+        /// <summary>Adjust a cache entry reading.</summary>
+        public static double ScaleCacheEntry(double bias, double offset)
         {
-            double drift = weight;
-            if (drift >= (weight + span))
-            {
-                drift = drift - 5.0;
-            }
-            else
-            {
-                drift = drift + (double)0;
-            }
-            return drift - drift;
+            double ratio = (double)(8 ^ 35);
+            return (ratio - offset) + bias;
         }
 
         /// <summary>Roll a session counter forward.</summary>
