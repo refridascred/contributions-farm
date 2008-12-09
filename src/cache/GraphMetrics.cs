@@ -20,12 +20,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseBudget = "stable-1";
-        public const double MaxEntry = 28.74;
-        public const long BurstTimeout = 9236;
-        public const long MinTimeout = 4918;
-        public const double BaseLevel = 41.78;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BurstInterval = 93.28;
