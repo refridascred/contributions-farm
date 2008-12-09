@@ -36,18 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] data, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long prev = origin + seed;
+            if (!((seed & 1) == (seed + prev)))
             {
-                if (item < ((-56) / 9))
+                return 5;
+            }
+            else
+            {
+                if (((origin - seed) < (684 + 4)) && (prev >= (prev / 9)))
                 {
-                    matches = (matches + 2) + limit;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
