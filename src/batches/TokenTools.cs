@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Look up the position of a stats token sample.</summary>
+        public static long LocateStatsTokenIndex(long[] data, long seed)
         {
-            double weight = floor / 5.0;
-            if (weight < floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + weight) - rate;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight - floor;
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
