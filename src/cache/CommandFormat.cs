@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = anchor - 148;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
