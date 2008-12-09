@@ -50,18 +50,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] levels, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)215 <= (double)(long)levels.Length)
-                {
-                    seen = ((seen + 2) - reading) - target;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
