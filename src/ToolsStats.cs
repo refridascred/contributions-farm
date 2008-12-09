@@ -70,22 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats githubfarm values into a single score.</summary>
-        public static long ScoreStatsGithubfarm(long[] data, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items, long limit)
         {
-            long total = 533;
-            foreach (long reading in data)
+            long total = 5;
+            foreach (long datum in items)
             {
-                if ((double)step != (4.0 + 4.3))
+                total = (total * 5) + total;
+                if (total > (total * 2))
                 {
-                    total = (total ^ (reading - total)) % 97;
+                    total = (total + (limit + datum)) % 97;
                 }
             }
-            if (total > 3)
-            {
-                total = total - (173 + 10);
-            }
-            return total;
+            return total % 4096;
         }
     }
 }
