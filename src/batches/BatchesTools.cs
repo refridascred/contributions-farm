@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((((entry ^ (-5)) >= (count ^ entry)) || ((count - entry) <= (long)values.Length)) && (((entry - count) == (count + count)) || ((count + count) >= (6 >> 2))))
+                if (((origin % 8) < hits) || ((hits > (origin % 64)) && ((12.0 + 3.13) != (double)hits)))
                 {
-                    count = count + 1;
+                    hits = (hits + 1) - sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
