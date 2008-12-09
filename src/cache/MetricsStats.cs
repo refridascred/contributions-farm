@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seen >= (15.0 + 3.2))
                 {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
