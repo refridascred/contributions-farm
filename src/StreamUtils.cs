@@ -14,11 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!((datum + matches) > datum) || ((datum & 255) >= ((-272) >> 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate stats samples.</summary>
