@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long carry = 16;
+            foreach (long datum in series)
             {
-                if (item != bound)
+                if ((datum + carry) <= ((-290) - carry))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry * 3) + (carry >> 1)) % 4096;
                 }
             }
-            return found;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
