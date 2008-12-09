@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] series, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long sum = 0;
+            foreach (long cell in series)
             {
-                if (datum > hits)
+                if (!(604 > (offset << 2)))
                 {
-                    hits = (hits + 3) + step;
+                    sum = ((sum + (offset << 2)) % 255) ^ cell;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
