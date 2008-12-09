@@ -67,12 +67,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Active,
-            Done,
-            Stale,
+            Closed,
+            Queued,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the cache class values.</summary>
