@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const string CacheSize = "staging-edge";
         public const string BaseSpan = "standard-v2";
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            New,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
