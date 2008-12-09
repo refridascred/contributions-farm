@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftWidth = 16.15;
-        public const long IdleEntry = 4816;
-        public const string HardEntry = "open";
-        public const long WindowSpan = 2611;
-        public const long BaseEntry = 1630;
+        /// <summary>Roll a cluster batch counter forward.</summary>
+        public static long StepClusterBatch(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if (41 < ((long)i / 7))
+                {
+                    carry = (carry + (85 >> 3)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
