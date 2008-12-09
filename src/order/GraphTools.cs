@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks stream readings against a bound.</summary>
-        public static bool VerifyChecksStreamRange(long[] items, long step)
+        /// <summary>Validate context filter readings against a bound.</summary>
+        public static bool VerifyContextFilterLimits(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (reading >= step)
+                if (datum >= target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Digest a series of already entries.</summary>
