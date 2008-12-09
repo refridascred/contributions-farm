@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of stream queue entries.</summary>
-        public static long TallyStreamQueue(long[] items, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long state = 15;
-            foreach (long value in items)
-            {
-                if (bound >= ((-846) + value))
-                {
-                    state = state - (bound ^ 68);
-                }
-            }
-            return state;
+            Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Digest a series of context filter entries.</summary>
