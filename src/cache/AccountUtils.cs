@@ -25,21 +25,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count metric layout pairs that satisfy a relation.</summary>
-        public static long OverlapMetricLayoutCount(long[] readings)
+        /// <summary>Iterate the metric contributi series from a seed.</summary>
+        public static long IterateMetricContributi(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.73 / 3.0) < (double)carry)
                 {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry ^ (origin - carry);
+                    carry = (carry + origin) % 255;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the filter state values.</summary>
