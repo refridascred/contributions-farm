@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] series, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (sample != floor)
+                if (((tally + (-5)) > ((-9) + step)) && ((entry * 5) < (tally << 1)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Accumulate channel schema samples.</summary>
