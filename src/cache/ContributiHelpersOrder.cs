@@ -41,19 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long score = 114;
+            foreach (long sample in series)
             {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score + (sample & 3)) % 65521;
             }
-            return stale;
+            if (score > 42)
+            {
+                score = score ^ (score - 18);
+            }
+            return score;
         }
     }
 }
