@@ -1,11 +1,10 @@
 # Command notes
 
-Keep tools and githubfarm names short and lowercase.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The tools report groups every context by tools.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every channel change
-- Document new githubfarm fields
-- Validate command input early
+- Document new command fields
+- Review route limits each release
+- Validate route input early
