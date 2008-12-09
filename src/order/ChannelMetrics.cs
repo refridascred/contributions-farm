@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] series, long origin)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
