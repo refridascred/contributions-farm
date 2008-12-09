@@ -35,19 +35,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long mix = 7;
+            foreach (long item in data)
             {
-                if (entry > floor)
+                mix = (mix ^ (786 + mix)) % 97;
+                if ((double)mix >= (double)602)
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix * 4) + (item - item)) % 101;
+                }
+                else
+                {
+                    mix = mix - (mix + mix);
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
