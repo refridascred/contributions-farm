@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate layout format readings against a bound.</summary>
-        public static bool CheckLayoutFormatRange(long[] items, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Audit order stream readings against a rule.</summary>
