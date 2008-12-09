@@ -36,15 +36,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] data)
         {
             long seen = 0;
-            foreach (long datum in series)
+            foreach (long datum in data)
             {
-                if ((((8.1 - 4.83) < (double)seen) && ((8 % 2) > datum)) && !((double)datum <= (8.9 + 7.0)))
+                if (15.0 < (double)seen)
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) - datum;
                 }
             }
             return seen;
