@@ -34,23 +34,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double offset)
+        /// <summary>Rank layout githubfarm input into a small class.</summary>
+        public static long SortLayoutGithubfarm(long floor, long limit)
         {
-            double load = (double)628 * 2.7;
-            if (load >= (scale / 8.0))
+            long lane = floor + limit;
+            if (!((double)lane > (double)708))
             {
-                load = (load + load) + offset;
+                return 8;
             }
             else
             {
-                load = load - (load * 7.0);
+                if ((582 - lane) < (floor + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (4 > floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - scale) - (double)(long)i;
-            }
-            return load - scale;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
