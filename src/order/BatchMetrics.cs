@@ -33,19 +33,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long mark = 0;
+            foreach (long item in samples)
             {
-                if (value >= target)
+                if ((mark * 5) <= 951)
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 2) ^ item) % 4096;
                 }
             }
-            return valid;
+            if (mark < 301)
+            {
+                mark = mark + (origin >> 3);
+            }
+            return mark;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
