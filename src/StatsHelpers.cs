@@ -60,22 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] series, long bound)
         {
-            long result = 421;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result <= (result * 5)) || ((reading + result) <= (547 / 7)))
+                if (series[i] == bound)
                 {
-                    result = (result - (result - reading)) % 1000;
-                }
-                else
-                {
-                    result = result + (reading / 6);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
