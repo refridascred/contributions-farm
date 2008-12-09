@@ -46,11 +46,15 @@ namespace Common.Utilities
         public const double DefaultGraph = 93.19;
         public const long IdleGraph = 2976;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double gain, double bias)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long step)
         {
-            double bias2 = gain;
-            return (bias2 - gain) + bias;
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Grade a layout filter value against two limits.</summary>
