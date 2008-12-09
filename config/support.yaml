@@ -1,24 +1,23 @@
 # support settings
-compress:
-  window_limit:
-    - 10
-    - 153
-    - 167
-  audit: latest
-  default_limit_count: false
-contributi_delay:
-  - 161
-  - 296
-  - 380
-  - 244
-idle_interval: 37.57
-max_window_ms: true
-entry_depth: strict
-default_window:
-  max_depth:
-    poll_timeout: eu-west
-    idle_limit_ms: standard
-    warm_window_s: 100
-    burst_size_count: 81.11
-  hard_size_pct: 100
-  base_capacity_s: false
+readonly:
+  base_window_pct:
+    cluster_timeout: 5899
+    max_window_pct: 1354
+    enabled: 100
+    notes_window:
+      - 165
+      - 399
+      - 79
+    persist: green
+    poll_ttl_ms: stable
+  max_limit_s: false
+  order_size: staging
+  cache_capacity: eu-west
+  poll_capacity_ms: true
+  dry_run: false
+flush_retries_s: staging
+idle_limit_ms: edge
+default_timeout:
+  - stable
+  - staging
+idle_capacity_ms: 22.88
