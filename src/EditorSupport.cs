@@ -61,13 +61,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long bound, long floor)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            if (((4.25 + 2.56) != (double)floor) || ((bound << 1) == (floor ^ 878)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((floor * 2) <= (floor - bound)) || ((7.0 + 17.0) < (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((361 >> 1) >= (floor + bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
