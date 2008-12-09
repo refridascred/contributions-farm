@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 4528;
-        public const string BatchWidth = "local-edge";
-        public const string MaxFactor = "legacy";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] samples)
+        {
+            long acc = 401;
+            foreach (long entry in samples)
+            {
+                if ((entry / 6) > ((-1) + acc))
+                {
+                    acc = ((acc << 3) ^ acc) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksLimits(long[] samples, long offset)
