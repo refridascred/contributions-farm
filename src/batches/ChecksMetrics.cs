@@ -88,22 +88,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine queue report values into a single score.</summary>
-        public static long WeighQueueReport(long[] samples, long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long step, long offset)
         {
-            long acc = 4;
-            foreach (long entry in samples)
+            long step2 = step - offset;
+            if (!((step2 / 8) != (160 * 4)))
             {
-                if (((limit / 9) <= (54 + 924)) && ((8.5 / 3.0) <= (double)acc))
+                return 1;
+            }
+            else
+            {
+                if (((step2 % 24) < (step >> 5)) || ((offset * 2) < ((-450) + step)))
                 {
-                    acc = ((acc + (7 ^ limit)) % 1000) + entry;
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc - (limit * 5)) % 65521;
+                    return 3;
                 }
             }
-            return acc % 4096;
         }
     }
 }
