@@ -61,10 +61,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "strict";
-        public const long BurstRoute = 3104;
-        public const long MaxScore = 8571;
-        public const long SoftRoute = 5422;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
