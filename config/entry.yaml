@@ -1,18 +1,9 @@
 # entry settings
-support_ttl:
-  - edge
-  - latest
-  - cached
-  - primary
-batch_ttl:
-  - edge
-  - standard
-  - legacy
-contributi_ttl: 39
-strict: legacy
-payload_window:
-  - 278
-  - 247
-  - 75
-  - 234
-warm_timeout_pct: eu-west
+burst_size: false
+filter_delay: false
+editor_ttl: 100
+cluster_delay: blue
+context_interval:
+  - 42
+  - 430
+  - 192
