@@ -58,18 +58,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long state = -85;
+            foreach (long entry in readings)
             {
-                if ((reading + hits) < (reading ^ reading))
+                state = (state * 4) + state;
+                if ((offset << 3) <= (entry ^ entry))
                 {
-                    hits = hits + 2;
+                    state = (state - (state & 63)) % 101;
+                }
+                if ((double)entry >= (double)3)
+                {
+                    state = state - (75 >> 1);
                 }
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Describe the notes class values.</summary>
