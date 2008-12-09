@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((19.0 / 3.0) > (double)offset))
             {
-                if (items[i] <= step)
+                return 6;
+            }
+            else
+            {
+                if ((18.0 > (double)step) && ((step ^ (-753)) <= (step + offset)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (offset > step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((offset + offset) < 487))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
