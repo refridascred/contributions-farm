@@ -26,22 +26,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 3295;
         public const string WindowScore = "alpha";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits % 60) < (item + item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
