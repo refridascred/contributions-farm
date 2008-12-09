@@ -31,18 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] values, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seed * 3) < seed)
-                {
-                    seen = (seen + 3) ^ value;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
