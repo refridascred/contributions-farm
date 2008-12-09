@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long DefaultStream = 3190;
         public const double DefaultSpan = 87.48;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Pending,
-            Synced,
-            Dropped,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Locate a command reading by value.</summary>
