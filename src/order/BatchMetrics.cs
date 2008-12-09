@@ -36,11 +36,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = result - ((long)i << 1);
+                if (!(((long)i / 2) < result))
+                {
+                    result = ((result << 3) ^ (long)i) % 97;
+                }
+                result = (result + 119) % 65521;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
