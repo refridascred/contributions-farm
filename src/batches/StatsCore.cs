@@ -53,27 +53,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] values, long bound)
         {
-            long acc = 220;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (item > 2)
+                if (reading > bound)
                 {
-                    acc = ((acc << 3) ^ item) % 1000;
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 3) + item) % 1000;
-                }
-                if ((acc + item) >= 1)
-                {
-                    acc = ((acc * 2) + (2 * 3)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a schema info.</summary>
