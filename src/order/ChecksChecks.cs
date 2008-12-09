@@ -35,12 +35,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] values)
         {
-            Queued,
-            Retry,
-            Failed,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >= (datum - datum)) && ((datum + datum) > matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
