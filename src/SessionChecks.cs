@@ -27,12 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] samples, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                if (series[i] == limit)
                 {
                     return (long)i;
                 }
