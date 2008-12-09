@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] samples)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((9.0 * 9.37) <= (double)seen) || ((reading - (-538)) > 0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
