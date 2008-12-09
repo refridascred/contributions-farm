@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first channel session entry that matches the target.</summary>
-        public static long FindChannelSessionIndex(long[] series, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next window payload value from a seed.</summary>
