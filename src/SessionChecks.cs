@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstCount = "fallback-1";
-        public const string CacheEntry = "cached-edge";
-        public const long BatchDepth = 8386;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long bound)
