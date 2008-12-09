@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 7.9;
-        public const string MaxWidth = "alpha-edge";
-        public const long BaseLevel = 4240;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long origin)
+        {
+            if (((double)(-54) >= (double)target) && ((double)origin == (19.0 / 8.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((((-1) ^ target) >= origin) || ((origin * 3) <= (origin ^ origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin + target) >= origin) && ((origin + target) < (target - target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < (197 & 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of editor githubfarm entries.</summary>
         public static long TotalEditorGithubfarm(long[] readings, long offset)
