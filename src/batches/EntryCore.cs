@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const long CacheNotes = 3954;
         public const double HardNotes = 65.19;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((3 + tally) < tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 2414;
+        public const double RetryContributi = 36.01;
+        public const long DefaultFactor = 7895;
+        public const string MaxTimeout = "open-v2";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] data, long offset)
