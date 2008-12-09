@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 81.78;
-        public const long RetryTimeout = 8613;
-        public const long DefaultSession = 1682;
-        public const double BurstSpan = 82.82;
-        public const long BatchWidth = 490;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Locked,
+            Done,
+            Draft,
+            Active,
+            Idle,
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] readings)
