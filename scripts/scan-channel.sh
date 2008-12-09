@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=56
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in primary open local standard; do
+for item in edge cached eu-west legacy; do
     log "checking ${item}"
 done
 
@@ -22,3 +19,9 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
