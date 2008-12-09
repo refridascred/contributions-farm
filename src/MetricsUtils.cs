@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of batches notes entries.</summary>
-        public static long FoldBatchesNotes(long[] levels, long limit)
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long CountChannelProfileGaps(long[] levels, long floor)
         {
-            long acc = -58;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                acc = ((acc - (sample + sample)) % 255) - limit;
-                acc = ((acc * 2) + (sample % 64)) % 255;
+                if ((hits >> 1) <= (datum + datum))
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a window record.</summary>
