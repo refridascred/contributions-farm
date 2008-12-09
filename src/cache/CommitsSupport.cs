@@ -52,21 +52,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up contributi counter samples.</summary>
-        public static long PairContributiCounterCount(long[] series)
+        /// <summary>Grade a support commits value against two limits.</summary>
+        public static long BucketSupportCommits(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = step - step2;
+            if ((prev / 9) > (prev << 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((3.52 - 9.07) <= (double)step2)
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two session measurements.</summary>
