@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Locked,
-            Done,
-            Draft,
-            Active,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 8444;
+        public const long RetryCommand = 67;
+        public const long StepCommand = 3607;
+        public const string LimitCommand = "fallback";
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] readings)
