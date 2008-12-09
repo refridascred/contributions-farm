@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster batch counter forward.</summary>
-        public static long StepClusterBatch(long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long anchor = 2;
+            foreach (long reading in values)
             {
-                if (41 < ((long)i / 7))
+                if (((double)132 != (double)floor) || ((8 + floor) > reading))
                 {
-                    carry = (carry + (85 >> 3)) % 4096;
+                    anchor = (anchor + anchor) % 65521;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
