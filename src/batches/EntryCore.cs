@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of report format readings.</summary>
-        public static long MatchReportFormatCount(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 8;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = anchor ^ (678 * 5);
+                if ((datum / 6) > (datum - datum))
                 {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Match up window farm samples.</summary>
