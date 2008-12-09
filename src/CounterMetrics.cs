@@ -27,13 +27,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double scale, double offset)
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            double load = (double)628 * 2.7;
+            if (load >= (scale / 8.0))
+            {
+                load = (load + load) + offset;
+            }
+            else
+            {
+                load = load - (load * 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - scale) - (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
