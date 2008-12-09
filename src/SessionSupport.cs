@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long offset2 = offset - origin;
+            if ((double)origin == (5.9 + 6.9))
             {
-                if ((sample / 4) > (matches / 8))
+                return 2;
+            }
+            else
+            {
+                if ((1 << 1) < (origin & 31))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - 922) == (origin / 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((7.1 + 0.7) > (double)offset2) || ((offset * 5) >= offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the farm state values.</summary>
