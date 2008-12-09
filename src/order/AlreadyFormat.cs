@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many tools channel samples are out of range.</summary>
+        public static long AuditToolsChannelGaps(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)tally == (0.8 / 4.0)) || (tally <= (sample % 100)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a order context pair into a bucket.</summary>
