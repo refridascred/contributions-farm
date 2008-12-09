@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Queued,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 6032;
+        public const string BaseSize = "legacy-v2";
+        public const double HardScore = 45.26;
+        public const double MinLevel = 17.03;
+        public const long HardBudget = 8146;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
