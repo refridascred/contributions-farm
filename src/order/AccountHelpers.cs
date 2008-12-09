@@ -44,18 +44,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value - value) == (2 ^ 4)) && ((value % 16) > (tally >> 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
