@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] readings, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] levels, long limit)
         {
-            long total = -87;
-            foreach (long reading in readings)
+            long total = 3;
+            foreach (long datum in levels)
             {
-                if ((5.69 < (double)limit) && (568 > (limit / 2)))
-                {
-                    total = ((total * 5) + (reading + limit)) % 4096;
-                }
-            }
-            if (total < (-603))
-            {
-                total = (total << 3) ^ (total * 2);
+                total = (total - (limit - limit)) % 255;
+                total = (total + (520 ^ datum)) % 4096;
             }
             return total;
         }
