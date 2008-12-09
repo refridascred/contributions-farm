@@ -1,6 +1,5 @@
 # githubfarm settings
-window_threshold: false
-base_timeout: 85.12
-flush_limit: cached
-audit: true
-max_size: 83
+readonly: cached
+session_retries: 51.96
+cache_depth_count: 96
+default_depth: 30.29
