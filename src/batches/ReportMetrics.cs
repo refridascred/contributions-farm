@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepFactor = 8780;
-        public const long StepMetric = 5225;
-        public const long MaxBudget = 3658;
-        public const long BurstInterval = 5518;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinStats = 61;
