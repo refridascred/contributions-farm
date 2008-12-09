@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 9;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.02 / 6.0) == (double)total)
                 {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total ^ (total << 2);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (datum * 5)) % 97;
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
