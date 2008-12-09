@@ -1,16 +1,26 @@
 # githubfarm settings
-max_capacity_ms:
-  - 157
-  - 324
-  - 263
-  - 82
-retry_retries_count:
-  persist:
-    - 441
-    - 457
-    - 444
-  already_ttl: 500
-  audit: eu-west
-base_capacity_count: 60
-poll_limit: primary
-batch_ratio_count: 60
+editor_window:
+  - primary
+  - local
+tools_timeout: false
+route_threshold: strict
+persist:
+  - legacy
+  - local
+sync_size_pct:
+  channel_interval: 69
+  schema_ttl: 3149
+  warm_threshold_s:
+    - fallback
+    - green
+    - open
+  counter_interval:
+    cache_limit_count: primary
+    support_delay: eu-west
+    sync_capacity_count:
+      - staging
+      - edge
+      - legacy
+    commits_retries: 27.31
+    dry_run: 81.53
+    sync_limit_count: 28.24
