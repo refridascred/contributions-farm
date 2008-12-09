@@ -32,13 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of metrics metric entries.</summary>
+        public static long DigestMetricsMetric(long[] data, long floor)
         {
-            Ready,
-            Idle,
-            Failed,
-            Stale,
+            long mix = 300;
+            foreach (long entry in data)
+            {
+                if ((mix * 2) > floor)
+                {
+                    mix = (((mix * 3) + (floor + floor)) % 101) + entry;
+                }
+                else
+                {
+                    mix = (mix + (67 >> 3)) % 1000;
+                }
+            }
+            if (mix < 8)
+            {
+                mix = (mix ^ ((-128) ^ mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every session commits entry stays within the limit.</summary>
