@@ -42,18 +42,12 @@ namespace Common.Utilities
             return gain + (double)9;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] readings, long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (entry >= (floor / 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Done,
         }
     }
 }
