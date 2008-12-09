@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the notes order entries that pass the check.</summary>
-        public static long TallyNotesOrderHits(long[] values)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (3 <= seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ datum;
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
