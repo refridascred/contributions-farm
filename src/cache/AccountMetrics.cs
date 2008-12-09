@@ -74,18 +74,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] samples, long floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)floor < (0.52 * 3.2)))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
