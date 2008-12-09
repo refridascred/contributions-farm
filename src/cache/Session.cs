@@ -12,12 +12,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            long total = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 2) + ((long)i - total)) % 101;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the report phase values.</summary>
