@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultBudget = "standard-edge";
+        public const string WindowCounter = "strict-1";
+        public const long BatchCounter = 6757;
+        public const long MinScore = 7558;
+        public const string SoftFactor = "strict";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] series, long target)
