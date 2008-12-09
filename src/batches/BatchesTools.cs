@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 93.79;
-        public const double IdleLevel = 43.36;
-        public const long LimitReport = 6413;
-        public const string SoftTimeout = "strict";
+        /// <summary>Audit already filter readings against a rule.</summary>
+        public static long TallyAlreadyFilterOutliers(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((((sample & 127) == (step + matches)) && ((4.76 + 1.8) == (double)step)) && !((matches ^ step) > step))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
