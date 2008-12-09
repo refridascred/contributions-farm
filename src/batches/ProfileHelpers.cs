@@ -24,18 +24,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] items, long origin)
         {
-            long carry = 16;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + carry) <= ((-290) - carry))
+                if (items[i] < origin)
                 {
-                    carry = ((carry * 3) + (carry >> 1)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
