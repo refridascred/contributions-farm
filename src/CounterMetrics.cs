@@ -41,11 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double bias, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings, long floor)
         {
-            double weight = (double)(1 * 2);
-            return ((weight + weight) + bias) + floor;
+            long acc = 41;
+            foreach (long item in readings)
+            {
+                acc = ((acc - (7 << 3)) % 255) - item;
+            }
+            if (acc < 1)
+            {
+                acc = (acc << 2) ^ (floor + acc);
+            }
+            return acc % 1000;
         }
     }
 }
