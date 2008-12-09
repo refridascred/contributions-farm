@@ -16,11 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
