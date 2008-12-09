@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] data)
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)seen <= (2.63 * 3.9))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
