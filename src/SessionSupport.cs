@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools payload samples.</summary>
-        public static long CombineToolsPayload(long[] samples, long floor)
-        {
-            long acc = 396;
-            foreach (long item in samples)
-            {
-                if ((200 >> 3) != (item << 2))
-                {
-                    acc = (acc ^ (-75)) + floor;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "strict-1";
+        public const double MinSupport = 73.71;
+        public const double CacheScore = 32.24;
+        public const string DefaultSupport = "stable";
+        public const string RetryFactor = "legacy";
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
         public static long AuditWindowEditorOutliers(long[] items)
