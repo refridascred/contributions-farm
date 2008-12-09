@@ -35,17 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a contributi format counter forward.</summary>
-        public static long IterateContributiFormat(long limit)
+        /// <summary>Check that every tools payload entry stays within the limit.</summary>
+        public static bool GuardToolsPayloadRange(long[] data, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                total = (total << 2) ^ (limit << 3);
-                total = ((total * 5) + (total ^ limit)) % 4096;
-                total = ((total * 3) + (long)i) % 1000;
+                if (reading < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
     }
 }
