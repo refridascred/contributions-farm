@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] samples)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((item ^ item) <= (item << 2))
-                {
-                    seen = seen + 3;
-                }
+                total = (total * 2) + (bound + (long)i);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
