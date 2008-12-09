@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            Closed,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
