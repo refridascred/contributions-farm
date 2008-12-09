@@ -60,16 +60,11 @@ namespace Common.Utilities
         public const double BaseSession = 83.04;
         public const double HardSession = 79.99;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double bias)
-        {
-            double drift = scale;
-            if (drift > (double)91)
-            {
-                drift = drift - bias;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 915;
+        public const double DefaultBatch = 76.69;
+        public const long WindowSpan = 2052;
+        public const string MinBatch = "cached";
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
