@@ -1,11 +1,11 @@
 # Command notes
 
-When a report fails, the schema handler retries a few times before giving up.
-The tools module keeps report values in sync with the graph cache.
+Each format is validated before it reaches the layout queue.
+The record module keeps editor values in sync with the profile cache.
 
 ## Guidelines
 
-- Prefer format defaults
-- Validate stats input early
-- Keep metric values small
-- Review notes limits each release
+- Keep entry values small
+- Review stream limits each release
+- Log every already change
+- Prefer tools defaults
