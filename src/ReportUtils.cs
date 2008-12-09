@@ -62,14 +62,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long bound)
         {
-            New,
-            Pending,
-            Closed,
-            Retry,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm buffer sample.</summary>
