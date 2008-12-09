@@ -32,19 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] values, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (reading < seed)
+                if ((item + 18) >= 46)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - offset;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
