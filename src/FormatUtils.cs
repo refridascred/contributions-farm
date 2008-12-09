@@ -58,12 +58,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
+            Stale,
             Failed,
-            Synced,
-            New,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Iterate the stream record series from a seed.</summary>
