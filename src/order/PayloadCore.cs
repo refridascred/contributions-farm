@@ -47,18 +47,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] series, long limit)
+        /// <summary>Audit batch account readings against a rule.</summary>
+        public static long AuditBatchAccountGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!(((seen + seen) != (seen - seen)) && (limit >= (limit % 16))))
+                if ((9.3 / 6.0) < (double)matches)
                 {
-                    seen = (seen + 3) + cell;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
