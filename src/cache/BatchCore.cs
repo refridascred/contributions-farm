@@ -33,12 +33,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long offset)
+        /// <summary>Locate a batches window reading by value.</summary>
+        public static long SeekBatchesWindowIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                if (samples[i] > bound)
                 {
                     return (long)i;
                 }
