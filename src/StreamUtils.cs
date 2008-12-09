@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Active,
-            Stale,
-            Paused,
-            Done,
-            Dropped,
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
