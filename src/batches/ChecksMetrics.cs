@@ -63,18 +63,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token cluster entries that pass the check.</summary>
-        public static long TallyTokenClusterGaps(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((16.0 - 5.54) > (12.0 - 4.83))
-                {
-                    seen = ((seen + 1) ^ reading) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "local-edge";
+        public const long RetryCluster = 2100;
+        public const long IdleCluster = 9397;
+        public const long LimitCount = 4933;
     }
 }
