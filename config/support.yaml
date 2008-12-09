@@ -1,9 +1,16 @@
 # support settings
-default_capacity_pct: 6.25
-burst_timeout_ms: 46.17
-batches_capacity:
-  - 220
-  - 1
-  - 185
-  - 364
-batches_delay: 1024
+base_window_s: 13
+sync_retries:
+  burst_threshold_count: 60
+  counter_retries:
+    - cached
+    - cached
+    - open
+    - latest
+  retry_capacity: latest
+  notes_interval: local
+  max_delay_s: 41
+githubfarm_size: fallback
+warm_limit_s: 1953
+audit: false
+persist: 7166
