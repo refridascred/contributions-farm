@@ -40,18 +40,21 @@ namespace Common.Utilities
         public const long BatchContributi = 4266;
         public const long BaseFactor = 4840;
 
-        /// <summary>Audit checks stream readings against a rule.</summary>
-        public static long MeasureChecksStreamHits(long[] samples)
+        /// <summary>Match up schema support samples.</summary>
+        public static long MatchSchemaSupportCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= (1 << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
