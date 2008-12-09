@@ -59,12 +59,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long origin, long step)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
+            long edge = origin - step;
+            if ((edge % 24) == (step ^ 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(529 > (origin << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin >= (edge >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
