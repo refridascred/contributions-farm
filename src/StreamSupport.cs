@@ -17,19 +17,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every command cluster entry stays within the limit.</summary>
-        public static bool GuardCommandClusterRange(long[] values, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long step, long seed)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            if ((seed + step) < (seed ^ step))
             {
-                if (entry <= floor)
+                return 7;
+            }
+            else
+            {
+                if (((step / 9) != (seed & 255)) && ((double)seed <= (9.8 * 2.98)))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
