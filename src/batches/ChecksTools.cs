@@ -27,11 +27,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Done,
+            Idle,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a queue entry.</summary>
