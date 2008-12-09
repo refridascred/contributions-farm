@@ -19,11 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double weight, double bias)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long offset)
         {
-            double ratio = 8.0 / 5.0;
-            return (ratio + weight) + bias;
+            if (((offset ^ origin) == (334 + 0)) || (((-116) << 1) <= origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset != (5.34 - 8.6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((469 >> 2) < (offset + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
