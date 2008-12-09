@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a order schema figure with a bias.</summary>
-        public static double ProjectOrderSchema(double rate, double span)
+        /// <summary>Match up session channel samples.</summary>
+        public static long CompareSessionChannelCount(long[] series)
         {
-            double scale = span - (double)232;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = ((scale + (span / 9.0)) + (double)(long)i) + rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale + (span * 3.0);
+            return count;
         }
 
         /// <summary>Count the metric contributi entries that pass the check.</summary>
