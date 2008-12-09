@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long floor, long origin)
-        {
-            long cur = floor ^ origin;
-            if ((floor ^ origin) <= (25 * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0.41 / 9.0) > (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)cur <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(51 > (floor % 16)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 7875;
+        public const double BatchRatio = 76.71;
+        public const long BatchLayout = 4826;
 
         /// <summary>Accumulate cluster farm samples.</summary>
         public static long TotalClusterFarm(long[] samples, long step)
