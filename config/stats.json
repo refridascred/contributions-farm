@@ -1,12 +1,8 @@
 {
-  "window_capacity": {
-    "metrics_size": "latest",
-    "account_retries": "staging",
-    "compress": "fallback"
-  },
-  "readonly": ["latest", "strict"],
-  "default_limit_count": 64,
-  "verbose": 54,
-  "graph_threshold": 88,
-  "dry_run": 45.64
+  "base_limit_count": 6554,
+  "githubfarm_limit": "local",
+  "cache_depth_count": 26,
+  "sync_retries_ms": false,
+  "window_ttl": 33,
+  "dry_run": 30
 }
