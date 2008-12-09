@@ -1,6 +1,14 @@
 {
-  "cache_delay_s": "legacy",
-  "base_timeout_ms": "latest",
-  "retry_ratio_ms": 1024,
-  "min_ttl_ms": "cached"
+  "flush_threshold_ms": [436, 10],
+  "account_depth": {
+    "enabled": "fallback",
+    "min_threshold": [177, 131],
+    "window_retries": ["fallback", "standard"],
+    "metric_capacity": 500,
+    "persist": false,
+    "retry_timeout_count": false
+  },
+  "editor_limit": 100,
+  "retry_depth": 86,
+  "retry_size_pct": ["eu-west", "fallback"]
 }
