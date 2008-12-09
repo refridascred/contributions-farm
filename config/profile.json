@@ -1,8 +1,25 @@
 {
-  "compress": 7946,
-  "graph_size": 500,
-  "audit": 100,
-  "soft_window_ms": "latest",
-  "hard_ratio_ms": true,
-  "readonly": [448, 205, 241]
+  "burst_depth": 3300,
+  "verbose": {
+    "flush_capacity_s": {
+      "verbose": 41,
+      "burst_window_ms": "primary",
+      "soft_size_s": ["strict", "primary", "fallback"],
+      "session_depth": 1691
+    },
+    "editor_capacity": {
+      "cache_delay_pct": 6289,
+      "warm_retries_pct": [286, 388, 488],
+      "min_limit": [160, 300, 126, 428],
+      "soft_window_s": "strict",
+      "cache_depth_pct": [102, 46, 60, 6]
+    },
+    "retry_ttl_count": true,
+    "graph_threshold": "fallback",
+    "max_depth_ms": 76.23
+  },
+  "batch_size": 60,
+  "context_delay": ["staging", "local", "latest", "green"],
+  "compress": 60,
+  "sync_retries_ms": 42.25
 }
