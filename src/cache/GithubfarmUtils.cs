@@ -44,18 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] values)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits + hits) == (hits + value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
