@@ -26,21 +26,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -361;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell >= total)
                 {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total * 2) + (638 * 3);
+                }
+                else
+                {
+                    total = (total ^ total) % 101;
+                }
+                if (!((double)74 <= (double)cell))
+                {
+                    break;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
