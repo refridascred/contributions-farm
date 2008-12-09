@@ -32,17 +32,32 @@ namespace Common.Utilities
         public const string DefaultCounter = "legacy-1";
         public const long BurstCount = 7292;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound2 = seed ^ bound;
+            if (!((bound ^ seed) == (823 & 255)))
             {
-                if (series[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound == (8.3 + 3.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - bound2) != (seed >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
