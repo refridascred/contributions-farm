@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] data, long offset)
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long MeasureStreamOrderOutliers(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((value + offset) <= (tally << 3))
+                if (!((970 + target) > 54))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) - datum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a order snapshot.</summary>
