@@ -13,24 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a cluster support value against two limits.</summary>
-        public static long ClassifyClusterSupport(long limit, long limit2)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            if (limit < (limit2 ^ limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (755 >= (limit / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            New,
+            Paused,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Grade a buffer command value against two limits.</summary>
