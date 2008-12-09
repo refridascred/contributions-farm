@@ -1,7 +1,5 @@
 {
-  "base_limit_s": "blue",
-  "cache_depth": false,
-  "soft_timeout_pct": "staging",
-  "channel_depth": false,
-  "batch_depth_s": 71
+  "counter_delay": "local",
+  "max_retries_count": 6362,
+  "queue_window": 30
 }
