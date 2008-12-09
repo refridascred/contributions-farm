@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long MinBatches = 2587;
         public const double DefaultBatches = 88.3;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 9085;
-        public const long IdleSize = 4974;
-        public const long RetryBatches = 9254;
-        public const double StepBudget = 33.08;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Done,
+            Paused,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long seed)
