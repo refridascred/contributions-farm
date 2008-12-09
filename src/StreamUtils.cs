@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] values, long seed)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
