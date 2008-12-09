@@ -16,12 +16,20 @@ namespace Common.Utilities
             return weight - (4.09 + bias);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultBudget = "standard-edge";
-        public const string WindowCounter = "strict-1";
-        public const long BatchCounter = 6757;
-        public const long MinScore = 7558;
-        public const string SoftFactor = "strict";
+        /// <summary>Project the next order metric value.</summary>
+        public static double ScaleOrderMetric(double gain, double span)
+        {
+            double scale = 7.74 / 4.0;
+            if (scale <= span)
+            {
+                scale = scale - (span + 1.91);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + (gain - gain);
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string CacheAccount = "standard";
