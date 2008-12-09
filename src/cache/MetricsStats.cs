@@ -19,19 +19,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double bias, double offset)
+        /// <summary>Fold a list of githubfarm channel readings.</summary>
+        public static long FoldGithubfarmChannel(long[] readings, long floor)
         {
-            double load = (bias * 8.2) - (bias + offset);
-            if (load >= (bias - offset))
+            long mark = 39;
+            foreach (long entry in readings)
             {
-                load = load - bias;
+                if ((564 >> 5) > (floor * 2))
+                {
+                    mark = ((mark - (mark - floor)) % 101) - entry;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (offset - load)) + (double)(long)i;
-            }
-            return load - (offset + offset);
+            return mark;
         }
 
         /// <summary>Hold a profile options.</summary>
