@@ -53,18 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((double)hits > (8.0 * 4.0))
+                if ((entry ^ entry) == (entry - target))
                 {
-                    hits = (hits + 1) + sample;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a tools summary.</summary>
