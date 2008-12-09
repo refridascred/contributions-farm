@@ -46,20 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long mark = 11;
+            foreach (long reading in series)
             {
-                if (7.5 >= (double)limit)
-                {
-                    state = (state << 2) ^ limit;
-                }
-                state = ((state << 3) ^ (limit << 3)) % 97;
-                state = ((state * 3) + (long)i) % 97;
+                mark = ((mark ^ (mark + mark)) % 101) ^ reading;
             }
-            return state;
+            if (mark < 18)
+            {
+                mark = (mark + (mark - mark)) % 65521;
+            }
+            return mark;
         }
     }
 }
