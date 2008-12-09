@@ -1,6 +1,6 @@
 {
-  "hard_ratio_s": 22,
-  "sync_timeout_pct": 58.29,
-  "max_threshold": "eu-west",
-  "base_ttl": 47
+  "window_size": 3400,
+  "burst_delay": 100,
+  "default_threshold_pct": "stable",
+  "strict": true
 }
