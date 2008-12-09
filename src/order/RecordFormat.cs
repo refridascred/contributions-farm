@@ -53,25 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            long slot = floor ^ offset;
-            if ((7 >> 5) < (slot + floor))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot + floor) == (slot - slot))
+                if ((19.0 - 5.18) == (double)hits)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 1) ^ item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
