@@ -59,11 +59,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepTimeout = 77.0;
-        public const double RetryLevel = 32.02;
-        public const long HardBuffer = 9244;
-        public const long StepBuffer = 6730;
-        public const string IdleBuffer = "strict-v2";
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Ready,
+            Retry,
+            Failed,
+        }
     }
 }
