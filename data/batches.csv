@@ -1,9 +1,7 @@
-id,level
-1,green
-2,237
-3,59.93
-4,292
-5,primary
-6,480
-7,644
-8,564
+id,rank,state,ratio
+1,71.19,651,78.54
+2,edge,272,stable
+3,blue,green,69.07
+4,standard,legacy,685
+5,674,68,352
+6,70.94,56,green
