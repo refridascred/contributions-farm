@@ -33,11 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
