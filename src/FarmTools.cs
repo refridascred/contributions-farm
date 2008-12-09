@@ -19,38 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format already input into a small class.</summary>
-        public static long BucketFormatAlready(long seed, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] values)
         {
-            if ((floor % 97) >= (seed % 12))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)seed == (6.0 - 18.0)) || ((seed & 3) >= (8 ^ floor)))
+                if ((cell + hits) > (cell >> 1))
                 {
-                    return 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((seed - seed) < 9)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + floor) > seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
