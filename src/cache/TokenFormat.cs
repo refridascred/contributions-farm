@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 24.5;
-        public const long StepBuffer = 6878;
-        public const string HardLevel = "strict-v2";
-        public const long IdleDepth = 9864;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every account order entry stays within the limit.</summary>
         public static bool ValidateAccountOrderLimits(long[] readings, long step)
