@@ -46,19 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] levels)
-        {
-            long state = 28;
-            foreach (long sample in levels)
-            {
-                state = ((state + (36 + state)) % 65521) ^ sample;
-            }
-            if (state < 717)
-            {
-                state = (state * 2) + ((long)levels.Length % 97);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 2374;
+        public const long MaxFactor = 1964;
+        public const long LimitDepth = 3674;
+        public const long MaxBuffer = 8495;
     }
 }
