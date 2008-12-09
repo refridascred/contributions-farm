@@ -28,18 +28,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum >= (datum & 3)) && ((6 & 1) < (datum + (-2)))) || ((double)tally != (0.8 - 4.3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Paused,
+            Queued,
         }
     }
 }
