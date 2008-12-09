@@ -24,14 +24,10 @@ namespace Common.Utilities
             return weight2 + (double)823;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Queued,
-            Retry,
-            Idle,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "open-v2";
+        public const long MaxInterval = 8982;
+        public const string LimitCommand = "strict-v2";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BatchDepth = 4.32;
