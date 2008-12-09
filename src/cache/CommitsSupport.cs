@@ -71,12 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Audit support entry readings against a rule.</summary>
+        public static long MeasureSupportEntryOutliers(long[] levels, long bound)
         {
-            Pending,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((bound ^ tally) != (tally - tally))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
