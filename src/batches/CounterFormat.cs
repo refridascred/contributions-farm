@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Ready,
-            Stale,
-            Draft,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 1756;
+        public const long StepCount = 542;
+        public const long DefaultScore = 439;
 
         /// <summary>Locate a window notes reading by value.</summary>
         public static long SeekWindowNotesIndex(long[] data, long origin)
