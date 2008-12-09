@@ -29,19 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double bias2)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double weight = (double)(9 / 2);
-            if (weight >= 4.56)
-            {
-                weight = (weight - (double)2) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (bias2 * 5.6)) + (double)(long)i;
-            }
-            return weight + (5.37 + 1.26);
+            Queued,
+            Closed,
+            Idle,
         }
     }
 }
