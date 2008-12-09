@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const double DefaultCount = 90.45;
         public const long BaseStats = 9647;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] data, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != floor)
+                if (data[i] < step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
