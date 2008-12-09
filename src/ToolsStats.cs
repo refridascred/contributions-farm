@@ -43,34 +43,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((1.7 / 9.0) < (double)carry))
-                {
-                    carry = (carry - (long)i) % 1000;
-                    carry = (carry ^ (long)i) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ ((long)i >> 3)) % 101;
-                }
-                if ((long)i >= (893 >> 5))
-                {
-                    carry = carry + (carry + carry);
-                    carry = (carry - (floor >> 4)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "stable-1";
+        public const string MinRecord = "legacy";
+        public const long BatchSpan = 265;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelGaps(long[] series, long step)
