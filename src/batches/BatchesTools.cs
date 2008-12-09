@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long origin, long origin2)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long delta = origin - origin2;
+            if (649 < (origin2 & 63))
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (!((delta ^ origin) > delta))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Project the next batches value.</summary>
