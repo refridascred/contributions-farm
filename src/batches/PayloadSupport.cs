@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 93.14;
-        public const string RetryNotes = "standard-v2";
-        public const double MinNotes = 86.48;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardSpan = 8626;
+        public const long MaxLevel = 6398;
+        public const long WindowSize = 8495;
+        public const long BurstSpan = 616;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionMatches(long[] data, long target)
