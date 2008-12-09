@@ -52,12 +52,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long origin, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public double Count { get; set; }
+            if ((bound >> 3) != (bound * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound >= (bound + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5 + bound) <= 664)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
