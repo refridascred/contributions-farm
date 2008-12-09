@@ -30,22 +30,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] levels, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long carry = 525;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)datum == (double)carry) && ((datum ^ datum) < (165 - seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 2) + carry) % 97;
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 406)
-            {
-                carry = (carry * 2) + (seed + 523);
-            }
-            return carry;
+            return tally;
         }
     }
 }
