@@ -79,25 +79,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (bound <= (sum ^ sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum * 2) + bound) % 101;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum * 2) + ((long)i & 127)) % 97;
-                }
-                sum = (sum * 4) + (sum ^ (-1));
-                sum = ((sum * 4) + (bound * 4)) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
     }
 }
