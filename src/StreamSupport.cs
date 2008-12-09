@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double scale, double floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long step)
         {
-            double ratio = floor;
-            if (ratio <= scale)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = ratio - ratio;
+                sum = sum + sum;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            return ratio - (double)4;
+            return sum;
         }
 
         /// <summary>Check that every command cluster entry stays within the limit.</summary>
