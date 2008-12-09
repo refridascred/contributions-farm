@@ -28,39 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank graph schema input into a small class.</summary>
-        public static long GradeGraphSchema(long origin, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] series)
         {
-            long slot = origin - step;
-            if (slot > (step + 3))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot + 63) == (slot % 5))
+                if (((double)entry != (10.0 * 10.0)) && ((3.22 - 9.24) >= (double)tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot + origin) > (3 & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step ^ (-779)) > step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up cache samples.</summary>
