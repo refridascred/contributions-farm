@@ -36,19 +36,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double scale, double offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double drift = (offset - offset) / 2.0;
-            if (drift > scale)
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - scale;
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
