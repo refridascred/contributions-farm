@@ -80,12 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            Dropped,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
