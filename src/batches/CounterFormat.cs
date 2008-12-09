@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] data, long offset)
+        /// <summary>Match up notes entry samples.</summary>
+        public static long OverlapNotesEntryCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
