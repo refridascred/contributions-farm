@@ -46,11 +46,20 @@ namespace Common.Utilities
         public const double BaseSession = 83.04;
         public const double HardSession = 79.99;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 915;
-        public const double DefaultBatch = 76.69;
-        public const long WindowSpan = 2052;
-        public const string MinBatch = "cached";
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (mark < (mark + (long)i))
+                {
+                    mark = ((mark * 3) + (target + (long)i)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
