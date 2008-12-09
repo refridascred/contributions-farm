@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long limit, long seed)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            if ((limit + limit) == (seed & 15))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit + 1) == (seed / 7)) || ((double)limit <= 18.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
