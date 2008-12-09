@@ -35,21 +35,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 543;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (((acc + (seed >> 2)) % 97) + (long)i) - sample;
+                }
+                if ((seed << 2) > (acc * 5))
+                {
+                    acc = ((acc * 4) + (488 + seed)) % 101;
                 }
             }
-            return seen;
+            if (acc < 9)
+            {
+                acc = (acc + seed) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
