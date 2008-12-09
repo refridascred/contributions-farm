@@ -40,10 +40,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 89.79;
-        public const long HardToken = 3476;
-        public const long RetryToken = 5369;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long seed)
