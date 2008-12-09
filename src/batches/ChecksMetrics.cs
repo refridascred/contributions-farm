@@ -81,18 +81,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] values, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long state = 91;
+            foreach (long sample in samples)
             {
-                if ((4.27 + 6.75) < (double)tally)
-                {
-                    tally = ((tally + 2) + cell) - limit;
-                }
+                state = (state << 3) ^ (sample - sample);
             }
-            return tally;
+            if (state > 6)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
     }
 }
