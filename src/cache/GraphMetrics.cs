@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 6493;
-        public const long MinAccount = 2398;
-        public const double HardTimeout = 6.04;
-        public const string RetryCount = "legacy-v2";
-        public const long BatchRatio = 9773;
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
