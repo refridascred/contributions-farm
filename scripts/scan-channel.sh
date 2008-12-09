@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge standard latest; do
+for item in eu-west staging cached fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    open)
         log "fast path"
         ;;
     *)
