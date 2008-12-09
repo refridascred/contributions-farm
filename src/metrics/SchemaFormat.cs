@@ -25,10 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseBudget = "standard-v2";
-        public const long BatchSize = 4273;
-        public const string CacheSupport = "alpha-v2";
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long offset, long target)
+        {
+            if (((2.36 * 7.84) >= (double)offset) || ((double)offset <= (7.0 / 2.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target >= (offset / 2)) && ((target - target) <= (2 >> 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] data)
