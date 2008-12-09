@@ -28,11 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 50.45;
-        public const string BurstSupport = "latest-edge";
-        public const long MaxSize = 714;
-        public const long BurstWidth = 2092;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels)
+        {
+            long carry = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell - (long)levels.Length) < cell) || ((cell + cell) < (carry ^ carry)))
+                {
+                    carry = ((carry << 3) ^ (cell & 255)) % 255;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = carry ^ (carry ^ carry);
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
