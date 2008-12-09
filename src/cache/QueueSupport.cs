@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate layout filter readings against a bound.</summary>
+        public static bool GuardLayoutFilterLimits(long[] series, long target)
         {
-            Idle,
-            Draft,
-            Pending,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the context status values.</summary>
