@@ -27,38 +27,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a cache order pair into a bucket.</summary>
-        public static long BucketCacheOrder(long floor, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            if ((floor / 7) <= floor)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((9.0 / 4.0) != (double)floor))
+                if (!!((long)i > (54 << 3)))
                 {
-                    return 3;
+                    acc = (acc + (106 * 4)) % 4096;
                 }
-                else
+                if ((limit & 31) < limit)
                 {
-                    if (!((floor + floor) != (step + (-4))))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor == (1.56 - 14.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = (acc * 3) + (830 - limit);
                 }
+                if (((limit - acc) <= 3) && ((limit + acc) >= (acc + limit)))
+                {
+                    acc = (acc - (limit - (long)i)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Locate a report filter reading by value.</summary>
