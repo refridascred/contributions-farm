@@ -54,22 +54,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream contributi entries that pass the check.</summary>
-        public static long MeasureStreamContributiGaps(long[] values, long target)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell <= (3.0 / 9.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
