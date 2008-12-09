@@ -1,12 +1,13 @@
 # entry settings
-max_retries_s: 33
-idle_threshold_pct:
-  dry_run: 1.03
-  support_interval: staging
-  batch_ttl: 60
-audit: 4130
-strict: false
-graph_ratio:
-  - 306
-  - 297
-idle_limit_count: strict
+max_window_s: cached
+hard_ttl:
+  - 115
+  - 233
+  - 24
+verbose:
+  - 123
+  - 415
+  - 107
+  - 174
+persist: 250
+poll_ratio: green
