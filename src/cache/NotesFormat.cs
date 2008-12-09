@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] series, long offset)
         {
-            Paused,
-            Dropped,
-            Active,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Project the next order channel value.</summary>
