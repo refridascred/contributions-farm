@@ -1,5 +1,7 @@
 {
-  "soft_depth_s": "latest",
-  "default_size_ms": false,
-  "payload_timeout": 250
+  "buffer_threshold": 15.05,
+  "cache_depth_s": ["fallback", "fallback"],
+  "cache_limit_count": "stable",
+  "retry_size_count": 48,
+  "audit": ["staging", "stable", "green"]
 }
