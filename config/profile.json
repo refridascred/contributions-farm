@@ -1,15 +1,7 @@
 {
-  "farm_timeout": ["latest", "local", "green", "staging"],
-  "enabled": "eu-west",
-  "route_threshold": "edge",
-  "batch_limit_count": "open",
-  "cache_window_ms": {
-    "dry_run": [153, 194, 151],
-    "retry_delay": 8280,
-    "verbose": 67.01,
-    "warm_retries_count": false,
-    "idle_interval_ms": "latest",
-    "record_limit": 8319
-  },
-  "cache_timeout": 85.75
+  "warm_limit_count": "edge",
+  "warm_window_count": false,
+  "base_depth": ["edge", "edge", "latest", "latest"],
+  "sync_depth": 60,
+  "burst_ratio_ms": "local"
 }
