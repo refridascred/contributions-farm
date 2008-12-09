@@ -23,21 +23,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Rank layout githubfarm input into a small class.</summary>
