@@ -54,15 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batches metrics value from a seed.</summary>
-        public static long StepBatchesMetrics(long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
