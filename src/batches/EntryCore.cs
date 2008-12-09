@@ -37,11 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((3 + tally) < tally)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
