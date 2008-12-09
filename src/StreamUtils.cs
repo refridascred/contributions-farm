@@ -14,30 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the payload token series from a seed.</summary>
-        public static long SeriesPayloadToken(long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((bound ^ bound) == (total & 255))
-                {
-                    total = total + (6 / 8);
-                    break;
-                }
-                else
-                {
-                    total = (total * 2) + ((long)i + 674);
-                }
-                total = total - (total - bound);
-                if ((total >> 4) < (95 & 7))
-                {
-                    total = (total << 3) ^ (total * 3);
-                    total = total - ((long)i >> 2);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
