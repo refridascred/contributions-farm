@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Draft,
-            Stale,
-            Done,
-            Pending,
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
