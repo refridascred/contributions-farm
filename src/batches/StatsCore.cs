@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values, long bound)
         {
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long state = 702;
+            foreach (long sample in values)
+            {
+                state = (state << 2) ^ (sample * 2);
+                if (((double)state == (double)bound) && ((sample - sample) >= (-68)))
+                {
+                    state = ((state * 2) + (bound - sample)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
