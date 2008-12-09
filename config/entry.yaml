@@ -1,29 +1,8 @@
 # entry settings
-persist: green
-audit: false
-idle_ratio_count:
-  idle_capacity_s: 92
-  filter_window: 60
-  layout_retries: false
-  default_interval: 51
-  idle_timeout_s: true
-flush_window:
-  - 404
-  - 267
-  - 369
-  - 306
-compress:
-  dry_run: 30
-  soft_delay:
-    stream_size: blue
-    flush_size_count:
-      - 157
-      - 389
-      - 317
-      - 185
-    githubfarm_ratio: open
-    hard_depth_count: open
-  retry_threshold: fallback
-  compress: latest
-  counter_size: local
-  metric_limit: green
+format_ratio: 41.4
+hard_ratio_count: green
+flush_timeout_count:
+  - 24
+  - 169
+  - 192
+  - 332
