@@ -52,25 +52,17 @@ namespace Common.Utilities
         public const long BatchContext = 286;
         public const string IdleContext = "open-v2";
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long limit, long target)
+        /// <summary>Find the first payload queue entry that matches the target.</summary>
+        public static long FindPayloadQueueIndex(long[] values, long floor)
         {
-            long lane = limit ^ target;
-            if ((687 > (limit - limit)) || (limit < (target << 1)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit >> 1) > (lane / 4)) || ((53 << 2) > (466 - target)))
+                if (values[i] >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
