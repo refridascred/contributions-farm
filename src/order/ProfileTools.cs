@@ -35,13 +35,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long limit)
         {
-            Ready,
-            Draft,
-            Failed,
-            Stale,
+            if ((double)limit >= (7.77 / 5.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step & 127) >= (step + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit < (step - 967))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two tools measurements.</summary>
