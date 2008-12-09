@@ -22,24 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor stats value against two limits.</summary>
-        public static long BucketEditorStats(long limit, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            if (!((limit & 7) == (offset - offset)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset <= (offset + limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the metrics level values.</summary>
