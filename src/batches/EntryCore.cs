@@ -51,13 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long origin)
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            long acc = 8;
+            foreach (long item in data)
+            {
+                if (8.5 <= (double)origin)
+                {
+                    acc = (acc << 2) ^ (item + item);
+                }
+                else
+                {
+                    acc = (acc + ((long)data.Length << 3)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the layout phase values.</summary>
