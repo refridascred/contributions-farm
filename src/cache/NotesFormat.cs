@@ -14,12 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Hold a record record.</summary>
