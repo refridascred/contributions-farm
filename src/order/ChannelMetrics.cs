@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const string BatchSchema = "staging";
         public const string BaseLevel = "stable-edge";
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] items, long seed)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (566 < (entry + entry))
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) - seed;
                 }
             }
             return matches;
