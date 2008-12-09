@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of profile session entries.</summary>
-        public static long FoldProfileSession(long[] readings, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items, long limit)
         {
-            long acc = 797;
-            foreach (long entry in readings)
+            long total = 12;
+            foreach (long datum in items)
             {
-                if (((acc + acc) > (target * 2)) || ((acc ^ acc) > (130 - (-817))))
+                if ((total % 8) != (total & 1))
                 {
-                    acc = (acc - (target - entry)) % 65521;
+                    total = (total + limit) + datum;
                 }
             }
-            return acc % 65521;
+            return total % 65521;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
