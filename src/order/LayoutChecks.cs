@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 7719;
-        public const string BatchCount = "open-v2";
-        public const long LimitTimeout = 219;
-        public const string CacheSchema = "strict-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "staging-v2";
+        public const long DefaultStream = 3190;
+        public const double DefaultSpan = 87.48;
 
         /// <summary>Count payload format pairs that satisfy a relation.</summary>
         public static long OverlapPayloadFormatCount(long[] samples)
