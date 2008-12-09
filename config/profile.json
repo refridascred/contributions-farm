@@ -1,20 +1,12 @@
 {
-  "filter_retries": [125, 480, 390, 173],
-  "retry_retries": false,
-  "token_timeout": {
-    "retry_timeout_s": 500,
-    "flush_size_s": "standard",
-    "soft_size": [57, 10],
-    "entry_window": 6232,
-    "idle_threshold": 74
+  "min_timeout_pct": 30,
+  "channel_capacity": {
+    "sync_retries": "eu-west",
+    "notes_ratio": 30,
+    "warm_depth_s": "fallback",
+    "strict": 4332,
+    "verbose": "primary",
+    "graph_window": 3
   },
-  "default_size_count": {
-    "sync_retries_s": "edge",
-    "cache_interval": ["blue", "latest", "standard"],
-    "hard_ratio_count": 10.51,
-    "idle_ratio_ms": true,
-    "dry_run": 1024
-  },
-  "hard_ttl": "eu-west",
-  "retry_threshold_pct": 7026
+  "min_capacity_s": true
 }
