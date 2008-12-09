@@ -66,22 +66,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long bound, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if (!((double)step <= (7.0 * 7.0)))
             {
-                if ((value + seen) != (seen % 8))
+                return 0;
+            }
+            else
+            {
+                if (((bound / 2) > 281) && ((765 >> 4) == (step + step)))
                 {
-                    seen = seen + 3;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((step - (-96)) == (bound + 25)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound <= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
