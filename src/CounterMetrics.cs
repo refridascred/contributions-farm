@@ -26,14 +26,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit buffer already readings against a rule.</summary>
+        public static long CountBufferAlreadyMatches(long[] samples)
         {
-            Locked,
-            Paused,
-            Queued,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((23 <= reading) || ((reading / 8) != (30 - count))) && (((3.0 - 6.71) == (double)count) || ((-85) < reading)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
