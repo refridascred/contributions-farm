@@ -1,8 +1,10 @@
 {
-  "idle_delay": 60,
-  "githubfarm_size": ["cached", "local"],
-  "flush_limit_pct": 0.52,
-  "compress": 100,
-  "cache_ttl_pct": true,
-  "persist": false
+  "sync_delay": "green",
+  "default_timeout_pct": 20,
+  "poll_ttl_s": {
+    "strict": "blue",
+    "audit": [164, 461],
+    "farm_ratio": true
+  },
+  "flush_timeout_count": 17
 }
