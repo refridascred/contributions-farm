@@ -51,23 +51,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Fold a list of counter contributi readings.</summary>
+        public static long DigestCounterContributi(long[] levels, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long total = 6;
+            foreach (long entry in levels)
             {
-                if (((bound + result) == ((long)i >> 3)) && ((bound << 2) <= (result - bound)))
+                if ((596 + entry) >= (entry + total))
                 {
-                    result = result + (bound + result);
+                    total = (total << 3) ^ (bound + total);
                 }
                 else
                 {
-                    result = (result + (54 - result)) % 97;
+                    total = (total << 2) ^ (entry << 3);
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            if (total > 8)
+            {
+                total = (total * 3) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of record readings.</summary>
