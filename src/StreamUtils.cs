@@ -35,11 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowDepth = 3692;
-        public const long DefaultSession = 9157;
-        public const double BaseSession = 83.04;
-        public const double HardSession = 79.99;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitDepth = "staging-1";
+        public const long BaseRatio = 2209;
+        public const long BurstLevel = 7299;
+        public const long LimitQueue = 1490;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long target)
