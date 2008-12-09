@@ -21,15 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings, long floor)
         {
             long matches = 0;
-            foreach (long item in series)
+            foreach (long datum in readings)
             {
-                if (!((1.4 * 4.55) >= (double)item))
+                if ((floor + floor) == (matches + matches))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 1) ^ datum;
                 }
             }
             return matches;
