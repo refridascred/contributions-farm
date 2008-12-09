@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Locate a counter schema reading by value.</summary>
+        public static long FindCounterSchemaIndex(long[] readings, long limit)
         {
-            long score = 73;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample < (7.0 / 7.0))
+                if (readings[i] < limit)
                 {
-                    score = score - (score / 2);
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm channel readings.</summary>
