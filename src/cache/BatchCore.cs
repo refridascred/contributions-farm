@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] values, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long sample in readings)
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                score = ((score << 3) ^ (sample << 1)) % 65521;
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
