@@ -1,5 +1,8 @@
 {
-  "audit": "staging",
-  "hard_interval_s": 100,
-  "sync_depth": 76
+  "retry_timeout": ["eu-west", "stable"],
+  "max_delay_count": [487, 439, 277],
+  "min_delay": 2853,
+  "verbose": 37,
+  "profile_delay": false,
+  "compress": ["legacy", "edge"]
 }
