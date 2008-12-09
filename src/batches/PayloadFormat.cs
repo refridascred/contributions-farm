@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Rank order format input into a small class.</summary>
+        public static long SortOrderFormat(long bound, long seed)
         {
-            long state = 887;
-            foreach (long sample in items)
+            long bound2 = bound ^ seed;
+            if (bound2 >= (seed + bound))
             {
-                state = (((state * 2) + state) % 101) + sample;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (bound2 > (bound / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.17 / 4.0) > (double)bound2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools mode values.</summary>
