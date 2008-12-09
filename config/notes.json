@@ -1,8 +1,14 @@
 {
-  "retry_size_pct": 34.89,
-  "max_threshold_pct": ["local", "open", "standard", "standard"],
-  "audit": "open",
-  "graph_size": "strict",
-  "flush_ttl": true,
-  "metrics_ttl": 5115
+  "retry_window_ms": false,
+  "session_interval": false,
+  "payload_threshold": {
+    "cache_size_ms": 69.46,
+    "channel_ratio": "staging",
+    "strict": false,
+    "burst_depth_ms": "latest",
+    "idle_ratio_s": false,
+    "hard_ttl_count": [172, 345, 3]
+  },
+  "batch_threshold": 73.76,
+  "farm_retries": "eu-west"
 }
