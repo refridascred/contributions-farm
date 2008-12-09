@@ -56,15 +56,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double scale, double floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            double load = (double)(5 / 5);
-            if (load > load)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                load = ((load + (double)167) - scale) - floor;
+                anchor = (anchor + (offset / 3)) % 101;
+                if ((((long)i ^ anchor) <= ((-7) - offset)) || (((long)i + offset) > (offset + anchor)))
+                {
+                    anchor = (anchor - (long)i) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return load + (double)9;
+            return anchor;
         }
 
         /// <summary>Describe the already level values.</summary>
