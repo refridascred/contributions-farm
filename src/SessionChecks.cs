@@ -23,32 +23,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long bound, long limit)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long prev = bound ^ limit;
-            if (prev >= (-9))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + limit) >= (bound & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.7 <= (double)bound) || ((double)prev > (6.0 / 5.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Queued,
         }
 
         /// <summary>Accumulate schema samples.</summary>
