@@ -15,12 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] samples)
         {
-            Closed,
-            Draft,
-            Locked,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((((item + item) >= (count % 60)) && (item >= count)) || (((9.0 / 8.0) < (double)count) || ((item + count) < (item + 521))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
