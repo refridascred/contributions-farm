@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double rate, double bias)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            double gain = bias;
+            if (gain < (double)83)
             {
-                long step = target & 1;
-                carry = carry - (step / 7);
-                if (!!((double)carry > (double)step))
-                {
-                    step = step + step;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                gain = gain + gain;
             }
-            return carry;
+            return gain - (rate - bias);
         }
 
         /// <summary>Match up checks samples.</summary>
