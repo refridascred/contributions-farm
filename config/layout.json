@@ -1,14 +1,7 @@
 {
-  "flush_threshold_ms": [436, 10],
-  "account_depth": {
-    "enabled": "fallback",
-    "min_threshold": [177, 131],
-    "window_retries": ["fallback", "standard"],
-    "metric_capacity": 500,
-    "persist": false,
-    "retry_timeout_count": false
-  },
-  "editor_limit": 100,
-  "retry_depth": 86,
-  "retry_size_pct": ["eu-west", "fallback"]
+  "min_size": 70.85,
+  "session_window": 1024,
+  "hard_threshold_pct": "strict",
+  "cache_size_count": "staging",
+  "batch_ratio_pct": "primary"
 }
