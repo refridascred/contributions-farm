@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long MaxBudget = 3658;
         public const long BurstInterval = 5518;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] series)
-        {
-            long mix = 748;
-            foreach (long item in series)
-            {
-                mix = (((mix << 2) ^ (mix * 5)) % 4096) + item;
-            }
-            if (mix < 37)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 61;
+        public const double IdleLevel = 34.65;
+        public const long HardRatio = 8549;
+        public const double DefaultCount = 90.45;
+        public const long BaseStats = 9647;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryLimits(long[] data, long floor)
