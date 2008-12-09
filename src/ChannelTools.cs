@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Compare every pair of githubfarm payload readings.</summary>
+        public static long OverlapGithubfarmPayloadCount(long[] readings)
         {
-            long total = 632;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ (value + 526);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total > 7)
-            {
-                total = (total + (total + total)) % 97;
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Hold a batch summary.</summary>
