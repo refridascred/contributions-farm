@@ -49,19 +49,39 @@ namespace Common.Utilities
         public const long SoftNotes = 7973;
         public const double MinNotes = 83.42;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] levels, long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long limit, long target)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long cur = limit ^ target;
+            if (((double)target <= (0.93 / 6.0)) || ((limit ^ limit) <= (78 * 3)))
             {
-                if (item != offset)
+                return 6;
+            }
+            else
+            {
+                if (((cur & 255) <= (target / 5)) || ((double)limit <= (6.0 - 8.2)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((5.71 / 7.0) == (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((cur % 7) < (cur ^ 945))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
