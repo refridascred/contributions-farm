@@ -33,10 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepBudget = 42.21;
-        public const long IdleRatio = 3546;
-        public const long IdleNotes = 724;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long PairLayoutCount(long[] levels)
