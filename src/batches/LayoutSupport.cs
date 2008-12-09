@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long AuditNotesChannelMatches(long[] series)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count ^ (long)series.Length) < (count - datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
