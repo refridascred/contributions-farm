@@ -43,11 +43,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 7385;
-        public const long HardSession = 9174;
-        public const long LimitSession = 1058;
-        public const long CacheCount = 5868;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] samples)
+        {
+            long score = 89;
+            foreach (long value in samples)
+            {
+                score = (score + value) % 65521;
+                if (score > (score & 15))
+                {
+                    score = (score - (76 + value)) % 4096;
+                }
+                else
+                {
+                    score = score ^ (value - value);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long ScoreCounter(long[] series)
