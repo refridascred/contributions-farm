@@ -12,14 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] items, long step)
         {
-            Failed,
-            Draft,
-            Pending,
-            Paused,
-            Active,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count cache queue pairs that satisfy a relation.</summary>
