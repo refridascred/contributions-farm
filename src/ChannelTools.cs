@@ -23,11 +23,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double rate, double floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double scale = (double)3 + (floor / 8.0);
-            return scale - (rate / 7.0);
+            Dropped,
+            Synced,
+            Pending,
+            Idle,
         }
     }
 }
