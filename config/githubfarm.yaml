@@ -1,6 +1,9 @@
 # githubfarm settings
-hard_interval: edge
-sync_window: false
-base_timeout_pct: legacy
-hard_delay_s: 57
-default_limit_count: true
+editor_interval: primary
+poll_interval:
+  warm_retries_s: true
+  verbose: 250
+  channel_window: stable
+  payload_ttl: open
+  hard_timeout_pct: 30
+compress: true
