@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] series, long bound)
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + 5) == (reading + tally))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine buffer schema values into a single score.</summary>
