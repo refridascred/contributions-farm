@@ -42,39 +42,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a window payload value against two limits.</summary>
-        public static long RankWindowPayload(long seed, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] samples, long bound)
         {
-            long bound = seed - target;
-            if ((target > (target + bound)) && ((seed + seed) == (seed % 5)))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 + bound) == (seed - 7))
+                if ((double)matches != (double)bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.3 + 8.71) != (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 3) ^ value;
                 }
             }
+            return matches;
         }
     }
 }
