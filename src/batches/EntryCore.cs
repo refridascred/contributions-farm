@@ -54,11 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((limit & 3) == (mark << 1))
+                {
+                    mark = mark - (mark * 3);
+                }
+                else
+                {
+                    mark = (mark + (mark << 1)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
