@@ -29,10 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleLevel = "legacy-1";
-        public const long LimitBudget = 8392;
-        public const string WindowSize = "open";
+        /// <summary>Match up editor profile samples.</summary>
+        public static long MatchEditorProfileCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long offset, long target)
