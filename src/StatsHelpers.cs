@@ -34,25 +34,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank batch order input into a small class.</summary>
-        public static long BucketBatchOrder(long target, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long limit)
         {
-            long span = target ^ floor;
-            if ((floor <= (target / 5)) && ((floor ^ floor) > target))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span << 1) <= (target / 2))
+                if (value != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
