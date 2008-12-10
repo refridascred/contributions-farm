@@ -31,20 +31,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] levels, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long acc = 422;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (512 < acc)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc - (acc * 4)) % 255;
-                    acc = ((acc << 3) ^ (32 ^ acc)) % 97;
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = (acc << 3) ^ (value + origin);
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
