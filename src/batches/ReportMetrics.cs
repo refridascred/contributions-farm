@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a order filter value against two limits.</summary>
-        public static long ClassifyOrderFilter(long offset, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long floor, long limit)
         {
-            if ((target >> 1) > (target & 1))
+            if (!((9.41 / 9.0) > (double)floor))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (!((1.65 * 8.8) == (double)target))
+                if ((limit > floor) && ((7.19 / 6.0) != (double)floor))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((4.0 * 4.0) <= (13.0 + 6.68))
+                    if ((limit + limit) > (floor * 4))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        return 3;
                     }
                 }
             }
