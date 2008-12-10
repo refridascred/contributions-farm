@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
+            Retry,
             Closed,
-            Locked,
-            Pending,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
