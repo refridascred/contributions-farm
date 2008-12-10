@@ -1,17 +1,5 @@
 {
-  "sync_delay_s": 1602,
-  "cluster_size": "edge",
-  "idle_timeout": {
-    "soft_limit_count": true,
-    "batches_delay": {
-      "hard_retries_count": 49,
-      "persist": "edge",
-      "verbose": 1024,
-      "flush_size_count": "primary",
-      "burst_delay_pct": 30,
-      "schema_threshold": "primary"
-    },
-    "checks_ttl": "edge",
-    "support_capacity": 500
-  }
+  "compress": false,
+  "stream_ratio": [65, 489],
+  "hard_size_ms": "staging"
 }
