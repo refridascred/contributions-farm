@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            long score = 4;
+            foreach (long value in levels)
+            {
+                score = score + (-879);
+                if ((2.41 - 9.0) == (double)value)
+                {
+                    score = ((score * 5) + (score - value)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
