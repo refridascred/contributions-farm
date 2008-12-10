@@ -63,14 +63,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            Pending,
-            Idle,
-            Done,
-            Failed,
-            Closed,
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(sum >= (origin + (long)i)))
+                {
+                    sum = (sum * 3) + sum;
+                }
+                if ((3 + (long)i) != (origin - sum))
+                {
+                    sum = ((sum * 5) + origin) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the graph class values.</summary>
