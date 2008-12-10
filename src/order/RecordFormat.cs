@@ -47,12 +47,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] levels, long seed)
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
