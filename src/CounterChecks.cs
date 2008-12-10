@@ -40,21 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up counter already samples.</summary>
-        public static long OverlapCounterAlreadyCount(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc - (546 - limit)) % 1000;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
