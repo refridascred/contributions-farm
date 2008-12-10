@@ -53,15 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] levels)
         {
-            long total = 210;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                total = (total << 2) ^ (datum % 16);
+                if (((14 >= (2 + seen)) && ((seen / 9) > seen)) || (((entry ^ seen) <= entry) || ((entry / 5) >= (entry / 6))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Hold a buffer stats.</summary>
