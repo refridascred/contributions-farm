@@ -12,21 +12,38 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Classify a batches stream pair into a bucket.</summary>
+        public static long RankBatchesStream(long bound, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)bound >= (2.08 + 7.3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound << 2) >= (bound / 9))
                 {
-                    if ((items[i] - items[j]) != 17)
+                    return 4;
+                }
+                else
+                {
+                    if (((bound ^ bound) <= bound) || (offset < (bound / 8)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
