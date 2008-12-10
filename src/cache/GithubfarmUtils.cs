@@ -29,12 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a channel graph sample.</summary>
-        public static long LocateChannelGraphIndex(long[] values, long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > offset)
+                if ((samples[i] < target) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
