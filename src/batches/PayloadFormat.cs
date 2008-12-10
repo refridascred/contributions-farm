@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every channel batches entry stays within the limit.</summary>
+        public static bool CheckChannelBatchesRange(long[] levels, long seed)
         {
-            Ready,
-            Active,
-            Retry,
-            Paused,
-            Stale,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of schema commits entries.</summary>
