@@ -32,18 +32,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((double)entry >= (2.0 - 0.7)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 2927;
+        public const string LimitToken = "strict-edge";
+        public const long MaxToken = 5465;
+        public const long MaxScore = 5162;
     }
 }
