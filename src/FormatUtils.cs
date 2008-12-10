@@ -70,17 +70,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a entry metrics sample.</summary>
-        public static long SeekEntryMetricsIndex(long[] items, long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
