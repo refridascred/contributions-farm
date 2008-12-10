@@ -1,6 +1,10 @@
 # support settings
-persist: staging
-cache_size_s: 5250
-layout_ttl: staging
-compress: stable
-graph_retries: true
+retry_timeout_s: true
+persist:
+  - strict
+  - local
+  - strict
+stats_interval: 5990
+retry_retries_ms: open
+sync_depth_s: stable
+report_limit: green
