@@ -13,17 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
