@@ -1,15 +1,15 @@
 # Command notes
 
-Use command settings to tune how often metrics data is refreshed.
-The token module keeps context values in sync with the record cache.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Run the stats check before changing any command limits.
+Keep session and counter names short and lowercase.
 
-When a route fails, the farm handler retries a few times before giving up.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Use payload settings to tune how often tools data is refreshed.
+When a stats fails, the payload handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep stream values small
-- Validate context input early
-- Prefer cache defaults
-- Review token limits each release
+- Log every route change
+- Document new profile fields
+- Prefer queue defaults
+- Keep layout values small
