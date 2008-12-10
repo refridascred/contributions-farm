@@ -1,22 +1,8 @@
 # githubfarm settings
-retry_ratio_ms: strict
-max_size_pct:
-  readonly: primary
-  record_capacity: 41.31
-  retry_size: true
-  idle_ratio_s: 50.0
-  metric_timeout:
-    - 178
-    - 436
-    - 247
-    - 445
-  retry_timeout: 60
-default_retries_ms: false
-burst_limit:
-  compress: 100
-  cache_ratio: 30
-  idle_window_ms: 97
-  cache_depth: false
-  max_limit_pct: 88
-dry_run: 89.17
-max_depth_s: false
+persist:
+  - eu-west
+  - latest
+flush_window: 1024
+token_ttl: 925
+hard_threshold_pct: 63.42
+idle_size: true
