@@ -1,14 +1,5 @@
 {
-  "support_depth": "fallback",
-  "batch_interval": 519,
-  "max_limit_count": 76,
-  "default_interval_pct": "strict",
-  "sync_delay_count": "fallback",
-  "sync_window": {
-    "base_ratio": ["legacy", "stable"],
-    "poll_depth_count": 5073,
-    "batches_ttl": true,
-    "poll_retries_s": 63.04,
-    "notes_retries": 98.53
-  }
+  "flush_ratio_count": 27,
+  "command_timeout": ["latest", "local", "eu-west", "open"],
+  "warm_depth": 48
 }
