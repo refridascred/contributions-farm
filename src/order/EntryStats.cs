@@ -57,32 +57,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long target, long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long diff = target + bound;
-            if ((double)target > (6.88 - 4.28))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7.3 * 1.6) < (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((diff << 1) >= (diff + 338)) && ((3 & 3) >= (bound + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Derive the next counter notes value from a seed.</summary>
