@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const double StepChannel = 48.92;
         public const long DefaultScore = 178;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 8157;
-        public const long BatchQueue = 8288;
-        public const long LimitRatio = 2048;
-        public const long MaxQueue = 3096;
-        public const string HardDepth = "staging";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TallyAlready(long[] readings, long target)
