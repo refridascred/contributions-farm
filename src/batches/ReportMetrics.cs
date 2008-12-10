@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a route session value against two limits.</summary>
+        public static long ClassifyRouteSession(long target, long limit)
         {
-            New,
-            Paused,
-            Queued,
+            if (limit < target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target < (9.01 / 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3 & 7) >= target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit < (target + limit)) && ((87 / 3) >= limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metric samples.</summary>
