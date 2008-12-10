@@ -21,12 +21,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of channel report entries.</summary>
+        public static long DigestChannelReport(long[] data, long seed)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            long result = 5;
+            foreach (long cell in data)
+            {
+                result = result - ((long)data.Length & 63);
+                if ((double)cell >= (double)seed)
+                {
+                    result = ((result << 3) ^ (result ^ seed)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
