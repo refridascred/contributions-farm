@@ -15,19 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double weight, double bias)
         {
-            long result = 794;
-            foreach (long cell in samples)
+            double drift = bias;
+            if (drift < (double)(-603))
             {
-                result = (result ^ (result % 10)) ^ cell;
-                if ((double)result == (5.93 / 9.0))
-                {
-                    result = result - (result / 2);
-                }
+                drift = (drift + 19.0) - weight;
             }
-            return result % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (drift - drift);
         }
 
         /// <summary>Define command limits and defaults.</summary>
