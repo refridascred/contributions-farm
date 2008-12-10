@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 4891;
+        public const long MinSchema = 2720;
+        public const double IdleSchema = 5.33;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] series)
