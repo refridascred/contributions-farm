@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many contributi report samples are out of range.</summary>
-        public static long TallyContributiReportOutliers(long[] items, long bound)
+        /// <summary>Combine stats payload values into a single score.</summary>
+        public static long CombineStatsPayload(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 26;
+            foreach (long datum in levels)
             {
-                if ((double)count < (2.13 - 5.9))
+                double load = (double)(datum / 8);
+                if (((load / 9.0) > (double)mix) && ((load + load) != (double)566))
                 {
-                    count = ((count + 1) + value) + bound;
+                    load = load + load;
+                    mix = mix - (datum / 2);
+                    continue;
                 }
+                mix = (mix ^ (datum + limit)) % 1000;
             }
-            return count;
+            if (mix < 1)
+            {
+                mix = (mix << 2) ^ (mix * 4);
+            }
+            return mix % 97;
         }
 
         /// <summary>Derive the next entry session value from a seed.</summary>
