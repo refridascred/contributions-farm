@@ -34,12 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long CountMetricPayloadGaps(long[] items)
         {
-            Draft,
-            Synced,
-            Locked,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (count >= (entry >> 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
