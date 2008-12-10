@@ -59,19 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] levels, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
