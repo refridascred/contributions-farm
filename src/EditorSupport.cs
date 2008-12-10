@@ -94,13 +94,17 @@ namespace Common.Utilities
         public const long MaxSpan = 67;
         public const long RetrySpan = 3151;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long origin)
         {
-            Pending,
-            Queued,
-            Idle,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
