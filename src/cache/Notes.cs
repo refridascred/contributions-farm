@@ -46,25 +46,21 @@ namespace Common.Utilities
             return (load + bias) + weight;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            long edge = seed + target;
-            if ((292 << 3) <= (target * 5))
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < (edge >> 5))
+                state = (state << 2) ^ (state - state);
+                state = (state ^ (state % 16)) % 101;
+                if ((state - (long)i) != ((long)i ^ seed))
                 {
-                    return 0;
+                    break;
                 }
-                else
-                {
-                    return 5;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
+            return state;
         }
     }
 }
