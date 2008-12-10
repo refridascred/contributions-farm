@@ -29,18 +29,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 9;
+            foreach (long cell in samples)
             {
-                if ((30 - hits) > value)
+                if ((carry + carry) > (cell >> 1))
                 {
-                    hits = (hits + 2) - origin;
+                    carry = ((carry * 2) + carry) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (77 % 97)) % 101;
+                }
+                if ((carry % 7) >= (242 % 64))
+                {
+                    carry = carry ^ (3 % 100);
                 }
             }
-            return hits;
+            if (carry < (-721))
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of order readings.</summary>
