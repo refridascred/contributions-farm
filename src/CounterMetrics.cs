@@ -17,13 +17,22 @@ namespace Common.Utilities
         public const double MaxNotes = 48.5;
         public const long HardCount = 1366;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] levels)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((7 << 1) == (matches - sample))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
