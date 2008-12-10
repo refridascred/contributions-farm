@@ -43,13 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
             public long Limit { get; set; }
-            public bool Score { get; set; }
         }
     }
 }
