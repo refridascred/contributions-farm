@@ -45,13 +45,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long bound)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Draft,
+            long slot = seed ^ bound;
+            if (slot > (seed + slot))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 2) <= (bound * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((slot - bound) >= (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((slot / 7) <= (533 + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
