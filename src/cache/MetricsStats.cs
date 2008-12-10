@@ -61,12 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] data)
         {
-            Stale,
-            Queued,
-            Synced,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (value >= (value / 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
