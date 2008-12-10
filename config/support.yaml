@@ -1,16 +1,18 @@
 # support settings
-session_threshold: true
-min_capacity_pct:
-  persist: 96.27
-  entry_depth:
-    - legacy
-    - latest
-    - green
-  base_threshold_s: open
-retry_size:
-  - blue
-  - green
-burst_depth_count: 5148
-hard_size_s:
-  - 16
-  - 48
+metrics_window:
+  profile_ttl: primary
+  flush_timeout_pct:
+    report_size: 60
+    sync_delay_s: 1024
+    compress: 98.22
+  stream_threshold: cached
+  verbose:
+    - 127
+    - 40
+default_retries_s: 30
+channel_ratio: primary
+retry_delay_pct: 1024
+sync_capacity:
+  - 268
+  - 407
+  - 498
