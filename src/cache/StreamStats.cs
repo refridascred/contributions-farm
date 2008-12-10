@@ -36,10 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepTimeout = 2349;
-        public const long LimitSize = 6697;
-        public const string WindowScore = "fallback";
-        public const long HardEditor = 6044;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryTimeout = 95;
+        public const long SoftOrder = 6242;
+        public const long BurstOrder = 3197;
+        public const long BatchOrder = 2040;
+        public const string WindowWidth = "alpha-edge";
     }
 }
