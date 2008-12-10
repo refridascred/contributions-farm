@@ -68,15 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double bias, double bias2)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data, long seed)
         {
-            double weight = (bias2 * 6.75) * 1.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                weight = ((weight - (double)3) + (double)(long)i) + bias;
+                if (!!((71 - seed) > (cell % 12)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return weight + (double)2;
+            return tally;
         }
     }
 }
