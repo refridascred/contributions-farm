@@ -15,18 +15,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] samples, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long target, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((double)offset > (8.6 + 1.0))
             {
-                if (!((hits % 2) > (26 * 4)))
+                return 2;
+            }
+            else
+            {
+                if ((6.62 / 6.0) <= (double)target)
                 {
-                    hits = ((hits + 1) ^ value) + offset;
+                    return 3;
+                }
+                else
+                {
+                    if (((offset % 100) <= (offset - offset)) || ((target % 97) > (target % 60)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target < (9.08 - 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
