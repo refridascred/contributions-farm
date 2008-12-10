@@ -18,39 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long origin, long origin2)
-        {
-            if (origin <= (origin / 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin * 3) <= (origin2 ^ 17))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin >> 4) != (3 + origin2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin >= origin2) || ((1 ^ origin) == (origin % 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 8087;
+        public const double HardLevel = 33.0;
+        public const long CacheMetrics = 7095;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
