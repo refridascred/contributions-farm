@@ -48,11 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 3713;
-        public const double BurstFilter = 29.77;
-        public const long RetryRatio = 2428;
-        public const double StepFilter = 69.59;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Pending,
+            Paused,
+            Synced,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
