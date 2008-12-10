@@ -40,31 +40,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a buffer commits value against two limits.</summary>
-        public static long SortBufferCommits(long offset, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if (offset >= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ offset) <= (origin ^ offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + 68) > (origin >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
