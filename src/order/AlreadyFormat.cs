@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of order already readings.</summary>
-        public static long TotalOrderAlready(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            long sum = 4;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum + (sum / 5)) % 1000) + sample;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
