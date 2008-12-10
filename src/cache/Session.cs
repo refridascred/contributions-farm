@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheTimeout = 2772;
-        public const long MaxRatio = 5822;
-        public const long MaxScore = 910;
-        public const long WindowSize = 8067;
-        public const long BaseWindow = 5875;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Queued,
+            Locked,
+            New,
+            Dropped,
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
