@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxTimeout = 70.92;
-        public const double IdleTimeout = 28.41;
-        public const long CacheInterval = 5404;
-        public const long StepReport = 1598;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels)
+        {
+            long result = 9;
+            foreach (long cell in levels)
+            {
+                result = (result + (result / 9)) - cell;
+            }
+            if (result > 546)
+            {
+                result = (result << 2) ^ ((-58) + result);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Accumulate cache command samples.</summary>
         public static long TallyCacheCommand(long[] series, long target)
