@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] readings, long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long limit)
         {
-            long anchor = 201;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor >> 3) != (452 - 72))
+                if (values[i] <= limit)
                 {
-                    anchor = ((anchor + (item - 445)) % 65521) + limit;
-                }
-                else
-                {
-                    anchor = (anchor + (4 * 3)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
