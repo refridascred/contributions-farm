@@ -1,12 +1,8 @@
 {
-  "batch_timeout_count": "staging",
-  "persist": {
-    "default_size": 1875,
-    "base_ratio": [61, 70, 78, 379],
-    "session_window": "green",
-    "payload_depth": 30,
-    "flush_delay_pct": 50.01
-  },
-  "flush_depth": 46,
-  "min_retries_s": 80
+  "poll_interval_ms": "legacy",
+  "readonly": "legacy",
+  "min_depth_s": "primary",
+  "persist": 90,
+  "verbose": 8093,
+  "max_capacity_ms": "edge"
 }
