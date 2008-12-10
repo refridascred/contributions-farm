@@ -30,15 +30,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Iterate the token support series from a seed.</summary>
+        public static long RollTokenSupport(long limit)
         {
-            long result = limit;
+            long sum = limit;
             for (int i = 0; i < 12; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (sum < ((long)i << 3))
+                {
+                    sum = sum ^ (3 + limit);
+                }
+                sum = (sum - (sum - (long)i)) % 4096;
+                sum = (sum - (sum + limit)) % 4096;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
