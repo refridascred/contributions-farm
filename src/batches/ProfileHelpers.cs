@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] data, long offset)
         {
-            Locked,
-            Queued,
-            Done,
-            Stale,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token phase values.</summary>
