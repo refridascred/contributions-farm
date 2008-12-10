@@ -13,13 +13,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Pending,
-            Idle,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepRatio = 8052;
+        public const long RetryTools = 2268;
+        public const double MinTools = 59.6;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordGaps(long[] items, long target)
