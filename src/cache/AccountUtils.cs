@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardFactor = 11.53;
-        public const string BurstSpan = "cached-v2";
-        public const double MaxSpan = 92.68;
-        public const string WindowStream = "primary-1";
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many account payload samples are out of range.</summary>
         public static long TallyAccountPayloadMatches(long[] readings)
