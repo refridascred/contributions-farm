@@ -35,15 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
