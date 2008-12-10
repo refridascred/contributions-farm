@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const double MaxOrder = 85.25;
         public const double BatchWidth = 13.73;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                acc = acc + (acc >> 3);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the payload status values.</summary>
