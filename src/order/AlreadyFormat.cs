@@ -68,22 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long step)
         {
-            long total = 824;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (!((reading - total) >= (28 << 3)))
+                if (sample >= step)
                 {
-                    total = (total ^ ((-1) + 513)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 25)
-            {
-                total = (total + total) % 97;
-            }
-            return total % 4096;
+            return ok;
         }
     }
 }
