@@ -49,16 +49,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 4091;
+        public const long RetryEditor = 231;
+        public const string MinEditor = "primary";
+        public const string StepRatio = "staging-1";
 
         /// <summary>Grade a support commits value against two limits.</summary>
         public static long BucketSupportCommits(long step, long step2)
