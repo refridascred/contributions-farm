@@ -32,22 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long MeasureEditorCommitsMatches(long[] values)
+        /// <summary>Measure how many window payload samples are out of range.</summary>
+        public static long MeasureWindowPayloadOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((double)item != (2.0 - 10.0))
+                if ((hits % 3) >= hits)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a buffer record.</summary>
