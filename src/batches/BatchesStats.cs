@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of buffer graph entries.</summary>
-        public static long FoldBufferGraph(long[] series, long origin)
-        {
-            long mark = 44;
-            foreach (long datum in series)
-            {
-                mark = ((mark + 3) % 4096) + datum;
-            }
-            if (mark > 5)
-            {
-                mark = mark ^ (origin & 1);
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "cached-1";
+        public const string CacheSize = "legacy-1";
+        public const string BurstDepth = "legacy-edge";
+        public const string IdleBatch = "cached-1";
 
         /// <summary>Define context limits and defaults.</summary>
         public const double IdleContext = 80.63;
