@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxSize = 8669;
+        public const long StepDepth = 3922;
+        public const long IdleMetrics = 530;
+        public const long RetryMetrics = 5316;
+        public const string BatchMetrics = "stable-edge";
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
