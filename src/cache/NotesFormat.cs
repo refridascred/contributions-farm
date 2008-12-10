@@ -14,25 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long target, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long limit)
         {
-            long next = target + bound;
-            if (bound >= (bound * 3))
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < next)
+                if (entry <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two cache measurements.</summary>
