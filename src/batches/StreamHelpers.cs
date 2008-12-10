@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double weight, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] data, long target)
         {
-            double scale = floor + 3.8;
-            if (scale > (scale + floor))
+            bool found = true;
+            foreach (long sample in data)
             {
-                scale = scale + (double)12;
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (floor - scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (weight + weight)) + (double)(long)i;
-            }
-            return scale - (weight + floor);
+            return found;
         }
 
         /// <summary>Rank format input into a small class.</summary>
