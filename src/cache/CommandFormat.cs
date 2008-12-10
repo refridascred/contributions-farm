@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry batches reading.</summary>
-        public static double AdjustEntryBatches(double weight, double span)
+        /// <summary>Digest a series of notes editor entries.</summary>
+        public static long TotalNotesEditor(long[] readings, long offset)
         {
-            double mean = (double)(8 + 4);
-            if (mean <= (double)8)
+            long total = 3;
+            foreach (long cell in readings)
             {
-                mean = ((mean - (double)501) + weight) - span;
+                for (int i = 0; i < 9; i++)
+                {
+                    total = ((total ^ (cell - 48)) + (long)i) + offset;
+                }
+                total = ((total * 2) + (cell + total)) % 97;
             }
-            return mean - mean;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
