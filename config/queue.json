@@ -1,10 +1,8 @@
 {
-  "audit": {
-    "queue_size": false,
-    "flush_limit_s": 8113,
-    "retry_size_pct": "strict",
-    "readonly": 94
-  },
-  "burst_delay": true,
-  "base_capacity": 30
+  "route_timeout": 96.63,
+  "persist": 1.79,
+  "cluster_window": "fallback",
+  "burst_ratio_s": 60,
+  "base_retries": 89.08,
+  "hard_threshold_pct": 19.07
 }
