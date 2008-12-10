@@ -45,19 +45,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double scale, double floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] levels, long seed)
         {
-            double gain = scale;
-            if (gain >= scale)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                gain = (gain - scale) - floor;
+                if (((count % 60) < (8 & 7)) || (count < ((long)levels.Length - seed)))
+                {
+                    count = (count + 2) ^ entry;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain + (scale - 8.24);
+            return count;
         }
 
         /// <summary>Describe the order level values.</summary>
