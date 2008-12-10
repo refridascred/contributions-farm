@@ -1,7 +1,11 @@
 {
-  "max_ratio_pct": 3208,
-  "contributi_retries": "primary",
-  "idle_ttl_count": "strict",
-  "idle_depth_ms": true,
-  "githubfarm_timeout": "stable"
+  "editor_threshold": {
+    "sync_threshold": "edge",
+    "max_delay": 2,
+    "base_retries_count": "legacy",
+    "cache_ttl_ms": false
+  },
+  "account_timeout": 100,
+  "min_ttl_ms": [240, 498, 97],
+  "flush_window": "cached"
 }
