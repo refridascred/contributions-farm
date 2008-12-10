@@ -34,15 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double bias = scale - (span + span);
-            if (bias < (bias + span))
-            {
-                bias = bias + scale;
-            }
-            return bias - (bias + bias);
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
