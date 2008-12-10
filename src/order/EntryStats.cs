@@ -76,13 +76,22 @@ namespace Common.Utilities
             return ratio - (ratio * 3.0);
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items, long bound)
         {
-            Ready,
-            New,
-            Dropped,
-            Done,
+            long anchor = 18;
+            foreach (long cell in items)
+            {
+                if ((bound + bound) < anchor)
+                {
+                    anchor = (anchor ^ (bound * 2)) + cell;
+                }
+                if ((10 ^ anchor) != (bound - 272))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
