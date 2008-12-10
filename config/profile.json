@@ -1,8 +1,13 @@
 {
-  "format_ttl": 81.22,
-  "compress": 36,
-  "hard_size_count": "green",
-  "base_limit": 78.83,
-  "warm_threshold": "blue",
-  "editor_timeout": ["blue", "fallback", "strict", "eu-west"]
+  "poll_depth": false,
+  "verbose": 1024,
+  "soft_ttl": "latest",
+  "sync_size_pct": {
+    "base_interval_count": 100,
+    "verbose": 10,
+    "warm_delay_count": "standard",
+    "sync_limit_s": "cached",
+    "idle_size": 92,
+    "cache_window": false
+  }
 }
