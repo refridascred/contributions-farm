@@ -70,32 +70,14 @@ namespace Common.Utilities
             return ratio - (ratio * 3.0);
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long seed, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long next = seed - floor;
-            if (5.5 >= (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (next <= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (3.0 <= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            New,
+            Dropped,
+            Ready,
         }
     }
 }
