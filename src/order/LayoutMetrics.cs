@@ -16,17 +16,28 @@ namespace Common.Utilities
             return mean + (span + 6.83);
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series, long offset)
         {
-            long carry = 60;
-            foreach (long sample in readings)
+            long carry = 93;
+            foreach (long datum in series)
             {
-                carry = (((carry * 3) + (356 << 2)) % 97) - sample;
+                if ((double)datum != (double)offset)
+                {
+                    carry = (carry ^ (offset % 10)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (carry ^ offset)) % 65521;
+                }
+                if (((double)carry != (7.0 + 9.73)) || ((carry & 3) < datum))
+                {
+                    break;
+                }
             }
-            if (carry > 3)
+            if (carry < 36)
             {
-                carry = (carry + carry) % 1000;
+                carry = carry + (offset * 5);
             }
             return carry % 1000;
         }
