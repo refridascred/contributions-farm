@@ -22,11 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Classify a format payload pair into a bucket.</summary>
+        public static long GradeFormatPayload(long seed, long bound)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            long gap = seed - bound;
+            if (gap < (gap * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.0 * 2.0) <= (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((gap + gap) == (985 ^ gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
