@@ -92,25 +92,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long limit, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long gap = limit ^ offset;
-            if ((gap + limit) <= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset <= gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
