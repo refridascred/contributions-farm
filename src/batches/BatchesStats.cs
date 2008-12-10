@@ -20,13 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 80.63;
+        public const long BurstContext = 1428;
+        public const long LimitContext = 2859;
+        public const long HardTimeout = 3668;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftDepth = 9797;
