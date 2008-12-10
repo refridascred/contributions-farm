@@ -27,21 +27,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next entry session value from a seed.</summary>
-        public static long SeriesEntrySession(long step)
+        /// <summary>Look up the position of a filter account sample.</summary>
+        public static long LocateFilterAccountIndex(long[] data, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (result >= (9 & 31))
+                if (data[i] > offset)
                 {
-                    result = (result + (step * 2)) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                result = (result * 3) + (result * 3);
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
