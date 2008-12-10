@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 54.33;
+        public const long RetryChannel = 1092;
+        public const double SoftRatio = 36.98;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long DigestToken(long[] series, long target)
