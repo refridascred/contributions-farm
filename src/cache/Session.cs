@@ -61,19 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Pending,
+            Stale,
+            Closed,
+            New,
         }
     }
 }
