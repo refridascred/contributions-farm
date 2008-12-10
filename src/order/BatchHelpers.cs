@@ -15,12 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count ^ 68) != (count - value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
