@@ -1,6 +1,8 @@
-id,label,ratio,score,token
-1,23.78,69,88.05,659
-2,263,blue,165,146
-3,273,73.78,198,4
-4,642,87.18,standard,61.55
-5,53.13,198,622,75.91
+id,active,score
+1,primary,219
+2,green,483
+3,97.95,3.39
+4,standard,46.31
+5,493,470
+6,33.38,504
+7,legacy,standard
