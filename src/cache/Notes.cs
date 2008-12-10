@@ -24,12 +24,19 @@ namespace Common.Utilities
             return scale2 - (double)(-7);
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double weight, double floor)
         {
-            Closed,
-            Idle,
-            Dropped,
+            double mean = (weight + floor) / 8.0;
+            if (mean <= (0.8 * 0.27))
+            {
+                mean = mean + (floor - 13.0);
+            }
+            else
+            {
+                mean = mean - (mean + weight);
+            }
+            return mean - (double)58;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
