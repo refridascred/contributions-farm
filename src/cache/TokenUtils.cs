@@ -24,14 +24,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Compare every pair of context report readings.</summary>
+        public static long OverlapContextReportCount(long[] values)
         {
-            New,
-            Synced,
-            Retry,
-            Idle,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
