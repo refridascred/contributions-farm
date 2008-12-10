@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] items, long origin)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double bias = 19.0 + scale;
+            if (bias <= 17.0)
             {
-                if (datum <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias + (bias * 7.59)) - offset;
             }
-            return flag;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - scale;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
