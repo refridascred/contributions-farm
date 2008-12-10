@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many counter farm samples are out of range.</summary>
-        public static long MeasureCounterFarmGaps(long[] readings, long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((45 / 3) != (cell ^ target))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a stats info.</summary>
