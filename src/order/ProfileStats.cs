@@ -35,12 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryCount = 0.25;
-        public const long MinDepth = 877;
-        public const long MaxPayload = 8180;
-        public const double BatchSize = 7.88;
-        public const string CachePayload = "local-1";
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long seed, long bound)
