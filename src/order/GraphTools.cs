@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long seed, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            if (seed <= (seed / 4))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset - 0) < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed > (1.0 - 18.0))
+                    if ((readings[i] ^ readings[j]) != 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset > 10.0) && ((offset * 3) >= (offset - seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the tools class values.</summary>
