@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] series, long step)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
