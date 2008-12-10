@@ -66,19 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((14 >= (2 + seen)) && ((seen / 9) > seen)) || (((entry ^ seen) <= entry) || ((entry / 5) >= (entry / 6))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 24.79;
+        public const double LimitSize = 13.53;
+        public const long MinSupport = 2927;
+        public const long StepTimeout = 6860;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardRatio = 7946;
