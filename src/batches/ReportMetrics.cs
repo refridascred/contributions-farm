@@ -24,11 +24,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 5178;
-        public const long DefaultSize = 9966;
-        public const long LimitFarm = 8311;
-        public const long WindowCount = 8673;
-        public const long BaseTimeout = 9724;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Done,
+            Retry,
+            Dropped,
+        }
     }
 }
