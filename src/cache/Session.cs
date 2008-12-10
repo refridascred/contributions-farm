@@ -28,13 +28,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            long score = 87;
+            foreach (long item in samples)
+            {
+                score = ((score ^ score) % 255) - item;
+                score = (score ^ (3 * 5)) % 255;
+            }
+            return score % 65521;
         }
     }
 }
