@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first batches session entry that matches the target.</summary>
-        public static long LookupBatchesSessionIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 4834;
+        public const double StepMetric = 20.78;
+        public const string DefaultMetric = "primary-1";
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
