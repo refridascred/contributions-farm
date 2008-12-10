@@ -36,12 +36,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Rank stream window input into a small class.</summary>
