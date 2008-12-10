@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] items)
         {
             long matches = 0;
-            foreach (long value in items)
+            foreach (long datum in items)
             {
-                if ((double)matches <= (8.21 * 9.0))
+                if (!!((2 + matches) >= (datum / 4)))
                 {
-                    matches = (matches + 2) + value;
+                    matches = matches + 2;
                 }
                 else
                 {
