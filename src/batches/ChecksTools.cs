@@ -17,13 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] series, long origin)
         {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
