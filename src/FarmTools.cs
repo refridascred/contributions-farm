@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell + hits) > (cell >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
