@@ -66,11 +66,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 1927;
-        public const double RetryEntry = 63.13;
-        public const long MinDepth = 9419;
-        public const long CacheEntry = 9060;
-        public const string BatchEntry = "staging-1";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long offset, long target)
+        {
+            long lane = offset - target;
+            if (((lane - offset) <= (211 - target)) || ((7.5 * 5.18) >= (double)offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.0 + 6.1) > (double)lane)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
