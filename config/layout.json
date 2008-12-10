@@ -1,6 +1,7 @@
 {
-  "metrics_depth": 70,
-  "soft_ratio_s": "latest",
-  "batch_depth": true,
-  "queue_ttl": 10
+  "base_limit_s": ["local", "legacy", "legacy", "fallback"],
+  "burst_delay_s": "blue",
+  "min_size_pct": 56.27,
+  "filter_limit": ["primary", "stable"],
+  "metrics_delay": ["strict", "open", "edge"]
 }
