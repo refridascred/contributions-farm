@@ -1,7 +1,5 @@
 {
-  "retry_size": "strict",
-  "support_window": "eu-west",
-  "sync_limit_ms": [342, 70],
-  "report_threshold": 8990,
-  "max_threshold_ms": "legacy"
+  "enabled": [489, 332, 195],
+  "support_retries": 500,
+  "max_delay_count": "strict"
 }
