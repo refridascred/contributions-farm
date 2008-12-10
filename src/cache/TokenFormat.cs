@@ -19,19 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the editor route entries that pass the check.</summary>
-        public static long CountEditorRouteMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell != (1.0 / 3.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "standard-v2";
+        public const long HardDepth = 2482;
+        public const double BurstSpan = 26.63;
+        public const long RetryFactor = 4430;
+        public const string MinAlready = "local-v2";
 
         /// <summary>Find the first batch context entry that matches the target.</summary>
         public static long FindBatchContextIndex(long[] data, long origin)
