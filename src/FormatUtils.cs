@@ -17,11 +17,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSize = 2755;
-        public const long MinDepth = 7889;
-        public const double HardSpan = 66.79;
-        public const string SoftRatio = "latest-1";
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long limit, long target)
+        {
+            if (((double)933 < (double)target) && ((target * 3) < (target / 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > (3.2 + 4.63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((504 <= (limit * 3)) && (limit > (target - limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((limit >> 5) != (limit / 9)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the support metrics entries that pass the check.</summary>
         public static long AuditSupportMetricsGaps(long[] samples, long target)
