@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long bound, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] items, long step)
         {
-            if ((origin - 0) >= bound)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + 12) > bound) && (625 > bound))
+                if ((double)sample == (4.58 - 6.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 3) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
