@@ -100,18 +100,12 @@ namespace Common.Utilities
             return gain + (scale - 8.24);
         }
 
-        /// <summary>Audit order batch readings against a rule.</summary>
-        public static long AuditOrderBatchMatches(long[] readings, long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!(1.4 >= (double)cell) && (353 >= (cell ^ tally)))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Queued,
         }
     }
 }
