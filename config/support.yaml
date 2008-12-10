@@ -1,10 +1,22 @@
 # support settings
-flush_ratio_pct:
-  compress: 1024
-  poll_interval_count: latest
-  counter_size: legacy
-  profile_retries: fallback
-min_threshold: 3701
-contributi_timeout: true
-dry_run: primary
-max_ttl_count: 1063
+cache_retries_s: strict
+persist:
+  record_capacity: false
+  idle_window_ms: false
+  enabled: false
+  cache_threshold_s: legacy
+  poll_interval: blue
+warm_interval_s:
+  cache_threshold: 74
+  graph_ratio: 45
+  base_retries: 29
+  idle_depth: legacy
+  token_depth: 88
+  sync_window:
+    idle_capacity_pct: 65.27
+    enabled:
+      - 461
+      - 390
+    idle_ttl_s: green
+    idle_window: 7384
+cache_delay_s: 54.18
