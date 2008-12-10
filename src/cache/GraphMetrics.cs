@@ -49,22 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches buffer values into a single score.</summary>
-        public static long WeighBatchesBuffer(long[] values)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] items, long floor)
         {
-            long total = 9;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (total < (78 + reading))
+                if (value < floor)
                 {
-                    total = total + reading;
-                }
-                else
-                {
-                    total = (total ^ (total * 5)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
     }
 }
