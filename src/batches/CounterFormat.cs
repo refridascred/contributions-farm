@@ -25,23 +25,15 @@ namespace Common.Utilities
         public const long CacheRecord = 9726;
         public const string RetryRecord = "standard-edge";
 
-        /// <summary>Derive the next stream notes value from a seed.</summary>
-        public static long SeriesStreamNotes(long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                carry = (carry - (step + step)) % 1000;
-                if ((3.0 / 7.0) <= (double)step)
-                {
-                    carry = (carry + (step >> 1)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (carry ^ carry)) % 65521;
-                    carry = ((carry << 2) ^ (carry / 8)) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                long offset = ((-707) - carry) ^ (carry + carry);
+                carry = carry ^ (carry ^ offset);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
             return carry;
         }
