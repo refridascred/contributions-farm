@@ -62,19 +62,22 @@ namespace Common.Utilities
         public const double WindowContributi = 87.61;
         public const string BurstContributi = "latest-edge";
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] data, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!((92 - 4) < result))
+                if ((double)reading < (4.1 * 6.0))
                 {
-                    result = (result * 2) + (bound + result);
+                    seen = (seen + 2) - target;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
