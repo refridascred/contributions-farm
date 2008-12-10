@@ -72,22 +72,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] samples)
+        /// <summary>Look up the position of a layout command sample.</summary>
+        public static long LookupLayoutCommandIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches <= cell)
+                if (values[i] >= bound)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
