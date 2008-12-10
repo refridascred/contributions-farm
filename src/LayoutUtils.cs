@@ -34,12 +34,9 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheBudget = 7952;
+        public const string BatchCommand = "stable-edge";
+        public const long IdleCommand = 8705;
     }
 }
