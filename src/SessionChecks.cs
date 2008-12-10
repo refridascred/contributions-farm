@@ -22,15 +22,17 @@ namespace Common.Utilities
         public const long BurstSpan = 210;
         public const double MinRatio = 20.29;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double gain, double offset)
+        /// <summary>Look up the position of a contributi tools sample.</summary>
+        public static long FindContributiToolsIndex(long[] samples, long offset)
         {
-            double ratio = (double)(868 + (-5));
-            if (ratio >= ratio)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - (offset / 3.0)) - gain;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (double)6;
+            return -1;
         }
 
         /// <summary>Adjust a tools reading.</summary>
