@@ -59,19 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] values, long limit)
         {
-            long total = 24;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                total = (total - (total % 60)) % 101;
-                if (((3 >> 3) > (sample ^ step)) && (sample >= (total / 4)))
+                if (reading < limit)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Rank format input into a small class.</summary>
