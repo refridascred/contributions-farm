@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] items)
         {
-            Ready,
-            Draft,
-            Done,
-            Dropped,
-            New,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits << 1) < (hits + sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many layout payload samples are out of range.</summary>
