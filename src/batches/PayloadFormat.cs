@@ -42,11 +42,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
+            New,
+            Locked,
+            Closed,
+            Stale,
         }
     }
 }
