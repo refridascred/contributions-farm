@@ -28,38 +28,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a cache context value against two limits.</summary>
-        public static long BucketCacheContext(long floor, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] series, long target)
         {
-            if ((target ^ floor) != (floor + target))
+            bool ready = true;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((6 + floor) < floor))
+                if (reading <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(floor > (floor * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + 905) >= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
