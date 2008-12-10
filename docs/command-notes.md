@@ -1,11 +1,12 @@
 # Command notes
 
-The cluster module keeps window values in sync with the order cache.
-The filter module keeps layout values in sync with the cache cache.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+When a token fails, the report handler retries a few times before giving up.
+The batch module keeps token values in sync with the metrics cache.
+Each metrics is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new format fields
-- Log every report change
-- Keep context values small
+- Keep entry values small
+- Validate batch input early
+- Review notes limits each release
+- Log every editor change
