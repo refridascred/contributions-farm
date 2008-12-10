@@ -39,15 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Retry,
-            Done,
-            Active,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryDepth = 1749;
+        public const long DefaultSize = 9078;
+        public const long BatchWidth = 5321;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetryTimeout = 878;
