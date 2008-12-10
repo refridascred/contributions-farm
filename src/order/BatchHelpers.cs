@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Idle,
-            Dropped,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseInterval = 24.03;
+        public const long IdleLayout = 8033;
+        public const long SoftBudget = 3116;
+        public const long BaseBudget = 2019;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] data)
