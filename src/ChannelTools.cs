@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] data, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long item in data)
+            long sum = 6;
+            foreach (long value in samples)
             {
-                if (item <= offset)
+                if ((double)sum <= 7.0)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum ^ (sum - target)) % 101) ^ value;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ target;
                 }
             }
-            return found;
+            return sum;
         }
     }
 }
