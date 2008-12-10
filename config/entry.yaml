@@ -1,8 +1,21 @@
 # entry settings
-retry_threshold_ms: 100
-buffer_ratio: 16
-base_depth_count: 30
-channel_interval:
-  - eu-west
-  - stable
-  - staging
+max_timeout_pct: 20.94
+base_window_pct: 30
+token_threshold: 27
+min_window_ms: 8255
+enabled:
+  - 325
+  - 134
+persist:
+  warm_ratio_ms: 1024
+  hard_size_ms: false
+  checks_window: 60
+  readonly: 53.23
+  strict:
+    - 218
+    - 231
+    - 195
+  graph_ratio:
+    - 67
+    - 3
+    - 50
