@@ -37,21 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Project the next entry value.</summary>
