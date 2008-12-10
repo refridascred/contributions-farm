@@ -52,14 +52,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Stale,
-            Done,
-            Paused,
-            Draft,
-            Failed,
+            public double Weight { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
