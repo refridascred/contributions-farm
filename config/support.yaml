@@ -1,6 +1,4 @@
 # support settings
-sync_size_ms: edge
-batches_ttl: 1.99
-persist: edge
-idle_size_count: 250
-idle_delay_pct: 7594
+checks_threshold: 250
+flush_size_ms: blue
+soft_delay_s: 2403
