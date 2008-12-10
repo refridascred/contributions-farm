@@ -23,14 +23,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long bound)
         {
-            Closed,
-            Queued,
-            Retry,
-            Locked,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
