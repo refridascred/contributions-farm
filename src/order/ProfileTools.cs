@@ -22,19 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] samples, long step)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double bias, double span)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double weight = (double)(833 + 0);
+            if (weight <= bias)
             {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + (weight + span);
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (double)588) + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Classify a route profile pair into a bucket.</summary>
