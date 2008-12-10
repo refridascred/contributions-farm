@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next record metric value from a seed.</summary>
-        public static long IterateRecordMetric(long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] series, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
