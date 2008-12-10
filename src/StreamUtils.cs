@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Validate metric tools readings against a bound.</summary>
+        public static bool CheckMetricToolsLimits(long[] series, long floor)
         {
-            Stale,
-            Synced,
-            Paused,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of command context readings.</summary>
