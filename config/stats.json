@@ -1,5 +1,8 @@
 {
-  "compress": false,
-  "stream_ratio": [65, 489],
-  "hard_size_ms": "staging"
+  "readonly": [195, 435, 162],
+  "compress": [180, 363, 102, 363],
+  "verbose": 71,
+  "soft_capacity_pct": "staging",
+  "stats_timeout": ["primary", "cached"],
+  "min_size_s": 46
 }
