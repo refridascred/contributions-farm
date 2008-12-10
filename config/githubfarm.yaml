@@ -1,19 +1,8 @@
 # githubfarm settings
-record_retries: edge
-stats_ratio: 3967
-sync_timeout:
-  strict: 257
-  readonly: 88
-  editor_interval:
-    readonly: 78.7
-    window_size: 9692
-    warm_timeout: staging
-    flush_delay_s: 83.07
-    batch_limit_count:
-      - 461
-      - 267
-      - 442
-  max_ratio: 38
-  burst_limit_count: eu-west
-cache_ttl_ms: 16.66
-base_window_s: true
+burst_window:
+  - 88
+  - 289
+  - 282
+sync_interval: 28
+graph_delay: cached
+min_delay_s: 100
