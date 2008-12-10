@@ -1,9 +1,10 @@
 # entry settings
-max_ttl_pct: false
-cache_ttl_pct: standard
-strict: 100
-min_retries: 92.61
-compress: 60
-context_interval:
+soft_ratio_pct: 36.77
+burst_interval: 15.45
+cluster_size:
   - legacy
-  - legacy
+  - cached
+  - edge
+  - eu-west
+compress: false
+soft_retries: fallback
