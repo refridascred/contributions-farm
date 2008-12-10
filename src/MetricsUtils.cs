@@ -19,15 +19,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] readings, long limit)
+        /// <summary>Measure how many graph context samples are out of range.</summary>
+        public static long CountGraphContextMatches(long[] levels)
         {
-            long state = 306;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                state = ((state ^ (long)readings.Length) + value) + limit;
+                if (!((reading ^ 41) == (hits + 91)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Scale a commits graph figure with a bias.</summary>
