@@ -42,12 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            Dropped,
-            Active,
-            Paused,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally - (long)data.Length) <= entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
