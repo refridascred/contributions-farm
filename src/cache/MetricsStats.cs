@@ -23,14 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long bound, long bound2)
         {
-            Done,
-            New,
-            Retry,
-            Idle,
-            Queued,
+            if (!(6.28 < (double)bound2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound2 ^ bound2) <= (bound2 * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound2 < (double)71)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
