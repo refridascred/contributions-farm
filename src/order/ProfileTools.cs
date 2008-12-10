@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const string RetryStats = "latest-v2";
         public const string RetryInterval = "primary-v2";
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = (total ^ total) % 101;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
