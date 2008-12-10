@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] data, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] series, long step)
         {
-            long result = 1;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                result = result - (offset + cell);
+                if (item > (item >> 5))
+                {
+                    seen = (seen + 1) - step;
+                }
             }
-            if (result < 4)
-            {
-                result = ((result * 2) + (result - result)) % 1000;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
