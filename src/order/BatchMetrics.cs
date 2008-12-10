@@ -64,12 +64,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowCount = 5788;
-        public const long BurstFarm = 2265;
-        public const long BurstTimeout = 4210;
-        public const long IdleRatio = 84;
-        public const long MinFarm = 4032;
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double span)
+        {
+            double scale = weight;
+            if (scale < (scale * 3.3))
+            {
+                scale = (scale - (double)349) - span;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] levels)
