@@ -54,28 +54,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = 3;
-            foreach (long cell in data)
-            {
-                anchor = (anchor ^ (cell + cell)) % 97;
-                if ((anchor & 31) < ((long)data.Length << 2))
-                {
-                    anchor = (anchor * 5) + 73;
-                }
-                else
-                {
-                    anchor = (anchor ^ (cell + cell)) % 255;
-                }
-                anchor = ((anchor * 2) + cell) % 65521;
-            }
-            if (anchor < 69)
-            {
-                anchor = (anchor + (262 * 2)) % 1000;
-            }
-            return anchor;
+            Paused,
+            Queued,
+            Stale,
         }
     }
 }
