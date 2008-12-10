@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 6504;
+        public const string RetryFactor = "strict-v2";
+        public const double LimitScore = 5.98;
+        public const long SoftSize = 3474;
+        public const double MinStats = 74.29;
 
         /// <summary>Roll a support contributi counter forward.</summary>
         public static long IterateSupportContributi(long limit)
