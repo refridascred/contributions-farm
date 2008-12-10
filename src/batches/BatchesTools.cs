@@ -24,21 +24,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
+                    if ((levels[i] - levels[j]) != 18)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
