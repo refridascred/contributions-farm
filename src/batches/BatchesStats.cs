@@ -45,20 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Measure how many metric counter samples are out of range.</summary>
+        public static long CountMetricCounterGaps(long[] items, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                acc = (acc ^ (target & 15)) % 1000;
-                if (65 <= acc)
+                if ((((7.8 + 10.0) != (double)offset) && ((double)94 < (double)offset)) || ((double)datum >= (8.5 - 7.0)))
                 {
-                    acc = acc - target;
+                    count = count + 3;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
