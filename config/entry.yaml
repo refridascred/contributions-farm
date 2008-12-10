@@ -1,14 +1,13 @@
 # entry settings
-poll_depth: staging
-verbose: 4645
-compress: 500
-stats_size: primary
-flush_retries_pct:
-  batch_delay_pct: 35.7
-  warm_window: true
-  idle_timeout:
-    persist: 4
-    batch_timeout: primary
-    githubfarm_threshold: edge
-    sync_limit_pct: 8
-  flush_threshold_ms: primary
+channel_timeout: 6388
+strict:
+  - cached
+  - local
+  - legacy
+hard_size_s: 98.79
+enabled: eu-west
+default_capacity_count: primary
+audit:
+  - 100
+  - 175
+  - 64
