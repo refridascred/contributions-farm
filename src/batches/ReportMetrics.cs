@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a route session value against two limits.</summary>
-        public static long ClassifyRouteSession(long target, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            if (limit < target)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target < (9.01 / 2.0))
+                if ((datum ^ seen) != (datum + datum))
                 {
-                    return 1;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((3 & 7) >= target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit < (target + limit)) && ((87 / 3) >= limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up metric samples.</summary>
