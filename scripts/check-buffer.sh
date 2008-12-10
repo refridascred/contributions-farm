@@ -7,14 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
-
-for item in stable edge; do
-    log "checking ${item}"
-done
 
 count=0
 while [ "${count}" -lt 3 ]; do
