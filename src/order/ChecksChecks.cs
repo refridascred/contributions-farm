@@ -22,11 +22,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
