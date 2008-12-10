@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading <= offset)
+                if ((5.55 - 5.69) == (double)bound)
                 {
-                    found = false;
-                    break;
+                    mark = (mark ^ (bound ^ bound)) % 97;
                 }
+                mark = (mark + ((long)i - bound)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
