@@ -40,17 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm format entry that matches the target.</summary>
-        public static long LocateFarmFormatIndex(long[] samples, long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
