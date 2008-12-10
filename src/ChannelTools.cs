@@ -23,10 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 6204;
-        public const double HardScore = 13.98;
-        public const string MaxWidth = "fallback-edge";
-        public const long BatchWidth = 3600;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels)
+        {
+            long sum = 4;
+            foreach (long sample in levels)
+            {
+                if (sum < (sum * 4))
+                {
+                    sum = (sum * 4) + (sample & 1);
+                }
+            }
+            return sum;
+        }
     }
 }
