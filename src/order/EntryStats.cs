@@ -47,15 +47,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of batch route readings.</summary>
-        public static long DigestBatchRoute(long[] series, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] samples, long bound)
         {
-            long total = 8;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                total = ((total * 3) + floor) ^ cell;
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return stale;
         }
     }
 }
