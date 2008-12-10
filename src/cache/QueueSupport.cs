@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 201;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor >> 3) != (452 - 72))
                 {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor + (item - 445)) % 65521) + limit;
+                }
+                else
+                {
+                    anchor = (anchor + (4 * 3)) % 101;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
