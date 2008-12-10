@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] readings, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)9 >= (double)hits)
+                if (20 > (target / 9))
                 {
-                    hits = ((hits + 3) + datum) - bound;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
