@@ -24,21 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Validate metrics order readings against a bound.</summary>
+        public static bool ValidateMetricsOrderLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= seed)
                 {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Blend two schema batch measurements.</summary>
