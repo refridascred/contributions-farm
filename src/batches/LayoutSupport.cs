@@ -37,18 +37,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit order report readings against a rule.</summary>
-        public static long AuditOrderReportOutliers(long[] series, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((step <= (689 & 3)) || ((step & 15) > (reading + tally)))
+                if (sample < origin)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
