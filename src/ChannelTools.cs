@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const double DefaultQueue = 29.98;
         public const long BaseQueue = 7175;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double gain, double span)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            double gain2 = gain;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (4.4 + span)) - (double)(long)i;
+            }
+            return gain2 - (double)5;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
