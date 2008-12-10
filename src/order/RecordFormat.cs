@@ -47,18 +47,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] series, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((tally + entry) > target)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
