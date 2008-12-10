@@ -1,14 +1,7 @@
 {
-  "batch_depth": true,
-  "graph_capacity": 4.87,
-  "min_timeout_ms": {
-    "burst_size_ms": 7110,
-    "layout_size": false,
-    "checks_threshold": true,
-    "queue_ttl": 8839,
-    "base_timeout": ["standard", "strict", "fallback", "open"],
-    "hard_interval": 89.23
-  },
-  "compress": 69.27,
-  "batch_window": true
+  "route_window": true,
+  "compress": "legacy",
+  "idle_timeout": 33.35,
+  "enabled": "strict",
+  "account_retries": "staging"
 }
