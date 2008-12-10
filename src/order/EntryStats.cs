@@ -38,13 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] readings, long offset)
         {
-            Active,
-            Idle,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length * 2) != (hits ^ (-19)))
+                {
+                    hits = ((hits + 1) ^ sample) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
