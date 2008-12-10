@@ -44,21 +44,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
