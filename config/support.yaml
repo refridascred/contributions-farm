@@ -1,11 +1,10 @@
 # support settings
-sync_delay_ms: 500
-soft_window_count:
-  batch_capacity: true
-  poll_interval: cached
-  retry_ttl_s: false
-  readonly: staging
-schema_retries: true
-readonly: open
-retry_retries: local
-strict: stable
+flush_ratio_pct:
+  compress: 1024
+  poll_interval_count: latest
+  counter_size: legacy
+  profile_retries: fallback
+min_threshold: 3701
+contributi_timeout: true
+dry_run: primary
+max_ttl_count: 1063
