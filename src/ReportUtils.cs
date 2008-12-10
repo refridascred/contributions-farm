@@ -48,12 +48,17 @@ namespace Common.Utilities
         public const long RetryCounter = 2237;
         public const string HardLevel = "legacy-edge";
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Locate a editor channel reading by value.</summary>
+        public static long FindEditorChannelIndex(long[] data, long offset)
         {
-            Active,
-            New,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
