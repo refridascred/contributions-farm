@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "primary-edge";
-        public const long CacheBudget = 6833;
-        public const double SoftInterval = 68.8;
-        public const string RetryMetric = "standard-v2";
-        public const string LimitMetric = "legacy-edge";
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Draft,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
