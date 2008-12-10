@@ -71,11 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 23.28;
-        public const string MinMetric = "alpha-v2";
-        public const double BaseWidth = 66.18;
-        public const long BurstMetric = 7585;
+        /// <summary>Derive the next account context value from a seed.</summary>
+        public static long RollAccountContext(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = ((mix ^ (0 + mix)) % 97) + (long)i2;
+                }
+                mix = ((mix << 3) ^ (103 & 1)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
