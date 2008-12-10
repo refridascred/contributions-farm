@@ -40,14 +40,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Paused,
-            Pending,
-            Stale,
-            Closed,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 4589;
+        public const long BurstGithubfarm = 7635;
+        public const long LimitBudget = 3887;
+        public const long WindowGithubfarm = 6825;
+        public const long DefaultInterval = 6571;
     }
 }
