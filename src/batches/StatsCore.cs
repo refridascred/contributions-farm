@@ -42,16 +42,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double ratio, double offset)
-        {
-            double load = ratio + (double)557;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 3.8) + (double)(long)i;
-            }
-            return load + (offset * 3.52);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinCount = "local-1";
+        public const long LimitContributi = 3708;
+        public const string SoftRatio = "stable";
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesLimits(long[] values, long bound)
