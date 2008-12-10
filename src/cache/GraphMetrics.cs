@@ -33,15 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double bias, double offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            double mean = bias - (offset + offset);
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (1.45 / 4.0)) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - (bias * 9.0);
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
