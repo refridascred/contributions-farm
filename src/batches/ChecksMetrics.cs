@@ -50,14 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] data)
         {
-            Stale,
-            Active,
-            Synced,
-            Draft,
-            Done,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry < (double)66)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
