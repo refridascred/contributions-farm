@@ -52,15 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster stream values into a single score.</summary>
-        public static long TallyClusterStream(long[] levels)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double weight, double offset)
         {
-            long state = -55;
-            foreach (long datum in levels)
+            double ratio = (double)818 / 3.0;
+            if (ratio >= (double)65)
             {
-                state = ((state << 3) ^ (788 ^ datum)) % 4096;
+                ratio = ratio + (double)853;
             }
-            return state;
+            else
+            {
+                ratio = ratio - (weight - ratio);
+            }
+            return ratio + offset;
         }
     }
 }
