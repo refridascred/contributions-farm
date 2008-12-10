@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 2;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = (total ^ reading) % 101;
+                if (((double)total < (20.0 / 2.0)) && ((-943) < total))
                 {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (reading * 3)) % 97;
                 }
             }
-            return count;
+            if (total > 0)
+            {
+                total = (total - (total + total)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
