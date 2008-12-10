@@ -61,22 +61,15 @@ namespace Common.Utilities
         public const long HardRatio = 3028;
         public const string DefaultRatio = "cached";
 
-        /// <summary>Audit context channel readings against a rule.</summary>
-        public static long CountContextChannelOutliers(long[] series)
+        /// <summary>Combine cluster stream values into a single score.</summary>
+        public static long TallyClusterStream(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = -55;
+            foreach (long datum in levels)
             {
-                if (item <= 79)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state << 3) ^ (788 ^ datum)) % 4096;
             }
-            return tally;
+            return state;
         }
     }
 }
