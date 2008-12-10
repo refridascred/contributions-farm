@@ -57,23 +57,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a notes record reading.</summary>
-        public static double AdjustNotesRecord(double gain, double span)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long floor, long limit)
         {
-            double ratio = gain;
-            if (ratio > (double)(-3))
+            long edge = floor ^ limit;
+            if ((777 + floor) >= (edge / 9))
             {
-                ratio = ratio + ratio;
+                return 0;
             }
             else
             {
-                ratio = ratio - span;
+                if (9.0 <= (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((81 >> 4) >= (floor + 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio / 8.0)) + (double)(long)i;
-            }
-            return ratio - (ratio * 3.0);
         }
 
         /// <summary>Roll a record counter forward.</summary>
