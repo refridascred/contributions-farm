@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Idle,
             Done,
-            Closed,
-            Retry,
-            Failed,
+            Pending,
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
