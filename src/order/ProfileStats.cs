@@ -30,19 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double gain, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] series, long bound)
         {
-            double mean = (double)(3 + 281);
-            if (mean < gain)
+            long matches = 0;
+            foreach (long value in series)
             {
-                mean = mean + (span + 11.0);
+                if ((bound - bound) >= (9 + matches))
+                {
+                    matches = (matches + 1) ^ value;
+                }
             }
-            else
-            {
-                mean = mean + (double)72;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
