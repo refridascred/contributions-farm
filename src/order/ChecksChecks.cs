@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const double MaxOrder = 85.25;
         public const double BatchWidth = 13.73;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] items, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 52;
+            foreach (long entry in levels)
             {
-                if (items[i] == origin)
+                if ((mark & 63) < (entry * 5))
                 {
-                    return (long)i;
+                    mark = (mark ^ (entry ^ mark)) % 65521;
                 }
             }
-            return -1;
+            if (mark > 4)
+            {
+                mark = (mark + (mark >> 1)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload status values.</summary>
