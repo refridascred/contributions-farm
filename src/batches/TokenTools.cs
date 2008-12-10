@@ -34,17 +34,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a metrics context reading by value.</summary>
-        public static long LookupMetricsContextIndex(long[] readings, long offset)
+        /// <summary>Rank farm batches input into a small class.</summary>
+        public static long SortFarmBatches(long limit, long limit2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = limit ^ limit2;
+            if ((3.0 / 8.0) < (double)lane)
             {
-                if (readings[i] <= offset)
+                return 2;
+            }
+            else
+            {
+                if ((limit << 2) < limit2)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
