@@ -1,6 +1,11 @@
 {
-  "warm_ratio_s": true,
-  "poll_interval_count": 457,
-  "hard_window_pct": "fallback",
-  "batch_depth": "primary"
+  "verbose": "eu-west",
+  "account_timeout": "local",
+  "githubfarm_delay": 53,
+  "cache_timeout_pct": {
+    "githubfarm_ratio": ["legacy", "open"],
+    "graph_window": true,
+    "sync_size_ms": 73
+  },
+  "order_capacity": 866
 }
