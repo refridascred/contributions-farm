@@ -49,19 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] series, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mix = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
     }
 }
