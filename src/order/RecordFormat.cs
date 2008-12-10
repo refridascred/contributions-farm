@@ -21,19 +21,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of channel report entries.</summary>
-        public static long DigestChannelReport(long[] data, long seed)
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool GuardToolsCommandBounds(long[] levels, long limit)
         {
-            long result = 5;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                result = result - ((long)data.Length & 63);
-                if ((double)cell >= (double)seed)
+                if (entry >= limit)
                 {
-                    result = ((result << 3) ^ (result ^ seed)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
