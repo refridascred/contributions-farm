@@ -71,17 +71,21 @@ namespace Common.Utilities
         public const long IdleRatio = 84;
         public const long MinFarm = 4032;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Rank format input into a small class.</summary>
