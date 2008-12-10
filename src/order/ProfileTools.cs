@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels, long target)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((5.3 / 3.0) == (double)target))
                 {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + reading;
                 }
             }
             return count;
