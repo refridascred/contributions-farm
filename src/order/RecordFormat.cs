@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long state = 543;
-            foreach (long reading in levels)
-            {
-                state = (state << 3) ^ state;
-                state = ((state * 4) + (600 + reading)) % 65521;
-                if ((state - 15) >= (reading / 2))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
