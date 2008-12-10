@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Active,
-            Pending,
-            Idle,
+            Dropped,
+            Paused,
+            Locked,
+            Done,
         }
 
         /// <summary>Project the next notes value.</summary>
