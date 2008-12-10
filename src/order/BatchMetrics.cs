@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values)
         {
-            long total = 76;
-            foreach (long entry in series)
+            long anchor = -75;
+            foreach (long entry in values)
             {
-                total = (((total << 3) ^ 2) % 4096) - entry;
+                anchor = ((anchor * 2) + (entry ^ anchor)) % 255;
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (anchor + (entry >> 4)) ^ (long)i;
+                    anchor = anchor ^ anchor;
+                }
+                anchor = (anchor * 5) + (anchor + anchor);
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the stats class values.</summary>
