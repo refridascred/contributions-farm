@@ -33,19 +33,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double weight = gain;
-            if (weight < (double)1)
-            {
-                weight = weight - (double)524;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (weight + gain)) + (double)(long)i;
-            }
-            return weight - bias;
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
