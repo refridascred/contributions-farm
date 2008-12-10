@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const double MaxNotes = 48.5;
         public const long HardCount = 1366;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
