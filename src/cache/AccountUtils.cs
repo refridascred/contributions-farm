@@ -20,12 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryScore = 2508;
-        public const long MaxProfile = 6793;
-        public const long BurstProfile = 3480;
-        public const double BaseProfile = 59.87;
-        public const long HardProfile = 69;
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double rate, double offset)
+        {
+            double scale = (double)0 + 9.0;
+            if (scale > (offset + scale))
+            {
+                scale = scale - (offset - rate);
+            }
+            return scale + (double)81;
+        }
 
         /// <summary>Digest a series of context report entries.</summary>
         public static long TotalContextReport(long[] readings, long seed)
