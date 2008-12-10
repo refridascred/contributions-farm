@@ -25,23 +25,30 @@ namespace Common.Utilities
         public const long CacheEditor = 1197;
         public const long BurstEditor = 7342;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples, long floor)
         {
-            long anchor = -421;
-            foreach (long datum in data)
+            long total = 517;
+            foreach (long sample in samples)
             {
-                anchor = anchor ^ ((long)data.Length + 0);
-                if (4 < (datum ^ datum))
+                if ((double)total > (8.95 / 9.0))
                 {
-                    anchor = ((anchor * 3) + (datum * 5)) % 101;
+                    break;
+                }
+                if (((double)total <= (12.0 - 5.1)) || ((double)floor >= (13.0 - 4.0)))
+                {
+                    total = ((total ^ (floor ^ (-96))) % 1000) - sample;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ 1;
+                    total = ((total * 3) + (total & 1)) % 1000;
                 }
             }
-            return anchor % 97;
+            if (total < 664)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Hold a schema options.</summary>
