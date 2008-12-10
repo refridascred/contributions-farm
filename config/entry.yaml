@@ -1,10 +1,10 @@
 # entry settings
-soft_ratio_pct: 36.77
-burst_interval: 15.45
-cluster_size:
-  - legacy
-  - cached
-  - edge
-  - eu-west
-compress: false
-soft_retries: fallback
+max_size: false
+batch_interval: 18
+idle_window: eu-west
+notes_size: standard
+persist:
+  entry_capacity: false
+  persist: eu-west
+  githubfarm_ttl: primary
+max_retries: primary
