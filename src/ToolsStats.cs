@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of window metric readings.</summary>
-        public static long CombineWindowMetric(long[] items, long seed)
-        {
-            long carry = 164;
-            foreach (long entry in items)
-            {
-                carry = ((carry + (entry >> 2)) % 255) + seed;
-                carry = (carry + (entry % 7)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseSize = 41.47;
+        public const double LimitTimeout = 62.28;
+        public const long LimitNotes = 4198;
+        public const long RetryWidth = 1207;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
