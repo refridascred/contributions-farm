@@ -82,25 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long offset, long target)
+        /// <summary>Digest a series of record batch entries.</summary>
+        public static long DigestRecordBatch(long[] data, long floor)
         {
-            long lane = offset - target;
-            if (((lane - offset) <= (211 - target)) || ((7.5 * 5.18) >= (double)offset))
+            long score = 5;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.0 + 6.1) > (double)lane)
+                score = ((score + ((-8) & 31)) % 97) + datum;
+                if ((double)floor > (0.4 + 8.74))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return score % 65521;
         }
     }
 }
