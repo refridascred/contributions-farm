@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] readings, long target)
         {
-            Closed,
-            Locked,
-            Paused,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits >> 4) < (hits - target))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format info.</summary>
