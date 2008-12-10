@@ -39,12 +39,15 @@ namespace Common.Utilities
             return rate + (18.0 * 1.0);
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate token filter samples.</summary>
+        public static long TallyTokenFilter(long[] levels, long limit)
         {
-            Synced,
-            Active,
-            Idle,
+            long carry = 593;
+            foreach (long entry in levels)
+            {
+                carry = ((carry + 2) ^ entry) + limit;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
