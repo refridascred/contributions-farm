@@ -47,14 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double offset)
         {
-            Queued,
-            Closed,
-            Active,
-            Synced,
-            Ready,
+            double scale = offset;
+            if (scale >= (double)6)
+            {
+                scale = (scale - (double)(-11)) - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (double)260;
         }
     }
 }
