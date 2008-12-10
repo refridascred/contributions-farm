@@ -1,28 +1,12 @@
 # entry settings
-soft_window:
-  dry_run:
-    - eu-west
-    - latest
-    - cached
-  flush_delay_count: true
-  editor_timeout: false
-  cluster_limit:
-    strict: standard
-    cache_threshold: 5552
-    metrics_interval: 4407
-    base_retries_pct:
-      - standard
-      - strict
-      - strict
-      - cached
-    default_delay: false
-default_retries_s: true
-soft_ttl_pct: 89.82
-base_interval_s: 40.29
-persist: stable
-readonly:
-  payload_size: 100
-  poll_size: true
-  profile_delay: 3
-  verbose: true
-  idle_delay_ms: true
+cache_ttl:
+  - legacy
+  - staging
+  - strict
+contributi_window: false
+verbose: stable
+min_delay: blue
+cache_limit_count:
+  - open
+  - standard
+notes_retries: 99
