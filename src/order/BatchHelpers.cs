@@ -40,22 +40,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] series, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long next = floor ^ seed;
+            if ((next / 5) != (next << 1))
             {
-                if (((value < (target << 3)) || ((190 >> 2) >= target)) && ((double)value == (5.0 - 0.1)))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed == (7.76 - 2.0))
                 {
-                    tally = tally + 3;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)floor < (5.7 - 3.58))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
