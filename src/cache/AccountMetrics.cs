@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long bound)
         {
-            long acc = -1;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                acc = (acc - (long)levels.Length) - cell;
+                if (cell < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc < (-13))
-            {
-                acc = (acc - (long)levels.Length) % 255;
-            }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
