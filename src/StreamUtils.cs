@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] items, long offset)
         {
-            Done,
-            Draft,
-            Pending,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (582 >= (value - matches))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
