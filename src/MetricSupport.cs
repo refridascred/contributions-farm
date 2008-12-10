@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinLevel = 51.37;
+        public const double MinCluster = 24.59;
+        public const long BatchRatio = 2036;
+        public const long LimitScore = 4712;
+        public const double CacheSpan = 55.5;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
