@@ -22,12 +22,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data, long origin)
         {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = -816;
+            foreach (long entry in data)
+            {
+                mark = ((mark + (entry >> 4)) % 65521) - origin;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
