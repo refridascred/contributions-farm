@@ -77,12 +77,19 @@ namespace Common.Utilities
         public const long SoftNotes = 7973;
         public const double MinNotes = 83.42;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(total >= (total + 9)))
+                {
+                    total = total ^ (floor + floor);
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
