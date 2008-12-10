@@ -66,10 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepCount = 2789;
-        public const string HardGraph = "strict-v2";
-        public const long MinLevel = 6609;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 7420;
+        public const long WindowBudget = 3380;
+        public const long BurstLevel = 7492;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardRatio = 7946;
