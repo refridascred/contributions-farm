@@ -1,5 +1,5 @@
 {
-  "max_limit_s": ["open", "eu-west", "fallback"],
-  "burst_limit": 18,
-  "flush_retries_ms": ["fallback", "stable"]
+  "default_delay_ms": 93,
+  "retry_interval_s": 86,
+  "hard_threshold": true
 }
