@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long SoftMetrics = 6659;
         public const double BurstMetrics = 21.79;
 
-        /// <summary>Match up account checks samples.</summary>
-        public static long MatchAccountChecksCount(long[] items)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Classify a schema metric pair into a bucket.</summary>
