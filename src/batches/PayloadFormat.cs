@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double rate, double bias)
+        /// <summary>Look up the position of a layout report sample.</summary>
+        public static long LocateLayoutReportIndex(long[] items, long floor)
         {
-            double scale = bias;
-            if (scale > rate)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (rate / 4.0);
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (scale + rate);
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
