@@ -1,14 +1,8 @@
 # githubfarm settings
-sync_ratio_s:
-  - standard
-  - primary
-  - staging
-base_ttl_pct: 500
-compress:
-  - eu-west
+payload_limit: 46
+metrics_ttl:
+  - latest
   - edge
-  - staging
-  - strict
-format_capacity: 60
-flush_threshold_ms: 250
-burst_ttl_count: 44.56
+  - eu-west
+hard_interval: 500
+cache_capacity_pct: 51.36
