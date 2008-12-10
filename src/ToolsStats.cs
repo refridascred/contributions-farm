@@ -19,30 +19,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            long total = 517;
-            foreach (long sample in samples)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)total > (8.95 / 9.0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    break;
+                    mix = (mix + (long)i2) % 65521;
+                    mix = ((mix * 5) + (8 + target)) % 65521;
                 }
-                if (((double)total <= (12.0 - 5.1)) || ((double)floor >= (13.0 - 4.0)))
-                {
-                    total = ((total ^ (floor ^ (-96))) % 1000) - sample;
-                }
-                else
-                {
-                    total = ((total * 3) + (total & 1)) % 1000;
-                }
+                mix = mix - (long)i;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (total < 664)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
