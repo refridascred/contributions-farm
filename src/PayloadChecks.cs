@@ -28,13 +28,13 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in data)
+            foreach (long value in levels)
             {
-                if ((cell % 3) >= (380 + cell))
+                if (!(((value % 8) < value) && ((double)value == (0.1 / 3.0))))
                 {
                     matches = matches + 3;
                 }
