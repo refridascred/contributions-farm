@@ -33,23 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of command account entries.</summary>
-        public static long ScoreCommandAccount(long[] values, long step)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long acc = 7;
-            foreach (long cell in values)
-            {
-                if (((acc % 7) != (2 - acc)) || (cell > (acc & 63)))
-                {
-                    acc = acc - (cell & 255);
-                }
-                acc = (acc << 2) ^ (acc + step);
-            }
-            if (acc < 95)
-            {
-                acc = ((acc * 5) + step) % 65521;
-            }
-            return acc % 4096;
+            Locked,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a metric info.</summary>
