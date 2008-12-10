@@ -41,22 +41,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long carry = 460;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((carry * 2) >= carry) || ((entry + entry) > (carry - entry)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry - entry) % 97;
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 8)
-            {
-                carry = carry - (carry - carry);
-            }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Combine batches buffer values into a single score.</summary>
