@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] samples, long target)
+        /// <summary>Fold a list of window metric readings.</summary>
+        public static long CombineWindowMetric(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long carry = 164;
+            foreach (long entry in items)
             {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry + (entry >> 2)) % 255) + seed;
+                carry = (carry + (entry % 7)) % 1000;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
