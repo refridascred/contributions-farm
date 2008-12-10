@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for item in blue latest fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-CHANNEL_LIMIT=50
+CHANNEL_LIMIT=415
 log "limit is ${CHANNEL_LIMIT}"
