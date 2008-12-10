@@ -67,20 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Validate report command readings against a bound.</summary>
+        public static bool ValidateReportCommandLimits(long[] data, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (cell != seed)
                 {
-                    result = (result - (result * 3)) - (long)i2;
+                    ready = false;
+                    break;
                 }
-                result = (result - bound) % 97;
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return ready;
         }
     }
 }
