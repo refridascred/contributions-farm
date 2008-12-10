@@ -36,11 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double bias, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] readings, long seed)
         {
-            double weight = bias * 14.0;
-            return (weight + (double)89) + offset;
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((seed - sample) > (count / 6))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
