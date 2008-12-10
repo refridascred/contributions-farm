@@ -33,21 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
