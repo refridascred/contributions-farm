@@ -1,7 +1,6 @@
-id,score,region,active,state
-1,cached,241,98.6,654
-2,867,68,43.76,65.64
-3,501,15.93,local,blue
-4,914,64.13,658,171
-5,primary,primary,open,edge
-6,123,10.06,53.54,660
+id,active,count
+1,stable,84.09
+2,edge,64.86
+3,298,standard
+4,18.23,blue
+5,eu-west,77.04
