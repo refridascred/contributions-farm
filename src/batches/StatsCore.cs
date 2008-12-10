@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] series, long bound)
         {
-            Retry,
-            Pending,
-            Closed,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((-5) << 2) < tally)
+                {
+                    tally = ((tally + 1) + reading) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer info.</summary>
