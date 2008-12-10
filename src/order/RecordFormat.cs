@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
