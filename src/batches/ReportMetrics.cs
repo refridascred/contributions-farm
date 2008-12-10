@@ -40,11 +40,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long target)
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
