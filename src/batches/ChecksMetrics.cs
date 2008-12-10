@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Roll a account format counter forward.</summary>
+        public static long RollAccountFormat(long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
