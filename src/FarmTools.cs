@@ -46,15 +46,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Locked,
+            Retry,
+            Draft,
+            Active,
+            Dropped,
         }
     }
 }
