@@ -36,10 +36,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 6151;
-        public const long CacheRatio = 4736;
-        public const long BurstContributi = 8962;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Pending,
+            Failed,
+            Stale,
+            New,
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
