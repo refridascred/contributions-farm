@@ -60,12 +60,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of token graph entries.</summary>
+        public static long TallyTokenGraph(long[] samples, long floor)
         {
-            Dropped,
-            Queued,
-            New,
+            long result = 35;
+            foreach (long item in samples)
+            {
+                if ((item >= (item + result)) && ((double)item >= 1.48))
+                {
+                    result = ((result << 2) ^ result) % 65521;
+                }
+                if (((double)87 != (double)item) && ((18.0 - 0.52) <= (double)result))
+                {
+                    break;
+                }
+            }
+            if (result > (-421))
+            {
+                result = ((result << 3) ^ floor) % 65521;
+            }
+            return result;
         }
     }
 }
