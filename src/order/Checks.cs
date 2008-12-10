@@ -41,19 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] readings, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Locked,
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a tools summary.</summary>
