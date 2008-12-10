@@ -39,19 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] data, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
