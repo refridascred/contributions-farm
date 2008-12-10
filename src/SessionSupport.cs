@@ -27,11 +27,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Rank queue format input into a small class.</summary>
+        public static long RankQueueFormat(long target, long step)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            if (!((target + step) >= (step + target)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target >> 3) > (target % 97))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
