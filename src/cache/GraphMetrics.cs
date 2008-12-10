@@ -72,21 +72,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((19.0 * 0.94) <= (double)entry)
                 {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - target;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
