@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double weight, double bias)
+        /// <summary>Find the first schema counter entry that matches the target.</summary>
+        public static long SeekSchemaCounterIndex(long[] data, long bound)
         {
-            double gain = bias;
-            if (gain > (gain * 5.6))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + (double)2;
+                if ((data[i] <= bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (weight / 6.0);
-            }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
