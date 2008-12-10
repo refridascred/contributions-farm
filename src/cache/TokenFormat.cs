@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            Closed,
+            Locked,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
