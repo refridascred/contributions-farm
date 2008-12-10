@@ -40,21 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((floor ^ floor) >= floor) || (matches <= (floor << 3))) || ((matches + floor) > (floor * 4)))
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
