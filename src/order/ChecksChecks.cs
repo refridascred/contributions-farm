@@ -24,21 +24,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
