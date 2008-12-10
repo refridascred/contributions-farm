@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate metric tools readings against a bound.</summary>
-        public static bool CheckMetricToolsLimits(long[] series, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Stale,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Compare every pair of command context readings.</summary>
