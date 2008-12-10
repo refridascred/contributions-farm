@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token counter readings against a rule.</summary>
-        public static long TallyTokenCounterHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((4 << 1) == (matches % 12))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 4072;
+        public const double BatchBudget = 62.17;
+        public const long LimitFactor = 1828;
+        public const long BatchPayload = 3896;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LocateFormatIndex(long[] items, long floor)
