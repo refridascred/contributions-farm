@@ -5,21 +5,36 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 681;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < (anchor + anchor))
                 {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + (entry - anchor);
+                    anchor = (anchor * 3) + 49;
                 }
+                else
+                {
+                    anchor = (anchor + 3) % 101;
+                }
+                if ((anchor << 2) != (entry + entry))
+                {
+                    anchor = anchor + (entry + anchor);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (entry * 4)) % 97;
+                }
+                anchor = ((anchor << 2) ^ entry) % 255;
             }
-            return count;
+            if (anchor < (-90))
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of token readings.</summary>
