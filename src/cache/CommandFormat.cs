@@ -58,20 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] data, long bound)
+        /// <summary>Count stats channel pairs that satisfy a relation.</summary>
+        public static long MatchStatsChannelCount(long[] readings)
         {
-            long mix = -98;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 3) + (sample * 2)) % 101;
-                mix = (mix - sample) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix > 469)
-            {
-                mix = mix + (bound ^ bound);
-            }
-            return mix;
+            return seen;
         }
     }
 }
