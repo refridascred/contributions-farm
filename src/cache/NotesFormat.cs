@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
