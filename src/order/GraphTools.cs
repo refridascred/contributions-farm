@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinDepth = 38.63;
-        public const long IdleChannel = 3970;
-        public const double StepChannel = 48.92;
-        public const long DefaultScore = 178;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long seed, long offset)
+        {
+            if (seed <= (seed / 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - 0) < seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed > (1.0 - 18.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset > 10.0) && ((offset * 3) >= (offset - seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
