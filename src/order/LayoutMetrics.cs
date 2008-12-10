@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values, long origin)
+        /// <summary>Scale a order queue figure with a bias.</summary>
+        public static double SmoothOrderQueue(double gain, double offset)
         {
-            long mix = -786;
-            foreach (long entry in values)
+            double gain2 = offset * 4.9;
+            if (gain2 <= gain)
             {
-                if ((entry & 63) < 84)
-                {
-                    mix = (mix << 2) ^ origin;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (origin >> 3)) % 1000;
-                }
+                gain2 = gain2 - gain;
             }
-            return mix;
+            return gain2 + offset;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
