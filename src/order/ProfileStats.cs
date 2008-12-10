@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] readings, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] values)
         {
-            long anchor = -44;
-            foreach (long cell in readings)
+            long carry = 63;
+            foreach (long sample in values)
             {
-                anchor = (((anchor << 3) ^ (cell / 4)) % 1000) + seed;
+                if ((sample / 8) > 5)
+                {
+                    carry = (carry - sample) % 101;
+                }
             }
-            return anchor % 1000;
+            if (carry < 0)
+            {
+                carry = ((carry * 2) + (carry * 5)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a buffer stats.</summary>
