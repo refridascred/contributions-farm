@@ -27,24 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank queue format input into a small class.</summary>
-        public static long RankQueueFormat(long target, long step)
+        /// <summary>Locate a editor cluster reading by value.</summary>
+        public static long LocateEditorClusterIndex(long[] series, long seed)
         {
-            if (!((target + step) >= (step + target)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 3) > (target % 97))
+                if (series[i] > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
