@@ -12,16 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Compare every pair of cluster schema readings.</summary>
+        public static long CompareClusterSchemaCount(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ (state * 4)) % 101;
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
