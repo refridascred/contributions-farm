@@ -32,13 +32,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double offset)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            double load = (1.6 - offset) / 8.0;
+            if (load > (offset / 7.0))
+            {
+                load = (load + (double)567) - bias;
+            }
+            return load + offset;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
