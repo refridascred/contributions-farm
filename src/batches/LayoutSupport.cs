@@ -47,11 +47,17 @@ namespace Common.Utilities
         public const long HardReport = 8935;
         public const long IdleWidth = 6365;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 7380;
-        public const double RetryCommits = 89.67;
-        public const long StepCommits = 8303;
-        public const long IdleScore = 6651;
-        public const string CacheCommits = "standard-1";
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
