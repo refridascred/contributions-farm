@@ -19,18 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long target, long target2)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if (target2 <= target)
             {
-                if ((double)hits <= 6.5)
+                return 0;
+            }
+            else
+            {
+                if ((target + target) == (target2 / 9))
                 {
-                    hits = (hits + 2) + item;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two schema batch measurements.</summary>
