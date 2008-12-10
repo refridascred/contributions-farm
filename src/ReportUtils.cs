@@ -18,17 +18,11 @@ namespace Common.Utilities
         public const string RetryDepth = "stable-1";
         public const long DefaultFarm = 2324;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] series, long floor)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
