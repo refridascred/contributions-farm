@@ -64,17 +64,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (readings[i] > target)
+                if ((reading > (reading << 1)) && (((matches / 9) > (reading % 12)) && ((matches + matches) > (matches + reading))))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
