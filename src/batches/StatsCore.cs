@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] items, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 45;
+            foreach (long entry in readings)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
+                acc = acc - (entry % 97);
+                if ((entry & 7) >= entry)
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (entry & 31)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 4) + 7;
+                }
+                if ((entry << 2) >= (18 ^ entry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate batch samples.</summary>
