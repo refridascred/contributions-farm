@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] values, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (count <= (datum + datum))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Compare every pair of command context readings.</summary>
