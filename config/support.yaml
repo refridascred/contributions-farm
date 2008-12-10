@@ -1,5 +1,16 @@
 # support settings
-account_interval: 250
-cache_timeout: false
-retry_interval_s: 32.13
-warm_limit_pct: 100
+retry_ttl_s: 374
+soft_depth_pct:
+  metric_delay: 7352
+  default_threshold: true
+  default_window_ms:
+    verbose: 86.05
+    stream_timeout: latest
+    compress: open
+    default_depth: 7835
+notes_ttl:
+  - fallback
+  - primary
+retry_timeout_count: legacy
+poll_ttl_count: 30
+enabled: 58.73
