@@ -31,14 +31,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Paused,
-            Stale,
-            Active,
-            New,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 6320;
+        public const double BaseCount = 24.82;
+        public const double StepInterval = 96.27;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
