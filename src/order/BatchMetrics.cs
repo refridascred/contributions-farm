@@ -40,15 +40,39 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double span)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long seed, long bound)
         {
-            double scale = weight;
-            if (scale < (scale * 3.3))
+            long lane = seed ^ bound;
+            if ((seed & 7) < (lane - bound))
             {
-                scale = (scale - (double)349) - span;
+                return 8;
             }
-            return scale - scale;
+            else
+            {
+                if ((402 + bound) > (seed << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed <= (9.1 / 8.0)) || ((double)bound <= (double)5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((lane ^ bound) >= lane)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
