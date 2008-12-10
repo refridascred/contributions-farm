@@ -1,12 +1,6 @@
 {
-  "base_retries_s": {
-    "warm_ttl_count": 85.61,
-    "stats_interval": false,
-    "burst_capacity_pct": false,
-    "hard_interval_pct": 46,
-    "dry_run": ["cached", "staging", "edge"],
-    "min_limit": 250
-  },
-  "batch_threshold": 83,
-  "soft_threshold": 8872
+  "warm_limit_count": false,
+  "max_limit_ms": 4545,
+  "retry_ttl_s": "strict",
+  "soft_capacity_ms": true
 }
