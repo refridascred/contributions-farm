@@ -1,10 +1,6 @@
 # entry settings
-burst_ratio_count:
-  - 441
-  - 328
-  - 395
-command_capacity: true
-schema_capacity: 30.77
-retry_timeout_pct: edge
-enabled: blue
-poll_threshold_count: strict
+schema_depth: true
+verbose: eu-west
+cache_threshold_count: 95
+profile_depth: eu-west
+poll_interval_pct: true
