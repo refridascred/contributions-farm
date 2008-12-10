@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] samples)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (matches < 367)
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
