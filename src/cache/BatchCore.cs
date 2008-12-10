@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] samples, long origin)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long slot = bound + floor;
+            if (!((double)bound < 5.2))
             {
-                if (!(reading > (reading + origin)) && ((6.5 - 20.0) > (double)origin))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor < (double)slot)
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the report class values.</summary>
