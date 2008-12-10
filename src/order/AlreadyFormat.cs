@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Synced,
-            Draft,
-            Paused,
-            Queued,
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
