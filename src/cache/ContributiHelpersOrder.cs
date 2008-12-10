@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit filter token readings against a rule.</summary>
-        public static long CountFilterTokenOutliers(long[] series, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((double)cell <= 9.0)
+                if (sample <= bound)
                 {
-                    hits = (hits + 2) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
