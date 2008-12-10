@@ -1,6 +1,5 @@
 # githubfarm settings
-min_size_ms: 250
-hard_interval_pct: 7596
-flush_capacity: cached
-strict: 9360
-flush_timeout_count: 2789
+enabled: staging
+sync_ratio_pct: 1174
+buffer_ttl: 65.35
+poll_interval_count: true
