@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long LimitNotes = 4198;
         public const long RetryWidth = 1207;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long origin)
         {
-            Active,
-            Idle,
-            Dropped,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
