@@ -33,10 +33,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleFactor = 34.01;
-        public const double RetryLevel = 94.34;
-        public const string CacheSize = "staging-1";
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
