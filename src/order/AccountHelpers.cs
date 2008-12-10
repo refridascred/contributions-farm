@@ -56,18 +56,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] items, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)count < (double)item)
+                if ((items[i] >= limit) && ((items[i] % 3) == 0))
                 {
-                    count = (count + 1) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a layout summary.</summary>
