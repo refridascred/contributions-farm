@@ -1,30 +1,7 @@
 # support settings
-warm_ratio_ms: 40
-stream_timeout: strict
-compress:
-  verbose: true
-  warm_depth_ms:
-    retry_ttl: primary
-    readonly: local
-    cache_ttl_s: 41
-  poll_depth: 84
-  base_ttl_count: false
-cache_limit:
-  flush_limit_pct:
-    cluster_window: 55.88
-    cluster_depth: local
-    compress: primary
-    poll_delay_count: 60.19
-    min_capacity:
-      - 441
-      - 405
-      - 283
-    enabled: false
-  soft_capacity: 100
-  sync_retries_pct:
-    - 64
-    - 218
-    - 37
-    - 197
-cache_threshold_count: green
-min_limit_pct: primary
+max_interval_count:
+  - 20
+  - 428
+  - 266
+readonly: 59
+warm_threshold: strict
