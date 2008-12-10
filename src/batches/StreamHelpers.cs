@@ -35,18 +35,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] items, long floor)
+        /// <summary>Audit report route readings against a rule.</summary>
+        public static long CountReportRouteOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((hits - floor) <= hits)
+                if (matches <= (cell - cell))
                 {
-                    hits = (hits + 2) - item;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the stats format series from a seed.</summary>
