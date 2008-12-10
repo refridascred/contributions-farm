@@ -36,25 +36,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples)
-        {
-            long result = 81;
-            foreach (long item in samples)
-            {
-                if (result >= (item ^ item))
-                {
-                    result = result ^ (item + item);
-                    result = result - (item << 2);
-                }
-                else
-                {
-                    result = (result + (result % 97)) % 1000;
-                }
-                result = (result * 2) + (item % 10);
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 6151;
+        public const long CacheRatio = 4736;
+        public const long BurstContributi = 8962;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
