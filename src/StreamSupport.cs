@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long offset)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up already samples.</summary>
