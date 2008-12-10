@@ -51,12 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public bool Limit { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
