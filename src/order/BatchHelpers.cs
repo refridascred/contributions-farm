@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double rate, double floor)
         {
-            Stale,
-            Failed,
-            Closed,
-            Pending,
-            Locked,
+            double rate2 = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = ((rate2 + (floor / 6.0)) - (double)(long)i) - rate;
+            }
+            return rate2 - (rate2 / 2.0);
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
