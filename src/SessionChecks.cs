@@ -59,12 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] levels, long step)
         {
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
