@@ -1,9 +1,6 @@
-id,weight,level
-1,649,855
-2,65.19,standard
-3,57.67,77.66
-4,staging,960
-5,stable,stable
-6,edge,224
-7,fallback,cached
-8,15.51,734
+id,rank,state,weight
+1,primary,85.41,71
+2,523,53.54,strict
+3,104,485,648
+4,88.98,945,cached
+5,997,standard,80.07
