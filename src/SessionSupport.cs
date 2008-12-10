@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Queued,
-            Retry,
-            New,
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the checks mode values.</summary>
