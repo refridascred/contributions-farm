@@ -48,21 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count route record pairs that satisfy a relation.</summary>
-        public static long CompareRouteRecordCount(long[] levels)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Queued,
+            Failed,
         }
     }
 }
