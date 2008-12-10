@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] values, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mark = 136;
-            foreach (long sample in values)
-            {
-                if (step < sample)
-                {
-                    mark = ((mark * 3) + mark) % 101;
-                }
-            }
-            if (mark < (-940))
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark;
+            Idle,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
