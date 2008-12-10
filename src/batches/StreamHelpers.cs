@@ -38,12 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] levels)
         {
-            Pending,
-            Failed,
-            Ready,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item == (5.26 / 4.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
