@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of profile contributi readings.</summary>
-        public static long WeighProfileContributi(long[] data, long seed)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long state = 98;
-            foreach (long value in data)
-            {
-                if ((seed ^ state) > (seed + state))
-                {
-                    state = ((state ^ seed) % 101) - value;
-                }
-            }
-            return state % 97;
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
