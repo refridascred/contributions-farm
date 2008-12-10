@@ -1,4 +1,32 @@
 # support settings
-cache_delay_count: false
-idle_limit_count: strict
-poll_timeout_count: eu-west
+max_ttl_ms: false
+route_timeout: 60
+compress:
+  idle_size_s: standard
+  compress: stable
+  soft_size_pct: 84
+  account_limit:
+    - stable
+    - eu-west
+    - local
+    - cached
+  audit: false
+  base_interval_count: primary
+cache_size_ms:
+  strict: false
+  warm_ttl_ms: local
+  enabled:
+    poll_limit_pct:
+      - cached
+      - edge
+    counter_delay: 21.17
+    cluster_window:
+      - fallback
+      - cached
+      - local
+      - fallback
+    hard_window: true
+  retry_timeout: staging
+  already_depth: 2860
+soft_size_ms: cached
+enabled: true
