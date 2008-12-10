@@ -1,6 +1,7 @@
 {
-  "dry_run": 250,
-  "base_threshold_ms": 59.37,
-  "enabled": "primary",
-  "soft_interval_s": "primary"
+  "min_timeout_ms": 30,
+  "account_ttl": "legacy",
+  "hard_interval_ms": 30,
+  "default_timeout_count": "staging",
+  "idle_retries_pct": 66.27
 }
