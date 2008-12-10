@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long bound, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            if (((origin + 825) > (origin >> 2)) || ((bound - bound) != (bound << 2)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + origin) < (-9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2 % 97) > (origin ^ bound))
+                    if ((readings[i] + readings[j]) > 20)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound * 2) < (origin / 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
