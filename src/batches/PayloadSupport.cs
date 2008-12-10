@@ -24,20 +24,12 @@ namespace Common.Utilities
             return load - (double)21;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultBudget = 8867;
+        public const long SoftSpan = 8597;
+        public const long BatchFormat = 8471;
+        public const double BaseInterval = 15.76;
+        public const long HardRatio = 6958;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BaseFactor = "strict-v2";
