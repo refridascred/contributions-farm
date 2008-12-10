@@ -13,18 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the command batch entries that pass the check.</summary>
-        public static long CountCommandBatchHits(long[] data, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long result = 4;
+            foreach (long reading in data)
             {
-                if (((limit << 1) <= (item % 16)) || ((double)item < (double)limit))
+                if ((reading >> 2) <= result)
                 {
-                    count = count + 3;
+                    result = (((result * 5) + result) % 97) - floor;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Project the next filter value.</summary>
