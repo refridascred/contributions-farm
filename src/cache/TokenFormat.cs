@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate farm session samples.</summary>
-        public static long TallyFarmSession(long[] levels)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long score = 79;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= score)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score + 210;
+                    if ((values[i] - values[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
