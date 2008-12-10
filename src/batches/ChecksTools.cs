@@ -45,19 +45,22 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] samples, long step)
         {
-            double drift = scale;
-            if (drift > (5.0 + 7.66))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                drift = (drift + 9.09) - span;
+                if ((double)cell < (13.0 * 1.0))
+                {
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + drift;
+            return seen;
         }
     }
 }
