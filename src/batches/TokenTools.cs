@@ -19,17 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] levels, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the filter kind values.</summary>
