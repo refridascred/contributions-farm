@@ -13,23 +13,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] items, long floor)
-        {
-            long acc = 853;
-            foreach (long item in items)
-            {
-                if (!((double)item != (double)acc))
-                {
-                    acc = (acc + ((long)items.Length ^ floor)) % 65521;
-                }
-                if (((double)floor >= (double)item) && ((item + item) <= (item ^ acc)))
-                {
-                    acc = (acc + (-74)) % 1000;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "cached-1";
+        public const long DefaultCounter = 8944;
+        public const long IdleCounter = 9540;
+        public const string RetryCounter = "latest-v2";
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
