@@ -38,39 +38,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a channel cluster pair into a bucket.</summary>
-        public static long RankChannelCluster(long origin, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long span = origin + limit;
-            if ((span * 3) > (origin << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((span + limit) == (span >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + span) != (origin & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin >> 4) >= limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
