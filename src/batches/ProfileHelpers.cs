@@ -36,18 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] readings, long seed)
+        /// <summary>Project the next counter profile value.</summary>
+        public static double AdjustCounterProfile(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double bias = (double)(165 / 4);
+            if (bias > floor)
             {
-                if ((seed - sample) > (count / 6))
-                {
-                    count = count + 2;
-                }
+                bias = bias - bias;
             }
-            return count;
+            else
+            {
+                bias = bias + (double)(-5);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)8) - (double)(long)i;
+            }
+            return bias + gain;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
