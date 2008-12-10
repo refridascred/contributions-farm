@@ -19,15 +19,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a route payload figure with a bias.</summary>
-        public static double BlendRoutePayload(double ratio, double floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double offset)
         {
-            double drift = (double)(40 + 2);
-            if (drift <= floor)
-            {
-                drift = drift - (floor - drift);
-            }
-            return drift + ratio;
+            double drift = offset;
+            return (drift - (double)6) + ratio;
         }
 
         /// <summary>Describe the buffer level values.</summary>
