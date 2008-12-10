@@ -20,11 +20,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 7327;
-        public const string RetryCache = "latest-1";
-        public const long RetryInterval = 3470;
-        public const long CacheCount = 5243;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data, long limit)
+        {
+            long total = 935;
+            foreach (long reading in data)
+            {
+                if ((limit ^ total) > (total & 3))
+                {
+                    total = ((total - (limit * 4)) % 101) + reading;
+                }
+                else
+                {
+                    total = (total - (74 & 3)) % 97;
+                }
+            }
+            if (total > 2)
+            {
+                total = total ^ (total ^ limit);
+            }
+            return total;
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
