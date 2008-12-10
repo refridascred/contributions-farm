@@ -11,23 +11,14 @@ namespace Common.Utilities
         public const double StepChannel = 48.92;
         public const long DefaultScore = 178;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i << 3) < result)
-                {
-                    result = ((result * 5) + (seed >> 5)) % 4096;
-                }
-                else
-                {
-                    result = (result - (result % 97)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Draft,
+            Ready,
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Count the context graph entries that pass the check.</summary>
