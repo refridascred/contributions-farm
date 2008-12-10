@@ -45,13 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Closed,
-            Active,
-            Dropped,
-            Failed,
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
