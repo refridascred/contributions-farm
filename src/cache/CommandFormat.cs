@@ -13,18 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long state = 55;
-            foreach (long value in data)
-            {
-                if (9.2 > (double)state)
-                {
-                    state = (((state * 4) + (value / 5)) % 4096) - origin;
-                }
-            }
-            return state;
+            Paused,
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Project the next payload value.</summary>
