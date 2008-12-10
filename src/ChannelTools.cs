@@ -25,11 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long step, long step2)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            if ((double)step == (3.0 * 12.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step2 != (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
