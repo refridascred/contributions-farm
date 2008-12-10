@@ -94,17 +94,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] data, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 5) != 0))
+                if ((anchor + target) >= anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) % 4096;
+                    anchor = anchor - (target << 1);
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
