@@ -67,13 +67,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] data, long step)
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
