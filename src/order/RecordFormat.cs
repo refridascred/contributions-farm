@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Digest a series of metrics tools entries.</summary>
+        public static long WeighMetricsTools(long[] data, long offset)
         {
-            long sum = -7;
-            foreach (long value in series)
+            long score = 6;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 3; i++)
+                if (((10.0 * 12.0) < (double)score) || ((score << 2) >= (value >> 3)))
                 {
-                    long seen = 247 + (0 + (long)i);
-                    sum = (sum - (seen - seen)) % 97;
-                }
-                sum = (sum ^ (value << 1)) % 101;
-                if ((value & 15) >= value)
-                {
-                    break;
+                    score = ((score * 3) + (value + value)) % 97;
                 }
             }
-            if (sum > 909)
+            if (score < 29)
             {
-                sum = sum + (254 + sum);
+                score = ((score * 3) + offset) % 255;
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Hold a stats header.</summary>
