@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((long)readings.Length < (entry / 6))
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowSize = 15.55;
+        public const long StepCount = 8033;
+        public const double RetrySize = 3.03;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxWidth = 2353;
