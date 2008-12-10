@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] readings, long target)
         {
-            public double Owner { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
