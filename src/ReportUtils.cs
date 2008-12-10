@@ -24,10 +24,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftRatio = "primary-edge";
-        public const long MinSpan = 210;
-        public const long MinBudget = 5912;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxCounter = 8676;
