@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=218
+COMMAND_LIMIT=85
 log "limit is ${COMMAND_LIMIT}"
 
-for item in edge latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
