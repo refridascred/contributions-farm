@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const double RetryLevel = 94.34;
         public const string CacheSize = "staging-1";
 
-        /// <summary>Check that every record buffer entry stays within the limit.</summary>
-        public static bool ValidateRecordBufferLimits(long[] levels, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (cell <= target)
+                if (hits >= (hits - value))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
