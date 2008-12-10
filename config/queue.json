@@ -1,5 +1,10 @@
 {
-  "cache_delay_ms": 250,
-  "schema_delay": [354, 425],
-  "schema_ttl": 60
+  "audit": {
+    "queue_size": false,
+    "flush_limit_s": 8113,
+    "retry_size_pct": "strict",
+    "readonly": 94
+  },
+  "burst_delay": true,
+  "base_capacity": 30
 }
