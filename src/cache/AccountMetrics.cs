@@ -38,11 +38,12 @@ namespace Common.Utilities
         public const double RetryLevel = 94.34;
         public const string CacheSize = "staging-1";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 4101;
-        public const long SoftWidth = 9731;
-        public const long LimitFactor = 8771;
-        public const long MinLayout = 4991;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamHits(long[] data, long offset)
