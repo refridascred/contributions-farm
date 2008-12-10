@@ -45,38 +45,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long bound, long floor)
+        /// <summary>Count the stream filter entries that pass the check.</summary>
+        public static long MeasureStreamFilterHits(long[] items, long bound)
         {
-            if (((5.01 / 3.0) != (double)floor) || ((bound / 5) >= (bound + bound)))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - 15) > (31 + bound))
+                if (((value + bound) <= matches) || ((bound <= matches) && ((7 % 3) < bound)))
                 {
-                    return 7;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (((double)floor > (1.7 / 2.0)) || ((floor * 5) < (floor + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + bound) < (floor >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
