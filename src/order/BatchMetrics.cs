@@ -41,21 +41,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Count session profile pairs that satisfy a relation.</summary>
+        public static long OverlapSessionProfileCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 6)
+                    if ((series[i] ^ series[j]) == 16)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank format input into a small class.</summary>
