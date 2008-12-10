@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Closed,
+            Queued,
             Dropped,
-            Paused,
-            Locked,
-            Done,
         }
 
         /// <summary>Project the next notes value.</summary>
