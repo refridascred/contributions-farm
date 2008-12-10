@@ -33,14 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Pending,
-            Queued,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "legacy-edge";
+        public const long IdleMetrics = 4610;
+        public const long BurstScore = 1244;
 
         /// <summary>Roll a route window counter forward.</summary>
         public static long StepRouteWindow(long limit)
