@@ -1,5 +1,6 @@
 {
-  "githubfarm_ratio": false,
-  "verbose": [90, 123, 378],
-  "idle_depth_count": 1
+  "warm_ttl_ms": 1024,
+  "cluster_ttl": 55,
+  "dry_run": [122, 489],
+  "batch_depth_s": "edge"
 }
