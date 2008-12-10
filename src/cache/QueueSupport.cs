@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2.0 / 6.0) >= (double)datum)
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first farm format entry that matches the target.</summary>
