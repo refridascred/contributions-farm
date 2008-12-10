@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank profile githubfarm input into a small class.</summary>
-        public static long GradeProfileGithubfarm(long target, long bound)
-        {
-            if ((2 & 31) >= bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound <= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound != (7.23 * 19.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowFilter = "local-edge";
+        public const string CacheFilter = "legacy-v2";
+        public const string BaseFilter = "cached-v2";
+        public const long BurstFactor = 373;
+        public const long HardFilter = 1311;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
