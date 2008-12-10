@@ -1,8 +1,6 @@
-id,label,score
-1,stable,144
-2,9,30.38
-3,767,40
-4,27,edge
-5,25.67,staging
-6,51,open
-7,71.93,0.26
+id,state,token,level
+1,485,51.74,90.38
+2,standard,96.44,467
+3,58.23,latest,35.98
+4,43.92,strict,545
+5,189,33.41,541
