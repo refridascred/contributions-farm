@@ -48,24 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((2.7 + 18.0) != (double)(long)i)
-                {
-                    acc = ((acc << 3) ^ (target - target)) % 101;
-                    acc = (acc + (acc & 15)) % 101;
-                }
-                if (((target << 1) <= acc) || ((double)target > 12.0))
-                {
-                    acc = (acc - (1 << 3)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
