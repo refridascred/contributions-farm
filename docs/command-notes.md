@@ -1,12 +1,12 @@
 # Command notes
 
-When a token fails, the report handler retries a few times before giving up.
-The batch module keeps token values in sync with the metrics cache.
-Each metrics is validated before it reaches the entry queue.
+Run the cluster check before changing any route limits.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep channel and session names short and lowercase.
 
 ## Guidelines
 
-- Keep entry values small
-- Validate batch input early
-- Review notes limits each release
-- Log every editor change
+- Validate metrics input early
+- Document new batches fields
+- Prefer profile defaults
+- Log every farm change
