@@ -27,15 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
         {
-            double ratio = bias;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                ratio = ((ratio + (bias - 6.8)) - (double)(long)i) + floor;
+                if ((566 % 5) >= (sample - tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return ratio + bias;
+            return tally;
         }
     }
 }
