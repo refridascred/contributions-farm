@@ -1,4 +1,15 @@
 # entry settings
-base_window_ms: true
-enabled: false
-audit: 44.0
+notes_depth:
+  - open
+  - eu-west
+  - legacy
+enabled:
+  - 228
+  - 263
+poll_window_count: 9465
+stream_delay: 250
+cache_limit_s: latest
+base_delay:
+  dry_run: 1024
+  strict: 71
+  batch_ttl_pct: 57.4
