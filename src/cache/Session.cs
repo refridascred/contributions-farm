@@ -43,39 +43,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long seed, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] samples, long floor)
         {
-            long slot = seed ^ bound;
-            if (slot > (seed + slot))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 2) <= (bound * 5))
+                if (floor >= (seen - seen))
                 {
-                    return 3;
+                    seen = (seen + 3) + item;
                 }
                 else
                 {
-                    if ((slot - bound) >= (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((slot / 7) <= (533 + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
