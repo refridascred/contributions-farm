@@ -42,11 +42,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double ratio, double offset)
         {
-            public bool Token { get; set; }
-            public double Count { get; set; }
+            double load = ratio + (double)557;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - 3.8) + (double)(long)i;
+            }
+            return load + (offset * 3.52);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
