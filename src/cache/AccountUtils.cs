@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of metrics already readings.</summary>
-        public static long MatchMetricsAlreadyCount(long[] items)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
