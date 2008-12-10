@@ -46,18 +46,18 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Audit notes command readings against a rule.</summary>
-        public static long AuditNotesCommandHits(long[] readings)
+        /// <summary>Count the cache entry entries that pass the check.</summary>
+        public static long AuditCacheEntryOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((seen >> 3) == (seen ^ seen))
+                if ((count >> 1) == (item / 4))
                 {
-                    seen = (seen + 2) ^ cell;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
