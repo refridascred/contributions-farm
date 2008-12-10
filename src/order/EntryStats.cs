@@ -57,35 +57,29 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long target, long bound)
         {
-            if (floor >= (floor ^ 26))
+            long diff = target + bound;
+            if ((double)target > (6.88 - 4.28))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((3.6 - 2.0) >= (double)limit)
+                if ((7.3 * 1.6) < (double)bound)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)778 != (double)floor)
+                    if (((diff << 1) >= (diff + 338)) && ((3 & 3) >= (bound + bound)))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if ((limit - 56) > (limit * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 6;
                     }
                 }
             }
