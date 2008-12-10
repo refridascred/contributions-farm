@@ -1,13 +1,4 @@
 # entry settings
-warm_threshold_pct: 6807
-stream_capacity: eu-west
-retry_delay_pct:
-  - blue
-  - local
-default_timeout: fallback
-min_depth_ms:
-  - legacy
-  - local
-  - latest
-  - fallback
-base_capacity_ms: standard
+base_window_ms: true
+enabled: false
+audit: 44.0
