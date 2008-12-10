@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
+        public static long TallyGithubfarmGraphMatches(long[] data, long offset)
         {
-            Closed,
-            Failed,
-            Retry,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum * 5) >= offset)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window status values.</summary>
