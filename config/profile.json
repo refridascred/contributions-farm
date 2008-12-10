@@ -1,13 +1,5 @@
 {
-  "poll_depth": false,
-  "verbose": 1024,
-  "soft_ttl": "latest",
-  "sync_size_pct": {
-    "base_interval_count": 100,
-    "verbose": 10,
-    "warm_delay_count": "standard",
-    "sync_limit_s": "cached",
-    "idle_size": 92,
-    "cache_window": false
-  }
+  "min_capacity": 92,
+  "sync_size_pct": "local",
+  "flush_timeout_ms": 19.02
 }
