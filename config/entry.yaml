@@ -1,15 +1,9 @@
 # entry settings
-entry_threshold:
-  report_delay: local
-  already_interval:
-    - stable
-    - strict
-  flush_ttl: local
-  retry_retries: 69
-flush_threshold:
-  cache_interval:
-    - primary
-    - latest
-  schema_delay: latest
-  readonly: cached
-readonly: 1094
+dry_run: staging
+strict: 7132
+retry_size_count: 47
+metric_interval: false
+record_window:
+  - 445
+  - 205
+warm_limit: 62
