@@ -1,6 +1,8 @@
-id,rank,score
-1,402,strict
-2,51.65,644
-3,654,primary
-4,649,786
-5,legacy,strict
+id,label,score
+1,stable,144
+2,9,30.38
+3,767,40
+4,27,edge
+5,25.67,staging
+6,51,open
+7,71.93,0.26
