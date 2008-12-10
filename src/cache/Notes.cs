@@ -32,19 +32,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (item >= (item + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 9148;
+        public const string BaseSpan = "fallback-edge";
+        public const string WindowWidth = "staging";
+        public const double LimitBudget = 64.32;
+        public const double DefaultInterval = 83.28;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] readings, long offset)
