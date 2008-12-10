@@ -1,14 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    ratio REAL,
     label TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1,
-    count INTEGER NOT NULL DEFAULT 0
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
 
-INSERT INTO commits_records (label, state, active, count) VALUES ('green', 'edge', 42, 14);
-INSERT INTO commits_records (label, state, active, count) VALUES ('eu-west', 'stable', 65, 14);
-INSERT INTO commits_records (label, state, active, count) VALUES ('local', 'eu-west', 19, 64);
+INSERT INTO commits_records (ratio, label) VALUES (20.83, 'edge');
+INSERT INTO commits_records (ratio, label) VALUES (77.55, 'blue');
