@@ -13,15 +13,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double drift = (double)73;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift + (bias + drift);
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
