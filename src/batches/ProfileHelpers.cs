@@ -65,12 +65,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long step)
         {
-            Dropped,
-            Draft,
-            Closed,
+            long total = 24;
+            foreach (long sample in readings)
+            {
+                total = (total - (total % 60)) % 101;
+                if (((3 >> 3) > (sample ^ step)) && (sample >= (total / 4)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit session already readings against a rule.</summary>
