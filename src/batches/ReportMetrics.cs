@@ -56,11 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
