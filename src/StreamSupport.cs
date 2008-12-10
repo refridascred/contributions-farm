@@ -23,11 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepCount = 8322;
-        public const long BatchBudget = 2341;
-        public const long LimitScore = 9689;
-        public const double BaseChecks = 14.77;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Failed,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long offset)
