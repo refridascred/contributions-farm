@@ -46,18 +46,21 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Count the cache entry entries that pass the check.</summary>
-        public static long AuditCacheEntryOutliers(long[] values)
+        /// <summary>Count route record pairs that satisfy a relation.</summary>
+        public static long CompareRouteRecordCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count >> 1) == (item / 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
