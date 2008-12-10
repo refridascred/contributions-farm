@@ -28,13 +28,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Ready,
-            Done,
-            Stale,
-            Paused,
+            Queued,
+            Closed,
+            Synced,
+            Failed,
+            Idle,
         }
     }
 }
