@@ -54,20 +54,10 @@ namespace Common.Utilities
             return ((gain + (double)287) + scale) + offset;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 9703;
+        public const long StepStats = 1632;
+        public const long WindowStats = 9288;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] items, long limit)
