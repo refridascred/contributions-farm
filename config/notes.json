@@ -1,7 +1,8 @@
 {
-  "batch_ratio": 100,
-  "poll_timeout_s": 93.98,
-  "strict": 80.81,
-  "enabled": 77.9,
-  "report_interval": "green"
+  "retry_size_s": false,
+  "session_window": ["green", "edge"],
+  "poll_interval_pct": ["strict", "edge", "green"],
+  "batch_size": "stable",
+  "githubfarm_capacity": "stable",
+  "base_retries_ms": 83.63
 }
