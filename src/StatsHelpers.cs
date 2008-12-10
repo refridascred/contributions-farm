@@ -25,11 +25,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values)
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
+            long score = 367;
+            foreach (long item in values)
+            {
+                if ((8.3 - 17.0) != (double)item)
+                {
+                    score = (score - item) % 1000;
+                    score = ((score * 2) + score) % 101;
+                }
+                else
+                {
+                    score = score ^ (item & 63);
+                }
+                score = ((score * 3) + (score + 369)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up cache batch samples.</summary>
