@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 7621;
-        public const long BaseLevel = 5278;
-        public const long MinLevel = 5188;
-        public const long LimitOrder = 7038;
-        public const string SoftOrder = "staging";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum <= (5 - 9)) && ((matches + matches) >= matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] values, long bound)
