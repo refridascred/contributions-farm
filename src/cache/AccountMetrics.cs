@@ -31,10 +31,11 @@ namespace Common.Utilities
         public const double RetryLevel = 94.34;
         public const string CacheSize = "staging-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 5115;
-        public const string MinSchema = "primary-1";
-        public const double MaxWidth = 62.04;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 4101;
+        public const long SoftWidth = 9731;
+        public const long LimitFactor = 8771;
+        public const long MinLayout = 4991;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterBounds(long[] levels, long offset)
