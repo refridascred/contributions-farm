@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "strict";
-        public const long WindowEditor = 9765;
-        public const double IdleEditor = 89.9;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values, long origin)
+        {
+            long total = 2;
+            foreach (long cell in values)
+            {
+                if ((total & 15) < (origin + origin))
+                {
+                    total = (total - (total + origin)) % 4096;
+                }
+                else
+                {
+                    total = total - (cell & 127);
+                }
+            }
+            if (total < (-78))
+            {
+                total = total + (27 * 3);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
