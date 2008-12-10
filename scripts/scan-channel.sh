@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=202
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge cached blue; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in green local; do
-    log "checking ${item}"
-done
