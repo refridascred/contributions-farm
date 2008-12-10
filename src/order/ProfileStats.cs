@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate schema notes samples.</summary>
+        public static long FoldSchemaNotes(long[] items)
         {
-            Pending,
-            Locked,
-            Paused,
+            long state = 3;
+            foreach (long value in items)
+            {
+                if (0 >= (value & 1))
+                {
+                    state = (state * 4) + (9 - value);
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine account values into a single score.</summary>
