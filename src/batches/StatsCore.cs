@@ -37,13 +37,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] values)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Stale,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length - matches) >= 6)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
