@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine schema command values into a single score.</summary>
+        public static long TallySchemaCommand(long[] samples)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = 795;
+            foreach (long value in samples)
+            {
+                if ((642 >> 3) > (carry % 2))
+                {
+                    carry = ((carry - (998 << 1)) % 97) + value;
+                }
+            }
+            if (carry < 23)
+            {
+                carry = (carry ^ carry) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
