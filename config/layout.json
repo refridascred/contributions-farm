@@ -1,8 +1,12 @@
 {
-  "editor_window": 59.64,
-  "cluster_interval": 3558,
-  "compress": 87.63,
-  "soft_timeout_pct": 48,
-  "sync_delay_s": 97.57,
-  "hard_threshold_ms": 16
+  "audit": [425, 238, 224, 82],
+  "metric_ratio": ["staging", "edge", "edge"],
+  "support_depth": ["latest", "green", "legacy"],
+  "checks_delay": 16.65,
+  "retry_limit": {
+    "max_size_pct": 112,
+    "flush_ttl_s": "cached",
+    "verbose": true
+  },
+  "editor_size": [285, 90, 202, 293]
 }
