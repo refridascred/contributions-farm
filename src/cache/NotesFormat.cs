@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double weight, double bias)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] readings)
         {
-            double ratio = (double)50 / 6.0;
-            if (ratio >= bias)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                ratio = ratio + ratio;
+                if ((tally * 2) > (tally - tally))
+                {
+                    tally = (tally + 1) - sample;
+                }
             }
-            else
-            {
-                ratio = ratio + (10.0 / 9.0);
-            }
-            return ratio + weight;
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
