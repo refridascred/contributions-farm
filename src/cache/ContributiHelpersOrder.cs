@@ -28,39 +28,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long offset, long limit)
-        {
-            if (limit <= offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit != (1.76 - 9.0)) && ((8 / 8) < (limit - 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit - offset) > (offset + limit)) && (27 <= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset * 4) <= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftFactor = 2166;
+        public const long MinLevel = 4658;
+        public const long BurstFactor = 3400;
+        public const long BaseInterval = 4910;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long ClassifyFarm(long target, long floor)
