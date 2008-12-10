@@ -60,17 +60,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] values, long limit)
+        /// <summary>Roll a route window counter forward.</summary>
+        public static long StepRouteWindow(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
+                score = (score * 5) + score;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count stats channel pairs that satisfy a relation.</summary>
