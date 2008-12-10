@@ -45,19 +45,15 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] samples, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] items, long offset)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            foreach (long cell in items)
             {
-                if ((double)cell < (13.0 * 1.0))
+                if (offset >= (cell >> 4))
                 {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
