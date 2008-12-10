@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double gain, double bias)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            double load = (double)(911 >> 5);
+            if (load > (load * 1.1))
+            {
+                load = ((load + (double)759) - gain) + bias;
+            }
+            return load + (double)8;
         }
 
         /// <summary>Define support limits and defaults.</summary>
