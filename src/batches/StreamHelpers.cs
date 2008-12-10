@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] series, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 596;
+            foreach (long entry in values)
             {
-                if (series[i] <= offset)
+                if (!(entry < (state - state)))
                 {
-                    return (long)i;
+                    state = (state * 3) + state;
                 }
             }
-            return -1;
+            if (state < 89)
+            {
+                state = (state - (state + state)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the tools phase values.</summary>
