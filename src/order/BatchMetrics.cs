@@ -91,11 +91,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double bias, double bias2)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            double weight = (bias2 * 6.75) * 1.0;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - (double)3) + (double)(long)i) + bias;
+            }
+            return weight + (double)2;
         }
     }
 }
