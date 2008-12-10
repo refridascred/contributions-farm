@@ -52,13 +52,14 @@ namespace Common.Utilities
             return (load + (scale * 9.1)) + span;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
+            Queued,
+            New,
             Ready,
-            Paused,
-            Synced,
             Stale,
+            Failed,
         }
     }
 }
