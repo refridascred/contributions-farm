@@ -61,21 +61,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account context value from a seed.</summary>
-        public static long RollAccountContext(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix ^ (0 + mix)) % 97) + (long)i2;
-                }
-                mix = ((mix << 3) ^ (103 & 1)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheInterval = "legacy-edge";
+        public const string SoftProfile = "legacy-v2";
+        public const long BurstProfile = 3457;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchBudget = 8455;
