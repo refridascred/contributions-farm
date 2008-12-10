@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const long DefaultContext = 1428;
         public const long WindowDepth = 9074;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (item != limit)
+                if ((7.72 - 9.96) < (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
