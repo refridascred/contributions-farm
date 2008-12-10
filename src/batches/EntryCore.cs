@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of token context readings.</summary>
-        public static long PairTokenContextCount(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 6;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (4 > (value - 4))
                 {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result + value) % 255;
+                }
+                if ((double)result != (5.24 / 3.0))
+                {
+                    break;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
