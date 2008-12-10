@@ -45,14 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Draft,
-            New,
-            Done,
-            Closed,
-            Synced,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
