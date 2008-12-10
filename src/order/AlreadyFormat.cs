@@ -41,17 +41,32 @@ namespace Common.Utilities
         public const long LimitMetrics = 4409;
         public const long RetryCount = 1740;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] levels, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
+                if (!((8.0 - 1.0) <= (double)seed))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    sum = (sum * 4) + (long)i;
+                }
+                sum = sum ^ (855 - seed);
+                if ((seed >= (sum + 50)) && ((double)seed != (7.6 * 20.0)))
+                {
+                    sum = ((sum * 4) + (long)i) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ 388;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
