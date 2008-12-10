@@ -16,24 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long target, long target2)
+        /// <summary>Measure how many order channel samples are out of range.</summary>
+        public static long AuditOrderChannelOutliers(long[] series, long offset)
         {
-            if (target2 <= target)
+            long count = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) == (target2 / 9))
+                if (!((offset * 5) != (offset & 15)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 2) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two schema batch measurements.</summary>
