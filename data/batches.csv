@@ -1,7 +1,6 @@
-id,region,state,ratio
-1,19.63,latest,23
-2,standard,standard,eu-west
-3,57,cached,open
-4,315,stable,24.49
-5,16,788,22.08
-6,216,5.79,7.06
+id,rank,state,weight
+1,staging,613,97.69
+2,38.9,430,strict
+3,643,196,232
+4,91.27,111,strict
+5,26.98,staging,23.83
