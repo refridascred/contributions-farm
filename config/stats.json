@@ -1,6 +1,7 @@
 {
-  "dry_run": 14.56,
-  "batch_ttl_s": 6241,
-  "cache_limit_s": [38, 479, 113],
-  "default_ratio_count": 4408
+  "enabled": 12.81,
+  "verbose": 60,
+  "flush_retries": 73,
+  "burst_interval_pct": "cached",
+  "retry_threshold_ms": "staging"
 }
