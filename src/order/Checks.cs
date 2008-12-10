@@ -39,27 +39,19 @@ namespace Common.Utilities
         public const string MinInterval = "strict-1";
         public const long CacheLevel = 5988;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] readings, long bound)
         {
-            long mark = 79;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if (entry != bound)
                 {
-                    mark = ((mark ^ (value - value)) % 65521) ^ (long)i;
-                    mark = ((mark << 2) ^ value) % 101;
-                }
-                if ((mark / 9) >= (mark + value))
-                {
-                    mark = ((mark << 3) ^ (157 << 3)) % 1000;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (814 + mark);
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return valid;
         }
 
         /// <summary>Describe the queue class values.</summary>
