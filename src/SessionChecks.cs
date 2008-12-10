@@ -41,11 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many format command samples are out of range.</summary>
+        public static long AuditFormatCommandMatches(long[] samples)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - count) > (datum & 63))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session stats.</summary>
