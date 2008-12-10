@@ -1,9 +1,25 @@
 # entry settings
-layout_ratio: true
-enabled: true
-readonly: 0.7
-checks_size: true
-cache_threshold_count:
-  - 77
-  - 382
-  - 278
+cache_depth:
+  hard_capacity_s: false
+  flush_capacity:
+    - stable
+    - blue
+  idle_ttl_count:
+    soft_limit_ms: 89.05
+    cache_depth_count: true
+    commits_capacity: 6100
+    soft_window_ms: 74
+    batch_delay_ms: false
+  max_timeout_count: 763
+  burst_interval_s: 14.66
+  warm_size_count:
+    farm_capacity: 76.58
+    notes_retries: edge
+    idle_capacity_count: primary
+    record_delay: stable
+    soft_ttl: false
+    metric_delay: 8574
+compress: 6619
+default_depth_ms: 6.94
+counter_ratio: 43.96
+retry_interval: 42
