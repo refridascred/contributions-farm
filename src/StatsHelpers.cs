@@ -13,19 +13,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] series, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long total = 9;
-            foreach (long value in series)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total * 4) + value) % 101;
-                if (((origin >> 4) <= origin) || (origin > (value / 4)))
-                {
-                    total = total + (total + origin);
-                }
+                mark = mark - (mark << 2);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
