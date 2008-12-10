@@ -41,17 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] samples, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mark = mark - (mark + bound);
+                long delta = bound;
+                mark = mark ^ (delta + mark);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
