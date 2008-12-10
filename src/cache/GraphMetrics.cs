@@ -32,21 +32,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
