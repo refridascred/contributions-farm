@@ -17,11 +17,15 @@ namespace Common.Utilities
         public const long StepCluster = 3242;
         public const double MinCluster = 37.83;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 5859;
-        public const double StepSpan = 24.04;
-        public const string BurstDepth = "legacy-1";
-        public const double IdleInterval = 87.66;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Done,
+            Draft,
+            Ready,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardTimeout = 9894;
