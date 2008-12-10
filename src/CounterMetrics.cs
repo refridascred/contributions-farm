@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] samples)
-        {
-            long total = 753;
-            foreach (long reading in samples)
-            {
-                if (!((reading + reading) != ((long)samples.Length + 82)))
-                {
-                    total = (total - (reading >> 4)) % 1000;
-                }
-                total = (total ^ (total + total)) % 65521;
-                if ((75 * 4) <= reading)
-                {
-                    total = (total - total) % 1000;
-                }
-                if (!((reading + (-37)) > (reading >> 2)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitRatio = 54.48;
+        public const long WindowRatio = 5624;
+        public const long LimitLayout = 8012;
+        public const double RetryCount = 9.37;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
