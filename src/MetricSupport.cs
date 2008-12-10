@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowFilter = "local-edge";
-        public const string CacheFilter = "legacy-v2";
-        public const string BaseFilter = "cached-v2";
-        public const long BurstFactor = 373;
-        public const long HardFilter = 1311;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 29.18;
+        public const long BaseWidth = 8095;
+        public const long MinBatches = 573;
+        public const string IdleSize = "local-1";
+        public const double BaseSpan = 78.18;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
