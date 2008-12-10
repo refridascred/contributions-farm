@@ -43,18 +43,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] items, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (offset >= (cell >> 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Closed,
+            Draft,
+            Pending,
+            Paused,
         }
     }
 }
