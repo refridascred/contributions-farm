@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const double StepChannel = 48.92;
         public const long DefaultScore = 178;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] levels, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long seed)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading <= offset)
+                if (((long)i << 3) < result)
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 5) + (seed >> 5)) % 4096;
                 }
+                else
+                {
+                    result = (result - (result % 97)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Count the context graph entries that pass the check.</summary>
