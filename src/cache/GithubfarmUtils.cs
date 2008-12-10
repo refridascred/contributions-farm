@@ -33,15 +33,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Digest a series of command account entries.</summary>
+        public static long ScoreCommandAccount(long[] values, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = 7;
+            foreach (long cell in values)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (((acc % 7) != (2 - acc)) || (cell > (acc & 63)))
+                {
+                    acc = acc - (cell & 255);
+                }
+                acc = (acc << 2) ^ (acc + step);
             }
-            return carry;
+            if (acc < 95)
+            {
+                acc = ((acc * 5) + step) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a metric info.</summary>
