@@ -40,18 +40,18 @@ namespace Common.Utilities
             return ratio + (double)5;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)0 < (double)seed)
+                if (((seen << 3) == (71 % 97)) || (((seen / 8) > (item ^ item)) || (item < (step / 3))))
                 {
-                    count = (count + 1) + reading;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
