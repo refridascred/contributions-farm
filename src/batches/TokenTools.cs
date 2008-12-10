@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
-        public static long TallyGithubfarmGraphMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 5) >= offset)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxFactor = 6345;
+        public const long CacheSpan = 2962;
+        public const long HardProfile = 8231;
+        public const long HardSize = 6864;
 
         /// <summary>Locate a metrics context reading by value.</summary>
         public static long LookupMetricsContextIndex(long[] readings, long offset)
