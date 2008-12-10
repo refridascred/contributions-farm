@@ -20,19 +20,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] data, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long origin, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long slot = origin ^ target;
+            if ((9.87 / 9.0) < (double)target)
             {
-                if (sample >= origin)
+                return 1;
+            }
+            else
+            {
+                if (2.9 > (double)target)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((slot + 9) < (slot + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
