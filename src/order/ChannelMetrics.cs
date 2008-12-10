@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next stream cache value.</summary>
