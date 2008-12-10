@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double gain, double offset)
         {
-            Idle,
-            Ready,
-            Failed,
-            Locked,
+            double drift = 1.0;
+            if (drift < offset)
+            {
+                drift = (drift - (double)54) - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (drift / 7.0)) + (double)(long)i;
+            }
+            return drift - (offset / 7.0);
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
