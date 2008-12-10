@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] items, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long result = 93;
+            foreach (long cell in series)
             {
-                if (item > floor)
+                if ((42 % 12) < (result ^ cell))
                 {
-                    ok = false;
+                    result = (result << 3) ^ (cell & 1);
+                }
+                else
+                {
+                    result = result ^ (cell & 255);
+                }
+                if (((10.0 / 3.0) <= (double)result) && ((result + 40) >= cell))
+                {
                     break;
                 }
             }
-            return ok;
+            if (result > 3)
+            {
+                result = (result + result) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Combine record values into a single score.</summary>
