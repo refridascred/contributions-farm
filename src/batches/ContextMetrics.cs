@@ -15,11 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] items, long bound)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((double)seen >= (16.0 - 0.4)) || (((double)seen >= (2.4 + 2.3)) || (bound <= (reading % 7))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
