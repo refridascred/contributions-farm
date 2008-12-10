@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (sum >= (limit + sum))
-                {
-                    sum = ((sum * 2) + (sum >> 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Stale,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
