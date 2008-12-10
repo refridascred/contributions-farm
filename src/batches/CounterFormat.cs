@@ -34,21 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count graph githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGraphGithubfarmCount(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally % 100) <= tally)
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
