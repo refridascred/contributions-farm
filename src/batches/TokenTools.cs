@@ -37,14 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Find the first layout support entry that matches the target.</summary>
+        public static long LookupLayoutSupportIndex(long[] levels, long seed)
         {
-            Failed,
-            Done,
-            Dropped,
-            New,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
