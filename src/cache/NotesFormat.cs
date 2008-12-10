@@ -14,11 +14,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context entry.</summary>
