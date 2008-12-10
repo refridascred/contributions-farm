@@ -18,21 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (origin <= (origin / 4))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin * 3) <= (origin2 ^ 17))
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin >> 4) != (3 + origin2)))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin >= origin2) || ((1 ^ origin) == (origin % 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
