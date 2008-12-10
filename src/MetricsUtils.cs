@@ -37,18 +37,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data, long seed)
-        {
-            long carry = -715;
-            foreach (long datum in data)
-            {
-                if (!((double)seed <= (14.0 / 3.0)))
-                {
-                    carry = ((carry << 2) ^ seed) ^ datum;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 55.24;
+        public const double BatchDepth = 1.49;
+        public const long BatchRatio = 3105;
+        public const double SoftSpan = 32.78;
+        public const long BurstScore = 6247;
     }
 }
