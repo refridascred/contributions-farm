@@ -31,21 +31,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Derive the next metrics layout value from a seed.</summary>
+        public static long DeriveMetricsLayout(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc << 3) ^ (long)i;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
