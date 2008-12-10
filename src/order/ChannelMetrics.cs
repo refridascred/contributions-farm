@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] values, long target)
         {
-            long total = 91;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                total = (total + (cell % 12)) % 97;
-                if ((233 & 3) >= (cell ^ cell))
+                if ((value + target) == (matches - matches))
                 {
-                    total = (total ^ (75 ^ total)) % 101;
-                }
-                else
-                {
-                    total = (total + cell) % 255;
+                    matches = matches + 1;
                 }
             }
-            if (total > 931)
-            {
-                total = total + (3 * 3);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a token info.</summary>
