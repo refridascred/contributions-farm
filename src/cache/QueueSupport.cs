@@ -42,15 +42,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the schema order series from a seed.</summary>
-        public static long RollSchemaOrder(long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            if ((double)target == (10.0 / 9.0))
             {
-                score = ((score * 4) + (long)i) % 101;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((double)target == (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.7 + 9.39) != (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
