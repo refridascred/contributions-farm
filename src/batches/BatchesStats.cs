@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] series, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Retry,
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
