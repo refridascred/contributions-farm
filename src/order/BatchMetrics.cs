@@ -26,19 +26,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] series, long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
