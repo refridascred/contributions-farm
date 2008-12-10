@@ -1,74 +1,16 @@
 # githubfarm settings
-batches_limit: false
-compress:
-  tools_window:
-    idle_ratio_s: local
-    burst_threshold_ms: local
-    filter_delay: true
-    enabled:
-      - 211
-      - 306
-    already_interval:
-      - 366
-      - 426
-      - 86
-  min_depth_count: cached
-  soft_limit_ms:
-    hard_interval: 5911
-    stream_retries: 9
-    enabled: 1576
-    window_window: 60
-    hard_delay: local
-  poll_depth:
-    - eu-west
-    - staging
-    - primary
-    - legacy
-  layout_window:
-    stream_interval: 24
-    retry_threshold_count: primary
-    report_ratio: 29.41
-    enabled: 52.63
-sync_retries:
-  - open
-  - standard
-  - primary
-  - edge
-sync_delay_pct:
-  poll_depth: true
-  warm_window_count: true
-  compress:
-    - blue
-    - standard
-    - legacy
-    - legacy
-  batch_depth_s: blue
-readonly:
-  order_window: 34.37
-  stats_threshold:
-    poll_timeout_s: cached
-    default_threshold_count: 500
-    default_limit_count: edge
-    burst_retries: 4165
-    strict: true
-    cache_timeout_ms: 93.28
-  editor_limit: fallback
-  already_retries: stable
-  warm_window_pct: eu-west
-max_ratio_pct:
-  layout_ratio:
-    - 274
-    - 225
-    - 99
-    - 365
-  max_ratio_count:
-    - legacy
-    - latest
-    - local
-    - eu-west
-  format_threshold:
-    - local
-    - green
-    - edge
+strict:
+  schema_depth: 67
+  default_depth: 85.83
+  cluster_capacity: 4.24
+  route_retries:
     - stable
-  persist: staging
+    - primary
+    - standard
+  buffer_size:
+    - legacy
+    - primary
+    - open
+  burst_retries_ms: 3804
+batch_size_count: cached
+idle_retries_pct: 1024
