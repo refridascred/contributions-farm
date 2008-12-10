@@ -70,10 +70,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowRatio = 7565;
-        public const long CacheBuffer = 8768;
-        public const long MinBuffer = 4911;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 6555;
