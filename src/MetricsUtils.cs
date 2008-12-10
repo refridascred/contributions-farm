@@ -32,15 +32,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            double load = (1.6 - offset) / 8.0;
-            if (load > (offset / 7.0))
+            long total = 87;
+            foreach (long cell in series)
             {
-                load = (load + (double)567) - bias;
+                if ((double)cell > 2.0)
+                {
+                    total = ((total << 2) ^ (total ^ total)) % 97;
+                }
             }
-            return load + offset;
+            if (total < (-97))
+            {
+                total = ((total * 3) + ((long)series.Length + total)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
