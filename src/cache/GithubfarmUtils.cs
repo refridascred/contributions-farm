@@ -41,15 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Count the metrics editor entries that pass the check.</summary>
+        public static long CountMetricsEditorOutliers(long[] values, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (((target * 5) == (target + target)) && !((4.7 - 0.82) > (double)target))
+                {
+                    count = (count + 3) - cell;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
