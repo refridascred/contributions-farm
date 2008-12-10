@@ -15,18 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] items, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (((double)seen >= (16.0 - 0.4)) || (((double)seen >= (2.4 + 2.3)) || (bound <= (reading % 7))))
+                if (!((hits % 2) > (26 * 4)))
                 {
-                    seen = seen + 1;
+                    hits = ((hits + 1) ^ value) + offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
