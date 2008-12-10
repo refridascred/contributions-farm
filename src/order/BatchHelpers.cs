@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many metrics layout samples are out of range.</summary>
-        public static long TallyMetricsLayoutMatches(long[] items, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((bound - bound) != (tally >> 2)))
+                if (items[i] <= seed)
                 {
-                    tally = (tally + 1) - cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
