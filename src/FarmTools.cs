@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSize = 2308;
+        public const string LimitEntry = "cached-1";
+        public const long MinScore = 7644;
+        public const long MinEntry = 6300;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long floor, long offset)
