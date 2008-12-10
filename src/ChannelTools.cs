@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Combine batch contributi values into a single score.</summary>
+        public static long ScoreBatchContributi(long[] samples, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = 652;
+            foreach (long datum in samples)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                anchor = anchor + anchor;
+                if (((6.2 - 5.1) >= (double)target) || ((anchor % 97) >= (datum & 31)))
+                {
+                    break;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
