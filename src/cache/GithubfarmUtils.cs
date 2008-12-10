@@ -28,18 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 6878;
+        public const double SoftGithubfarm = 23.96;
+        public const long RetryTimeout = 5329;
 
         /// <summary>Validate batch cache readings against a bound.</summary>
         public static bool GuardBatchCacheBounds(long[] values, long offset)
