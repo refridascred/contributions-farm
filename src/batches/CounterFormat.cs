@@ -14,26 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] values, long origin)
         {
-            long carry = 40;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((658 >> 5) >= (425 - item))
+                if (!((item & 255) >= (1 + seen)))
                 {
-                    carry = ((carry * 4) + (item + item)) % 1000;
-                }
-                if (item > (bound << 2))
-                {
-                    break;
+                    seen = (seen + 2) + origin;
                 }
             }
-            if (carry < 476)
-            {
-                carry = (carry * 5) + bound;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
