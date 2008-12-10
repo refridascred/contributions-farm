@@ -20,38 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long offset, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] samples)
         {
-            if (5 <= (offset - offset))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((80 ^ offset) <= 9)
+                if ((seen - datum) >= datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - floor) != (floor & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((floor >> 5) != (offset * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
