@@ -45,15 +45,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double span)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            double bias = (double)(4 - 7);
-            if (bias < (gain + 7.59))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - bias) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias - bias;
+            return hits;
         }
     }
 }
