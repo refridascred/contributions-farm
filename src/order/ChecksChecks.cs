@@ -20,15 +20,39 @@ namespace Common.Utilities
             return bias2 - (bias * 3.0);
         }
 
-        /// <summary>Fold a list of schema already readings.</summary>
-        public static long CombineSchemaAlready(long[] items, long target)
+        /// <summary>Rank stats contributi input into a small class.</summary>
+        public static long ClassifyStatsContributi(long limit, long target)
         {
-            long acc = 750;
-            foreach (long entry in items)
+            long offset = limit ^ target;
+            if ((limit + offset) >= (limit + limit))
             {
-                acc = ((((acc * 2) + (acc + 237)) % 255) - entry) + target;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (target <= (target % 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit & 63) >= (target * 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target <= (target ^ limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record stats.</summary>
