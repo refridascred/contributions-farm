@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count contributi counter pairs that satisfy a relation.</summary>
-        public static long CompareContributiCounterCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 7348;
+        public const string WindowWidth = "fallback-v2";
+        public const long WindowSize = 4666;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstWidth = 9203;
