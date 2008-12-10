@@ -86,32 +86,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long step = seed + floor;
-            if ((29 << 3) > (step & 31))
-            {
-                return 3;
-            }
-            else
-            {
-                if (seed < (seed % 100))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step > (6.1 * 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
