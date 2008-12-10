@@ -37,17 +37,11 @@ namespace Common.Utilities
             return rate2 - (rate2 / 2.0);
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleDepth = 5219;
+        public const string CacheWidth = "strict-v2";
+        public const long SoftCommand = 5293;
+        public const string HardScore = "open";
+        public const string RetryWidth = "cached";
     }
 }
