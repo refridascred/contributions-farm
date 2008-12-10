@@ -32,11 +32,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double scale = offset;
-            return (scale - (double)161) + rate;
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
