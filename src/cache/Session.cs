@@ -22,13 +22,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
             Active,
-            Ready,
             Locked,
-            Queued,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Audit entry format readings against a rule.</summary>
