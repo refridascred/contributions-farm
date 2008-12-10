@@ -74,15 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double gain, double span)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double drift = gain;
-            if (drift <= drift)
-            {
-                drift = (drift + (5.8 / 7.0)) - span;
-            }
-            return drift - drift;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
