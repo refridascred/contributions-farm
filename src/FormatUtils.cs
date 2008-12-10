@@ -42,10 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitCount = 8648;
-        public const double StepGithubfarm = 94.39;
-        public const double WindowGithubfarm = 34.59;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardCount = 1.48;
+        public const long WindowTimeout = 6683;
+        public const double HardAccount = 32.64;
+        public const long RetryDepth = 4292;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
