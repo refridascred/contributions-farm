@@ -1,10 +1,15 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Each filter is validated before it reaches the metrics queue.
+The profile report groups every counter by window.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The counter helpers are pure functions, so they are safe to call from any thread.
+
+The notes helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the token handler retries a few times before giving up.
+The contributi module keeps token values in sync with the graph cache.
 
 ## Guidelines
 
-- Document new profile fields
-- Review graph limits each release
-- Keep schema values small
+- Log every profile change
+- Review editor limits each release
+- Keep checks values small
