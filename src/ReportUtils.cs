@@ -49,19 +49,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            New,
+            Locked,
         }
     }
 }
