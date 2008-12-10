@@ -1,4 +1,4 @@
 # support settings
-checks_threshold: 250
-flush_size_ms: blue
-soft_delay_s: 2403
+retry_delay: strict
+command_ratio: open
+poll_ratio_pct: cached
