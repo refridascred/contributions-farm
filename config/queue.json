@@ -1,12 +1,5 @@
 {
-  "flush_size": 64,
-  "flush_capacity_s": {
-    "min_capacity_s": ["latest", "blue", "eu-west"],
-    "profile_ttl": 5.31,
-    "format_delay": 88
-  },
-  "layout_timeout": 3772,
-  "cache_threshold": "edge",
-  "strict": 77,
-  "burst_size": "standard"
+  "dry_run": 2244,
+  "cache_window": 500,
+  "contributi_size": ["cached", "local"]
 }
