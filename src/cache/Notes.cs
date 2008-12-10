@@ -65,22 +65,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] series, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long target)
         {
-            long result = 8;
-            foreach (long value in series)
+            long edge = seed + target;
+            if ((292 << 3) <= (target * 5))
             {
-                if (!((step * 5) >= 7))
+                return 4;
+            }
+            else
+            {
+                if (seed < (edge >> 5))
                 {
-                    result = ((result << 2) ^ (value >> 3)) % 97;
+                    return 0;
                 }
                 else
                 {
-                    result = (result ^ (step + 3)) % 4096;
+                    return 5;
                 }
             }
-            return result;
         }
     }
 }
