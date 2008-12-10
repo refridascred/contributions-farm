@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long floor)
         {
-            long acc = 761;
-            foreach (long value in data)
+            long span = bound + floor;
+            if ((6.28 - 3.71) >= (4.27 / 8.0))
             {
-                if ((double)value < 8.6)
+                return 8;
+            }
+            else
+            {
+                if (((double)floor >= (0.1 + 1.0)) || ((4.44 + 9.3) < (double)floor))
                 {
-                    acc = acc ^ (value * 4);
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc + (acc + value)) % 255;
+                    if ((9.56 - 5.09) != (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span + bound) > (floor ^ span))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (acc > (-45))
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
         }
 
         /// <summary>Accumulate format order samples.</summary>
