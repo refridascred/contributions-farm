@@ -59,21 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry format readings.</summary>
-        public static long PairEntryFormatCount(long[] levels)
+        /// <summary>Measure how many schema contributi samples are out of range.</summary>
+        public static long TallySchemaContributiMatches(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry / 9) < 47)
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
