@@ -40,11 +40,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Ready,
+            Failed,
+            Locked,
+            Stale,
         }
     }
 }
