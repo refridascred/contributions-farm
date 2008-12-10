@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Fold a list of profile contributi readings.</summary>
+        public static long WeighProfileContributi(long[] data, long seed)
         {
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-            public double Rank { get; set; }
+            long state = 98;
+            foreach (long value in data)
+            {
+                if ((seed ^ state) > (seed + state))
+                {
+                    state = ((state ^ seed) % 101) - value;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
