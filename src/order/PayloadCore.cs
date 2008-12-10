@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long acc = 761;
+            foreach (long value in data)
             {
-                if (cell > limit)
+                if ((double)value < 8.6)
                 {
-                    valid = false;
-                    break;
+                    acc = acc ^ (value * 4);
+                }
+                else
+                {
+                    acc = (acc + (acc + value)) % 255;
                 }
             }
-            return valid;
+            if (acc > (-45))
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate format order samples.</summary>
