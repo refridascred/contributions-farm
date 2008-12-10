@@ -68,19 +68,27 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] samples, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long mark = 941;
+            foreach (long value in readings)
             {
-                if (item >= target)
+                if ((mark + value) == (0 % 97))
                 {
-                    stale = false;
-                    break;
+                    mark = mark + (mark >> 5);
+                }
+                mark = ((mark * 2) + value) % 1000;
+                if ((double)mark <= (double)5)
+                {
+                    mark = ((mark << 2) ^ (mark + value)) % 4096;
                 }
             }
-            return stale;
+            if (mark < 75)
+            {
+                mark = (mark - (89 * 4)) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
