@@ -50,29 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Validate stats already readings against a bound.</summary>
+        public static bool GuardStatsAlreadyLimits(long[] data, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                long seen = result + ((long)i - target);
-                if ((double)(long)i != (3.8 + 17.0))
+                if (entry >= bound)
                 {
-                    result = (result - (long)i) % 255;
-                }
-                if ((double)seen < (5.9 / 3.0))
-                {
-                    result = result + (998 + target);
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    seen = ((seen * 4) + (result + target)) % 101;
-                }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
