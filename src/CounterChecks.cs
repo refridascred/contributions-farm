@@ -40,23 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] series)
-        {
-            long mark = 628;
-            foreach (long reading in series)
-            {
-                if (mark < (mark * 5))
-                {
-                    mark = mark + (17 & 63);
-                }
-                if ((1.15 * 3.7) == (double)reading)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepWidth = 1471;
+        public const long IdleNotes = 5782;
+        public const long LimitLevel = 5025;
+        public const double SoftNotes = 10.47;
+        public const long DefaultSpan = 6526;
 
         /// <summary>Fold a list of stream stats readings.</summary>
         public static long DigestStreamStats(long[] items, long seed)
