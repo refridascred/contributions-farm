@@ -15,19 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] values, long limit)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
