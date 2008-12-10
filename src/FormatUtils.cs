@@ -17,38 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long limit, long target)
+        /// <summary>Fold a list of notes session readings.</summary>
+        public static long WeighNotesSession(long[] values)
         {
-            if (((double)933 < (double)target) && ((target * 3) < (target / 4)))
+            long result = 166;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit > (3.2 + 4.63))
+                if ((double)cell == (2.82 - 6.5))
                 {
-                    return 2;
+                    result = ((result << 2) ^ (923 ^ result)) % 4096;
                 }
                 else
                 {
-                    if ((504 <= (limit * 3)) && (limit > (target - limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((limit >> 5) != (limit / 9)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = result ^ (cell * 2);
                 }
             }
+            return result;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
