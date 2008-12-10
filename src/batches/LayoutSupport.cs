@@ -61,15 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Audit order report readings against a rule.</summary>
+        public static long AuditOrderReportOutliers(long[] series, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((step <= (689 & 3)) || ((step & 15) > (reading + tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine cluster stream values into a single score.</summary>
