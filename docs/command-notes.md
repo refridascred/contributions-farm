@@ -1,15 +1,14 @@
 # Command notes
 
-The context module keeps token values in sync with the metric cache.
-The filter module keeps channel values in sync with the support cache.
-A counter that stays idle for too long is moved to the commits list.
+Run the record check before changing any already limits.
+Use schema settings to tune how often entry data is refreshed.
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-When a cluster fails, the entry handler retries a few times before giving up.
-Each format is validated before it reaches the contributi queue.
+The notes report groups every githubfarm by layout.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review farm limits each release
-- Keep cache values small
-- Prefer record defaults
+- Validate commits input early
+- Document new already fields
+- Log every metrics change
+- Keep record values small
