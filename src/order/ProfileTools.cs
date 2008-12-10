@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!((5.3 / 3.0) == (double)target))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Digest a series of window entries.</summary>
