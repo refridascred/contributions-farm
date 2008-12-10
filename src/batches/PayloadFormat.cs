@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Idle,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 767;
+        public const long BatchDepth = 8048;
+        public const long StepGraph = 6231;
+        public const double BaseGraph = 95.0;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
