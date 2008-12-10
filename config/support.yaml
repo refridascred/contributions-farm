@@ -1,6 +1,18 @@
 # support settings
-verbose: latest
-max_ratio: stable
-cache_capacity: green
-schema_limit: false
-soft_delay_pct: 7.51
+min_capacity: cached
+flush_interval_count: 100
+soft_ratio_ms:
+  schema_depth: false
+  schema_ttl: 2370
+  cache_ttl_ms: false
+  persist:
+    account_delay: blue
+    burst_capacity_pct: cached
+    audit: eu-west
+    base_ratio_ms: 60
+    min_depth_pct: 1024
+  warm_threshold_count:
+    base_ratio: 5.41
+    route_delay: blue
+    persist: cached
+max_threshold_count: cached
