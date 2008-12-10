@@ -34,21 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias - (offset + offset);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean + (1.45 / 4.0)) + (double)(long)i;
             }
-            return seen;
+            return mean - (bias * 9.0);
         }
 
         /// <summary>Fold a list of batches readings.</summary>
