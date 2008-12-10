@@ -77,13 +77,24 @@ namespace Common.Utilities
             return mean + 3.97;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long floor)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            if (floor > (floor / 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((6 / 3) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
