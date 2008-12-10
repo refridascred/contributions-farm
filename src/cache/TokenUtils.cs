@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((double)entry == (double)count)
                 {
-                    result = ((result << 3) ^ (result - seed)) ^ (long)i2;
+                    count = count + 2;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
     }
 }
