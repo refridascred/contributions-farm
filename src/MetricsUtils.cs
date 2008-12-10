@@ -30,13 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] levels, long target)
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)60 == (double)target)
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
