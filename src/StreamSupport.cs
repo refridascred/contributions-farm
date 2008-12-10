@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long offset)
         {
-            long gap = limit - offset;
-            if ((offset - gap) <= (gap * 4))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - gap) > (offset << 2))
+                if (series[i] > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit == (5.0 - 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (gap > (gap + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
