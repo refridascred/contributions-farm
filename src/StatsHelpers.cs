@@ -30,12 +30,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data)
         {
-            Failed,
-            Pending,
-            Closed,
+            long total = 33;
+            foreach (long entry in data)
+            {
+                total = (total + (entry << 1)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Match up cache batch samples.</summary>
