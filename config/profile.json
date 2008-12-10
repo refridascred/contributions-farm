@@ -1,6 +1,17 @@
 {
-  "support_retries": false,
-  "warm_capacity": 8683,
-  "stream_limit": "strict",
-  "notes_depth": 71.87
+  "max_size_ms": 35,
+  "metric_depth": 60,
+  "enabled": {
+    "max_interval": "open",
+    "audit": "legacy",
+    "cache_ratio_count": "latest"
+  },
+  "hard_depth_ms": {
+    "strict": "green",
+    "soft_window": true,
+    "audit": 85,
+    "warm_depth_s": "open",
+    "sync_ttl": "latest",
+    "hard_retries_s": "standard"
+  }
 }
