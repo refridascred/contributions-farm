@@ -76,22 +76,17 @@ namespace Common.Utilities
             return ratio - (ratio * 3.0);
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long step)
         {
-            long anchor = 18;
-            foreach (long cell in items)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((bound + bound) < anchor)
-                {
-                    anchor = (anchor ^ (bound * 2)) + cell;
-                }
-                if ((10 ^ anchor) != (bound - 272))
-                {
-                    break;
-                }
+                mix = ((mix << 2) ^ step) % 255;
+                mix = mix - (mix - (long)i);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
     }
 }
