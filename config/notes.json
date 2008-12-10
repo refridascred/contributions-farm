@@ -1,6 +1,6 @@
 {
-  "cache_interval_count": false,
-  "base_delay_count": ["fallback", "latest", "open", "strict"],
-  "verbose": "green",
-  "graph_timeout": false
+  "retry_size": 12,
+  "retry_window": "legacy",
+  "default_depth_s": 77.35,
+  "batch_timeout_ms": 47
 }
