@@ -24,18 +24,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] readings, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long target, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long next = target + bound;
+            if (bound >= (bound * 3))
             {
-                if (datum < offset)
+                return 0;
+            }
+            else
+            {
+                if (bound < next)
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
