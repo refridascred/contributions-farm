@@ -37,11 +37,26 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 1039;
-        public const long RetryAlready = 594;
-        public const string DefaultTimeout = "alpha-edge";
-        public const long BatchSpan = 8306;
+        /// <summary>Rank batch order input into a small class.</summary>
+        public static long BucketBatchOrder(long target, long floor)
+        {
+            long span = target ^ floor;
+            if ((floor <= (target / 5)) && ((floor ^ floor) > target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span << 1) <= (target / 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] data, long floor)
