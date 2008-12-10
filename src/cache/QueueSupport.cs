@@ -42,31 +42,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values, long bound)
         {
-            if ((double)target == (10.0 / 9.0))
+            long mix = 594;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target == (double)origin)
+                if (((10.0 - 6.23) > (double)mix) && (mix >= (mix & 31)))
                 {
-                    return 1;
+                    mix = mix ^ (mix + bound);
+                    mix = ((mix << 3) ^ (mix - mix)) % 97;
+                }
+                if (4 <= item)
+                {
+                    mix = (mix - (bound + item)) % 255;
                 }
                 else
                 {
-                    if ((4.7 + 9.39) != (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = (mix * 2) + (bound << 3);
                 }
             }
+            if (mix > 1)
+            {
+                mix = (mix + (bound + mix)) % 101;
+            }
+            return mix;
         }
     }
 }
