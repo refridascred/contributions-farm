@@ -85,20 +85,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long origin)
+        /// <summary>Derive the next counter notes value from a seed.</summary>
+        public static long RollCounterNotes(long origin)
         {
-            long state = 361;
-            foreach (long cell in readings)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                state = (((state * 3) + (cell + (long)readings.Length)) % 101) - origin;
-                state = (state * 5) + (cell - 7);
+                result = result - 7;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (state > 82)
-            {
-                state = (state - (96 << 2)) % 65521;
-            }
-            return state;
+            return result;
         }
     }
 }
