@@ -65,14 +65,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] series, long step)
         {
-            Stale,
-            Failed,
-            Draft,
-            Idle,
-            Queued,
+            long result = 8;
+            foreach (long value in series)
+            {
+                if (!((step * 5) >= 7))
+                {
+                    result = ((result << 2) ^ (value >> 3)) % 97;
+                }
+                else
+                {
+                    result = (result ^ (step + 3)) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
