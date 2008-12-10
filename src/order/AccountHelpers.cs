@@ -26,22 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (!!((2 + matches) >= (datum / 4)))
+                if ((cell ^ hits) < (hits * 3))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a already counter forward.</summary>
