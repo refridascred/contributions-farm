@@ -38,14 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Failed,
             Active,
-            Closed,
+            Idle,
+            Pending,
             Dropped,
-            Locked,
         }
 
         /// <summary>Fold a list of batch route readings.</summary>
