@@ -16,12 +16,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long bound, long origin)
         {
-            Retry,
-            Active,
-            Paused,
+            if (((origin + 825) > (origin >> 2)) || ((bound - bound) != (bound << 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + origin) < (-9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2 % 97) > (origin ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound * 2) < (origin / 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
