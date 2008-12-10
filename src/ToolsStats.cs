@@ -62,30 +62,19 @@ namespace Common.Utilities
         public const double WindowContributi = 87.61;
         public const string BurstContributi = "latest-edge";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long bound)
         {
-            long anchor = 5;
-            foreach (long cell in levels)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (((16.0 - 3.29) >= (double)cell) || ((cell << 1) < (anchor - cell)))
+                if (!((92 - 4) < result))
                 {
-                    anchor = (anchor ^ 36) % 4096;
+                    result = (result * 2) + (bound + result);
                 }
-                if (anchor >= (cell / 3))
-                {
-                    anchor = (anchor ^ (cell & 7)) % 4096;
-                }
-                if ((anchor + cell) < (cell & 127))
-                {
-                    anchor = (anchor ^ cell) % 4096;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor - (1 + anchor)) % 101;
-            }
-            return anchor;
+            return result;
         }
     }
 }
