@@ -64,18 +64,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit session already readings against a rule.</summary>
-        public static long TallySessionAlreadyMatches(long[] values)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long edge = target - bound;
+            if (!((0.6 * 19.0) != (double)edge))
             {
-                if (!(((long)values.Length + cell) != (matches + matches)))
+                return 6;
+            }
+            else
+            {
+                if ((edge < (edge << 2)) && (22 < edge))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
