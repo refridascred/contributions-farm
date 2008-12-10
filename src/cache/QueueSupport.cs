@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a cluster queue pair into a bucket.</summary>
-        public static long RankClusterQueue(long step, long seed)
+        /// <summary>Grade a metrics commits value against two limits.</summary>
+        public static long ClassifyMetricsCommits(long offset, long floor)
         {
-            long delta = step - seed;
-            if ((delta * 2) != (step >> 3))
+            long offset2 = offset + floor;
+            if ((97 % 2) <= (63 - offset2))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((2.0 + 2.9) < (9.0 - 9.0))
+                if ((offset ^ 5) != (22 - offset2))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (step < (step + seed))
+                    if (((double)offset != (9.82 - 5.0)) && (floor >= offset2))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        if (5.95 < (double)step)
+                        if (!((offset << 1) != (offset2 / 5)))
                         {
-                            return 6;
+                            return 3;
                         }
                         else
                         {
-                            return 8;
+                            return 0;
                         }
                     }
                 }
