@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (sample > step)
+                if (matches < (matches << 2))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
