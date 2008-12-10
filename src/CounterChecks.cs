@@ -71,22 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] data, long step)
         {
-            long acc = 83;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((5 << 3) < reading)
+                if (datum < step)
                 {
-                    acc = (acc * 4) + (acc - acc);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Fold a list of stream stats readings.</summary>
