@@ -28,10 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 6878;
-        public const double SoftGithubfarm = 23.96;
-        public const long RetryTimeout = 5329;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelMatches(long[] data, long target)
