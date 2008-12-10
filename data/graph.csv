@@ -1,6 +1,11 @@
-id,level,rank
-1,201,standard
-2,76.22,fallback
-3,165,955
-4,blue,49.15
-5,open,eu-west
+id,score,active
+1,757,817
+2,441,361
+3,272,171
+4,cached,851
+5,694,open
+6,310,76.93
+7,36.51,465
+8,latest,970
+9,577,492
+10,legacy,678
