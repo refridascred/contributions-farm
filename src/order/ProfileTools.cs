@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] readings)
-        {
-            long acc = 29;
-            foreach (long value in readings)
-            {
-                acc = (acc - acc) ^ value;
-            }
-            if (acc > 3)
-            {
-                acc = (acc ^ (acc + 11)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 1013;
+        public const string RetryStats = "latest-v2";
+        public const string RetryInterval = "primary-v2";
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long seed)
