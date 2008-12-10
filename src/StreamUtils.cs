@@ -35,19 +35,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long limit)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
