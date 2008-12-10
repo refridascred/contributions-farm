@@ -20,13 +20,25 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long seed, long target)
         {
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long next = seed + target;
+            if ((double)next > (8.4 + 6.79))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed / 4) >= (next + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
