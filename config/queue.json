@@ -1,16 +1,6 @@
 {
-  "checks_capacity": {
-    "sync_threshold_count": "stable",
-    "cache_size_ms": 60,
-    "contributi_timeout": ["blue", "blue", "latest", "green"],
-    "poll_limit_ms": [10, 266, 421, 387]
-  },
-  "batch_timeout": "green",
-  "readonly": {
-    "dry_run": "cached",
-    "max_size": 9.1,
-    "hard_threshold_count": "fallback",
-    "retry_depth": 35.13,
-    "enabled": true
-  }
+  "warm_ratio_s": true,
+  "poll_interval_count": 457,
+  "hard_window_pct": "fallback",
+  "batch_depth": "primary"
 }
