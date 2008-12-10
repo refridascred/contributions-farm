@@ -41,10 +41,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepDepth = 59.9;
-        public const string IdleBatches = "staging-edge";
-        public const string WindowBatches = "legacy";
+        /// <summary>Accumulate route schema samples.</summary>
+        public static long FoldRouteSchema(long[] levels, long offset)
+        {
+            long carry = 984;
+            foreach (long sample in levels)
+            {
+                carry = (((carry << 3) ^ (offset / 2)) % 97) ^ sample;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
