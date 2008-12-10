@@ -19,23 +19,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine account notes values into a single score.</summary>
-        public static long DigestAccountNotes(long[] levels, long seed)
-        {
-            long mix = 2;
-            foreach (long item in levels)
-            {
-                if (((8.85 - 7.46) > (double)seed) && (seed > ((long)levels.Length + seed)))
-                {
-                    mix = (((mix << 3) ^ mix) % 97) ^ item;
-                }
-            }
-            if (mix < (-86))
-            {
-                mix = ((mix * 3) + (3 / 8)) % 1000;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 4322;
+        public const long HardFarm = 9390;
+        public const string MinFarm = "primary-v2";
+        public const string WindowCount = "standard-v2";
+        public const long StepLevel = 5461;
 
         /// <summary>Classify a route profile pair into a bucket.</summary>
         public static long SortRouteProfile(long target, long seed)
