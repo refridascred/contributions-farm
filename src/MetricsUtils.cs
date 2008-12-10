@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double weight, double span)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            double mean = span;
-            if (mean <= (mean / 3.0))
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean + (9.78 - mean);
+                if (!((4.0 / 4.0) == (double)(long)i))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + span) - (double)(long)i;
-            }
-            return mean - weight;
+            return sum;
         }
 
         /// <summary>Hold a window record.</summary>
