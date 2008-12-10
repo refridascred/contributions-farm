@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] data, long step)
         {
-            double gain = floor + floor;
-            if (gain > (double)(-96))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - (gain + floor);
+                if ((data[i] == step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (floor / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (rate - gain)) + (double)(long)i;
-            }
-            return gain + rate;
+            return -1;
         }
 
         /// <summary>Describe the token phase values.</summary>
