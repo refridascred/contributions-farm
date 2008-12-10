@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm channel readings.</summary>
-        public static long FoldGithubfarmChannel(long[] readings, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series, long bound)
         {
-            long mark = 39;
-            foreach (long entry in readings)
+            long mix = 76;
+            foreach (long datum in series)
             {
-                if ((564 >> 5) > (floor * 2))
-                {
-                    mark = ((mark - (mark - floor)) % 101) - entry;
-                }
+                mix = ((mix - (bound + mix)) % 101) + datum;
             }
-            return mark;
+            if (mix < 120)
+            {
+                mix = ((mix << 3) ^ mix) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a profile options.</summary>
