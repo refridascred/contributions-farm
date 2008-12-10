@@ -48,13 +48,18 @@ namespace Common.Utilities
         public const double BatchBudget = 88.02;
         public const long MinContext = 542;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long AuditGraphContextGaps(long[] readings)
         {
-            Idle,
-            Ready,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)count == (7.8 * 1.4))
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
     }
 }
