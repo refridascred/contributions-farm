@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Accumulate support command samples.</summary>
+        public static long TallySupportCommand(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 23;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (((state << 2) ^ state) % 97) - cell;
             }
-            return hits;
+            if (state < 34)
+            {
+                state = (state * 4) + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Hold a buffer header.</summary>
