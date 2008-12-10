@@ -1,4 +1,16 @@
 # support settings
-base_delay: 16.18
-base_delay_pct: 30
-default_capacity_pct: true
+session_threshold: true
+min_capacity_pct:
+  persist: 96.27
+  entry_depth:
+    - legacy
+    - latest
+    - green
+  base_threshold_s: open
+retry_size:
+  - blue
+  - green
+burst_depth_count: 5148
+hard_size_s:
+  - 16
+  - 48
