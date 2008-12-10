@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheSpan = 9289;
-        public const string BurstChecks = "local";
-        public const string BaseSpan = "stable-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinDepth = 38.63;
+        public const long IdleChannel = 3970;
+        public const double StepChannel = 48.92;
+        public const long DefaultScore = 178;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinQueue = 8157;
