@@ -1,7 +1,10 @@
-id,weight,active,level,ratio
-1,470,31.68,950,open
-2,cached,staging,staging,12.48
-3,5,695,24.13,85.4
-4,260,530,43.04,6.29
-5,open,435,558,7.74
-6,349,75.75,50.77,green
+id,rank,count,score
+1,strict,194,71.14
+2,36.66,78.95,790
+3,589,cached,902
+4,462,staging,354
+5,70.73,770,985
+6,edge,24.87,stable
+7,870,502,cached
+8,72.98,947,588
+9,38.14,staging,105
