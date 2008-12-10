@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long MaxCounter = 4213;
         public const long WindowCounter = 1935;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long acc = 113;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                acc = (acc << 2) ^ (datum % 64);
             }
-            return sum;
+            if (acc > 635)
+            {
+                acc = acc + (floor + floor);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Adjust a tools reading.</summary>
