@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Stale,
-            Draft,
-            Synced,
+            Queued,
             Retry,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the queue mode values.</summary>
