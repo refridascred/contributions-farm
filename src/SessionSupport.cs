@@ -13,18 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the editor channel entries that pass the check.</summary>
-        public static long MeasureEditorChannelGaps(long[] items)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((214 & 3) != (seen - seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) - datum;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a editor cluster reading by value.</summary>
