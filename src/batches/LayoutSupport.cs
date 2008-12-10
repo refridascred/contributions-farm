@@ -54,27 +54,13 @@ namespace Common.Utilities
         public const long RetryRatio = 2428;
         public const double StepFilter = 69.59;
 
-        /// <summary>Fold a list of checks filter readings.</summary>
-        public static long CombineChecksFilter(long[] values, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mark = 74;
-            foreach (long value in values)
-            {
-                if ((double)value < (double)floor)
-                {
-                    mark = (mark << 3) ^ 6;
-                    mark = mark + (floor + mark);
-                }
-                if ((double)floor < (8.0 - 1.6))
-                {
-                    mark = ((mark << 3) ^ ((-67) / 3)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 5) + 5) % 4096;
-                }
-            }
-            return mark % 97;
+            Paused,
+            Failed,
+            Queued,
+            Ready,
         }
     }
 }
