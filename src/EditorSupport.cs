@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 9046;
+        public const long SoftFactor = 8123;
+        public const long BatchBudget = 9333;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
