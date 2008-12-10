@@ -1,25 +1,13 @@
 # githubfarm settings
-audit: staging
-entry_size: cached
-flush_timeout: staging
-commits_window: open
-poll_threshold_ms:
-  route_delay: standard
-  min_interval_pct:
-    sync_timeout: fallback
-    persist: 7186
-    cluster_size: local
-  burst_window: 8832
-  readonly:
-    burst_capacity_pct:
-      - 173
-      - 52
-      - 320
-      - 200
-    burst_window_ms: local
-    soft_size_ms: 95.19
-    profile_delay: primary
-    warm_depth_ms: strict
-    idle_limit_count: cached
-  cache_ttl: eu-west
-  batch_size_s: strict
+idle_window_count: standard
+audit:
+  - 379
+  - 439
+  - 34
+burst_threshold_s: 54.93
+idle_threshold_ms: 26.25
+dry_run:
+  - 234
+  - 4
+  - 137
+  - 130
