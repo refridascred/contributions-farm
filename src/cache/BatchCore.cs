@@ -36,11 +36,17 @@ namespace Common.Utilities
         public const double BatchBudget = 88.02;
         public const long MinContext = 542;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
