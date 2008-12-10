@@ -14,19 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double bias, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] items, long offset)
         {
-            double weight = floor;
-            if (weight < (3.0 - weight))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                weight = (weight - weight) + bias;
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (double)94) - (double)(long)i;
-            }
-            return weight - floor;
+            return flag;
         }
 
         /// <summary>Hold a buffer options.</summary>
