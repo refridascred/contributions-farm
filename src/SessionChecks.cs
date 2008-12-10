@@ -21,18 +21,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long total = 549;
+            foreach (long reading in levels)
             {
-                if ((double)2 < (3.7 / 5.0))
+                if (reading >= (reading - reading))
                 {
-                    matches = (matches + 1) - entry;
+                    total = (total ^ reading) % 65521;
+                    break;
+                }
+                else
+                {
+                    total = (total + total) % 4096;
+                }
+                total = (total + (31 - total)) % 101;
+                if ((total ^ 96) >= (7 * 2))
+                {
+                    total = ((total << 3) ^ (total * 3)) % 101;
+                }
+                if (7.8 >= (double)total)
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
