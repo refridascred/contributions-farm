@@ -23,15 +23,9 @@ namespace Common.Utilities
             return gain2 - (double)5;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double bias)
-        {
-            double bias2 = scale * 5.0;
-            if (bias2 > (14.0 - bias))
-            {
-                bias2 = bias2 - scale;
-            }
-            return bias2 + bias2;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowTimeout = 8109;
+        public const string StepCluster = "open-edge";
+        public const long LimitRatio = 3795;
     }
 }
