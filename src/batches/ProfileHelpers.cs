@@ -59,19 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] values, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
