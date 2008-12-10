@@ -1,14 +1,10 @@
 {
-  "cache_delay_s": 84.17,
-  "idle_limit_count": "fallback",
-  "cache_limit_pct": "latest",
-  "flush_capacity": ["strict", "local", "stable"],
-  "account_timeout": false,
-  "audit": {
-    "session_retries": false,
-    "contributi_capacity": [345, 169],
-    "readonly": 9956,
-    "soft_capacity": [274, 76, 460, 26],
-    "githubfarm_ttl": false
-  }
+  "min_timeout": 51.52,
+  "sync_capacity": "edge",
+  "readonly": {
+    "soft_retries_count": ["standard", "edge", "cached"],
+    "burst_threshold_pct": "latest",
+    "persist": true
+  },
+  "base_threshold_pct": 4845
 }
