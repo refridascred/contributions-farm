@@ -57,22 +57,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Fold a list of batch route readings.</summary>
+        public static long DigestBatchRoute(long[] series, long floor)
         {
-            long sum = 975;
-            foreach (long sample in values)
+            long total = 8;
+            foreach (long cell in series)
             {
-                if ((double)sample >= (double)3)
-                {
-                    sum = sum + (728 << 2);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum / 5)) % 4096;
-                }
+                total = ((total * 3) + floor) ^ cell;
             }
-            return sum % 1000;
+            return total % 65521;
         }
     }
 }
