@@ -1,8 +1,7 @@
 {
-  "min_depth_pct": 1024,
-  "sync_ttl": [122, 333, 67],
-  "already_interval": "latest",
-  "persist": 73,
-  "retry_delay_ms": 87.97,
-  "soft_timeout_ms": 7
+  "batch_retries": true,
+  "cache_limit_count": 59.33,
+  "soft_capacity_ms": ["edge", "cached", "strict", "open"],
+  "persist": ["edge", "fallback"],
+  "sync_ratio_s": 23.55
 }
