@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long IdleWidth = 9709;
         public const string MinSize = "strict";
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public long Score { get; set; }
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a support snapshot.</summary>
