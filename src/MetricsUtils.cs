@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Pending,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "strict";
+        public const long WindowEditor = 9765;
+        public const double IdleEditor = 89.9;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
