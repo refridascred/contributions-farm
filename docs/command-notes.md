@@ -1,11 +1,10 @@
 # Command notes
 
-Each context is validated before it reaches the metric queue.
-Run the batches check before changing any metrics limits.
+A contributi that stays idle for too long is moved to the window list.
+Each farm is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Log every batches change
-- Document new buffer fields
-- Review commits limits each release
-- Keep githubfarm values small
+- Validate commits input early
+- Log every batch change
+- Prefer batches defaults
