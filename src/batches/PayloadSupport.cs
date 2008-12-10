@@ -13,31 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long bound, long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            if ((origin >= (origin >> 4)) || ((origin % 60) < bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((24 + 463) != (bound % 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound - origin) >= (bound / 9)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
