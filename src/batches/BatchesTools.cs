@@ -27,24 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats commits counter forward.</summary>
-        public static long SeriesStatsCommits(long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((acc * 3) >= (acc ^ acc)) && ((acc ^ (long)i) <= (acc ^ offset)))
+                if ((double)matches < (6.0 + 9.1))
                 {
-                    acc = (acc + (offset + offset)) % 255;
-                    acc = acc - (acc - offset);
+                    matches = (matches + 3) - cell;
                 }
-                else
-                {
-                    acc = (acc ^ offset) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
     }
 }
