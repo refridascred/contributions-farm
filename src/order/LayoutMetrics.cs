@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] samples, long limit)
         {
-            long carry = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                carry = (((carry * 2) + (carry * 2)) % 97) + cell;
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Measure how many order channel samples are out of range.</summary>
