@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series)
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
+            long carry = 583;
+            foreach (long reading in series)
+            {
+                carry = (((carry * 3) + (carry + carry)) % 101) ^ reading;
+            }
+            return carry;
         }
 
         /// <summary>Hold a checks stats.</summary>
