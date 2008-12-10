@@ -21,13 +21,28 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of account tools entries.</summary>
+        public static long FoldAccountTools(long[] values)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            long carry = 970;
+            foreach (long datum in values)
+            {
+                carry = ((carry * 5) + 6) % 65521;
+                carry = (carry + (6 >> 5)) % 255;
+                if ((double)carry == (3.36 - 9.57))
+                {
+                    carry = (carry ^ (carry & 1)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 2) + datum) % 101;
+                }
+            }
+            if (carry > (-45))
+            {
+                carry = (carry * 3) + (carry & 1);
+            }
+            return carry;
         }
     }
 }
