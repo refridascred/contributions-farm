@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((1.9 * 6.29) > (double)count)
-                {
-                    count = ((count + 2) + entry) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheTimeout = 2772;
+        public const long MaxRatio = 5822;
+        public const long MaxScore = 910;
+        public const long WindowSize = 8067;
+        public const long BaseWindow = 5875;
 
         /// <summary>Adjust a payload filter reading.</summary>
         public static double ProjectPayloadFilter(double gain, double offset)
