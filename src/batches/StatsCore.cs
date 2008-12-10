@@ -51,10 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinCount = "local-1";
-        public const long LimitContributi = 3708;
-        public const string SoftRatio = "stable";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double scale, double offset)
+        {
+            double gain = 0.12;
+            return ((gain + (double)287) + scale) + offset;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesLimits(long[] values, long bound)
