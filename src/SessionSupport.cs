@@ -25,12 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Match up githubfarm session samples.</summary>
+        public static long OverlapGithubfarmSessionCount(long[] data)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
