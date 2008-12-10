@@ -39,11 +39,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 4589;
-        public const long BurstGithubfarm = 7635;
-        public const long LimitBudget = 3887;
-        public const long WindowGithubfarm = 6825;
-        public const long DefaultInterval = 6571;
+        /// <summary>Audit entry format readings against a rule.</summary>
+        public static long CountEntryFormatGaps(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (offset >= (datum - offset))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
