@@ -29,13 +29,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Paused,
+            New,
         }
     }
 }
