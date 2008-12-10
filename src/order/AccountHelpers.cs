@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a report metric pair into a bucket.</summary>
-        public static long BucketReportMetric(long step, long bound)
+        /// <summary>Validate context notes readings against a bound.</summary>
+        public static bool GuardContextNotesLimits(long[] items, long floor)
         {
-            long span = step ^ bound;
-            if (step >= (span % 10))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound - span) >= (490 * 2))
+                if (entry < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of stats metric readings.</summary>
