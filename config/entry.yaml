@@ -1,14 +1,16 @@
 # entry settings
-compress: local
-poll_timeout: green
-audit: edge
-sync_ttl_pct:
-  readonly:
-    persist: standard
-    poll_ratio_s: 35.65
-    idle_threshold_pct: 1246
-    poll_capacity_pct: 97.64
-  persist: latest
-  soft_timeout_pct: green
-  compress: legacy
-  cluster_interval: true
+base_timeout:
+  hard_timeout: 500
+  persist:
+    flush_ttl_s: 500
+    strict: latest
+    report_ratio: true
+    batch_limit_count:
+      - 148
+      - 287
+  contributi_limit: false
+compress: 263
+warm_ttl:
+  - 321
+  - 132
+  - 365
