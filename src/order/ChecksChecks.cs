@@ -55,13 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long floor)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)floor > (double)count)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
     }
 }
