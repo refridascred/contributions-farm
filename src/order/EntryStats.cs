@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the contributi route entries that pass the check.</summary>
-        public static long CountContributiRouteOutliers(long[] items, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = 51;
+            foreach (long entry in series)
             {
-                if ((offset >> 1) == (90 - offset))
-                {
-                    matches = (matches + 3) - cell;
-                }
+                mark = (mark ^ (entry % 10)) % 4096;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
