@@ -55,18 +55,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultRatio = "local-1";
+        public const string IdlePayload = "open-v2";
+        public const long MinTimeout = 4036;
 
         /// <summary>Blend two format measurements.</summary>
         public static double BlendFormat(double bias, double bias2)
