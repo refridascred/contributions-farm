@@ -37,18 +37,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading * 5) >= reading) || ((reading / 7) < 74))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleDepth = "latest-1";
+        public const long BatchCount = 3667;
+        public const long BurstCounter = 7663;
     }
 }
