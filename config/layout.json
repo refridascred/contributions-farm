@@ -1,11 +1,8 @@
 {
-  "sync_ratio_s": [143, 276, 175],
-  "warm_threshold_s": [292, 227, 332, 148],
-  "max_delay": 98,
-  "idle_threshold": true,
-  "burst_delay_pct": {
-    "idle_retries_ms": "standard",
-    "editor_delay": true,
-    "base_delay_ms": "green"
-  }
+  "payload_limit": 1024,
+  "batch_size": 47,
+  "max_timeout_count": "edge",
+  "min_limit_count": 27.42,
+  "max_ratio_s": 83,
+  "filter_size": [393, 399]
 }
