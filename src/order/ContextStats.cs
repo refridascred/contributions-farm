@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 4997;
-        public const long BatchBudget = 9795;
-        public const string SoftToken = "stable-1";
-        public const long LimitTimeout = 6009;
-        public const string MaxInterval = "fallback-v2";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)count >= 6.01)
+                {
+                    count = ((count + 3) + item) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
