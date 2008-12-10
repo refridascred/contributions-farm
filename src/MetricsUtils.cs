@@ -29,18 +29,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] readings, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((entry - floor) >= (matches - entry))
+                if ((count + 661) > (count << 3))
                 {
-                    matches = matches + 2;
+                    count = ((count + 1) ^ reading) + limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a profile record.</summary>
