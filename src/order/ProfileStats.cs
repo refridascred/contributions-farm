@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate schema notes samples.</summary>
-        public static long FoldSchemaNotes(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            long state = 3;
-            foreach (long value in items)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (0 >= (value & 1))
+                if ((offset - (long)i) == (long)i)
                 {
-                    state = (state * 4) + (9 - value);
+                    result = ((result << 2) ^ (result ^ result)) % 97;
+                    result = result ^ (result + offset);
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Combine account values into a single score.</summary>
