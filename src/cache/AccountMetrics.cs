@@ -67,19 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report command readings against a bound.</summary>
-        public static bool ValidateReportCommandLimits(long[] data, long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
