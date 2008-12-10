@@ -48,21 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
