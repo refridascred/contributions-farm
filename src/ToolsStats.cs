@@ -64,11 +64,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 58.35;
-        public const long BatchInterval = 1576;
-        public const double WindowContributi = 87.61;
-        public const string BurstContributi = "latest-edge";
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                long seen = result + ((long)i - target);
+                if ((double)(long)i != (3.8 + 17.0))
+                {
+                    result = (result - (long)i) % 255;
+                }
+                if ((double)seen < (5.9 / 3.0))
+                {
+                    result = result + (998 + target);
+                    break;
+                }
+                else
+                {
+                    seen = ((seen * 4) + (result + target)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long BucketAccount(long origin, long floor)
