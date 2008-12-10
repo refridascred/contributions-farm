@@ -35,14 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Closed,
-            New,
-            Done,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryCount = 0.25;
+        public const long MinDepth = 877;
+        public const long MaxPayload = 8180;
+        public const double BatchSize = 7.88;
+        public const string CachePayload = "local-1";
 
         /// <summary>Compare every pair of support format readings.</summary>
         public static long MatchSupportFormatCount(long[] items)
