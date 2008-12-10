@@ -15,12 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftFactor = 213;
-        public const long MaxSupport = 7726;
-        public const long BatchSupport = 9565;
-        public const long StepBudget = 2195;
-        public const long DefaultSpan = 5618;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
