@@ -59,12 +59,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Compare every pair of entry format readings.</summary>
+        public static long PairEntryFormatCount(long[] levels)
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
