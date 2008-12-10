@@ -23,21 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((3 - 77) != (count + 770))
                 {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a channel header.</summary>
