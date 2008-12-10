@@ -29,22 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of already tools entries.</summary>
-        public static long ScoreAlreadyTools(long[] readings, long offset)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long mark = 23;
-            foreach (long datum in readings)
-            {
-                if (!((double)offset == (double)datum))
-                {
-                    mark = ((mark << 3) ^ offset) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark + offset)) % 101;
-                }
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
