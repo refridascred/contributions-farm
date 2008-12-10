@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
