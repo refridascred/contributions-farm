@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 7348;
-        public const string WindowWidth = "fallback-v2";
-        public const long WindowSize = 4666;
+        /// <summary>Measure how many layout stream samples are out of range.</summary>
+        public static long TallyLayoutStreamOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) < (matches ^ cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstWidth = 9203;
