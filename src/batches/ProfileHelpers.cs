@@ -34,17 +34,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] samples, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] >= origin)
+                if ((19.0 + 7.8) == (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
