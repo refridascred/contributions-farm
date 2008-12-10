@@ -30,15 +30,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels, long step)
         {
-            double bias = 1.41;
-            if (bias > (bias / 2.0))
+            long total = 16;
+            foreach (long reading in levels)
             {
-                bias = ((bias + (double)90) - scale) - span;
+                total = ((total + (step << 2)) % 65521) + reading;
+                if ((total - 52) >= (step ^ step))
+                {
+                    break;
+                }
             }
-            return bias + (bias + bias);
+            if (total < (-256))
+            {
+                total = (total << 3) ^ (total % 60);
+            }
+            return total % 4096;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
