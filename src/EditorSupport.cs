@@ -34,19 +34,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] samples, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (datum <= seed)
+                if ((seen + 206) < seen)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the counter mode values.</summary>
