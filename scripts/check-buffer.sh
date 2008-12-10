@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=311
+BUFFER_LIMIT=301
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in fallback blue edge latest; do
+    log "checking ${item}"
+done
