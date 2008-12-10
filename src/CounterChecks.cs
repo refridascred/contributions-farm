@@ -40,16 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            double rate = span;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc - (546 - limit)) % 1000;
-                acc = ((acc * 4) + (long)i) % 97;
+                rate = (rate - 7.79) + (double)(long)i;
             }
-            return acc;
+            return rate + weight;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
