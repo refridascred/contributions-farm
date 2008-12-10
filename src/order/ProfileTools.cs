@@ -30,14 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            New,
-            Retry,
-            Locked,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardTimeout = 5175;
+        public const long BatchChecks = 2525;
+        public const double DefaultChecks = 27.21;
+        public const long BaseChecks = 513;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] data, long floor)
