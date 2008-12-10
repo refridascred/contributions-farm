@@ -30,13 +30,38 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long target, long target2)
         {
-            Locked,
-            Idle,
-            Paused,
-            Stale,
+            if (!((double)7 > (double)target2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(target <= (target2 & 31)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target2 > (target2 / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target2 > (725 & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache entry.</summary>
