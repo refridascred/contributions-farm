@@ -88,11 +88,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinQueue = "alpha";
-        public const long BaseWidth = 942;
-        public const string LimitWidth = "primary-edge";
-        public const double IdleSpan = 4.75;
-        public const string LimitSize = "legacy";
+        /// <summary>Combine entry filter values into a single score.</summary>
+        public static long WeighEntryFilter(long[] data, long limit)
+        {
+            long acc = 634;
+            foreach (long reading in data)
+            {
+                acc = ((acc + (reading + acc)) % 101) + limit;
+            }
+            return acc;
+        }
     }
 }
