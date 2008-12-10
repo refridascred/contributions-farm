@@ -35,10 +35,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftDepth = 6641;
-        public const string DefaultCounter = "legacy-1";
-        public const long BurstCount = 7292;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long limit, long offset)
+        {
+            if ((limit / 8) <= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset < (offset & 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit == (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a filter entry reading.</summary>
         public static double SmoothFilterEntry(double ratio, double offset)
