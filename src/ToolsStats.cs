@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseSize = 41.47;
-        public const double LimitTimeout = 62.28;
-        public const long LimitNotes = 4198;
-        public const long RetryWidth = 1207;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (seen >= (seen - value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsLimits(long[] data, long origin)
