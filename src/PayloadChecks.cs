@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the contributi payload series from a seed.</summary>
-        public static long RollContributiPayload(long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
