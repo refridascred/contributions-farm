@@ -27,11 +27,16 @@ namespace Common.Utilities
             return rate + (3.76 + bias);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 5107;
-        public const double WindowInterval = 92.54;
-        public const long BaseGraph = 6094;
-        public const long SoftBudget = 4611;
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] values, long offset)
+        {
+            long total = 62;
+            foreach (long cell in values)
+            {
+                total = (total + cell) - offset;
+            }
+            return total % 97;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long DigestMetrics(long[] levels, long floor)
