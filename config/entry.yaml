@@ -1,10 +1,13 @@
 # entry settings
-soft_ratio_ms: eu-west
-sync_ttl_count:
-  session_capacity: 82.68
-  sync_limit_s: 57
-  base_capacity_s: 26.54
-  retry_capacity_s: 1779
-  layout_capacity: 7430
-  report_window: 1.65
-stats_ttl: 24
+warm_threshold_pct: 6807
+stream_capacity: eu-west
+retry_delay_pct:
+  - blue
+  - local
+default_timeout: fallback
+min_depth_ms:
+  - legacy
+  - local
+  - latest
+  - fallback
+base_capacity_ms: standard
