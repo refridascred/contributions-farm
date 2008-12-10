@@ -1,11 +1,12 @@
 # Command notes
 
-Keep checks and cache names short and lowercase.
-The session report groups every counter by counter.
+A contributi that stays idle for too long is moved to the route list.
+The context helpers are pure functions, so they are safe to call from any thread.
+When a counter fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new profile fields
-- Prefer stream defaults
-- Keep schema values small
-- Review cluster limits each release
+- Validate cluster input early
+- Prefer context defaults
+- Keep payload values small
+- Log every token change
