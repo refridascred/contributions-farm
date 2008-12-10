@@ -27,10 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftDepth = 9797;
-        public const string DefaultContributi = "staging-v2";
-        public const long HardWidth = 5966;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Classify a report batches pair into a bucket.</summary>
         public static long GradeReportBatches(long floor, long offset)
