@@ -49,12 +49,18 @@ namespace Common.Utilities
             return weight + (scale / 5.0);
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data, long seed)
         {
-            Queued,
-            New,
-            Draft,
+            long carry = -715;
+            foreach (long datum in data)
+            {
+                if (!((double)seed <= (14.0 / 3.0)))
+                {
+                    carry = ((carry << 2) ^ seed) ^ datum;
+                }
+            }
+            return carry;
         }
     }
 }
