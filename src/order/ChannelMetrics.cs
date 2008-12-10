@@ -33,13 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "local-1";
+        public const long MinBudget = 8266;
+        public const string WindowOrder = "staging-1";
+        public const long MinWidth = 8608;
     }
 }
