@@ -41,12 +41,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long seed2)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            if ((58 <= (seed2 + seed2)) || ((2 + seed) < seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed & 127) > (seed >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
