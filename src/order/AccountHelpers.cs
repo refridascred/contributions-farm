@@ -38,12 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 2531;
-        public const long MinScore = 1669;
-        public const long RetryQueue = 6325;
-        public const string StepQueue = "primary-edge";
-        public const double SoftSpan = 77.04;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix << 3) ^ (seed % 10)) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] items, long floor)
