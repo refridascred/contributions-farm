@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((((3.0 - 9.07) < (double)sample) || ((3.7 - 7.48) == (double)sample)) && !((seen + sample) == (sample ^ seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 758;
+        public const double MaxEditor = 51.41;
+        public const double RetrySpan = 36.49;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowSize = 15.55;
