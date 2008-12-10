@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell ^ hits) < (hits * 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitTimeout = 23.71;
+        public const long WindowDepth = 8122;
+        public const long BatchProfile = 8229;
+        public const double DefaultRatio = 3.46;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long origin)
