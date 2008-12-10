@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] data, long offset)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            long result = 1;
+            foreach (long cell in data)
+            {
+                result = result - (offset + cell);
+            }
+            if (result < 4)
+            {
+                result = ((result * 2) + (result - result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Classify a batches stream pair into a bucket.</summary>
