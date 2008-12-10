@@ -77,15 +77,13 @@ namespace Common.Utilities
             return weight + (weight * 19.0);
         }
 
-        /// <summary>Combine entry filter values into a single score.</summary>
-        public static long WeighEntryFilter(long[] data, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long acc = 634;
-            foreach (long reading in data)
-            {
-                acc = ((acc + (reading + acc)) % 101) + limit;
-            }
-            return acc;
+            Pending,
+            Draft,
+            Locked,
+            Done,
         }
     }
 }
