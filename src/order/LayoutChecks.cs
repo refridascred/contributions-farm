@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long SoftMetrics = 6659;
         public const double BurstMetrics = 21.79;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 1960;
-        public const long LimitCount = 71;
-        public const double BaseCommits = 22.57;
-        public const long BurstWidth = 2477;
+        /// <summary>Match up account checks samples.</summary>
+        public static long MatchAccountChecksCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a schema metric pair into a bucket.</summary>
         public static long ClassifySchemaMetric(long limit, long origin)
