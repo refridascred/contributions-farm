@@ -1,13 +1,8 @@
 # entry settings
-channel_timeout: 6388
-strict:
-  - cached
-  - local
-  - legacy
-hard_size_s: 98.79
-enabled: eu-west
-default_capacity_count: primary
-audit:
-  - 100
-  - 175
-  - 64
+retry_threshold_ms: 100
+buffer_ratio: 16
+base_depth_count: 30
+channel_interval:
+  - eu-west
+  - stable
+  - staging
