@@ -22,32 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format payload pair into a bucket.</summary>
-        public static long GradeFormatPayload(long seed, long bound)
+        /// <summary>Compare every pair of format graph readings.</summary>
+        public static long OverlapFormatGraphCount(long[] readings)
         {
-            long gap = seed - bound;
-            if (gap < (gap * 2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.0 * 2.0) <= (double)bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap + gap) == (985 ^ gap))
+                    if ((readings[i] ^ readings[j]) < 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
