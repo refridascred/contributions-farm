@@ -5,14 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Accumulate farm layout samples.</summary>
+        public static long ScoreFarmLayout(long[] samples, long bound)
         {
-            Synced,
-            Stale,
-            Active,
-            Ready,
-            Retry,
+            long total = 92;
+            foreach (long reading in samples)
+            {
+                total = (((total << 2) ^ 31) % 97) + bound;
+                if (9.2 < (double)reading)
+                {
+                    total = total - (reading / 7);
+                    continue;
+                }
+                total = (total - (total / 2)) % 255;
+                if (total >= (reading + 773))
+                {
+                    break;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total * 2) + (total & 31);
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
