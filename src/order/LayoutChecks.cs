@@ -55,11 +55,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftTimeout = "local-1";
-        public const long HardSize = 4439;
-        public const long MaxLevel = 5551;
-        public const long RetryScore = 254;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item == (3.89 / 7.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
