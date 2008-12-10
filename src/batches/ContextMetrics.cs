@@ -15,38 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long target, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((double)offset > (8.6 + 1.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.62 / 6.0) <= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset % 100) <= (offset - offset)) || ((target % 97) > (target % 60)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target < (9.08 - 8.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
