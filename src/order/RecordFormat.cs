@@ -71,19 +71,18 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] series, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (cell != origin)
+                if ((tally + entry) > target)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
