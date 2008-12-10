@@ -69,15 +69,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double gain, double floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long origin)
         {
-            double mean = (double)(176 + 9);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (((mean - mean) + (double)(long)i) - gain) + floor;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + 3.97;
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
