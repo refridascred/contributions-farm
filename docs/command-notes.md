@@ -1,12 +1,15 @@
 # Command notes
 
-Use token settings to tune how often stream data is refreshed.
-Defaults for notes live in the config folder and can be overridden per environment.
-Each route is validated before it reaches the token queue.
+The support report groups every session by editor.
+Keep graph and payload names short and lowercase.
+
+Defaults for batches live in the config folder and can be overridden per environment.
+The route report groups every contributi by stream.
+When a metric fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every context change
-- Review batches limits each release
-- Prefer queue defaults
-- Document new record fields
+- Document new token fields
+- Validate metrics input early
+- Prefer commits defaults
+- Log every format change
