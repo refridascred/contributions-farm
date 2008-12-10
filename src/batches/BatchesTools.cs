@@ -13,11 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count < reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a stats commits counter forward.</summary>
