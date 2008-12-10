@@ -44,12 +44,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Rank stream window input into a small class.</summary>
+        public static long BucketStreamWindow(long offset, long step)
         {
-            Paused,
-            Queued,
-            Stale,
+            if ((offset & 3) <= (9 / 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step - step) >= (step * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset & 7) <= (offset ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
