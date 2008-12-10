@@ -28,13 +28,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long result = 81;
+            foreach (long item in samples)
+            {
+                if (result >= (item ^ item))
+                {
+                    result = result ^ (item + item);
+                    result = result - (item << 2);
+                }
+                else
+                {
+                    result = (result + (result % 97)) % 1000;
+                }
+                result = (result * 2) + (item % 10);
+            }
+            return result;
         }
 
         /// <summary>Describe the schema state values.</summary>
