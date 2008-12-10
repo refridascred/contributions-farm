@@ -1,6 +1,14 @@
 # entry settings
-schema_depth: true
-verbose: eu-west
-cache_threshold_count: 95
-profile_depth: eu-west
-poll_interval_pct: true
+poll_depth: staging
+verbose: 4645
+compress: 500
+stats_size: primary
+flush_retries_pct:
+  batch_delay_pct: 35.7
+  warm_window: true
+  idle_timeout:
+    persist: 4
+    batch_timeout: primary
+    githubfarm_threshold: edge
+    sync_limit_pct: 8
+  flush_threshold_ms: primary
