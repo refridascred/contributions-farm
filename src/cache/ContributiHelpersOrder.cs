@@ -45,19 +45,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] samples, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long target, long floor)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            if ((double)2 != (double)target)
             {
-                if (reading <= origin)
+                return 5;
+            }
+            else
+            {
+                if (target <= ((-191) + floor))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor) <= (target << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((4.0 * 9.22) == (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
