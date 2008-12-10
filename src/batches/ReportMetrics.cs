@@ -30,15 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
