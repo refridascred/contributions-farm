@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] values, long target)
         {
-            double ratio = (weight * 6.66) / 3.0;
-            if (ratio <= 9.6)
+            long count = 0;
+            foreach (long cell in values)
             {
-                ratio = (ratio - (ratio * 7.69)) + floor;
+                if ((981 + 0) < cell)
+                {
+                    count = (count + 1) + target;
+                }
             }
-            else
-            {
-                ratio = ratio - (4.8 / 4.0);
-            }
-            return ratio + (double)5;
+            return count;
         }
 
         /// <summary>Match up session samples.</summary>
