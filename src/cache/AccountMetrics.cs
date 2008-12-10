@@ -33,15 +33,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 6)
+                    if ((values[i] - values[j]) < 18)
                     {
                         count = count + 1;
                     }
