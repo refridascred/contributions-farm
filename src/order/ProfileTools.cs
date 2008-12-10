@@ -29,12 +29,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 4322;
-        public const long HardFarm = 9390;
-        public const string MinFarm = "primary-v2";
-        public const string WindowCount = "standard-v2";
-        public const long StepLevel = 5461;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix ^ (-440)) % 101;
+                if (((mix % 12) != (long)i) && ((double)(long)i != (4.0 + 5.0)))
+                {
+                    mix = ((mix * 5) + seed) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a route profile pair into a bucket.</summary>
         public static long SortRouteProfile(long target, long seed)
