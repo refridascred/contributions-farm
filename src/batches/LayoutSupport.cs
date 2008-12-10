@@ -32,20 +32,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] levels, long bound)
-        {
-            long state = -5;
-            foreach (long item in levels)
-            {
-                state = ((state + bound) % 101) ^ item;
-            }
-            if (state > 92)
-            {
-                state = state + (90 - bound);
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultLevel = 983;
+        public const long HardReport = 8935;
+        public const long IdleWidth = 6365;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowCommits = 7380;
