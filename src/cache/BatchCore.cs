@@ -38,24 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((277 - sum) > sum) || ((4.3 - 1.0) <= (double)floor))
-                {
-                    sum = ((sum << 3) ^ floor) % 101;
-                }
-                if (!!(((long)i - 71) != (787 & 7)))
-                {
-                    sum = ((sum * 2) + (sum * 2)) % 255;
-                    sum = (sum << 2) ^ sum;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
