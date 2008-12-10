@@ -59,19 +59,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema contributi samples are out of range.</summary>
-        public static long TallySchemaContributiMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 9) < 47)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowRatio = 7565;
+        public const long CacheBuffer = 8768;
+        public const long MinBuffer = 4911;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 6555;
