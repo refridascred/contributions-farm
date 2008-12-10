@@ -21,13 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
