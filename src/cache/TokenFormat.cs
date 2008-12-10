@@ -33,21 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Find the first batch context entry that matches the target.</summary>
+        public static long FindBatchContextIndex(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
