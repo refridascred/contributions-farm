@@ -27,14 +27,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Queued,
-            Closed,
-            Synced,
             Failed,
-            Idle,
+            Done,
+            Dropped,
+            New,
+            Active,
         }
     }
 }
