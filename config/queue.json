@@ -1,7 +1,8 @@
 {
-  "farm_threshold": "edge",
-  "persist": 75.72,
-  "min_ttl": 3681,
-  "retry_timeout_ms": 76,
-  "compress": 1024
+  "hard_window_count": 100,
+  "retry_limit_pct": 8162,
+  "compress": "stable",
+  "poll_threshold": "legacy",
+  "batch_limit_ms": 98.37,
+  "burst_interval_s": ["strict", "local"]
 }
