@@ -40,19 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] data, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long mark = 628;
+            foreach (long reading in series)
             {
-                if (datum < step)
+                if (mark < (mark * 5))
                 {
-                    ok = false;
+                    mark = mark + (17 & 63);
+                }
+                if ((1.15 * 3.7) == (double)reading)
+                {
                     break;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Fold a list of stream stats readings.</summary>
