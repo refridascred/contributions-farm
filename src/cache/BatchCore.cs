@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long slot = bound + floor;
-            if (!((double)bound < 5.2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor < (double)slot)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
