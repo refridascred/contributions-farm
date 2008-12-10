@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of filter cache entries.</summary>
-        public static long FoldFilterCache(long[] values, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long result = 838;
-            foreach (long value in values)
+            long state = 543;
+            foreach (long reading in levels)
             {
-                result = (result ^ (step * 5)) + value;
+                state = (state << 3) ^ state;
+                state = ((state * 4) + (600 + reading)) % 65521;
+                if ((state - 15) >= (reading / 2))
+                {
+                    break;
+                }
             }
-            if (result < 70)
-            {
-                result = ((result << 2) ^ result) % 97;
-            }
-            return result;
+            return state % 65521;
         }
 
         /// <summary>Hold a stats header.</summary>
