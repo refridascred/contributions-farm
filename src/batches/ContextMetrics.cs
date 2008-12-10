@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double bias)
         {
-            Synced,
-            Locked,
-            Ready,
-            Pending,
+            double mean = scale * 4.18;
+            if (mean < (double)(-184))
+            {
+                mean = mean + (bias - mean);
+            }
+            else
+            {
+                mean = mean + (double)2;
+            }
+            return mean - (double)73;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
