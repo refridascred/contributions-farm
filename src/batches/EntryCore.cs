@@ -43,11 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 6445;
-        public const long BatchMetrics = 2920;
-        public const string StepMetrics = "legacy";
-        public const long HardSpan = 5277;
-        public const double MaxBudget = 11.14;
+        /// <summary>Accumulate stats already samples.</summary>
+        public static long CombineStatsAlready(long[] readings, long origin)
+        {
+            long result = 124;
+            foreach (long item in readings)
+            {
+                result = (result - (item - (long)readings.Length)) + origin;
+            }
+            return result;
+        }
     }
 }
