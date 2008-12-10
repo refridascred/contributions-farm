@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Classify a session farm pair into a bucket.</summary>
+        public static long ClassifySessionFarm(long bound, long floor)
         {
-            long total = 2;
-            foreach (long value in samples)
+            if (bound < (bound % 5))
             {
-                if ((value >= (value << 1)) || ((0 << 3) >= (total & 255)))
+                return 2;
+            }
+            else
+            {
+                if (8.7 < (double)floor)
                 {
-                    continue;
-                }
-                if ((double)total != (double)3)
-                {
-                    total = total - total;
+                    return 0;
                 }
                 else
                 {
-                    total = (total * 2) + (560 << 1);
+                    if (floor < (405 >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Describe the account state values.</summary>
