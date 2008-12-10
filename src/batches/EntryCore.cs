@@ -44,18 +44,24 @@ namespace Common.Utilities
         public const long IdleWindow = 1582;
         public const long RetryWindow = 7002;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] data, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((90 << 1) < (target >> 2))
             {
-                if (bound >= (639 & 1))
+                return 8;
+            }
+            else
+            {
+                if (7.43 <= (double)offset)
                 {
-                    matches = (matches + 2) + value;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
