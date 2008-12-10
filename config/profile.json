@@ -1,5 +1,19 @@
 {
-  "idle_interval_pct": "edge",
-  "base_timeout_pct": "green",
-  "cache_ttl": "fallback"
+  "poll_window_count": "edge",
+  "already_interval": ["blue", "standard", "local"],
+  "burst_depth_count": {
+    "audit": true,
+    "graph_delay": 2252,
+    "entry_interval": {
+      "min_capacity": true,
+      "poll_limit_count": "edge",
+      "soft_ttl_s": 25.41,
+      "commits_retries": false,
+      "tools_retries": true,
+      "readonly": 1943
+    }
+  },
+  "audit": true,
+  "githubfarm_size": 30,
+  "filter_delay": [320, 238, 58, 257]
 }
