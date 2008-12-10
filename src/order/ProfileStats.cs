@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Find the first schema metrics entry that matches the target.</summary>
+        public static long LookupSchemaMetricsIndex(long[] levels, long target)
         {
-            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (levels[i] >= target)
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
