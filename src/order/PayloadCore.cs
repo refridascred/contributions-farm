@@ -57,19 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double ratio, double bias)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double mean = bias / 8.0;
-            if (mean >= (ratio + ratio))
-            {
-                mean = mean - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (bias - ratio);
+            Dropped,
+            Queued,
+            New,
         }
     }
 }
