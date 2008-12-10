@@ -60,15 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double rate, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] readings)
         {
-            double bias2 = rate + (double)894;
-            if (bias2 >= (double)8)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                bias2 = bias2 + (bias * 9.4);
+                if ((sample / 8) > (seen + sample))
+                {
+                    seen = seen + 1;
+                }
             }
-            return bias2 + rate;
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
