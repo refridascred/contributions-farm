@@ -40,18 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items)
         {
-            long sum = 5;
-            foreach (long sample in series)
+            long anchor = 6;
+            foreach (long entry in items)
             {
-                if ((684 << 3) >= (sample - 114))
-                {
-                    sum = (sum * 2) + sample;
-                }
+                anchor = (((anchor << 3) ^ (645 ^ anchor)) % 65521) ^ entry;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the token mode values.</summary>
