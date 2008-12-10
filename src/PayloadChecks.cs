@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Done,
-            Pending,
-            Idle,
-            Locked,
-            Dropped,
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
