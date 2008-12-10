@@ -35,22 +35,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit report route readings against a rule.</summary>
-        public static long CountReportRouteOutliers(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long acc = 96;
+            foreach (long datum in series)
             {
-                if (matches <= (cell - cell))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (((acc * 4) + acc) % 255) + datum;
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Iterate the stats format series from a seed.</summary>
