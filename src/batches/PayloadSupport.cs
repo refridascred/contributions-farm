@@ -18,22 +18,13 @@ namespace Common.Utilities
         public const long RetryTools = 2268;
         public const double MinTools = 59.6;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] items, long target)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!((double)target != (1.8 / 4.0)))
-                {
-                    count = (count + 3) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
