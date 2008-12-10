@@ -61,12 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Synced,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 783;
+        public const double DefaultBudget = 66.37;
+        public const string SoftFactor = "primary-edge";
+        public const double MinAccount = 22.84;
     }
 }
