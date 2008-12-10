@@ -36,16 +36,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] series, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor + (seed & 15)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (floor <= (4 & 15))
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
