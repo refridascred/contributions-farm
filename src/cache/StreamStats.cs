@@ -30,14 +30,15 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Roll a support contributi counter forward.</summary>
+        public static long IterateSupportContributi(long limit)
         {
-            Queued,
-            Failed,
-            Draft,
-            Done,
-            Paused,
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Adjust a checks reading.</summary>
