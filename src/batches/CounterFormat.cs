@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 2089;
+        public const long MaxCluster = 6309;
+        public const long BatchLevel = 2748;
+        public const long BurstRatio = 9763;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 3296;
