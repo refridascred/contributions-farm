@@ -19,15 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double ratio, double bias)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double drift = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift - 0.6) + (double)(long)i) - bias;
-            }
-            return drift + (double)0;
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a support contributi counter forward.</summary>
