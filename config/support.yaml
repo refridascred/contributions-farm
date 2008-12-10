@@ -1,6 +1,4 @@
 # support settings
-audit: stable
-cache_threshold_pct: 5616
-readonly: cached
-enabled: true
-max_size: 43.79
+flush_limit_s: 87.8
+min_limit_count: 12
+audit: 52.62
