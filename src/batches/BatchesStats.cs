@@ -38,13 +38,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double scale, double floor)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            double drift = (double)2 * 4.45;
+            return ((drift + drift) + scale) + floor;
         }
     }
 }
