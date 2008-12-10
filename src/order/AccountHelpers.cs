@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchFactor = 5478;
-        public const long IdleWidth = 1376;
-        public const string MinSize = "legacy-v2";
-        public const long CacheBatches = 8320;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Draft,
+            Closed,
+            Active,
+            New,
+        }
 
         /// <summary>Fold a list of stats metric readings.</summary>
         public static long FoldStatsMetric(long[] samples)
