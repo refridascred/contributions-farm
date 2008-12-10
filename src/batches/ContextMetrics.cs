@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] readings, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] samples, long limit)
         {
-            long result = 8;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((11.0 + 1.77) >= (double)limit)
+                if (((double)limit >= (6.6 - 2.9)) && (count > (count / 8)))
                 {
-                    result = ((result * 3) + (290 / 3)) - datum;
-                }
-                else
-                {
-                    result = ((result * 3) + (472 % 16)) % 65521;
+                    count = (count + 2) - cell;
                 }
             }
-            if (result < 3)
-            {
-                result = ((result * 3) + (result - result)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
