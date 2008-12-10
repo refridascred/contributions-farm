@@ -40,32 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long floor, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long next = floor ^ seed;
-            if ((next / 5) != (next << 1))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed == (7.76 - 2.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor < (5.7 - 3.58))
+                    if ((data[i] ^ data[j]) > 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
