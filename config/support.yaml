@@ -1,7 +1,7 @@
 # support settings
-max_interval_count:
-  - 20
-  - 428
-  - 266
-readonly: 59
-warm_threshold: strict
+default_capacity: true
+default_window_pct: fallback
+checks_limit:
+  - 180
+  - 304
+burst_limit: 1024
