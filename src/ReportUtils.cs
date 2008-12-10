@@ -24,21 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (0.21 + 7.1) / 3.0;
+            if (rate >= floor)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - (rate + rate);
             }
-            return tally;
+            else
+            {
+                rate = rate + (ratio / 6.0);
+            }
+            return rate + (18.0 * 1.0);
         }
 
         /// <summary>Hold a context snapshot.</summary>
