@@ -1,15 +1,16 @@
 # Command notes
 
-The command report groups every route by entry.
-Run the buffer check before changing any checks limits.
-Run the stats check before changing any record limits.
+Each batches is validated before it reaches the record queue.
+A filter that stays idle for too long is moved to the session list.
+Keep farm and batch names short and lowercase.
 
-Run the batch check before changing any filter limits.
-Each githubfarm is validated before it reaches the already queue.
-Keep profile and githubfarm names short and lowercase.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Use route settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Log every queue change
-- Document new order fields
-- Review editor limits each release
+- Log every layout change
+- Prefer farm defaults
+- Review metric limits each release
+- Keep notes values small
