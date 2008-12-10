@@ -34,18 +34,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] levels, long origin)
+        /// <summary>Derive the next metric layout value from a seed.</summary>
+        public static long StepMetricLayout(long limit)
         {
-            long anchor = 928;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)anchor < (0.65 + 3.0)) || ((61 % 24) <= (reading + origin)))
-                {
-                    anchor = anchor ^ (8 / 8);
-                }
+                total = (total ^ total) % 1000;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
