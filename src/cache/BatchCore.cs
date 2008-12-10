@@ -15,23 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((step << 2) == (score + (long)i)) || (((long)i & 3) < (score + score)))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = score + (long)i;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Idle,
+            Draft,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Locate a record queue reading by value.</summary>
