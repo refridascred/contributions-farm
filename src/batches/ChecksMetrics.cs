@@ -53,12 +53,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first graph stream entry that matches the target.</summary>
-        public static long SeekGraphStreamIndex(long[] readings, long step)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                if (samples[i] == offset)
                 {
                     return (long)i;
                 }
