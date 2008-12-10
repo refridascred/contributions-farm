@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Iterate the contributi payload series from a seed.</summary>
+        public static long RollContributiPayload(long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a cluster header.</summary>
