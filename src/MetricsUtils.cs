@@ -19,19 +19,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many graph context samples are out of range.</summary>
-        public static long CountGraphContextMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading ^ 41) == (hits + 91)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 9106;
+        public const long HardBatch = 4311;
+        public const double SoftDepth = 48.32;
+        public const double RetrySize = 73.01;
+        public const string WindowBatch = "staging-v2";
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
