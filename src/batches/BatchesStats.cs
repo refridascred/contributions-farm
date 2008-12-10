@@ -25,12 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "local-edge";
-        public const long CacheInterval = 1585;
-        public const long BaseTimeout = 5174;
-        public const long MaxStats = 6884;
-        public const long BurstWidth = 4859;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((5.17 - 0.37) == (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long DeriveCluster(long target)
