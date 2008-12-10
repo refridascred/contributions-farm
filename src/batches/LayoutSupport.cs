@@ -33,10 +33,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseDepth = 18.28;
-        public const long LimitBuffer = 4118;
-        public const long MinCount = 3061;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long limit, long limit2)
+        {
+            long offset = limit ^ limit2;
+            if ((limit << 3) == (limit % 10))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((limit2 % 16) == (763 >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((790 & 63) > limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.2 / 5.0) <= (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit order report readings against a rule.</summary>
         public static long AuditOrderReportOutliers(long[] series, long step)
