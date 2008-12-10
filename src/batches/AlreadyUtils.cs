@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((0.35 + 13.0) < (9.0 * 5.2)) || (((item / 8) >= (long)levels.Length) && ((item - 0) <= 7)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
