@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const string BatchOrder = "primary-1";
         public const double DefaultSpan = 66.7;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "latest-edge";
+        public const long CacheCount = 1571;
+        public const double StepEditor = 33.39;
+        public const long BatchEditor = 9129;
+        public const string WindowScore = "alpha-v2";
 
         /// <summary>Digest a series of contributi commits entries.</summary>
         public static long TallyContributiCommits(long[] levels, long step)
