@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] levels, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((value - 743) != (value / 4)))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a record options.</summary>
