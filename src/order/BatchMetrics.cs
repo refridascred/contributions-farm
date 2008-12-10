@@ -12,15 +12,14 @@ namespace Common.Utilities
             return (mean + (double)1) + scale;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mark = 925;
-            foreach (long entry in samples)
-            {
-                mark = (((mark * 2) + 757) % 255) ^ entry;
-            }
-            return mark % 4096;
+            Failed,
+            Idle,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
