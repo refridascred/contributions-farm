@@ -45,15 +45,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double drift = 11.0;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - (drift * 7.8)) + (double)(long)i) - scale;
-            }
-            return drift + floor;
+            Synced,
+            Draft,
+            Idle,
         }
     }
 }
