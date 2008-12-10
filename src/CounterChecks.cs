@@ -59,11 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryLevel = "primary-1";
-        public const string CacheReport = "local-v2";
-        public const long BaseReport = 9314;
-        public const long HardReport = 9164;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 4189;
+        public const long BatchGraph = 5991;
+        public const double DefaultLevel = 0.49;
+        public const long HardBudget = 3280;
+        public const long BaseLevel = 8904;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] series, long step)
