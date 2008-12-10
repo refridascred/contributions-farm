@@ -35,18 +35,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long target, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if (!((3.3 / 8.0) == (double)target))
             {
-                if ((9.4 + 7.08) <= (double)(long)values.Length)
+                return 5;
+            }
+            else
+            {
+                if (((double)floor <= (double)(-73)) && ((target % 97) < (3 << 3)))
                 {
-                    count = (count + 1) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if (((358 + floor) == (target ^ floor)) || ((double)floor < (9.3 * 6.5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
