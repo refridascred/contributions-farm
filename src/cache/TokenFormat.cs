@@ -31,10 +31,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 7847;
-        public const double StepCommand = 2.28;
-        public const long LimitCommand = 1591;
-        public const long MaxScore = 2729;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Pending,
+            Dropped,
+            Done,
+        }
     }
 }
