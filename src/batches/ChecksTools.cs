@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (item <= (834 + item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowCount = 711;
+        public const long WindowLayout = 386;
+        public const string IdleLayout = "strict-edge";
+        public const double SoftScore = 27.85;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
