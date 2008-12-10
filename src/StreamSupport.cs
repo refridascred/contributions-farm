@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long seed, long floor)
+        /// <summary>Roll a editor account counter forward.</summary>
+        public static long DeriveEditorAccount(long target)
         {
-            long bound = seed ^ floor;
-            if ((seed / 2) <= 77)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
+                total = (total << 3) ^ 2;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((552 ^ bound) != (50 >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)seed == (8.4 - 17.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Match up already samples.</summary>
