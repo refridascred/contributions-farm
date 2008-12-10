@@ -59,13 +59,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 5708;
+        public const string StepCount = "latest-v2";
+        public const long BaseGraph = 313;
     }
 }
