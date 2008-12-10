@@ -24,12 +24,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample != (2.3 / 3.0))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
