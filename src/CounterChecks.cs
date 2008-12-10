@@ -30,18 +30,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] readings, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((target ^ target) == (252 << 2))
-                {
-                    count = (count + 1) ^ sample;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
