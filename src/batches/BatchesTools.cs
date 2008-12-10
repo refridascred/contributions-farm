@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftTimeout = 17.76;
-        public const long BurstCount = 9883;
-        public const long MinNotes = 1720;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Dropped,
+            Ready,
+            Closed,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
