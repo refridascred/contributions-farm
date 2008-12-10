@@ -20,15 +20,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a batches contributi figure with a bias.</summary>
-        public static double SmoothBatchesContributi(double rate, double bias)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            double gain = (double)(38 % 8);
-            if (gain <= (bias / 3.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (10.0 - gain);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain + (rate * 1.0);
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
