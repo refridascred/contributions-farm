@@ -22,31 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long offset2)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double offset)
         {
-            if ((double)offset2 <= 11.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.0 - 5.6) > (double)offset2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + offset2) < (offset % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double rate2 = rate;
+            return (rate2 + 6.2) + offset;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
