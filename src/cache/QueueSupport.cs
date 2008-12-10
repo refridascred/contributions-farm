@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] series)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((858 + sample) >= (sample % 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
