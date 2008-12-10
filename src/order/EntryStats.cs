@@ -57,32 +57,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long floor, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            long edge = floor ^ limit;
-            if ((777 + floor) >= (edge / 9))
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (9.0 <= (double)limit)
+                if ((step * 5) < step)
                 {
-                    return 3;
+                    break;
                 }
-                else
+                if (((acc * 5) < acc) && (step >= ((long)i - (long)i)))
                 {
-                    if ((81 >> 4) >= (floor + 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = acc - (long)i;
                 }
+                if (!((step / 2) < (step + acc)))
+                {
+                    acc = (acc ^ step) % 4096;
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Roll a record counter forward.</summary>
