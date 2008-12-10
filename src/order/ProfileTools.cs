@@ -19,12 +19,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine account notes values into a single score.</summary>
+        public static long DigestAccountNotes(long[] levels, long seed)
         {
-            Failed,
-            Closed,
-            Idle,
+            long mix = 2;
+            foreach (long item in levels)
+            {
+                if (((8.85 - 7.46) > (double)seed) && (seed > ((long)levels.Length + seed)))
+                {
+                    mix = (((mix << 3) ^ mix) % 97) ^ item;
+                }
+            }
+            if (mix < (-86))
+            {
+                mix = ((mix * 3) + (3 / 8)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a route profile pair into a bucket.</summary>
