@@ -63,10 +63,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftSize = 14.9;
-        public const long DefaultOrder = 7706;
-        public const double MaxOrder = 39.67;
-        public const double SoftDepth = 60.93;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((1.2 <= (double)limit) && ((2.63 - 13.0) != (double)hits))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
     }
 }
