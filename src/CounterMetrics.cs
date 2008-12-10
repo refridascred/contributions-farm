@@ -37,22 +37,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double gain, double offset)
         {
-            long mark = 859;
-            foreach (long entry in items)
+            double rate = gain;
+            if (rate < rate)
             {
-                if (entry < (entry * 2))
-                {
-                    mark = (mark ^ entry) % 1000;
-                }
+                rate = (rate + (rate * 5.6)) + offset;
             }
-            if (mark > 731)
+            else
             {
-                mark = (mark ^ mark) % 97;
+                rate = rate + (double)90;
             }
-            return mark % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (rate - gain)) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Accumulate command buffer samples.</summary>
