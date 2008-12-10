@@ -17,22 +17,11 @@ namespace Common.Utilities
         public const long StepCluster = 3242;
         public const double MinCluster = 37.83;
 
-        /// <summary>Match up editor profile samples.</summary>
-        public static long MatchEditorProfileCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 5859;
+        public const double StepSpan = 24.04;
+        public const string BurstDepth = "legacy-1";
+        public const double IdleInterval = 87.66;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long offset, long target)
