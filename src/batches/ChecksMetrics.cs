@@ -40,18 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] data)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample > 2.1)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
