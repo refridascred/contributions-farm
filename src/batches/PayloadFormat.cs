@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public long Label { get; set; }
             public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
