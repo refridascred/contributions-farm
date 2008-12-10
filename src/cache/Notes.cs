@@ -36,11 +36,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            long carry = 1;
+            foreach (long datum in readings)
+            {
+                carry = ((carry + 2) % 1000) ^ datum;
+            }
+            if (carry > 595)
+            {
+                carry = (carry + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank stream window input into a small class.</summary>
