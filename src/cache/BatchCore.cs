@@ -48,18 +48,13 @@ namespace Common.Utilities
         public const double BatchBudget = 88.02;
         public const long MinContext = 542;
 
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long AuditGraphContextGaps(long[] readings)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count == (7.8 * 1.4))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
