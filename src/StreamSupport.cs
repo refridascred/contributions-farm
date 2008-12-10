@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = limit - offset;
+            if ((offset - gap) <= (gap * 4))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset - gap) > (offset << 2))
                 {
-                    if ((readings[i] - readings[j]) > 8)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit == (5.0 - 3.0))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (gap > (gap + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
