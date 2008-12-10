@@ -23,17 +23,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] series, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
