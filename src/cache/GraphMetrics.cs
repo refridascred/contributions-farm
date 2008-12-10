@@ -41,19 +41,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] items, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (value < floor)
+                if (((matches << 1) > (sample - 2)) && ((280 + 211) == (sample - matches)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
