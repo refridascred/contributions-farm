@@ -41,12 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Validate batch cache readings against a bound.</summary>
+        public static bool GuardBatchCacheBounds(long[] values, long offset)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
