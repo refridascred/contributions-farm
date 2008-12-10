@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Run the notes check before changing any report limits.
+Defaults for tools live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Validate entry input early
-- Document new record fields
-- Review batches limits each release
-- Prefer window defaults
+- Document new profile fields
+- Review graph limits each release
+- Keep schema values small
