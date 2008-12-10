@@ -22,11 +22,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] readings)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen - 4) <= (sample << 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
