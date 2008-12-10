@@ -47,12 +47,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double scale, double offset)
-        {
-            double gain = 0.12;
-            return ((gain + (double)287) + scale) + offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinWidth = 753;
+        public const string BatchDepth = "staging-v2";
+        public const string DefaultRatio = "staging";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinStats = 9703;
