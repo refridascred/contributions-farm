@@ -60,18 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] readings, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((long)readings.Length * 2) != (hits ^ (-19)))
-                {
-                    hits = ((hits + 1) ^ sample) + offset;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
