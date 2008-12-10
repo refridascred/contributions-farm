@@ -30,11 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultScore = 5208;
-        public const double LimitEditor = 9.51;
-        public const string BaseFactor = "strict-v2";
-        public const long CacheSize = 5718;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public double Score { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
