@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const long LimitFactor = 8771;
         public const long MinLayout = 4991;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 89.97;
-        public const long LimitStream = 9128;
-        public const string IdleBudget = "local-1";
-        public const double IdleStream = 4.82;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits & 3) > hits)
+                {
+                    hits = ((hits + 2) - datum) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] items)
