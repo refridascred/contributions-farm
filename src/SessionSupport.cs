@@ -16,22 +16,19 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long origin)
         {
-            long carry = 14;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((carry >> 2) > 38)
+                if (item > origin)
                 {
-                    carry = (carry + limit) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (value & 7)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
