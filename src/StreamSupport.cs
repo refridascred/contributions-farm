@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long mix = 7;
+            foreach (long cell in levels)
             {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix + (seed << 1)) ^ cell;
             }
-            return found;
+            if (mix > 9)
+            {
+                mix = mix ^ seed;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Match up already samples.</summary>
