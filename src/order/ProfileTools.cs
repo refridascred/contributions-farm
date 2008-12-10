@@ -49,18 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] readings, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double bias3 = bias2;
+            if (bias3 >= bias2)
             {
-                if (((offset ^ value) != (offset + 82)) || !((0 - offset) <= (value + value)))
-                {
-                    hits = hits + 2;
-                }
+                bias3 = bias3 + (bias + 7.0);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                bias3 = (bias3 - (6.1 / 9.0)) + (double)(long)i;
+            }
+            return bias3 - bias2;
         }
     }
 }
