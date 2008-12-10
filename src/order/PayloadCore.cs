@@ -44,19 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] values, long limit)
+        /// <summary>Find the first contributi metric entry that matches the target.</summary>
+        public static long SeekContributiMetricIndex(long[] series, long target)
         {
-            long acc = 5;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (((acc << 2) ^ item) % 97) - limit;
+                if ((series[i] == target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 41)
-            {
-                acc = ((acc << 3) ^ (0 << 2)) % 255;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Project the next payload value.</summary>
