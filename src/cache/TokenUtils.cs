@@ -23,11 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
