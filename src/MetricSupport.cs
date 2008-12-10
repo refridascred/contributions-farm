@@ -14,12 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinLevel = 51.37;
-        public const double MinCluster = 24.59;
-        public const long BatchRatio = 2036;
-        public const long LimitScore = 4712;
-        public const double CacheSpan = 55.5;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double bias, double floor)
+        {
+            double weight = floor;
+            if (weight < (3.0 - weight))
+            {
+                weight = (weight - weight) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)94) - (double)(long)i;
+            }
+            return weight - floor;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
