@@ -1,18 +1,5 @@
 {
-  "record_retries": 250,
-  "hard_ttl_count": {
-    "support_window": "stable",
-    "schema_delay": "legacy",
-    "persist": "legacy",
-    "format_limit": "open",
-    "min_threshold_s": 34.63
-  },
-  "sync_size_pct": 5514,
-  "max_ratio_ms": {
-    "soft_depth_pct": ["fallback", "local"],
-    "queue_window": 46,
-    "already_limit": "latest",
-    "cache_window_ms": 8097,
-    "batch_ratio_ms": false
-  }
+  "hard_delay": 1024,
+  "cache_depth": "staging",
+  "default_interval_pct": 67.76
 }
