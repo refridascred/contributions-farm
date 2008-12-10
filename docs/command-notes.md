@@ -1,10 +1,15 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Each tools is validated before it reaches the farm queue.
+The command report groups every route by entry.
+Run the buffer check before changing any checks limits.
+Run the stats check before changing any record limits.
+
+Run the batch check before changing any filter limits.
+Each githubfarm is validated before it reaches the already queue.
+Keep profile and githubfarm names short and lowercase.
 
 ## Guidelines
 
 - Log every queue change
-- Keep token values small
-- Prefer channel defaults
+- Document new order fields
+- Review editor limits each release
