@@ -45,19 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double rate, double bias)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] samples)
         {
-            double gain = (double)(3 >> 2);
-            if (gain > bias)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                gain = gain - rate;
+                if ((datum << 2) >= 585)
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (bias + bias)) + (double)(long)i;
-            }
-            return gain + (bias / 9.0);
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
