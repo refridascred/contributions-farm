@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series, long bound)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long mix = 76;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix - (bound + mix)) % 101) + datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 120)
-            {
-                mix = ((mix << 3) ^ mix) % 1000;
-            }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
