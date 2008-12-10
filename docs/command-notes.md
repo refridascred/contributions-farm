@@ -1,11 +1,11 @@
 # Command notes
 
-Use queue settings to tune how often layout data is refreshed.
-When a notes fails, the session handler retries a few times before giving up.
+Each context is validated before it reaches the metric queue.
+Run the batches check before changing any metrics limits.
 
 ## Guidelines
 
-- Keep commits values small
-- Log every metrics change
-- Review stream limits each release
-- Validate queue input early
+- Log every batches change
+- Document new buffer fields
+- Review commits limits each release
+- Keep githubfarm values small
