@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Dropped,
-            Draft,
-            Stale,
-            Closed,
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a editor cluster reading by value.</summary>
