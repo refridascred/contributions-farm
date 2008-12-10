@@ -1,10 +1,6 @@
 # support settings
-enabled:
-  - 368
-  - 48
-already_delay: 7674
-metrics_threshold: 21.48
-warm_retries_pct: stable
-idle_interval_ms:
-  - stable
-  - latest
+persist: staging
+cache_size_s: 5250
+layout_ttl: staging
+compress: stable
+graph_retries: true
