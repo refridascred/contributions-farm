@@ -44,18 +44,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] data)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value << 1) < 420)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
