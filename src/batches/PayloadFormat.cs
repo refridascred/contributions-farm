@@ -24,14 +24,12 @@ namespace Common.Utilities
         public const long StepGraph = 6231;
         public const double BaseGraph = 95.0;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Stale,
-            Idle,
-            Failed,
-            Retry,
-            Draft,
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
