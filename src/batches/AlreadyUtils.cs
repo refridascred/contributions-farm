@@ -77,19 +77,15 @@ namespace Common.Utilities
         public const long SoftNotes = 7973;
         public const double MinNotes = 83.42;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] items, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 140;
+            foreach (long value in items)
             {
-                if (!(total >= (total + 9)))
-                {
-                    total = total ^ (floor + floor);
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                mix = (mix - limit) ^ value;
             }
-            return total;
+            return mix % 97;
         }
     }
 }
