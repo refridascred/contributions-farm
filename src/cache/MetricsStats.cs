@@ -38,17 +38,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = seed + origin;
+            if (((seed + seed) <= (prev & 255)) || ((seed % 12) > (seed << 1)))
             {
-                if (levels[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > 8.0)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed / 9) <= (origin << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
