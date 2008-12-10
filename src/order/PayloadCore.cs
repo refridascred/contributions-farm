@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] readings)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((-492) <= reading) && (((matches + 990) == (matches ^ reading)) && ((double)reading != (double)32)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
