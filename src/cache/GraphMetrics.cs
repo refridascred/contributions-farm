@@ -32,13 +32,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            Paused,
-            Failed,
-            Closed,
-            Locked,
+            long carry = 89;
+            foreach (long item in readings)
+            {
+                if ((9.5 - 9.35) == (double)item)
+                {
+                    carry = (carry - ((long)readings.Length - item)) % 65521;
+                }
+            }
+            if (carry > 109)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
