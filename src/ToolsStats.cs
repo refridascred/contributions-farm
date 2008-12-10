@@ -70,22 +70,32 @@ namespace Common.Utilities
         public const double WindowContributi = 87.61;
         public const string BurstContributi = "latest-edge";
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] data, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long lane = origin ^ floor;
+            if (((lane - origin) > (3 * 3)) || ((floor / 2) >= origin))
             {
-                if ((double)reading < (4.1 * 6.0))
+                return 7;
+            }
+            else
+            {
+                if (((7 % 100) < (lane - floor)) && ((5.0 + 8.0) < (double)lane))
                 {
-                    seen = (seen + 2) - target;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((floor + floor) > origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
