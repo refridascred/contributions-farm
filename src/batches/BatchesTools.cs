@@ -50,15 +50,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a cache route reading.</summary>
-        public static double SmoothCacheRoute(double ratio, double floor)
+        /// <summary>Count the farm batch entries that pass the check.</summary>
+        public static long TallyFarmBatchOutliers(long[] series, long limit)
         {
-            double drift = (ratio - 6.66) * 3.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                drift = (drift + floor) + (double)(long)i;
+                if ((5 >> 1) == (long)series.Length)
+                {
+                    tally = ((tally + 2) - entry) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift + (ratio + drift);
+            return tally;
         }
     }
 }
