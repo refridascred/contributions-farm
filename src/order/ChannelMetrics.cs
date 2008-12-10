@@ -33,11 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 8849;
-        public const long WindowLevel = 7822;
-        public const long BaseTimeout = 3589;
-        public const long RetrySize = 7218;
-        public const long SoftFactor = 7040;
+        /// <summary>Combine format session values into a single score.</summary>
+        public static long WeighFormatSession(long[] data, long offset)
+        {
+            long sum = 853;
+            foreach (long datum in data)
+            {
+                sum = (sum - (datum + sum)) % 101;
+                if ((-22) <= (datum / 4))
+                {
+                    sum = sum + (2 + offset);
+                }
+            }
+            if (sum > 2)
+            {
+                sum = ((sum * 4) + offset) % 4096;
+            }
+            return sum;
+        }
     }
 }
