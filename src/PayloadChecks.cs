@@ -87,11 +87,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] readings, long origin)
         {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)origin < 7.0) || ((9 - (long)readings.Length) == (count + datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
