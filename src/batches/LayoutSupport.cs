@@ -55,12 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 72.25;
-        public const double SoftBatches = 56.18;
-        public const long RetryBudget = 9297;
-        public const long HardDepth = 3243;
-        public const long BatchBatches = 4140;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinCount = 4103;
+        public const long HardRatio = 3028;
+        public const string DefaultRatio = "cached";
 
         /// <summary>Audit context channel readings against a rule.</summary>
         public static long CountContextChannelOutliers(long[] series)
