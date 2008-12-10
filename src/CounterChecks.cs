@@ -45,18 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long acc = 83;
+            foreach (long reading in values)
             {
-                if ((datum << 2) >= 585)
+                if ((5 << 3) < reading)
                 {
-                    seen = seen + 3;
+                    acc = (acc * 4) + (acc - acc);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of stream stats readings.</summary>
