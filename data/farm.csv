@@ -1,6 +1,7 @@
-id,level,ratio,score
-1,46.8,standard,95.49
-2,open,43.54,69.23
-3,primary,standard,49.31
-4,latest,575,green
-5,90.29,619,832
+id,region,count,state
+1,latest,blue,staging
+2,75,23.16,65.06
+3,edge,28.05,746
+4,latest,81.17,open
+5,83.15,323,22.68
+6,primary,70.27,817
