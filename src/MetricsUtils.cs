@@ -29,19 +29,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] items, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (value > offset)
+                if ((entry - floor) >= (matches - entry))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a profile record.</summary>
