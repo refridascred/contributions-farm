@@ -24,19 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            double rate = (0.21 + 7.1) / 3.0;
-            if (rate >= floor)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                rate = rate - (rate + rate);
+                if (!((383 << 2) <= ((long)i * 5)))
+                {
+                    mark = (mark * 3) + (mark + mark);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + (ratio / 6.0);
-            }
-            return rate + (18.0 * 1.0);
+            return mark;
         }
 
         /// <summary>Accumulate token filter samples.</summary>
