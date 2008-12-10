@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Match up metric samples.</summary>
