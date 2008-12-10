@@ -64,11 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double load = scale;
-            return (load + (scale * 9.1)) + span;
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
