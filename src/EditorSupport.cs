@@ -44,25 +44,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long floor, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long next = floor - bound;
-            if (271 >= (next >> 2))
+            long mix = 31;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((300 - bound) == (bound ^ floor))
+                mix = (((mix << 3) ^ (664 % 97)) % 255) ^ item;
+                if ((mix - 2) >= (mix >> 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
