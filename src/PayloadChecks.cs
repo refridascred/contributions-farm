@@ -44,31 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long origin, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            if ((bound >> 3) != (bound * 5))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (bound + bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5 + bound) <= 664)
+                    if ((items[i] - items[j]) < 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next account context value from a seed.</summary>
