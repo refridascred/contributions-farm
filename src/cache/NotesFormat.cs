@@ -33,22 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout payload samples are out of range.</summary>
-        public static long TallyLayoutPayloadGaps(long[] levels, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = 100;
+            foreach (long sample in samples)
             {
-                if ((offset + offset) > (datum + count))
+                if (((long)samples.Length + 11) == (sample & 31))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = ((sum * 4) + sum) % 1000;
                 }
             }
-            return count;
+            if (sum < 14)
+            {
+                sum = (sum ^ (14 % 100)) % 65521;
+            }
+            return sum;
         }
     }
 }
