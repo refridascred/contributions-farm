@@ -48,18 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double span)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double bias = (double)(4 - 7);
+            if (bias < (gain + 7.59))
             {
-                if (9.19 <= (double)item)
-                {
-                    hits = hits + 1;
-                }
+                bias = (bias - bias) - span;
             }
-            return hits;
+            return bias - bias;
         }
     }
 }
