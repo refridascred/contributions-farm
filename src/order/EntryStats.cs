@@ -81,11 +81,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheWidth = 12.38;
-        public const long MaxProfile = 8490;
-        public const string MinProfile = "strict";
-        public const long LimitProfile = 501;
-        public const double HardProfile = 55.12;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long origin)
+        {
+            long state = 361;
+            foreach (long cell in readings)
+            {
+                state = (((state * 3) + (cell + (long)readings.Length)) % 101) - origin;
+                state = (state * 5) + (cell - 7);
+            }
+            if (state > 82)
+            {
+                state = (state - (96 << 2)) % 65521;
+            }
+            return state;
+        }
     }
 }
