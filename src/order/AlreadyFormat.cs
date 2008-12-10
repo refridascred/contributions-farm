@@ -74,22 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] values, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long total = 824;
+            foreach (long reading in levels)
             {
-                if ((count ^ sample) == (count / 4))
+                if (!((reading - total) >= (28 << 3)))
                 {
-                    count = (count + 2) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = (total ^ ((-1) + 513)) % 65521;
                 }
             }
-            return count;
+            if (total > 25)
+            {
+                total = (total + total) % 97;
+            }
+            return total % 4096;
         }
     }
 }
