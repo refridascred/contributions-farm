@@ -29,30 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] items)
         {
-            long carry = 9;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((carry + carry) > (cell >> 1))
+                if ((double)item != (1.5 / 5.0))
                 {
-                    carry = ((carry * 2) + carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (77 % 97)) % 101;
-                }
-                if ((carry % 7) >= (242 % 64))
-                {
-                    carry = carry ^ (3 % 100);
+                    count = count + 2;
                 }
             }
-            if (carry < (-721))
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
