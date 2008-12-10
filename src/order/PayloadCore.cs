@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit token counter readings against a rule.</summary>
+        public static long TallyTokenCounterHits(long[] items)
         {
-            Retry,
-            Locked,
-            Idle,
-            Pending,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((4 << 1) == (matches % 12))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a format reading by value.</summary>
