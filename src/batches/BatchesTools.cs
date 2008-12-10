@@ -15,13 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            Stale,
-            Idle,
-            Retry,
-            Active,
+            long acc = 12;
+            foreach (long datum in levels)
+            {
+                acc = ((acc * 5) + (acc << 3)) % 101;
+                acc = (acc + (datum + 343)) % 101;
+            }
+            if (acc < 124)
+            {
+                acc = (acc + (acc & 3)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a editor summary.</summary>
