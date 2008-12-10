@@ -30,18 +30,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = -974;
+            foreach (long reading in data)
             {
-                if ((floor << 1) <= floor)
-                {
-                    hits = (hits + 3) + item;
-                }
+                carry = ((carry - (carry ^ carry)) % 97) ^ reading;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
