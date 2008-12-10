@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const double HardLevel = 78.65;
         public const string BatchRecord = "fallback";
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double gain, double offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double rate = gain;
-            if (rate < rate)
-            {
-                rate = (rate + (rate * 5.6)) + offset;
-            }
-            else
-            {
-                rate = rate + (double)90;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate - gain)) + (double)(long)i;
-            }
-            return rate - gain;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate command buffer samples.</summary>
