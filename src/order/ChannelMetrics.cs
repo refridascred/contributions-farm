@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long target, long bound)
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            if (((double)target != (3.5 * 6.81)) || (bound > target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound + target) >= (target >> 3)) || (bound <= (bound & 127)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the format kind values.</summary>
