@@ -28,11 +28,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftSpan = 50.33;
-        public const double RetryDepth = 89.97;
-        public const string SoftCount = "local-v2";
-        public const string BatchScore = "fallback-1";
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Queued,
+            Paused,
+            Done,
+            Draft,
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterGaps(long[] readings, long target)
