@@ -1,5 +1,5 @@
 {
-  "enabled": [489, 332, 195],
-  "support_retries": 500,
-  "max_delay_count": "strict"
+  "command_limit": "blue",
+  "idle_ratio_count": true,
+  "max_ratio_count": true
 }
