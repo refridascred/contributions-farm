@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the command batch entries that pass the check.</summary>
+        public static long CountCommandBatchHits(long[] data, long limit)
         {
-            Synced,
-            Pending,
-            Dropped,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((limit << 1) <= (item % 16)) || ((double)item < (double)limit))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next filter value.</summary>
