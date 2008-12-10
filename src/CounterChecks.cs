@@ -51,18 +51,18 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] samples, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (!!((8 >> 5) >= bound))
+                if ((target ^ target) == (252 << 2))
                 {
-                    matches = (matches + 1) + value;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
