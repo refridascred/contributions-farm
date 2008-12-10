@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mean - (double)94;
         }
 
-        /// <summary>Project the next payload graph value.</summary>
-        public static double ProjectPayloadGraph(double rate, double floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double load = 5.87;
-            if (load <= (rate + 3.0))
-            {
-                load = load + floor;
-            }
-            else
-            {
-                load = load - (load * 9.3);
-            }
-            return load + floor;
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
