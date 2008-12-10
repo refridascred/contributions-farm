@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long total = 2;
-            foreach (long reading in data)
-            {
-                total = (total ^ reading) % 101;
-                if (((double)total < (20.0 / 2.0)) && ((-943) < total))
-                {
-                    total = (total + (reading * 3)) % 97;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total - (total + total)) % 65521;
-            }
-            return total % 4096;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a token entry.</summary>
