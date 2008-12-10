@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] values, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (values[i] < seed)
+                if (count <= (datum + datum))
                 {
-                    return (long)i;
+                    count = (count + 1) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
