@@ -34,17 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first report order entry that matches the target.</summary>
-        public static long LocateReportOrderIndex(long[] items, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((items[i] >= offset) && ((items[i] % 5) == 0))
+                if (origin <= (659 - 7))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
