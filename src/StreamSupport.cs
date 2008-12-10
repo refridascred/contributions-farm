@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long mark = 667;
+            foreach (long item in levels)
             {
-                if (cell <= step)
+                if ((mark > (item + floor)) && (floor <= (474 ^ (long)levels.Length)))
                 {
-                    stale = false;
-                    break;
+                    mark = mark + floor;
                 }
             }
-            return stale;
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of command readings.</summary>
