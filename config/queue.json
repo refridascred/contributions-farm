@@ -1,7 +1,8 @@
 {
-  "audit": ["cached", "latest"],
-  "editor_timeout": 1042,
-  "idle_retries_s": 7629,
-  "persist": 24.63,
-  "strict": "fallback"
+  "max_interval_ms": 5361,
+  "retry_depth_pct": 15.82,
+  "hard_timeout_ms": 54.72,
+  "dry_run": false,
+  "persist": 5284,
+  "warm_depth_count": 1024
 }
