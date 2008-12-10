@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a entry batches reading.</summary>
-        public static double ProjectEntryBatches(double ratio, double span)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double weight = (double)6 - 0.11;
-            if (weight <= (span / 8.0))
-            {
-                weight = (weight + weight) + ratio;
-            }
-            return weight + (weight - weight);
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
