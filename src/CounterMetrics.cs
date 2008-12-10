@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const double MaxNotes = 48.5;
         public const long HardCount = 1366;
 
-        /// <summary>Accumulate command buffer samples.</summary>
-        public static long TallyCommandBuffer(long[] samples)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long sum = 479;
-            foreach (long entry in samples)
-            {
-                sum = ((sum << 3) ^ entry) % 101;
-            }
-            if (sum > 762)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum % 97;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a already reading by value.</summary>
