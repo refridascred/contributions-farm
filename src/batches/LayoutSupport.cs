@@ -57,16 +57,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mark = ((mark << 2) ^ (long)i) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
+                acc = (acc ^ ((long)i / 2)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return mark;
+            return acc;
         }
     }
 }
