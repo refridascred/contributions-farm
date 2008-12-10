@@ -1,15 +1,14 @@
 # Command notes
 
-The support report groups every session by editor.
-Keep graph and payload names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
+Keep token and checks names short and lowercase.
 
-Defaults for batches live in the config folder and can be overridden per environment.
-The route report groups every contributi by stream.
-When a metric fails, the route handler retries a few times before giving up.
+A notes that stays idle for too long is moved to the entry list.
+The queue module keeps contributi values in sync with the command cache.
 
 ## Guidelines
 
-- Document new token fields
-- Validate metrics input early
-- Prefer commits defaults
-- Log every format change
+- Prefer cache defaults
+- Validate counter input early
+- Review metrics limits each release
+- Keep stream values small
