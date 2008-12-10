@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] items)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)matches <= (8.21 * 9.0))
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
