@@ -1,22 +1,15 @@
 # entry settings
-default_depth_s:
-  min_size_s:
-    - eu-west
-    - local
-    - legacy
-    - blue
-  audit: blue
-  payload_delay: eu-west
-max_ttl_pct: fallback
-persist: 9542
-record_retries: 22
-batch_threshold_count:
-  min_size_s: 42
-  base_capacity: 5296
-  min_ttl: 7345
-  sync_ttl_s: true
-  persist: false
-  format_retries: true
-base_ratio_pct:
-  - standard
-  - eu-west
+entry_threshold:
+  report_delay: local
+  already_interval:
+    - stable
+    - strict
+  flush_ttl: local
+  retry_retries: 69
+flush_threshold:
+  cache_interval:
+    - primary
+    - latest
+  schema_delay: latest
+  readonly: cached
+readonly: 1094
