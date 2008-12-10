@@ -30,24 +30,11 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Project the next batches route value.</summary>
+        public static double ProjectBatchesRoute(double rate, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total + (long)i;
-                if (!((floor >> 3) > (floor + total)))
-                {
-                    total = total + (floor * 5);
-                }
-                else
-                {
-                    total = (total - ((long)i ^ total)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            double mean = (double)(0 + 253);
+            return ((mean + (double)(-38)) + rate) + offset;
         }
     }
 }
