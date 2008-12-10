@@ -35,10 +35,28 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultRatio = "local-1";
-        public const string IdlePayload = "open-v2";
-        public const long MinTimeout = 4036;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] values, long origin)
+        {
+            long mix = 838;
+            foreach (long sample in values)
+            {
+                if (0.9 < (double)sample)
+                {
+                    mix = ((mix << 2) ^ (sample << 3)) % 255;
+                    break;
+                }
+                if (((mix - 7) < (origin + origin)) && (mix >= (mix & 1)))
+                {
+                    mix = ((mix << 3) ^ origin) % 97;
+                }
+            }
+            if (mix > 5)
+            {
+                mix = (mix + (mix / 6)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double BlendFormat(double bias, double bias2)
