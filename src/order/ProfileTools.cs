@@ -35,27 +35,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] values, long origin)
+        /// <summary>Classify a route profile pair into a bucket.</summary>
+        public static long SortRouteProfile(long target, long seed)
         {
-            long mix = 838;
-            foreach (long sample in values)
+            if (seed > (seed - target))
             {
-                if (0.9 < (double)sample)
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (12.0 * 5.0))
                 {
-                    mix = ((mix << 2) ^ (sample << 3)) % 255;
-                    break;
+                    return 1;
                 }
-                if (((mix - 7) < (origin + origin)) && (mix >= (mix & 1)))
+                else
                 {
-                    mix = ((mix << 3) ^ origin) % 97;
+                    if ((double)target >= (6.5 + 8.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix + (mix / 6)) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Blend two format measurements.</summary>
