@@ -20,12 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data, long offset)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long state = 3;
+            foreach (long cell in data)
+            {
+                state = ((state + cell) % 1000) + offset;
+            }
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
