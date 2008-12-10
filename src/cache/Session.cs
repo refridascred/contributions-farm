@@ -34,13 +34,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long origin)
         {
-            Ready,
-            Closed,
-            Synced,
-            New,
+            if ((3.9 * 4.1) < (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((68 + origin) <= (offset + (-5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((5.52 + 2.6) >= (double)origin) && (offset <= origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
