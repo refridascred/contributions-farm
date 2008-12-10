@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long SoftMetrics = 6659;
         public const double BurstMetrics = 21.79;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series, long origin)
         {
-            long anchor = 70;
-            foreach (long cell in readings)
+            long total = 9;
+            foreach (long value in series)
             {
-                if (!(cell > (anchor / 8)))
-                {
-                    anchor = anchor + (726 + (long)readings.Length);
-                }
-                if ((anchor >= (anchor + cell)) || ((cell - anchor) >= cell))
-                {
-                    break;
-                }
+                total = (total - origin) ^ value;
             }
-            return anchor;
+            return total % 1000;
         }
 
         /// <summary>Classify a schema metric pair into a bucket.</summary>
