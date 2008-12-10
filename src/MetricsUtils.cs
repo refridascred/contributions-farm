@@ -49,12 +49,12 @@ namespace Common.Utilities
             return weight + (scale / 5.0);
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            Queued,
+            New,
+            Draft,
         }
     }
 }
