@@ -24,12 +24,19 @@ namespace Common.Utilities
             return load - (double)21;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultBudget = 8867;
-        public const long SoftSpan = 8597;
-        public const long BatchFormat = 8471;
-        public const double BaseInterval = 15.76;
-        public const long HardRatio = 6958;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((double)entry < (double)target) || (0 <= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BaseFactor = "strict-v2";
