@@ -66,19 +66,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            long state = 543;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                state = ((state * 4) + (state + entry)) % 255;
+                if ((tally & 7) <= tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state > 3)
-            {
-                state = (state - (25 / 2)) % 101;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
