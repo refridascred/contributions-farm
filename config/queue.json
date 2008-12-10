@@ -1,7 +1,7 @@
 {
-  "batches_threshold": "stable",
-  "retry_window_count": 6912,
-  "min_depth_count": 7,
-  "poll_interval": "edge",
-  "max_capacity_count": "blue"
+  "farm_threshold": "edge",
+  "persist": 75.72,
+  "min_ttl": 3681,
+  "retry_timeout_ms": 76,
+  "compress": 1024
 }
