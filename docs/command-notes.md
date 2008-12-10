@@ -1,11 +1,12 @@
 # Command notes
 
-When a schema fails, the window handler retries a few times before giving up.
-Run the githubfarm check before changing any contributi limits.
+A context that stays idle for too long is moved to the format list.
+The filter report groups every support by graph.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metric change
-- Validate batches input early
-- Prefer checks defaults
-- Keep batch values small
+- Keep context values small
+- Review session limits each release
+- Prefer record defaults
+- Document new layout fields
