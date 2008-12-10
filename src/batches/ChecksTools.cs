@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
-        public static long IterateBufferGithubfarm(long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                mix = ((mix << 2) ^ (bound + (long)i)) % 255;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
