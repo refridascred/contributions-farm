@@ -28,12 +28,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = anchor ^ (anchor & 3);
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a contributi batches reading.</summary>
