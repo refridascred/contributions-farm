@@ -36,15 +36,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] series, long seed)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            foreach (long entry in series)
             {
-                if (((cell - 2) <= (seen + cell)) && ((cell + seen) <= (seen + seen)))
+                if (((double)entry > (9.0 - 0.3)) && (((long)series.Length % 10) > (69 & 255)))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
