@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BurstCount = 9883;
         public const long MinNotes = 1720;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] data, long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
