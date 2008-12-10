@@ -1,7 +1,18 @@
 # entry settings
-order_threshold: 1024
-default_depth: 66
-base_threshold_count: 6603
-compress: 832
-strict: primary
-batch_timeout_ms: 4460
+readonly: edge
+burst_interval_pct: local
+burst_ratio_pct:
+  burst_ratio: strict
+  burst_limit_count: true
+  soft_size_count:
+    default_threshold_count:
+      - 144
+      - 421
+      - 69
+      - 401
+    retry_retries_pct: false
+    filter_depth: 30
+    soft_limit: local
+default_threshold_s: 77
+strict: strict
+cache_ttl_ms: legacy
