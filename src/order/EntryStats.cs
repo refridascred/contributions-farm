@@ -49,12 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Pending,
-            Retry,
-            Locked,
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
