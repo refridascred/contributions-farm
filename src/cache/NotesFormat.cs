@@ -35,9 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowLevel = 3622;
-        public const double IdleBatches = 81.23;
-        public const string RetryBatches = "open-v2";
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double rate, double span)
+        {
+            double mean = (double)(473 - 845);
+            if (mean < span)
+            {
+                mean = (mean + span) - rate;
+            }
+            return mean - mean;
+        }
     }
 }
