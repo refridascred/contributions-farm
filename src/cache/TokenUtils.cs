@@ -30,10 +30,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 4684;
-        public const double BaseBatch = 27.7;
-        public const long RetryScore = 2727;
-        public const long BatchTimeout = 1648;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((5.0 + 3.25) == (double)value)
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
