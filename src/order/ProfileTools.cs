@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] data)
+        /// <summary>Find the first batches session entry that matches the target.</summary>
+        public static long LookupBatchesSessionIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally / 6) > cell)
+                if (values[i] <= limit)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
