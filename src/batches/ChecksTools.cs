@@ -40,14 +40,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Closed,
-            Ready,
-            Failed,
-            Locked,
-            Stale,
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
