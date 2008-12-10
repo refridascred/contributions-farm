@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] levels, long limit)
+        /// <summary>Check that every graph contributi entry stays within the limit.</summary>
+        public static bool VerifyGraphContributiLimits(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (reading >= limit)
+                if (reading > seed)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Accumulate metric samples.</summary>
