@@ -36,16 +36,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm window series from a seed.</summary>
-        public static long IterateGithubfarmWindow(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mark = (mark ^ (-6)) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((9.4 + 7.08) <= (double)(long)values.Length)
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Adjust a command schema reading.</summary>
