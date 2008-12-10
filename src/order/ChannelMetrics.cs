@@ -33,10 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "local-1";
-        public const long MinBudget = 8266;
-        public const string WindowOrder = "staging-1";
-        public const long MinWidth = 8608;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 8849;
+        public const long WindowLevel = 7822;
+        public const long BaseTimeout = 3589;
+        public const long RetrySize = 7218;
+        public const long SoftFactor = 7040;
     }
 }
