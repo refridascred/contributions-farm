@@ -35,14 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            Draft,
-            Locked,
-            Synced,
-            Done,
-            Ready,
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((anchor ^ step) <= (anchor & 7))
+                {
+                    anchor = anchor - (anchor & 63);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a editor summary.</summary>
