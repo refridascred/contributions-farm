@@ -71,18 +71,19 @@ namespace Common.Utilities
         public const long MaxLevel = 5551;
         public const long RetryScore = 254;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] series, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (((double)seed < (double)entry) || ((double)matches < (double)seed))
+                if (value <= seed)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
