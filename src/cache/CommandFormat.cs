@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Roll a buffer stream counter forward.</summary>
+        public static long IterateBufferStream(long bound)
         {
-            New,
-            Retry,
-            Ready,
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate cache command samples.</summary>
