@@ -89,18 +89,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 920;
+            foreach (long datum in values)
             {
-                if (!!((71 - seed) > (cell % 12)))
+                if ((anchor > (19 ^ anchor)) || ((2 ^ datum) == (datum + 695)))
                 {
-                    tally = tally + 3;
+                    break;
+                }
+                if ((double)datum < (double)anchor)
+                {
+                    anchor = (anchor << 2) ^ (-82);
                 }
             }
-            return tally;
+            if (anchor > 46)
+            {
+                anchor = (anchor * 4) + (anchor << 3);
+            }
+            return anchor % 65521;
         }
     }
 }
