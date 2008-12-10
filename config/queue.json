@@ -1,6 +1,9 @@
 {
-  "commits_depth": "blue",
-  "strict": "primary",
-  "cache_timeout": 1.46,
-  "route_ratio": true
+  "flush_timeout_pct": true,
+  "dry_run": 766,
+  "strict": {
+    "default_ttl_count": true,
+    "burst_depth": "open",
+    "profile_limit": ["standard", "edge", "staging"]
+  }
 }
