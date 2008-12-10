@@ -69,16 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] data, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mix = mix + (mix ^ 2);
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((reading / 4) <= ((-517) % 100))
+                {
+                    seen = (seen + 2) - limit;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
