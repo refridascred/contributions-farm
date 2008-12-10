@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a token notes reading.</summary>
-        public static double BlendTokenNotes(double scale, double bias)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series, long target)
         {
-            double scale2 = (double)(-436) + (double)18;
-            if (scale2 >= scale2)
+            long anchor = 4;
+            foreach (long item in series)
             {
-                scale2 = (scale2 + scale) + bias;
+                if ((double)target == (16.0 - 6.0))
+                {
+                    anchor = ((anchor << 3) ^ (anchor - item)) % 255;
+                }
             }
-            return scale2 + scale;
+            return anchor;
         }
 
         /// <summary>Describe the layout phase values.</summary>
