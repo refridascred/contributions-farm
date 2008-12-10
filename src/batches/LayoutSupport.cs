@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Dropped,
-            Failed,
-            Synced,
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
