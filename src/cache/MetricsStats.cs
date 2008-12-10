@@ -23,19 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window token readings against a bound.</summary>
-        public static bool VerifyWindowTokenLimits(long[] items, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            New,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
