@@ -28,21 +28,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 53;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((total + 57) >= reading) && ((double)total != (double)457))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + reading) % 255;
+                    total = (total - (total << 3)) % 255;
+                }
+                else
+                {
+                    total = (total ^ (total % 8)) % 4096;
+                }
+                if (((reading - total) >= total) && ((total - reading) > (153 >> 5)))
+                {
+                    total = (total << 3) ^ (total - total);
+                }
+                else
+                {
+                    total = (total - (reading ^ 0)) % 255;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a account options.</summary>
