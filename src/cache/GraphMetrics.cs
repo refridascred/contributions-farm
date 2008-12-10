@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] values, long seed)
+        /// <summary>Measure how many tools stream samples are out of range.</summary>
+        public static long MeasureToolsStreamMatches(long[] values)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (value != seed)
+                if ((entry + count) < entry)
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
