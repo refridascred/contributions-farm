@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values, long limit)
+        /// <summary>Iterate the checks order series from a seed.</summary>
+        public static long SeriesChecksOrder(long target)
         {
-            long sum = 641;
-            foreach (long datum in values)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (sum - datum) + limit;
+                if ((4.0 / 3.0) < (9.25 / 6.0))
+                {
+                    result = (result - (long)i) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return sum % 4096;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
