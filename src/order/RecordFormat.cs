@@ -20,18 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] samples)
+        /// <summary>Grade a cluster format value against two limits.</summary>
+        public static long BucketClusterFormat(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if ((seed % 2) <= (3 - seed))
             {
-                if ((seen - datum) >= datum)
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) > (seed + seed))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor >> 5) >= (523 ^ seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor > (5.3 - 4.52)) && ((floor + floor) == (53 / 7)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
