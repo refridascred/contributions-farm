@@ -1,5 +1,8 @@
 {
-  "min_capacity": 92,
-  "sync_size_pct": "local",
-  "flush_timeout_ms": 19.02
+  "base_interval_pct": "latest",
+  "audit": 100,
+  "flush_ratio_pct": [236, 76, 119, 492],
+  "idle_timeout_ms": 4959,
+  "tools_limit": true,
+  "persist": false
 }
