@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] series)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((count << 3) == (entry << 1)) && ((count << 2) >= entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up metrics session samples.</summary>
