@@ -42,13 +42,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Adjust a contributi batches reading.</summary>
+        public static double SmoothContributiBatches(double gain, double span)
         {
-            Locked,
-            Synced,
-            Retry,
-            Pending,
+            double drift = gain - (span + span);
+            if (drift >= (gain + drift))
+            {
+                drift = drift - (span / 6.0);
+            }
+            else
+            {
+                drift = drift - (4.4 / 9.0);
+            }
+            return drift + span;
         }
     }
 }
