@@ -26,13 +26,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] series, long limit)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate buffer order samples.</summary>
