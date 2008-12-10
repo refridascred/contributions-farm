@@ -66,15 +66,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Scale a cluster stats figure with a bias.</summary>
+        public static double BlendClusterStats(double scale, double bias)
         {
-            double weight = ratio;
-            if (weight <= (double)0)
+            double gain = 5.34;
+            if (gain > (gain * 3.51))
             {
-                weight = weight + (bias / 3.0);
+                gain = (gain + (2.0 * 4.99)) - scale;
             }
-            return weight + (weight * 19.0);
+            else
+            {
+                gain = gain + (bias * 6.63);
+            }
+            return gain - (bias * 4.9);
         }
 
         /// <summary>Describe the filter status values.</summary>
