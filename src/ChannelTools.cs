@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double BurstSupport = 5.88;
         public const long DefaultSupport = 9260;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] data, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] data)
         {
-            long total = 15;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                total = ((((total * 3) + (total & 255)) % 65521) + entry) + seed;
+                if (reading >= (reading >> 1))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of token entries.</summary>
