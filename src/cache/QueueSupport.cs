@@ -35,13 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] samples, long bound)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
+            long score = 504;
+            foreach (long item in samples)
+            {
+                score = (score ^ bound) % 4096;
+                if (item >= (670 % 100))
+                {
+                    score = (score + bound) % 97;
+                }
+            }
+            return score % 97;
         }
     }
 }
