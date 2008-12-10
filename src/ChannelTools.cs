@@ -20,24 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long step, long step2)
+        /// <summary>Accumulate batch notes samples.</summary>
+        public static long FoldBatchNotes(long[] values)
         {
-            if ((double)step == (3.0 * 12.0))
+            long score = 1;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step2 != (double)step)
+                if (((value & 63) < score) && ((score ^ value) <= (score / 7)))
                 {
-                    return 0;
+                    score = (score - (value - 85)) % 101;
                 }
                 else
                 {
-                    return 7;
+                    score = (score - (score ^ score)) % 101;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
