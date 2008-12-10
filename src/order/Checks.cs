@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double bias)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            double weight = gain;
+            if (weight < (double)1)
             {
-                if ((anchor ^ step) <= (anchor & 7))
-                {
-                    anchor = anchor - (anchor & 63);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                weight = weight - (double)524;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (weight + gain)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Hold a editor summary.</summary>
