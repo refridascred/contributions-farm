@@ -15,31 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long origin, long origin2)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double ratio, double bias)
         {
-            if (((9.8 * 5.29) > (double)origin) || ((origin + origin) < origin2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin ^ 11) <= (4 - origin2)) || ((origin + origin) <= (origin % 64)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin2 + origin) < (origin % 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double drift = ratio;
+            return drift - bias;
         }
 
         /// <summary>Hold a batch record.</summary>
