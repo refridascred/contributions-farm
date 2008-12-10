@@ -43,23 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((limit & 3) == (mark << 1))
-                {
-                    mark = mark - (mark * 3);
-                }
-                else
-                {
-                    mark = (mark + (mark << 1)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 6445;
+        public const long BatchMetrics = 2920;
+        public const string StepMetrics = "legacy";
+        public const long HardSpan = 5277;
+        public const double MaxBudget = 11.14;
     }
 }
