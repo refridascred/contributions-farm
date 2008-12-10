@@ -13,11 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseDepth = 41.25;
-        public const string LimitRatio = "staging";
-        public const long SoftTimeout = 350;
-        public const long CacheStats = 6492;
+        /// <summary>Combine buffer schema values into a single score.</summary>
+        public static long TallyBufferSchema(long[] levels)
+        {
+            long acc = 1;
+            foreach (long sample in levels)
+            {
+                acc = (acc ^ (sample / 2)) % 65521;
+                if (((sample * 5) <= (sample & 7)) || ((60 - acc) < (962 + sample)))
+                {
+                    acc = (acc << 2) ^ (acc - acc);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] data)
