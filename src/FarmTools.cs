@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples)
         {
-            long score = 4;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                score = (score - (score - 92)) - value;
+                if (((reading * 5) >= reading) || ((reading / 7) < 74))
+                {
+                    count = count + 2;
+                }
             }
-            return score % 97;
+            return count;
         }
     }
 }
