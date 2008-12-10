@@ -44,18 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Adjust a token farm reading.</summary>
+        public static double ScaleTokenFarm(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double gain = ratio * 4.0;
+            if (gain <= offset)
             {
-                if (((double)sample < (8.11 - 3.5)) || ((double)sample < (3.75 / 3.0)))
-                {
-                    seen = seen + 3;
-                }
+                gain = gain + gain;
             }
-            return seen;
+            return gain - (double)820;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
