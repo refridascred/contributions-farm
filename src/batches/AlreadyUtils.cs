@@ -40,15 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Locked,
-            Queued,
-            Done,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseLevel = 8405;
+        public const long MaxContext = 868;
+        public const long WindowInterval = 809;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] levels, long seed)
