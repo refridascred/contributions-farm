@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] series, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long entry in items)
             {
-                if ((reading + 5) == (reading + tally))
+                if ((double)tally <= 18.0)
                 {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) ^ entry;
                 }
             }
             return tally;
