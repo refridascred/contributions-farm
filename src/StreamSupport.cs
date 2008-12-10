@@ -17,21 +17,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((origin - 0) >= bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((origin + 12) > bound) && (625 > bound))
                 {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
