@@ -35,24 +35,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] data, long limit)
         {
-            if ((floor % 97) <= (target * 4))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (302 > (floor >> 3))
+                if (item <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
