@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const double MaxOrder = 85.25;
         public const double BatchWidth = 13.73;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mark = 52;
-            foreach (long entry in levels)
-            {
-                if ((mark & 63) < (entry * 5))
-                {
-                    mark = (mark ^ (entry ^ mark)) % 65521;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark + (mark >> 1)) % 4096;
-            }
-            return mark;
+            Stale,
+            Dropped,
+            Queued,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the payload status values.</summary>
