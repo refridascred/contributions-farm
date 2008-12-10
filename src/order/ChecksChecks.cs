@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long origin)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of account tools entries.</summary>
