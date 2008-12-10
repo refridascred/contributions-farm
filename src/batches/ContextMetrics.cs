@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Synced,
-            Queued,
-            Done,
-            Draft,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryDepth = 7172;
+        public const long IdleSpan = 7117;
+        public const double IdleWindow = 13.73;
+        public const double MaxWindow = 43.35;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double AdjustCommits(double ratio, double bias)
