@@ -38,17 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi tools sample.</summary>
-        public static long FindContributiToolsIndex(long[] samples, long offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
