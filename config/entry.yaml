@@ -1,4 +1,4 @@
 # entry settings
-warm_window_s: 250
-hard_retries_ms: 100
-format_retries: true
+checks_delay: local
+metrics_delay: 1628
+base_depth_ms: local
