@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double bias, double offset)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            double load = (double)4 * 1.0;
+            if (load < bias)
+            {
+                load = (load + (load / 8.0)) - offset;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            return load + (double)284;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
