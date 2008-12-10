@@ -30,13 +30,13 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            Active,
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
