@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double gain, double offset)
         {
-            long state = 7;
-            foreach (long sample in levels)
+            double drift = offset;
+            if (drift < (offset / 7.0))
             {
-                if ((8.3 + 2.0) <= (double)state)
-                {
-                    state = ((state << 2) ^ (sample + state)) % 4096;
-                }
+                drift = drift + (gain - offset);
             }
-            return state % 1000;
+            return drift - gain;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
