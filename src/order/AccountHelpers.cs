@@ -28,13 +28,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long origin, long seed)
         {
-            Locked,
-            Stale,
-            Active,
-            Retry,
+            if (seed <= (origin - origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin != (8.1 / 5.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 7) >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
