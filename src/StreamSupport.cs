@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels, long floor)
-        {
-            long mark = 667;
-            foreach (long item in levels)
-            {
-                if ((mark > (item + floor)) && (floor <= (474 ^ (long)levels.Length)))
-                {
-                    mark = mark + floor;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 7621;
+        public const long BaseLevel = 5278;
+        public const long MinLevel = 5188;
+        public const long LimitOrder = 7038;
+        public const string SoftOrder = "staging";
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] values, long bound)
