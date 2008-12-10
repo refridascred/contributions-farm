@@ -65,25 +65,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long bound)
-        {
-            long edge = target - bound;
-            if (!((0.6 * 19.0) != (double)edge))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge < (edge << 2)) && (22 < edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleInterval = 897;
+        public const long DefaultBudget = 3946;
+        public const long LimitBatches = 1220;
     }
 }
