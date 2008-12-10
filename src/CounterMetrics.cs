@@ -40,11 +40,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double offset)
+        /// <summary>Accumulate command buffer samples.</summary>
+        public static long TallyCommandBuffer(long[] samples)
         {
-            double drift = offset;
-            return (drift - (double)6) + ratio;
+            long sum = 479;
+            foreach (long entry in samples)
+            {
+                sum = ((sum << 3) ^ entry) % 101;
+            }
+            if (sum > 762)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a context schema sample.</summary>
