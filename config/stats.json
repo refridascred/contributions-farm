@@ -1,5 +1,19 @@
 {
-  "base_size_s": "stable",
-  "readonly": 60,
-  "max_timeout_ms": 75
+  "poll_window_ms": "standard",
+  "layout_threshold": "edge",
+  "persist": false,
+  "max_size_ms": {
+    "already_threshold": "latest",
+    "persist": 100,
+    "base_interval_ms": {
+      "max_window_ms": "local",
+      "filter_timeout": "stable",
+      "layout_retries": ["fallback", "latest"],
+      "idle_delay_count": true
+    },
+    "channel_interval": "green",
+    "base_threshold": true
+  },
+  "batch_ratio": 315,
+  "payload_timeout": [208, 51, 417, 359]
 }
