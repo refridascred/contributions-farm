@@ -36,24 +36,11 @@ namespace Common.Utilities
         public const string BaseFactor = "strict-v2";
         public const long CacheSize = 5718;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long seed, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            if (123 <= (bound << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed > (-26))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
