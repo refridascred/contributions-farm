@@ -37,22 +37,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] readings, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long result = 59;
+            foreach (long sample in values)
             {
-                if (datum < (datum + matches))
-                {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = result - (sample - sample);
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Accumulate farm samples.</summary>
