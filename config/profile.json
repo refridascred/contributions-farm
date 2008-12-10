@@ -1,7 +1,11 @@
 {
-  "soft_retries_s": [28, 94, 28, 397],
-  "graph_depth": true,
-  "hard_threshold": [90, 47],
-  "order_threshold": 3035,
-  "enabled": "eu-west"
+  "warm_ratio": {
+    "payload_depth": 5744,
+    "min_capacity": 250,
+    "sync_size": "blue"
+  },
+  "burst_delay_s": "green",
+  "dry_run": true,
+  "soft_ratio": "strict",
+  "batch_capacity_pct": 3858
 }
