@@ -37,31 +37,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long floor, long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            if ((floor + floor) > offset)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor % 8) > (offset & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.8 - 15.0) >= (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
