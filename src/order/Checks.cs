@@ -56,12 +56,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Failed,
-            Queued,
-            Closed,
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
