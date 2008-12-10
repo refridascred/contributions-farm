@@ -27,18 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((566 % 5) >= (sample - tally))
-                {
-                    tally = tally + 3;
-                }
+                result = (result + (long)i) % 65521;
+                result = (result ^ result) % 255;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
