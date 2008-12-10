@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] items, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double ratio = (8.0 - 15.0) * 7.62;
+            if (ratio < gain)
             {
-                if (64 < (count << 2))
-                {
-                    count = ((count + 2) ^ cell) + floor;
-                }
+                ratio = ratio - floor;
             }
-            return count;
+            return ratio + (double)9;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
