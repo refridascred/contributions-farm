@@ -59,12 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 4189;
-        public const long BatchGraph = 5991;
-        public const double DefaultLevel = 0.49;
-        public const long HardBudget = 3280;
-        public const long BaseLevel = 8904;
+        /// <summary>Fold a list of stream stats readings.</summary>
+        public static long DigestStreamStats(long[] items, long seed)
+        {
+            long anchor = 44;
+            foreach (long item in items)
+            {
+                if ((seed - anchor) < (anchor / 3))
+                {
+                    anchor = ((anchor * 3) + (anchor - seed)) - item;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] series, long step)
