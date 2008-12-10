@@ -1,5 +1,8 @@
 {
-  "retry_interval_ms": ["eu-west", "staging"],
-  "flush_delay": "primary",
-  "entry_window": 500
+  "dry_run": "blue",
+  "min_retries_count": ["cached", "primary", "cached"],
+  "checks_capacity": [40, 64],
+  "audit": "standard",
+  "soft_size_pct": 98,
+  "persist": 30
 }
