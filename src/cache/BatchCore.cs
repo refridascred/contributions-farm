@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((tally + tally) > ((-97) ^ value)) && !((tally - value) != (value & 31)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 4315;
+        public const string StepInterval = "strict-edge";
+        public const double BaseWidth = 71.51;
+        public const double CacheLevel = 18.85;
+        public const long WindowLayout = 1002;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long ClassifySchema(long origin, long target)
