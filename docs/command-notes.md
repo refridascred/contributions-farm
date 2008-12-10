@@ -1,15 +1,14 @@
 # Command notes
 
-Run the stats check before changing any command limits.
-Keep session and counter names short and lowercase.
+Keep record and counter names short and lowercase.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
 
-Use payload settings to tune how often tools data is refreshed.
-When a stats fails, the payload handler retries a few times before giving up.
-Defaults for route live in the config folder and can be overridden per environment.
+The githubfarm module keeps support values in sync with the stats cache.
+The queue module keeps farm values in sync with the context cache.
 
 ## Guidelines
 
-- Log every route change
-- Document new profile fields
-- Prefer queue defaults
-- Keep layout values small
+- Document new stats fields
+- Keep stream values small
+- Log every graph change
