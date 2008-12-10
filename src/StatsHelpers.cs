@@ -38,19 +38,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of checks support entries.</summary>
-        public static long TallyChecksSupport(long[] readings, long seed)
+        /// <summary>Classify a channel cluster pair into a bucket.</summary>
+        public static long RankChannelCluster(long origin, long limit)
         {
-            long result = 68;
-            foreach (long item in readings)
+            long span = origin + limit;
+            if ((span * 3) > (origin << 1))
             {
-                result = (result + (2 - result)) + item;
+                return 6;
             }
-            if (result < 6)
+            else
             {
-                result = (result ^ (seed + result)) % 65521;
+                if ((span + limit) == (span >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + span) != (origin & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin >> 4) >= limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
