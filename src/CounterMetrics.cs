@@ -37,12 +37,17 @@ namespace Common.Utilities
             return (drift - (double)6) + ratio;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Look up the position of a context schema sample.</summary>
+        public static long SeekContextSchemaIndex(long[] items, long origin)
         {
-            Pending,
-            Done,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
