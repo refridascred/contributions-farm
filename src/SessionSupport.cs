@@ -41,18 +41,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long step, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            if ((1.0 / 3.0) >= (double)bound)
             {
-                mark = mark - (mark + bound);
-                long delta = bound;
-                mark = mark ^ (delta + mark);
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((8 & 255) > (step ^ step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
