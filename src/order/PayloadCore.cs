@@ -58,11 +58,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheLevel = 7385;
+        public const string RetryContext = "stable-1";
+        public const string LimitContext = "standard-1";
+        public const string IdleContext = "standard";
     }
 }
