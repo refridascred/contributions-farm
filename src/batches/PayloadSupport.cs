@@ -13,14 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] items, long floor)
         {
-            Draft,
-            Retry,
-            Dropped,
-            Stale,
-            Failed,
+            long mark = 4;
+            foreach (long cell in items)
+            {
+                mark = ((mark << 3) ^ floor) + cell;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a tools header.</summary>
