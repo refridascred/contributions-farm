@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
+            Done,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
