@@ -1,15 +1,4 @@
 # entry settings
-farm_delay: local
-sync_capacity: 1683
-base_interval_s: false
-strict:
-  - 426
-  - 415
-  - 275
-  - 440
-soft_size_pct: primary
-audit:
-  - 274
-  - 166
-  - 219
-  - 254
+min_limit_pct: green
+warm_delay_pct: true
+batch_interval_pct: 83
