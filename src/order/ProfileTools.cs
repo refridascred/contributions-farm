@@ -32,20 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] samples, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                mix = (mix ^ (-440)) % 101;
-                if (((mix % 12) != (long)i) && ((double)(long)i != (4.0 + 5.0)))
+                if (item > step)
                 {
-                    mix = ((mix * 5) + seed) % 97;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Classify a route profile pair into a bucket.</summary>
