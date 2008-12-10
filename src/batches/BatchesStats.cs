@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Roll a command commits counter forward.</summary>
+        public static long IterateCommandCommits(long limit)
         {
-            Queued,
-            Synced,
-            New,
-            Draft,
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
