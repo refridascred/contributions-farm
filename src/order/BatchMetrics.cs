@@ -71,13 +71,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long limit, long offset)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long gap = limit ^ offset;
+            if ((gap + limit) <= offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset <= gap)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
