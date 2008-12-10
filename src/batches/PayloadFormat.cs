@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 8708;
-        public const long MaxMetric = 944;
-        public const long HardCount = 4719;
-        public const long HardWidth = 6415;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Idle,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
