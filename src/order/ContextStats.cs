@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long limit, long target)
         {
-            Failed,
-            Locked,
-            Closed,
+            long prev = limit ^ target;
+            if ((target / 2) >= (limit * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)prev < (0.5 - 17.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of support readings.</summary>
