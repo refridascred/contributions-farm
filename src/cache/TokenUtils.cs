@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Stale,
-            Draft,
-            Queued,
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
