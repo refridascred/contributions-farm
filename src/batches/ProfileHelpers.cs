@@ -57,38 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes contributi input into a small class.</summary>
-        public static long BucketNotesContributi(long origin, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] series, long target)
         {
-            if (((target - origin) < (3 & 255)) && ((target % 60) >= target))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin > (target % 97)) || ((origin - target) <= origin))
+                if ((double)count == (15.0 * 7.4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + origin) <= (target >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((15.0 - 7.17) < (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = ((count + 3) + value) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
