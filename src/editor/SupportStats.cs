@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowLevel = 6597;
+        public const long WindowCount = 5349;
+        public const long MaxWidth = 5048;
+        public const double BaseSchema = 21.18;
+        public const double RetryFactor = 56.51;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] samples, long target)
