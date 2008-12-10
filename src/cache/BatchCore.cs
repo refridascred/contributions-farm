@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] levels)
         {
-            long score = 4;
+            long tally = 0;
             foreach (long value in levels)
             {
-                score = score + (-879);
-                if ((2.41 - 9.0) == (double)value)
+                if (((tally + tally) > ((-97) ^ value)) && !((tally - value) != (value & 31)))
                 {
-                    score = ((score * 5) + (score - value)) % 65521;
+                    tally = tally + 2;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
