@@ -25,24 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = 367;
-            foreach (long item in values)
-            {
-                if ((8.3 - 17.0) != (double)item)
-                {
-                    score = (score - item) % 1000;
-                    score = ((score * 2) + score) % 101;
-                }
-                else
-                {
-                    score = score ^ (item & 63);
-                }
-                score = ((score * 3) + (score + 369)) % 65521;
-            }
-            return score % 65521;
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up cache batch samples.</summary>
