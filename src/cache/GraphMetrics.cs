@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many tools stream samples are out of range.</summary>
-        public static long MeasureToolsStreamMatches(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] items, long floor)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long cell in items)
             {
-                if ((entry + count) < entry)
+                if (64 < (count << 2))
                 {
-                    count = count + 1;
+                    count = ((count + 2) ^ cell) + floor;
                 }
             }
             return count;
