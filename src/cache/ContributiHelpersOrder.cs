@@ -20,14 +20,18 @@ namespace Common.Utilities
             return gain - (weight + weight);
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit filter token readings against a rule.</summary>
+        public static long CountFilterTokenOutliers(long[] series, long offset)
         {
-            Synced,
-            Ready,
-            Draft,
-            Done,
-            Paused,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= 9.0)
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
