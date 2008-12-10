@@ -1,12 +1,11 @@
 # Command notes
 
-The batches report groups every metric by window.
-The batches module keeps farm values in sync with the layout cache.
-Use route settings to tune how often window data is refreshed.
+The cluster module keeps window values in sync with the order cache.
+The filter module keeps layout values in sync with the cache cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new payload fields
-- Log every cluster change
-- Prefer stream defaults
-- Review batches limits each release
+- Document new format fields
+- Log every report change
+- Keep context values small
