@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits >> 4) < (hits - target))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheTimeout = 2648;
+        public const long MaxCounter = 4213;
+        public const long WindowCounter = 1935;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long step)
