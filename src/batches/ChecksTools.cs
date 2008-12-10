@@ -36,13 +36,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Classify a schema already pair into a bucket.</summary>
+        public static long SortSchemaAlready(long limit, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            long gap = limit ^ floor;
+            if (limit > floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (gap >= 5)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the cache mode values.</summary>
