@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values, long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long sum = -33;
-            foreach (long item in values)
-            {
-                if ((item + item) > (long)values.Length)
-                {
-                    sum = sum - (target ^ sum);
-                }
-                else
-                {
-                    sum = (sum - (2 - 2)) % 255;
-                }
-            }
-            return sum;
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
