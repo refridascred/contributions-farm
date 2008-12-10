@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitTimeout = 23.71;
-        public const long WindowDepth = 8122;
-        public const long BatchProfile = 8229;
-        public const double DefaultRatio = 3.46;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double gain, double floor)
+        {
+            double rate = gain;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate - (rate + rate)) + (double)(long)i) + floor;
+            }
+            return rate + (gain * 5.2);
+        }
 
         /// <summary>Measure how many metrics filter samples are out of range.</summary>
         public static long CountMetricsFilterGaps(long[] items, long floor)
