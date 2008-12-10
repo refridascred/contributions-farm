@@ -1,12 +1,10 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The schema report groups every channel by githubfarm.
-Use window settings to tune how often command data is refreshed.
+Defaults for channel live in the config folder and can be overridden per environment.
+The filter report groups every context by batches.
 
 ## Guidelines
 
-- Keep entry values small
-- Log every graph change
-- Document new window fields
-- Validate order input early
+- Document new context fields
+- Review batches limits each release
+- Prefer schema defaults
