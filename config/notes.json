@@ -1,7 +1,14 @@
 {
-  "readonly": "primary",
-  "payload_interval": "fallback",
-  "window_retries": true,
-  "base_ttl_count": "blue",
-  "window_threshold": "stable"
+  "warm_ttl": 72.33,
+  "format_capacity": [218, 383, 94, 382],
+  "stats_ttl": true,
+  "strict": 60,
+  "enabled": {
+    "soft_delay_pct": "eu-west",
+    "hard_capacity": 17.7,
+    "cache_capacity_s": 1668,
+    "compress": "local",
+    "readonly": ["cached", "standard", "standard"],
+    "account_capacity": "green"
+  }
 }
