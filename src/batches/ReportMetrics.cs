@@ -13,18 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data, long floor)
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long TallyPayloadRecordOutliers(long[] series, long target)
         {
-            long result = 4;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((reading >> 2) <= result)
+                if ((count + target) > (6 % 2))
                 {
-                    result = (((result * 5) + result) % 97) - floor;
+                    count = (count + 2) - item;
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Project the next filter value.</summary>
