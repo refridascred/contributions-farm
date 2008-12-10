@@ -15,15 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double rate, double floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] series, long target)
         {
-            double rate2 = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                rate2 = ((rate2 + (floor / 6.0)) - (double)(long)i) - rate;
+                if (target > (sample - sample))
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate2 - (rate2 / 2.0);
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
