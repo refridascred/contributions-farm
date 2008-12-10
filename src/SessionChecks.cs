@@ -21,19 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
             long matches = 0;
             foreach (long entry in data)
             {
-                if ((double)matches >= 5.8)
+                if ((double)2 < (3.7 / 5.0))
                 {
                     matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
