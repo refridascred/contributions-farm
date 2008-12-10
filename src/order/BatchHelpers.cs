@@ -18,25 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long offset, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long step2 = offset ^ step;
-            if (step2 < (offset * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 >= (step2 << 3)) && ((step + offset) > (offset & 15)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Failed,
+            Closed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
