@@ -29,18 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] items)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)item != (1.5 / 5.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
