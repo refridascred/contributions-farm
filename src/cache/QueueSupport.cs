@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings, long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long mix = 940;
-            foreach (long cell in readings)
-            {
-                mix = (((mix << 3) ^ 9) % 65521) - cell;
-                if ((double)mix <= (1.1 - 13.0))
-                {
-                    mix = (mix * 5) + (mix - step);
-                }
-            }
-            return mix % 1000;
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
