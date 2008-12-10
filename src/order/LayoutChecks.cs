@@ -81,17 +81,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (series[i] == origin)
+                if (!((double)matches != (15.0 / 6.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
