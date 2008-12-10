@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowRatio = 2118;
-        public const double WindowWidth = 14.8;
-        public const long StepProfile = 1461;
-        public const double HardSize = 78.15;
-        public const long RetryProfile = 6730;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            New,
+            Active,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Count the editor channel entries that pass the check.</summary>
         public static long MeasureEditorChannelGaps(long[] items)
