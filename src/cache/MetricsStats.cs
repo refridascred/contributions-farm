@@ -23,31 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long bound, long bound2)
+        /// <summary>Project the next already tools value.</summary>
+        public static double ProjectAlreadyTools(double ratio, double offset)
         {
-            if (!(6.28 < (double)bound2))
+            double ratio2 = ratio;
+            if (ratio2 < ratio2)
             {
-                return 3;
+                ratio2 = (ratio2 - (0.98 + ratio2)) - offset;
             }
-            else
-            {
-                if (!((bound2 ^ bound2) <= (bound2 * 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound2 < (double)71)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return ratio2 - (ratio2 * 1.9);
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
