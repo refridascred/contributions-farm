@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Pending,
-            New,
-            Stale,
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
