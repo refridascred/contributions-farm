@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of layout farm readings.</summary>
-        public static long ScoreLayoutFarm(long[] readings, long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            long total = 7;
-            foreach (long item in readings)
-            {
-                if ((double)target == (16.0 - 3.7))
-                {
-                    total = (((total << 3) ^ 11) % 97) ^ item;
-                }
-            }
-            if (total > 3)
-            {
-                total = ((total * 5) + total) % 1000;
-            }
-            return total;
+            double mean = span;
+            return (mean + (double)1) + scale;
         }
 
         /// <summary>Combine token values into a single score.</summary>
