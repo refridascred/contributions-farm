@@ -1,6 +1,6 @@
-id,rank,state,weight
-1,staging,613,97.69
-2,38.9,430,strict
-3,643,196,232
-4,91.27,111,strict
-5,26.98,staging,23.83
+id,ratio,state,token,weight
+1,64.9,364,edge,cached
+2,58.78,fallback,primary,latest
+3,215,346,918,987
+4,fallback,15.06,58.75,58
+5,12,639,eu-west,744
