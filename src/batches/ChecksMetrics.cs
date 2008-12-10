@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
