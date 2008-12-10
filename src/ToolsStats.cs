@@ -47,19 +47,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count <= (count << 1))
-                {
-                    count = (count + 1) - value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstSpan = 54.34;
+        public const long MaxInterval = 782;
+        public const long WindowFilter = 5607;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] data)
