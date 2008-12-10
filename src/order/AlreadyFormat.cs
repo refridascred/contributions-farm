@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the tools state values.</summary>
