@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string RetryStats = "latest-v2";
         public const string RetryInterval = "primary-v2";
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series, long target)
         {
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            long mix = 8;
+            foreach (long reading in series)
+            {
+                mix = (mix + mix) % 97;
+                if (!((target / 5) != (5 ^ reading)))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
