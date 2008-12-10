@@ -82,13 +82,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Dropped,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 2338;
+        public const string HardContributi = "stable-edge";
+        public const string IdleContributi = "latest";
+        public const long MaxSpan = 67;
+        public const long RetrySpan = 3151;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long DigestSession(long[] series)
