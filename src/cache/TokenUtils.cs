@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] series)
-        {
-            long total = 0;
-            foreach (long reading in series)
-            {
-                if ((2 >= (total >> 3)) || ((reading ^ total) <= reading))
-                {
-                    total = (total - (941 % 8)) % 97;
-                }
-            }
-            if (total > 54)
-            {
-                total = (total + ((long)series.Length + 64)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleInterval = "legacy";
+        public const long IdleFilter = 5437;
+        public const long RetryFilter = 9628;
+        public const long BurstCount = 2209;
+        public const long BurstLevel = 1589;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] samples)
