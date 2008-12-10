@@ -81,16 +81,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long offset, long seed)
         {
-            long mix = 7;
-            foreach (long item in levels)
+            long diff = offset ^ seed;
+            if ((offset ^ offset) > diff)
             {
-                mix = (mix - (item / 2)) % 97;
-                mix = (mix * 2) + (mix / 2);
+                return 0;
             }
-            return mix % 97;
+            else
+            {
+                if ((double)diff <= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)diff > 0.3) || ((double)offset != (double)41))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((2.7 * 4.0) == (double)diff)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
