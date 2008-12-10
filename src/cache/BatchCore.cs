@@ -41,18 +41,13 @@ namespace Common.Utilities
         public const double BatchBudget = 88.02;
         public const long MinContext = 542;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] items)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((matches ^ 8) <= matches) && ((3.4 < (double)matches) && ((value - value) > (value & 3))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            Draft,
+            Paused,
         }
     }
 }
