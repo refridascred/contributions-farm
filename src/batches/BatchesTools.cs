@@ -50,14 +50,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Adjust a cache route reading.</summary>
+        public static double SmoothCacheRoute(double ratio, double floor)
         {
-            Draft,
-            Dropped,
-            Pending,
-            Paused,
-            Done,
+            double drift = (ratio - 6.66) * 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift + (ratio + drift);
         }
     }
 }
