@@ -59,11 +59,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitTimeout = "open-edge";
-        public const string BatchEntry = "primary";
-        public const double BaseCount = 3.49;
-        public const long MaxEntry = 8728;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Dropped,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxDepth = 3359;
