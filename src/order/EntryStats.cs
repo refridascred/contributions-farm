@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Count the contributi route entries that pass the check.</summary>
+        public static long CountContributiRouteOutliers(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((offset >> 1) == (90 - offset))
                 {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
