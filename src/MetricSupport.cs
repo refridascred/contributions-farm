@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of report checks readings.</summary>
-        public static long DigestReportChecks(long[] samples, long step)
+        /// <summary>Rank profile githubfarm input into a small class.</summary>
+        public static long GradeProfileGithubfarm(long target, long bound)
         {
-            long result = -36;
-            foreach (long value in samples)
+            if ((2 & 31) >= bound)
             {
-                result = ((result ^ 22) + value) - step;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (bound <= target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound != (7.23 * 19.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order record.</summary>
