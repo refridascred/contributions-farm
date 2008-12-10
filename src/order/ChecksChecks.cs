@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Fold a list of schema already readings.</summary>
+        public static long CombineSchemaAlready(long[] items, long target)
         {
-            long acc = 22;
-            foreach (long reading in readings)
+            long acc = 750;
+            foreach (long entry in items)
             {
-                acc = ((acc * 4) + (acc % 7)) % 101;
-                acc = (acc + acc) % 101;
-                acc = (acc ^ (acc - reading)) % 97;
+                acc = ((((acc * 2) + (acc + 237)) % 255) - entry) + target;
             }
-            if (acc > 31)
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            return acc;
         }
 
         /// <summary>Hold a record stats.</summary>
