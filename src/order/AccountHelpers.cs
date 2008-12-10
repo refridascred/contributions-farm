@@ -53,19 +53,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] data, long step)
+        /// <summary>Locate a notes buffer reading by value.</summary>
+        public static long FindNotesBufferIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= step)
+                if (items[i] >= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
