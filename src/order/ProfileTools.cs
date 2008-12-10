@@ -20,13 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            Queued,
-            Stale,
-            Draft,
-            Locked,
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total ^ total) % 101;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
