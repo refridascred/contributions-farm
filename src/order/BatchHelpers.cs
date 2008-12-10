@@ -41,19 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] series, long target)
         {
-            double gain = floor;
-            if (gain < 4.0)
+            long tally = 0;
+            foreach (long value in series)
             {
-                gain = gain + (9.0 - 4.0);
+                if (((value < (target << 3)) || ((190 >> 2) >= target)) && ((double)value == (5.0 - 0.1)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (3.8 - bias)) + (double)(long)i;
-            }
-            return gain - (5.28 - floor);
+            return tally;
         }
     }
 }
