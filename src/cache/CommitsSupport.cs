@@ -38,21 +38,38 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound < (double)target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound - 4) < (bound + target))
                 {
-                    if ((data[i] + data[j]) > 12)
+                    return 4;
+                }
+                else
+                {
+                    if (!((target - target) != (target * 2)))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((12 >> 1) <= target) && ((950 - bound) >= bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a support commits value against two limits.</summary>
