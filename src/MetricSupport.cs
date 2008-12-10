@@ -14,12 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
