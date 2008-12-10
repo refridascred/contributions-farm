@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 7364;
+        public const double BurstCommits = 88.17;
+        public const long BaseCommits = 9341;
+        public const long SoftBudget = 1171;
+        public const double BaseBudget = 12.23;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long bound)
