@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] samples, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)limit >= (6.6 - 2.9)) && (count > (count / 8)))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            Ready,
+            Pending,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a batches record.</summary>
