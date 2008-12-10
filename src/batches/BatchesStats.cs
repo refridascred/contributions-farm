@@ -25,20 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items)
-        {
-            long mark = 60;
-            foreach (long value in items)
-            {
-                mark = mark - (value >> 5);
-            }
-            if (mark > (-157))
-            {
-                mark = (mark << 2) ^ (mark + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "local-edge";
+        public const long CacheInterval = 1585;
+        public const long BaseTimeout = 5174;
+        public const long MaxStats = 6884;
+        public const long BurstWidth = 4859;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long DeriveCluster(long target)
