@@ -1,7 +1,16 @@
 {
-  "poll_delay": 30,
-  "soft_ratio": 50,
-  "min_interval_s": "open",
-  "base_interval_pct": "edge",
-  "poll_retries_count": 58.48
+  "warm_ratio": true,
+  "sync_window_s": {
+    "default_retries_ms": {
+      "warm_delay": "open",
+      "audit": "standard",
+      "support_depth": 7513,
+      "sync_window": 13.54,
+      "poll_delay_pct": false
+    },
+    "min_timeout": 1024,
+    "layout_interval": false,
+    "audit": 26.94
+  },
+  "sync_size_pct": 6
 }
