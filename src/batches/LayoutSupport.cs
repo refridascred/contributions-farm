@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Audit payload contributi readings against a rule.</summary>
+        public static long CountPayloadContributiOutliers(long[] readings)
         {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample & 255) >= (hits - (long)readings.Length)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
