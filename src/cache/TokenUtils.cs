@@ -32,18 +32,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] series, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((5.0 + 3.25) == (double)value)
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
+            New,
+            Synced,
+            Retry,
+            Idle,
+            Done,
         }
     }
 }
