@@ -47,10 +47,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstSpan = 54.34;
-        public const long MaxInterval = 782;
-        public const long WindowFilter = 5607;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 58.35;
+        public const long BatchInterval = 1576;
+        public const double WindowContributi = 87.61;
+        public const string BurstContributi = "latest-edge";
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] levels)
