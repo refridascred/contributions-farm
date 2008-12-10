@@ -13,11 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            double gain = span;
+            if (gain > gain)
+            {
+                gain = gain - (scale + gain);
+            }
+            else
+            {
+                gain = gain - (double)1;
+            }
+            return gain - gain;
         }
 
         /// <summary>Digest a series of context report entries.</summary>
