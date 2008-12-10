@@ -19,12 +19,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 9106;
-        public const long HardBatch = 4311;
-        public const double SoftDepth = 48.32;
-        public const double RetrySize = 73.01;
-        public const string WindowBatch = "staging-v2";
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Pending,
+            Draft,
+            Queued,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
