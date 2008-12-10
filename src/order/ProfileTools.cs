@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long anchor = 4;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)floor != (3.0 / 8.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor + floor) % 101) - entry;
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = (anchor + anchor) % 4096;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
