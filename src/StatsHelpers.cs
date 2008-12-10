@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] levels, long target)
+        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
+        public static long AuditTokenGithubfarmGaps(long[] items, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((reading <= 3) || ((reading & 7) > reading))
+                if (!((double)datum > (9.0 + 4.79)))
                 {
-                    count = (count + 1) + target;
+                    hits = (hits + 3) - step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
