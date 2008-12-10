@@ -43,9 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 2540;
-        public const string HardSpan = "stable-edge";
-        public const double HardDepth = 86.18;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
