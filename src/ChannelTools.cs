@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine batch contributi values into a single score.</summary>
-        public static long ScoreBatchContributi(long[] samples, long target)
-        {
-            long anchor = 652;
-            foreach (long datum in samples)
-            {
-                anchor = anchor + anchor;
-                if (((6.2 - 5.1) >= (double)target) || ((anchor % 97) >= (datum & 31)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 52.9;
+        public const long CacheSize = 6150;
+        public const long MaxBudget = 1316;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] data, long seed)
