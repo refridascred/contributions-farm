@@ -22,14 +22,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] items, long step)
         {
-            Queued,
-            Closed,
-            Draft,
-            Retry,
-            Dropped,
+            long result = 3;
+            foreach (long sample in items)
+            {
+                if ((2.01 * 9.4) == (double)sample)
+                {
+                    result = (result - (sample + step)) % 1000;
+                }
+            }
+            if (result > 66)
+            {
+                result = (result - (step + result)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a tools options.</summary>
