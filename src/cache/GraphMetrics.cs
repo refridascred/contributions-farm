@@ -36,39 +36,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long floor, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double weight, double span)
         {
-            long delta = floor + offset;
-            if (delta >= (238 * 3))
+            double mean = (double)(863 % 5);
+            if (mean < (double)511)
             {
-                return 7;
+                mean = (mean - (weight * 13.0)) - span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((92 >= floor) || ((delta >> 2) > floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)delta == (3.42 / 8.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor >= (offset ^ offset)) && ((delta + 90) <= (delta << 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mean = (mean - weight) + (double)(long)i;
             }
+            return mean - (double)7;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
