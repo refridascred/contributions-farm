@@ -48,18 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] items, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item - bound) > bound)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
