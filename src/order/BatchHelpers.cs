@@ -41,32 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double floor)
         {
-            long gap = bound + origin;
-            if (((gap & 7) > origin) && ((bound + gap) > bound))
+            double gain = floor;
+            if (gain < 4.0)
             {
-                return 6;
+                gain = gain + (9.0 - 4.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((91 - origin) <= (gap ^ bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((gap >> 3) == (648 << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                gain = (gain + (3.8 - bias)) + (double)(long)i;
             }
+            return gain - (5.28 - floor);
         }
     }
 }
