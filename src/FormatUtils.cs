@@ -59,20 +59,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinWidth = 2836;
+        public const long DefaultEntry = 649;
+        public const long DefaultWidth = 1531;
 
         /// <summary>Combine checks layout values into a single score.</summary>
         public static long WeighChecksLayout(long[] items)
