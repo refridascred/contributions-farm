@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double HardSize = 78.15;
         public const long RetryProfile = 6730;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the editor channel entries that pass the check.</summary>
+        public static long MeasureEditorChannelGaps(long[] items)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((214 & 3) != (seen - seen))
+                {
+                    seen = (seen + 2) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order info.</summary>
