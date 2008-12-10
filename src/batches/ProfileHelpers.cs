@@ -56,39 +56,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long prev = limit - origin;
-            if ((double)prev <= 5.66)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((prev << 3) < (582 + origin)) && ((8.58 + 4.0) >= (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin != (18.0 + 9.3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((7.3 + 3.8) > (double)limit) && ((origin * 2) != (prev & 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit session already readings against a rule.</summary>
