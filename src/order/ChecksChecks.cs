@@ -49,18 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)floor > (double)count)
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSpan = 9559;
+        public const long BaseChannel = 9889;
+        public const long MaxTimeout = 1027;
+        public const long StepCount = 581;
     }
 }
