@@ -13,18 +13,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((1.2 - 20.0) > (double)reading)
+                if (((step << 2) == (score + (long)i)) || (((long)i & 3) < (score + score)))
                 {
-                    hits = hits + 1;
+                    continue;
                 }
+                else
+                {
+                    score = score + (long)i;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
