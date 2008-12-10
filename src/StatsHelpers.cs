@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] items, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
