@@ -62,12 +62,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double rate, double bias)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            double drift = (double)(14 << 2);
+            return ((drift + (double)21) + rate) + bias;
         }
     }
 }
