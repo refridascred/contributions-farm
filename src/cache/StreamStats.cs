@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first support token entry that matches the target.</summary>
-        public static long LookupSupportTokenIndex(long[] readings, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 422;
+            foreach (long entry in values)
             {
-                if (readings[i] > step)
+                if ((entry + origin) < (origin * 3))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (entry / 8);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next counter value.</summary>
