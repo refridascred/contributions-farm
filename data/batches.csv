@@ -1,9 +1,6 @@
-id,region,token,score
-1,867,52.46,287
-2,fallback,44.19,886
-3,507,staging,634
-4,403,884,468
-5,staging,473,395
-6,193,legacy,cached
-7,9.51,92,494
-8,750,strict,open
+id,rank,state
+1,latest,cached
+2,290,331
+3,265,67.26
+4,889,73.41
+5,91.6,64.4
