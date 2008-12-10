@@ -29,19 +29,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context queue readings against a bound.</summary>
-        public static bool VerifyContextQueueRange(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 32.85;
+        public const double LimitSpan = 41.55;
+        public const string MaxInterval = "local-v2";
     }
 }
