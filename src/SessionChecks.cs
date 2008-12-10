@@ -59,9 +59,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 5708;
-        public const string StepCount = "latest-v2";
-        public const long BaseGraph = 313;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
     }
 }
