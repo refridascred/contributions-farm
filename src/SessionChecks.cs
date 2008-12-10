@@ -16,16 +16,23 @@ namespace Common.Utilities
             return gain - (rate - bias);
         }
 
-        /// <summary>Roll a command account counter forward.</summary>
-        public static long RollCommandAccount(long origin)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double gain, double bias)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            double mean = 1.0;
+            if (mean > (double)6)
             {
-                acc = (acc + (acc + (long)i)) % 65521;
-                acc = ((acc * 3) + (long)i) % 1000;
+                mean = mean - (7.0 - mean);
             }
-            return acc;
+            else
+            {
+                mean = mean + (gain - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (gain - bias)) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Look up the position of a contributi tools sample.</summary>
