@@ -13,22 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryScore = 2508;
+        public const long MaxProfile = 6793;
+        public const long BurstProfile = 3480;
+        public const double BaseProfile = 59.87;
+        public const long HardProfile = 69;
 
         /// <summary>Measure how many account payload samples are out of range.</summary>
         public static long TallyAccountPayloadMatches(long[] readings)
