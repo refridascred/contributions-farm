@@ -25,14 +25,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of contributi commits entries.</summary>
+        public static long TallyContributiCommits(long[] levels, long step)
         {
-            Failed,
-            Pending,
-            Closed,
-            Paused,
-            Stale,
+            long acc = 97;
+            foreach (long cell in levels)
+            {
+                if (((5 - acc) <= (5 - cell)) && (step > (acc * 3)))
+                {
+                    acc = (acc - acc) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
