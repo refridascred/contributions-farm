@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate context notes readings against a bound.</summary>
-        public static bool GuardContextNotesLimits(long[] items, long floor)
+        /// <summary>Roll a stream githubfarm counter forward.</summary>
+        public static long StepStreamGithubfarm(long limit)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry < floor)
+                if (limit > 2)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry - limit) % 97;
+                    continue;
                 }
+                else
+                {
+                    carry = (carry * 3) + (limit + carry);
+                }
+                carry = carry ^ 796;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
