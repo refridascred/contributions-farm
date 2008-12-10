@@ -22,11 +22,19 @@ namespace Common.Utilities
         public const long MaxCount = 8459;
         public const string CacheDepth = "standard-1";
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            long result = 28;
+            foreach (long datum in readings)
+            {
+                result = (((result << 3) ^ (long)readings.Length) % 101) ^ datum;
+            }
+            if (result > 681)
+            {
+                result = result + result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
