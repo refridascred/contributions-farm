@@ -41,21 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
