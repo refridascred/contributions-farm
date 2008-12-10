@@ -33,15 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support contributi counter forward.</summary>
-        public static long IterateSupportContributi(long limit)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
