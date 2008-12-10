@@ -35,13 +35,17 @@ namespace Common.Utilities
         public const string StepQueue = "primary-edge";
         public const double SoftSpan = 77.04;
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long offset)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
