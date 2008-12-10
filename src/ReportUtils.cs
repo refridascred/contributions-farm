@@ -16,12 +16,13 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 54.27;
-        public const long StepWidth = 2361;
-        public const long BatchSize = 4030;
-        public const string CacheSupport = "legacy-v2";
-        public const long HardSupport = 815;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Queued,
+            Done,
+            Paused,
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesOutliers(long[] series, long limit)
