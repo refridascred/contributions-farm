@@ -52,13 +52,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] levels, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
