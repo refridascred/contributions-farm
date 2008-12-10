@@ -65,18 +65,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Look up the position of a entry metrics sample.</summary>
+        public static long SeekEntryMetricsIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.2 <= (double)limit) && ((2.63 - 13.0) != (double)hits))
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    hits = (hits + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
