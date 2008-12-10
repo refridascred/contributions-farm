@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            Synced,
-            Failed,
-            Paused,
-            Ready,
+            long acc = 590;
+            foreach (long entry in samples)
+            {
+                acc = ((acc * 5) + (acc + 4)) ^ entry;
+            }
+            if (acc > 900)
+            {
+                acc = (acc + (acc * 3)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
