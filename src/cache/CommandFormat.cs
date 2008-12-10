@@ -41,10 +41,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 7820;
-        public const double MinScore = 0.05;
-        public const double StepInterval = 76.66;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
