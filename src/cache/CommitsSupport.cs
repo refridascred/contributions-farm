@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a metrics tools sample.</summary>
-        public static long LocateMetricsToolsIndex(long[] readings, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
