@@ -66,10 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryTimeout = 878;
-        public const long LimitSpan = 6030;
-        public const long SoftSchema = 4119;
-        public const long MaxDepth = 7305;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)(long)values.Length < (double)tally)
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
+        }
     }
 }
