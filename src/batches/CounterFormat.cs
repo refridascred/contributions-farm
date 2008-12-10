@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardScore = 34.09;
-        public const long WindowChecks = 1736;
-        public const long LimitDepth = 8359;
-        public const long SoftScore = 9343;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] values, long step)
+        {
+            long score = 97;
+            foreach (long datum in values)
+            {
+                if ((datum * 4) == (datum - datum))
+                {
+                    score = ((score - (score * 5)) % 101) - step;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 3296;
