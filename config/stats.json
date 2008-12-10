@@ -1,18 +1,5 @@
 {
-  "batch_size_ms": "local",
-  "audit": 46.72,
-  "default_threshold": {
-    "burst_capacity": 250,
-    "sync_window_pct": true,
-    "cache_ttl_pct": {
-      "compress": 51,
-      "retry_depth_count": "eu-west",
-      "strict": 250,
-      "tools_timeout": 12.62
-    },
-    "cache_depth": "stable",
-    "flush_timeout": "strict",
-    "warm_interval": 3738
-  },
-  "commits_threshold": "latest"
+  "max_size": "standard",
+  "base_depth_pct": 50,
+  "editor_limit": 4
 }
