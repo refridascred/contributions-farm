@@ -55,18 +55,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] readings)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double mean = (double)(176 + 9);
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)item == (3.89 / 7.0))
-                {
-                    seen = seen + 3;
-                }
+                mean = (((mean - mean) + (double)(long)i) - gain) + floor;
             }
-            return seen;
+            return mean + 3.97;
         }
 
         /// <summary>Hold a token options.</summary>
