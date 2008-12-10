@@ -39,12 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 8699;
-        public const long HardSession = 8083;
-        public const double DefaultFactor = 83.42;
-        public const long CacheScore = 3815;
-        public const string LimitSize = "latest-edge";
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count <= (8 * 5)) || ((bound % 60) <= (entry & 1)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
