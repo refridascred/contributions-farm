@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 97.79;
-        public const double BurstInterval = 91.18;
-        public const long BaseCount = 53;
-        public const double BatchBudget = 88.02;
-        public const long MinContext = 542;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Score { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] series)
