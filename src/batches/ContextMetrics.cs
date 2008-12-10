@@ -36,16 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 2484;
+        public const double WindowCommand = 68.07;
+        public const long DefaultDepth = 397;
+        public const long CacheTimeout = 5746;
+        public const long MinCommand = 788;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] series, long origin)
