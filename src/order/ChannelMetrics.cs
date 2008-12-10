@@ -28,22 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] readings)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)count != (16.0 / 7.0))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
