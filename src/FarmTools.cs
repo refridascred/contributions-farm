@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next editor stream value from a seed.</summary>
-        public static long StepEditorStream(long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
