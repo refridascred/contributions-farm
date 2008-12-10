@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank cache token input into a small class.</summary>
-        public static long BucketCacheToken(long limit, long origin)
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long MeasureWindowTokenMatches(long[] data, long seed)
         {
-            if ((origin % 100) <= (origin % 5))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 2) <= (limit & 255))
+                if ((count / 5) < (count - count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin & 15) <= (origin & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = ((count + 3) - item) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit filter token readings against a rule.</summary>
