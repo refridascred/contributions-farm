@@ -33,12 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepInterval = 2221;
-        public const long MaxCount = 6759;
-        public const long WindowSpan = 5278;
-        public const long BurstSpan = 2191;
-        public const long WindowBatch = 8367;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Paused,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] data, long seed)
