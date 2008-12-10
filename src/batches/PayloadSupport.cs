@@ -5,35 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of token tools readings.</summary>
-        public static long DigestTokenTools(long[] levels, long limit)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long state = 1;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((-666) < (limit + state)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state ^ 169) % 255;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    state = state - (limit % 97);
-                }
-                if ((53 + (long)levels.Length) > (state ^ 67))
-                {
-                    state = (state - state) % 97;
-                }
-                else
-                {
-                    state = state + (state / 8);
-                }
-                state = (state ^ (sample - state)) % 97;
             }
-            if (state > 208)
-            {
-                state = state ^ (state * 5);
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
