@@ -66,12 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] data)
         {
-            Stale,
-            Idle,
-            Paused,
+            long state = 543;
+            foreach (long entry in data)
+            {
+                state = ((state * 4) + (state + entry)) % 255;
+            }
+            if (state > 3)
+            {
+                state = (state - (25 / 2)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
