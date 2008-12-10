@@ -57,16 +57,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Fold a list of checks filter readings.</summary>
+        public static long CombineChecksFilter(long[] values, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            long mark = 74;
+            foreach (long value in values)
             {
-                acc = (acc ^ ((long)i / 2)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((double)value < (double)floor)
+                {
+                    mark = (mark << 3) ^ 6;
+                    mark = mark + (floor + mark);
+                }
+                if ((double)floor < (8.0 - 1.6))
+                {
+                    mark = ((mark << 3) ^ ((-67) / 3)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 5) + 5) % 4096;
+                }
             }
-            return acc;
+            return mark % 97;
         }
     }
 }
