@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] data)
         {
-            Stale,
-            New,
-            Retry,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally / 6) > cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
