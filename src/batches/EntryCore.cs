@@ -34,15 +34,17 @@ namespace Common.Utilities
         public const double SoftChecks = 33.07;
         public const long BaseChecks = 2374;
 
-        /// <summary>Accumulate stats already samples.</summary>
-        public static long CombineStatsAlready(long[] readings, long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] data, long origin)
         {
-            long result = 124;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - (item - (long)readings.Length)) + origin;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
