@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Measure how many commits token samples are out of range.</summary>
+        public static long AuditCommitsTokenHits(long[] data, long step)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((value % 10) > count)
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
