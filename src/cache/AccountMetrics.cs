@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (cell < bound)
+                if ((count << 2) <= datum)
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
