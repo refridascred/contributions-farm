@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long origin)
         {
-            if ((bound - bound) < step)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((step << 1) > 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return score;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
