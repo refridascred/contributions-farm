@@ -65,38 +65,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long seed, long bound)
-        {
-            if (seed > (610 / 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.11 * 2.3) != (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound / 2) <= (bound + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (2.54 - 7.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowInterval = 8804;
+        public const double BurstInterval = 56.81;
+        public const double BurstRoute = 8.69;
+        public const long BatchRoute = 6710;
     }
 }
