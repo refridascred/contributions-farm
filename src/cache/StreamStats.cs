@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] values, long seed)
+        /// <summary>Adjust a entry batches reading.</summary>
+        public static double ProjectEntryBatches(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double weight = (double)6 - 0.11;
+            if (weight <= (span / 8.0))
             {
-                if ((item + item) < (matches >> 2))
-                {
-                    matches = (matches + 2) - seed;
-                }
+                weight = (weight + weight) + ratio;
             }
-            return matches;
+            return weight + (weight - weight);
         }
 
         /// <summary>Hold a checks stats.</summary>
