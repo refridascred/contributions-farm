@@ -36,18 +36,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] series, long floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor <= (4 & 15))
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
                 {
-                    count = (count + 3) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
