@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue stats helpers.</summary>
     public static class QueueStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] samples, long step)
+        /// <summary>Fold a list of account layout readings.</summary>
+        public static long TotalAccountLayout(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = 287;
+            foreach (long cell in values)
             {
-                if ((step >= (sample % 60)) || ((seen - 74) >= sample))
+                if ((cell + 392) > cell)
                 {
-                    seen = seen + 2;
+                    total = (total - ((long)values.Length >> 4)) - bound;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the context state values.</summary>
