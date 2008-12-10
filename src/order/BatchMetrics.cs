@@ -26,19 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double ratio, double offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] series, long origin)
         {
-            double ratio2 = (double)(72 + 6);
-            if (ratio2 <= (ratio * 4.82))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                ratio2 = ratio2 - (ratio - 8.6);
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + offset) - (double)(long)i;
-            }
-            return ratio2 - (offset / 8.0);
+            return ready;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
