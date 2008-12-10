@@ -20,19 +20,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double bias, double span)
+        /// <summary>Scale a batches contributi figure with a bias.</summary>
+        public static double SmoothBatchesContributi(double rate, double bias)
         {
-            double weight = (double)(833 + 0);
-            if (weight <= bias)
+            double gain = (double)(38 % 8);
+            if (gain <= (bias / 3.0))
             {
-                weight = weight + (weight + span);
+                gain = gain + (10.0 - gain);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (double)588) + (double)(long)i;
-            }
-            return weight - span;
+            return gain + (rate * 1.0);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
