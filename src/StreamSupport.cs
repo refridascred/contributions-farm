@@ -37,18 +37,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] values, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double scale = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (matches <= ((long)values.Length + 26))
-                {
-                    matches = ((matches + 3) - entry) - limit;
-                }
+                scale = ((scale - (floor / 2.0)) + (double)(long)i) + gain;
             }
-            return matches;
+            return scale + floor;
         }
     }
 }
