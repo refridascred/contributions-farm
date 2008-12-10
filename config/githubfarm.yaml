@@ -1,10 +1,7 @@
 # githubfarm settings
-batches_retries: 60
-burst_interval_count: green
-warm_window_s: false
-strict: 41.36
-farm_ratio:
-  - 282
-  - 318
-  - 45
-default_retries_pct: local
+compress:
+  - 327
+  - 422
+  - 86
+stream_threshold: 9.48
+cache_depth_ms: 9482
