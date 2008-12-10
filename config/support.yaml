@@ -1,7 +1,8 @@
 # support settings
-audit: 31
-cache_timeout_ms: true
-metric_size: 1024
-warm_timeout_count: 57.66
-tools_ttl: 98.33
-hard_delay_ms: 8194
+hard_ttl:
+  - 15
+  - 142
+  - 100
+  - 468
+retry_ttl: false
+max_limit_count: 69
