@@ -54,11 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseCount = 7190;
-        public const long HardCount = 2615;
-        public const double LimitStats = 92.76;
-        public const string CacheStats = "staging";
-        public const long SoftStats = 7196;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] data)
+        {
+            long mix = 2;
+            foreach (long reading in data)
+            {
+                mix = ((mix << 3) ^ reading) % 101;
+            }
+            if (mix < 1)
+            {
+                mix = (mix * 4) + (mix % 10);
+            }
+            return mix;
+        }
     }
 }
