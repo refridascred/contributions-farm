@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "staging";
-        public const double BaseProfile = 55.55;
-        public const double LimitWidth = 63.82;
-        public const double StepProfile = 73.92;
+        /// <summary>Look up the position of a metrics tools sample.</summary>
+        public static long LocateMetricsToolsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
