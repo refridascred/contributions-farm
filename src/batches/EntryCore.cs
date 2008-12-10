@@ -22,22 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache order entries that pass the check.</summary>
-        public static long TallyCacheOrderHits(long[] readings, long step)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double bias = (double)(5 + (-2));
+            if (bias <= (bias - floor))
             {
-                if (!((value - step) < (52 * 4)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias - (double)89;
             }
-            return hits;
+            return bias - (bias - scale);
         }
 
         /// <summary>Describe the cache status values.</summary>
