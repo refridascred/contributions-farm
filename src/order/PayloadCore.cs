@@ -27,21 +27,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Accumulate format order samples.</summary>
+        public static long WeighFormatOrder(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 73;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.0 + 6.0) != (double)sum)
                 {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum - (cell - cell);
+                    break;
                 }
+                sum = sum - (cell - sum);
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
