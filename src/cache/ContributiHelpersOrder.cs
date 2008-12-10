@@ -28,22 +28,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Match up metrics session samples.</summary>
-        public static long CompareMetricsSessionCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowBudget = 1099;
+        public const long LimitLevel = 6829;
+        public const long MaxStream = 3876;
+        public const long WindowRatio = 3915;
+        public const long LimitCount = 3207;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long ClassifyFarm(long target, long floor)
