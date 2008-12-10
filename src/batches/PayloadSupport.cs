@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
