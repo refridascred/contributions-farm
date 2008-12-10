@@ -19,22 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] items, long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long target)
         {
-            long result = 3;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.01 * 9.4) == (double)sample)
+                if (samples[i] >= target)
                 {
-                    result = (result - (sample + step)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result > 66)
-            {
-                result = (result - (step + result)) % 101;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
