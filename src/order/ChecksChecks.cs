@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double MaxOrder = 85.25;
         public const double BatchWidth = 13.73;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] data, long floor)
         {
-            Pending,
-            Synced,
-            Paused,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload status values.</summary>
