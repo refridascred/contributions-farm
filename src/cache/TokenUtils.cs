@@ -23,21 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset + 36) <= acc)
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 3) ^ ((long)i * 5);
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (((acc << 3) ^ 808) % 255) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
