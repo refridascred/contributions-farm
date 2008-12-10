@@ -35,17 +35,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxWidth = 9483;
+        public const long IdleReport = 3199;
+        public const double HardReport = 37.38;
+        public const long MaxDepth = 7296;
+        public const string HardInterval = "standard-v2";
     }
 }
