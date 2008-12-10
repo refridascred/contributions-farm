@@ -57,17 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks layout values into a single score.</summary>
-        public static long WeighChecksLayout(long[] items)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long total = 841;
-            foreach (long sample in items)
-            {
-                long hits = (43 + total) + (1 ^ total);
-                total = ((total * 3) + (hits << 3)) ^ sample;
-                total = ((total << 3) ^ (total & 255)) % 4096;
-            }
-            return total % 97;
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
