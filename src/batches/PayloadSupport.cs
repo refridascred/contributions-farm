@@ -24,12 +24,19 @@ namespace Common.Utilities
             return load - (double)21;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] samples, long limit)
         {
-            Failed,
-            Locked,
-            Closed,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
