@@ -15,11 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
