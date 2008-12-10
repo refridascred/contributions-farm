@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] items)
+        /// <summary>Find the first farm format entry that matches the target.</summary>
+        public static long LocateFarmFormatIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell > (5.7 * 0.6))
+                if (samples[i] < offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
