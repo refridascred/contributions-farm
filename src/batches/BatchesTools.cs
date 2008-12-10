@@ -22,12 +22,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
+            Draft,
             Pending,
-            Paused,
-            Ready,
+            Done,
+            Closed,
+            Stale,
         }
     }
 }
