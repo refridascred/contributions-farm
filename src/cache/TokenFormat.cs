@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a tools reading.</summary>
