@@ -28,13 +28,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long limit)
         {
-            Locked,
-            Idle,
-            Paused,
-            Active,
+            if (limit <= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)limit != (1.76 - 9.0)) && ((8 / 8) < (limit - 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit - offset) > (offset + limit)) && (27 <= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset * 4) <= limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
