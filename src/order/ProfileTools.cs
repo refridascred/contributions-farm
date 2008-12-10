@@ -74,19 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double bias2)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] readings, long step)
         {
-            double bias3 = bias2;
-            if (bias3 >= bias2)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                bias3 = bias3 + (bias + 7.0);
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias3 = (bias3 - (6.1 / 9.0)) + (double)(long)i;
-            }
-            return bias3 - bias2;
+            return valid;
         }
     }
 }
