@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Classify a support cluster pair into a bucket.</summary>
+        public static long SortSupportCluster(long target, long target2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = target ^ target2;
+            if ((double)next < (14.0 / 5.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (7.1 > (double)target)
                 {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a entry batches reading.</summary>
