@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a entry checks reading.</summary>
-        public static double SmoothEntryChecks(double ratio, double bias)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            double gain = (double)513 - (double)3;
-            if (gain <= ratio)
+            long score = 5;
+            foreach (long cell in values)
             {
-                gain = gain - bias;
+                score = ((score << 2) ^ (cell % 5)) % 4096;
+                score = (score + (cell * 4)) % 101;
             }
-            for (int i = 0; i < 3; i++)
+            if (score < 8)
             {
-                gain = (gain - (bias * 6.5)) + (double)(long)i;
+                score = (score + score) % 255;
             }
-            return gain + bias;
+            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
