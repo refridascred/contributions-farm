@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many session command samples are out of range.</summary>
-        public static long CountSessionCommandOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((97 + seen) <= (seen & 31))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowLevel = 9728;
+        public const long RetryDepth = 3109;
+        public const double HardStats = 73.77;
 
         /// <summary>Validate channel filter readings against a bound.</summary>
         public static bool GuardChannelFilterRange(long[] series, long floor)
