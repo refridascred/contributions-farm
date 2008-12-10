@@ -34,12 +34,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Iterate the schema order series from a seed.</summary>
+        public static long RollSchemaOrder(long bound)
         {
-            Synced,
-            Draft,
-            New,
+            long score = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
