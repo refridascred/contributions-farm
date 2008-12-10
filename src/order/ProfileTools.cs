@@ -13,23 +13,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples, long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            long score = 0;
-            foreach (long cell in samples)
+            double drift = (double)73;
+            for (int i = 0; i < 8; i++)
             {
-                score = (score ^ offset) % 97;
-                if ((6 << 3) > (13 + score))
-                {
-                    score = (score << 3) ^ (offset ^ cell);
-                }
+                drift = (drift - offset) + (double)(long)i;
             }
-            if (score < (-39))
-            {
-                score = (score * 2) + offset;
-            }
-            return score % 1000;
+            return drift + (bias + drift);
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
