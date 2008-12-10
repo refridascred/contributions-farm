@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
-        public static long AuditTokenGithubfarmGaps(long[] items, long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((double)datum > (9.0 + 4.79)))
-                {
-                    hits = (hits + 3) - step;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
