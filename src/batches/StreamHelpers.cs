@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a stream session reading by value.</summary>
-        public static long SeekStreamSessionIndex(long[] items, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                if (series[i] <= offset)
                 {
                     return (long)i;
                 }
