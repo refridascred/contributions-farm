@@ -1,15 +1,14 @@
 # entry settings
-notes_depth:
-  - open
-  - eu-west
-  - legacy
-enabled:
-  - 228
-  - 263
-poll_window_count: 9465
-stream_delay: 250
-cache_limit_s: latest
-base_delay:
-  dry_run: 1024
-  strict: 71
-  batch_ttl_pct: 57.4
+compress: local
+poll_timeout: green
+audit: edge
+sync_ttl_pct:
+  readonly:
+    persist: standard
+    poll_ratio_s: 35.65
+    idle_threshold_pct: 1246
+    poll_capacity_pct: 97.64
+  persist: latest
+  soft_timeout_pct: green
+  compress: legacy
+  cluster_interval: true
