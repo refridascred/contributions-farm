@@ -1,6 +1,11 @@
 {
-  "editor_timeout": [264, 168, 47, 220],
-  "compress": ["latest", "cached", "latest"],
-  "format_limit": false,
-  "stream_ttl": "stable"
+  "sync_ratio": 250,
+  "stream_depth": ["local", "eu-west", "edge"],
+  "base_limit_ms": 81,
+  "strict": {
+    "cluster_timeout": "local",
+    "compress": [357, 460, 50],
+    "dry_run": ["latest", "stable"]
+  },
+  "max_timeout_count": "latest"
 }
