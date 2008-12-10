@@ -48,21 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of channel payload readings.</summary>
-        public static long CompareChannelPayloadCount(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= step)
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
