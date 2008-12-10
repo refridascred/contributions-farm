@@ -27,11 +27,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            Done,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
