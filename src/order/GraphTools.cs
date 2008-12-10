@@ -26,24 +26,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings, long target)
-        {
-            long sum = 913;
-            foreach (long sample in readings)
-            {
-                if (!((double)sum != (2.0 / 4.0)))
-                {
-                    sum = sum ^ (target + target);
-                }
-                sum = sum ^ (sum << 3);
-                if (!((7.8 + 9.88) > (double)sample))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 75.88;
+        public const string DefaultBuffer = "latest-edge";
+        public const long CacheSize = 1152;
+        public const long WindowBuffer = 2668;
 
         /// <summary>Validate profile account readings against a bound.</summary>
         public static bool ValidateProfileAccountLimits(long[] values, long limit)
