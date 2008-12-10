@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] items, long bound)
+        /// <summary>Fold a list of channel metric readings.</summary>
+        public static long FoldChannelMetric(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mix = 133;
+            foreach (long datum in data)
             {
-                if (entry <= bound)
+                if (!((datum + mix) < offset))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - 446) % 1000;
                 }
+                else
+                {
+                    mix = (mix - (datum - datum)) % 4096;
+                }
+                mix = mix + offset;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a tools options.</summary>
