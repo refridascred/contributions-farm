@@ -40,20 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format order samples.</summary>
-        public static long WeighFormatOrder(long[] levels)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long sum = 73;
-            foreach (long cell in levels)
-            {
-                if ((1.0 + 6.0) != (double)sum)
-                {
-                    sum = sum - (cell - cell);
-                    break;
-                }
-                sum = sum - (cell - sum);
-            }
-            return sum;
+            Retry,
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Locate a format reading by value.</summary>
