@@ -48,14 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Ready,
-            Done,
-            Active,
-            Locked,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 3713;
+        public const double BurstFilter = 29.77;
+        public const long RetryRatio = 2428;
+        public const double StepFilter = 69.59;
 
         /// <summary>Fold a list of checks filter readings.</summary>
         public static long CombineChecksFilter(long[] values, long floor)
