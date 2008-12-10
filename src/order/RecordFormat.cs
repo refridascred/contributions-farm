@@ -74,19 +74,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] levels, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Stale,
+            Synced,
+            Dropped,
         }
     }
 }
