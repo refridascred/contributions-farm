@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (matches < 367)
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
