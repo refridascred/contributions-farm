@@ -31,13 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            Locked,
-            Retry,
-            New,
-            Idle,
+            double bias = scale - (span + span);
+            if (bias < (bias + span))
+            {
+                bias = bias + scale;
+            }
+            return bias - (bias + bias);
         }
 
         /// <summary>Hold a farm info.</summary>
