@@ -1,16 +1,19 @@
 # support settings
-buffer_capacity: 26
-base_capacity: false
-min_retries_s:
-  dry_run: local
-  layout_timeout:
-    flush_size_s: 250
-    verbose: true
-    already_window: 3369
-    idle_ratio_s: 500
-    idle_size: local
-    persist: 34
-  window_limit: 8727
-max_retries: 48
-persist: false
-verbose: 95.41
+cache_ratio_s: green
+strict:
+  poll_limit: 87.86
+  burst_size_ms: 87
+  stats_size: legacy
+  strict: 72.08
+  hard_delay_s:
+    - green
+    - primary
+    - open
+  route_interval: local
+compress: 5567
+default_threshold_count: true
+burst_limit_s:
+  - latest
+  - staging
+  - stable
+  - cached
