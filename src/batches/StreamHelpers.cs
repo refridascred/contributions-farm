@@ -19,25 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long bound)
-        {
-            if (bound >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 2) <= (bound ^ 27))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchFactor = 203;
+        public const double SoftCount = 37.69;
+        public const double SoftContext = 51.18;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] levels)
