@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class TokenFormat
     {
         /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheTimeout = 2648;
-        public const long MaxCounter = 4213;
-        public const long WindowCounter = 1935;
+        public const double RetryCounter = 66.2;
+        public const string StepSpan = "strict-1";
+        public const long WindowCounter = 1162;
+        public const long BatchLevel = 3396;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 9496;
