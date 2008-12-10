@@ -1,21 +1,16 @@
 # githubfarm settings
-cache_retries: 8665
-default_ratio_s:
-  cache_timeout: 21
-  base_limit_count: false
-  soft_size_s: 100
-notes_ttl:
-  retry_size_count: 7
-  sync_interval: false
-  contributi_timeout: 44.35
-  order_ratio:
-    cluster_delay:
+idle_window_s:
+  - open
+  - legacy
+format_delay:
+  flush_capacity: 2923
+  flush_delay_pct: true
+  sync_ttl_pct: 1024
+  flush_limit_ms:
+    cache_interval: stable
+    max_limit:
+      - fallback
       - standard
-      - strict
-    sync_ratio_pct:
-      - stable
-      - standard
-      - blue
-    batch_retries_ms: legacy
-    warm_limit_s: 250
-    compress: false
+    verbose: standard
+    filter_retries: latest
+retry_retries: 100
