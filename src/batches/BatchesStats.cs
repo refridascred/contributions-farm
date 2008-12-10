@@ -25,24 +25,18 @@ namespace Common.Utilities
         public const string DefaultContributi = "staging-v2";
         public const long HardWidth = 5966;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long bound, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] readings, long offset)
         {
-            if (((8.47 * 5.91) > (double)bound) || (22 <= (bound - limit)))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)705 < (double)bound)
+                if ((sample % 64) <= (offset ^ matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
