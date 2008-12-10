@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] data)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] series)
         {
             long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= (reading >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
