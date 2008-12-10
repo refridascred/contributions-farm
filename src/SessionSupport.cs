@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepSize = "fallback-edge";
+        public const long LimitCommits = 1313;
+        public const long CacheCommits = 3697;
+        public const long MaxCommits = 1359;
+        public const long SoftRatio = 1992;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiOutliers(long[] readings, long origin)
