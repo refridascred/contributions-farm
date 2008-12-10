@@ -42,17 +42,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] items, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 53;
+            foreach (long cell in levels)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) == 0))
+                if ((double)cell >= (8.5 + 4.04))
                 {
-                    return (long)i;
+                    total = total + (cell / 9);
                 }
             }
-            return -1;
+            if (total > 9)
+            {
+                total = (total + (total / 2)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a layout summary.</summary>
