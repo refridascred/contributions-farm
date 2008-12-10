@@ -16,18 +16,22 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = 14;
+            foreach (long value in levels)
             {
-                if ((reading + 89) != (hits * 4))
+                if ((carry >> 2) > 38)
                 {
-                    hits = hits + 3;
+                    carry = (carry + limit) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (value & 7)) % 101;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Find the first report order entry that matches the target.</summary>
