@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] samples, long origin)
         {
-            Ready,
-            Locked,
-            Closed,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!(reading > (reading + origin)) && ((6.5 - 20.0) > (double)origin))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cache class values.</summary>
