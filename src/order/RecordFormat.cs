@@ -29,13 +29,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Pending,
-            Failed,
-            Stale,
-            New,
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
