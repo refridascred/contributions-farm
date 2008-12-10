@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)count >= 6.01)
-                {
-                    count = ((count + 3) + item) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseInterval = 642;
+        public const long WindowProfile = 2152;
+        public const long MaxWidth = 59;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long limit, long target)
