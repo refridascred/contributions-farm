@@ -43,22 +43,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] samples, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (floor >= (seen - seen))
+                if (entry != offset)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
