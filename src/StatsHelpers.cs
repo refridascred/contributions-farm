@@ -12,16 +12,22 @@ namespace Common.Utilities
         public const long SoftBudget = 1171;
         public const double BaseBudget = 12.23;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long score = -8;
+            foreach (long cell in levels)
             {
-                mark = mark - (mark << 2);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((double)cell <= (0.2 / 7.0))
+                {
+                    score = ((score * 5) + ((-87) / 6)) - target;
+                }
+                if (4.7 > (double)score)
+                {
+                    break;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
