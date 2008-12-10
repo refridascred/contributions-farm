@@ -36,19 +36,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepTimeout = 2349;
+        public const long LimitSize = 6697;
+        public const string WindowScore = "fallback";
+        public const long HardEditor = 6044;
     }
 }
