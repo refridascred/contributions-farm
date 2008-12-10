@@ -67,11 +67,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long target)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
