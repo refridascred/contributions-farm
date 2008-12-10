@@ -45,9 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 32.85;
-        public const double LimitSpan = 41.55;
-        public const string MaxInterval = "local-v2";
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
