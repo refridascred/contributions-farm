@@ -45,38 +45,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long target, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            if ((double)bound < (double)target)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - 4) < (bound + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target - target) != (target * 2)))
+                    if ((series[i] ^ series[j]) != 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((12 >> 1) <= target) && ((950 - bound) >= bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a support commits value against two limits.</summary>
