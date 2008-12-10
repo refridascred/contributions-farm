@@ -57,12 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            New,
-            Idle,
-            Queued,
+            Paused,
+            Pending,
+            Retry,
         }
     }
 }
