@@ -59,20 +59,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a filter entry reading.</summary>
-        public static double SmoothFilterEntry(double ratio, double offset)
-        {
-            double scale = (double)(7 + 86);
-            if (scale < (ratio + 5.65))
-            {
-                scale = (scale - scale) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (ratio - ratio)) + (double)(long)i;
-            }
-            return scale - ratio;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 1039;
+        public const long RetryAlready = 594;
+        public const string DefaultTimeout = "alpha-edge";
+        public const long BatchSpan = 8306;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] data, long floor)
