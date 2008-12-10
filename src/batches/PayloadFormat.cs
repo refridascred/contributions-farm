@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long RetryMetrics = 5316;
         public const string BatchMetrics = "stable-edge";
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
