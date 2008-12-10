@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two queue record measurements.</summary>
-        public static double ScaleQueueRecord(double rate, double floor)
+        /// <summary>Rank tools account input into a small class.</summary>
+        public static long SortToolsAccount(long target, long seed)
         {
-            double gain = floor;
-            if (gain < (double)3)
+            long step = target + seed;
+            if ((double)step < (6.0 - 0.21))
             {
-                gain = (gain + floor) - rate;
+                return 3;
             }
-            return gain + 3.07;
+            else
+            {
+                if ((seed >= target) && ((seed + seed) >= (970 * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target - target) >= (step - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
