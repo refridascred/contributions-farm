@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] series, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            long mix = 51;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 3) ^ datum) % 101;
-                if ((double)62 != (double)step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix * 2) + (mix * 4);
-                }
-                else
-                {
-                    mix = mix ^ (datum - step);
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > 8)
-            {
-                mix = mix + step;
-            }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
