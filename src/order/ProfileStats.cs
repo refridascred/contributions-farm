@@ -29,18 +29,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] series, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((bound - bound) >= (9 + matches))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
