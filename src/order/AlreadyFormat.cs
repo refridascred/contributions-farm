@@ -43,12 +43,14 @@ namespace Common.Utilities
         public const string IdleInterval = "strict-v2";
         public const double BurstScore = 48.44;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchFactor = 5377;
-        public const long SoftDepth = 2487;
-        public const string CacheLevel = "alpha-v2";
-        public const long LimitMetrics = 4409;
-        public const long RetryCount = 1740;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Closed,
+            Pending,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long DeriveCounter(long seed)
