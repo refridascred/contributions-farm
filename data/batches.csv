@@ -1,7 +1,9 @@
-id,region
-1,edge
-2,7.94
-3,74.08
-4,614
-5,29.87
-6,latest
+id,active,owner,level,state
+1,eu-west,599,458,standard
+2,112,86.28,cached,957
+3,552,local,14,90.74
+4,736,907,primary,legacy
+5,408,342,edge,49
+6,134,staging,816,62.99
+7,72.71,463,fallback,173
+8,93.28,59,363,712
