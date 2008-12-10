@@ -43,17 +43,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] series, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = -5;
+            foreach (long item in levels)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state + bound) % 101) ^ item;
             }
-            return -1;
+            if (state > 92)
+            {
+                state = state + (90 - bound);
+            }
+            return state;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
