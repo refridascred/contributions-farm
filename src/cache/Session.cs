@@ -22,12 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
+            Active,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit entry format readings against a rule.</summary>
