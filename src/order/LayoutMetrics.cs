@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate support command samples.</summary>
-        public static long TallySupportCommand(long[] samples)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double weight, double span)
         {
-            long state = 23;
-            foreach (long cell in samples)
+            double mean = (double)(159 / 3);
+            if (mean <= (weight - mean))
             {
-                state = (((state << 2) ^ state) % 97) - cell;
+                mean = mean + (weight + mean);
             }
-            if (state < 34)
-            {
-                state = (state * 4) + (state + state);
-            }
-            return state;
+            return mean + (span + 6.83);
         }
 
         /// <summary>Accumulate counter samples.</summary>
