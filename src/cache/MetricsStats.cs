@@ -66,11 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 24.79;
-        public const double LimitSize = 13.53;
-        public const long MinSupport = 2927;
-        public const long StepTimeout = 6860;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepCount = 2789;
+        public const string HardGraph = "strict-v2";
+        public const long MinLevel = 6609;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardRatio = 7946;
