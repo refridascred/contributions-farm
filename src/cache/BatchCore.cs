@@ -35,13 +35,21 @@ namespace Common.Utilities
         public const double BatchBudget = 88.02;
         public const long MinContext = 542;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
