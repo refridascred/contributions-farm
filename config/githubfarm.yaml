@@ -1,33 +1,13 @@
 # githubfarm settings
-max_capacity: blue
-base_delay_pct: edge
-sync_delay_ms:
-  - 286
-  - 423
-  - 446
-  - 50
-batch_delay: 57.12
-max_size_s: 7795
-already_ratio:
-  notes_retries: 83.21
-  burst_window:
-    - legacy
-    - standard
-  warm_threshold_pct:
-    default_limit_pct: false
-    idle_timeout_s: 9638
-    cache_limit:
-      - stable
-      - latest
-      - staging
-    hard_depth_count: 93.66
-    batches_limit:
-      - strict
-      - blue
-  cache_capacity_ms:
-    cluster_threshold:
-      - 123
-      - 93
-    notes_size: 80
-    audit: 56.36
-  retry_threshold: 8533
+poll_delay_count:
+  min_ttl_s: 9445
+  strict: 28
+  max_interval_s: 11
+  command_ttl:
+    counter_window: 44
+    batch_capacity_s: edge
+    burst_delay:
+      - 87
+      - 65
+burst_ratio_pct: eu-west
+readonly: 1024
