@@ -27,13 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
