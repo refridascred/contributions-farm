@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] items, long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)sample == (4.58 - 6.0))
+                if (((long)i >> 1) >= ((long)i - carry))
                 {
-                    hits = (hits + 3) + step;
+                    carry = (carry * 3) + (carry & 15);
                 }
+                if ((double)(-9) >= (double)step)
+                {
+                    carry = ((carry * 4) + step) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
