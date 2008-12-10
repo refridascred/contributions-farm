@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const double BatchBudget = 88.02;
         public const long MinContext = 542;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                if (((matches ^ 8) <= matches) && ((3.4 < (double)matches) && ((value - value) > (value & 3))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
