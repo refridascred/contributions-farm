@@ -65,11 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            Active,
+            Paused,
+            Idle,
         }
     }
 }
