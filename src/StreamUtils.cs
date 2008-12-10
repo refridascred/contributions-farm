@@ -65,29 +65,35 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long target, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long seed, long bound)
         {
-            long prev = target - seed;
-            if (((prev / 7) != (prev - target)) && ((double)seed >= (double)prev))
+            if (seed > (610 / 6))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((655 >> 2) < (seed + seed))
+                if ((2.11 * 2.3) != (double)seed)
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((prev >> 1) != (target >> 5))
+                    if ((bound / 2) <= (bound + seed))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        if ((double)seed <= (2.54 - 7.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
