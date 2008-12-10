@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((981 + 0) < cell)
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinCount = 64.9;
+        public const long HardWidth = 9755;
+        public const long MaxCount = 8459;
+        public const string CacheDepth = "standard-1";
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
