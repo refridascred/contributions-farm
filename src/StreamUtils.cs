@@ -33,12 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepInterval = 4.75;
-        public const double BatchBudget = 79.38;
-        public const double MinSize = 44.45;
-        public const double MaxCount = 0.54;
-        public const long IdleCommits = 3823;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Ready,
+            Locked,
+            Dropped,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
