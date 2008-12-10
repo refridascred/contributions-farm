@@ -55,15 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] series, long limit)
         {
-            long acc = -29;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                acc = (((acc + 1) % 101) ^ datum) - floor;
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return ready;
         }
     }
 }
