@@ -31,16 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics layout value from a seed.</summary>
-        public static long DeriveMetricsLayout(long step)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double bias, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            double scale = (0.4 / 3.0) / 6.0;
+            if (scale >= (scale / 9.0))
             {
-                acc = (acc << 3) ^ (long)i;
-                acc = ((acc * 3) + (long)i) % 101;
+                scale = scale + (bias - 5.79);
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Audit notes command readings against a rule.</summary>
