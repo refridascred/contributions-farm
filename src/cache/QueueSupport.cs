@@ -41,31 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values, long bound)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long target)
         {
-            long mix = 594;
-            foreach (long item in values)
+            if ((floor % 97) <= (target * 4))
             {
-                if (((10.0 - 6.23) > (double)mix) && (mix >= (mix & 31)))
+                return 3;
+            }
+            else
+            {
+                if (302 > (floor >> 3))
                 {
-                    mix = mix ^ (mix + bound);
-                    mix = ((mix << 3) ^ (mix - mix)) % 97;
-                }
-                if (4 <= item)
-                {
-                    mix = (mix - (bound + item)) % 255;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix * 2) + (bound << 3);
+                    return 2;
                 }
             }
-            if (mix > 1)
-            {
-                mix = (mix + (bound + mix)) % 101;
-            }
-            return mix;
         }
     }
 }
