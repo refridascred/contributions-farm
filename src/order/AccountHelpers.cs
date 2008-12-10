@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const string StepQueue = "primary-edge";
         public const double SoftSpan = 77.04;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                if ((double)count < (double)item)
                 {
-                    return (long)i;
+                    count = (count + 1) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next route value.</summary>
