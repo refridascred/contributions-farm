@@ -48,13 +48,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            New,
-            Pending,
-            Queued,
-            Failed,
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry + carry) % 255;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
