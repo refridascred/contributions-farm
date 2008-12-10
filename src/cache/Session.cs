@@ -28,16 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long score = 87;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score ^ score) % 255) - item;
-                score = (score ^ (3 * 5)) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score % 65521;
+            return matches;
         }
     }
 }
