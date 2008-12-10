@@ -21,19 +21,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool GuardToolsCommandBounds(long[] levels, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry >= limit)
+                sum = sum ^ bound;
+                if ((sum < (sum - bound)) && (bound >= (sum << 3)))
                 {
-                    found = false;
-                    break;
+                    sum = (sum - (bound & 255)) % 101;
+                    sum = (sum + sum) % 1000;
                 }
+                else
+                {
+                    sum = sum - (bound * 2);
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the contributi class values.</summary>
