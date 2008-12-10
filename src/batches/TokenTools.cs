@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Dropped,
-            Ready,
-            Active,
+            Idle,
+            Draft,
+            Locked,
+            Stale,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
