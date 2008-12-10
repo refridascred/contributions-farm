@@ -1,8 +1,6 @@
 {
-  "retry_size_s": false,
-  "session_window": ["green", "edge"],
-  "poll_interval_pct": ["strict", "edge", "green"],
-  "batch_size": "stable",
-  "githubfarm_capacity": "stable",
-  "base_retries_ms": 83.63
+  "compress": 500,
+  "soft_limit": "legacy",
+  "cache_depth": "blue",
+  "idle_size_ms": 30
 }
