@@ -1,6 +1,7 @@
-id,score,rank,count
-1,32,open,451
-2,982,317,latest
-3,76.83,690,26.76
-4,50.58,52.74,70.88
-5,264,29.4,latest
+id,score,token,weight
+1,41.39,32.57,stable
+2,26.54,818,989
+3,staging,637,792
+4,blue,20.57,standard
+5,28.21,45.06,9.2
+6,504,eu-west,33.18
