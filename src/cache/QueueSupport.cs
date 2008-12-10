@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] series)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((858 + sample) >= (sample % 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
