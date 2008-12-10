@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] readings, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (entry > step)
+                if (entry <= bound)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Measure how many order channel samples are out of range.</summary>
