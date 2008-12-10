@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 25.46;
-        public const long HardBatch = 6808;
-        public const long RetryInterval = 2270;
-        public const long SoftSize = 4892;
-        public const long RetryBudget = 5;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            New,
+            Retry,
+            Active,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double IdleFactor = 34.01;
