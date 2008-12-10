@@ -23,18 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] values, long step)
+        /// <summary>Classify a entry command pair into a bucket.</summary>
+        public static long BucketEntryCommand(long floor, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if ((floor & 7) == (target + floor))
             {
-                if ((sample % 24) == (sample / 9))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor != (8.0 - 19.0))
                 {
-                    seen = (seen + 3) - step;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)target >= (12.0 * 9.9)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (0.57 > (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the farm batch entries that pass the check.</summary>
