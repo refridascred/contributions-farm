@@ -1,8 +1,27 @@
 # support settings
-idle_limit_ms: 12
-format_timeout:
-  - 224
-  - 146
-  - 117
-  - 147
-batch_ttl: 65
+hard_timeout: open
+min_window:
+  notes_size: edge
+  dry_run: 61
+  cache_delay: 9271
+min_timeout_pct: 11.97
+persist:
+  default_ttl_s:
+    hard_delay_ms: 9802
+    compress: stable
+    contributi_retries: 48.4
+  batch_threshold:
+    - 412
+    - 349
+  checks_ttl:
+    batch_ttl_pct: strict
+    cache_retries_count: 48
+    poll_depth_count: 250
+    account_size:
+      - 77
+      - 402
+  burst_delay_pct: 30
+  max_retries: fallback
+  flush_ttl_ms: open
+min_interval: 100
+enabled: 6020
