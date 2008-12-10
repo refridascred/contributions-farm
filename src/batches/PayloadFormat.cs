@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Active,
+            Idle,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Accumulate cache samples.</summary>
