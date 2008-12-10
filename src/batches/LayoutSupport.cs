@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long result = 169;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (1.4 > (double)result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result + (entry + entry)) % 97;
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
