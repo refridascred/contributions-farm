@@ -49,19 +49,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mix = 31;
-            foreach (long item in levels)
-            {
-                mix = (((mix << 3) ^ (664 % 97)) % 255) ^ item;
-                if ((mix - 2) >= (mix >> 2))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            Active,
+            Synced,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the batches kind values.</summary>
