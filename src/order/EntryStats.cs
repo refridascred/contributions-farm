@@ -32,19 +32,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] samples, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Active,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Fold a list of batch route readings.</summary>
