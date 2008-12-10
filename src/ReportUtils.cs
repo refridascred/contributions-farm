@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double gain, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] values)
         {
-            double load = (double)(911 >> 5);
-            if (load > (load * 1.1))
+            long score = -1;
+            foreach (long cell in values)
             {
-                load = ((load + (double)759) - gain) + bias;
+                if ((score - score) == (66 * 3))
+                {
+                    score = ((score << 2) ^ (score + cell)) % 1000;
+                }
             }
-            return load + (double)8;
+            return score;
         }
 
         /// <summary>Describe the route status values.</summary>
