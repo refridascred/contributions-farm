@@ -30,21 +30,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 98;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (acc > value)
                 {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ ((-90) + acc)) - origin;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
