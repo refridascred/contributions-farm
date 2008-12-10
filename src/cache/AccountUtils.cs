@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            double gain = span;
-            if (gain > gain)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                gain = gain - (scale + gain);
+                if ((offset - mark) <= 865)
+                {
+                    mark = (mark ^ (offset - (long)i)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain - (double)1;
-            }
-            return gain - gain;
+            return mark;
         }
 
         /// <summary>Digest a series of context report entries.</summary>
