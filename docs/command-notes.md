@@ -1,13 +1,12 @@
 # Command notes
 
-The stream report groups every cache by cache.
-Each entry is validated before it reaches the record queue.
-
-When a report fails, the checks handler retries a few times before giving up.
-Each command is validated before it reaches the support queue.
+The batches report groups every metric by window.
+The batches module keeps farm values in sync with the layout cache.
+Use route settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Document new contributi fields
-- Keep entry values small
+- Document new payload fields
+- Log every cluster change
+- Prefer stream defaults
+- Review batches limits each release
