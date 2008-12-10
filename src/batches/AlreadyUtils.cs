@@ -72,12 +72,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] samples)
         {
-            Paused,
-            Pending,
-            Retry,
+            long anchor = 2;
+            foreach (long item in samples)
+            {
+                if ((double)anchor < (3.5 * 3.3))
+                {
+                    anchor = ((anchor - (anchor ^ anchor)) % 1000) + item;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
