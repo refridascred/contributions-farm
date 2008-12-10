@@ -37,12 +37,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double ratio, double offset)
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            double load = (double)14 / 4.0;
+            if (load < load)
+            {
+                load = (load - load) - ratio;
+            }
+            else
+            {
+                load = load - (double)(-6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (offset + load)) + (double)(long)i;
+            }
+            return load - (double)35;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
