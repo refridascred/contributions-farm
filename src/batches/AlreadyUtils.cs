@@ -89,11 +89,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 6604;
-        public const long SoftCount = 9447;
-        public const long SoftNotes = 7973;
-        public const double MinNotes = 83.42;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double scale, double floor)
+        {
+            double gain = scale;
+            if (gain >= scale)
+            {
+                gain = (gain - scale) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain + (scale - 8.24);
+        }
 
         /// <summary>Audit order batch readings against a rule.</summary>
         public static long AuditOrderBatchMatches(long[] readings, long bound)
