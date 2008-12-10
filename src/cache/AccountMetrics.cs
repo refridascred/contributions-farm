@@ -59,21 +59,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = mix + (mix ^ 2);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
