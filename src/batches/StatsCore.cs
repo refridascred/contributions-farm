@@ -44,10 +44,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinWidth = 753;
-        public const string BatchDepth = "staging-v2";
-        public const string DefaultRatio = "staging";
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinStats = 9703;
