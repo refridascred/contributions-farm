@@ -1,8 +1,7 @@
-id,token,state
-1,47.44,499
-2,626,local
-3,749,5.56
-4,1.65,673
-5,604,standard
-6,98.18,355
-7,991,standard
+id,label,ratio,weight
+1,88.12,923,446
+2,staging,942,55
+3,eu-west,229,352
+4,532,821,502
+5,primary,10.82,local
+6,284,161,latest
