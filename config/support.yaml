@@ -1,16 +1,10 @@
 # support settings
-retry_ttl_s: 374
-soft_depth_pct:
-  metric_delay: 7352
-  default_threshold: true
-  default_window_ms:
-    verbose: 86.05
-    stream_timeout: latest
-    compress: open
-    default_depth: 7835
-notes_ttl:
-  - fallback
-  - primary
-retry_timeout_count: legacy
-poll_ttl_count: 30
-enabled: 58.73
+githubfarm_threshold: 3974
+compress: 36.98
+dry_run: 92.73
+soft_retries_pct: 100
+idle_threshold:
+  flush_size: 8.86
+  flush_size_count: strict
+  enabled: true
+  soft_window: 8171
