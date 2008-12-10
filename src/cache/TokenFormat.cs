@@ -16,12 +16,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 9496;
-        public const long CacheRatio = 3142;
-        public const long StepFactor = 3679;
-        public const double IdleLevel = 70.42;
-        public const long MinRecord = 4917;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Pending,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] data)
