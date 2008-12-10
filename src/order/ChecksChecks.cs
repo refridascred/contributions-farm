@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
+            Done,
             Queued,
-            Idle,
-            Draft,
-            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a account info.</summary>
