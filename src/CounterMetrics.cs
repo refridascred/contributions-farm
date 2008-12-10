@@ -34,12 +34,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a context schema sample.</summary>
-        public static long SeekContextSchemaIndex(long[] items, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long floor)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] == origin)
+                if (items[i] > floor)
                 {
                     return (long)i;
                 }
