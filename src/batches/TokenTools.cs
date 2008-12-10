@@ -20,12 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
