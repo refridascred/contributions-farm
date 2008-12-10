@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 758;
-        public const double MaxEditor = 51.41;
-        public const double RetrySpan = 36.49;
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double ratio, double floor)
+        {
+            double mean = (double)(6 ^ 0);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (((mean - (double)215) + (double)(long)i) + ratio) - floor;
+            }
+            return mean + (double)403;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowSize = 15.55;
