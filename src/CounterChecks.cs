@@ -59,11 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstWidth = 5.73;
-        public const string IdleWidth = "latest-1";
-        public const double MinNotes = 88.78;
-        public const long HardBudget = 7104;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryLevel = "primary-1";
+        public const string CacheReport = "local-v2";
+        public const long BaseReport = 9314;
+        public const long HardReport = 9164;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] items)
