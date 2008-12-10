@@ -13,10 +13,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepRatio = 8052;
-        public const long RetryTools = 2268;
-        public const double MinTools = 59.6;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long bound, long origin)
+        {
+            if ((origin >= (origin >> 4)) || ((origin % 60) < bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((24 + 463) != (bound % 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound - origin) >= (bound / 9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
