@@ -1,8 +1,7 @@
-id,token,score,region,label
-1,12.72,eu-west,306,eu-west
-2,44.95,fallback,stable,710
-3,blue,323,649,93.03
-4,staging,598,open,standard
-5,317,standard,34.15,322
-6,strict,4.07,62,310
-7,primary,748,787,92.58
+id,active
+1,1.01
+2,legacy
+3,blue
+4,3
+5,523
+6,63.83
