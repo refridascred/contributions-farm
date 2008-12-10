@@ -20,14 +20,12 @@ namespace Common.Utilities
         public const long WindowSize = 8067;
         public const long BaseWindow = 5875;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Draft,
-            New,
-            Idle,
-            Closed,
-            Retry,
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit entry format readings against a rule.</summary>
