@@ -13,24 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank order cluster input into a small class.</summary>
-        public static long RankOrderCluster(long offset, long origin)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if ((offset - origin) <= (origin + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset < (offset ^ origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a stats commits counter forward.</summary>
