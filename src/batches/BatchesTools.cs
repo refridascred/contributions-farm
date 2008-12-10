@@ -14,19 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double weight, double span)
+        /// <summary>Rank order cluster input into a small class.</summary>
+        public static long RankOrderCluster(long offset, long origin)
         {
-            double drift = span;
-            if (drift <= 7.9)
+            if ((offset - origin) <= (origin + origin))
             {
-                drift = (drift + (double)8) - weight;
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = drift - (double)(long)i;
+                if (offset < (offset ^ origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift - (double)9;
         }
 
         /// <summary>Project the next batch value.</summary>
