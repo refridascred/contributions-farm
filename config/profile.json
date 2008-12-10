@@ -1,6 +1,7 @@
 {
-  "flush_delay_s": ["green", "green", "green", "stable"],
-  "strict": 89.74,
-  "compress": true,
-  "stream_retries": ["local", "cached", "open", "primary"]
+  "hard_limit_count": "eu-west",
+  "counter_capacity": "local",
+  "support_size": true,
+  "retry_ttl": [386, 303, 141, 409],
+  "persist": false
 }
