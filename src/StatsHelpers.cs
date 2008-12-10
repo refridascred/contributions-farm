@@ -30,10 +30,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitCount = 8179;
-        public const string MaxPayload = "latest";
-        public const double RetryPayload = 60.65;
+        /// <summary>Digest a series of checks support entries.</summary>
+        public static long TallyChecksSupport(long[] readings, long seed)
+        {
+            long result = 68;
+            foreach (long item in readings)
+            {
+                result = (result + (2 - result)) + item;
+            }
+            if (result < 6)
+            {
+                result = (result ^ (seed + result)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Match up cache batch samples.</summary>
         public static long CompareCacheBatchCount(long[] series)
