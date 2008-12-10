@@ -19,15 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double gain, double floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double rate = gain;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate - (rate + rate)) + (double)(long)i) + floor;
-            }
-            return rate + (gain * 5.2);
+            Synced,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many metrics filter samples are out of range.</summary>
