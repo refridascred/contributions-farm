@@ -1,5 +1,4 @@
 # support settings
-burst_limit: 250
-sync_timeout_pct: true
-dry_run: 87
-base_timeout: 1024
+warm_capacity_count: 55
+min_delay_ms: 100
+audit: 11.27
