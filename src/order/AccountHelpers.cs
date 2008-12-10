@@ -86,17 +86,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a notes buffer reading by value.</summary>
-        public static long FindNotesBufferIndex(long[] items, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = seed + floor;
+            if ((29 << 3) > (step & 31))
             {
-                if (items[i] >= origin)
+                return 3;
+            }
+            else
+            {
+                if (seed < (seed % 100))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step > (6.1 * 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
