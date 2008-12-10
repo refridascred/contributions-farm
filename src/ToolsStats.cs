@@ -70,32 +70,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long floor)
-        {
-            long lane = origin ^ floor;
-            if (((lane - origin) > (3 * 3)) || ((floor / 2) >= origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((7 % 100) < (lane - floor)) && ((5.0 + 8.0) < (double)lane))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) > origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSize = 7602;
+        public const string WindowCounter = "staging-edge";
+        public const double LimitInterval = 84.38;
+        public const string CacheCounter = "legacy-1";
+        public const long MinDepth = 6401;
     }
 }
