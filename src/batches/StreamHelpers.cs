@@ -61,11 +61,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double rate, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            double drift = (double)(14 << 2);
-            return ((drift + (double)21) + rate) + bias;
+            long mix = 2;
+            foreach (long datum in samples)
+            {
+                mix = mix ^ (datum + datum);
+            }
+            if (mix < 83)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
     }
 }
