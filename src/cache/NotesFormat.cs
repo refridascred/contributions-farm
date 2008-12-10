@@ -24,14 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            New,
-            Paused,
-            Pending,
+            Queued,
+            Draft,
             Stale,
-            Dropped,
         }
     }
 }
