@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long RetryMetrics = 5316;
         public const string BatchMetrics = "stable-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 274;
-        public const long RetryCluster = 7415;
-        public const long HardScore = 6227;
-        public const double BatchCluster = 34.3;
-        public const long CacheCluster = 2958;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 8708;
+        public const long MaxMetric = 944;
+        public const long HardCount = 4719;
+        public const long HardWidth = 6415;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
