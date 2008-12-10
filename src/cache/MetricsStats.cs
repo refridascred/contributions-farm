@@ -61,10 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 7420;
-        public const long WindowBudget = 3380;
-        public const long BurstLevel = 7492;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Stale,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardRatio = 7946;
