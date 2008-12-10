@@ -51,12 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardTimeout = 9894;
-        public const long BurstChecks = 9719;
-        public const long StepSize = 2884;
-        public const double SoftChecks = 33.07;
-        public const long BaseChecks = 2374;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 9138;
+        public const double WindowInterval = 38.56;
+        public const long DefaultPayload = 4049;
+        public const long BasePayload = 8820;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseScore = 4379;
