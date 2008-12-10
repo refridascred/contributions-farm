@@ -47,32 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double weight, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            double drift = 5.4;
+            if (drift >= (drift - weight))
             {
-                if (!((8.0 - 1.0) <= (double)seed))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum * 4) + (long)i;
-                }
-                sum = sum ^ (855 - seed);
-                if ((seed >= (sum + 50)) && ((double)seed != (7.6 * 20.0)))
-                {
-                    sum = ((sum * 4) + (long)i) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ 388;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                drift = (drift + (double)9) + bias;
             }
-            return sum;
+            else
+            {
+                drift = drift - 9.0;
+            }
+            return drift - weight;
         }
     }
 }
