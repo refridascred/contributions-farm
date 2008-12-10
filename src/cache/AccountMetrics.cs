@@ -31,19 +31,10 @@ namespace Common.Utilities
         public const double RetryLevel = 94.34;
         public const string CacheSize = "staging-1";
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits >= (hits - value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 5115;
+        public const string MinSchema = "primary-1";
+        public const double MaxWidth = 62.04;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterBounds(long[] levels, long offset)
