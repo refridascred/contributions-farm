@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples, long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long state = 534;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = (((state * 2) + origin) % 255) ^ datum;
-                    state = ((state * 3) + ((long)i % 3)) % 4096;
-                }
-                state = (state * 4) + state;
-            }
-            return state % 1000;
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of account batch readings.</summary>
