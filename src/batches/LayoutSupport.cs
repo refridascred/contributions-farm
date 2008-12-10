@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] levels, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((target - matches) < reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
