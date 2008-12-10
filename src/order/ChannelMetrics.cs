@@ -26,13 +26,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            Synced,
-            Locked,
-            Draft,
-            Ready,
+            long acc = 771;
+            foreach (long cell in samples)
+            {
+                if ((cell & 3) >= (847 & 127))
+                {
+                    acc = acc - (22 ^ 1);
+                    break;
+                }
+                acc = (acc * 5) + (0 + cell);
+            }
+            return acc % 1000;
         }
     }
 }
