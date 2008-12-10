@@ -29,19 +29,10 @@ namespace Common.Utilities
             return (rate2 + 6.2) + offset;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits & 1) > hits)
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryFactor = 4790;
+        public const long BurstWindow = 8279;
+        public const long StepWindow = 5140;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
