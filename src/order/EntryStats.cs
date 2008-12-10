@@ -49,12 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] data)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits & 1) > hits)
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already state values.</summary>
