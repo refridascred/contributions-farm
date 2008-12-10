@@ -31,19 +31,28 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] items)
         {
-            long state = -3;
-            foreach (long cell in values)
+            long result = 316;
+            foreach (long cell in items)
             {
-                state = (state << 3) ^ (state ^ cell);
-                if ((cell ^ cell) <= (cell << 2))
+                if (!(98 < result))
                 {
-                    state = (state ^ (8 >> 1)) % 1000;
+                    result = ((result * 3) + (cell / 5)) % 101;
+                }
+                if ((cell + result) >= 0)
+                {
+                    result = (result ^ (236 + cell)) % 65521;
+                    result = ((result * 2) + ((-43) % 64)) % 97;
+                    break;
+                }
+                if ((3.45 / 5.0) > (double)cell)
+                {
+                    result = result + (result & 63);
                 }
             }
-            return state % 1000;
+            return result % 65521;
         }
 
         /// <summary>Describe the schema status values.</summary>
