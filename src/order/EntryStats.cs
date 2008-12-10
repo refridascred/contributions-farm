@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mark = 51;
-            foreach (long entry in series)
-            {
-                mark = (mark ^ (entry % 10)) % 4096;
-            }
-            return mark;
+            public double Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
