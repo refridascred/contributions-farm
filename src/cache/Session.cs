@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
