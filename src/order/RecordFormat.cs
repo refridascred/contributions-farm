@@ -31,10 +31,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 6320;
-        public const double BaseCount = 24.82;
-        public const double StepInterval = 96.27;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
