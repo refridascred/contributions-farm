@@ -20,13 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long offset, long floor)
         {
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            if (5 <= (offset - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((80 ^ offset) <= 9)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) != (floor & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((floor >> 5) != (offset * 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
