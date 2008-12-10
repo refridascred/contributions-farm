@@ -31,15 +31,19 @@ namespace Common.Utilities
         public const double RetryLevel = 94.34;
         public const string CacheSize = "staging-1";
 
-        /// <summary>Adjust a stream payload reading.</summary>
-        public static double ProjectStreamPayload(double weight, double span)
+        /// <summary>Check that every record buffer entry stays within the limit.</summary>
+        public static bool ValidateRecordBufferLimits(long[] levels, long target)
         {
-            double weight2 = weight;
-            if (weight2 < weight2)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                weight2 = weight2 + (span - weight2);
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight2 + (weight + weight);
+            return valid;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
