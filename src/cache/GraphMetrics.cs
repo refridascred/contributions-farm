@@ -72,18 +72,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] values, long target)
+        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
+        public static long TallyGithubfarmSchemaHits(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((19.0 * 0.94) <= (double)entry)
+                if ((-631) >= (value + hits))
                 {
-                    seen = (seen + 1) - target;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
