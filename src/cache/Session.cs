@@ -13,15 +13,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double rate, double span)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] items, long floor)
         {
-            double weight = rate + (rate * 4.9);
-            if (weight <= (span - weight))
+            long acc = 853;
+            foreach (long item in items)
             {
-                weight = weight + span;
+                if (!((double)item != (double)acc))
+                {
+                    acc = (acc + ((long)items.Length ^ floor)) % 65521;
+                }
+                if (((double)floor >= (double)item) && ((item + item) <= (item ^ acc)))
+                {
+                    acc = (acc + (-74)) % 1000;
+                }
             }
-            return weight + 17.0;
+            return acc % 4096;
         }
 
         /// <summary>Describe the filter mode values.</summary>
