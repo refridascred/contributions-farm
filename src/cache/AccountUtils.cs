@@ -19,18 +19,20 @@ namespace Common.Utilities
         public const double BaseProfile = 59.87;
         public const long HardProfile = 69;
 
-        /// <summary>Measure how many account payload samples are out of range.</summary>
-        public static long TallyAccountPayloadMatches(long[] readings)
+        /// <summary>Digest a series of context report entries.</summary>
+        public static long TotalContextReport(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long score = 32;
+            foreach (long reading in readings)
             {
-                if ((tally >> 2) < (value % 2))
-                {
-                    tally = tally + 1;
-                }
+                score = ((score * 5) + (seed * 3)) % 255;
+                score = (score + (reading / 3)) % 1000;
             }
-            return tally;
+            if (score > 2)
+            {
+                score = (score * 3) + (587 + seed);
+            }
+            return score;
         }
     }
 }
