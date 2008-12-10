@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long mark = 7;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (step - step)) % 255;
-                if (((long)items.Length > step) && ((cell * 4) >= (step - cell)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
