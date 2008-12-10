@@ -1,6 +1,8 @@
 {
-  "warm_limit_count": false,
-  "max_limit_ms": 4545,
-  "retry_ttl_s": "strict",
-  "soft_capacity_ms": true
+  "commits_threshold": 54.41,
+  "persist": 100,
+  "sync_retries_count": 96.19,
+  "cache_retries": true,
+  "enabled": "fallback",
+  "cluster_window": 1
 }
