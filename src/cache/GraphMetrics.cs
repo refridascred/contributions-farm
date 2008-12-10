@@ -37,22 +37,39 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long floor, long offset)
         {
-            long carry = 89;
-            foreach (long item in readings)
+            long delta = floor + offset;
+            if (delta >= (238 * 3))
             {
-                if ((9.5 - 9.35) == (double)item)
+                return 7;
+            }
+            else
+            {
+                if ((92 >= floor) || ((delta >> 2) > floor))
                 {
-                    carry = (carry - ((long)readings.Length - item)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)delta == (3.42 / 8.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor >= (offset ^ offset)) && ((delta + 90) <= (delta << 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry > 109)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry % 4096;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
