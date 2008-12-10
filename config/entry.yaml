@@ -1,7 +1,14 @@
 # entry settings
-burst_window_count: 691
-flush_delay_count: 47.81
-sync_delay_ms: stable
-context_window: 64.76
-compress: strict
-queue_threshold: edge
+strict: 75
+persist: 4849
+entry_threshold:
+  sync_interval: 30
+  readonly: 43.81
+  strict:
+    flush_capacity_s: strict
+    dry_run: latest
+    poll_capacity_pct: open
+    retry_window: blue
+    githubfarm_threshold: true
+  base_interval: primary
+metrics_timeout: green
