@@ -1,16 +1,12 @@
 {
-  "buffer_window": true,
-  "cache_retries_count": "strict",
-  "enabled": "standard",
-  "poll_size_s": ["staging", "standard", "stable", "stable"],
-  "already_limit": {
-    "cache_delay_s": {
-      "max_retries_ms": [262, 436, 405],
-      "cache_interval_pct": 9982,
-      "verbose": "blue"
-    },
-    "enabled": 69.51,
-    "retry_limit": 95,
-    "idle_timeout_ms": ["green", "latest", "staging", "standard"]
-  }
+  "batch_timeout_count": "staging",
+  "persist": {
+    "default_size": 1875,
+    "base_ratio": [61, 70, 78, 379],
+    "session_window": "green",
+    "payload_depth": 30,
+    "flush_delay_pct": 50.01
+  },
+  "flush_depth": 46,
+  "min_retries_s": 80
 }
