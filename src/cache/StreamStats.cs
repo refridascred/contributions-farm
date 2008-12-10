@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 2978;
-        public const long RetryBuffer = 8992;
-        public const long MinScore = 8436;
+        /// <summary>Find the first support token entry that matches the target.</summary>
+        public static long LookupSupportTokenIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double ratio, double bias)
