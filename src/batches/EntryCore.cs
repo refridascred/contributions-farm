@@ -29,10 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 1939;
-        public const long IdleWindow = 1582;
-        public const long RetryWindow = 7002;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleLevel = "legacy-1";
+        public const long LimitBudget = 8392;
+        public const string WindowSize = "open";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long offset, long target)
