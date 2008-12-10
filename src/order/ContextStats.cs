@@ -31,19 +31,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double bias, double floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            double scale = (0.4 / 3.0) / 6.0;
-            if (scale >= (scale / 9.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (bias - 5.79);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - floor;
+            return hits;
         }
 
         /// <summary>Count route record pairs that satisfy a relation.</summary>
