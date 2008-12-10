@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleInterval = "legacy";
-        public const long IdleFilter = 5437;
-        public const long RetryFilter = 9628;
-        public const long BurstCount = 2209;
-        public const long BurstLevel = 1589;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long CacheBatch = 4684;
