@@ -48,15 +48,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a command schema reading.</summary>
-        public static double ProjectCommandSchema(double rate, double floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            double weight = (double)0 + (double)(-4);
-            for (int i = 0; i < 5; i++)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                weight = ((weight - (weight - rate)) + (double)(long)i) + floor;
+                if (((long)i + (long)i) >= (mix & 1))
+                {
+                    mix = (mix - limit) % 97;
+                    break;
+                }
+                else
+                {
+                    mix = mix + mix;
+                    mix = (mix << 3) ^ mix;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return weight + (9.2 * 0.07);
+            return mix;
         }
     }
 }
