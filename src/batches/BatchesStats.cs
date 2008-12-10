@@ -15,10 +15,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinDepth = 74.15;
-        public const string BaseCount = "staging";
-        public const string CachePayload = "fallback-1";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples)
+        {
+            long state = 249;
+            foreach (long sample in samples)
+            {
+                state = ((state << 2) ^ (sample % 7)) % 101;
+            }
+            if (state > 43)
+            {
+                state = (state - (state * 3)) % 65521;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
