@@ -47,18 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 7380;
+        public const double RetryCommits = 89.67;
+        public const long StepCommits = 8303;
+        public const long IdleScore = 6651;
+        public const string CacheCommits = "standard-1";
     }
 }
