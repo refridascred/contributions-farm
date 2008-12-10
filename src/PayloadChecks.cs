@@ -19,19 +19,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] data, long origin)
         {
-            double bias = 19.0 + scale;
-            if (bias <= 17.0)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                bias = (bias + (bias * 7.59)) - offset;
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - scale;
+            return ok;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
