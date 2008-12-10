@@ -47,19 +47,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Blend two payload route measurements.</summary>
-        public static double ProjectPayloadRoute(double weight, double span)
-        {
-            double mean = (double)(562 ^ (-26));
-            if (mean > (double)1)
-            {
-                mean = mean - (double)20;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (weight - span)) - (double)(long)i;
-            }
-            return mean - weight;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheRatio = 8219;
+        public const string WindowMetrics = "staging-v2";
+        public const long MaxMetrics = 5440;
+        public const long SoftMetrics = 8417;
+        public const long IdleMetrics = 1424;
     }
 }
