@@ -36,39 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long limit, long limit2)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double ratio, double floor)
         {
-            long offset = limit ^ limit2;
-            if ((limit << 3) == (limit % 10))
+            double mean = 7.9;
+            if (mean > (double)66)
             {
-                return 1;
+                mean = mean + ratio;
             }
             else
             {
-                if (!((limit2 % 16) == (763 >> 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((790 & 63) > limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.2 / 5.0) <= (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = mean - (floor - mean);
             }
+            return mean + ratio;
         }
 
         /// <summary>Audit order report readings against a rule.</summary>
