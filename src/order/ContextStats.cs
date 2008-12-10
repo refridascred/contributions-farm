@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Failed,
-            New,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepDepth = "fallback-1";
+        public const long SoftSize = 2161;
+        public const long BaseSpan = 4653;
+        public const string MaxQueue = "stable-edge";
+        public const double DefaultTimeout = 5.77;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long FoldBuffer(long[] items, long limit)
