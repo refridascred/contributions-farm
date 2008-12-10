@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "standard-v2";
-        public const long HardDepth = 2482;
-        public const double BurstSpan = 26.63;
-        public const long RetryFactor = 4430;
-        public const string MinAlready = "local-v2";
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Find the first batch context entry that matches the target.</summary>
         public static long FindBatchContextIndex(long[] data, long origin)
