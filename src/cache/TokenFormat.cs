@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] values, long target)
+        /// <summary>Accumulate farm session samples.</summary>
+        public static long TallyFarmSession(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long score = 79;
+            foreach (long cell in levels)
             {
-                if (datum < target)
+                if (cell <= score)
                 {
-                    ready = false;
-                    break;
+                    score = score + 210;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Count the editor route entries that pass the check.</summary>
