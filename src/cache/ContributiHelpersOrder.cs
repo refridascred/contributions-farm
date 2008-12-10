@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long score = 13;
-            foreach (long item in values)
-            {
-                if ((item + item) >= 87)
-                {
-                    score = (score << 2) ^ (item & 15);
-                }
-            }
-            return score;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up metrics session samples.</summary>
