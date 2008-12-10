@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] series, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > seed)
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
