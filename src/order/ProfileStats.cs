@@ -45,22 +45,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] series, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((double)entry > (9.0 - 0.3)) && (((long)series.Length % 10) > (69 & 255)))
+                if ((hits >> 2) >= (entry + entry))
                 {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
