@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer schema values into a single score.</summary>
-        public static long TallyBufferSchema(long[] levels)
+        /// <summary>Count the editor route entries that pass the check.</summary>
+        public static long CountEditorRouteMatches(long[] readings)
         {
-            long acc = 1;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                acc = (acc ^ (sample / 2)) % 65521;
-                if (((sample * 5) <= (sample & 7)) || ((60 - acc) < (962 + sample)))
+                if ((double)cell != (1.0 / 3.0))
                 {
-                    acc = (acc << 2) ^ (acc - acc);
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
