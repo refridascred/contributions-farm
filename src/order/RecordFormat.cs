@@ -60,18 +60,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] readings)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample / 8) > (seen + sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Done,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
