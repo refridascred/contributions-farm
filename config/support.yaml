@@ -1,6 +1,8 @@
 # support settings
-min_retries: open
-contributi_ttl: false
-soft_delay_pct: standard
-default_size: 82
-enabled: true
+idle_limit_ms: 12
+format_timeout:
+  - 224
+  - 146
+  - 117
+  - 147
+batch_ttl: 65
