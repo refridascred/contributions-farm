@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] items, long limit)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
