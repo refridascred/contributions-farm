@@ -28,19 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] series, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Done,
+            Stale,
+            Paused,
         }
     }
 }
