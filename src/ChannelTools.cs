@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 52.9;
-        public const long CacheSize = 6150;
-        public const long MaxBudget = 1316;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings, long offset)
+        {
+            long carry = -635;
+            foreach (long value in readings)
+            {
+                carry = (((carry * 4) + ((-6) / 4)) ^ value) - offset;
+            }
+            if (carry < 17)
+            {
+                carry = ((carry * 2) + (carry & 15)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] data, long seed)
