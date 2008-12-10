@@ -48,19 +48,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] samples, long step)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
