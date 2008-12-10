@@ -45,13 +45,19 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double span)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            double drift = scale;
+            if (drift > (5.0 + 7.66))
+            {
+                drift = (drift + 9.09) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
