@@ -43,12 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Label { get; set; } = "";
             public long Total { get; set; }
-            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Grade a graph order value against two limits.</summary>
