@@ -45,12 +45,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate profile account readings against a bound.</summary>
+        public static bool ValidateProfileAccountLimits(long[] values, long limit)
         {
-            Dropped,
-            Stale,
-            Idle,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count format editor pairs that satisfy a relation.</summary>
