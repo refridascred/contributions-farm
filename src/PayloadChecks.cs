@@ -77,18 +77,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)origin < 7.0) || ((9 - (long)readings.Length) == (count + datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchBudget = 8455;
+        public const long CacheOrder = 8371;
+        public const string BatchOrder = "local-1";
+        public const long LimitOrder = 1518;
     }
 }
