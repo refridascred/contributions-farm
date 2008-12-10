@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank entry notes input into a small class.</summary>
-        public static long ClassifyEntryNotes(long limit, long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long cur = limit + origin;
-            if ((origin - origin) < cur)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin > (cur ^ limit)) || (origin > (origin - cur)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit & 7) > (limit << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Digest a series of schema commits entries.</summary>
