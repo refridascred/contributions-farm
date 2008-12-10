@@ -27,14 +27,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 2532;
+        public const double WindowSpan = 69.59;
+        public const long BatchLevel = 6306;
 
         /// <summary>Locate a editor cluster reading by value.</summary>
         public static long LocateEditorClusterIndex(long[] series, long seed)
