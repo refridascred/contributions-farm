@@ -37,18 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] levels, long limit)
         {
-            long sum = 4;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (sum < (sum * 4))
+                if (item != limit)
                 {
-                    sum = (sum * 4) + (sample & 1);
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
     }
 }
