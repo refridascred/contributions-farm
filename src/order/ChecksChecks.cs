@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const double MaxOrder = 85.25;
         public const double BatchWidth = 13.73;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Stale,
-            Dropped,
-            Queued,
+            Pending,
+            Synced,
+            Paused,
             Ready,
-            New,
         }
 
         /// <summary>Describe the payload status values.</summary>
