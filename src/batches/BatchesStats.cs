@@ -38,11 +38,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Roll a token route counter forward.</summary>
+        public static long IterateTokenRoute(long floor)
         {
-            double drift = (double)2 * 4.45;
-            return ((drift + drift) + scale) + floor;
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark ^ floor) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
