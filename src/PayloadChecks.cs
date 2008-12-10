@@ -73,18 +73,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen - value) <= (56 & 3))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 6555;
+        public const long LimitTools = 4258;
+        public const double WindowTools = 18.97;
+        public const long StepTools = 363;
     }
 }
