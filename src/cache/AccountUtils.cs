@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            New,
-            Active,
-            Idle,
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
