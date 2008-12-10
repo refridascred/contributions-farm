@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next stream cache value.</summary>
-        public static double ProjectStreamCache(double ratio, double offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] series, long bound)
         {
-            double ratio2 = offset + ratio;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = (ratio2 + offset) + (double)(long)i;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 - (offset - ratio);
+            return -1;
         }
 
         /// <summary>Describe the filter class values.</summary>
