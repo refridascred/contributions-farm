@@ -1,14 +1,9 @@
 # support settings
-base_limit_pct: primary
-sync_capacity_s: standard
-base_retries_count:
-  - staging
-  - edge
-  - fallback
-  - primary
-hard_window: 27.27
-idle_window:
-  hard_capacity: 84.81
-  burst_threshold: 8620
-  burst_size: 8485
-base_limit: green
+burst_interval_count:
+  - latest
+  - latest
+  - stable
+  - local
+verbose: false
+counter_window: false
+enabled: false
