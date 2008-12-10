@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            New,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a profile stats.</summary>
