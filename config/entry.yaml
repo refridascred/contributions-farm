@@ -1,44 +1,9 @@
 # entry settings
-command_interval:
-  cache_size_ms:
-    - staging
-    - open
-    - blue
-  verbose:
-    - 320
-    - 64
-    - 253
-  soft_limit_s: open
-  cluster_threshold:
-    - 467
-    - 299
-    - 79
-    - 114
-  max_limit_pct:
-    warm_timeout_ms: fallback
-    cache_size: blue
-    payload_limit: true
-    audit: false
-  base_window_s:
-    hard_retries_ms: 5394
-    enabled: 43.47
-    sync_ratio_pct: stable
-verbose:
-  commits_threshold: 69.32
-  poll_interval_pct:
-    compress: 77
-    report_depth: false
-    max_size_s: stable
-    burst_timeout_ms: true
-  verbose:
-    soft_timeout_pct: 22.51
-    warm_threshold: true
-    cache_retries: strict
-    burst_ratio_ms: green
-    strict: blue
-  persist: green
-stats_size:
-  - stable
-  - standard
-  - standard
-idle_size_pct: legacy
+warm_window_count:
+  - primary
+  - local
+  - fallback
+  - staging
+audit: 71.18
+retry_depth_ms: true
+base_size_count: open
