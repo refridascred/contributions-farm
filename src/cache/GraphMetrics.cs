@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const long MaxCount = 8459;
         public const string CacheDepth = "standard-1";
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] values)
         {
-            long result = 28;
-            foreach (long datum in readings)
+            long mark = 0;
+            foreach (long datum in values)
             {
-                result = (((result << 3) ^ (long)readings.Length) % 101) ^ datum;
+                if ((mark << 2) < (6 - datum))
+                {
+                    mark = mark + 43;
+                }
             }
-            if (result > 681)
-            {
-                result = result + result;
-            }
-            return result % 1000;
+            return mark % 4096;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
