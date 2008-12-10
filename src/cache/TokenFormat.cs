@@ -16,13 +16,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Pending,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseDepth = 41.25;
+        public const string LimitRatio = "staging";
+        public const long SoftTimeout = 350;
+        public const long CacheStats = 6492;
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] data)
