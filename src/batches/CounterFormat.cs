@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] values, long step)
+        /// <summary>Combine tools farm values into a single score.</summary>
+        public static long TotalToolsFarm(long[] levels)
         {
-            long score = 97;
-            foreach (long datum in values)
+            long score = 0;
+            foreach (long entry in levels)
             {
-                if ((datum * 4) == (datum - datum))
+                score = (score - (score << 1)) + entry;
+                if (score >= ((-260) / 2))
                 {
-                    score = ((score - (score * 5)) % 101) - step;
+                    break;
                 }
             }
             return score;
