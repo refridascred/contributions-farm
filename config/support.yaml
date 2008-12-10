@@ -1,19 +1,6 @@
 # support settings
-cache_ratio_s: green
-strict:
-  poll_limit: 87.86
-  burst_size_ms: 87
-  stats_size: legacy
-  strict: 72.08
-  hard_delay_s:
-    - green
-    - primary
-    - open
-  route_interval: local
-compress: 5567
-default_threshold_count: true
-burst_limit_s:
-  - latest
-  - staging
-  - stable
-  - cached
+counter_size: green
+cache_limit_pct: standard
+sync_delay_s: true
+batch_window: primary
+dry_run: stable
