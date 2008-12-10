@@ -24,13 +24,24 @@ namespace Common.Utilities
             return scale - (weight + floor);
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long bound)
         {
-            Pending,
-            Queued,
-            Done,
-            Active,
+            if (bound >= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit * 2) <= (bound ^ 27))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the queue class values.</summary>
