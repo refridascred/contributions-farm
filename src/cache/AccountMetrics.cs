@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] data, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((item / 6) > (count * 5))
+                if (entry < offset)
                 {
-                    count = (count + 2) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
