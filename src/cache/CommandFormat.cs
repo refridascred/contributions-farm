@@ -33,16 +33,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Roll a route window counter forward.</summary>
-        public static long StepRouteWindow(long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                score = (score * 5) + score;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Locked,
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Grade a window payload value against two limits.</summary>
