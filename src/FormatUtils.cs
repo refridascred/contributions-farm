@@ -17,11 +17,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the support metrics entries that pass the check.</summary>
