@@ -1,7 +1,7 @@
 {
-  "batch_retries": true,
-  "cache_limit_count": 59.33,
-  "soft_capacity_ms": ["edge", "cached", "strict", "open"],
-  "persist": ["edge", "fallback"],
-  "sync_ratio_s": 23.55
+  "retry_size": "strict",
+  "support_window": "eu-west",
+  "sync_limit_ms": [342, 70],
+  "report_threshold": 8990,
+  "max_threshold_ms": "legacy"
 }
