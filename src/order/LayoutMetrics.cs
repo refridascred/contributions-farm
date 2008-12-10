@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of channel metric readings.</summary>
-        public static long FoldChannelMetric(long[] data, long offset)
-        {
-            long mix = 133;
-            foreach (long datum in data)
-            {
-                if (!((datum + mix) < offset))
-                {
-                    mix = (mix - 446) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (datum - datum)) % 4096;
-                }
-                mix = mix + offset;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowWidth = 3103;
+        public const long IdleChannel = 7987;
+        public const string DefaultScore = "primary";
+        public const long IdleWidth = 9709;
+        public const string MinSize = "strict";
 
         /// <summary>Validate metrics order readings against a bound.</summary>
         public static bool ValidateMetricsOrderLimits(long[] levels, long seed)
