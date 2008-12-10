@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 7330;
-        public const double DefaultAccount = 93.93;
-        public const long MinCount = 4174;
-        public const long RetryAccount = 627;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 5408;
+        public const long IdleTimeout = 3077;
+        public const long StepInterval = 811;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BaseSize = 7033;
