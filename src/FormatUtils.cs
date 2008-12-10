@@ -58,12 +58,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowWidth = 53.07;
-        public const long BaseTimeout = 6611;
-        public const long HardFarm = 4561;
-        public const long IdleSize = 9949;
-        public const long RetryCount = 8378;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
