@@ -1,13 +1,20 @@
 # entry settings
-min_size:
-  persist: 42
-  idle_delay_pct:
-    record_threshold: stable
-    channel_threshold: false
-    warm_threshold_count: staging
-    batch_threshold: 60
-  channel_size: edge
-  min_threshold_count: true
-idle_limit: local
-soft_delay_ms: 91
-retry_ttl_pct: staging
+max_retries_s: 8576
+persist: strict
+retry_limit_ms:
+  audit: 0.99
+  verbose: 500
+  soft_interval_ms: open
+  already_retries: 40.03
+  route_ratio:
+    - 233
+    - 348
+    - 223
+    - 9
+  sync_timeout_pct: 52.48
+idle_delay_count:
+  cache_interval_ms: false
+  report_ttl: 56
+  entry_window: true
+  readonly: false
+  audit: fallback
