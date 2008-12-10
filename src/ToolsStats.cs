@@ -24,21 +24,15 @@ namespace Common.Utilities
         public const long CacheEditor = 1197;
         public const long BurstEditor = 7342;
 
-        /// <summary>Match up already stats samples.</summary>
-        public static long MatchAlreadyStatsCount(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
