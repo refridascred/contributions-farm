@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] levels, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double bias, double offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double mean = (7.73 + bias) * 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + offset) - (double)(long)i;
             }
-            return found;
+            return mean - (double)94;
         }
 
         /// <summary>Project the next payload graph value.</summary>
