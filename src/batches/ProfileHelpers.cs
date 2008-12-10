@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = floor + floor;
+            if (gain > (double)(-96))
             {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (gain + floor);
             }
-            return -1;
+            else
+            {
+                gain = gain + (floor / 2.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (rate - gain)) + (double)(long)i;
+            }
+            return gain + rate;
         }
 
         /// <summary>Describe the token phase values.</summary>
