@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of format counter readings.</summary>
-        public static long TotalFormatCounter(long[] series, long bound)
-        {
-            long acc = 39;
-            foreach (long datum in series)
-            {
-                if ((datum << 2) == (datum - acc))
-                {
-                    acc = (((acc * 2) + (65 + datum)) % 255) - bound;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 6182;
+        public const double CacheCount = 3.77;
+        public const long HardMetrics = 4158;
+        public const long SoftMetrics = 6659;
+        public const double BurstMetrics = 21.79;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitCommits = 1960;
