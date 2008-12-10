@@ -26,23 +26,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long origin2)
         {
-            long total = 16;
-            foreach (long reading in levels)
+            if (((origin2 / 8) < (origin * 5)) && ((origin2 + origin) >= (origin + origin2)))
             {
-                total = ((total + (step << 2)) % 65521) + reading;
-                if ((total - 52) >= (step ^ step))
+                return 6;
+            }
+            else
+            {
+                if ((origin / 5) > origin2)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin * 4) < (origin2 + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin - origin) > (origin2 / 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total < (-256))
-            {
-                total = (total << 3) ^ (total % 60);
-            }
-            return total % 4096;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
