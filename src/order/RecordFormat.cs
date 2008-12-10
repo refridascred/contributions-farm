@@ -36,23 +36,16 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Iterate the githubfarm window series from a seed.</summary>
+        public static long IterateGithubfarmWindow(long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(sum >= (origin + (long)i)))
-                {
-                    sum = (sum * 3) + sum;
-                }
-                if ((3 + (long)i) != (origin - sum))
-                {
-                    sum = ((sum * 5) + origin) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                mark = (mark ^ (-6)) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Adjust a command schema reading.</summary>
