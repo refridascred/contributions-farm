@@ -23,25 +23,12 @@ namespace Common.Utilities
         public const string BurstDepth = "legacy-1";
         public const double IdleInterval = 87.66;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long target)
-        {
-            if ((90 << 1) < (target >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (7.43 <= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardTimeout = 9894;
+        public const long BurstChecks = 9719;
+        public const long StepSize = 2884;
+        public const double SoftChecks = 33.07;
+        public const long BaseChecks = 2374;
 
         /// <summary>Accumulate stats already samples.</summary>
         public static long CombineStatsAlready(long[] readings, long origin)
