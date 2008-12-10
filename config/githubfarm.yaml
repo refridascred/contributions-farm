@@ -1,11 +1,6 @@
 # githubfarm settings
-warm_depth_s:
-  session_threshold: 3769
-  notes_ratio:
-    payload_capacity: local
-    already_size: true
-    channel_depth: 500
-  poll_retries_pct: 99
-soft_window_s: false
-soft_threshold: fallback
-sync_ttl_count: 60
+hard_interval: edge
+sync_window: false
+base_timeout_pct: legacy
+hard_delay_s: 57
+default_limit_count: true
