@@ -37,15 +37,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double gain, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values, long bound)
         {
-            double scale = floor;
-            for (int i = 0; i < 9; i++)
+            long sum = 0;
+            foreach (long sample in values)
             {
-                scale = ((scale - (floor / 2.0)) + (double)(long)i) + gain;
+                sum = ((((sum << 2) ^ (sum + sum)) % 255) + sample) + bound;
             }
-            return scale + floor;
+            return sum % 4096;
         }
     }
 }
