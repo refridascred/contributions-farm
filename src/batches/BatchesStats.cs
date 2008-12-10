@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "cached-1";
-        public const string CacheSize = "legacy-1";
-        public const string BurstDepth = "legacy-edge";
-        public const string IdleBatch = "cached-1";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
