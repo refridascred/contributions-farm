@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Roll a farm record counter forward.</summary>
+        public static long SeriesFarmRecord(long limit)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Active,
-            Paused,
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state - state) % 255) - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the order phase values.</summary>
