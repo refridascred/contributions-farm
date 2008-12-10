@@ -1,11 +1,10 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-When a buffer fails, the entry handler retries a few times before giving up.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the notes queue.
+A payload that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new batches fields
-- Review farm limits each release
+- Prefer channel defaults
+- Validate profile input early
+- Log every token change
