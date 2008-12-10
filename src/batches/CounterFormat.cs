@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine tools farm values into a single score.</summary>
-        public static long TotalToolsFarm(long[] levels)
+        /// <summary>Measure how many counter farm samples are out of range.</summary>
+        public static long MeasureCounterFarmGaps(long[] readings, long target)
         {
-            long score = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                score = (score - (score << 1)) + entry;
-                if (score >= ((-260) / 2))
+                if ((45 / 3) != (cell ^ target))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a stats info.</summary>
