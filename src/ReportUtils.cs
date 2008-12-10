@@ -24,25 +24,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a layout cache pair into a bucket.</summary>
-        public static long RankLayoutCache(long bound, long limit)
-        {
-            if (!((bound - limit) <= (limit + 27)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound >= (8.0 - 1.25))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftRatio = "primary-edge";
+        public const long MinSpan = 210;
+        public const long MinBudget = 5912;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxCounter = 8676;
