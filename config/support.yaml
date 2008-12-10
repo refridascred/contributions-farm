@@ -1,4 +1,7 @@
 # support settings
-min_interval_count: local
-verbose: 5781
-hard_threshold_ms: legacy
+audit: 31
+cache_timeout_ms: true
+metric_size: 1024
+warm_timeout_count: 57.66
+tools_ttl: 98.33
+hard_delay_ms: 8194
