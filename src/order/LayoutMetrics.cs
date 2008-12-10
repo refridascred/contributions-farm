@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a order queue figure with a bias.</summary>
-        public static double SmoothOrderQueue(double gain, double offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            double gain2 = offset * 4.9;
-            if (gain2 <= gain)
+            long carry = 0;
+            foreach (long cell in levels)
             {
-                gain2 = gain2 - gain;
+                carry = (((carry * 2) + (carry * 2)) % 97) + cell;
             }
-            return gain2 + offset;
+            return carry;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
