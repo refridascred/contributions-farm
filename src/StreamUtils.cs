@@ -40,13 +40,12 @@ namespace Common.Utilities
         public const double MaxCount = 0.54;
         public const long IdleCommits = 3823;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
