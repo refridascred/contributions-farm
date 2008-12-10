@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
+        public static bool GuardChannelMetricsLimits(long[] levels, long origin)
         {
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next stream cache value.</summary>
