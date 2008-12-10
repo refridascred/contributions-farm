@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a farm record counter forward.</summary>
-        public static long SeriesFarmRecord(long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] levels, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((sample / 5) != (83 >> 2))
                 {
-                    state = ((state - state) % 255) - (long)i2;
+                    hits = (hits + 1) + target;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the order phase values.</summary>
