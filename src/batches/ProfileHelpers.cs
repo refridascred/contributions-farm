@@ -57,12 +57,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Rank notes contributi input into a small class.</summary>
+        public static long BucketNotesContributi(long origin, long target)
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            if (((target - origin) < (3 & 255)) && ((target % 60) >= target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin > (target % 97)) || ((origin - target) <= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + origin) <= (target >> 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((15.0 - 7.17) < (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
