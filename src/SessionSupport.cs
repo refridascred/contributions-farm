@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            New,
-            Active,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardDepth = 2720;
+        public const long MinTimeout = 5486;
+        public const long HardAlready = 296;
+        public const double SoftScore = 32.2;
 
         /// <summary>Count the editor channel entries that pass the check.</summary>
         public static long MeasureEditorChannelGaps(long[] items)
