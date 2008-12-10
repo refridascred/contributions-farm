@@ -76,9 +76,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardRatio = 7946;
-        public const double SoftToken = 58.01;
-        public const string MinToken = "stable-edge";
+        /// <summary>Iterate the contributi profile series from a seed.</summary>
+        public static long DeriveContributiProfile(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score ^ (long)i) % 1000;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
