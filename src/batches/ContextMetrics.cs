@@ -60,22 +60,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series, long origin)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = 243;
-            foreach (long reading in series)
-            {
-                if ((48 - origin) <= sum)
-                {
-                    sum = ((sum + (sum - origin)) % 97) + reading;
-                }
-            }
-            if (sum < 53)
-            {
-                sum = sum - (origin * 2);
-            }
-            return sum % 97;
+            Synced,
+            Locked,
+            Ready,
+            Draft,
+            Paused,
         }
     }
 }
