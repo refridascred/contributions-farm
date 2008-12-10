@@ -38,12 +38,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long floor, long bound)
         {
-            Draft,
-            Stale,
-            Failed,
+            long cur = floor ^ bound;
+            if ((floor + cur) != (bound & 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((3.0 / 2.0) >= (double)cur) && ((7.0 * 5.98) <= (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor == (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((2 & 7) == (bound / 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
