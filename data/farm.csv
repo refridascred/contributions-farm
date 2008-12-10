@@ -1,11 +1,6 @@
-id,label
-1,stable
-2,stable
-3,53.21
-4,569
-5,43.38
-6,181
-7,green
-8,257
-9,805
-10,67.04
+id,weight,owner,rank,region
+1,73.42,547,93.4,95.12
+2,604,664,562,45.73
+3,682,788,348,edge
+4,122,local,996,fallback
+5,529,69.12,fallback,stable
