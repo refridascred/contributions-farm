@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
