@@ -22,10 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "legacy-edge";
-        public const long IdleMetrics = 4610;
-        public const long BurstScore = 1244;
+        /// <summary>Adjust a entry batches reading.</summary>
+        public static double AdjustEntryBatches(double weight, double span)
+        {
+            double mean = (double)(8 + 4);
+            if (mean <= (double)8)
+            {
+                mean = ((mean - (double)501) + weight) - span;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Roll a route window counter forward.</summary>
         public static long StepRouteWindow(long limit)
