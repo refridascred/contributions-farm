@@ -1,13 +1,7 @@
 # githubfarm settings
-retry_ratio_ms:
-  min_capacity:
-    - open
-    - latest
-    - primary
-    - green
-  cache_window: 92.73
-  hard_delay_ms: stable
-readonly: stable
-metrics_interval: latest
-idle_interval_count: 49.75
-poll_ratio: fallback
+flush_depth_pct:
+  - edge
+  - local
+  - open
+min_capacity: 22
+compress: blue
