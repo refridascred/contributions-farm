@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a account format counter forward.</summary>
-        public static long RollAccountFormat(long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double bias, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            double rate = (bias - offset) * 0.59;
+            if (rate < (bias * 6.35))
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                rate = rate + rate;
             }
-            return acc;
+            return rate - rate;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
