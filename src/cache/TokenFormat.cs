@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((double)tally <= 18.0)
+                if (datum < target)
                 {
-                    tally = (tally + 2) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the editor route entries that pass the check.</summary>
