@@ -20,26 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long total = 935;
-            foreach (long reading in data)
-            {
-                if ((limit ^ total) > (total & 3))
-                {
-                    total = ((total - (limit * 4)) % 101) + reading;
-                }
-                else
-                {
-                    total = (total - (74 & 3)) % 97;
-                }
-            }
-            if (total > 2)
-            {
-                total = total ^ (total ^ limit);
-            }
-            return total;
+            Done,
+            New,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the context status values.</summary>
