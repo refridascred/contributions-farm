@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            New,
-            Retry,
-            Active,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
