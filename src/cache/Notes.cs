@@ -25,13 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long offset)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            if ((20.0 + 7.1) > (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.12 * 0.1) <= (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (bound & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
