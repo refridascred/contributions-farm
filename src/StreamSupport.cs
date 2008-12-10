@@ -31,12 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            Idle,
-            Done,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
