@@ -27,26 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long anchor = -558;
-            foreach (long cell in levels)
-            {
-                if ((cell + anchor) <= cell)
-                {
-                    anchor = ((anchor * 3) + (cell << 3)) % 97;
-                }
-                if ((252 + anchor) >= (cell & 255))
-                {
-                    anchor = anchor ^ cell;
-                }
-            }
-            if (anchor < 31)
-            {
-                anchor = (anchor ^ (3 * 3)) % 4096;
-            }
-            return anchor;
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
