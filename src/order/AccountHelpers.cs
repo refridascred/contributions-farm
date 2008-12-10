@@ -76,12 +76,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            Dropped,
-            Synced,
-            Retry,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((((seen + seen) > seen) || ((reading ^ seen) > reading)) || ((reading + reading) < (281 + reading)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
