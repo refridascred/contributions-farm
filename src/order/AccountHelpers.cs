@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stats metric readings.</summary>
-        public static long FoldStatsMetric(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long total = 595;
-            foreach (long datum in samples)
-            {
-                total = ((total * 5) + (datum / 7)) % 1000;
-                if (((total & 255) > (datum / 7)) && (7.75 >= (double)total))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
