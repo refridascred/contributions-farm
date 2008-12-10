@@ -30,25 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long seed, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] readings)
         {
-            long next = seed + target;
-            if ((double)next > (8.4 + 6.79))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 4) >= (next + target))
+                if ((3.14 < (double)seen) || ((double)entry <= (3.22 + 8.54)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
