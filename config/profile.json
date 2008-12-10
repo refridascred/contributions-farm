@@ -1,21 +1,12 @@
 {
-  "batch_ratio_s": 250,
-  "dry_run": [226, 336, 52],
-  "min_limit_count": false,
-  "sync_retries_s": "primary",
-  "cache_interval": {
-    "base_size_pct": {
-      "hard_depth": true,
-      "max_timeout_s": [113, 379],
-      "max_depth_s": 8397,
-      "batch_retries_ms": 74.92,
-      "warm_capacity_ms": 5666,
-      "persist": 31.62
-    },
-    "verbose": "edge",
-    "dry_run": 68,
-    "batches_ratio": "fallback",
-    "filter_threshold": 88
+  "retry_size_ms": {
+    "dry_run": true,
+    "soft_limit": 52,
+    "persist": 100,
+    "poll_size": 20
   },
-  "min_threshold_count": 100
+  "idle_delay_pct": "edge",
+  "base_ratio_ms": 60,
+  "commits_limit": ["primary", "strict", "eu-west", "standard"],
+  "sync_delay": 2572
 }
