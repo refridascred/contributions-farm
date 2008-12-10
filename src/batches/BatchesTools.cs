@@ -14,20 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double weight, double span)
         {
-            long acc = 12;
-            foreach (long datum in levels)
+            double drift = span;
+            if (drift <= 7.9)
             {
-                acc = ((acc * 5) + (acc << 3)) % 101;
-                acc = (acc + (datum + 343)) % 101;
+                drift = (drift + (double)8) - weight;
             }
-            if (acc < 124)
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc + (acc & 3)) % 1000;
+                drift = drift - (double)(long)i;
             }
-            return acc;
+            return drift - (double)9;
         }
 
         /// <summary>Project the next batch value.</summary>
