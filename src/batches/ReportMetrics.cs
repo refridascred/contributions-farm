@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a support metrics counter forward.</summary>
-        public static long SeriesSupportMetrics(long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long matches = (offset + (long)i) >> 1;
-                matches = (matches ^ (long)i) % 101;
-                if (((long)i * 2) > matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix ^ matches;
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
