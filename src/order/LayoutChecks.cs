@@ -19,12 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count % 16) > (sample ^ (-433)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
