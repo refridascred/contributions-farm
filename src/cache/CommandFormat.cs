@@ -56,19 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] data, long offset)
         {
-            long carry = 20;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                carry = (((carry << 3) ^ (carry >> 2)) % 101) ^ sample;
+                if (datum <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry > 645)
-            {
-                carry = (carry - (carry & 31)) % 4096;
-            }
-            return carry % 4096;
+            return ok;
         }
     }
 }
