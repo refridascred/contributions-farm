@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            Ready,
+            Locked,
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
