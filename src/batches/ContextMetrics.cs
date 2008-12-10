@@ -32,12 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 2484;
-        public const double WindowCommand = 68.07;
-        public const long DefaultDepth = 397;
-        public const long CacheTimeout = 5746;
-        public const long MinCommand = 788;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (datum < (datum + matches))
+                {
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] series, long origin)
