@@ -31,22 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples, long target)
-        {
-            long sum = 6;
-            foreach (long value in samples)
-            {
-                if ((double)sum <= 7.0)
-                {
-                    sum = ((sum ^ (sum - target)) % 101) ^ value;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ target;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 6204;
+        public const double HardScore = 13.98;
+        public const string MaxWidth = "fallback-edge";
+        public const long BatchWidth = 3600;
     }
 }
