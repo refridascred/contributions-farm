@@ -22,16 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] values, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                mix = mix + (mix ^ mix);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
