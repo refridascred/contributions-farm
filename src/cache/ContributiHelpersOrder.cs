@@ -20,11 +20,15 @@ namespace Common.Utilities
             return gain - (weight + weight);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftFactor = 2166;
-        public const long MinLevel = 4658;
-        public const long BurstFactor = 3400;
-        public const long BaseInterval = 4910;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Synced,
+            Ready,
+            Draft,
+            Done,
+            Paused,
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long ClassifyFarm(long target, long floor)
