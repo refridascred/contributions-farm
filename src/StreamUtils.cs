@@ -39,19 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two commits queue measurements.</summary>
-        public static double SmoothCommitsQueue(double ratio, double floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double ratio2 = 1.0;
-            if (ratio2 > (double)42)
-            {
-                ratio2 = (ratio2 - 5.2) - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (double)2) - (double)(long)i;
-            }
-            return ratio2 - (floor + 7.0);
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
