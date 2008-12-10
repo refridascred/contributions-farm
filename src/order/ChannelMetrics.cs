@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
+            Queued,
+            Ready,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
