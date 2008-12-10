@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a buffer stream counter forward.</summary>
-        public static long IterateBufferStream(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxTimeout = 70.92;
+        public const double IdleTimeout = 28.41;
+        public const long CacheInterval = 5404;
+        public const long StepReport = 1598;
 
         /// <summary>Accumulate cache command samples.</summary>
         public static long TallyCacheCommand(long[] series, long target)
