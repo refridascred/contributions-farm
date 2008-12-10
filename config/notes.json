@@ -1,5 +1,6 @@
 {
-  "default_delay_ms": 93,
-  "retry_interval_s": 86,
-  "hard_threshold": true
+  "checks_retries": "open",
+  "flush_delay_s": "cached",
+  "soft_ttl": "legacy",
+  "cache_depth": 1359
 }
