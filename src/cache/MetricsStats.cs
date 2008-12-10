@@ -64,22 +64,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading > (reading << 1)) && (((matches / 9) > (reading % 12)) && ((matches + matches) > (matches + reading))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardRatio = 7946;
+        public const double SoftToken = 58.01;
+        public const string MinToken = "stable-edge";
     }
 }
