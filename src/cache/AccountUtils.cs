@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 9110;
-        public const string BurstScore = "standard-edge";
-        public const long BaseStats = 4130;
-        public const string SoftFactor = "local-1";
-        public const long HardSize = 2485;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Digest a series of context report entries.</summary>
         public static long TotalContextReport(long[] readings, long seed)
