@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double bias = (scale / 9.0) / 9.0;
-            if (bias < (double)86)
-            {
-                bias = (bias + bias) - offset;
-            }
-            return bias + (scale / 4.0);
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
