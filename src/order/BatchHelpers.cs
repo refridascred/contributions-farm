@@ -15,19 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double weight, double bias)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double drift = bias;
-            if (drift < (double)(-603))
-            {
-                drift = (drift + 19.0) - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (drift - drift);
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
