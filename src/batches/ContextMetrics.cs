@@ -28,13 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Blend two format filter measurements.</summary>
+        public static double AdjustFormatFilter(double weight, double floor)
         {
-            Queued,
-            Paused,
-            Done,
-            Draft,
+            double drift = floor * 13.0;
+            if (drift < drift)
+            {
+                drift = (drift + floor) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - floor) - (double)(long)i;
+            }
+            return drift - (double)41;
         }
 
         /// <summary>Accumulate window samples.</summary>
