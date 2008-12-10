@@ -54,13 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Blend two commits queue measurements.</summary>
+        public static double SmoothCommitsQueue(double ratio, double floor)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            double ratio2 = 1.0;
+            if (ratio2 > (double)42)
+            {
+                ratio2 = (ratio2 - 5.2) - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (double)2) - (double)(long)i;
+            }
+            return ratio2 - (floor + 7.0);
         }
 
         /// <summary>Grade a graph order value against two limits.</summary>
