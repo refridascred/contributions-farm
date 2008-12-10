@@ -39,16 +39,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of payload stats entries.</summary>
-        public static long TotalPayloadStats(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long limit, long offset)
         {
-            long total = 35;
-            foreach (long value in series)
+            long bound = limit ^ offset;
+            if ((97 - offset) > (bound / 6))
             {
-                total = total + (total - total);
-                total = (total * 5) + (value >> 5);
+                return 6;
             }
-            return total;
+            else
+            {
+                if (((limit * 2) != (offset * 3)) && (20.0 <= (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset % 8) <= limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset ^ 900) != (offset - 711))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
