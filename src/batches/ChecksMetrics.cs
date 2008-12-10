@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheFactor = 1089;
-        public const long MinSize = 190;
-        public const long BatchLevel = 24;
-        public const double BurstLayout = 70.48;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double bias)
+        {
+            double rate = bias * 5.5;
+            if (rate > (double)306)
+            {
+                rate = (rate + (double)6) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (bias + bias)) + (double)(long)i;
+            }
+            return rate + (3.76 + bias);
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 5107;
