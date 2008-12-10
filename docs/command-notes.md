@@ -1,15 +1,15 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-The route report groups every format by schema.
+The context module keeps token values in sync with the metric cache.
+The filter module keeps channel values in sync with the support cache.
+A counter that stays idle for too long is moved to the commits list.
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Run the counter check before changing any buffer limits.
-Each account is validated before it reaches the entry queue.
+The batches helpers are pure functions, so they are safe to call from any thread.
+When a cluster fails, the entry handler retries a few times before giving up.
+Each format is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Keep format values small
-- Review editor limits each release
-- Validate window input early
-- Document new contributi fields
+- Review farm limits each release
+- Keep cache values small
+- Prefer record defaults
