@@ -19,38 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long limit, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] samples, long seed)
         {
-            if ((seed - limit) < (limit - 387))
+            long acc = 876;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)4 == (double)limit) && ((1 + limit) > (limit / 3)))
+                acc = (((acc - (acc & 31)) % 97) + reading) + seed;
+                if ((1.7 / 6.0) == (double)acc)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(2.0 <= (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit == (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc - (acc >> 1)) % 255;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
