@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinCount = "fallback-1";
+        public const long StepGithubfarm = 1075;
+        public const string LimitGithubfarm = "stable-1";
+        public const long BaseGithubfarm = 3201;
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] values, long offset)
