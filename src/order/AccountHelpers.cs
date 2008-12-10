@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a stream githubfarm counter forward.</summary>
-        public static long StepStreamGithubfarm(long limit)
+        /// <summary>Scale a contributi checks figure with a bias.</summary>
+        public static double BlendContributiChecks(double scale, double bias)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            double rate = scale;
+            if (rate < rate)
             {
-                if (limit > 2)
-                {
-                    carry = (carry - limit) % 97;
-                    continue;
-                }
-                else
-                {
-                    carry = (carry * 3) + (limit + carry);
-                }
-                carry = carry ^ 796;
-                carry = ((carry * 5) + (long)i) % 1000;
+                rate = rate - (double)79;
             }
-            return carry;
+            return rate - (rate + bias);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
