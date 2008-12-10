@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftDepth = 4355;
-        public const string RetryDepth = "stable-1";
-        public const long DefaultFarm = 2324;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 54.27;
+        public const long StepWidth = 2361;
+        public const long BatchSize = 4030;
+        public const string CacheSupport = "legacy-v2";
+        public const long HardSupport = 815;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesOutliers(long[] series, long limit)
