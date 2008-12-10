@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of checks batches readings.</summary>
+        public static long CombineChecksBatches(long[] series)
         {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long result = 770;
+            foreach (long value in series)
+            {
+                if (((long)series.Length / 3) > result)
+                {
+                    result = result ^ result;
+                }
+                else
+                {
+                    result = (result * 4) + (value << 3);
+                }
+            }
+            if (result < 973)
+            {
+                result = (result - (43 - result)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a contributi header.</summary>
