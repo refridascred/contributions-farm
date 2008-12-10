@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 2308;
-        public const string LimitEntry = "cached-1";
-        public const long MinScore = 7644;
-        public const long MinEntry = 6300;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Closed,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long floor, long offset)
