@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] readings, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] levels, long step)
         {
-            long mark = 534;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark ^ (item - 62)) % 65521) - seed;
+                if ((levels[i] < step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 439)
-            {
-                mark = ((mark * 3) + 413) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
