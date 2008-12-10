@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] data, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = bias;
+            if (gain > (gain * 5.6))
             {
-                if ((data[i] == step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (double)2;
             }
-            return -1;
+            else
+            {
+                gain = gain + (weight / 6.0);
+            }
+            return gain - gain;
         }
 
         /// <summary>Describe the token phase values.</summary>
