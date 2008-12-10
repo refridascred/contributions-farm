@@ -28,17 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] series, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] >= bound)
+                if ((double)count != (16.0 / 7.0))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the filter class values.</summary>
