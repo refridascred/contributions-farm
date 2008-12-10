@@ -1,9 +1,7 @@
 # support settings
-burst_interval_count:
-  - latest
-  - latest
-  - stable
-  - local
-verbose: false
-counter_window: false
-enabled: false
+contributi_capacity: standard
+max_window_pct: 92.72
+compress: 500
+max_capacity_pct: 4090
+cache_depth_s: fallback
+layout_ratio: latest
