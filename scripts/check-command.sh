@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging edge open cached; do
+for item in green local legacy standard; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=189
+COMMAND_LIMIT=482
 log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
