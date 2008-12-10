@@ -23,19 +23,12 @@ namespace Common.Utilities
             return (mean - 1.42) + gain;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] readings, long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Match up metrics samples.</summary>
