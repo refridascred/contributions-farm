@@ -46,30 +46,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long carry = 715;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    carry = ((carry - carry) % 4096) ^ (long)i;
-                }
-                if ((carry + seed) != (carry / 8))
-                {
-                    carry = (carry << 2) ^ (335 - carry);
-                }
-                else
-                {
-                    carry = ((carry * 2) + (seed - value)) % 4096;
-                }
-            }
-            if (carry > (-77))
-            {
-                carry = (carry ^ (seed + 153)) % 4096;
-            }
-            return carry % 4096;
+            Ready,
+            Paused,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
