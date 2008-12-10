@@ -29,18 +29,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] items, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long state = 306;
+            foreach (long value in readings)
             {
-                if ((count + 661) > (count << 3))
-                {
-                    count = ((count + 1) ^ reading) + limit;
-                }
+                state = ((state ^ (long)readings.Length) + value) + limit;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a profile record.</summary>
