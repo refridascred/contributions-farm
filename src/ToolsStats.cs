@@ -59,15 +59,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next layout metric value from a seed.</summary>
-        public static long IterateLayoutMetric(long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if (count <= (count << 1))
+                {
+                    count = (count + 1) - value;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
