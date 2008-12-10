@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)matches >= (13.0 + 6.0))
+                if ((hits % 97) == (entry / 3))
                 {
-                    matches = (matches + 3) ^ datum;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate batch samples.</summary>
