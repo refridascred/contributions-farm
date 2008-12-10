@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 2089;
-        public const long MaxCluster = 6309;
-        public const long BatchLevel = 2748;
-        public const long BurstRatio = 9763;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardScore = 34.09;
+        public const long WindowChecks = 1736;
+        public const long LimitDepth = 8359;
+        public const long SoftScore = 9343;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 3296;
