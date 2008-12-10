@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series, long target)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long result = 87;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 * 2) < (target >> 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result * 5) + (result + target)) ^ cell;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
