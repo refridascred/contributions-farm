@@ -1,8 +1,17 @@
 {
-  "min_interval_s": true,
-  "warm_ratio_ms": "standard",
-  "burst_limit_pct": true,
-  "metrics_capacity": 100,
-  "batch_capacity": false,
-  "order_size": 8679
+  "retry_interval_pct": {
+    "buffer_delay": 6534,
+    "min_limit": false,
+    "buffer_ttl": false,
+    "sync_interval_count": "fallback",
+    "buffer_threshold": 500
+  },
+  "counter_threshold": 92.6,
+  "retry_timeout": false,
+  "soft_delay_s": 56.75,
+  "min_capacity": {
+    "cluster_threshold": 86.83,
+    "warm_capacity_ms": false,
+    "batch_capacity_pct": ["staging", "staging", "latest"]
+  }
 }
