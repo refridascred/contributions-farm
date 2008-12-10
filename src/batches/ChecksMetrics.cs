@@ -53,19 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long offset)
+        /// <summary>Find the first graph stream entry that matches the target.</summary>
+        public static long SeekGraphStreamIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= offset)
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
