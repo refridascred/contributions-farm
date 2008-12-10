@@ -38,11 +38,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 4091;
-        public const long RetryEditor = 231;
-        public const string MinEditor = "primary";
-        public const string StepRatio = "staging-1";
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a support commits value against two limits.</summary>
         public static long BucketSupportCommits(long step, long step2)
