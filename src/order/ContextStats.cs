@@ -36,13 +36,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Failed,
-            Stale,
-            Paused,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 2540;
+        public const string HardSpan = "stable-edge";
+        public const double HardDepth = 86.18;
     }
 }
