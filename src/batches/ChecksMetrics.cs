@@ -16,11 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinCount = "fallback-1";
-        public const long StepGithubfarm = 1075;
-        public const string LimitGithubfarm = "stable-1";
-        public const long BaseGithubfarm = 3201;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (11.0 < (double)cell)
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] values, long offset)
