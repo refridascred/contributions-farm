@@ -49,19 +49,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every filter stream entry stays within the limit.</summary>
-        public static bool ValidateFilterStreamBounds(long[] items, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long total = 2;
+            foreach (long entry in series)
             {
-                if (value >= offset)
+                if (((51 - total) < (entry - 66)) || ((entry * 5) < (70 * 2)))
                 {
-                    flag = false;
-                    break;
+                    total = ((total * 4) + (total - 399)) % 65521;
                 }
             }
-            return flag;
+            return total % 1000;
         }
 
         /// <summary>Project the next batches value.</summary>
