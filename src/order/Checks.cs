@@ -25,21 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = 9.62;
+            return ((scale + 8.75) + ratio) + span;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
