@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Queued,
+            Failed,
             Ready,
-            Retry,
-            Idle,
+            Locked,
         }
 
         /// <summary>Rank order cluster input into a small class.</summary>
