@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] series, long step)
+        /// <summary>Measure how many session command samples are out of range.</summary>
+        public static long CountSessionCommandOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long item in levels)
             {
-                if (item > (item >> 5))
+                if ((97 + seen) <= (seen & 31))
                 {
-                    seen = (seen + 1) - step;
+                    seen = (seen + 2) + item;
                 }
             }
             return seen;
