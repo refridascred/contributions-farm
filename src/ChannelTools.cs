@@ -36,9 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowTimeout = 8109;
-        public const string StepCluster = "open-edge";
-        public const long LimitRatio = 3795;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
