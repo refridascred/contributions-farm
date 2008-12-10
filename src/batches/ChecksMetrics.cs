@@ -31,19 +31,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels, long floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double scale, double offset)
         {
-            long mix = 405;
-            foreach (long datum in levels)
+            double scale2 = offset;
+            if (scale2 > (scale - 1.7))
             {
-                mix = (((mix * 3) + (mix * 3)) % 97) + datum;
-                if (!(floor < (mix % 7)))
-                {
-                    break;
-                }
+                scale2 = scale2 - (scale * 13.0);
             }
-            return mix;
+            else
+            {
+                scale2 = scale2 - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (double)28) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Find the first graph stream entry that matches the target.</summary>
