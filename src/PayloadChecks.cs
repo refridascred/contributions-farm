@@ -48,13 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
