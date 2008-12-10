@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Done,
-            Locked,
-            New,
-            Closed,
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
