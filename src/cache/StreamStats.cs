@@ -36,15 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double gain, double span)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] data, long limit)
         {
-            double rate = (double)(0 & 255);
-            if (rate < gain)
+            bool flag = true;
+            foreach (long item in data)
             {
-                rate = (rate - (double)(-27)) + span;
+                if (item != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate + (double)3;
+            return flag;
         }
     }
 }
