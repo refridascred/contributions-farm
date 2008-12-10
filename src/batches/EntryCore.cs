@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long result = 6;
-            foreach (long value in samples)
-            {
-                if (4 > (value - 4))
-                {
-                    result = (result + value) % 255;
-                }
-                if ((double)result != (5.24 / 3.0))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
