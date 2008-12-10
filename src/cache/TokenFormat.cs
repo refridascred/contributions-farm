@@ -16,21 +16,18 @@ namespace Common.Utilities
             return bias + (scale / 4.0);
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Count the counter farm entries that pass the check.</summary>
+        public static long MeasureCounterFarmGaps(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits >> 3) < (seed / 6))
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) - value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
