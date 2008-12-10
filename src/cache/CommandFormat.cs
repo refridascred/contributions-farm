@@ -39,22 +39,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Grade a window payload value against two limits.</summary>
+        public static long RankWindowPayload(long seed, long target)
         {
-            long total = -324;
-            foreach (long sample in levels)
+            long bound = seed - target;
+            if ((target > (target + bound)) && ((seed + seed) == (seed % 5)))
             {
-                if ((sample << 2) > 169)
+                return 1;
+            }
+            else
+            {
+                if ((2 + bound) == (seed - 7))
                 {
-                    total = (total ^ (sample + 67)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.3 + 8.71) != (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (total < 77)
-            {
-                total = total - ((long)levels.Length / 2);
-            }
-            return total;
         }
     }
 }
