@@ -19,24 +19,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long target, long target2)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            if ((43 + (-5)) >= (target2 % 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((target2 * 3) > (target2 + target2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
