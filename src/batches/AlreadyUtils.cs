@@ -40,38 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long floor)
+        /// <summary>Adjust a entry schema reading.</summary>
+        public static double ScaleEntrySchema(double ratio, double offset)
         {
-            if ((double)target == (3.79 + 8.0))
+            double load = 8.48;
+            if (load >= (double)647)
             {
-                return 5;
+                load = (load + (ratio - ratio)) - offset;
             }
-            else
-            {
-                if ((target + floor) != (target >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.16 / 8.0) != (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor >= (4 & 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return load - load;
         }
 
         /// <summary>Hold a cache summary.</summary>
