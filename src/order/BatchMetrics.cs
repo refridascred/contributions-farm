@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowCount = 5788;
+        public const long BurstFarm = 2265;
+        public const long BurstTimeout = 4210;
+        public const long IdleRatio = 84;
+        public const long MinFarm = 4032;
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
         public static long OverlapSessionProfileCount(long[] series)
