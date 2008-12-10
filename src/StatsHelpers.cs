@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many commits token samples are out of range.</summary>
-        public static long AuditCommitsTokenHits(long[] data, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long total = 9;
+            foreach (long value in series)
             {
-                if ((value % 10) > count)
+                total = ((total * 4) + value) % 101;
+                if (((origin >> 4) <= origin) || (origin > (value / 4)))
                 {
-                    count = (count + 1) + step;
+                    total = total + (total + origin);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
