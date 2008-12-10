@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] levels, long target)
         {
-            long state = 77;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                state = ((state * 2) + (cell << 1)) % 4096;
-                state = state + cell;
+                if ((target - matches) < reading)
+                {
+                    matches = matches + 2;
+                }
             }
-            if (state < 2)
-            {
-                state = ((state << 2) ^ (state >> 5)) % 101;
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Hold a context snapshot.</summary>
