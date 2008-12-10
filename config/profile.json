@@ -1,5 +1,10 @@
 {
-  "route_retries": "blue",
-  "max_ratio_s": "blue",
-  "order_window": ["stable", "standard", "eu-west"]
+  "record_retries": {
+    "batch_timeout": 73.65,
+    "sync_capacity": ["eu-west", "standard", "edge"],
+    "base_timeout": "stable"
+  },
+  "sync_ttl_count": 32.79,
+  "route_size": 74.68,
+  "strict": 3227
 }
