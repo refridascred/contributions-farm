@@ -1,17 +1,7 @@
 {
-  "soft_limit_s": "primary",
-  "audit": "blue",
-  "persist": {
-    "enabled": 3595,
-    "readonly": "strict",
-    "soft_size_pct": true,
-    "retry_limit": 40
-  },
-  "burst_threshold_ms": [281, 161, 198],
-  "warm_timeout_s": {
-    "audit": ["latest", "cached"],
-    "warm_retries_count": 6102,
-    "burst_capacity_pct": 84.48,
-    "base_capacity_ms": 500
-  }
+  "batch_ratio": 100,
+  "poll_timeout_s": 93.98,
+  "strict": 80.81,
+  "enabled": 77.9,
+  "report_interval": "green"
 }
