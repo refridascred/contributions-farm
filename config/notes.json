@@ -1,6 +1,19 @@
 {
-  "warm_ttl_ms": 1024,
-  "cluster_ttl": 55,
-  "dry_run": [122, 489],
-  "batch_depth_s": "edge"
+  "warm_interval_ms": "blue",
+  "buffer_ttl": 55.66,
+  "poll_retries": {
+    "sync_retries_count": 4326,
+    "audit": {
+      "poll_ratio_pct": "staging",
+      "verbose": false,
+      "warm_retries_s": 1.29,
+      "idle_window_pct": "staging",
+      "retry_retries_count": [424, 356, 445],
+      "cache_delay": "open"
+    },
+    "channel_depth": true
+  },
+  "warm_delay_count": 9531,
+  "batch_size_pct": 2,
+  "dry_run": "stable"
 }
