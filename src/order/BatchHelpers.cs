@@ -15,18 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] series, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long result = 794;
+            foreach (long cell in samples)
             {
-                if (target > (sample - sample))
+                result = (result ^ (result % 10)) ^ cell;
+                if ((double)result == (5.93 / 9.0))
                 {
-                    matches = matches + 3;
+                    result = result - (result / 2);
                 }
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
