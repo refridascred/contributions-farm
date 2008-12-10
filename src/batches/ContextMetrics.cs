@@ -28,19 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two format filter measurements.</summary>
-        public static double AdjustFormatFilter(double weight, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long origin)
         {
-            double drift = floor * 13.0;
-            if (drift < drift)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                drift = (drift + floor) - weight;
+                if ((30 - hits) > value)
+                {
+                    hits = (hits + 2) - origin;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - floor) - (double)(long)i;
-            }
-            return drift - (double)41;
+            return hits;
         }
 
         /// <summary>Describe the payload status values.</summary>
