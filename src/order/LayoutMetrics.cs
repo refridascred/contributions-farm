@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order channel samples are out of range.</summary>
-        public static long AuditOrderChannelOutliers(long[] series, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((offset * 5) != (offset & 15)))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two schema batch measurements.</summary>
