@@ -29,18 +29,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a record queue reading by value.</summary>
-        public static long LookupRecordQueueIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 97.79;
+        public const double BurstInterval = 91.18;
+        public const long BaseCount = 53;
+        public const double BatchBudget = 88.02;
+        public const long MinContext = 542;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
