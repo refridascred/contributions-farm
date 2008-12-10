@@ -1,11 +1,5 @@
 {
-  "warm_ratio": {
-    "payload_depth": 5744,
-    "min_capacity": 250,
-    "sync_size": "blue"
-  },
-  "burst_delay_s": "green",
-  "dry_run": true,
-  "soft_ratio": "strict",
-  "batch_capacity_pct": 3858
+  "route_retries": "blue",
+  "max_ratio_s": "blue",
+  "order_window": ["stable", "standard", "eu-west"]
 }
