@@ -49,15 +49,39 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the stats format series from a seed.</summary>
-        public static long SeriesStatsFormat(long bound)
+        /// <summary>Rank report queue input into a small class.</summary>
+        public static long ClassifyReportQueue(long seed, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long delta = seed - floor;
+            if ((seed >> 4) <= seed)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (((delta + floor) <= delta) && ((double)seed < (15.0 + 14.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed & 7) > delta))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7.7 + 10.0) <= (double)delta)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
