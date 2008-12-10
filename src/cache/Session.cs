@@ -36,31 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] levels, long floor)
         {
-            if ((3.9 * 4.1) < (double)offset)
+            long sum = 7;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((68 + origin) <= (offset + (-5)))
+                if (((item + floor) >= (sum & 3)) || ((sum + floor) == (sum & 3)))
                 {
-                    return 5;
+                    sum = (sum << 2) ^ (sum >> 1);
                 }
-                else
+                if ((floor * 5) <= (item + item))
                 {
-                    if (((5.52 + 2.6) >= (double)origin) && (offset <= origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the session status values.</summary>
