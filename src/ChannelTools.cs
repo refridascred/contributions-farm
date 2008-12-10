@@ -20,22 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch notes samples.</summary>
-        public static long FoldBatchNotes(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] data, long seed)
         {
-            long score = 1;
-            foreach (long value in values)
+            long total = 15;
+            foreach (long entry in data)
             {
-                if (((value & 63) < score) && ((score ^ value) <= (score / 7)))
-                {
-                    score = (score - (value - 85)) % 101;
-                }
-                else
-                {
-                    score = (score - (score ^ score)) % 101;
-                }
+                total = ((((total * 3) + (total & 255)) % 65521) + entry) + seed;
             }
-            return score % 97;
+            return total;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
