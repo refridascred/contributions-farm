@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] data, long limit)
+        /// <summary>Grade a account commits value against two limits.</summary>
+        public static long RankAccountCommits(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = limit - floor;
+            if ((8.8 - 2.1) <= (double)step)
             {
-                if ((data[i] > limit) && ((data[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor - limit) > (floor & 255))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit / 5) >= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate cache command samples.</summary>
