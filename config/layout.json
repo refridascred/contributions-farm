@@ -1,6 +1,6 @@
 {
-  "min_delay_count": true,
-  "max_capacity_pct": 47.28,
-  "max_delay": "latest",
-  "cache_timeout_ms": "stable"
+  "flush_capacity_ms": true,
+  "default_depth_pct": 6757,
+  "poll_size": "blue",
+  "route_depth": 1024
 }
