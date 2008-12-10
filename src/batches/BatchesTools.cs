@@ -23,31 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = 74;
+            foreach (long value in data)
             {
-                if ((origin >= (long)i) || ((origin + anchor) > (anchor >> 4)))
+                if (!((11 << 1) < value))
                 {
-                    anchor = (anchor ^ origin) % 1000;
-                }
-                if ((double)origin > (0.69 * 0.38))
-                {
-                    anchor = (anchor ^ (origin & 3)) % 65521;
+                    mix = (mix ^ (39 + mix)) % 255;
                 }
                 else
                 {
-                    anchor = (anchor - (long)i) % 65521;
+                    mix = (mix + (value / 4)) % 97;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (anchor + (961 + 670)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Count the farm batch entries that pass the check.</summary>
