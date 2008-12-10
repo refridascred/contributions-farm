@@ -1,8 +1,7 @@
 {
-  "route_timeout": 96.63,
-  "persist": 1.79,
-  "cluster_window": "fallback",
-  "burst_ratio_s": 60,
-  "base_retries": 89.08,
-  "hard_threshold_pct": 19.07
+  "batches_threshold": "stable",
+  "retry_window_count": 6912,
+  "min_depth_count": 7,
+  "poll_interval": "edge",
+  "max_capacity_count": "blue"
 }
