@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long target)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a record counter forward.</summary>
