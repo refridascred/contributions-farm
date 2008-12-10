@@ -29,18 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] series, long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (item > bound)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
