@@ -1,8 +1,5 @@
 {
-  "dry_run": "blue",
-  "min_retries_count": ["cached", "primary", "cached"],
-  "checks_capacity": [40, 64],
-  "audit": "standard",
-  "soft_size_pct": 98,
-  "persist": 30
+  "base_size_s": "stable",
+  "readonly": 60,
+  "max_timeout_ms": 75
 }
