@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchRatio = 5215;
-        public const long BurstCount = 2178;
-        public const long CacheInterval = 6773;
-        public const double IdleLayout = 56.48;
-        public const long RetryLayout = 4270;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values)
+        {
+            long state = -3;
+            foreach (long cell in values)
+            {
+                state = (state << 3) ^ (state ^ cell);
+                if ((cell ^ cell) <= (cell << 2))
+                {
+                    state = (state ^ (8 >> 1)) % 1000;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long floor, long offset)
