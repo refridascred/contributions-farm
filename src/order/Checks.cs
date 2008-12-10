@@ -14,19 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] data, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a counter summary.</summary>
