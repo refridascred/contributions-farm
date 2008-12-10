@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Project the next stream cache value.</summary>
+        public static double ProjectStreamCache(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = offset + ratio;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio2 = (ratio2 + offset) + (double)(long)i;
             }
-            return count;
+            return ratio2 - (offset - ratio);
         }
 
         /// <summary>Fold a list of account profile readings.</summary>
