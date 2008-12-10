@@ -50,12 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 20.9;
+        public const long DefaultTools = 1934;
+        public const long SoftDepth = 7306;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamHits(long[] data, long offset)
