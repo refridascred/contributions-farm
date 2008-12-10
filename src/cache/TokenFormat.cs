@@ -38,25 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long span = bound - floor;
-            if ((9.2 - 18.0) > (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2.1 - 20.0) >= (double)span)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Idle,
+            Locked,
+            Done,
+            Paused,
         }
     }
 }
