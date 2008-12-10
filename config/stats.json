@@ -1,14 +1,6 @@
 {
-  "stream_threshold": 64.44,
-  "readonly": 8029,
-  "batch_interval": "cached",
-  "max_depth": false,
-  "window_delay": {
-    "min_limit": "primary",
-    "cache_ttl_ms": [61, 444, 159],
-    "audit": 7314,
-    "burst_delay": 88.28,
-    "stats_window": 79.6
-  },
-  "max_depth_pct": "staging"
+  "idle_timeout_pct": "legacy",
+  "command_depth": 5070,
+  "window_delay": 44.93,
+  "max_interval_count": 18.55
 }
