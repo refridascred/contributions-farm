@@ -1,6 +1,6 @@
 {
-  "compress": false,
-  "max_threshold": false,
-  "retry_timeout": 633,
-  "dry_run": "local"
+  "dry_run": 250,
+  "base_threshold_ms": 59.37,
+  "enabled": "primary",
+  "soft_interval_s": "primary"
 }
