@@ -1,8 +1,8 @@
-id,state,rank,active,ratio
-1,63.84,83.24,196,216
-2,10.83,strict,legacy,71.29
-3,edge,331,legacy,46.49
-4,green,500,751,633
-5,211,22.0,eu-west,local
-6,821,legacy,84.82,837
-7,97.41,95.96,edge,legacy
+id,state,rank
+1,41,434
+2,134,36.95
+3,810,552
+4,682,55.88
+5,8.73,95.08
+6,622,955
+7,34.47,cached
