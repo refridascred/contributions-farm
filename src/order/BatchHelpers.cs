@@ -23,11 +23,32 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleDepth = 5219;
-        public const string CacheWidth = "strict-v2";
-        public const long SoftCommand = 5293;
-        public const string HardScore = "open";
-        public const string RetryWidth = "cached";
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long origin)
+        {
+            long gap = bound + origin;
+            if (((gap & 7) > origin) && ((bound + gap) > bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((91 - origin) <= (gap ^ bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((gap >> 3) == (648 << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
