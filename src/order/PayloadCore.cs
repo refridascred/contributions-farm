@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] levels, long limit)
         {
-            long result = 57;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (result > entry)
+                if (cell > limit)
                 {
-                    result = (result ^ (4 >> 5)) % 1000;
-                }
-                else
-                {
-                    result = (result + entry) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 94)
-            {
-                result = (result - (result >> 1)) % 255;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Accumulate format order samples.</summary>
