@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxSpan = 25.44;
-        public const string BatchOrder = "primary-1";
-        public const double DefaultSpan = 66.7;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long bound)
+        {
+            long bound2 = offset + bound;
+            if ((double)offset > (8.1 / 9.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.4 * 3.74) <= (double)bound2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound2 >= (bound - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((4.28 * 5.0) >= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
