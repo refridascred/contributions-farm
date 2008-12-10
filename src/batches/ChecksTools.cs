@@ -17,11 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values, long floor)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
+            long state = 55;
+            foreach (long reading in values)
+            {
+                state = (((state << 2) ^ (3 * 5)) - reading) + floor;
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
