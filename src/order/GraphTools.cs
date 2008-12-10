@@ -60,21 +60,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count format editor pairs that satisfy a relation.</summary>
-        public static long CompareFormatEditorCount(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 5;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry + (cell - cell)) - bound;
             }
-            return seen;
+            return carry;
         }
     }
 }
