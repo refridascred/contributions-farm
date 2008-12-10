@@ -27,18 +27,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] samples, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches << 3) > (5 + matches))
-                {
-                    matches = ((matches + 2) ^ item) - origin;
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
