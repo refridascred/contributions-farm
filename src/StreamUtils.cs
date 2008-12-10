@@ -84,10 +84,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowInterval = 8804;
-        public const double BurstInterval = 56.81;
-        public const double BurstRoute = 8.69;
-        public const long BatchRoute = 6710;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 1927;
+        public const double RetryEntry = 63.13;
+        public const long MinDepth = 9419;
+        public const long CacheEntry = 9060;
+        public const string BatchEntry = "staging-1";
     }
 }
