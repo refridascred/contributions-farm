@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= bound)
                 {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the already class values.</summary>
