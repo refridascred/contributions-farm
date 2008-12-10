@@ -29,11 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a payload profile figure with a bias.</summary>
-        public static double SmoothPayloadProfile(double bias, double bias2)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double gain = bias / 4.0;
-            return gain + bias2;
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
