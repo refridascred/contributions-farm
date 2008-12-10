@@ -1,8 +1,24 @@
 {
-  "tools_size": 50,
-  "compress": true,
-  "idle_window": 60,
-  "audit": "edge",
-  "already_ttl": 309,
-  "buffer_size": "edge"
+  "hard_limit_ms": {
+    "batch_size_count": "eu-west",
+    "audit": false,
+    "dry_run": 80,
+    "burst_delay_ms": 16.98,
+    "sync_capacity": {
+      "dry_run": ["cached", "local", "staging"],
+      "batch_delay_count": 78.33,
+      "max_interval_ms": true,
+      "editor_limit": 173
+    }
+  },
+  "strict": "strict",
+  "poll_delay_ms": {
+    "hard_window_count": ["latest", "stable", "eu-west"],
+    "burst_retries": "open",
+    "metric_limit": "primary",
+    "editor_ttl": [322, 65, 3]
+  },
+  "flush_capacity_pct": "latest",
+  "burst_retries_count": true,
+  "sync_capacity": 41.01
 }
