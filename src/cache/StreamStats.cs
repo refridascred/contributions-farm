@@ -33,19 +33,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 19.78;
+        public const long CacheRoute = 8768;
+        public const string BatchRatio = "primary-1";
     }
 }
