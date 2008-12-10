@@ -1,23 +1,22 @@
 # entry settings
-min_delay_s:
-  batch_ratio: blue
-  sync_limit:
-    - 449
-    - 394
-    - 243
-  metric_retries: green
-  strict:
-    poll_interval_ms: 68.91
-    readonly:
-      - 168
-      - 32
-    payload_depth: false
-    route_depth: 68.14
-    max_size_pct: false
-  base_timeout_pct: primary
-  flush_limit: fallback
-audit:
-  - blue
+default_depth_s:
+  min_size_s:
+    - eu-west
+    - local
+    - legacy
+    - blue
+  audit: blue
+  payload_delay: eu-west
+max_ttl_pct: fallback
+persist: 9542
+record_retries: 22
+batch_threshold_count:
+  min_size_s: 42
+  base_capacity: 5296
+  min_ttl: 7345
+  sync_ttl_s: true
+  persist: false
+  format_retries: true
+base_ratio_pct:
   - standard
-default_limit_ms: 58.83
-min_timeout_pct: false
+  - eu-west
