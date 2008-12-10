@@ -1,13 +1,15 @@
 # entry settings
-max_window_s: cached
-hard_ttl:
-  - 115
-  - 233
-  - 24
-verbose:
-  - 123
+farm_delay: local
+sync_capacity: 1683
+base_interval_s: false
+strict:
+  - 426
   - 415
-  - 107
-  - 174
-persist: 250
-poll_ratio: green
+  - 275
+  - 440
+soft_size_pct: primary
+audit:
+  - 274
+  - 166
+  - 219
+  - 254
