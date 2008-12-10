@@ -13,10 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 4891;
-        public const long MinSchema = 2720;
-        public const double IdleSchema = 5.33;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] series)
