@@ -1,21 +1,13 @@
 # entry settings
-max_timeout_pct: 20.94
-base_window_pct: 30
-token_threshold: 27
-min_window_ms: 8255
-enabled:
-  - 325
-  - 134
-persist:
-  warm_ratio_ms: 1024
-  hard_size_ms: false
-  checks_window: 60
-  readonly: 53.23
-  strict:
-    - 218
-    - 231
-    - 195
-  graph_ratio:
-    - 67
-    - 3
-    - 50
+min_size:
+  persist: 42
+  idle_delay_pct:
+    record_threshold: stable
+    channel_threshold: false
+    warm_threshold_count: staging
+    batch_threshold: 60
+  channel_size: edge
+  min_threshold_count: true
+idle_limit: local
+soft_delay_ms: 91
+retry_ttl_pct: staging
