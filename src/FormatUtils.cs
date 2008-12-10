@@ -66,18 +66,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((246 + offset) != (offset >> 4))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftSize = 14.9;
+        public const long DefaultOrder = 7706;
+        public const double MaxOrder = 39.67;
+        public const double SoftDepth = 60.93;
     }
 }
