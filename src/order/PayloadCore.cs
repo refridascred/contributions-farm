@@ -62,18 +62,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] series)
         {
-            long result = -133;
-            foreach (long value in samples)
+            long carry = -496;
+            foreach (long sample in series)
             {
-                if ((893 - result) > (result * 4))
-                {
-                    result = ((result + result) % 4096) + value;
-                }
+                carry = carry ^ (344 + sample);
             }
-            return result % 97;
+            if (carry < 686)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry;
         }
     }
 }
