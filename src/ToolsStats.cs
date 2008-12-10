@@ -24,15 +24,23 @@ namespace Common.Utilities
         public const long CacheEditor = 1197;
         public const long BurstEditor = 7342;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long anchor = -421;
+            foreach (long datum in data)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                anchor = anchor ^ ((long)data.Length + 0);
+                if (4 < (datum ^ datum))
+                {
+                    anchor = ((anchor * 3) + (datum * 5)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ 1;
+                }
             }
-            return mix;
+            return anchor % 97;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
