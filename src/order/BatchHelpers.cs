@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 136;
+            foreach (long sample in values)
             {
-                if (items[i] <= seed)
+                if (step < sample)
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + mark) % 101;
                 }
             }
-            return -1;
+            if (mark < (-940))
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
