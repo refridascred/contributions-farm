@@ -28,17 +28,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] items, long offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= offset)
+                total = total + (long)i;
+                if (!((floor >> 3) > (floor + total)))
                 {
-                    return (long)i;
+                    total = total + (floor * 5);
                 }
+                else
+                {
+                    total = (total - ((long)i ^ total)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
