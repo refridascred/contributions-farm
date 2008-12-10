@@ -65,23 +65,9 @@ namespace Common.Utilities
         public const double BaseCount = 3.49;
         public const long MaxEntry = 8728;
 
-        /// <summary>Fold a list of githubfarm context readings.</summary>
-        public static long FoldGithubfarmContext(long[] data, long target)
-        {
-            long state = 94;
-            foreach (long value in data)
-            {
-                state = state ^ value;
-                if ((20.0 * 16.0) == (double)target)
-                {
-                    break;
-                }
-            }
-            if (state < 3)
-            {
-                state = (state * 3) + (89 - target);
-            }
-            return state % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxDepth = 3359;
+        public const double CacheScore = 8.5;
+        public const long HardEntry = 3515;
     }
 }
