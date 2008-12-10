@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = 89;
-            foreach (long sample in samples)
-            {
-                carry = carry - sample;
-            }
-            return carry % 1000;
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
