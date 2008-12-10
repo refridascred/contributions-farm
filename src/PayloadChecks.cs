@@ -24,18 +24,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (!(((value % 8) < value) && ((double)value == (0.1 / 3.0))))
+                if (value >= limit)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Match up metrics samples.</summary>
