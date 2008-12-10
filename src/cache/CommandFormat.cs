@@ -37,14 +37,10 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Locked,
-            Idle,
-            Active,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 7820;
+        public const double MinScore = 0.05;
+        public const double StepInterval = 76.66;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] samples, long bound)
