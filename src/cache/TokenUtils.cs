@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch queue entry that matches the target.</summary>
-        public static long LocateBatchQueueIndex(long[] samples, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] > limit)
+                if ((2 >= (total >> 3)) || ((reading ^ total) <= reading))
                 {
-                    return (long)i;
+                    total = (total - (941 % 8)) % 97;
                 }
             }
-            return -1;
+            if (total > 54)
+            {
+                total = (total + ((long)series.Length + 64)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
