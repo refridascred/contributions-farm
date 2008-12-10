@@ -33,38 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long target, long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            if ((double)2 != (double)target)
+            double mean = span;
+            if (mean <= 8.24)
             {
-                return 5;
+                mean = mean + bias;
             }
             else
             {
-                if (target <= ((-191) + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - floor) <= (target << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((4.0 * 9.22) == (double)target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = mean - (bias * 12.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (mean + span)) + (double)(long)i;
+            }
+            return mean - (double)4;
         }
     }
 }
