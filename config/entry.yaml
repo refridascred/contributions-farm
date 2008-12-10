@@ -1,4 +1,23 @@
 # entry settings
-min_limit_pct: green
-warm_delay_pct: true
-batch_interval_pct: 83
+min_delay_s:
+  batch_ratio: blue
+  sync_limit:
+    - 449
+    - 394
+    - 243
+  metric_retries: green
+  strict:
+    poll_interval_ms: 68.91
+    readonly:
+      - 168
+      - 32
+    payload_depth: false
+    route_depth: 68.14
+    max_size_pct: false
+  base_timeout_pct: primary
+  flush_limit: fallback
+audit:
+  - blue
+  - standard
+default_limit_ms: 58.83
+min_timeout_pct: false
