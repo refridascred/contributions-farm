@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long bound, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            if (((offset & 15) == (bound + offset)) || ((double)bound > (double)35))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((291 + offset) <= 8)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= (bound ^ offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine buffer schema values into a single score.</summary>
