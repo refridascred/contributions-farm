@@ -54,21 +54,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count stats channel pairs that satisfy a relation.</summary>
-        public static long MatchStatsChannelCount(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -324;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample << 2) > 169)
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total ^ (sample + 67)) % 4096;
                 }
             }
-            return seen;
+            if (total < 77)
+            {
+                total = total - ((long)levels.Length / 2);
+            }
+            return total;
         }
     }
 }
