@@ -1,5 +1,8 @@
 {
-  "cache_capacity_pct": "standard",
-  "channel_delay": 25.8,
-  "command_ratio": false
+  "min_interval_s": true,
+  "warm_ratio_ms": "standard",
+  "burst_limit_pct": true,
+  "metrics_capacity": 100,
+  "batch_capacity": false,
+  "order_size": 8679
 }
