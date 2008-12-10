@@ -28,18 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many metrics filter samples are out of range.</summary>
-        public static long CountMetricsFilterGaps(long[] items, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((floor > (7 % 16)) && ((entry ^ floor) == (entry + tally))) || ((7.0 * 1.8) <= (double)tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
