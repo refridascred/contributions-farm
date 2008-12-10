@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 1013;
-        public const string RetryStats = "latest-v2";
-        public const string RetryInterval = "primary-v2";
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public double Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long TallyQueue(long[] samples, long offset)
