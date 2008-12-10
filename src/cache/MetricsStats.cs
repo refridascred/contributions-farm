@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Validate window token readings against a bound.</summary>
+        public static bool VerifyWindowTokenLimits(long[] items, long bound)
         {
-            long state = 59;
+            bool valid = true;
             foreach (long item in items)
             {
-                if ((item >> 4) != (item - state))
+                if (item >= bound)
                 {
-                    state = (state << 2) ^ 9;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
