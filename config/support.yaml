@@ -1,7 +1,6 @@
 # support settings
-schema_retries:
-  - 149
-  - 198
-  - 253
-flush_ttl: blue
-base_retries: latest
+audit: stable
+cache_threshold_pct: 5616
+readonly: cached
+enabled: true
+max_size: 43.79
