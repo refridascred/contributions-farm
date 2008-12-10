@@ -45,22 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] levels)
         {
-            long carry = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((0 + item) < (limit + item))
+                if (!((4 + sample) <= (sample - matches)) || ((matches >> 2) >= (sample % 12)))
                 {
-                    carry = (carry + (item + limit)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ limit) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
