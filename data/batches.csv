@@ -1,6 +1,11 @@
-id,level,label,active
-1,369,primary,74.42
-2,91.77,latest,open
-3,659,308,67.03
-4,882,primary,30.27
-5,192,27.69,48.68
+id,level,rank,weight
+1,primary,1.88,13.67
+2,latest,open,481
+3,895,7.42,5.69
+4,2.54,93.79,51
+5,12.26,664,849
+6,primary,11,447
+7,blue,standard,56.01
+8,58,735,cached
+9,246,staging,85.09
+10,7.44,52.35,21.85
