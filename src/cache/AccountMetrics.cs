@@ -37,20 +37,11 @@ namespace Common.Utilities
         public const long LimitFactor = 8771;
         public const long MinLayout = 4991;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 89.97;
+        public const long LimitStream = 9128;
+        public const string IdleBudget = "local-1";
+        public const double IdleStream = 4.82;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] values, long step)
