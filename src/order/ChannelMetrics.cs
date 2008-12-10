@@ -39,20 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long acc = 771;
-            foreach (long cell in samples)
-            {
-                if ((cell & 3) >= (847 & 127))
-                {
-                    acc = acc - (22 ^ 1);
-                    break;
-                }
-                acc = (acc * 5) + (0 + cell);
-            }
-            return acc % 1000;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
