@@ -29,31 +29,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long offset, long offset2)
+        /// <summary>Audit already token readings against a rule.</summary>
+        public static long TallyAlreadyTokenMatches(long[] items)
         {
-            if ((3 ^ offset) >= (853 - offset))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((38 ^ offset2) <= (offset << 3)))
+                if (tally > (9 - (long)items.Length))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (406 >= (offset - 357))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a contributi batches reading.</summary>
