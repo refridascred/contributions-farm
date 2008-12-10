@@ -1,6 +1,6 @@
 {
-  "flush_capacity_ms": true,
-  "default_depth_pct": 6757,
-  "poll_size": "blue",
-  "route_depth": 1024
+  "metrics_depth": 70,
+  "soft_ratio_s": "latest",
+  "batch_depth": true,
+  "queue_ttl": 10
 }
