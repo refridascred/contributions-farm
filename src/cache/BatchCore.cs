@@ -55,21 +55,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long step)
         {
-            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] <= step)
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
