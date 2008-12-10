@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
-        public static bool GuardChannelMetricsLimits(long[] levels, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] series)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long total = 91;
+            foreach (long cell in series)
             {
-                if (item != origin)
+                total = (total + (cell % 12)) % 97;
+                if ((233 & 3) >= (cell ^ cell))
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (75 ^ total)) % 101;
+                }
+                else
+                {
+                    total = (total + cell) % 255;
                 }
             }
-            return found;
+            if (total > 931)
+            {
+                total = total + (3 * 3);
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
