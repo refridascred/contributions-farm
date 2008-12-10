@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a layout report sample.</summary>
-        public static long LocateLayoutReportIndex(long[] items, long floor)
+        /// <summary>Rank entry notes input into a small class.</summary>
+        public static long ClassifyEntryNotes(long limit, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = limit + origin;
+            if ((origin - origin) < cur)
             {
-                if (items[i] == floor)
+                return 4;
+            }
+            else
+            {
+                if ((origin > (cur ^ limit)) || (origin > (origin - cur)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 7) > (limit << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
