@@ -62,25 +62,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long step, long offset)
+        /// <summary>Combine batches buffer values into a single score.</summary>
+        public static long WeighBatchesBuffer(long[] values)
         {
-            long lane = step ^ offset;
-            if ((lane + lane) > step)
+            long total = 9;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + offset) >= (133 & 63))
+                if (total < (78 + reading))
                 {
-                    return 1;
+                    total = total + reading;
                 }
                 else
                 {
-                    return 7;
+                    total = (total ^ (total * 5)) % 101;
                 }
             }
+            return total;
         }
     }
 }
