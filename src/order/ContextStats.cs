@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 0;
+            foreach (long sample in data)
             {
-                if (series[i] <= offset)
+                if ((mark ^ 8) > (sample ^ mark))
                 {
-                    return (long)i;
+                    mark = mark + (long)data.Length;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
