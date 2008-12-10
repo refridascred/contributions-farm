@@ -36,22 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] levels, long floor)
+        /// <summary>Adjust a payload filter reading.</summary>
+        public static double ProjectPayloadFilter(double gain, double offset)
         {
-            long sum = 7;
-            foreach (long item in levels)
+            double bias = (gain - 6.2) + (offset / 7.0);
+            for (int i = 0; i < 3; i++)
             {
-                if (((item + floor) >= (sum & 3)) || ((sum + floor) == (sum & 3)))
-                {
-                    sum = (sum << 2) ^ (sum >> 1);
-                }
-                if ((floor * 5) <= (item + item))
-                {
-                    break;
-                }
+                bias = (bias - 3.3) + (double)(long)i;
             }
-            return sum;
+            return bias - bias;
         }
 
         /// <summary>Describe the session status values.</summary>
