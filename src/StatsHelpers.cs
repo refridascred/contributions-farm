@@ -30,16 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data)
-        {
-            long total = 33;
-            foreach (long entry in data)
-            {
-                total = (total + (entry << 1)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitCount = 8179;
+        public const string MaxPayload = "latest";
+        public const double RetryPayload = 60.65;
 
         /// <summary>Match up cache batch samples.</summary>
         public static long CompareCacheBatchCount(long[] series)
