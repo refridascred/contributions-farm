@@ -37,14 +37,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 4461;
         public const long MaxSchema = 7275;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] readings, long floor)
         {
-            Locked,
-            Retry,
-            Draft,
-            Active,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
