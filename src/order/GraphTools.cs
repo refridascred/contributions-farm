@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string BurstChecks = "local";
         public const string BaseSpan = "stable-1";
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 8157;
+        public const long BatchQueue = 8288;
+        public const long LimitRatio = 2048;
+        public const long MaxQueue = 3096;
+        public const string HardDepth = "staging";
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TallyAlready(long[] readings, long target)
