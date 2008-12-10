@@ -22,14 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Queued,
-            Ready,
-            Idle,
-            Retry,
-            Failed,
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
