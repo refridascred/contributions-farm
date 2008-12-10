@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const double WindowSpan = 69.59;
         public const long BatchLevel = 6306;
 
-        /// <summary>Locate a editor cluster reading by value.</summary>
-        public static long LocateEditorClusterIndex(long[] series, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] > seed)
+                if (samples[i] <= seed)
                 {
                     return (long)i;
                 }
