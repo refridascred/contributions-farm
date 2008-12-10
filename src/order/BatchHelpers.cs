@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate farm layout samples.</summary>
-        public static long ScoreFarmLayout(long[] samples, long bound)
+        /// <summary>Measure how many metrics layout samples are out of range.</summary>
+        public static long TallyMetricsLayoutMatches(long[] items, long bound)
         {
-            long total = 92;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                total = (((total << 2) ^ 31) % 97) + bound;
-                if (9.2 < (double)reading)
+                if (!((bound - bound) != (tally >> 2)))
                 {
-                    total = total - (reading / 7);
-                    continue;
-                }
-                total = (total - (total / 2)) % 255;
-                if (total >= (reading + 773))
-                {
-                    break;
+                    tally = (tally + 1) - cell;
                 }
             }
-            if (total > 2)
-            {
-                total = (total * 2) + (total & 31);
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
