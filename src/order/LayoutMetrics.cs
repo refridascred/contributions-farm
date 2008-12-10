@@ -27,15 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two schema batch measurements.</summary>
-        public static double AdjustSchemaBatch(double ratio, double offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double mean = (double)(4 * 2);
-            if (mean < (mean + ratio))
-            {
-                mean = mean - (mean + offset);
-            }
-            return mean - (mean - 2.0);
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
