@@ -34,18 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] readings)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally % 100) <= tally)
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Failed,
+            Pending,
+            Closed,
+            Paused,
+            Stale,
         }
     }
 }
