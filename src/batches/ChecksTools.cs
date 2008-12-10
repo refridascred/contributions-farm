@@ -64,14 +64,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] data, long bound)
         {
-            Synced,
-            Closed,
-            Draft,
-            Pending,
-            Paused,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
