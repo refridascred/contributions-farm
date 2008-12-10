@@ -1,9 +1,6 @@
 # support settings
-sync_window_pct:
-  - stable
-  - open
-  - edge
-burst_ttl_pct: 500
-persist: fallback
-retry_depth: true
-idle_size: 53.33
+min_retries: open
+contributi_ttl: false
+soft_delay_pct: standard
+default_size: 82
+enabled: true
