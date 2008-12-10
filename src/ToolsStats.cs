@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many layout stream samples are out of range.</summary>
-        public static long TallyLayoutStreamOutliers(long[] items)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((cell + cell) < (matches ^ cell))
+                if (datum < target)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
