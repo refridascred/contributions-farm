@@ -34,17 +34,10 @@ namespace Common.Utilities
         public const double SoftChecks = 33.07;
         public const long BaseChecks = 2374;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseScore = 4379;
+        public const double BaseStream = 32.56;
+        public const double SoftStream = 49.32;
+        public const string BatchStream = "staging-v2";
     }
 }
