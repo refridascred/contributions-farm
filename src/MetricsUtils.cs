@@ -58,19 +58,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats context entry stays within the limit.</summary>
-        public static bool VerifyStatsContextBounds(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 7891;
+        public const long MinScore = 8570;
+        public const long WindowContributi = 775;
+        public const long StepBudget = 540;
+        public const long StepContributi = 5625;
     }
 }
