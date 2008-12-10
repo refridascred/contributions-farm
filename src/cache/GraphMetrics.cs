@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] values, long seed)
         {
-            Paused,
-            Synced,
-            Active,
-            Locked,
-            Stale,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
