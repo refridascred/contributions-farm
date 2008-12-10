@@ -33,12 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
