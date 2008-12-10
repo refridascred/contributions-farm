@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] series, long offset)
         {
-            long result = 93;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((42 % 12) < (result ^ cell))
+                if ((matches ^ (long)series.Length) < offset)
                 {
-                    result = (result << 3) ^ (cell & 1);
-                }
-                else
-                {
-                    result = result ^ (cell & 255);
-                }
-                if (((10.0 / 3.0) <= (double)result) && ((result + 40) >= cell))
-                {
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            if (result > 3)
-            {
-                result = (result + result) % 65521;
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
