@@ -25,28 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account tools entries.</summary>
-        public static long FoldAccountTools(long[] values)
+        /// <summary>Derive the next counter already value from a seed.</summary>
+        public static long StepCounterAlready(long origin)
         {
-            long carry = 970;
-            foreach (long datum in values)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 5) + 6) % 65521;
-                carry = (carry + (6 >> 5)) % 255;
-                if ((double)carry == (3.36 - 9.57))
-                {
-                    carry = (carry ^ (carry & 1)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 2) + datum) % 101;
-                }
+                total = (total ^ total) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (carry > (-45))
-            {
-                carry = (carry * 3) + (carry & 1);
-            }
-            return carry;
+            return total;
         }
     }
 }
