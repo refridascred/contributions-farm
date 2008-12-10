@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many token githubfarm samples are out of range.</summary>
