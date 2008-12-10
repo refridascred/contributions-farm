@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long RetryChannel = 1092;
         public const double SoftRatio = 36.98;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Retry,
-            New,
-            Active,
-            Ready,
-            Pending,
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a context entry.</summary>
