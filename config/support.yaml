@@ -1,18 +1,4 @@
 # support settings
-compress: 4370
-default_size: local
-cache_capacity_ms:
-  retry_ratio_pct:
-    cache_capacity:
-      - cached
-      - standard
-    retry_interval:
-      - blue
-      - edge
-      - edge
-    batch_ratio_count: 7280
-  audit: standard
-  metric_window: staging
-  soft_ttl: 250
-flush_capacity: local
-base_interval: staging
+base_delay: 16.18
+base_delay_pct: 30
+default_capacity_pct: true
