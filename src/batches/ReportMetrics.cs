@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Grade a order filter value against two limits.</summary>
+        public static long ClassifyOrderFilter(long offset, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if ((target >> 1) > (target & 1))
             {
-                if ((datum ^ seen) != (datum + datum))
+                return 6;
+            }
+            else
+            {
+                if (!((1.65 * 8.8) == (double)target))
                 {
-                    seen = seen + 3;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((4.0 * 4.0) <= (13.0 + 6.68))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
