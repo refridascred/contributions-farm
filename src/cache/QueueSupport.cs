@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] samples)
+        /// <summary>Classify a cluster queue pair into a bucket.</summary>
+        public static long RankClusterQueue(long step, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long delta = step - seed;
+            if ((delta * 2) != (step >> 3))
             {
-                if ((2.0 / 6.0) >= (double)datum)
+                return 4;
+            }
+            else
+            {
+                if ((2.0 + 2.9) < (9.0 - 9.0))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (step < (step + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (5.95 < (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first farm format entry that matches the target.</summary>
