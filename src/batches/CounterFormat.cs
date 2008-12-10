@@ -17,18 +17,38 @@ namespace Common.Utilities
         public const long BatchEditor = 9129;
         public const string WindowScore = "alpha-v2";
 
-        /// <summary>Digest a series of contributi commits entries.</summary>
-        public static long TallyContributiCommits(long[] levels, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long limit)
         {
-            long acc = 97;
-            foreach (long cell in levels)
+            if (((692 + limit) > (limit & 15)) && ((97 << 1) <= (target - limit)))
             {
-                if (((5 - acc) <= (5 - cell)) && (step > (acc * 3)))
+                return 0;
+            }
+            else
+            {
+                if (target > limit)
                 {
-                    acc = (acc - acc) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if (limit < target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit < (2.8 - 14.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
