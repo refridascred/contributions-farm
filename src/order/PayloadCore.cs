@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long floor)
+        /// <summary>Blend two queue record measurements.</summary>
+        public static double ScaleQueueRecord(double rate, double floor)
         {
-            long span = bound + floor;
-            if ((6.28 - 3.71) >= (4.27 / 8.0))
+            double gain = floor;
+            if (gain < (double)3)
             {
-                return 8;
+                gain = (gain + floor) - rate;
             }
-            else
-            {
-                if (((double)floor >= (0.1 + 1.0)) || ((4.44 + 9.3) < (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.56 - 5.09) != (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span + bound) > (floor ^ span))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return gain + 3.07;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
