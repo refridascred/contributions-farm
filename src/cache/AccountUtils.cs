@@ -13,19 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset - mark) <= 865)
+                if ((data[i] >= seed) && ((data[i] % 2) == 0))
                 {
-                    mark = (mark ^ (offset - (long)i)) % 65521;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of context report entries.</summary>
