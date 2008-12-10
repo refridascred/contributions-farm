@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command commits counter forward.</summary>
-        public static long IterateCommandCommits(long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                sum = (sum + (346 >> 4)) % 255;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
