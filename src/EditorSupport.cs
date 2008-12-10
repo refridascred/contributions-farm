@@ -73,17 +73,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] readings, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] > floor)
+                if (((double)sample < (8.11 - 3.5)) || ((double)sample < (3.75 / 3.0)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
