@@ -1,5 +1,7 @@
 {
-  "dry_run": 2244,
-  "cache_window": 500,
-  "contributi_size": ["cached", "local"]
+  "audit": ["cached", "latest"],
+  "editor_timeout": 1042,
+  "idle_retries_s": 7629,
+  "persist": 24.63,
+  "strict": "fallback"
 }
