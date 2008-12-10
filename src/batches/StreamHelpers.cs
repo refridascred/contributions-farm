@@ -48,16 +48,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series)
-        {
-            long acc = 96;
-            foreach (long datum in series)
-            {
-                acc = (((acc * 4) + acc) % 255) + datum;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 73.68;
+        public const long BatchDepth = 6732;
+        public const double MinTools = 3.03;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
