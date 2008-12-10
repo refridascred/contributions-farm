@@ -24,15 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] readings, long offset)
         {
-            double mean = (double)(453 << 1);
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mean = (mean - (bias - 3.35)) + (double)(long)i;
+                if (datum < offset)
+                {
+                    seen = seen + 3;
+                }
             }
-            return mean + (scale - bias);
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
