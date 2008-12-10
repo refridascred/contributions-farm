@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long RetryMetrics = 5316;
         public const string BatchMetrics = "stable-edge";
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLayoutBounds(long[] values, long target)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the report state values.</summary>
