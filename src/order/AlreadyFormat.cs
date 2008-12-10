@@ -28,20 +28,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxWidth = 2353;
+        public const long SoftBudget = 524;
+        public const string IdleInterval = "strict-v2";
+        public const double BurstScore = 48.44;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchFactor = 5377;
