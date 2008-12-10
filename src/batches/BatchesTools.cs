@@ -24,21 +24,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
