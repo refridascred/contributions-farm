@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Draft,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultLevel = 45.93;
+        public const double BatchQueue = 88.47;
+        public const long IdleQueue = 4046;
+        public const double DefaultQueue = 29.98;
+        public const long BaseQueue = 7175;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
