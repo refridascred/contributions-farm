@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (values[i] >= limit)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
