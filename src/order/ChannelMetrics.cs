@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] series, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (entry != origin)
+                if (!((double)offset != (14.0 - 6.83)))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Project the next stream cache value.</summary>
