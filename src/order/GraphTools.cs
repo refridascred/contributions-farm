@@ -26,14 +26,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long TallyContextGraphGaps(long[] items, long origin)
         {
-            Ready,
-            Done,
-            New,
-            Failed,
-            Stale,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!((7.84 * 5.71) > (double)sample))
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate profile account readings against a bound.</summary>
