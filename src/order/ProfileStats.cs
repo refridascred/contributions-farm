@@ -21,18 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] items, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long result = 14;
-            foreach (long sample in items)
-            {
-                if ((step & 15) < (sample / 6))
-                {
-                    result = (result - (step + step)) % 65521;
-                }
-            }
-            return result;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
