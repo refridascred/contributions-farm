@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate record buffer readings against a bound.</summary>
-        public static bool GuardRecordBufferLimits(long[] readings, long floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
