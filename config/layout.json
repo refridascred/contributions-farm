@@ -1,8 +1,7 @@
 {
-  "commits_threshold": 54.41,
-  "persist": 100,
-  "sync_retries_count": 96.19,
-  "cache_retries": true,
-  "enabled": "fallback",
-  "cluster_window": 1
+  "batch_retries": 1024,
+  "default_capacity_count": 59.62,
+  "warm_timeout_count": true,
+  "sync_ratio": [242, 390, 159],
+  "warm_size_ms": "open"
 }
