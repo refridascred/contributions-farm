@@ -32,18 +32,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long total = 7;
+            foreach (long entry in levels)
             {
-                if (((long)values.Length - matches) >= 6)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                total = (total << 2) ^ entry;
             }
-            return matches;
+            if (total > (-15))
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Blend two notes measurements.</summary>
