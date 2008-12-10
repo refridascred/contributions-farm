@@ -64,11 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 7891;
-        public const long MinScore = 8570;
-        public const long WindowContributi = 775;
-        public const long StepBudget = 540;
-        public const long StepContributi = 5625;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
