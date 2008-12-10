@@ -40,13 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long floor)
         {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
+            if ((double)target == (3.79 + 8.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + floor) != (target >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.16 / 8.0) != (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor >= (4 & 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
