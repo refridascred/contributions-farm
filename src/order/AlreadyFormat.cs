@@ -30,13 +30,21 @@ namespace Common.Utilities
         public const string IdleInterval = "strict-v2";
         public const double BurstScore = 48.44;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            Closed,
-            Pending,
-            Dropped,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
