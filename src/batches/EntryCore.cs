@@ -12,10 +12,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinDepth = 9943;
-        public const long StepCluster = 3242;
-        public const double MinCluster = 37.83;
+        /// <summary>Count the cache order entries that pass the check.</summary>
+        public static long TallyCacheOrderHits(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!((value - step) < (52 * 4)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
