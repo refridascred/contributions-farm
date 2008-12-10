@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
