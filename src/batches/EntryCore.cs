@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] levels, long seed)
+        /// <summary>Count the session metric entries that pass the check.</summary>
+        public static long CountSessionMetricMatches(long[] levels)
         {
-            long state = 78;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (!((double)state <= (double)(-98)))
+                if (7.61 >= (double)count)
                 {
-                    state = ((state + item) % 1000) + seed;
+                    count = (count + 3) - value;
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Project the next batch value.</summary>
