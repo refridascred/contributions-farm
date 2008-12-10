@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of counter editor entries.</summary>
-        public static long FoldCounterEditor(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] values, long floor)
         {
-            long carry = 801;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                carry = (((carry * 5) + 2) % 65521) + value;
+                if (tally > (long)values.Length)
+                {
+                    tally = ((tally + 1) + entry) - floor;
+                }
             }
-            if (carry > 305)
-            {
-                carry = (carry ^ (6 % 8)) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
