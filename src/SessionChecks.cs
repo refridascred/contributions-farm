@@ -16,22 +16,11 @@ namespace Common.Utilities
             return gain - (rate - bias);
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardRatio = 871;
+        public const long BaseInterval = 3451;
+        public const long BurstSpan = 210;
+        public const double MinRatio = 20.29;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double gain, double offset)
