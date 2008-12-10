@@ -42,15 +42,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double bias)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double rate = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate + rate) + (double)(long)i) - weight;
-            }
-            return rate - (bias * 1.0);
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
