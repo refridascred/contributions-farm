@@ -19,30 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long total = 342;
-            foreach (long datum in series)
-            {
-                if (!((double)datum <= (0.71 + 3.12)))
-                {
-                    total = (total ^ (datum - total)) % 97;
-                }
-                if ((511 % 24) == (745 - total))
-                {
-                    total = total - (datum + 261);
-                }
-                if (((double)total != (7.82 - 10.0)) && ((datum + 638) == (total % 60)))
-                {
-                    break;
-                }
-            }
-            if (total > 60)
-            {
-                total = ((total * 4) + (total >> 3)) % 1000;
-            }
-            return total % 97;
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
