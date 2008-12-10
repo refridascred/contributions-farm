@@ -32,22 +32,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long TallyContextGraphGaps(long[] items, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((7.84 * 5.71) > (double)sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a schema stats.</summary>
