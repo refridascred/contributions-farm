@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Classify a batches counter pair into a bucket.</summary>
+        public static long BucketBatchesCounter(long origin, long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long lane = origin - bound;
+            if (!(3 > (lane % 97)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((lane / 4) == (lane ^ lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((6.91 + 8.59) == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - lane) <= 97)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up counter already samples.</summary>
