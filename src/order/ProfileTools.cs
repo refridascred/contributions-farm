@@ -39,31 +39,18 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Classify a route profile pair into a bucket.</summary>
-        public static long SortRouteProfile(long target, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] readings, long target)
         {
-            if (seed > (seed - target))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (12.0 * 5.0))
+                if ((double)sample > (9.7 + 9.7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target >= (6.5 + 8.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 3) - target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
