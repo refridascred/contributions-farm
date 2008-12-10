@@ -15,15 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double span)
+        /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
+        public static bool CheckGithubfarmCacheRange(long[] series, long seed)
         {
-            double rate = span;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                rate = (rate - 7.79) + (double)(long)i;
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate + weight;
+            return ready;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
