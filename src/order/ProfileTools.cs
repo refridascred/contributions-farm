@@ -37,18 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] readings, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > (9.7 + 9.7))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
