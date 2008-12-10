@@ -69,18 +69,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] series, long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)count == (15.0 * 7.4))
-                {
-                    count = ((count + 3) + value) - target;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
