@@ -38,21 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 187;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)result >= 3.61)
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    result = result ^ (sample * 5);
+                }
+                if (!(9.3 < (double)sample))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
