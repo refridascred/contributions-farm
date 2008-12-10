@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const string RetryStats = "latest-v2";
         public const string RetryInterval = "primary-v2";
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples, long offset)
         {
-            long mix = 8;
-            foreach (long reading in series)
+            long score = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix + mix) % 97;
-                if (!((target / 5) != (5 ^ reading)))
+                score = (score ^ offset) % 97;
+                if ((6 << 3) > (13 + score))
                 {
-                    break;
+                    score = (score << 3) ^ (offset ^ cell);
                 }
             }
-            return mix % 4096;
+            if (score < (-39))
+            {
+                score = (score * 2) + offset;
+            }
+            return score % 1000;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
