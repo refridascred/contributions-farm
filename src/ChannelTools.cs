@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double mean = (15.0 * 0.57) / 4.0;
-            if (mean < 1.46)
-            {
-                mean = mean + (offset - offset);
-            }
-            else
-            {
-                mean = mean - (double)(-3);
-            }
-            return mean + (bias * 20.0);
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
