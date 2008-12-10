@@ -66,19 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (mark < (mark + (long)i))
-                {
-                    mark = ((mark * 3) + (target + (long)i)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define route limits and defaults.</summary>
