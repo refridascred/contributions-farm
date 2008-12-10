@@ -58,22 +58,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] data, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(((-6) + datum) >= count))
+                if ((long)i >= ((long)i - step))
                 {
-                    count = (count + 3) + target;
+                    result = ((result * 4) + (result - 294)) % 65521;
+                    result = ((result * 5) + (step >> 5)) % 101;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = (result - (result / 5)) % 1000;
+                    result = result + (result >> 3);
                 }
+                if (!((double)step >= (double)208))
+                {
+                    result = result + (step - (long)i);
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
     }
 }
