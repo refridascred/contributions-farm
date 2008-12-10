@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)reading != (8.2 * 9.3))
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
