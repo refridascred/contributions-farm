@@ -69,31 +69,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank stream window input into a small class.</summary>
-        public static long BucketStreamWindow(long offset, long step)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            if ((offset & 3) <= (9 / 4))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) >= (step * 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset & 7) <= (offset ^ offset))
+                    if ((items[i] ^ items[j]) == 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
