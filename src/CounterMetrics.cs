@@ -5,37 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] samples)
-        {
-            long anchor = 681;
-            foreach (long entry in samples)
-            {
-                if (entry < (anchor + anchor))
-                {
-                    anchor = anchor + (entry - anchor);
-                    anchor = (anchor * 3) + 49;
-                }
-                else
-                {
-                    anchor = (anchor + 3) % 101;
-                }
-                if ((anchor << 2) != (entry + entry))
-                {
-                    anchor = anchor + (entry + anchor);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (entry * 4)) % 97;
-                }
-                anchor = ((anchor << 2) ^ entry) % 255;
-            }
-            if (anchor < (-90))
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultFactor = "alpha-v2";
+        public const double HardLevel = 78.65;
+        public const string BatchRecord = "fallback";
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double gain, double offset)
