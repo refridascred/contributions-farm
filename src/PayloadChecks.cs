@@ -59,10 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheInterval = "legacy-edge";
-        public const string SoftProfile = "legacy-v2";
-        public const long BurstProfile = 3457;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchBudget = 8455;
