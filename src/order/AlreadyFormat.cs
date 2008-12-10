@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double ratio, double floor)
-        {
-            double mean = (double)(6 ^ 0);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (((mean - (double)215) + (double)(long)i) + ratio) - floor;
-            }
-            return mean + (double)403;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 7330;
+        public const double DefaultAccount = 93.93;
+        public const long MinCount = 4174;
+        public const long RetryAccount = 627;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowSize = 15.55;
