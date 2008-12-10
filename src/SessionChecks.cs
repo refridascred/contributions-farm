@@ -22,23 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double gain, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] data)
         {
-            double mean = 1.0;
-            if (mean > (double)6)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mean = mean - (7.0 - mean);
+                if ((double)matches >= 5.8)
+                {
+                    matches = (matches + 1) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                mean = mean + (gain - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (gain - bias)) - (double)(long)i;
-            }
-            return mean + mean;
+            return matches;
         }
 
         /// <summary>Look up the position of a contributi tools sample.</summary>
