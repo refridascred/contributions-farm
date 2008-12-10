@@ -30,10 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleCount = 785;
-        public const long LimitSpan = 5725;
-        public const string BatchInterval = "standard";
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Failed,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Match up cache batch samples.</summary>
         public static long CompareCacheBatchCount(long[] series)
