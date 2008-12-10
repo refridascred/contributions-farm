@@ -1,13 +1,12 @@
 {
-  "burst_size_pct": "cached",
-  "report_window": {
-    "cluster_interval": 76,
-    "compress": true,
-    "buffer_timeout": 3058,
-    "poll_ratio_count": "edge",
-    "poll_limit": 33
+  "flush_size": 64,
+  "flush_capacity_s": {
+    "min_capacity_s": ["latest", "blue", "eu-west"],
+    "profile_ttl": 5.31,
+    "format_delay": 88
   },
-  "format_window": 47.25,
-  "account_retries": 250,
-  "contributi_limit": 3814
+  "layout_timeout": 3772,
+  "cache_threshold": "edge",
+  "strict": 77,
+  "burst_size": "standard"
 }
