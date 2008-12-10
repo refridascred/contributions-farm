@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already order readings.</summary>
-        public static long ScoreAlreadyOrder(long[] items, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] levels, long seed)
         {
-            long mix = 68;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step ^ 147) < (reading + step))
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
-                    mix = mix - 1;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Describe the filter kind values.</summary>
