@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double gain, double offset)
-        {
-            double drift = 1.0;
-            if (drift < offset)
-            {
-                drift = (drift - (double)54) - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift / 7.0)) + (double)(long)i;
-            }
-            return drift - (offset / 7.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxSpan = 25.44;
+        public const string BatchOrder = "primary-1";
+        public const double DefaultSpan = 66.7;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] values, long origin)
