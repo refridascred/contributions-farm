@@ -42,21 +42,17 @@ namespace Common.Utilities
         public const long IdleRatio = 84;
         public const long MinFarm = 4032;
 
-        /// <summary>Count session profile pairs that satisfy a relation.</summary>
-        public static long OverlapSessionProfileCount(long[] series)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
