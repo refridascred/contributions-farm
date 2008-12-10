@@ -44,19 +44,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double drift = 5.4;
-            if (drift >= (drift - weight))
-            {
-                drift = (drift + (double)9) + bias;
-            }
-            else
-            {
-                drift = drift - 9.0;
-            }
-            return drift - weight;
+            Queued,
+            Closed,
+            Failed,
+            New,
+            Retry,
         }
     }
 }
