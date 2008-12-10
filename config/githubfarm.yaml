@@ -1,8 +1,15 @@
 # githubfarm settings
-burst_window:
-  - 88
-  - 289
-  - 282
-sync_interval: 28
-graph_delay: cached
-min_delay_s: 100
+stream_size: strict
+soft_limit: 20.88
+max_ttl_s:
+  poll_depth_pct:
+    - local
+    - fallback
+  warm_interval_pct: green
+  enabled: 74
+  retry_limit_count:
+    - legacy
+    - eu-west
+  cache_ratio: 61
+  cache_depth: false
+cache_timeout_s: 5923
