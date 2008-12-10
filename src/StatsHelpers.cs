@@ -25,12 +25,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleCount = 785;
+        public const long LimitSpan = 5725;
+        public const string BatchInterval = "standard";
 
         /// <summary>Match up cache batch samples.</summary>
         public static long CompareCacheBatchCount(long[] series)
