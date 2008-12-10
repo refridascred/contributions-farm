@@ -23,14 +23,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Draft,
-            Closed,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 2044;
+        public const double LimitSize = 37.65;
+        public const long DefaultFarm = 5564;
+        public const long StepFarm = 7337;
+        public const long HardFarm = 521;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
