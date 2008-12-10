@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 4072;
-        public const double BatchBudget = 62.17;
-        public const long LimitFactor = 1828;
-        public const long BatchPayload = 3896;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((-492) <= reading) && (((matches + 990) == (matches ^ reading)) && ((double)reading != (double)32)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long StepFilter(long offset)
