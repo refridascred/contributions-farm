@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double span)
+        /// <summary>Rank cache token input into a small class.</summary>
+        public static long BucketCacheToken(long limit, long origin)
         {
-            double gain = span / 5.0;
-            if (gain >= (span * 2.9))
+            if ((origin % 100) <= (origin % 5))
             {
-                gain = gain + (weight * 6.0);
+                return 3;
             }
             else
             {
-                gain = gain + weight;
+                if ((limit << 2) <= (limit & 255))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 15) <= (origin & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return gain - (weight + weight);
         }
 
         /// <summary>Audit filter token readings against a rule.</summary>
