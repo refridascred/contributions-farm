@@ -19,19 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long limit, long seed)
         {
-            double ratio = (double)(75 + 3);
-            if (ratio >= ratio)
+            if ((seed - limit) < (limit - 387))
             {
-                ratio = ratio - ratio;
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio = (ratio + weight) - (double)(long)i;
+                if (((double)4 == (double)limit) && ((1 + limit) > (limit / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(2.0 <= (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit == (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return ratio - offset;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
