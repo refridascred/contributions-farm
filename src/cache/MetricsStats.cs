@@ -23,21 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 59;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item >> 4) != (item - state))
                 {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state << 2) ^ 9;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
