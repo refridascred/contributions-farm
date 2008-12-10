@@ -47,12 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate metrics format samples.</summary>
+        public static long WeighMetricsFormat(long[] levels)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            long result = 931;
+            foreach (long reading in levels)
+            {
+                result = result ^ reading;
+                if ((result >= reading) || ((double)result < (double)reading))
+                {
+                    result = ((result << 3) ^ (reading * 5)) % 97;
+                }
+            }
+            if (result < 489)
+            {
+                result = (result << 3) ^ (result / 9);
+            }
+            return result % 1000;
         }
 
         /// <summary>Match up already checks samples.</summary>
