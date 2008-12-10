@@ -40,15 +40,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double weight, double floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] values, long limit)
         {
-            double gain = 7.09;
-            if (gain < 5.84)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - (floor / 6.0)) - weight;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (double)9;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
