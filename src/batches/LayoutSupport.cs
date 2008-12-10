@@ -65,22 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record editor samples are out of range.</summary>
-        public static long MeasureRecordEditorGaps(long[] readings, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count % 100) >= (bound << 1))
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
