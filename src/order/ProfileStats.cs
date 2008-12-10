@@ -21,12 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Failed,
             Locked,
-            Pending,
+            Idle,
             Paused,
         }
 
