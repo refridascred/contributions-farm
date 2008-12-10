@@ -66,20 +66,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate format cache samples.</summary>
-        public static long FoldFormatCache(long[] items)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long limit)
         {
-            long anchor = -3;
+            bool ready = true;
             foreach (long cell in items)
             {
-                anchor = (anchor ^ (cell >> 1)) % 4096;
-                anchor = anchor + (364 ^ anchor);
-                if (!((cell * 2) != (anchor >> 3)))
+                if (cell >= limit)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return anchor;
+            return ready;
         }
     }
 }
