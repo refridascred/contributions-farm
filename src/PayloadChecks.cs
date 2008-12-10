@@ -19,19 +19,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] data, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long target, long target2)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            if ((43 + (-5)) >= (target2 % 8))
             {
-                if (sample < origin)
+                return 7;
+            }
+            else
+            {
+                if (!((target2 * 3) > (target2 + target2)))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
