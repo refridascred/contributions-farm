@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] values, long seed)
         {
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
