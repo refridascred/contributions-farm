@@ -55,18 +55,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] readings)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long prev = limit - origin;
+            if ((double)prev <= 5.66)
             {
-                if (entry <= matches)
+                return 8;
+            }
+            else
+            {
+                if (((prev << 3) < (582 + origin)) && ((8.58 + 4.0) >= (double)limit))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin != (18.0 + 9.3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((7.3 + 3.8) > (double)limit) && ((origin * 2) != (prev & 1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a tools record.</summary>
