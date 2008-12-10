@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double gain2 = (double)(412 + 0);
+            return ((gain2 + 20.0) + gain) + offset;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
