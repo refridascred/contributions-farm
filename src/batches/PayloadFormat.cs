@@ -42,13 +42,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            New,
             Locked,
-            Closed,
-            Stale,
+            Synced,
+            Retry,
+            Pending,
         }
     }
 }
