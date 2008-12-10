@@ -26,20 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context report entries.</summary>
-        public static long TotalContextReport(long[] readings, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] readings)
         {
-            long score = 32;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                score = ((score * 5) + (seed * 3)) % 255;
-                score = (score + (reading / 3)) % 1000;
+                if ((double)value >= (3.38 * 6.2))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (score > 2)
-            {
-                score = (score * 3) + (587 + seed);
-            }
-            return score;
+            return tally;
         }
     }
 }
