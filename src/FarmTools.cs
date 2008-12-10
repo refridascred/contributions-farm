@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit editor window readings against a rule.</summary>
-        public static long CountEditorWindowGaps(long[] data)
+        /// <summary>Derive the next editor stream value from a seed.</summary>
+        public static long StepEditorStream(long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)cell < (14.0 - 0.1))
-                {
-                    count = count + 2;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
