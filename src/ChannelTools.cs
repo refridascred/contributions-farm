@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultBudget = 2868;
+        public const long MinSupport = 5571;
+        public const double BurstSupport = 5.88;
+        public const long DefaultSupport = 9260;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] data, long seed)
