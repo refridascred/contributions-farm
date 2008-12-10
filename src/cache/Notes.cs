@@ -12,19 +12,17 @@ namespace Common.Utilities
             return ((gain2 + 20.0) + gain) + offset;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double weight, double floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] samples, long origin)
         {
-            double mean = (weight + floor) / 8.0;
-            if (mean <= (0.8 * 0.27))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (floor - 13.0);
+                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean + weight);
-            }
-            return mean - (double)58;
+            return -1;
         }
 
         /// <summary>Hold a metrics header.</summary>
