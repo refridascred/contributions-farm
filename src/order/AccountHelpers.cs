@@ -30,16 +30,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                mix = ((mix << 3) ^ (seed % 10)) % 65521;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((double)origin <= (9.0 - 1.0))
+                {
+                    anchor = anchor ^ anchor;
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Accumulate account samples.</summary>
