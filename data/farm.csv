@@ -1,11 +1,6 @@
-id,owner,region,token,weight
-1,62.9,9.73,714,open
-2,latest,blue,176,0.65
-3,70.77,local,93.07,standard
-4,fallback,749,fallback,70.95
-5,76.45,670,87.96,86.18
-6,584,22.93,22.4,91.61
-7,stable,701,447,local
-8,20.66,cached,491,82.4
-9,31.63,primary,latest,435
-10,fallback,94.37,6.74,85.0
+id,level,ratio,score
+1,46.8,standard,95.49
+2,open,43.54,69.23
+3,primary,standard,49.31
+4,latest,575,green
+5,90.29,619,832
