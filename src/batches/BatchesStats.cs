@@ -46,16 +46,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a token route counter forward.</summary>
-        public static long IterateTokenRoute(long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mark = (mark ^ floor) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((seen + seen) < (98 - sample))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
