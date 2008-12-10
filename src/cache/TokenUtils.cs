@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a githubfarm profile counter forward.</summary>
-        public static long StepGithubfarmProfile(long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = -33;
+            foreach (long item in values)
             {
-                result = ((result << 3) ^ ((long)i / 5)) % 97;
-                if ((result ^ floor) != (result + result))
+                if ((item + item) > (long)values.Length)
                 {
-                    result = ((result * 5) + (result - result)) % 101;
-                    result = result - result;
+                    sum = sum - (target ^ sum);
                 }
-                result = ((result * 4) + (long)i) % 97;
+                else
+                {
+                    sum = (sum - (2 - 2)) % 255;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
