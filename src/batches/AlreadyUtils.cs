@@ -36,13 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Closed,
-            Active,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseSize = 35;
+        public const long IdleFactor = 8615;
+        public const long BatchCommand = 2817;
+        public const long RetryScore = 6523;
+        public const long IdleSpan = 2391;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] levels, long seed)
