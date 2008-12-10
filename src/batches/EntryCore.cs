@@ -37,24 +37,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double ratio, double offset)
-        {
-            double load = (double)14 / 4.0;
-            if (load < load)
-            {
-                load = (load - load) - ratio;
-            }
-            else
-            {
-                load = load - (double)(-6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (offset + load)) + (double)(long)i;
-            }
-            return load - (double)35;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 1939;
+        public const long IdleWindow = 1582;
+        public const long RetryWindow = 7002;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextGaps(long[] data, long bound)
