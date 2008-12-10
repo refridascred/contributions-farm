@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up farm graph samples.</summary>
-        public static long MatchFarmGraphCount(long[] values)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
