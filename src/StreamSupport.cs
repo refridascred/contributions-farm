@@ -22,23 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (((long)i >> 1) >= ((long)i - carry))
+                if (cell <= step)
                 {
-                    carry = (carry * 3) + (carry & 15);
+                    stale = false;
+                    break;
                 }
-                if ((double)(-9) >= (double)step)
-                {
-                    carry = ((carry * 4) + step) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
