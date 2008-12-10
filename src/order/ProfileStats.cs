@@ -36,11 +36,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 974;
-        public const long LimitTimeout = 2078;
-        public const long IdleSpan = 5647;
-        public const double MaxRatio = 19.2;
-        public const double SoftScore = 44.71;
+        /// <summary>Compare every pair of support format readings.</summary>
+        public static long MatchSupportFormatCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
