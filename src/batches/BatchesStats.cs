@@ -32,21 +32,32 @@ namespace Common.Utilities
         public const string DefaultContributi = "staging-v2";
         public const long HardWidth = 5966;
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Classify a report batches pair into a bucket.</summary>
+        public static long GradeReportBatches(long floor, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = floor ^ offset;
+            if (!((floor + (-98)) <= (diff * 3)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (offset < (diff - floor))
                 {
-                    if ((samples[i] - samples[j]) != 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor >= (5.0 + 8.0))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
