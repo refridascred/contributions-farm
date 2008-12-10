@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Closed,
-            Ready,
-            Draft,
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
