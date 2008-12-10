@@ -59,17 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Measure how many record editor samples are out of range.</summary>
+        public static long MeasureRecordEditorGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] >= bound)
+                if ((count % 100) >= (bound << 1))
                 {
-                    return (long)i;
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
