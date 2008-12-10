@@ -44,15 +44,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (((277 - sum) > sum) || ((4.3 - 1.0) <= (double)floor))
+                {
+                    sum = ((sum << 3) ^ floor) % 101;
+                }
+                if (!!(((long)i - 71) != (787 & 7)))
+                {
+                    sum = ((sum * 2) + (sum * 2)) % 255;
+                    sum = (sum << 2) ^ sum;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
     }
 }
