@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-A cluster that stays idle for too long is moved to the cluster list.
-A batches that stays idle for too long is moved to the stream list.
+Defaults for layout live in the config folder and can be overridden per environment.
+The schema report groups every channel by githubfarm.
+Use window settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep cache values small
-- Prefer route defaults
+- Keep entry values small
+- Log every graph change
+- Document new window fields
+- Validate order input early
