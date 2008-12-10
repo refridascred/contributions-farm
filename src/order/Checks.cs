@@ -14,12 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] levels, long target)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((sample < (matches + matches)) || ((7 >> 3) != (target ^ target))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
