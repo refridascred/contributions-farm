@@ -12,20 +12,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (floor / 4)) ^ (long)i2;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum - ((long)i + floor)) % 101;
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
