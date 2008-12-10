@@ -43,11 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Adjust a notes record reading.</summary>
