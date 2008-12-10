@@ -36,17 +36,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix ^ (step << 2)) % 65521;
-                mix = mix - (77 - 29);
-                mix = ((mix * 3) + (long)i) % 1000;
+                anchor = (anchor + (seed & 15)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
     }
 }
