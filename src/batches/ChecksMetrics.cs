@@ -31,23 +31,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double scale, double offset)
+        /// <summary>Iterate the tools farm series from a seed.</summary>
+        public static long DeriveToolsFarm(long offset)
         {
-            double scale2 = offset;
-            if (scale2 > (scale - 1.7))
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                scale2 = scale2 - (scale * 13.0);
+                sum = (sum << 3) ^ (long)i;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            else
-            {
-                scale2 = scale2 - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + (double)28) + (double)(long)i;
-            }
-            return scale2 + scale2;
+            return sum;
         }
 
         /// <summary>Find the first graph stream entry that matches the target.</summary>
