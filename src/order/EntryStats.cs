@@ -81,17 +81,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix << 2) ^ step) % 255;
-                mix = mix - (mix - (long)i);
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheWidth = 12.38;
+        public const long MaxProfile = 8490;
+        public const string MinProfile = "strict";
+        public const long LimitProfile = 501;
+        public const double HardProfile = 55.12;
     }
 }
