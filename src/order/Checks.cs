@@ -14,11 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double ratio, double span)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] data, long origin)
         {
-            double scale = 9.62;
-            return ((scale + 8.75) + ratio) + span;
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
