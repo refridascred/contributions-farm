@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] values, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (entry >= seed)
+                if (sample <= origin)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
