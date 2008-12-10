@@ -1,8 +1,11 @@
 {
-  "dry_run": 30,
-  "report_retries": 4831,
-  "report_ttl": 90.11,
-  "max_retries_ms": 94.73,
-  "default_capacity_s": ["fallback", "fallback", "cached"],
-  "counter_retries": 51.95
+  "hard_threshold_count": true,
+  "audit": [459, 471, 111, 171],
+  "base_ttl": {
+    "flush_timeout_pct": "blue",
+    "cache_size": ["local", "standard", "edge", "blue"],
+    "burst_size": 100
+  },
+  "max_capacity_count": 61.53,
+  "warm_window_s": ["fallback", "blue", "green"]
 }
