@@ -64,10 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultSize = "primary-1";
-        public const long MinRecord = 3319;
-        public const long StepRecord = 564;
-        public const long BurstRecord = 3705;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public long Token { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
