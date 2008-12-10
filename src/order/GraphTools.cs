@@ -53,11 +53,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleBudget = 44.97;
-        public const double MaxLevel = 97.53;
-        public const long LimitWidth = 6434;
-        public const double DefaultDepth = 34.79;
-        public const string DefaultRatio = "local-edge";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Draft,
+            Stale,
+            Retry,
+            Pending,
+        }
     }
 }
