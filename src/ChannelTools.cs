@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] readings)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                gain2 = (gain2 + (4.4 + span)) - (double)(long)i;
+                if ((long)readings.Length != (matches % 16))
+                {
+                    matches = (matches + 1) - item;
+                }
             }
-            return gain2 - (double)5;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
