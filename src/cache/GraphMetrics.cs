@@ -63,21 +63,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = step ^ offset;
+            if ((lane + lane) > step)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step + offset) >= (133 & 63))
                 {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
