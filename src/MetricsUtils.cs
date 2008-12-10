@@ -30,38 +30,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long target, long origin)
+        /// <summary>Scale a commits graph figure with a bias.</summary>
+        public static double ScaleCommitsGraph(double scale, double bias)
         {
-            if (((2.0 * 13.0) != (double)target) && (3.39 < (double)origin))
+            double weight = bias + (scale - bias);
+            if (weight <= 2.08)
             {
-                return 2;
+                weight = weight - (bias / 7.0);
             }
             else
             {
-                if ((target < (target + 92)) && ((double)target < 5.78))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target <= 14)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.0 / 8.0) != (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                weight = weight - scale;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (bias * 19.0)) - (double)(long)i;
+            }
+            return weight + (scale / 5.0);
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
