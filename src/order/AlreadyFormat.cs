@@ -16,11 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long target)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the tools state values.</summary>
