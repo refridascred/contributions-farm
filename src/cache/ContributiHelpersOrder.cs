@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "open-1";
+        public const string RetryCommand = "staging-v2";
+        public const long SoftCommand = 652;
+        public const double BurstBudget = 27.36;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphBounds(long[] items, long bound)
