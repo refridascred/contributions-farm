@@ -45,11 +45,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowLevel = 3622;
+        public const double IdleBatches = 81.23;
+        public const string RetryBatches = "open-v2";
     }
 }
