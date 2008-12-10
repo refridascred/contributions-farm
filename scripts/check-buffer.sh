@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=284
+for item in staging legacy; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=183
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-legacy}"
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    staging)
         log "fast path"
         ;;
     *)
