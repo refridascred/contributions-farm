@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up already stream samples.</summary>
-        public static long OverlapAlreadyStreamCount(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = -1;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc - (long)levels.Length) - cell;
             }
-            return seen;
+            if (acc < (-13))
+            {
+                acc = (acc - (long)levels.Length) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
