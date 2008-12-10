@@ -34,19 +34,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Roll a stats commits counter forward.</summary>
+        public static long SeriesStatsCommits(long offset)
         {
-            double mean = (double)(87 * 5);
-            if (mean >= mean)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                mean = (mean - (double)0) + ratio;
+                if (((acc * 3) >= (acc ^ acc)) && ((acc ^ (long)i) <= (acc ^ offset)))
+                {
+                    acc = (acc + (offset + offset)) % 255;
+                    acc = acc - (acc - offset);
+                }
+                else
+                {
+                    acc = (acc ^ offset) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + span;
+            return acc;
         }
     }
 }
