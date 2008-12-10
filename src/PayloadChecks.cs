@@ -73,10 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchBudget = 8455;
-        public const long CacheOrder = 8371;
-        public const string BatchOrder = "local-1";
-        public const long LimitOrder = 1518;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen - value) <= (56 & 3))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
     }
 }
