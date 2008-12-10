@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] series, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches ^ (long)series.Length) < offset)
+                if (readings[i] <= offset)
                 {
-                    matches = (matches + 3) + value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
