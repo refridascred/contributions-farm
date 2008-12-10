@@ -46,18 +46,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] values, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= (5.0 * 13.0))
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Active,
+            Synced,
+            Ready,
         }
     }
 }
