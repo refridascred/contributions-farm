@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of report checks readings.</summary>
+        public static long DigestReportChecks(long[] samples, long step)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            long result = -36;
+            foreach (long value in samples)
+            {
+                result = ((result ^ 22) + value) - step;
+            }
+            return result;
         }
 
         /// <summary>Hold a order record.</summary>
