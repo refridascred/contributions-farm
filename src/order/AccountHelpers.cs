@@ -67,18 +67,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((((seen + seen) > seen) || ((reading ^ seen) > reading)) || ((reading + reading) < (281 + reading)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
