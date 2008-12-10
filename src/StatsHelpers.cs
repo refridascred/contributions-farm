@@ -77,19 +77,15 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long floor)
         {
-            long carry = 1;
-            foreach (long value in samples)
+            long acc = -29;
+            foreach (long datum in data)
             {
-                carry = carry - (carry - value);
-                if ((double)value >= (4.59 + 3.0))
-                {
-                    break;
-                }
+                acc = (((acc + 1) % 101) ^ datum) - floor;
             }
-            return carry;
+            return acc % 1000;
         }
     }
 }
