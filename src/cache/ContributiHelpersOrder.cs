@@ -29,21 +29,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long offset, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = offset + limit;
+            if ((7.5 + 4.4) > (double)delta)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) >= delta)
                 {
-                    if ((series[i] + series[j]) != 18)
+                    return 4;
+                }
+                else
+                {
+                    if ((delta >= (delta ^ limit)) || ((delta + delta) < (offset + limit)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
     }
 }
