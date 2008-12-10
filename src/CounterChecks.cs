@@ -45,18 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] levels)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double gain = (double)(3 >> 2);
+            if (gain > bias)
             {
-                if (!((4 + sample) <= (sample - matches)) || ((matches >> 2) >= (sample % 12)))
-                {
-                    matches = matches + 1;
-                }
+                gain = gain - rate;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (bias + bias)) + (double)(long)i;
+            }
+            return gain + (bias / 9.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
