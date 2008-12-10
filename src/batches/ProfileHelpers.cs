@@ -28,18 +28,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] data)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((19.0 + 7.8) == (double)tally)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            double weight = bias * 14.0;
+            return (weight + (double)89) + offset;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
