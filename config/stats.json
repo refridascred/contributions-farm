@@ -1,17 +1,18 @@
 {
-  "retry_interval_pct": {
-    "buffer_delay": 6534,
-    "min_limit": false,
-    "buffer_ttl": false,
-    "sync_interval_count": "fallback",
-    "buffer_threshold": 500
+  "batch_size_ms": "local",
+  "audit": 46.72,
+  "default_threshold": {
+    "burst_capacity": 250,
+    "sync_window_pct": true,
+    "cache_ttl_pct": {
+      "compress": 51,
+      "retry_depth_count": "eu-west",
+      "strict": 250,
+      "tools_timeout": 12.62
+    },
+    "cache_depth": "stable",
+    "flush_timeout": "strict",
+    "warm_interval": 3738
   },
-  "counter_threshold": 92.6,
-  "retry_timeout": false,
-  "soft_delay_s": 56.75,
-  "min_capacity": {
-    "cluster_threshold": 86.83,
-    "warm_capacity_ms": false,
-    "batch_capacity_pct": ["staging", "staging", "latest"]
-  }
+  "commits_threshold": "latest"
 }
