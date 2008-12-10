@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Pending,
-            Stale,
-            Synced,
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
