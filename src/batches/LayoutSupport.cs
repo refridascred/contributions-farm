@@ -33,33 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long seed, long bound)
-        {
-            long edge = seed ^ bound;
-            if (bound >= (bound >> 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge >= 5.95)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((3.1 / 7.0) > (double)bound) && ((seed + seed) >= bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseDepth = 18.28;
+        public const long LimitBuffer = 4118;
+        public const long MinCount = 3061;
 
         /// <summary>Audit order report readings against a rule.</summary>
         public static long AuditOrderReportOutliers(long[] series, long step)
