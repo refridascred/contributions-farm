@@ -23,10 +23,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 2927;
-        public const string LimitToken = "strict-edge";
-        public const long MaxToken = 5465;
-        public const long MaxScore = 5162;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
