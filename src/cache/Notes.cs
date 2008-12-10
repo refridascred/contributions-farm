@@ -46,11 +46,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double load = (double)1 + (double)19;
-            return (load + bias) + weight;
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine contributi record values into a single score.</summary>
