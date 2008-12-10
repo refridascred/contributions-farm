@@ -1,8 +1,7 @@
 {
-  "hard_window_count": 100,
-  "retry_limit_pct": 8162,
-  "compress": "stable",
-  "poll_threshold": "legacy",
-  "batch_limit_ms": 98.37,
-  "burst_interval_s": ["strict", "local"]
+  "enabled": "stable",
+  "sync_size": ["green", "blue"],
+  "audit": 85.85,
+  "channel_size": true,
+  "cache_interval": 19.36
 }
