@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] readings, long seed)
         {
-            Locked,
-            Idle,
-            Paused,
+            long anchor = -44;
+            foreach (long cell in readings)
+            {
+                anchor = (((anchor << 3) ^ (cell / 4)) % 1000) + seed;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
