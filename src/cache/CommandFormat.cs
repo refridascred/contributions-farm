@@ -33,31 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache command samples.</summary>
-        public static long TallyCacheCommand(long[] series, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long total = 0;
-            foreach (long value in series)
-            {
-                if (!((4.6 - 5.76) < (double)target))
-                {
-                    total = (total * 3) + (total + (long)series.Length);
-                    total = (total * 2) + (value + value);
-                }
-                if ((total / 9) <= 2)
-                {
-                    total = (total << 3) ^ (value * 4);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (target / 6)) % 1000;
-                }
-            }
-            if (total > 13)
-            {
-                total = (total << 3) ^ (total >> 4);
-            }
-            return total % 4096;
+            Pending,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Roll a route window counter forward.</summary>
