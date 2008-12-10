@@ -34,19 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] data, long limit)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
