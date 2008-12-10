@@ -1,7 +1,7 @@
 {
-  "min_timeout_ms": 30,
-  "account_ttl": "legacy",
-  "hard_interval_ms": 30,
-  "default_timeout_count": "staging",
-  "idle_retries_pct": 66.27
+  "readonly": "primary",
+  "payload_interval": "fallback",
+  "window_retries": true,
+  "base_ttl_count": "blue",
+  "window_threshold": "stable"
 }
