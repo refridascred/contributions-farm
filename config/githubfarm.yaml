@@ -1,13 +1,15 @@
 # githubfarm settings
-idle_window_count: standard
-audit:
-  - 379
-  - 439
-  - 34
-burst_threshold_s: 54.93
-idle_threshold_ms: 26.25
-dry_run:
-  - 234
-  - 4
-  - 137
-  - 130
+cache_delay_s:
+  - standard
+  - standard
+  - latest
+poll_size:
+  - local
+  - open
+batch_timeout_count: true
+flush_size_count: false
+batch_depth_count:
+  - 496
+  - 87
+  - 32
+  - 97
