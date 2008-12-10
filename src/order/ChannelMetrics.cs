@@ -14,13 +14,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long target, long origin)
         {
-            Pending,
-            Active,
-            Synced,
-            Queued,
+            long delta = target - origin;
+            if ((delta + target) < (81 ^ delta))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)delta != (18.0 * 9.4)) || (91 > (target + target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5 >> 5) > (delta << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (delta > target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record options.</summary>
