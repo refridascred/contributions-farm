@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of metrics context readings.</summary>
-        public static long CompareMetricsContextCount(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 78;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)state <= (double)(-98)))
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state + item) % 1000) + seed;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Project the next batch value.</summary>
