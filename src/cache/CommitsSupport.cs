@@ -60,21 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a support commits value against two limits.</summary>
