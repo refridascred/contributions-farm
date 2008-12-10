@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ratio2 - (offset - ratio);
         }
 
-        /// <summary>Fold a list of account profile readings.</summary>
-        public static long CombineAccountProfile(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long result = 795;
-            foreach (long value in levels)
-            {
-                result = ((result ^ 98) % 101) + value;
-            }
-            if (result < 8)
-            {
-                result = result - (result + result);
-            }
-            return result;
+            Synced,
+            Locked,
+            Draft,
+            Ready,
         }
     }
 }
