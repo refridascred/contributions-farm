@@ -26,16 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter already value from a seed.</summary>
-        public static long StepCounterAlready(long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total ^ total) % 97;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Draft,
+            Locked,
+            Synced,
+            Ready,
         }
     }
 }
