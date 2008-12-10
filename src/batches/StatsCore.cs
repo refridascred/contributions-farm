@@ -63,10 +63,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 9703;
-        public const long StepStats = 1632;
-        public const long WindowStats = 9288;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Draft,
+            Active,
+            Stale,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Iterate the schema githubfarm series from a seed.</summary>
         public static long StepSchemaGithubfarm(long step)
