@@ -34,32 +34,18 @@ namespace Common.Utilities
             return ratio2 - (ratio2 * 1.9);
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data, long floor)
         {
-            long prev = seed + origin;
-            if (((seed + seed) <= (prev & 255)) || ((seed % 12) > (seed << 1)))
+            long acc = 21;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > 8.0)
+                if (((4.8 + 5.58) == (double)floor) && ((floor / 9) <= (sample >> 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed / 9) <= (origin << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = (acc * 3) + (sample >> 3);
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
