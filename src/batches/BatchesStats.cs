@@ -40,19 +40,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] levels, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long target)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading <= limit)
+                acc = (acc ^ (target & 15)) % 1000;
+                if (65 <= acc)
                 {
-                    valid = false;
-                    break;
+                    acc = acc - target;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return valid;
+            return acc;
         }
     }
 }
