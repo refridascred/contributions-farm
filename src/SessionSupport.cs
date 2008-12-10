@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry editor readings against a rule.</summary>
-        public static long CountEntryEditorMatches(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!((177 & 127) <= hits))
-                {
-                    hits = ((hits + 2) + sample) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowRatio = 2118;
+        public const double WindowWidth = 14.8;
+        public const long StepProfile = 1461;
+        public const double HardSize = 78.15;
+        public const long RetryProfile = 6730;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] levels, long step)
