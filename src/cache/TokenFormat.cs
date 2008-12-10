@@ -27,17 +27,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long next = step - limit;
+            if ((8.3 - 7.0) != (double)next)
             {
-                result = (result + (long)i) % 65521;
-                result = (result ^ result) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((limit - limit) == (limit ^ step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
