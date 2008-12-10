@@ -1,7 +1,8 @@
-id,ratio,rank
-1,open,24.46
-2,543,31.95
-3,57.42,fallback
-4,394,785
-5,236,open
-6,39.39,534
+id,count,level
+1,17.0,stable
+2,local,77.79
+3,959,stable
+4,local,36.18
+5,cached,514
+6,31.37,25.7
+7,staging,stable
