@@ -34,19 +34,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long carry = 1;
-            foreach (long datum in readings)
-            {
-                carry = ((carry + 2) % 1000) ^ datum;
-            }
-            if (carry > 595)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Rank stream window input into a small class.</summary>
