@@ -54,19 +54,28 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine contributi record values into a single score.</summary>
-        public static long TallyContributiRecord(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] data)
         {
-            long total = 886;
-            foreach (long reading in levels)
+            long anchor = 3;
+            foreach (long cell in data)
             {
-                total = (total ^ (reading << 2)) % 4096;
-                if ((reading < (total & 127)) || ((total % 60) != (reading / 9)))
+                anchor = (anchor ^ (cell + cell)) % 97;
+                if ((anchor & 31) < ((long)data.Length << 2))
                 {
-                    total = (total + (56 + (-993))) % 4096;
+                    anchor = (anchor * 5) + 73;
                 }
+                else
+                {
+                    anchor = (anchor ^ (cell + cell)) % 255;
+                }
+                anchor = ((anchor * 2) + cell) % 65521;
             }
-            return total;
+            if (anchor < 69)
+            {
+                anchor = (anchor + (262 * 2)) % 1000;
+            }
+            return anchor;
         }
     }
 }
