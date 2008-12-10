@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 6350;
-        public const long BaseSession = 5447;
-        public const long DefaultRatio = 2161;
-        public const string CacheFactor = "strict-1";
-        public const string MinSession = "open-1";
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] series)
