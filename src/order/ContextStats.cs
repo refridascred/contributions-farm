@@ -42,19 +42,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout buffer entry stays within the limit.</summary>
-        public static bool VerifyLayoutBufferRange(long[] data, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Stale,
+            Paused,
+            New,
         }
     }
 }
