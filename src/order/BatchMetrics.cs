@@ -49,17 +49,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Check that every filter stream entry stays within the limit.</summary>
+        public static bool ValidateFilterStreamBounds(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                if (value >= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
