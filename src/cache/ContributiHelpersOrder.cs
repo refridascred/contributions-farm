@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = span / 5.0;
+            if (gain >= (span * 2.9))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (weight * 6.0);
             }
-            return hits;
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain - (weight + weight);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
