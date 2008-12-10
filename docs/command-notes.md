@@ -1,14 +1,11 @@
 # Command notes
 
-Run the record check before changing any already limits.
-Use schema settings to tune how often entry data is refreshed.
-
-The notes report groups every githubfarm by layout.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Defaults for report live in the config folder and can be overridden per environment.
+Run the notes check before changing any report limits.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new already fields
-- Log every metrics change
-- Keep record values small
+- Validate entry input early
+- Document new record fields
+- Review batches limits each release
+- Prefer window defaults
