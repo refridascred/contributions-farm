@@ -23,22 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] levels, long floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((8 > (sample / 2)) || ((double)matches >= (3.7 / 7.0)))
-                {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the queue class values.</summary>
