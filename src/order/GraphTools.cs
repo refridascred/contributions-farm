@@ -26,11 +26,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 75.88;
-        public const string DefaultBuffer = "latest-edge";
-        public const long CacheSize = 1152;
-        public const long WindowBuffer = 2668;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Ready,
+            Done,
+            New,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Validate profile account readings against a bound.</summary>
         public static bool ValidateProfileAccountLimits(long[] values, long limit)
