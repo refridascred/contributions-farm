@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes editor entries.</summary>
-        public static long TotalNotesEditor(long[] readings, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long seed)
         {
-            long total = 3;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
                 {
-                    total = ((total ^ (cell - 48)) + (long)i) + offset;
+                    return (long)i;
                 }
-                total = ((total * 2) + (cell + total)) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate route schema samples.</summary>
