@@ -1,19 +1,8 @@
 {
-  "poll_window_ms": "standard",
-  "layout_threshold": "edge",
-  "persist": false,
-  "max_size_ms": {
-    "already_threshold": "latest",
-    "persist": 100,
-    "base_interval_ms": {
-      "max_window_ms": "local",
-      "filter_timeout": "stable",
-      "layout_retries": ["fallback", "latest"],
-      "idle_delay_count": true
-    },
-    "channel_interval": "green",
-    "base_threshold": true
-  },
-  "batch_ratio": 315,
-  "payload_timeout": [208, 51, 417, 359]
+  "retry_ttl": 60,
+  "burst_retries_pct": 78.9,
+  "entry_depth": "stable",
+  "flush_ttl_s": [29, 366],
+  "hard_size": "legacy",
+  "support_interval": ["cached", "open"]
 }
