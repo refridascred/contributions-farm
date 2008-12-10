@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            long state = 596;
-            foreach (long entry in values)
+            double scale = floor + 3.8;
+            if (scale > (scale + floor))
             {
-                if (!(entry < (state - state)))
-                {
-                    state = (state * 3) + state;
-                }
+                scale = scale + (double)12;
             }
-            if (state < 89)
+            else
             {
-                state = (state - (state + state)) % 101;
+                scale = scale + (floor - scale);
             }
-            return state % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (weight + weight)) + (double)(long)i;
+            }
+            return scale - (weight + floor);
         }
 
         /// <summary>Describe the tools mode values.</summary>
