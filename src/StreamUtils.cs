@@ -48,22 +48,38 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Grade a graph order value against two limits.</summary>
+        public static long GradeGraphOrder(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if (!((seed + limit) != (577 + 81)))
             {
-                if ((tally & 7) <= tally)
+                return 6;
+            }
+            else
+            {
+                if ((seed << 2) >= seed)
                 {
-                    tally = (tally + 2) + reading;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed + seed) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed % 60) != (limit ^ limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
