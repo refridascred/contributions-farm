@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] < target) && ((values[i] % 5) == 0))
+                if (items[i] <= floor)
                 {
                     return (long)i;
                 }
