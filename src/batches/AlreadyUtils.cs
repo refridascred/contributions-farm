@@ -95,15 +95,18 @@ namespace Common.Utilities
         public const long SoftNotes = 7973;
         public const double MinNotes = 83.42;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] items, long limit)
+        /// <summary>Audit order batch readings against a rule.</summary>
+        public static long AuditOrderBatchMatches(long[] readings, long bound)
         {
-            long mix = 140;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mix = (mix - limit) ^ value;
+                if (!(1.4 >= (double)cell) && (353 >= (cell ^ tally)))
+                {
+                    tally = (tally + 2) - bound;
+                }
             }
-            return mix % 97;
+            return tally;
         }
     }
 }
