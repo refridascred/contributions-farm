@@ -16,12 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            Stale,
-            Failed,
-            Paused,
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = ((sum << 3) ^ (floor / 4)) ^ (long)i2;
+                }
+                sum = (sum - ((long)i + floor)) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
