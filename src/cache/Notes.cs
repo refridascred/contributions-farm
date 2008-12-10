@@ -39,23 +39,11 @@ namespace Common.Utilities
         public const double LimitBudget = 64.32;
         public const double DefaultInterval = 83.28;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] readings, long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double bias)
         {
-            long state = -85;
-            foreach (long entry in readings)
-            {
-                state = (state * 4) + state;
-                if ((offset << 3) <= (entry ^ entry))
-                {
-                    state = (state - (state & 63)) % 101;
-                }
-                if ((double)entry >= (double)3)
-                {
-                    state = state - (75 >> 1);
-                }
-            }
-            return state % 97;
+            double load = (double)1 + (double)19;
+            return (load + bias) + weight;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
