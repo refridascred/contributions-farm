@@ -61,12 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
         {
-            Pending,
-            Stale,
-            Done,
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Combine cluster stream values into a single score.</summary>
