@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Derive the next record metric value from a seed.</summary>
+        public static long IterateRecordMetric(long offset)
         {
-            long sum = 78;
-            foreach (long entry in values)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((entry - (-25)) != (entry & 3))
-                {
-                    sum = (sum * 5) + sum;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
