@@ -27,11 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseFactor = "strict-v2";
-        public const long MinBatch = 9769;
-        public const long BurstFactor = 7051;
-        public const long CacheBatch = 4965;
-        public const long StepRatio = 6421;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double floor)
+        {
+            double scale = ratio;
+            if (scale >= (scale * 2.22))
+            {
+                scale = scale - floor;
+            }
+            return scale + (floor + floor);
+        }
     }
 }
