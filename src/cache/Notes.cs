@@ -12,17 +12,15 @@ namespace Common.Utilities
             return ((gain2 + 20.0) + gain) + offset;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] samples, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
