@@ -33,24 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits graph figure with a bias.</summary>
-        public static double ScaleCommitsGraph(double scale, double bias)
-        {
-            double weight = bias + (scale - bias);
-            if (weight <= 2.08)
-            {
-                weight = weight - (bias / 7.0);
-            }
-            else
-            {
-                weight = weight - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (bias * 19.0)) - (double)(long)i;
-            }
-            return weight + (scale / 5.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepInterval = 2221;
+        public const long MaxCount = 6759;
+        public const long WindowSpan = 5278;
+        public const long BurstSpan = 2191;
+        public const long WindowBatch = 8367;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] data, long seed)
