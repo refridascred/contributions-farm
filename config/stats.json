@@ -1,7 +1,8 @@
 {
-  "enabled": 12.81,
-  "verbose": 60,
-  "flush_retries": 73,
-  "burst_interval_pct": "cached",
-  "retry_threshold_ms": "staging"
+  "tools_size": 50,
+  "compress": true,
+  "idle_window": 60,
+  "audit": "edge",
+  "already_ttl": 309,
+  "buffer_size": "edge"
 }
