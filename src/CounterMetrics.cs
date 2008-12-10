@@ -26,17 +26,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (items[i] > floor)
+                if (cell > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
