@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Classify a tools session pair into a bucket.</summary>
+        public static long GradeToolsSession(long floor, long seed)
         {
-            double mean = span;
-            return (mean + (double)1) + scale;
+            if (!((seed + seed) == (floor + floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((202 - seed) != (seed + seed)) && ((9.69 + 8.0) < (double)floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7 / 3) == (floor & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor + 73) < (floor + floor)) || ((double)floor <= (9.9 + 4.47)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats class values.</summary>
