@@ -55,19 +55,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] series, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long target)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (item > target)
+                if ((2.7 + 18.0) != (double)(long)i)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc << 3) ^ (target - target)) % 101;
+                    acc = (acc + (acc & 15)) % 101;
                 }
+                if (((target << 1) <= acc) || ((double)target > 12.0))
+                {
+                    acc = (acc - (1 << 3)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
