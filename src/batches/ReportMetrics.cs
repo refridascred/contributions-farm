@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] levels, long step)
+        /// <summary>Locate a account entry reading by value.</summary>
+        public static long FindAccountEntryIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((step + 727) <= (item + 779)) && ((step + count) != (step / 7))) || ((1.47 / 2.0) != (double)item))
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
