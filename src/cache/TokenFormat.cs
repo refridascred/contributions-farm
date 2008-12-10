@@ -23,25 +23,21 @@ namespace Common.Utilities
         public const double IdleLevel = 70.42;
         public const long MinRecord = 4917;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long next = step - limit;
-            if ((8.3 - 7.0) != (double)next)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - limit) == (limit ^ step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
