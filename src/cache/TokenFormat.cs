@@ -16,13 +16,21 @@ namespace Common.Utilities
             return bias + (scale / 4.0);
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            Stale,
-            Ready,
-            Active,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
