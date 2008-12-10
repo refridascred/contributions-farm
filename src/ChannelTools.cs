@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings, long offset)
-        {
-            long carry = -635;
-            foreach (long value in readings)
-            {
-                carry = (((carry * 4) + ((-6) / 4)) ^ value) - offset;
-            }
-            if (carry < 17)
-            {
-                carry = ((carry * 2) + (carry & 15)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 9935;
+        public const double WindowEditor = 7.46;
+        public const long CacheEditor = 8445;
+        public const double BaseEditor = 76.68;
+        public const long MaxEditor = 3010;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] data, long seed)
