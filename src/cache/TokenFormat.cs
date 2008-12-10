@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long MaxCounter = 4213;
         public const long WindowCounter = 1935;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings, long floor)
+        /// <summary>Count githubfarm support pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmSupportCount(long[] readings)
         {
-            long acc = 113;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc << 2) ^ (datum % 64);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc > 635)
-            {
-                acc = acc + (floor + floor);
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Adjust a tools reading.</summary>
