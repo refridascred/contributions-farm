@@ -40,23 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum <= (5 - 9)) && ((matches + matches) >= matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepCount = 8322;
+        public const long BatchBudget = 2341;
+        public const long LimitScore = 9689;
+        public const double BaseChecks = 14.77;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] values, long bound)
