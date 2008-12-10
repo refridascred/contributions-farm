@@ -19,19 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count % 16) > (sample ^ (-433)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 1960;
+        public const long LimitCount = 71;
+        public const double BaseCommits = 22.57;
+        public const long BurstWidth = 2477;
 
         /// <summary>Fold a list of channel order readings.</summary>
         public static long TotalChannelOrder(long[] values)
