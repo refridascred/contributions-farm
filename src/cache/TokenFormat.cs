@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 66.2;
-        public const string StepSpan = "strict-1";
-        public const long WindowCounter = 1162;
-        public const long BatchLevel = 3396;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] samples)
+        {
+            long carry = 89;
+            foreach (long sample in samples)
+            {
+                carry = carry - sample;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 9496;
