@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 7364;
-        public const double BurstCommits = 88.17;
-        public const long BaseCommits = 9341;
-        public const long SoftBudget = 1171;
-        public const double BaseBudget = 12.23;
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double weight, double offset)
+        {
+            double ratio = weight;
+            if (ratio < (ratio - ratio))
+            {
+                ratio = (ratio - ratio) + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + weight;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] levels, long target)
