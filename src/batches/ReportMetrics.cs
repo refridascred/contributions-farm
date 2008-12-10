@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] values, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if ((values[i] < step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
