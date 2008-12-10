@@ -77,24 +77,17 @@ namespace Common.Utilities
             return mean + 3.97;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
         {
-            if (floor > (floor / 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6 / 3) >= step)
+                if ((data[i] > limit) && ((data[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
