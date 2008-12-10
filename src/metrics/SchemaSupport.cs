@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long MaxScore = 2829;
         public const long MinFactor = 5644;
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Look up the position of a report token sample.</summary>
+        public static long FindReportTokenIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] < origin)
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a counter options.</summary>
