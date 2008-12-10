@@ -56,10 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinCount = 4103;
-        public const long HardRatio = 3028;
-        public const string DefaultRatio = "cached";
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Pending,
+            Stale,
+            Done,
+        }
 
         /// <summary>Combine cluster stream values into a single score.</summary>
         public static long TallyClusterStream(long[] levels)
