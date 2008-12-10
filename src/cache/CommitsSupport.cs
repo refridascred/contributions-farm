@@ -24,38 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long origin2)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long step)
         {
-            if (((origin2 / 8) < (origin * 5)) && ((origin2 + origin) >= (origin + origin2)))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin / 5) > origin2)
+                if (value < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin * 4) < (origin2 + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - origin) > (origin2 / 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the session phase values.</summary>
