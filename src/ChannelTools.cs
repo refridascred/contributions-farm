@@ -16,17 +16,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a profile contributi counter forward.</summary>
-        public static long StepProfileContributi(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor - ((long)i / 7)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheCount = 8273;
+        public const long RetryContext = 326;
+        public const long DefaultContext = 1428;
+        public const long WindowDepth = 9074;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] levels, long limit)
