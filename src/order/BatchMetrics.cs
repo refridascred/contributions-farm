@@ -33,15 +33,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
