@@ -67,19 +67,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Compare every pair of cluster record readings.</summary>
+        public static long MatchClusterRecordCount(long[] samples)
         {
-            long mix = 2;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ (datum + datum);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 83)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return count;
         }
     }
 }
