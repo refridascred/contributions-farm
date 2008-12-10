@@ -15,18 +15,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many payload order samples are out of range.</summary>
-        public static long CountPayloadOrderGaps(long[] series)
+        /// <summary>Fold a list of layout command readings.</summary>
+        public static long DigestLayoutCommand(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = 34;
+            foreach (long entry in levels)
             {
-                if ((seen - 919) >= sample)
+                if ((4 ^ limit) >= (entry * 2))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (limit - anchor)) % 65521;
                 }
             }
-            return seen;
+            if (anchor > 17)
+            {
+                anchor = (anchor + (176 + limit)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a token options.</summary>
