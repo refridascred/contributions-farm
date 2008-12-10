@@ -1,7 +1,13 @@
 {
-  "schema_limit": true,
-  "verbose": ["cached", "primary", "stable", "staging"],
-  "dry_run": 250,
-  "retry_interval": "legacy",
-  "warm_threshold_pct": "fallback"
+  "idle_limit_s": {
+    "strict": 15.33,
+    "layout_ttl": false,
+    "compress": "blue",
+    "profile_interval": "primary",
+    "dry_run": false,
+    "metrics_interval": "strict"
+  },
+  "idle_delay_s": [301, 462],
+  "context_delay": 100,
+  "batch_depth_count": "standard"
 }
