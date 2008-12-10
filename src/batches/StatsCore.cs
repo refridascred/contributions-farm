@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] items, long target)
         {
-            double bias = rate;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + (offset - offset)) + (double)(long)i;
+                if ((items[i] > target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
