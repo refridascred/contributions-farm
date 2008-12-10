@@ -36,19 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double ratio, double floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double mean = 7.9;
-            if (mean > (double)66)
-            {
-                mean = mean + ratio;
-            }
-            else
-            {
-                mean = mean - (floor - mean);
-            }
-            return mean + ratio;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit order report readings against a rule.</summary>
