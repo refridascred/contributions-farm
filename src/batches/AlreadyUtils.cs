@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long limit, long target)
+        /// <summary>Measure how many contributi report samples are out of range.</summary>
+        public static long TallyContributiReportOutliers(long[] items, long bound)
         {
-            long delta = limit - target;
-            if ((718 + limit) <= (limit << 1))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta % 64) >= (8 * 5))
+                if ((double)count < (2.13 - 5.9))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target >> 2) < 72))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target - 546) == (delta - target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = ((count + 1) + value) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a entry schema reading.</summary>
