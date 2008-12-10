@@ -47,15 +47,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long span = bound - floor;
+            if ((9.2 - 18.0) > (double)floor)
             {
-                total = ((total * 2) + (long)i) % 97;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((2.1 - 20.0) >= (double)span)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
