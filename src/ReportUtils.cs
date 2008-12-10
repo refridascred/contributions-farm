@@ -19,11 +19,22 @@ namespace Common.Utilities
         public const string RetryDepth = "stable-1";
         public const long DefaultFarm = 2324;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits ^ hits) < ((-8) * 2))
+                {
+                    hits = ((hits + 2) + cell) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
