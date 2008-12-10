@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 1159;
-        public const long BatchStream = 4414;
-        public const long IdleStream = 5943;
+        /// <summary>Locate a cluster notes reading by value.</summary>
+        public static long LocateClusterNotesIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double LimitBatch = 25.46;
