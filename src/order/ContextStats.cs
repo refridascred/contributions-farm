@@ -20,12 +20,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] levels, long origin)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long acc = 422;
+            foreach (long value in levels)
+            {
+                if (512 < acc)
+                {
+                    acc = (acc - (acc * 4)) % 255;
+                    acc = ((acc << 3) ^ (32 ^ acc)) % 97;
+                }
+                acc = (acc << 3) ^ (value + origin);
+            }
+            return acc;
         }
 
         /// <summary>Describe the account class values.</summary>
