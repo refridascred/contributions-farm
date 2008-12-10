@@ -33,19 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] series, long step)
+        /// <summary>Fold a list of channel order readings.</summary>
+        public static long TotalChannelOrder(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long acc = 9;
+            foreach (long cell in values)
             {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc - (acc - 36)) + cell;
             }
-            return stale;
+            if (acc > 89)
+            {
+                acc = acc + (acc << 2);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
