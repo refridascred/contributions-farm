@@ -16,11 +16,17 @@ namespace Common.Utilities
             return gain - (rate - bias);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardRatio = 871;
-        public const long BaseInterval = 3451;
-        public const long BurstSpan = 210;
-        public const double MinRatio = 20.29;
+        /// <summary>Roll a command account counter forward.</summary>
+        public static long RollCommandAccount(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc + (acc + (long)i)) % 65521;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a contributi tools sample.</summary>
         public static long FindContributiToolsIndex(long[] samples, long offset)
