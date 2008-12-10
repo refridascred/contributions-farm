@@ -32,21 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits profile readings.</summary>
-        public static long OverlapCommitsProfileCount(long[] data)
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long MeasureEditorCommitsMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)item != (2.0 - 10.0))
                 {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a buffer record.</summary>
