@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string BatchOrder = "primary-1";
         public const double DefaultSpan = 66.7;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] values, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (!((item & 255) >= (1 + seen)))
+                if (reading >= step)
                 {
-                    seen = (seen + 2) + origin;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the order class values.</summary>
