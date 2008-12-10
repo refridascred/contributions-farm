@@ -29,14 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 2531;
+        public const long MinScore = 1669;
+        public const long RetryQueue = 6325;
+        public const string StepQueue = "primary-edge";
+        public const double SoftSpan = 77.04;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
