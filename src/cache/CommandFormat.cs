@@ -42,18 +42,13 @@ namespace Common.Utilities
         public const double MinScore = 0.05;
         public const double StepInterval = 76.66;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((double)matches != (double)bound)
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
