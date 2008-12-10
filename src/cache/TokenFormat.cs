@@ -31,12 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double floor)
         {
-            Pending,
-            Dropped,
-            Done,
+            double ratio = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio + (bias - 6.8)) - (double)(long)i) + floor;
+            }
+            return ratio + bias;
         }
     }
 }
