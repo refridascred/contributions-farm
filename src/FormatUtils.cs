@@ -52,11 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardCount = 1.48;
-        public const long WindowTimeout = 6683;
-        public const double HardAccount = 32.64;
-        public const long RetryDepth = 4292;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowWidth = 53.07;
+        public const long BaseTimeout = 6611;
+        public const long HardFarm = 4561;
+        public const long IdleSize = 9949;
+        public const long RetryCount = 8378;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
