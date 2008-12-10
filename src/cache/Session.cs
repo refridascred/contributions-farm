@@ -20,20 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] samples, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] values, long limit)
         {
-            long mix = 57;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 6; i++)
+                if ((1.9 * 6.29) > (double)count)
                 {
-                    mix = (((mix << 3) ^ ((long)i ^ (long)i)) % 4096) + value;
+                    count = ((count + 2) + entry) + limit;
                 }
-                mix = mix + (264 / 9);
-                mix = (mix ^ bound) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the filter mode values.</summary>
