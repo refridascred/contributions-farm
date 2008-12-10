@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of batch channel readings.</summary>
-        public static long MatchBatchChannelCount(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (5 < datum)
                 {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
