@@ -22,19 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long floor, long floor2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            if (!(floor >= (floor2 / 8)))
             {
-                if ((864 << 2) > (seed << 3))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i >> 4)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (((double)floor < 5.85) || ((floor2 >> 2) > (floor / 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor2 ^ floor) > floor2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
