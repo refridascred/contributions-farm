@@ -1,32 +1,10 @@
 # support settings
-max_ttl_ms: false
-route_timeout: 60
-compress:
-  idle_size_s: standard
-  compress: stable
-  soft_size_pct: 84
-  account_limit:
-    - stable
-    - eu-west
-    - local
-    - cached
-  audit: false
-  base_interval_count: primary
-cache_size_ms:
-  strict: false
-  warm_ttl_ms: local
-  enabled:
-    poll_limit_pct:
-      - cached
-      - edge
-    counter_delay: 21.17
-    cluster_window:
-      - fallback
-      - cached
-      - local
-      - fallback
-    hard_window: true
-  retry_timeout: staging
-  already_depth: 2860
-soft_size_ms: cached
-enabled: true
+enabled:
+  - 368
+  - 48
+already_delay: 7674
+metrics_threshold: 21.48
+warm_retries_pct: stable
+idle_interval_ms:
+  - stable
+  - latest
