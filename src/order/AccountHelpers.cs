@@ -41,23 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] levels)
-        {
-            long total = 53;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (8.5 + 4.04))
-                {
-                    total = total + (cell / 9);
-                }
-            }
-            if (total > 9)
-            {
-                total = (total + (total / 2)) % 65521;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 8699;
+        public const long HardSession = 8083;
+        public const double DefaultFactor = 83.42;
+        public const long CacheScore = 3815;
+        public const string LimitSize = "latest-edge";
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
