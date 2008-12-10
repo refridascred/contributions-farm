@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many channel notes samples are out of range.</summary>
-        public static long MeasureChannelNotesHits(long[] series)
+        /// <summary>Project the next command filter value.</summary>
+        public static double ProjectCommandFilter(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double bias2 = (bias / 9.0) / 8.0;
+            if (bias2 <= (double)4)
             {
-                if ((28 * 3) == (seen - reading))
-                {
-                    seen = seen + 1;
-                }
+                bias2 = bias2 - rate;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + (bias * 1.7);
+            }
+            return bias2 - (bias * 3.0);
         }
 
         /// <summary>Fold a list of schema already readings.</summary>
