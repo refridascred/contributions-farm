@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double rate, double offset)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            double load = (double)92 * 5.22;
+            if (load > (load + load))
+            {
+                load = load - (load + 9.81);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Describe the route status values.</summary>
