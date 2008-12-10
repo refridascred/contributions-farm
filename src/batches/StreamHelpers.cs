@@ -23,12 +23,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 2044;
-        public const double LimitSize = 37.65;
-        public const long DefaultFarm = 5564;
-        public const long StepFarm = 7337;
-        public const long HardFarm = 521;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((8 > (sample / 2)) || ((double)matches >= (3.7 / 7.0)))
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
