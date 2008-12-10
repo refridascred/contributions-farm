@@ -26,15 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] items, long target)
         {
-            double scale = ratio;
-            if (scale >= (scale * 2.22))
+            long count = 0;
+            foreach (long cell in items)
             {
-                scale = scale - floor;
+                if (!((double)target != (1.8 / 4.0)))
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale + (floor + floor);
+            return count;
         }
     }
 }
