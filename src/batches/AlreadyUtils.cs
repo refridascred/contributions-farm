@@ -36,13 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Active,
             Closed,
-            New,
-            Dropped,
+            Active,
+            Draft,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
