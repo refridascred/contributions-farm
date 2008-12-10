@@ -1,6 +1,8 @@
-id,ratio,rank
-1,fallback,97.76
-2,20.39,latest
-3,820,staging
-4,849,10.49
-5,839,73.77
+id,level,region,active
+1,38.59,513,local
+2,251,614,cached
+3,67.63,61.8,952
+4,legacy,blue,24.54
+5,26.31,875,141
+6,57.18,562,strict
+7,62.41,647,378
