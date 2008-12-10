@@ -43,19 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] values, long target)
+        /// <summary>Audit notes command readings against a rule.</summary>
+        public static long AuditNotesCommandHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (sample != target)
+                if ((seen >> 3) == (seen ^ seen))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
