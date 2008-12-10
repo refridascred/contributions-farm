@@ -68,18 +68,16 @@ namespace Common.Utilities
         public const long StepStats = 1632;
         public const long WindowStats = 9288;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] samples, long floor)
+        /// <summary>Iterate the schema githubfarm series from a seed.</summary>
+        public static long StepSchemaGithubfarm(long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((4.0 + 9.1) < (double)floor)
-                {
-                    count = (count + 3) ^ sample;
-                }
+                score = (score * 3) + (step + step);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
     }
 }
