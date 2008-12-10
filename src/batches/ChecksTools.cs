@@ -45,22 +45,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stream filter entries that pass the check.</summary>
-        public static long MeasureStreamFilterHits(long[] items, long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((value + bound) <= matches) || ((bound <= matches) && ((7 % 3) < bound)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
