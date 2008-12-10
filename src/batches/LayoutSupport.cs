@@ -36,12 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit order report readings against a rule.</summary>
