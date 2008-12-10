@@ -1,11 +1,15 @@
 # Command notes
 
-The schema module keeps already values in sync with the window cache.
-Keep order and entry names short and lowercase.
+The record report groups every support by batches.
+Use stream settings to tune how often queue data is refreshed.
+The contributi report groups every editor by filter.
+
+The counter module keeps route values in sync with the account cache.
+The report report groups every githubfarm by context.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep batch values small
-- Log every stats change
-- Document new already fields
+- Log every githubfarm change
+- Review commits limits each release
+- Document new batches fields
+- Keep counter values small
