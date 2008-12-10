@@ -35,31 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long limit, long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            if ((limit / 8) <= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (offset & 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit == (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a filter entry reading.</summary>
