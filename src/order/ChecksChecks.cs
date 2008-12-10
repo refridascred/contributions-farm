@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "strict-v2";
-        public const long LimitWidth = 8413;
-        public const long IdleSize = 6804;
-        public const string SoftCount = "latest-edge";
-        public const long WindowCount = 3260;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
