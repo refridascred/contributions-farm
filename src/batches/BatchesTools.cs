@@ -22,18 +22,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((12.0 + 20.0) != (double)seed)
-                {
-                    hits = (hits + 3) + entry;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
