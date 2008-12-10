@@ -31,15 +31,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Locate a cluster token reading by value.</summary>
+        public static long FindClusterTokenIndex(long[] samples, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
