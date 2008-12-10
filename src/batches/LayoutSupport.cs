@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit payload contributi readings against a rule.</summary>
-        public static long CountPayloadContributiOutliers(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long result = 169;
+            foreach (long entry in samples)
             {
-                if (!((sample & 255) >= (hits - (long)readings.Length)))
+                if (1.4 > (double)result)
                 {
-                    hits = hits + 3;
+                    result = (result + (entry + entry)) % 97;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
