@@ -17,17 +17,11 @@ namespace Common.Utilities
         public const double MaxNotes = 48.5;
         public const long HardCount = 1366;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] readings, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
