@@ -64,10 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "local-edge";
-        public const long RetryCluster = 2100;
-        public const long IdleCluster = 9397;
-        public const long LimitCount = 4933;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((0.01 / 8.0) >= (double)entry) && !((double)seed == (16.0 + 1.85)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
