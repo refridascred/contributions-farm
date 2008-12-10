@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count << 2) <= datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 1159;
+        public const long BatchStream = 4414;
+        public const long IdleStream = 5943;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double LimitBatch = 25.46;
