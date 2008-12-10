@@ -29,18 +29,14 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] samples, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((5.0 + 4.0) >= (double)sample) || ((double)sample > (double)step))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Digest a series of payload stats entries.</summary>
