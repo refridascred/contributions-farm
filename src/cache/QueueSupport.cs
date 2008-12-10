@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mix = 94;
+            foreach (long entry in readings)
             {
-                if (!(sample <= ((-8) + sample)))
+                if ((6.7 / 7.0) != (double)mix)
                 {
-                    seen = seen + 3;
+                    mix = (mix ^ (4 - (-4))) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (origin + entry)) % 1000;
+                }
+                if ((origin - mix) == (395 >> 2))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Accumulate token samples.</summary>
