@@ -1,10 +1,13 @@
 # Command notes
 
-Each metric is validated before it reaches the notes queue.
-A payload that stays idle for too long is moved to the editor list.
+The stream report groups every cache by cache.
+Each entry is validated before it reaches the record queue.
+
+When a report fails, the checks handler retries a few times before giving up.
+Each command is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Validate profile input early
-- Log every token change
+- Prefer commits defaults
+- Document new contributi fields
+- Keep entry values small
