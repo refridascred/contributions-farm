@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of checks batches readings.</summary>
-        public static long CombineChecksBatches(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] levels, long limit)
         {
-            long result = 770;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (((long)series.Length / 3) > result)
+                if (cell >= limit)
                 {
-                    result = result ^ result;
-                }
-                else
-                {
-                    result = (result * 4) + (value << 3);
+                    found = false;
+                    break;
                 }
             }
-            if (result < 973)
-            {
-                result = (result - (43 - result)) % 255;
-            }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
