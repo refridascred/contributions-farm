@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many tools support samples are out of range.</summary>
-        public static long AuditToolsSupportHits(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 2) > (889 + sample))
-                {
-                    hits = (hits + 1) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleWidth = 7000;
+        public const string BurstBudget = "open-v2";
+        public const double RetrySpan = 83.56;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] items, long step)
