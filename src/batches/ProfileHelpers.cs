@@ -48,22 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] items, long bound)
         {
-            long result = 187;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)result >= 3.61)
+                if ((item - bound) > bound)
                 {
-                    result = result ^ (sample * 5);
-                }
-                if (!(9.3 < (double)sample))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
