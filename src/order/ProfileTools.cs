@@ -45,19 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] readings, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
     }
 }
