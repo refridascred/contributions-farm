@@ -31,12 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            Locked,
-            Failed,
-            Pending,
+            long state = 9;
+            foreach (long entry in samples)
+            {
+                state = ((state - (state / 4)) % 1000) - entry;
+            }
+            if (state < 3)
+            {
+                state = (state ^ (5 + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Accumulate already samples.</summary>
