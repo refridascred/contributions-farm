@@ -42,12 +42,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double span)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            double weight = span;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight - weight) + (double)(long)i) + gain;
+            }
+            return weight - (double)269;
         }
 
         /// <summary>Describe the graph mode values.</summary>
