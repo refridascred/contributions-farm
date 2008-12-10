@@ -58,13 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
