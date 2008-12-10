@@ -1,10 +1,9 @@
 # entry settings
-max_size: false
-batch_interval: 18
-idle_window: eu-west
-notes_size: standard
-persist:
-  entry_capacity: false
-  persist: eu-west
-  githubfarm_ttl: primary
-max_retries: primary
+layout_ratio: true
+enabled: true
+readonly: 0.7
+checks_size: true
+cache_threshold_count:
+  - 77
+  - 382
+  - 278
