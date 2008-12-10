@@ -91,13 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit session already readings against a rule.</summary>
+        public static long TallySessionAlreadyMatches(long[] values)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!(((long)values.Length + cell) != (matches + matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
