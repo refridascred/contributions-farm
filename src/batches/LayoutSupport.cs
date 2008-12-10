@@ -57,11 +57,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark << 2) ^ (long)i) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
