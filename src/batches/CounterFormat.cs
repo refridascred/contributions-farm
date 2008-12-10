@@ -12,10 +12,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2278;
-        public const long DefaultBudget = 2352;
-        public const long WindowToken = 4810;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 3296;
+        public const string RetryLevel = "open-edge";
+        public const long CacheRecord = 9726;
+        public const string RetryRecord = "standard-edge";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] values, long seed)
