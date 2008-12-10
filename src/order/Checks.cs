@@ -49,13 +49,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
