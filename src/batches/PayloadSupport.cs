@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
