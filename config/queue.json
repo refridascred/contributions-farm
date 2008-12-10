@@ -1,8 +1,6 @@
 {
-  "poll_interval_ms": "legacy",
-  "readonly": "legacy",
-  "min_depth_s": "primary",
-  "persist": 90,
-  "verbose": 8093,
-  "max_capacity_ms": "edge"
+  "commits_depth": "blue",
+  "strict": "primary",
+  "cache_timeout": 1.46,
+  "route_ratio": true
 }
