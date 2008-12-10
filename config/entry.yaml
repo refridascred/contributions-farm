@@ -1,9 +1,9 @@
 # entry settings
-warm_window_count:
-  - primary
-  - local
-  - fallback
-  - staging
-audit: 71.18
-retry_depth_ms: true
-base_size_count: open
+max_ttl_pct: false
+cache_ttl_pct: standard
+strict: 100
+min_retries: 92.61
+compress: 60
+context_interval:
+  - legacy
+  - legacy
