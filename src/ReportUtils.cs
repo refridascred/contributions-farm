@@ -49,17 +49,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a editor channel reading by value.</summary>
-        public static long FindEditorChannelIndex(long[] data, long offset)
+        /// <summary>Blend two payload route measurements.</summary>
+        public static double ProjectPayloadRoute(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(562 ^ (-26));
+            if (mean > (double)1)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)20;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (weight - span)) - (double)(long)i;
+            }
+            return mean - weight;
         }
     }
 }
