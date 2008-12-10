@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Fold a list of already order readings.</summary>
+        public static long ScoreAlreadyOrder(long[] items, long step)
         {
-            Idle,
-            Draft,
-            Locked,
-            Stale,
+            long mix = 68;
+            foreach (long reading in items)
+            {
+                if ((step ^ 147) < (reading + step))
+                {
+                    mix = mix - 1;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the filter kind values.</summary>
