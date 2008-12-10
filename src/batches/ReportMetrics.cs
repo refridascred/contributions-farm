@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Roll a support metrics counter forward.</summary>
+        public static long SeriesSupportMetrics(long offset)
         {
-            Idle,
-            Stale,
-            Closed,
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                long matches = (offset + (long)i) >> 1;
+                matches = (matches ^ (long)i) % 101;
+                if (((long)i * 2) > matches)
+                {
+                    mix = mix ^ matches;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit payload record readings against a rule.</summary>
