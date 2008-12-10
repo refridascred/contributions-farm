@@ -1,22 +1,6 @@
 {
-  "min_depth_pct": 46,
-  "dry_run": 77.1,
-  "sync_interval_pct": {
-    "max_window_s": 30,
-    "default_ttl_s": {
-      "verbose": "standard",
-      "enabled": 46.29,
-      "compress": 68.39
-    },
-    "max_delay_pct": ["standard", "stable"],
-    "enabled": {
-      "tools_depth": 84.07,
-      "persist": "staging",
-      "compress": true,
-      "audit": "staging",
-      "poll_size_pct": 95.21
-    },
-    "poll_depth": 250,
-    "readonly": [430, 272, 480, 358]
-  }
+  "editor_timeout": [264, 168, 47, 220],
+  "compress": ["latest", "cached", "latest"],
+  "format_limit": false,
+  "stream_ttl": "stable"
 }
