@@ -68,24 +68,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long seed2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] samples, long target)
         {
-            if ((58 <= (seed2 + seed2)) || ((2 + seed) < seed))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed & 127) > (seed >> 3))
+                if (item >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
