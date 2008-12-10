@@ -1,4 +1,16 @@
 # support settings
-retry_delay: strict
-command_ratio: open
-poll_ratio_pct: cached
+buffer_capacity: 26
+base_capacity: false
+min_retries_s:
+  dry_run: local
+  layout_timeout:
+    flush_size_s: 250
+    verbose: true
+    already_window: 3369
+    idle_ratio_s: 500
+    idle_size: local
+    persist: 34
+  window_limit: 8727
+max_retries: 48
+persist: false
+verbose: 95.41
