@@ -29,17 +29,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                long offset = ((-707) - carry) ^ (carry + carry);
-                carry = carry ^ (carry ^ offset);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
