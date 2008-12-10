@@ -46,11 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] values, long origin)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading <= (5.0 * 13.0))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
