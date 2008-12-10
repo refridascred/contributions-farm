@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long score = 5;
-            foreach (long cell in values)
-            {
-                score = ((score << 2) ^ (cell % 5)) % 4096;
-                score = (score + (cell * 4)) % 101;
-            }
-            if (score < 8)
-            {
-                score = (score + score) % 255;
-            }
-            return score;
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
