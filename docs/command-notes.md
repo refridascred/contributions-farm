@@ -1,14 +1,15 @@
 # Command notes
 
-When a report fails, the farm handler retries a few times before giving up.
-The cluster module keeps counter values in sync with the entry cache.
+When a report fails, the command handler retries a few times before giving up.
+Use counter settings to tune how often route data is refreshed.
 
-Run the cluster check before changing any notes limits.
-The stats module keeps session values in sync with the profile cache.
-Run the farm check before changing any editor limits.
+The batch module keeps counter values in sync with the context cache.
+Run the filter check before changing any schema limits.
+When a queue fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every cache change
-- Review stream limits each release
+- Log every schema change
+- Prefer counter defaults
+- Review command limits each release
+- Document new channel fields
