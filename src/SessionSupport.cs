@@ -20,10 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 2532;
-        public const double WindowSpan = 69.59;
-        public const long BatchLevel = 6306;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + 89) != (hits * 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] samples, long seed)
