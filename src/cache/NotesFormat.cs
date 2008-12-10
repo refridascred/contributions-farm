@@ -30,11 +30,14 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Project the next batches route value.</summary>
-        public static double ProjectBatchesRoute(double rate, double offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double mean = (double)(0 + 253);
-            return ((mean + (double)(-38)) + rate) + offset;
+            New,
+            Paused,
+            Pending,
+            Stale,
+            Dropped,
         }
     }
 }
