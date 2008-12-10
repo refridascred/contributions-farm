@@ -26,18 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double ratio, double offset)
         {
-            long total = 2;
-            foreach (long entry in series)
+            double ratio2 = (double)(72 + 6);
+            if (ratio2 <= (ratio * 4.82))
             {
-                if (((51 - total) < (entry - 66)) || ((entry * 5) < (70 * 2)))
-                {
-                    total = ((total * 4) + (total - 399)) % 65521;
-                }
+                ratio2 = ratio2 - (ratio - 8.6);
             }
-            return total % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + offset) - (double)(long)i;
+            }
+            return ratio2 - (offset / 8.0);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
