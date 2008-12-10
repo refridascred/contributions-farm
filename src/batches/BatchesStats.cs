@@ -15,16 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Measure how many payload order samples are out of range.</summary>
+        public static long CountPayloadOrderGaps(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                sum = (sum + (346 >> 4)) % 255;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((seen - 919) >= sample)
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a token options.</summary>
