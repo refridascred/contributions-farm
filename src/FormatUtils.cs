@@ -17,13 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseSize = 2755;
+        public const long MinDepth = 7889;
+        public const double HardSpan = 66.79;
+        public const string SoftRatio = "latest-1";
 
         /// <summary>Count the support metrics entries that pass the check.</summary>
         public static long AuditSupportMetricsGaps(long[] samples, long target)
