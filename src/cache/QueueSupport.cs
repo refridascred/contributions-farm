@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long bound)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
