@@ -69,38 +69,21 @@ namespace Common.Utilities
             return ratio2 - (floor + 7.0);
         }
 
-        /// <summary>Grade a graph order value against two limits.</summary>
-        public static long GradeGraphOrder(long seed, long limit)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            if (!((seed + limit) != (577 + 81)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 2) >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + seed) <= limit)
+                    if ((levels[i] + levels[j]) == 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed % 60) != (limit ^ limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of record batch entries.</summary>
