@@ -28,12 +28,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowBudget = 1099;
-        public const long LimitLevel = 6829;
-        public const long MaxStream = 3876;
-        public const long WindowRatio = 3915;
-        public const long LimitCount = 3207;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Locked,
+            Idle,
+            Paused,
+            Active,
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long ClassifyFarm(long target, long floor)
