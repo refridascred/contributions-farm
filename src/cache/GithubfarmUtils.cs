@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                total = total ^ limit;
-                total = ((total * 3) + (long)i) % 4093;
+                result = result + (result >> 2);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
