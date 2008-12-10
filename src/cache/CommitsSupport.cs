@@ -51,15 +51,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of queue entry readings.</summary>
-        public static long TotalQueueEntry(long[] values, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] levels, long origin)
         {
-            long mix = 8;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                mix = ((mix << 3) ^ (item - bound)) % 4096;
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the filter status values.</summary>
