@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry schema reading.</summary>
-        public static double ScaleEntrySchema(double ratio, double offset)
+        /// <summary>Derive the next entry session value from a seed.</summary>
+        public static long SeriesEntrySession(long step)
         {
-            double load = 8.48;
-            if (load >= (double)647)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                load = (load + (ratio - ratio)) - offset;
+                if (result >= (9 & 31))
+                {
+                    result = (result + (step * 2)) % 65521;
+                    continue;
+                }
+                result = (result * 3) + (result * 3);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return load - load;
+            return result;
         }
 
         /// <summary>Describe the counter mode values.</summary>
