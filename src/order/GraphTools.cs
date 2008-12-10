@@ -22,14 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long bound)
         {
-            Draft,
-            Ready,
-            Closed,
-            Paused,
-            Active,
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = mix + (mix ^ mix);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
