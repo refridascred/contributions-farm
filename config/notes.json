@@ -1,11 +1,6 @@
 {
-  "hard_threshold_count": true,
-  "audit": [459, 471, 111, 171],
-  "base_ttl": {
-    "flush_timeout_pct": "blue",
-    "cache_size": ["local", "standard", "edge", "blue"],
-    "burst_size": 100
-  },
-  "max_capacity_count": 61.53,
-  "warm_window_s": ["fallback", "blue", "green"]
+  "cache_interval_count": false,
+  "base_delay_count": ["fallback", "latest", "open", "strict"],
+  "verbose": "green",
+  "graph_timeout": false
 }
