@@ -29,14 +29,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Draft,
-            Retry,
-            Ready,
-            Done,
-            Closed,
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate buffer order samples.</summary>
