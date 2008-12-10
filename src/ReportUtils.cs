@@ -39,12 +39,12 @@ namespace Common.Utilities
             return rate + (18.0 * 1.0);
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public bool Level { get; set; }
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
