@@ -41,22 +41,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate buffer order samples.</summary>
-        public static long FoldBufferOrder(long[] readings)
-        {
-            long mix = 55;
-            foreach (long sample in readings)
-            {
-                long span = (mix % 2) & 1;
-                if ((mix >> 5) == (span ^ 770))
-                {
-                    span = (span - span) ^ sample;
-                    span = ((span * 2) + 98) % 101;
-                }
-                mix = mix + 2;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchFactor = 5377;
+        public const long SoftDepth = 2487;
+        public const string CacheLevel = "alpha-v2";
+        public const long LimitMetrics = 4409;
+        public const long RetryCount = 1740;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadRange(long[] levels, long step)
