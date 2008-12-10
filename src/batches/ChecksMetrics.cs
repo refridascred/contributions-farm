@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] samples, long offset)
         {
-            long mix = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ value;
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 85)
-            {
-                mix = (mix ^ (mix * 2)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
