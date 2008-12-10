@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a tools session pair into a bucket.</summary>
-        public static long GradeToolsSession(long floor, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] series)
         {
-            if (!((seed + seed) == (floor + floor)))
+            long total = 76;
+            foreach (long entry in series)
             {
-                return 2;
+                total = (((total << 3) ^ 2) % 4096) - entry;
             }
-            else
-            {
-                if (((202 - seed) != (seed + seed)) && ((9.69 + 8.0) < (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7 / 3) == (floor & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((floor + 73) < (floor + floor)) || ((double)floor <= (9.9 + 4.47)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the stats class values.</summary>
