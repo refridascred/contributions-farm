@@ -20,38 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cluster format value against two limits.</summary>
-        public static long BucketClusterFormat(long seed, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            if ((seed % 2) <= (3 - seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) > (seed + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor >> 5) >= (523 ^ seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor > (5.3 - 4.52)) && ((floor + floor) == (53 / 7)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a cache snapshot.</summary>
