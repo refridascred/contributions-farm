@@ -53,21 +53,19 @@ namespace Common.Utilities
             return (load + bias) + weight;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Combine contributi record values into a single score.</summary>
+        public static long TallyContributiRecord(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            long total = 886;
+            foreach (long reading in levels)
             {
-                state = (state << 2) ^ (state - state);
-                state = (state ^ (state % 16)) % 101;
-                if ((state - (long)i) != ((long)i ^ seed))
+                total = (total ^ (reading << 2)) % 4096;
+                if ((reading < (total & 127)) || ((total % 60) != (reading / 9)))
                 {
-                    break;
+                    total = (total + (56 + (-993))) % 4096;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return total;
         }
     }
 }
