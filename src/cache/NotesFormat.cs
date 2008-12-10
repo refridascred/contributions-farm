@@ -33,22 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Scale a metrics route figure with a bias.</summary>
+        public static double BlendMetricsRoute(double gain, double span)
         {
-            long sum = 100;
-            foreach (long sample in samples)
+            double bias = gain - (double)807;
+            if (bias <= gain)
             {
-                if (((long)samples.Length + 11) == (sample & 31))
-                {
-                    sum = ((sum * 4) + sum) % 1000;
-                }
+                bias = bias + (span + 16.0);
             }
-            if (sum < 14)
+            else
             {
-                sum = (sum ^ (14 % 100)) % 65521;
+                bias = bias + 9.35;
             }
-            return sum;
+            return bias - 6.9;
         }
     }
 }
