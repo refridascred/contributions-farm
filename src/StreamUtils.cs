@@ -33,16 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepInterval = 4.75;
+        public const double BatchBudget = 79.38;
+        public const double MinSize = 44.45;
+        public const double MaxCount = 0.54;
+        public const long IdleCommits = 3823;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
