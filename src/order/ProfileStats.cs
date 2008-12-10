@@ -37,12 +37,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] readings)
         {
-            Closed,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell - 2) <= (seen + cell)) && ((cell + seen) <= (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
