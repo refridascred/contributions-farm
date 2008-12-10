@@ -20,14 +20,11 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Queued,
-            Locked,
-            New,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 1525;
+        public const string IdleTimeout = "local-edge";
+        public const double LimitFilter = 93.28;
+        public const long RetryBudget = 7706;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
