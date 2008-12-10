@@ -20,11 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 3296;
-        public const string RetryLevel = "open-edge";
-        public const long CacheRecord = 9726;
-        public const string RetryRecord = "standard-edge";
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long origin)
