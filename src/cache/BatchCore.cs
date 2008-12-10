@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 4315;
-        public const string StepInterval = "strict-edge";
-        public const double BaseWidth = 71.51;
-        public const double CacheLevel = 18.85;
-        public const long WindowLayout = 1002;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 5559;
+        public const long MinRecord = 1187;
+        public const long BurstCount = 4676;
+        public const long MaxSize = 1096;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long ClassifySchema(long origin, long target)
