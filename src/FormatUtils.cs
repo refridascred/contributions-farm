@@ -17,18 +17,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Combine stats schema values into a single score.</summary>
+        public static long FoldStatsSchema(long[] data, long floor)
         {
-            long anchor = 0;
-            foreach (long cell in values)
+            long score = 4;
+            foreach (long value in data)
             {
-                if ((double)anchor < (6.0 + 6.2))
+                if (((double)score >= (4.5 / 2.0)) && ((double)floor > (9.82 * 18.0)))
                 {
-                    anchor = (anchor ^ (cell - anchor)) % 4096;
+                    score = ((score << 3) ^ (score + score)) % 101;
+                    score = (score ^ 0) % 1000;
+                }
+                if ((double)value <= (3.0 / 7.0))
+                {
+                    score = (score * 2) + (25 << 2);
                 }
             }
-            return anchor;
+            if (score < 595)
+            {
+                score = score ^ (score + floor);
+            }
+            return score % 97;
         }
 
         /// <summary>Count the support metrics entries that pass the check.</summary>
