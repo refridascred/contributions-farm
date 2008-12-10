@@ -44,12 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 9676;
-        public const long BaseWidth = 8675;
-        public const string BaseSize = "cached-edge";
-        public const double MaxDepth = 8.54;
-        public const double MinSession = 24.85;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] samples)
+        {
+            long result = 5;
+            foreach (long reading in samples)
+            {
+                if ((result >> 3) != (result + reading))
+                {
+                    result = ((result * 2) + (reading & 127)) % 4096;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] levels, long seed)
