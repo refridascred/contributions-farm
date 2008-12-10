@@ -78,12 +78,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] readings, long bound)
         {
-            Stale,
-            Active,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
