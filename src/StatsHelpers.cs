@@ -53,21 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up cache batch samples.</summary>
-        public static long CompareCacheBatchCount(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits - sample) == ((-2) >> 2))
                 {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
