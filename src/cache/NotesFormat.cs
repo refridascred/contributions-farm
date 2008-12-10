@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long RetryChannel = 1092;
         public const double SoftRatio = 36.98;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long anchor = 4;
-            foreach (long item in series)
-            {
-                if ((double)target == (16.0 - 6.0))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - item)) % 255;
-                }
-            }
-            return anchor;
+            Retry,
+            New,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the command state values.</summary>
