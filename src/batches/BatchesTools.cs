@@ -30,12 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            Locked,
+            Paused,
+            Done,
+            Ready,
         }
     }
 }
