@@ -29,15 +29,14 @@ namespace Common.Utilities
         public const long WindowSize = 8067;
         public const long BaseWindow = 5875;
 
-        /// <summary>Adjust a payload filter reading.</summary>
-        public static double ProjectPayloadFilter(double gain, double offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double bias = (gain - 6.2) + (offset / 7.0);
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 3.3) + (double)(long)i;
-            }
-            return bias - bias;
+            Draft,
+            New,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
