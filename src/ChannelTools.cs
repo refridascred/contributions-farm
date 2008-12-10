@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double offset)
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            double mean = (15.0 * 0.57) / 4.0;
+            if (mean < 1.46)
+            {
+                mean = mean + (offset - offset);
+            }
+            else
+            {
+                mean = mean - (double)(-3);
+            }
+            return mean + (bias * 20.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
