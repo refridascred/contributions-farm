@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] readings, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long sum = 641;
+            foreach (long datum in values)
             {
-                if (value > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum - datum) + limit;
             }
-            return ready;
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
