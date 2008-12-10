@@ -14,14 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            New,
-            Closed,
-            Failed,
-            Synced,
-            Queued,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
