@@ -21,11 +21,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double weight, double offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double weight2 = 9.11;
-            return (weight2 + weight) + offset;
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
