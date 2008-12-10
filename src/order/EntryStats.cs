@@ -57,28 +57,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            if (floor >= (floor ^ 26))
             {
-                if ((step * 5) < step)
-                {
-                    break;
-                }
-                if (((acc * 5) < acc) && (step >= ((long)i - (long)i)))
-                {
-                    acc = acc - (long)i;
-                }
-                if (!((step / 2) < (step + acc)))
-                {
-                    acc = (acc ^ step) % 4096;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((3.6 - 2.0) >= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)778 != (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit - 56) > (limit * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
