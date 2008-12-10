@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sum >= (limit + sum))
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 2) + (sum >> 3)) % 97;
                 }
+                else
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
