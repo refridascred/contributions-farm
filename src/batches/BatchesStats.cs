@@ -38,32 +38,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a report batches pair into a bucket.</summary>
-        public static long GradeReportBatches(long floor, long offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long diff = floor ^ offset;
-            if (!((floor + (-98)) <= (diff * 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset < (diff - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor >= (5.0 + 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
