@@ -73,19 +73,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] data, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (cell <= target)
+                if (cell > limit)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
