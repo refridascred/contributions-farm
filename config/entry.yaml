@@ -1,16 +1,4 @@
 # entry settings
-base_timeout:
-  hard_timeout: 500
-  persist:
-    flush_ttl_s: 500
-    strict: latest
-    report_ratio: true
-    batch_limit_count:
-      - 148
-      - 287
-  contributi_limit: false
-compress: 263
-warm_ttl:
-  - 321
-  - 132
-  - 365
+warm_window_s: 250
+hard_retries_ms: 100
+format_retries: true
