@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] readings, long step)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((long)readings.Length < (entry / 6))
+                {
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
