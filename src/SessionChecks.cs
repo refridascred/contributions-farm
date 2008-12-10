@@ -48,19 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double weight, double offset)
-        {
-            double rate = weight * 6.4;
-            if (rate < (9.15 * 4.1))
-            {
-                rate = rate - (weight / 3.0);
-            }
-            else
-            {
-                rate = rate - 4.0;
-            }
-            return rate - offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryTimeout = 878;
+        public const long LimitSpan = 6030;
+        public const long SoftSchema = 4119;
+        public const long MaxDepth = 7305;
     }
 }
