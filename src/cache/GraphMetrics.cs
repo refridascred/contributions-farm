@@ -40,15 +40,18 @@ namespace Common.Utilities
             return ratio + (double)5;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] readings)
         {
             long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seen << 3) == (71 % 97)) || (((seen / 8) > (item ^ item)) || (item < (step / 3))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
