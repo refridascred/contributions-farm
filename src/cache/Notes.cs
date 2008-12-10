@@ -23,32 +23,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long offset)
-        {
-            if ((20.0 + 7.1) > (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.12 * 0.1) <= (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (bound & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchScore = 9335;
+        public const long DefaultLayout = 55;
+        public const long WindowCount = 5723;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] levels, long step)
