@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double scale, double span)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            double scale2 = scale;
-            if (scale2 > (span / 3.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = scale2 + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - (8.31 * 1.9);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (double)8) + (double)(long)i;
-            }
-            return scale2 - (double)(-7);
+            return hits;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
