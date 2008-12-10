@@ -56,12 +56,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first contributi metric entry that matches the target.</summary>
-        public static long SeekContributiMetricIndex(long[] series, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] == target) && ((series[i] % 5) == 0))
+                if (items[i] > floor)
                 {
                     return (long)i;
                 }
