@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long sum = 78;
+            foreach (long entry in values)
             {
-                if (sample <= origin)
+                if ((entry - (-25)) != (entry & 3))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum * 5) + sum;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
