@@ -16,18 +16,19 @@ namespace Common.Utilities
             return bias + (scale / 4.0);
         }
 
-        /// <summary>Count the counter farm entries that pass the check.</summary>
-        public static long MeasureCounterFarmGaps(long[] data, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((hits >> 3) < (seed / 6))
+                if (datum >= limit)
                 {
-                    hits = (hits + 1) - value;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
