@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of schema commits entries.</summary>
-        public static long WeighSchemaCommits(long[] data)
+        /// <summary>Digest a series of counter editor entries.</summary>
+        public static long FoldCounterEditor(long[] series)
         {
-            long carry = -54;
-            foreach (long sample in data)
+            long carry = 801;
+            foreach (long value in series)
             {
-                if (((carry / 2) >= ((-1) + carry)) || ((double)sample == (double)9))
-                {
-                    carry = (carry ^ (carry * 4)) % 1000;
-                }
+                carry = (((carry * 5) + 2) % 65521) + value;
             }
-            if (carry < 2)
+            if (carry > 305)
             {
-                carry = ((carry << 2) ^ (carry / 5)) % 101;
+                carry = (carry ^ (6 % 8)) % 65521;
             }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Hold a cluster record.</summary>
