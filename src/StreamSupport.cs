@@ -28,15 +28,16 @@ namespace Common.Utilities
         public const long LimitScore = 9689;
         public const double BaseChecks = 14.77;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            long sum = 0;
-            foreach (long sample in values)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((((sum << 2) ^ (sum + sum)) % 255) + sample) + bound;
+                mark = (mark - (offset & 255)) % 97;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return mark;
         }
     }
 }
