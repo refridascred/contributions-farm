@@ -14,39 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank stats contributi input into a small class.</summary>
-        public static long ClassifyStatsContributi(long limit, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long offset = limit ^ target;
-            if ((limit + offset) >= (limit + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= (target % 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit & 63) >= (target * 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target <= (target ^ limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Closed,
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Match up channel samples.</summary>
