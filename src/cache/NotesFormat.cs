@@ -24,21 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(453 << 1);
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - (bias - 3.35)) + (double)(long)i;
             }
-            return tally;
+            return mean + (scale - bias);
         }
 
         /// <summary>Hold a context entry.</summary>
