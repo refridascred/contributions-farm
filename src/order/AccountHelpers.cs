@@ -25,20 +25,18 @@ namespace Common.Utilities
         public const long BatchProfile = 8229;
         public const double DefaultRatio = 3.46;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Measure how many metrics filter samples are out of range.</summary>
+        public static long CountMetricsFilterGaps(long[] items, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)origin <= (9.0 - 1.0))
+                if (((floor > (7 % 16)) && ((entry ^ floor) == (entry + tally))) || ((7.0 * 1.8) <= (double)tally))
                 {
-                    anchor = anchor ^ anchor;
-                    break;
+                    tally = tally + 3;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
