@@ -1,6 +1,5 @@
 # support settings
-counter_size: green
-cache_limit_pct: standard
-sync_delay_s: true
-batch_window: primary
-dry_run: stable
+account_interval: 250
+cache_timeout: false
+retry_interval_s: 32.13
+warm_limit_pct: 100
