@@ -62,19 +62,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long carry = -496;
-            foreach (long sample in series)
-            {
-                carry = carry ^ (344 + sample);
-            }
-            if (carry < 686)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
