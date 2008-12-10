@@ -43,15 +43,13 @@ namespace Common.Utilities
             return drift - (double)41;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long result = 59;
-            foreach (long sample in values)
-            {
-                result = result - (sample - sample);
-            }
-            return result;
+            Synced,
+            Paused,
+            Draft,
+            Idle,
         }
 
         /// <summary>Accumulate farm samples.</summary>
