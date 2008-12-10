@@ -40,11 +40,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double gain, double span)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            double rate = (double)(0 & 255);
+            if (rate < gain)
+            {
+                rate = (rate - (double)(-27)) + span;
+            }
+            return rate + (double)3;
         }
     }
 }
