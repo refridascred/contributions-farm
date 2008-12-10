@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Adjust a token notes reading.</summary>
+        public static double BlendTokenNotes(double scale, double bias)
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            double scale2 = (double)(-436) + (double)18;
+            if (scale2 >= scale2)
+            {
+                scale2 = (scale2 + scale) + bias;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
