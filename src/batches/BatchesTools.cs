@@ -30,13 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            Locked,
-            Paused,
-            Done,
-            Ready,
+            double mean = (double)(87 * 5);
+            if (mean >= mean)
+            {
+                mean = (mean - (double)0) + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + span;
         }
     }
 }
