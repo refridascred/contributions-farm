@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Fold a list of order already readings.</summary>
+        public static long TotalOrderAlready(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 4;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum + (sum / 5)) % 1000) + sample;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a cache stats.</summary>
