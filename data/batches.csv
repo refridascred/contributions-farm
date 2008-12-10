@@ -1,11 +1,6 @@
-id,rank,ratio,region,active
-1,75.16,local,staging,blue
-2,open,795,32.9,474
-3,primary,3.06,green,942
-4,cached,426,green,local
-5,470,879,838,fallback
-6,991,32.72,117,757
-7,252,315,749,43.69
-8,157,stable,65.96,22.16
-9,28.23,green,73.96,420
-10,305,legacy,60.22,15.47
+id,score,label,count
+1,948,320,378
+2,767,primary,36.62
+3,367,10,5.57
+4,edge,42.51,34.36
+5,78.14,459,283
