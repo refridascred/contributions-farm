@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 6504;
-        public const string RetryFactor = "strict-v2";
-        public const double LimitScore = 5.98;
-        public const long SoftSize = 3474;
-        public const double MinStats = 74.29;
+        /// <summary>Look up the position of a session entry sample.</summary>
+        public static long FindSessionEntryIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a support contributi counter forward.</summary>
         public static long IterateSupportContributi(long limit)
