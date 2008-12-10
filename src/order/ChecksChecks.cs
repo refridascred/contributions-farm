@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next command filter value.</summary>
-        public static double ProjectCommandFilter(double rate, double bias)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double bias2 = (bias / 9.0) / 8.0;
-            if (bias2 <= (double)4)
-            {
-                bias2 = bias2 - rate;
-            }
-            else
-            {
-                bias2 = bias2 + (bias * 1.7);
-            }
-            return bias2 - (bias * 3.0);
+            Queued,
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Rank stats contributi input into a small class.</summary>
