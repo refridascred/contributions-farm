@@ -62,18 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (value >= (value / 2))
+                if ((((double)entry == (double)3) || ((5.95 - 9.8) < (double)entry)) || (origin > (origin & 1)))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
