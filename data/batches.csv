@@ -1,6 +1,7 @@
-id,count,active,ratio
-1,108,primary,188
-2,stable,39.81,57.05
-3,open,39,883
-4,fallback,155,76.13
-5,edge,56.3,269
+id,region
+1,edge
+2,7.94
+3,74.08
+4,614
+5,29.87
+6,latest
