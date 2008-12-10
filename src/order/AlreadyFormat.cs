@@ -24,11 +24,20 @@ namespace Common.Utilities
         public const long StepCount = 8033;
         public const double RetrySize = 3.03;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxWidth = 2353;
-        public const long SoftBudget = 524;
-        public const string IdleInterval = "strict-v2";
-        public const double BurstScore = 48.44;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] data)
