@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const long CacheEditor = 1197;
         public const long BurstEditor = 7342;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] values, long seed)
+        /// <summary>Match up already stats samples.</summary>
+        public static long MatchAlreadyStatsCount(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item >> 1) <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
