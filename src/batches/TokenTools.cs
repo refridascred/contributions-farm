@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] readings)
+        /// <summary>Validate channel filter readings against a bound.</summary>
+        public static bool GuardChannelFilterRange(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (tally < (entry + 9))
+                if (item != floor)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Locate a metrics context reading by value.</summary>
