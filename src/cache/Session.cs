@@ -35,11 +35,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxWidth = 9483;
-        public const long IdleReport = 3199;
-        public const double HardReport = 37.38;
-        public const long MaxDepth = 7296;
-        public const string HardInterval = "standard-v2";
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Pending,
+            Queued,
+            Dropped,
+            Draft,
+        }
     }
 }
