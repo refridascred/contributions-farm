@@ -37,39 +37,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long floor, long bound)
+        /// <summary>Accumulate buffer order samples.</summary>
+        public static long FoldBufferOrder(long[] readings)
         {
-            long cur = floor ^ bound;
-            if ((floor + cur) != (bound & 3))
+            long mix = 55;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((3.0 / 2.0) >= (double)cur) && ((7.0 * 5.98) <= (double)bound))
+                long span = (mix % 2) & 1;
+                if ((mix >> 5) == (span ^ 770))
                 {
-                    return 2;
+                    span = (span - span) ^ sample;
+                    span = ((span * 2) + 98) % 101;
                 }
-                else
-                {
-                    if ((double)floor == (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((2 & 7) == (bound / 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mix = mix + 2;
             }
+            return mix;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
