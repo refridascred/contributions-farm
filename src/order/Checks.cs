@@ -62,23 +62,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = -88;
-            foreach (long item in series)
-            {
-                if (!((item - 65) > (anchor % 3)))
-                {
-                    anchor = (anchor - (item + 2)) % 4096;
-                }
-                anchor = ((anchor * 3) + (item + 18)) % 101;
-                if (!((anchor + item) < (item + anchor)))
-                {
-                    anchor = (anchor - item) % 255;
-                }
-            }
-            return anchor;
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
