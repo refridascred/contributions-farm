@@ -47,18 +47,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Project the next channel checks value.</summary>
+        public static double AdjustChannelChecks(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double mean = ratio;
+            if (mean <= (ratio - 0.7))
             {
-                if ((7.8 + 8.75) < (double)datum)
-                {
-                    seen = seen + 3;
-                }
+                mean = mean + (double)(-4);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (double)27) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
