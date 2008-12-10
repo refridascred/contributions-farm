@@ -1,7 +1,7 @@
-id,score,token,weight
-1,41.39,32.57,stable
-2,26.54,818,989
-3,staging,637,792
-4,blue,20.57,standard
-5,28.21,45.06,9.2
-6,504,eu-west,33.18
+id,region,state,ratio
+1,19.63,latest,23
+2,standard,standard,eu-west
+3,57,cached,open
+4,315,stable,24.49
+5,16,788,22.08
+6,216,5.79,7.06
