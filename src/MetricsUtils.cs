@@ -30,18 +30,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] levels, long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long target, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if (((2.0 * 13.0) != (double)target) && (3.39 < (double)origin))
             {
-                if ((double)60 == (double)target)
+                return 2;
+            }
+            else
+            {
+                if ((target < (target + 92)) && ((double)target < 5.78))
                 {
-                    count = (count + 2) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if (target <= 14)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3.0 / 8.0) != (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
