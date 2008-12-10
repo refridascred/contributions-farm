@@ -23,19 +23,32 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long bound, long step)
         {
-            long total = 7;
-            foreach (long entry in levels)
+            long edge = bound ^ step;
+            if (((bound - 97) <= (edge >> 1)) && ((double)step <= (12.0 + 2.0)))
             {
-                total = (total << 2) ^ entry;
+                return 5;
             }
-            if (total > (-15))
+            else
             {
-                total = total + (total + total);
+                if (((edge << 3) >= (edge & 63)) && (edge <= (step & 63)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((71 % 12) >= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Hold a route header.</summary>
