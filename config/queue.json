@@ -1,9 +1,20 @@
 {
-  "flush_timeout_pct": true,
-  "dry_run": 766,
-  "strict": {
-    "default_ttl_count": true,
-    "burst_depth": "open",
-    "profile_limit": ["standard", "edge", "staging"]
-  }
+  "channel_size": {
+    "retry_ttl_ms": 46.08,
+    "dry_run": {
+      "idle_depth_pct": "green",
+      "default_threshold_pct": false,
+      "stream_delay": 1024,
+      "burst_ratio_pct": false,
+      "hard_delay_ms": 28
+    },
+    "strict": 2.03,
+    "default_capacity": true,
+    "warm_delay": "stable"
+  },
+  "base_capacity_count": true,
+  "warm_interval_s": 15,
+  "retry_depth_pct": 69,
+  "default_interval_s": "staging",
+  "warm_size": false
 }
