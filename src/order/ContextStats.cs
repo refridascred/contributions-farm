@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const string MaxQueue = "stable-edge";
         public const double DefaultTimeout = 5.77;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] items, long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long state = 816;
-            foreach (long item in items)
-            {
-                state = ((state ^ (state - item)) % 1000) - limit;
-                if (928 <= state)
-                {
-                    state = (state * 4) + item;
-                }
-            }
-            return state;
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
