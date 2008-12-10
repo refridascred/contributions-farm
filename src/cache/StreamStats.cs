@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long limit, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long step)
         {
-            if ((floor * 2) < (-4))
+            long acc = 3;
+            foreach (long cell in readings)
             {
-                return 3;
+                acc = (((acc ^ acc) % 65521) ^ cell) - step;
             }
-            else
+            if (acc < 74)
             {
-                if ((20.0 - 9.0) < (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)floor >= (double)limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                acc = (acc + acc) % 255;
             }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a session entry sample.</summary>
