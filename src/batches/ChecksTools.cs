@@ -28,12 +28,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long floor)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor * 3) + (floor * 5);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a schema already pair into a bucket.</summary>
