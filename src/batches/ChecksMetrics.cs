@@ -63,15 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] items, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
             long tally = 0;
-            foreach (long entry in items)
+            foreach (long item in series)
             {
-                if (((0.01 / 8.0) >= (double)entry) && !((double)seed == (16.0 + 1.85)))
+                if ((10.0 / 9.0) <= (double)tally)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) - item;
                 }
             }
             return tally;
