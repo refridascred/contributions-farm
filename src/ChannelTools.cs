@@ -16,14 +16,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Roll a profile contributi counter forward.</summary>
+        public static long StepProfileContributi(long bound)
         {
-            Done,
-            Retry,
-            Synced,
-            New,
-            Draft,
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor - ((long)i / 7)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
