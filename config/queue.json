@@ -1,6 +1,13 @@
 {
-  "max_size_ms": 100,
-  "max_ttl": false,
-  "layout_threshold": false,
-  "editor_retries": [262, 126, 253, 30]
+  "burst_size_pct": "cached",
+  "report_window": {
+    "cluster_interval": 76,
+    "compress": true,
+    "buffer_timeout": 3058,
+    "poll_ratio_count": "edge",
+    "poll_limit": 33
+  },
+  "format_window": 47.25,
+  "account_retries": 250,
+  "contributi_limit": 3814
 }
