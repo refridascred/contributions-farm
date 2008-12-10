@@ -36,11 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryTimeout = 95;
-        public const long SoftOrder = 6242;
-        public const long BurstOrder = 3197;
-        public const long BatchOrder = 2040;
-        public const string WindowWidth = "alpha-edge";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
