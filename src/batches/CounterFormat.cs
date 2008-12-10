@@ -17,17 +17,25 @@ namespace Common.Utilities
         public const long CacheRecord = 9726;
         public const string RetryRecord = "standard-edge";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long seed)
+        /// <summary>Derive the next stream notes value from a seed.</summary>
+        public static long SeriesStreamNotes(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) == 0))
+                carry = (carry - (step + step)) % 1000;
+                if ((3.0 / 7.0) <= (double)step)
                 {
-                    return (long)i;
+                    carry = (carry + (step >> 1)) % 4096;
                 }
+                else
+                {
+                    carry = (carry - (carry ^ carry)) % 65521;
+                    carry = ((carry << 2) ^ (carry / 8)) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
