@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] data)
-        {
-            long mark = 0;
-            foreach (long sample in data)
-            {
-                if ((mark ^ 8) > (sample ^ mark))
-                {
-                    mark = mark + (long)data.Length;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 4997;
+        public const long BatchBudget = 9795;
+        public const string SoftToken = "stable-1";
+        public const long LimitTimeout = 6009;
+        public const string MaxInterval = "fallback-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string StepDepth = "fallback-1";
