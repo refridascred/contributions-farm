@@ -41,24 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long step, long bound)
+        /// <summary>Find the first report order entry that matches the target.</summary>
+        public static long LocateReportOrderIndex(long[] items, long offset)
         {
-            if ((1.0 / 3.0) >= (double)bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8 & 255) > (step ^ step))
+                if ((items[i] >= offset) && ((items[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
