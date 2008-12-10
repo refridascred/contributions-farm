@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 6009;
         public const string MaxInterval = "fallback-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepDepth = "fallback-1";
-        public const long SoftSize = 2161;
-        public const long BaseSpan = 4653;
-        public const string MaxQueue = "stable-edge";
-        public const double DefaultTimeout = 5.77;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Failed,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
