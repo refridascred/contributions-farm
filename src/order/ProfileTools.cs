@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 4834;
-        public const double StepMetric = 20.78;
-        public const string DefaultMetric = "primary-1";
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] readings)
+        {
+            long acc = 29;
+            foreach (long value in readings)
+            {
+                acc = (acc - acc) ^ value;
+            }
+            if (acc > 3)
+            {
+                acc = (acc ^ (acc + 11)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
