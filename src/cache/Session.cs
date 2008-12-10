@@ -24,14 +24,13 @@ namespace Common.Utilities
             return weight + 17.0;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Active,
-            Draft,
-            Locked,
+            Ready,
+            Closed,
             Synced,
-            Idle,
+            New,
         }
 
         /// <summary>Hold a schema info.</summary>
