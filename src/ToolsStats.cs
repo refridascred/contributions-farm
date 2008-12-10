@@ -17,11 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
