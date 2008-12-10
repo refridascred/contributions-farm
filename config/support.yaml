@@ -1,14 +1,6 @@
 # support settings
-base_retries_s: 47.58
-retry_capacity: 8951
-batch_window_ms:
-  stats_size: false
-  default_interval: primary
-  min_threshold_s: 21
-  sync_limit_s: stable
-  soft_capacity_ms: false
-retry_limit_s:
-  - 106
-  - 383
-  - 286
-  - 44
+sync_size_ms: edge
+batches_ttl: 1.99
+persist: edge
+idle_size_count: 250
+idle_delay_pct: 7594
