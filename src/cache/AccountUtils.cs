@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Compare every pair of metrics already readings.</summary>
+        public static long MatchMetricsAlreadyCount(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.55 - 5.69) == (double)bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ (bound ^ bound)) % 97;
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = (mark + ((long)i - bound)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
