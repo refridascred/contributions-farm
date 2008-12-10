@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const string BurstDepth = "legacy-edge";
         public const string IdleBatch = "cached-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 80.63;
-        public const long BurstContext = 1428;
-        public const long LimitContext = 2859;
-        public const long HardTimeout = 3668;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Queued,
+            Synced,
+            New,
+            Draft,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftDepth = 9797;
