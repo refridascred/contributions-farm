@@ -52,18 +52,30 @@ namespace Common.Utilities
         public const long MaxInterval = 782;
         public const long WindowFilter = 5607;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = 5;
+            foreach (long cell in levels)
             {
-                if ((count >> 2) > (value ^ count))
+                if (((16.0 - 3.29) >= (double)cell) || ((cell << 1) < (anchor - cell)))
                 {
-                    count = count + 2;
+                    anchor = (anchor ^ 36) % 4096;
+                }
+                if (anchor >= (cell / 3))
+                {
+                    anchor = (anchor ^ (cell & 7)) % 4096;
+                }
+                if ((anchor + cell) < (cell & 127))
+                {
+                    anchor = (anchor ^ cell) % 4096;
                 }
             }
-            return count;
+            if (anchor < 0)
+            {
+                anchor = (anchor - (1 + anchor)) % 101;
+            }
+            return anchor;
         }
     }
 }
