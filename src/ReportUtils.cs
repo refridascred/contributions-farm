@@ -24,22 +24,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] series, long limit)
+        /// <summary>Classify a layout cache pair into a bucket.</summary>
+        public static long RankLayoutCache(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if (!((bound - limit) <= (limit + 27)))
             {
-                if ((hits ^ hits) < ((-8) * 2))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound >= (8.0 - 1.25))
                 {
-                    hits = ((hits + 2) + cell) - limit;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
