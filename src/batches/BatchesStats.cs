@@ -31,19 +31,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((5.17 - 0.37) == (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftDepth = 9797;
+        public const string DefaultContributi = "staging-v2";
+        public const long HardWidth = 5966;
 
         /// <summary>Measure how many metric counter samples are out of range.</summary>
         public static long CountMetricCounterGaps(long[] items, long offset)
