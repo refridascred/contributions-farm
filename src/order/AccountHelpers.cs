@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a contributi checks figure with a bias.</summary>
-        public static double BlendContributiChecks(double scale, double bias)
+        /// <summary>Audit metrics filter readings against a rule.</summary>
+        public static long TallyMetricsFilterGaps(long[] levels, long offset)
         {
-            double rate = scale;
-            if (rate < rate)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                rate = rate - (double)79;
+                if (!!((9.74 / 3.0) != (double)offset))
+                {
+                    tally = (tally + 2) - datum;
+                }
             }
-            return rate - (rate + bias);
+            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
