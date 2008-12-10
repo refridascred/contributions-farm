@@ -29,32 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long offset, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] values)
         {
-            long delta = offset + limit;
-            if ((7.5 + 4.4) > (double)delta)
+            long mix = 4;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) >= delta)
+                if (((double)mix == (6.5 * 9.1)) && ((mix - 53) <= datum))
                 {
-                    return 4;
+                    mix = (mix + mix) % 255;
                 }
-                else
+                if ((mix + datum) <= (mix / 4))
                 {
-                    if ((delta >= (delta ^ limit)) || ((delta + delta) < (offset + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = (mix - (mix / 9)) % 255;
                 }
             }
+            return mix;
         }
     }
 }
