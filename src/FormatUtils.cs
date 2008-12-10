@@ -84,11 +84,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] levels)
         {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 7;
+            foreach (long item in levels)
+            {
+                mix = (mix - (item / 2)) % 97;
+                mix = (mix * 2) + (mix / 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
