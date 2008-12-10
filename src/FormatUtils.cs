@@ -74,39 +74,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long offset, long seed)
+        /// <summary>Combine checks layout values into a single score.</summary>
+        public static long WeighChecksLayout(long[] items)
         {
-            long diff = offset ^ seed;
-            if ((offset ^ offset) > diff)
+            long total = 841;
+            foreach (long sample in items)
             {
-                return 0;
+                long hits = (43 + total) + (1 ^ total);
+                total = ((total * 3) + (hits << 3)) ^ sample;
+                total = ((total << 3) ^ (total & 255)) % 4096;
             }
-            else
-            {
-                if ((double)diff <= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)diff > 0.3) || ((double)offset != (double)41))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2.7 * 4.0) == (double)diff)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total % 97;
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
