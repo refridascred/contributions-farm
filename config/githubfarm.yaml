@@ -1,7 +1,12 @@
 # githubfarm settings
-flush_depth_pct:
-  - edge
-  - local
-  - open
-min_capacity: 22
-compress: blue
+sync_timeout_pct: 250
+default_window: true
+account_interval:
+  hard_ratio_ms:
+    - 94
+    - 486
+  max_timeout_count: 7587
+  stats_ratio: 1325
+  hard_window_pct: 70.49
+  report_timeout: 19.74
+  sync_retries_ms: standard
