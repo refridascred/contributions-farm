@@ -1,6 +1,5 @@
 {
-  "compress": 500,
-  "soft_limit": "legacy",
-  "cache_depth": "blue",
-  "idle_size_ms": 30
+  "max_limit_s": ["open", "eu-west", "fallback"],
+  "burst_limit": 18,
+  "flush_retries_ms": ["fallback", "stable"]
 }
