@@ -69,19 +69,13 @@ namespace Common.Utilities
         public const long MaxLevel = 5551;
         public const long RetryScore = 254;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] values, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
