@@ -31,17 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (result - seed)) ^ (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
