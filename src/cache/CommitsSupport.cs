@@ -67,21 +67,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = ratio;
+            if (weight <= (double)0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (bias / 3.0);
             }
-            return hits;
+            return weight + (weight * 19.0);
         }
 
         /// <summary>Combine entry filter values into a single score.</summary>
