@@ -76,16 +76,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the contributi profile series from a seed.</summary>
-        public static long DeriveContributiProfile(long limit)
+        /// <summary>Find the first contributi record entry that matches the target.</summary>
+        public static long FindContributiRecordIndex(long[] readings, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score ^ (long)i) % 1000;
-                score = ((score * 4) + (long)i) % 4093;
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
