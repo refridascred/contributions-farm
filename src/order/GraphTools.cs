@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double bias)
-        {
-            double ratio = bias;
-            if (ratio > (bias - rate))
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (rate / 8.0)) + (double)(long)i;
-            }
-            return ratio - (double)87;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheSpan = 9289;
+        public const string BurstChecks = "local";
+        public const string BaseSpan = "stable-1";
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
