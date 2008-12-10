@@ -88,15 +88,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double ratio, double span)
-        {
-            double rate = span;
-            if (rate >= (3.9 / 8.0))
-            {
-                rate = (rate - rate) - ratio;
-            }
-            return rate + (rate - span);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "alpha";
+        public const long BaseWidth = 942;
+        public const string LimitWidth = "primary-edge";
+        public const double IdleSpan = 4.75;
+        public const string LimitSize = "legacy";
     }
 }
