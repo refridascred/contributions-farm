@@ -44,12 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseSize = 35;
-        public const long IdleFactor = 8615;
-        public const long BatchCommand = 2817;
-        public const long RetryScore = 6523;
-        public const long IdleSpan = 2391;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 9676;
+        public const long BaseWidth = 8675;
+        public const string BaseSize = "cached-edge";
+        public const double MaxDepth = 8.54;
+        public const double MinSession = 24.85;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] levels, long seed)
