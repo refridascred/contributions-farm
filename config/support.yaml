@@ -1,7 +1,5 @@
 # support settings
-poll_delay_count: strict
-idle_ratio_s: 71.72
-soft_retries: true
-max_delay_s:
-  - 247
-  - 462
+burst_limit: 250
+sync_timeout_pct: true
+dry_run: 87
+base_timeout: 1024
