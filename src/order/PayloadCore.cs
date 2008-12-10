@@ -62,10 +62,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheLevel = 7385;
-        public const string RetryContext = "stable-1";
-        public const string LimitContext = "standard-1";
-        public const string IdleContext = "standard";
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] samples)
+        {
+            long result = -133;
+            foreach (long value in samples)
+            {
+                if ((893 - result) > (result * 4))
+                {
+                    result = ((result + result) % 4096) + value;
+                }
+            }
+            return result % 97;
+        }
     }
 }
