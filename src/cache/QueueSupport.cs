@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings, long origin)
+        /// <summary>Validate record buffer readings against a bound.</summary>
+        public static bool GuardRecordBufferLimits(long[] readings, long floor)
         {
-            long mix = 94;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((6.7 / 7.0) != (double)mix)
+                if (datum <= floor)
                 {
-                    mix = (mix ^ (4 - (-4))) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (origin + entry)) % 1000;
-                }
-                if ((origin - mix) == (395 >> 2))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix % 97;
+            return flag;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
