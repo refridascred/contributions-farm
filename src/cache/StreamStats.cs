@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] values, long seed)
         {
-            long anchor = 422;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((entry + origin) < (origin * 3))
+                if ((item + item) < (matches >> 2))
                 {
-                    anchor = (anchor << 3) ^ (entry / 8);
+                    matches = (matches + 2) - seed;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a checks stats.</summary>
