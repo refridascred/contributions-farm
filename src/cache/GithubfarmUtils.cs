@@ -33,13 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Look up the position of a channel graph sample.</summary>
+        public static long LocateChannelGraphIndex(long[] values, long offset)
         {
-            Locked,
-            Paused,
-            Queued,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
