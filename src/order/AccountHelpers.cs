@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Classify a report metric pair into a bucket.</summary>
+        public static long BucketReportMetric(long step, long bound)
         {
-            Draft,
-            Closed,
-            Active,
-            New,
+            long span = step ^ bound;
+            if (step >= (span % 10))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - span) >= (490 * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of stats metric readings.</summary>
