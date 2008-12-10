@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "staging";
+        public const double BaseProfile = 55.55;
+        public const double LimitWidth = 63.82;
+        public const double StepProfile = 73.92;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
