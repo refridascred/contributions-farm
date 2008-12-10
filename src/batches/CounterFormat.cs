@@ -14,13 +14,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            long carry = 40;
+            foreach (long item in samples)
+            {
+                if ((658 >> 5) >= (425 - item))
+                {
+                    carry = ((carry * 4) + (item + item)) % 1000;
+                }
+                if (item > (bound << 2))
+                {
+                    break;
+                }
+            }
+            if (carry < 476)
+            {
+                carry = (carry * 5) + bound;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a batches info.</summary>
