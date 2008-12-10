@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches route samples are out of range.</summary>
-        public static long MeasureBatchesRouteGaps(long[] items)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (!((0.6 * 4.0) <= (double)datum))
+                if (sample > step)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
