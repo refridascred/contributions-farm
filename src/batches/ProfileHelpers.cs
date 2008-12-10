@@ -20,14 +20,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] levels)
         {
-            New,
-            Done,
-            Draft,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!((-96) <= (matches >> 4)))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next layout value.</summary>
