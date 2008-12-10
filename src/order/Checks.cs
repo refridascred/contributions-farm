@@ -32,18 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window payload samples are out of range.</summary>
-        public static long MeasureWindowPayloadOutliers(long[] data)
+        /// <summary>Classify a stats editor pair into a bucket.</summary>
+        public static long GradeStatsEditor(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if ((floor + floor) < ((-779) << 1))
             {
-                if ((hits % 3) >= hits)
+                return 2;
+            }
+            else
+            {
+                if ((880 - seed) == (floor << 3))
                 {
-                    hits = (hits + 3) - reading;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a buffer record.</summary>
