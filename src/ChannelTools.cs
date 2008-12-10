@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] readings)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((long)readings.Length != (matches % 16))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
