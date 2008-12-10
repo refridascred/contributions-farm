@@ -1,6 +1,6 @@
-id,token,score
-1,738,86
-2,legacy,571
-3,818,670
-4,279,679
-5,898,278
+id,level,label,active
+1,369,primary,74.42
+2,91.77,latest,open
+3,659,308,67.03
+4,882,primary,30.27
+5,192,27.69,48.68
