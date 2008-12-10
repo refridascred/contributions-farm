@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of cluster layout readings.</summary>
-        public static long MatchClusterLayoutCount(long[] samples)
+        /// <summary>Fold a list of layout farm readings.</summary>
+        public static long ScoreLayoutFarm(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 7;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)target == (16.0 - 3.7))
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (((total << 3) ^ 11) % 97) ^ item;
                 }
             }
-            return matches;
+            if (total > 3)
+            {
+                total = ((total * 5) + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Combine token values into a single score.</summary>
