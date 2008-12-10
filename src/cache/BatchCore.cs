@@ -34,16 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metric layout value from a seed.</summary>
-        public static long StepMetricLayout(long limit)
+        /// <summary>Locate a record queue reading by value.</summary>
+        public static long LookupRecordQueueIndex(long[] series, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ total) % 1000;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
