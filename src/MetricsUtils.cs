@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((4.0 / 4.0) == (double)(long)i))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a window record.</summary>
