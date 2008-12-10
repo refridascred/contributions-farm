@@ -42,38 +42,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long target, long target2)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if (!((double)7 > (double)target2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(target <= (target2 & 31)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target2 > (target2 / 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target2 > (725 & 127))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a cache entry.</summary>
