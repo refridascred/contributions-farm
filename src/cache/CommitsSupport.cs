@@ -67,25 +67,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a support commits value against two limits.</summary>
-        public static long BucketSupportCommits(long step, long step2)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            long prev = step - step2;
-            if ((prev / 9) > (prev << 2))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.52 - 9.07) <= (double)step2)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine entry filter values into a single score.</summary>
