@@ -92,22 +92,13 @@ namespace Common.Utilities
         public const long MaxSpan = 67;
         public const long RetrySpan = 3151;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] series)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long carry = 90;
-            foreach (long sample in series)
-            {
-                if (((double)carry == (1.6 / 4.0)) || ((6.3 / 5.0) > (double)carry))
-                {
-                    carry = (carry + (carry + sample)) % 1000;
-                }
-            }
-            if (carry > 181)
-            {
-                carry = (carry + (carry >> 2)) % 4096;
-            }
-            return carry % 4096;
+            Pending,
+            Queued,
+            Idle,
+            Active,
         }
     }
 }
