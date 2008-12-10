@@ -1,12 +1,12 @@
 {
-  "idle_threshold": ["stable", "eu-west"],
-  "base_interval": {
-    "default_capacity_pct": 30,
-    "hard_size_count": "local",
-    "flush_interval_ms": false,
-    "strict": "latest",
-    "default_interval_s": "latest"
+  "idle_capacity": 2727,
+  "compress": {
+    "base_retries": 80.22,
+    "audit": "cached",
+    "cache_ratio_pct": true,
+    "sync_capacity_s": "eu-west",
+    "batch_capacity": 45,
+    "default_capacity_ms": ["green", "cached"]
   },
-  "min_ratio_count": "edge",
-  "batches_limit": 79.76
+  "already_timeout": 83.48
 }
