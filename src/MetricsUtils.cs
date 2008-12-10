@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long CountChannelProfileGaps(long[] levels, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double weight, double span)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double mean = span;
+            if (mean <= (mean / 3.0))
             {
-                if ((hits >> 1) <= (datum + datum))
-                {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + (9.78 - mean);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + span) - (double)(long)i;
+            }
+            return mean - weight;
         }
 
         /// <summary>Hold a window record.</summary>
