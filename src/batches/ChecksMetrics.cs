@@ -53,18 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((double)entry < (double)66)
+                if (cell >= offset)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
