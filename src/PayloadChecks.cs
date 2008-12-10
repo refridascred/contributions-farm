@@ -54,12 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Retry,
-            Closed,
-            Idle,
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
