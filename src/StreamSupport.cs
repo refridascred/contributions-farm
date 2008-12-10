@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a editor account counter forward.</summary>
-        public static long DeriveEditorAccount(long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 3) ^ 2;
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
