@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Done,
-            Active,
-            Queued,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Compare every pair of command context readings.</summary>
