@@ -1,11 +1,11 @@
 # Command notes
 
-The context module keeps filter values in sync with the counter cache.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The window report groups every checks by notes.
+A githubfarm that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Keep checks values small
-- Log every schema change
-- Review route limits each release
-- Validate schema input early
+- Document new layout fields
+- Prefer format defaults
+- Validate metrics input early
+- Log every farm change
