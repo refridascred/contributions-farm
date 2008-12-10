@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a profile stats.</summary>
