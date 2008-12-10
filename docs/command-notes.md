@@ -1,12 +1,11 @@
 # Command notes
 
-A context that stays idle for too long is moved to the format list.
-The filter report groups every support by graph.
-Defaults for counter live in the config folder and can be overridden per environment.
+The context module keeps filter values in sync with the counter cache.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep context values small
-- Review session limits each release
-- Prefer record defaults
-- Document new layout fields
+- Keep checks values small
+- Log every schema change
+- Review route limits each release
+- Validate schema input early
