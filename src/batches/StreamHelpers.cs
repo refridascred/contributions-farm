@@ -44,12 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Idle,
-            Locked,
-            Retry,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Accumulate filter samples.</summary>
