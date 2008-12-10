@@ -22,21 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 859;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < (entry * 2))
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ entry) % 1000;
                 }
             }
-            return matches;
+            if (mark > 731)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Adjust a queue reading.</summary>
