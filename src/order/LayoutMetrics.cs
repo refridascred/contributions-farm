@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long IdleWidth = 9709;
         public const string MinSize = "strict";
 
-        /// <summary>Validate metrics order readings against a bound.</summary>
-        public static bool ValidateMetricsOrderLimits(long[] levels, long seed)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
