@@ -66,19 +66,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample >= bound)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    found = false;
-                    break;
+                    result = (result - (result * 3)) - (long)i2;
                 }
+                result = (result - bound) % 97;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return found;
+            return result;
         }
     }
 }
