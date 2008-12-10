@@ -58,11 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
