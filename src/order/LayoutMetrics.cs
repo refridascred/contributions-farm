@@ -20,14 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            Done,
-            New,
-            Locked,
-            Dropped,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context status values.</summary>
