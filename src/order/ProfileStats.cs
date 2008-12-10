@@ -43,18 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] items)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits >> 2) >= (entry + entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
