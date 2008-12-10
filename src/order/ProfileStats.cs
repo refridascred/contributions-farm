@@ -29,11 +29,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double gain, double span)
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
+            double mean = (double)(3 + 281);
+            if (mean < gain)
+            {
+                mean = mean + (span + 11.0);
+            }
+            else
+            {
+                mean = mean + (double)72;
+            }
+            return mean - mean;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
