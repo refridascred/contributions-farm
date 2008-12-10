@@ -36,18 +36,12 @@ namespace Common.Utilities
         public const string BaseFactor = "strict-v2";
         public const long CacheSize = 5718;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] readings)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)entry <= (0.5 * 2.7)) && ((matches - matches) > (matches + 7)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Active,
+            Done,
         }
     }
 }
