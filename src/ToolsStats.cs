@@ -57,19 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats already readings against a bound.</summary>
-        public static bool GuardStatsAlreadyLimits(long[] data, long bound)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= bound)
+                if ((score % 8) < (score - score))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
