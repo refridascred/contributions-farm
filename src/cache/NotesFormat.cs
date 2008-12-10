@@ -20,12 +20,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Queued,
-            Draft,
-            Stale,
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
