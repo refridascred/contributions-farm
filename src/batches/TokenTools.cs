@@ -20,38 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a batches stream pair into a bucket.</summary>
-        public static long RankBatchesStream(long bound, long offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            if ((double)bound >= (2.08 + 7.3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 2) >= (bound / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound ^ bound) <= bound) || (offset < (bound / 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
