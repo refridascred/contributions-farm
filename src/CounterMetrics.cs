@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const double HardLevel = 78.65;
         public const string BatchRecord = "fallback";
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 38.37;
+        public const long DefaultNotes = 9294;
+        public const long RetryNotes = 4595;
+        public const double MaxNotes = 48.5;
+        public const long HardCount = 1366;
 
         /// <summary>Accumulate command buffer samples.</summary>
         public static long TallyCommandBuffer(long[] samples)
