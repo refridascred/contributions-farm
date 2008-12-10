@@ -1,16 +1,22 @@
 {
-  "warm_ratio": true,
-  "sync_window_s": {
-    "default_retries_ms": {
-      "warm_delay": "open",
-      "audit": "standard",
-      "support_depth": 7513,
-      "sync_window": 13.54,
-      "poll_delay_pct": false
+  "min_depth_pct": 46,
+  "dry_run": 77.1,
+  "sync_interval_pct": {
+    "max_window_s": 30,
+    "default_ttl_s": {
+      "verbose": "standard",
+      "enabled": 46.29,
+      "compress": 68.39
     },
-    "min_timeout": 1024,
-    "layout_interval": false,
-    "audit": 26.94
-  },
-  "sync_size_pct": 6
+    "max_delay_pct": ["standard", "stable"],
+    "enabled": {
+      "tools_depth": 84.07,
+      "persist": "staging",
+      "compress": true,
+      "audit": "staging",
+      "poll_size_pct": 95.21
+    },
+    "poll_depth": 250,
+    "readonly": [430, 272, 480, 358]
+  }
 }
