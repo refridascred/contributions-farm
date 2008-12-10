@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 13.51;
-        public const long WindowDepth = 1659;
-        public const string HardCluster = "standard-1";
-        public const long MaxCluster = 4191;
-        public const double SoftCluster = 63.8;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "strict-v2";
+        public const long LimitWidth = 8413;
+        public const long IdleSize = 6804;
+        public const string SoftCount = "latest-edge";
+        public const long WindowCount = 3260;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
