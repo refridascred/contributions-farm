@@ -1,12 +1,12 @@
 {
-  "audit": [425, 238, 224, 82],
-  "metric_ratio": ["staging", "edge", "edge"],
-  "support_depth": ["latest", "green", "legacy"],
-  "checks_delay": 16.65,
-  "retry_limit": {
-    "max_size_pct": 112,
-    "flush_ttl_s": "cached",
-    "verbose": true
+  "idle_retries": "edge",
+  "persist": true,
+  "soft_delay_pct": "standard",
+  "sync_interval_pct": {
+    "idle_threshold_s": true,
+    "cache_depth_s": [379, 232, 483, 388],
+    "counter_ttl": [105, 297]
   },
-  "editor_size": [285, 90, 202, 293]
+  "flush_ttl_count": true,
+  "max_ratio_pct": 9408
 }
