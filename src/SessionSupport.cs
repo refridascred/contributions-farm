@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
