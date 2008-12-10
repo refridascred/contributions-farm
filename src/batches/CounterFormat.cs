@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string BatchOrder = "primary-1";
         public const double DefaultSpan = 66.7;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "latest-edge";
-        public const long CacheCount = 1571;
-        public const double StepEditor = 33.39;
-        public const long BatchEditor = 9129;
-        public const string WindowScore = "alpha-v2";
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long target, long limit)
