@@ -29,13 +29,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "latest-edge";
+        public const long MinWidth = 8683;
+        public const long StepSupport = 3137;
+        public const long LimitSpan = 7916;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
