@@ -15,15 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double gain, double offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double drift = offset;
-            if (drift < (offset / 7.0))
-            {
-                drift = drift + (gain - offset);
-            }
-            return drift - gain;
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
