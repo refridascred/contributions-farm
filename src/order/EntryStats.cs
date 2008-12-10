@@ -50,11 +50,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Adjust a notes record reading.</summary>
+        public static double AdjustNotesRecord(double gain, double span)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            double ratio = gain;
+            if (ratio > (double)(-3))
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio / 8.0)) + (double)(long)i;
+            }
+            return ratio - (ratio * 3.0);
         }
 
         /// <summary>Rank channel input into a small class.</summary>
