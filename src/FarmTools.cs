@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchRatio = 5215;
+        public const long BurstCount = 2178;
+        public const long CacheInterval = 6773;
+        public const double IdleLayout = 56.48;
+        public const long RetryLayout = 4270;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long floor, long offset)
