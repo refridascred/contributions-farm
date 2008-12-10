@@ -1,5 +1,8 @@
 {
-  "buffer_ratio": 1139,
-  "counter_ratio": false,
-  "compress": 9411
+  "min_interval": "edge",
+  "warm_depth_ms": "standard",
+  "layout_ratio": 43.27,
+  "base_threshold_ms": true,
+  "record_timeout": 37.97,
+  "flush_capacity": 707
 }
