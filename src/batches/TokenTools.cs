@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data, long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long state = 3;
-            foreach (long cell in data)
-            {
-                state = ((state + cell) % 1000) + offset;
-            }
-            return state;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
