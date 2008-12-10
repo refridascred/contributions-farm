@@ -27,13 +27,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
