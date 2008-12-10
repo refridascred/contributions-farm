@@ -32,18 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] values, long bound)
+        /// <summary>Compare every pair of commits profile readings.</summary>
+        public static long OverlapCommitsProfileCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!(((long)values.Length << 3) <= (count * 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) + cell) + bound;
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a buffer record.</summary>
