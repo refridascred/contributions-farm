@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Queued,
-            Paused,
-            Retry,
             Active,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit filter token readings against a rule.</summary>
