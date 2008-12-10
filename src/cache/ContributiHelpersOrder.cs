@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] series)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((count << 3) == (entry << 1)) && ((count << 2) >= entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double mean = (bias * 9.0) - (bias * 1.92);
+            return (mean + bias) + ratio;
         }
 
         /// <summary>Match up metrics session samples.</summary>
