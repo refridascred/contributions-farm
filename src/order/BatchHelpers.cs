@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a profile tools sample.</summary>
-        public static long LocateProfileToolsIndex(long[] readings, long step)
+        /// <summary>Classify a githubfarm order pair into a bucket.</summary>
+        public static long RankGithubfarmOrder(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = bound + seed;
+            if (2 < (slot ^ slot))
             {
-                if (readings[i] > step)
+                return 1;
+            }
+            else
+            {
+                if (!(slot <= (slot * 2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the commits mode values.</summary>
