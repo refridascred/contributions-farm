@@ -40,22 +40,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long acc = 55;
+            foreach (long datum in readings)
             {
-                mark = mark + (mark / 2);
-                long prev = ((long)i + 78) % 24;
-                if (mark > ((long)i >> 2))
+                if (acc <= (datum + acc))
                 {
-                    mark = (mark * 3) + (prev + offset);
-                    break;
+                    acc = (acc - datum) % 65521;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
