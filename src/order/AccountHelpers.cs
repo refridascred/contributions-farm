@@ -47,15 +47,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double span)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            double weight = span;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight - weight) + (double)(long)i) + gain;
-            }
-            return weight - (double)269;
+            double load = scale;
+            return (load + (scale * 9.1)) + span;
         }
 
         /// <summary>Describe the graph mode values.</summary>
