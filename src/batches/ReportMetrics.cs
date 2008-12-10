@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] values)
+        /// <summary>Validate record contributi readings against a bound.</summary>
+        public static bool CheckRecordContributiRange(long[] series, long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((3 - 77) != (count + 770))
+                if (item <= target)
                 {
-                    count = (count + 1) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the context mode values.</summary>
