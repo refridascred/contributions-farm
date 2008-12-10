@@ -41,11 +41,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 8676;
-        public const long BaseCounter = 2948;
-        public const long RetryCounter = 2237;
-        public const string HardLevel = "legacy-edge";
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a editor channel reading by value.</summary>
         public static long FindEditorChannelIndex(long[] data, long offset)
