@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] levels)
         {
-            long acc = 45;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                acc = acc - (entry % 97);
-                if ((entry & 7) >= entry)
+                if ((double)matches >= (13.0 + 6.0))
                 {
-                    acc = ((acc << 2) ^ (entry & 31)) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 4) + 7;
-                }
-                if ((entry << 2) >= (18 ^ entry))
-                {
-                    break;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
