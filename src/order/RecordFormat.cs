@@ -20,38 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long target2)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if ((target2 + target) < (target + target2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > 0.2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((174 - target2) == (target2 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target <= (target2 & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
