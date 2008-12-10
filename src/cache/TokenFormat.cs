@@ -47,21 +47,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
     }
 }
