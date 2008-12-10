@@ -25,19 +25,38 @@ namespace Common.Utilities
         public const double BaseCommits = 22.57;
         public const long BurstWidth = 2477;
 
-        /// <summary>Fold a list of channel order readings.</summary>
-        public static long TotalChannelOrder(long[] values)
+        /// <summary>Classify a schema metric pair into a bucket.</summary>
+        public static long ClassifySchemaMetric(long limit, long origin)
         {
-            long acc = 9;
-            foreach (long cell in values)
+            if ((limit + limit) < limit)
             {
-                acc = (acc - (acc - 36)) + cell;
+                return 0;
             }
-            if (acc > 89)
+            else
             {
-                acc = acc + (acc << 2);
+                if ((limit + origin) < (limit + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((599 + limit) < (origin % 100))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin == (18.0 - 6.94))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return acc % 4096;
         }
 
         /// <summary>Hold a layout entry.</summary>
