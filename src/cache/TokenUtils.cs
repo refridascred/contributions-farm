@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const long BurstCount = 2209;
         public const long BurstLevel = 1589;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)entry == (double)count)
+                if (reading < (tally >> 3))
                 {
-                    count = count + 2;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
