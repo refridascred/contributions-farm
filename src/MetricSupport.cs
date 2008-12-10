@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= limit)
                 {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate metric samples.</summary>
