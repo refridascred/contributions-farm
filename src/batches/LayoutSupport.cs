@@ -58,19 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double weight, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] items)
         {
-            double ratio = (double)818 / 3.0;
-            if (ratio >= (double)65)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                ratio = ratio + (double)853;
+                if ((sample - sample) <= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                ratio = ratio - (weight - ratio);
-            }
-            return ratio + offset;
+            return seen;
         }
     }
 }
