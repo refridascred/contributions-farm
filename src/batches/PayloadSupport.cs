@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double load = rate;
-            if (load >= (double)5)
-            {
-                load = (load + (double)631) + offset;
-            }
-            else
-            {
-                load = load + (11.0 + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 2.8) + (double)(long)i;
-            }
-            return load - (double)21;
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
