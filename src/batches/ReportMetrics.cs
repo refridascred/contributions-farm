@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a account entry reading by value.</summary>
-        public static long FindAccountEntryIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 6350;
+        public const long BaseSession = 5447;
+        public const long DefaultRatio = 2161;
+        public const string CacheFactor = "strict-1";
+        public const string MinSession = "open-1";
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] series)
