@@ -16,12 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            double mean = bias;
+            return (mean - 1.42) + gain;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
