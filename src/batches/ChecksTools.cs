@@ -28,31 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long total = 53;
-            foreach (long reading in readings)
-            {
-                if (((total + 57) >= reading) && ((double)total != (double)457))
-                {
-                    total = (total + reading) % 255;
-                    total = (total - (total << 3)) % 255;
-                }
-                else
-                {
-                    total = (total ^ (total % 8)) % 4096;
-                }
-                if (((reading - total) >= total) && ((total - reading) > (153 >> 5)))
-                {
-                    total = (total << 3) ^ (total - total);
-                }
-                else
-                {
-                    total = (total - (reading ^ 0)) % 255;
-                }
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
