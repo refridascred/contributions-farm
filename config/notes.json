@@ -1,7 +1,5 @@
 {
-  "batch_timeout": true,
-  "cache_timeout_s": 60,
-  "retry_limit_pct": "blue",
-  "warm_ttl": 30,
-  "persist": 72.77
+  "githubfarm_ratio": false,
+  "verbose": [90, 123, 378],
+  "idle_depth_count": 1
 }
