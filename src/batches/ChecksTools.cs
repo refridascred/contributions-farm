@@ -31,19 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmFilterLimits(long[] data, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a account header.</summary>
