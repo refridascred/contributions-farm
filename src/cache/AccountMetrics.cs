@@ -65,12 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Active,
-            Paused,
-            Idle,
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
