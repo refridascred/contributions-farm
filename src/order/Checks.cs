@@ -27,12 +27,19 @@ namespace Common.Utilities
             return ((scale + 8.75) + ratio) + span;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "standard-v2";
-        public const long LimitSpan = 3465;
-        public const long WindowTimeout = 4815;
-        public const string MinInterval = "strict-1";
-        public const long CacheLevel = 5988;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportBounds(long[] readings, long bound)
