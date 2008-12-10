@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double bias)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double mean = scale * 4.18;
-            if (mean < (double)(-184))
-            {
-                mean = mean + (bias - mean);
-            }
-            else
-            {
-                mean = mean + (double)2;
-            }
-            return mean - (double)73;
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
