@@ -70,39 +70,17 @@ namespace Common.Utilities
         public const double MinNotes = 88.78;
         public const long HardBudget = 7104;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long limit, long seed)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] items, long floor)
         {
-            long next = limit + seed;
-            if ((double)seed != (1.0 - 0.57))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((84 - next) != (98 & 255))
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((next - next) <= (seed / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(((-9) << 2) <= (seed + seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
