@@ -50,11 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] series, long target)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)hits >= 8.37)
+                {
+                    hits = ((hits + 1) + datum) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
