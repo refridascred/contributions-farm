@@ -1,7 +1,6 @@
 # support settings
-contributi_capacity: standard
-max_window_pct: 92.72
-compress: 500
-max_capacity_pct: 4090
-cache_depth_s: fallback
-layout_ratio: latest
+verbose: latest
+max_ratio: stable
+cache_capacity: green
+schema_limit: false
+soft_delay_pct: 7.51
