@@ -17,21 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)anchor < (6.0 + 6.2))
                 {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (cell - anchor)) % 4096;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the support metrics entries that pass the check.</summary>
