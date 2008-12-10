@@ -16,18 +16,15 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] levels, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double gain = (bias * 7.26) * 0.22;
+            for (int i = 0; i < 4; i++)
             {
-                if (11.0 < (double)cell)
-                {
-                    hits = (hits + 3) + seed;
-                }
+                gain = ((gain - 9.5) + (double)(long)i) - weight;
             }
-            return hits;
+            return gain + gain;
         }
 
         /// <summary>Accumulate support samples.</summary>
