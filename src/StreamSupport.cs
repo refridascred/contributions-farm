@@ -42,21 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (matches <= ((long)values.Length + 26))
                 {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 3) - entry) - limit;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
