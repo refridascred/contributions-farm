@@ -14,12 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
