@@ -1,12 +1,10 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the route list.
-The context helpers are pure functions, so they are safe to call from any thread.
-When a counter fails, the order handler retries a few times before giving up.
+Each context is validated before it reaches the command queue.
+The farm report groups every buffer by stats.
 
 ## Guidelines
 
-- Validate cluster input early
-- Prefer context defaults
-- Keep payload values small
-- Log every token change
+- Document new graph fields
+- Log every tools change
+- Prefer farm defaults
