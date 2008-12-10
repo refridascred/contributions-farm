@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a profile options.</summary>
