@@ -33,13 +33,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
