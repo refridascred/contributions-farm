@@ -1,8 +1,11 @@
 # support settings
-hard_ttl:
-  - 15
-  - 142
-  - 100
-  - 468
-retry_ttl: false
-max_limit_count: 69
+sync_delay_ms: 500
+soft_window_count:
+  batch_capacity: true
+  poll_interval: cached
+  retry_ttl_s: false
+  readonly: staging
+schema_retries: true
+readonly: open
+retry_retries: local
+strict: stable
