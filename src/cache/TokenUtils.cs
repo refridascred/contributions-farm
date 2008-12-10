@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first report schema entry that matches the target.</summary>
-        public static long LookupReportSchemaIndex(long[] items, long bound)
+        /// <summary>Roll a githubfarm profile counter forward.</summary>
+        public static long StepGithubfarmProfile(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                result = ((result << 3) ^ ((long)i / 5)) % 97;
+                if ((result ^ floor) != (result + result))
                 {
-                    return (long)i;
+                    result = ((result * 5) + (result - result)) % 101;
+                    result = result - result;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
