@@ -51,22 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support metrics entries that pass the check.</summary>
-        public static long AuditSupportMetricsGaps(long[] samples, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((matches + target) < (sample + 768))
+                if (datum != origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
