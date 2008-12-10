@@ -41,13 +41,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepDepth = 59.9;
+        public const string IdleBatches = "staging-edge";
+        public const string WindowBatches = "legacy";
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
