@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((24 ^ hits) == (hits >> 2))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
