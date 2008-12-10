@@ -12,31 +12,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long floor, long floor2)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long seed)
         {
-            if (!(floor >= (floor2 / 8)))
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                state = (state ^ (state * 4)) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)floor < 5.85) || ((floor2 >> 2) > (floor / 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor2 ^ floor) > floor2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
