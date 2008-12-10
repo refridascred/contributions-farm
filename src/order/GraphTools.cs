@@ -48,19 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile account readings against a bound.</summary>
-        public static bool ValidateProfileAccountLimits(long[] values, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (cell >= limit)
+                if ((entry / 6) <= entry)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate channel samples.</summary>
