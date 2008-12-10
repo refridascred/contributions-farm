@@ -29,11 +29,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "latest-edge";
-        public const long MinWidth = 8683;
-        public const long StepSupport = 3137;
-        public const long LimitSpan = 7916;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
