@@ -16,11 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double gain, double bias)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double mean = bias;
-            return (mean - 1.42) + gain;
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
