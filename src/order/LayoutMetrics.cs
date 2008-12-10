@@ -20,21 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 60;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (((carry * 3) + (356 << 2)) % 97) - sample;
             }
-            return seen;
+            if (carry > 3)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the context status values.</summary>
