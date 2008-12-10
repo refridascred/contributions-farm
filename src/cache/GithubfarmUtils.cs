@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result + (result >> 2);
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
