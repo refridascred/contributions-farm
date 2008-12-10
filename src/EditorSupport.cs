@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((0.8 / 7.0) >= (double)hits)
+                if (datum < bound)
                 {
-                    hits = ((hits + 1) - entry) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
