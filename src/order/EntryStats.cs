@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((1.02 * 0.65) >= (double)tally)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "fallback-v2";
+        public const double StepMetric = 28.99;
+        public const long BurstMetric = 1770;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] items)
