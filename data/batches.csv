@@ -1,6 +1,6 @@
-id,score,label,count
-1,948,320,378
-2,767,primary,36.62
-3,367,10,5.57
-4,edge,42.51,34.36
-5,78.14,459,283
+id,weight,label,active,count
+1,321,2.75,797,local
+2,90.88,strict,94.69,1.07
+3,88.14,262,eu-west,20.76
+4,664,88.1,legacy,84.16
+5,58.09,963,869,primary
