@@ -1,7 +1,7 @@
 {
-  "enabled": "stable",
-  "sync_size": ["green", "blue"],
-  "audit": 85.85,
-  "channel_size": true,
-  "cache_interval": 19.36
+  "schema_limit": true,
+  "verbose": ["cached", "primary", "stable", "staging"],
+  "dry_run": 250,
+  "retry_interval": "legacy",
+  "warm_threshold_pct": "fallback"
 }
