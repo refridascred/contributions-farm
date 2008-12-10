@@ -64,19 +64,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] data, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double drift = 11.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift - (drift * 7.8)) + (double)(long)i) - scale;
             }
-            return found;
+            return drift + floor;
         }
     }
 }
