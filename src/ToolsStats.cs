@@ -17,10 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstWidth = 9203;
-        public const long CacheEditor = 1197;
-        public const long BurstEditor = 7342;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Owner { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long CombineCluster(long[] samples, long floor)
