@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Idle,
+            Synced,
             Draft,
-            Retry,
-            Done,
             Pending,
         }
 
