@@ -1,9 +1,10 @@
 # entry settings
-dry_run: staging
-strict: 7132
-retry_size_count: 47
-metric_interval: false
-record_window:
-  - 445
-  - 205
-warm_limit: 62
+soft_ratio_ms: eu-west
+sync_ttl_count:
+  session_capacity: 82.68
+  sync_limit_s: 57
+  base_capacity_s: 26.54
+  retry_capacity_s: 1779
+  layout_capacity: 7430
+  report_window: 1.65
+stats_ttl: 24
