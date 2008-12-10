@@ -30,11 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            New,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
