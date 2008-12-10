@@ -25,22 +25,24 @@ namespace Common.Utilities
         public const string DefaultContributi = "staging-v2";
         public const long HardWidth = 5966;
 
-        /// <summary>Measure how many metric counter samples are out of range.</summary>
-        public static long CountMetricCounterGaps(long[] items, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long bound, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if (((8.47 * 5.91) > (double)bound) || (22 <= (bound - limit)))
             {
-                if ((((7.8 + 10.0) != (double)offset) && ((double)94 < (double)offset)) || ((double)datum >= (8.5 - 7.0)))
+                return 0;
+            }
+            else
+            {
+                if ((double)705 < (double)bound)
                 {
-                    count = count + 3;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
