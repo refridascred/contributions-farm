@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] samples, long seed)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
