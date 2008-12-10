@@ -21,15 +21,21 @@ namespace Common.Utilities
         public const double StepMetric = 28.99;
         public const long BurstMetric = 1770;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long anchor = 6;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (645 ^ anchor)) % 65521) ^ entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
