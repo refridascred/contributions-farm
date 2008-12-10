@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double bias, double span)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double drift = bias - 7.19;
-            if (drift <= 7.0)
-            {
-                drift = drift + (drift - span);
-            }
-            return drift + bias;
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
