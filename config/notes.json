@@ -1,5 +1,19 @@
 {
-  "compress": false,
-  "graph_window": ["staging", "blue", "staging"],
-  "tools_delay": "legacy"
+  "base_capacity": true,
+  "poll_threshold_pct": {
+    "sync_ratio_ms": "latest",
+    "burst_limit": 64.65,
+    "notes_retries": ["open", "legacy", "open"],
+    "sync_interval": 60,
+    "sync_ttl_s": {
+      "persist": "primary",
+      "default_size_ms": 100,
+      "default_window_s": false,
+      "retry_delay_count": true,
+      "batch_ttl_count": "fallback",
+      "base_delay_pct": 30
+    }
+  },
+  "token_window": true,
+  "idle_retries_count": ["latest", "eu-west", "green", "cached"]
 }
