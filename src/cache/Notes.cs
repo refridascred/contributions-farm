@@ -37,12 +37,14 @@ namespace Common.Utilities
             return mean - (double)58;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 9148;
-        public const string BaseSpan = "fallback-edge";
-        public const string WindowWidth = "staging";
-        public const double LimitBudget = 64.32;
-        public const double DefaultInterval = 83.28;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double weight, double bias)
