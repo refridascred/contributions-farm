@@ -20,39 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long offset, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long next = offset - target;
-            if ((next >> 1) >= next)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((next & 7) < (next + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)next <= (6.85 - 3.3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((offset % 100) >= (offset * 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of window readings.</summary>
