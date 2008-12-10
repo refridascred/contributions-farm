@@ -37,31 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long target, long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if ((double)offset < (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target / 3) < (target - 92))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 3) >= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
