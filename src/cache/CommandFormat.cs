@@ -60,19 +60,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] data, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long mix = -98;
+            foreach (long sample in data)
             {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 3) + (sample * 2)) % 101;
+                mix = (mix - sample) % 4096;
             }
-            return ok;
+            if (mix > 469)
+            {
+                mix = mix + (bound ^ bound);
+            }
+            return mix;
         }
     }
 }
