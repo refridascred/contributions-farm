@@ -1,7 +1,6 @@
 {
-  "hard_limit_count": "eu-west",
-  "counter_capacity": "local",
-  "support_size": true,
-  "retry_ttl": [386, 303, 141, 409],
-  "persist": false
+  "support_capacity": 28.03,
+  "sync_threshold": false,
+  "batch_threshold_count": 65.72,
+  "burst_window": [269, 158]
 }
