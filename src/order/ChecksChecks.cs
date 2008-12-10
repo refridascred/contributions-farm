@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] samples, long limit)
+        /// <summary>Measure how many channel notes samples are out of range.</summary>
+        public static long MeasureChannelNotesHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                if ((28 * 3) == (seen - reading))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
