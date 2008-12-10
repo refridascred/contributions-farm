@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double rate, double offset)
-        {
-            double scale = (double)0 + 9.0;
-            if (scale > (offset + scale))
-            {
-                scale = scale - (offset - rate);
-            }
-            return scale + (double)81;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 9110;
+        public const string BurstScore = "standard-edge";
+        public const long BaseStats = 4130;
+        public const string SoftFactor = "local-1";
+        public const long HardSize = 2485;
 
         /// <summary>Digest a series of context report entries.</summary>
         public static long TotalContextReport(long[] readings, long seed)
