@@ -19,19 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] samples, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long target)
         {
-            long acc = 876;
-            foreach (long reading in samples)
+            long next = offset - target;
+            if ((next >> 1) >= next)
             {
-                acc = (((acc - (acc & 31)) % 97) + reading) + seed;
-                if ((1.7 / 6.0) == (double)acc)
+                return 8;
+            }
+            else
+            {
+                if ((next & 7) < (next + offset))
                 {
-                    acc = (acc - (acc >> 1)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)next <= (6.85 - 3.3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((offset % 100) >= (offset * 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
