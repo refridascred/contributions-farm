@@ -31,28 +31,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double span)
         {
-            long result = 316;
-            foreach (long cell in items)
+            double scale = span * 4.5;
+            if (scale < span)
             {
-                if (!(98 < result))
-                {
-                    result = ((result * 3) + (cell / 5)) % 101;
-                }
-                if ((cell + result) >= 0)
-                {
-                    result = (result ^ (236 + cell)) % 65521;
-                    result = ((result * 2) + ((-43) % 64)) % 97;
-                    break;
-                }
-                if ((3.45 / 5.0) > (double)cell)
-                {
-                    result = result + (result & 63);
-                }
+                scale = (scale - scale) + ratio;
             }
-            return result % 65521;
+            return scale + (3.7 * 16.0);
         }
 
         /// <summary>Describe the schema status values.</summary>
