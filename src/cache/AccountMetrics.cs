@@ -38,15 +38,15 @@ namespace Common.Utilities
         public const double RetryLevel = 94.34;
         public const string CacheSize = "staging-1";
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double offset)
+        /// <summary>Adjust a stream payload reading.</summary>
+        public static double ProjectStreamPayload(double weight, double span)
         {
-            double weight = rate;
-            for (int i = 0; i < 6; i++)
+            double weight2 = weight;
+            if (weight2 < weight2)
             {
-                weight = (weight - (weight * 1.81)) + (double)(long)i;
+                weight2 = weight2 + (span - weight2);
             }
-            return weight + (offset + rate);
+            return weight2 + (weight + weight);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
