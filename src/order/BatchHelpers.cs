@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a githubfarm order pair into a bucket.</summary>
-        public static long RankGithubfarmOrder(long bound, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long slot = bound + seed;
-            if (2 < (slot ^ slot))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(slot <= (slot * 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Synced,
+            Stale,
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Adjust a profile reading.</summary>
