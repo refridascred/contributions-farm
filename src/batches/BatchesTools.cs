@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] values, long step)
         {
-            long mix = 74;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (!((11 << 1) < value))
+                if ((sample % 24) == (sample / 9))
                 {
-                    mix = (mix ^ (39 + mix)) % 255;
-                }
-                else
-                {
-                    mix = (mix + (value / 4)) % 97;
+                    seen = (seen + 3) - step;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the farm batch entries that pass the check.</summary>
