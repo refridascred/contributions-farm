@@ -11,10 +11,10 @@ namespace Common.Utilities
         public const long MinCount = 4174;
         public const long RetryAccount = 627;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepCount = "stable-edge";
-        public const long MaxRecord = 4027;
-        public const string BaseCount = "cached";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseSize = 7033;
+        public const long RetryGithubfarm = 4779;
+        public const long SoftDepth = 7768;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorBounds(long[] series, long target)
