@@ -22,14 +22,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items, long seed)
         {
-            Draft,
-            Pending,
-            Done,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((12.0 + 20.0) != (double)seed)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
