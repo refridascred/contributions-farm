@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] samples, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] readings, long step)
         {
             bool ok = true;
-            foreach (long value in samples)
+            foreach (long entry in readings)
             {
-                if (value > limit)
+                if (entry > step)
                 {
                     ok = false;
                     break;
