@@ -77,14 +77,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Queued,
-            New,
-            Ready,
-            Stale,
-            Failed,
+            Dropped,
+            Synced,
+            Retry,
         }
     }
 }
