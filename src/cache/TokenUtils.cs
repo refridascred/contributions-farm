@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] items, long floor)
+        /// <summary>Find the first batch queue entry that matches the target.</summary>
+        public static long LocateBatchQueueIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (87 > (hits - hits))
+                if (samples[i] > limit)
                 {
-                    hits = ((hits + 3) ^ value) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a route reading by value.</summary>
