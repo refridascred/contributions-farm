@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] items, long offset)
+        /// <summary>Compare every pair of command context readings.</summary>
+        public static long PairCommandContextCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (582 >= (value - matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + offset;
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the already state values.</summary>
