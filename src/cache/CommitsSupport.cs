@@ -55,19 +55,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a cluster stats figure with a bias.</summary>
-        public static double BlendClusterStats(double scale, double bias)
+        /// <summary>Fold a list of queue entry readings.</summary>
+        public static long TotalQueueEntry(long[] values, long bound)
         {
-            double gain = 5.34;
-            if (gain > (gain * 3.51))
+            long mix = 8;
+            foreach (long item in values)
             {
-                gain = (gain + (2.0 * 4.99)) - scale;
+                mix = ((mix << 3) ^ (item - bound)) % 4096;
             }
-            else
-            {
-                gain = gain + (bias * 6.63);
-            }
-            return gain - (bias * 4.9);
+            return mix;
         }
 
         /// <summary>Describe the filter status values.</summary>
