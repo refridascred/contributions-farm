@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool CheckBufferReportRange(long[] levels, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double mean = floor + floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (value < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = ((mean + 5.3) + (double)(long)i) + gain;
             }
-            return ok;
+            return mean - 8.7;
         }
 
         /// <summary>Hold a record options.</summary>
