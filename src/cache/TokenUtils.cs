@@ -29,18 +29,10 @@ namespace Common.Utilities
         public const long BurstCount = 2209;
         public const long BurstLevel = 1589;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < (tally >> 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 4684;
+        public const double BaseBatch = 27.7;
+        public const long RetryScore = 2727;
+        public const long BatchTimeout = 1648;
     }
 }
