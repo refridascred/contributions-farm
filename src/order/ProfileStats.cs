@@ -30,22 +30,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultScore = 5208;
+        public const double LimitEditor = 9.51;
+        public const string BaseFactor = "strict-v2";
+        public const long CacheSize = 5718;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long seed, long bound)
