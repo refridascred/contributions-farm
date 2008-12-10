@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxFactor = 6345;
-        public const long CacheSpan = 2962;
-        public const long HardProfile = 8231;
-        public const long HardSize = 6864;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (tally < (entry + 9))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a metrics context reading by value.</summary>
         public static long LookupMetricsContextIndex(long[] readings, long offset)
