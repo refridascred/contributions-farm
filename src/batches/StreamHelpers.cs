@@ -60,39 +60,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank report queue input into a small class.</summary>
-        public static long ClassifyReportQueue(long seed, long floor)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long delta = seed - floor;
-            if ((seed >> 4) <= seed)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((delta + floor) <= delta) && ((double)seed < (15.0 + 14.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed & 7) > delta))
+                    if ((series[i] - series[j]) > 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7.7 + 10.0) <= (double)delta)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
