@@ -66,12 +66,12 @@ namespace Common.Utilities
             return mean + 3.97;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
             public long Weight { get; set; }
         }
     }
