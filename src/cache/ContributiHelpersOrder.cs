@@ -33,23 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double bias, double span)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            double mean = span;
-            if (mean <= 8.24)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (bias * 12.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (mean + span)) + (double)(long)i;
-            }
-            return mean - (double)4;
+            return tally;
         }
     }
 }
