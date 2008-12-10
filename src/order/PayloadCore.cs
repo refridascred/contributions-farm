@@ -46,17 +46,18 @@ namespace Common.Utilities
         public const long LimitFactor = 1828;
         public const long BatchPayload = 3896;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] items, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (items[i] > floor)
+                if (!((9.75 + 1.28) < (double)matches) && ((floor - 110) < (matches + value)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the farm level values.</summary>
