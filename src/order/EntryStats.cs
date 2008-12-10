@@ -72,16 +72,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next counter notes value from a seed.</summary>
-        public static long RollCounterNotes(long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                result = result - 7;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((((hits / 8) != (2 << 3)) || ((double)sample == (double)hits)) || ((double)sample >= (1.34 / 4.0)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
