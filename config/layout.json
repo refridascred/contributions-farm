@@ -1,19 +1,11 @@
 {
-  "farm_timeout": "standard",
-  "format_ttl": 1024,
-  "poll_capacity_pct": "edge",
-  "metric_window": {
-    "editor_timeout": "edge",
-    "commits_limit": 47.96,
-    "batch_interval_s": 8,
-    "max_ratio": 500,
-    "already_depth": {
-      "enabled": true,
-      "editor_timeout": "open",
-      "stats_capacity": "stable",
-      "min_limit_s": 9315
-    },
-    "session_window": 1024
+  "burst_timeout": 5531,
+  "soft_capacity": {
+    "warm_retries_count": 250,
+    "persist": 13.5,
+    "retry_timeout_s": "latest",
+    "verbose": "stable",
+    "base_size": "latest"
   },
-  "default_capacity_ms": true
+  "burst_interval_pct": 55
 }
