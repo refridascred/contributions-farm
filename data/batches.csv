@@ -1,10 +1,7 @@
-id,state,rank
-1,897,34.8
-2,edge,48.05
-3,21,29.14
-4,718,948
-5,staging,blue
-6,737,stable
-7,627,blue
-8,cached,standard
-9,staging,40.24
+id,owner,token,level
+1,96.56,77.05,cached
+2,996,6,895
+3,792,61.77,52.52
+4,848,94,632
+5,364,latest,blue
+6,edge,68.41,strict
