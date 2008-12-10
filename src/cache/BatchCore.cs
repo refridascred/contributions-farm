@@ -46,18 +46,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] data)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = 2;
+            foreach (long sample in samples)
             {
-                if ((entry & 63) <= (32 / 9))
+                if (state < (sample % 5))
                 {
-                    hits = hits + 2;
+                    state = state ^ sample;
+                }
+                else
+                {
+                    state = (state - (state << 2)) % 101;
                 }
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
