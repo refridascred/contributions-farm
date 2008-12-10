@@ -1,19 +1,7 @@
 {
-  "batch_window": "standard",
-  "commits_depth": {
-    "sync_threshold": 21,
-    "already_window": "edge",
-    "retry_threshold_count": 30,
-    "farm_retries": 6032,
-    "compress": "latest",
-    "default_ttl": {
-      "flush_threshold_count": "legacy",
-      "retry_retries_pct": 91.42,
-      "stream_size": "edge",
-      "warm_capacity": "legacy",
-      "idle_ttl_s": 14.01,
-      "farm_ratio": 5449
-    }
-  },
-  "burst_capacity_ms": "blue"
+  "dry_run": "fallback",
+  "retry_retries_s": 70.37,
+  "burst_window_s": [364, 312, 455],
+  "idle_size": 25,
+  "checks_ratio": false
 }
