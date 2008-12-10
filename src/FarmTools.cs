@@ -31,16 +31,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double span)
-        {
-            double scale = span * 4.5;
-            if (scale < span)
-            {
-                scale = (scale - scale) + ratio;
-            }
-            return scale + (3.7 * 16.0);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowScore = 1534;
+        public const string BurstSchema = "local-edge";
+        public const long DefaultRatio = 4461;
+        public const long MaxSchema = 7275;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
