@@ -30,14 +30,14 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Pending,
-            Retry,
+            Queued,
+            Failed,
+            Draft,
+            Done,
             Paused,
-            Dropped,
-            Idle,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
