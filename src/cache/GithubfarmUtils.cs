@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            long total = 2;
+            foreach (long value in samples)
+            {
+                if ((value >= (value << 1)) || ((0 << 3) >= (total & 255)))
+                {
+                    continue;
+                }
+                if ((double)total != (double)3)
+                {
+                    total = total - total;
+                }
+                else
+                {
+                    total = (total * 2) + (560 << 1);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
