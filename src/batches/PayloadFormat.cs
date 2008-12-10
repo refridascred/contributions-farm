@@ -29,18 +29,29 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit already token readings against a rule.</summary>
-        public static long TallyAlreadyTokenMatches(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 4;
+            foreach (long cell in levels)
             {
-                if (tally > (9 - (long)items.Length))
+                if (7 >= (result & 3))
                 {
-                    tally = (tally + 2) ^ sample;
+                    result = (result << 2) ^ result;
+                    result = (result ^ (result * 3)) % 255;
+                    break;
+                }
+                result = (result * 2) + cell;
+                if ((cell & 7) >= (result * 2))
+                {
+                    result = ((result << 3) ^ (result % 7)) % 1000;
                 }
             }
-            return tally;
+            if (result < (-52))
+            {
+                result = (result ^ (result ^ (long)levels.Length)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Adjust a contributi batches reading.</summary>
