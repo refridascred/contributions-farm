@@ -44,18 +44,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long result = 5;
-            foreach (long reading in samples)
-            {
-                if ((result >> 3) != (result + reading))
-                {
-                    result = ((result * 2) + (reading & 127)) % 4096;
-                }
-            }
-            return result % 97;
+            Locked,
+            Queued,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
