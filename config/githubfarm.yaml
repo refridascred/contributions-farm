@@ -1,15 +1,13 @@
 # githubfarm settings
-cache_delay_s:
-  - standard
-  - standard
-  - latest
-poll_size:
-  - local
-  - open
-batch_timeout_count: true
-flush_size_count: false
-batch_depth_count:
-  - 496
-  - 87
-  - 32
-  - 97
+retry_ratio_ms:
+  min_capacity:
+    - open
+    - latest
+    - primary
+    - green
+  cache_window: 92.73
+  hard_delay_ms: stable
+readonly: stable
+metrics_interval: latest
+idle_interval_count: 49.75
+poll_ratio: fallback
