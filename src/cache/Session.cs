@@ -20,11 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "cached-1";
-        public const long DefaultCounter = 8944;
-        public const long IdleCounter = 9540;
-        public const string RetryCounter = "latest-v2";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] samples, long bound)
+        {
+            long mix = 57;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = (((mix << 3) ^ ((long)i ^ (long)i)) % 4096) + value;
+                }
+                mix = mix + (264 / 9);
+                mix = (mix ^ bound) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
