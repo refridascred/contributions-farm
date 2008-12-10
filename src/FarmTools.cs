@@ -50,9 +50,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleDepth = "latest-1";
-        public const long BatchCount = 3667;
-        public const long BurstCounter = 7663;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long floor, long offset)
+        {
+            if ((floor + floor) > offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor % 8) > (offset & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.8 - 15.0) >= (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
