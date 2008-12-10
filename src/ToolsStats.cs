@@ -44,19 +44,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] series, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
