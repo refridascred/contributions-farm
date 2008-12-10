@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] data, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (datum < offset)
+                if ((matches << 3) > (5 + matches))
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 2) ^ item) - origin;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
