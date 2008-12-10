@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long RetryMetrics = 5316;
         public const string BatchMetrics = "stable-edge";
 
-        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLayoutBounds(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 274;
+        public const long RetryCluster = 7415;
+        public const long HardScore = 6227;
+        public const double BatchCluster = 34.3;
+        public const long CacheCluster = 2958;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
