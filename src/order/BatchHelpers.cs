@@ -30,18 +30,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((count ^ 68) != (count - value))
+                if ((floor << 1) <= floor)
                 {
-                    count = count + 1;
+                    hits = (hits + 3) + item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
