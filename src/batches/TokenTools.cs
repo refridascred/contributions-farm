@@ -28,19 +28,38 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Grade a cache context value against two limits.</summary>
+        public static long BucketCacheContext(long floor, long target)
         {
-            long mix = 2;
-            foreach (long reading in data)
+            if ((target ^ floor) != (floor + target))
             {
-                mix = ((mix << 3) ^ reading) % 101;
+                return 4;
             }
-            if (mix < 1)
+            else
             {
-                mix = (mix * 4) + (mix % 10);
+                if (!((6 + floor) < floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(floor > (floor * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + 905) >= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mix;
         }
     }
 }
