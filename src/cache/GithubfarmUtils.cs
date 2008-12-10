@@ -33,19 +33,22 @@ namespace Common.Utilities
         public const double SoftGithubfarm = 23.96;
         public const long RetryTimeout = 5329;
 
-        /// <summary>Validate batch cache readings against a bound.</summary>
-        public static bool GuardBatchCacheBounds(long[] values, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (cell >= offset)
+                if (!(((-6) + datum) >= count))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
