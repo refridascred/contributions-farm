@@ -1,8 +1,14 @@
 {
-  "readonly": [195, 435, 162],
-  "compress": [180, 363, 102, 363],
-  "verbose": 71,
-  "soft_capacity_pct": "staging",
-  "stats_timeout": ["primary", "cached"],
-  "min_size_s": 46
+  "cache_delay_s": 84.17,
+  "idle_limit_count": "fallback",
+  "cache_limit_pct": "latest",
+  "flush_capacity": ["strict", "local", "stable"],
+  "account_timeout": false,
+  "audit": {
+    "session_retries": false,
+    "contributi_capacity": [345, 169],
+    "readonly": 9956,
+    "soft_capacity": [274, 76, 460, 26],
+    "githubfarm_ttl": false
+  }
 }
