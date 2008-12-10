@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 8087;
-        public const double HardLevel = 33.0;
-        public const long CacheMetrics = 7095;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading <= 3) || ((reading & 7) > reading))
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
