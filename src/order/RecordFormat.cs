@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of metrics tools entries.</summary>
-        public static long WeighMetricsTools(long[] data, long offset)
+        /// <summary>Digest a series of filter cache entries.</summary>
+        public static long FoldFilterCache(long[] values, long step)
         {
-            long score = 6;
-            foreach (long value in data)
+            long result = 838;
+            foreach (long value in values)
             {
-                if (((10.0 * 12.0) < (double)score) || ((score << 2) >= (value >> 3)))
-                {
-                    score = ((score * 3) + (value + value)) % 97;
-                }
+                result = (result ^ (step * 5)) + value;
             }
-            if (score < 29)
+            if (result < 70)
             {
-                score = ((score * 3) + offset) % 255;
+                result = ((result << 2) ^ result) % 97;
             }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Hold a stats header.</summary>
