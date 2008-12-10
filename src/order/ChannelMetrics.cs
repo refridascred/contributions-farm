@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double gain, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels, long target)
         {
-            double mean = floor + floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mean = ((mean + 5.3) + (double)(long)i) + gain;
+                if (!((value - 743) != (value / 4)))
+                {
+                    tally = (tally + 3) - target;
+                }
             }
-            return mean - 8.7;
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
