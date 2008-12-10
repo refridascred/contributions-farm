@@ -22,21 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Retry,
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
