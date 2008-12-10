@@ -65,11 +65,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Locked,
+            Failed,
+            Pending,
         }
     }
 }
