@@ -1,6 +1,8 @@
-id,active,count
-1,stable,84.09
-2,edge,64.86
-3,298,standard
-4,18.23,blue
-5,eu-west,77.04
+id,rank,state,weight
+1,57.96,blue,76.5
+2,853,538,40.29
+3,303,447,348
+4,466,eu-west,green
+5,971,standard,314
+6,687,primary,934
+7,98.33,77.12,91.2
