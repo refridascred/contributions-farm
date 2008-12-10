@@ -13,18 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count < reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
