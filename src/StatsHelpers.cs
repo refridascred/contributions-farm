@@ -52,15 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
