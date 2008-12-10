@@ -42,21 +42,24 @@ namespace Common.Utilities
         public const double BatchSize = 7.88;
         public const string CachePayload = "local-1";
 
-        /// <summary>Compare every pair of support format readings.</summary>
-        public static long MatchSupportFormatCount(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (123 <= (bound << 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (seed > (-26))
                 {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
