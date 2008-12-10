@@ -1,6 +1,17 @@
 {
-  "checks_retries": "open",
-  "flush_delay_s": "cached",
-  "soft_ttl": "legacy",
-  "cache_depth": 1359
+  "flush_threshold_count": 100,
+  "counter_timeout": false,
+  "max_timeout": 500,
+  "batch_retries_s": {
+    "retry_timeout": {
+      "poll_size_ms": 30,
+      "warm_interval": "cached",
+      "warm_limit_s": 59.05,
+      "idle_interval_s": 23
+    },
+    "verbose": 60,
+    "record_ratio": 42.45,
+    "hard_delay_s": 500,
+    "retry_depth": "eu-west"
+  }
 }
