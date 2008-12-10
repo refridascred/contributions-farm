@@ -20,11 +20,40 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheCount = 8273;
-        public const long RetryContext = 326;
-        public const long DefaultContext = 1428;
-        public const long WindowDepth = 9074;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long seed, long step)
+        {
+            long delta = seed - step;
+            if (step > (step << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (11.0 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)delta == (8.0 + 2.6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((delta + delta) <= (2 + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a account order sample.</summary>
         public static long FindAccountOrderIndex(long[] values, long step)
