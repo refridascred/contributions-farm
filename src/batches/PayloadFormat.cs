@@ -33,11 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 767;
-        public const long BatchDepth = 8048;
-        public const long StepGraph = 6231;
-        public const double BaseGraph = 95.0;
+        /// <summary>Digest a series of schema commits entries.</summary>
+        public static long WeighSchemaCommits(long[] data)
+        {
+            long carry = -54;
+            foreach (long sample in data)
+            {
+                if (((carry / 2) >= ((-1) + carry)) || ((double)sample == (double)9))
+                {
+                    carry = (carry ^ (carry * 4)) % 1000;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = ((carry << 2) ^ (carry / 5)) % 101;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
