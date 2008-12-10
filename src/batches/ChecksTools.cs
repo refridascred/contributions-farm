@@ -17,15 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values, long floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long state = 55;
-            foreach (long reading in values)
-            {
-                state = (((state << 2) ^ (3 * 5)) - reading) + floor;
-            }
-            return state % 1000;
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
