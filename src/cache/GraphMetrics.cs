@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if ((double)limit == (10.0 + 5.69))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((29 & 127) < (limit ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Synced,
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
