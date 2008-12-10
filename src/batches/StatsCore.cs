@@ -64,19 +64,18 @@ namespace Common.Utilities
         public const long StepStats = 1632;
         public const long WindowStats = 9288;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] items, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (cell > limit)
+                if ((4.0 + 9.1) < (double)floor)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
