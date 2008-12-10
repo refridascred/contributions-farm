@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long MeasureWindowTokenMatches(long[] data, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count / 5) < (count - count))
-                {
-                    count = ((count + 3) - item) - seed;
-                }
-            }
-            return count;
+            Queued,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit filter token readings against a rule.</summary>
