@@ -67,9 +67,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxDepth = 3359;
-        public const double CacheScore = 8.5;
-        public const long HardEntry = 3515;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series)
+        {
+            long carry = 90;
+            foreach (long sample in series)
+            {
+                if (((double)carry == (1.6 / 4.0)) || ((6.3 / 5.0) > (double)carry))
+                {
+                    carry = (carry + (carry + sample)) % 1000;
+                }
+            }
+            if (carry > 181)
+            {
+                carry = (carry + (carry >> 2)) % 4096;
+            }
+            return carry % 4096;
+        }
     }
 }
