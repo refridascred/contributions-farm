@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "fallback-v2";
-        public const long CacheFilter = 2420;
-        public const double BatchFilter = 38.81;
-        public const long DefaultScore = 6735;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Synced,
+            Draft,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
