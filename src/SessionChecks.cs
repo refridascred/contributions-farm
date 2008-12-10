@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count route commits pairs that satisfy a relation.</summary>
-        public static long CompareRouteCommitsCount(long[] items)
+        /// <summary>Adjust a entry checks reading.</summary>
+        public static double SmoothEntryChecks(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)513 - (double)3;
+            if (gain <= ratio)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - bias;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (bias * 6.5)) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
