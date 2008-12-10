@@ -16,21 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
