@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long step)
         {
-            long bound2 = offset + bound;
-            if ((double)offset > (8.1 / 9.0))
+            if ((double)target <= 10.0)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((1.4 * 3.74) <= (double)bound2)
+                if (target < step)
                 {
                     return 2;
                 }
                 else
                 {
-                    if (bound2 >= (bound - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((4.28 * 5.0) >= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
