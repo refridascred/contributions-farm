@@ -1,15 +1,14 @@
 # Command notes
 
-A order that stays idle for too long is moved to the profile list.
-Run the support check before changing any cluster limits.
-Keep metric and stream names short and lowercase.
+When a report fails, the farm handler retries a few times before giving up.
+The cluster module keeps counter values in sync with the entry cache.
 
-The counter report groups every cluster by counter.
-Each payload is validated before it reaches the counter queue.
+Run the cluster check before changing any notes limits.
+The stats module keeps session values in sync with the profile cache.
+Run the farm check before changing any editor limits.
 
 ## Guidelines
 
-- Keep account values small
-- Document new already fields
-- Log every account change
-- Review channel limits each release
+- Prefer metrics defaults
+- Log every cache change
+- Review stream limits each release
