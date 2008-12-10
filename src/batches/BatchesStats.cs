@@ -15,27 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of layout command readings.</summary>
-        public static long DigestLayoutCommand(long[] levels, long limit)
-        {
-            long anchor = 34;
-            foreach (long entry in levels)
-            {
-                if ((4 ^ limit) >= (entry * 2))
-                {
-                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (limit - anchor)) % 65521;
-                }
-            }
-            if (anchor > 17)
-            {
-                anchor = (anchor + (176 + limit)) % 1000;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinDepth = 74.15;
+        public const string BaseCount = "staging";
+        public const string CachePayload = "fallback-1";
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
