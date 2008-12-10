@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
