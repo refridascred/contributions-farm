@@ -22,18 +22,17 @@ namespace Common.Utilities
         public const long DefaultContext = 1428;
         public const long WindowDepth = 9074;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] samples)
+        /// <summary>Look up the position of a account order sample.</summary>
+        public static long FindAccountOrderIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.72 - 9.96) < (double)seen)
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
                 {
-                    seen = (seen + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
