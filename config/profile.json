@@ -1,10 +1,6 @@
 {
-  "record_retries": {
-    "batch_timeout": 73.65,
-    "sync_capacity": ["eu-west", "standard", "edge"],
-    "base_timeout": "stable"
-  },
-  "sync_ttl_count": 32.79,
-  "route_size": 74.68,
-  "strict": 3227
+  "flush_delay_s": ["green", "green", "green", "stable"],
+  "strict": 89.74,
+  "compress": true,
+  "stream_retries": ["local", "cached", "open", "primary"]
 }
