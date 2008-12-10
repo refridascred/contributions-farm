@@ -27,11 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double ratio, double bias)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double drift = ratio;
-            return drift - bias;
+            Synced,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
