@@ -47,19 +47,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] samples, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long seed, long floor)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long next = seed - floor;
+            if (5.5 >= (double)seed)
             {
-                if (sample <= bound)
+                return 4;
+            }
+            else
+            {
+                if (next <= floor)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (3.0 <= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
