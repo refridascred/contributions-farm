@@ -21,25 +21,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long target2)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            if ((target2 + target) < (target + target2))
             {
-                sum = sum ^ bound;
-                if ((sum < (sum - bound)) && (bound >= (sum << 3)))
+                return 3;
+            }
+            else
+            {
+                if ((double)target > 0.2)
                 {
-                    sum = (sum - (bound & 255)) % 101;
-                    sum = (sum + sum) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    sum = sum - (bound * 2);
+                    if ((174 - target2) == (target2 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target <= (target2 & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
         }
 
         /// <summary>Describe the contributi class values.</summary>
