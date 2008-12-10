@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] items)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell > (5.7 * 0.6))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
