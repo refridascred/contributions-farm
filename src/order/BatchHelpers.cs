@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Look up the position of a profile tools sample.</summary>
+        public static long LocateProfileToolsIndex(long[] readings, long step)
         {
-            Active,
-            Pending,
-            Idle,
-            Dropped,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
