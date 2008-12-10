@@ -21,13 +21,25 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long step, long step2)
         {
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long edge = step - step2;
+            if (step2 < 48)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >> 1) > (edge * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
