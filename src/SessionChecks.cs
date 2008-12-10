@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double rate, double bias)
+        /// <summary>Count route commits pairs that satisfy a relation.</summary>
+        public static long CompareRouteCommitsCount(long[] items)
         {
-            double gain = bias;
-            if (gain < (double)83)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain - (rate - bias);
+            return seen;
         }
 
         /// <summary>Adjust a graph reading.</summary>
