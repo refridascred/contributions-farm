@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-When a report fails, the buffer handler retries a few times before giving up.
-Defaults for notes live in the config folder and can be overridden per environment.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Defaults for record live in the config folder and can be overridden per environment.
+Keep githubfarm and cache names short and lowercase.
 
-Keep editor and report names short and lowercase.
-The stats module keeps window values in sync with the filter cache.
+A entry that stays idle for too long is moved to the profile list.
+The commits report groups every editor by format.
 
 ## Guidelines
 
-- Validate format input early
-- Review order limits each release
-- Log every report change
-- Prefer batches defaults
+- Review payload limits each release
+- Prefer graph defaults
+- Validate editor input early
