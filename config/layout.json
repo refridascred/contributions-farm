@@ -1,11 +1,8 @@
 {
-  "burst_timeout": 5531,
-  "soft_capacity": {
-    "warm_retries_count": 250,
-    "persist": 13.5,
-    "retry_timeout_s": "latest",
-    "verbose": "stable",
-    "base_size": "latest"
-  },
-  "burst_interval_pct": 55
+  "min_depth_pct": 1024,
+  "sync_ttl": [122, 333, 67],
+  "already_interval": "latest",
+  "persist": 73,
+  "retry_delay_ms": 87.97,
+  "soft_timeout_ms": 7
 }
