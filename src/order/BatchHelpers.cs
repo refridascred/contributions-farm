@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            long carry = -974;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry - (carry ^ carry)) % 97) ^ reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
