@@ -1,16 +1,35 @@
 # githubfarm settings
-idle_window_s:
+verbose:
+  - 469
+  - 68
+  - 187
+sync_retries_ms:
+  hard_depth_pct:
+    default_ratio: 30
+    strict: stable
+    batches_interval: 21
+    soft_delay_ms:
+      - staging
+      - open
+      - primary
+    flush_capacity_pct: 10
+  report_depth: edge
+  hard_depth: 18.19
+  burst_ratio_count:
+    retry_retries: 1698
+    burst_timeout_pct:
+      - 295
+      - 328
+      - 371
+      - 199
+    audit: fallback
+    default_window_count: 12
+  batch_threshold_pct: true
+  format_capacity: blue
+burst_threshold:
+  - staging
   - open
-  - legacy
-format_delay:
-  flush_capacity: 2923
-  flush_delay_pct: true
-  sync_ttl_pct: 1024
-  flush_limit_ms:
-    cache_interval: stable
-    max_limit:
-      - fallback
-      - standard
-    verbose: standard
-    filter_retries: latest
-retry_retries: 100
+  - strict
+stats_limit: 68.52
+counter_window: 31.21
+flush_capacity_ms: fallback
