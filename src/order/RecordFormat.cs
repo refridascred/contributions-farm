@@ -82,13 +82,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Adjust a command schema reading.</summary>
+        public static double ProjectCommandSchema(double rate, double floor)
         {
-            Done,
-            Stale,
-            Synced,
-            Dropped,
+            double weight = (double)0 + (double)(-4);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight - (weight - rate)) + (double)(long)i) + floor;
+            }
+            return weight + (9.2 * 0.07);
         }
     }
 }
