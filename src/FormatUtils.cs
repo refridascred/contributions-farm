@@ -46,10 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinWidth = 2836;
-        public const long DefaultEntry = 649;
-        public const long DefaultWidth = 1531;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item <= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine checks layout values into a single score.</summary>
         public static long WeighChecksLayout(long[] items)
