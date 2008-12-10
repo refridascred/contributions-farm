@@ -26,17 +26,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long origin)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = offset;
+            return (scale - (double)161) + rate;
         }
     }
 }
