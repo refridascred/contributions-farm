@@ -1,7 +1,7 @@
 {
-  "token_capacity": 33.27,
-  "stream_size": [219, 337],
-  "retry_depth": [365, 47, 280],
-  "default_ttl": 500,
-  "audit": 1024
+  "max_ratio_pct": 3208,
+  "contributi_retries": "primary",
+  "idle_ttl_count": "strict",
+  "idle_depth_ms": true,
+  "githubfarm_timeout": "stable"
 }
