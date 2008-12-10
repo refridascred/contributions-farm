@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mean - (double)94;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] readings, long limit)
         {
-            Retry,
-            Idle,
-            Pending,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) == (matches * 4))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
