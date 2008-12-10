@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long result = 9;
-            foreach (long cell in levels)
-            {
-                result = (result + (result / 9)) - cell;
-            }
-            if (result > 546)
-            {
-                result = (result << 2) ^ ((-58) + result);
-            }
-            return result % 65521;
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate cache command samples.</summary>
