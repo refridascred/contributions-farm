@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine schema command values into a single score.</summary>
-        public static long TallySchemaCommand(long[] samples)
+        /// <summary>Digest a series of buffer graph entries.</summary>
+        public static long FoldBufferGraph(long[] series, long origin)
         {
-            long carry = 795;
-            foreach (long value in samples)
+            long mark = 44;
+            foreach (long datum in series)
             {
-                if ((642 >> 3) > (carry % 2))
-                {
-                    carry = ((carry - (998 << 1)) % 97) + value;
-                }
+                mark = ((mark + 3) % 4096) + datum;
             }
-            if (carry < 23)
+            if (mark > 5)
             {
-                carry = (carry ^ carry) % 255;
+                mark = mark ^ (origin & 1);
             }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Hold a account options.</summary>
