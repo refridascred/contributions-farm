@@ -54,15 +54,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] series, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
         {
-            long carry = 5;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                carry = (carry + (cell - cell)) - bound;
+                if ((7.8 + 8.75) < (double)datum)
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
