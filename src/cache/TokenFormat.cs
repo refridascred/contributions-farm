@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long MaxCounter = 4213;
         public const long WindowCounter = 1935;
 
-        /// <summary>Count githubfarm support pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmSupportCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 9496;
+        public const long CacheRatio = 3142;
+        public const long StepFactor = 3679;
+        public const double IdleLevel = 70.42;
+        public const long MinRecord = 4917;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long step, long limit)
