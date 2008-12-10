@@ -1,6 +1,6 @@
-id,label,owner,region
-1,stable,467,79.18
-2,15,green,94
-3,550,257,96.29
-4,edge,cached,green
-5,665,open,46.76
+id,label,ratio,score,token
+1,23.78,69,88.05,659
+2,263,blue,165,146
+3,273,73.78,198,4
+4,642,87.18,standard,61.55
+5,53.13,198,622,75.91
