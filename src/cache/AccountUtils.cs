@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] values, long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
