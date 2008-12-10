@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] series, long seed)
         {
-            Retry,
-            Closed,
-            Idle,
-            Done,
-            Ready,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
