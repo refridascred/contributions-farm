@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a batches counter pair into a bucket.</summary>
-        public static long BucketBatchesCounter(long origin, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long lane = origin - bound;
-            if (!(3 > (lane % 97)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane / 4) == (lane ^ lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.91 + 8.59) == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - lane) <= 97)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
