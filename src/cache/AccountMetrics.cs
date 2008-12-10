@@ -50,13 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] items)
         {
-            Retry,
-            Locked,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((4.5 / 8.0) != (double)tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
