@@ -1,10 +1,15 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-The filter report groups every context by batches.
+Run the support check before changing any queue limits.
+Use entry settings to tune how often tools data is refreshed.
+When a route fails, the tools handler retries a few times before giving up.
+
+Run the buffer check before changing any githubfarm limits.
+Keep report and command names short and lowercase.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new context fields
-- Review batches limits each release
-- Prefer schema defaults
+- Review order limits each release
+- Log every graph change
+- Validate queue input early
