@@ -32,22 +32,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] items, long offset)
         {
-            long total = 87;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((double)cell > 2.0)
+                if (value > offset)
                 {
-                    total = ((total << 2) ^ (total ^ total)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (total < (-97))
-            {
-                total = ((total * 3) + ((long)series.Length + total)) % 255;
-            }
-            return total % 97;
+            return valid;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
