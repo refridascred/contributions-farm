@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Dropped,
-            Ready,
-            Closed,
-            Locked,
-            Retry,
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of batch readings.</summary>
