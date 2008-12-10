@@ -1,6 +1,7 @@
 {
-  "soft_interval": 50,
-  "command_size": 5,
-  "max_retries_ms": 250,
-  "record_delay": true
+  "soft_retries_s": [28, 94, 28, 397],
+  "graph_depth": true,
+  "hard_threshold": [90, 47],
+  "order_threshold": 3035,
+  "enabled": "eu-west"
 }
