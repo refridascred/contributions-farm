@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double weight, double offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long bound)
         {
-            double ratio = weight;
-            if (ratio < (ratio - ratio))
+            if (9.98 <= (double)seed)
             {
-                ratio = (ratio - ratio) + offset;
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                if ((seed > 83) && ((7.54 - 9.2) < (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return ratio + weight;
         }
 
         /// <summary>Combine support values into a single score.</summary>
