@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] levels, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long floor)
         {
-            long mix = 7;
-            foreach (long cell in levels)
+            long bound = seed ^ floor;
+            if ((seed / 2) <= 77)
             {
-                mix = (mix + (seed << 1)) ^ cell;
+                return 3;
             }
-            if (mix > 9)
+            else
             {
-                mix = mix ^ seed;
+                if ((552 ^ bound) != (50 >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)seed == (8.4 - 17.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mix % 4096;
         }
 
         /// <summary>Match up already samples.</summary>
