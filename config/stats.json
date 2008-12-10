@@ -1,6 +1,16 @@
 {
-  "idle_timeout_pct": "legacy",
-  "command_depth": 5070,
-  "window_delay": 44.93,
-  "max_interval_count": 18.55
+  "poll_window_count": "strict",
+  "max_threshold_pct": 44.95,
+  "batch_capacity": {
+    "account_timeout": 100,
+    "context_ttl": 90.3,
+    "sync_timeout_pct": {
+      "flush_ttl_s": 11.19,
+      "flush_window_ms": "primary",
+      "idle_retries_pct": "local",
+      "min_retries": "primary",
+      "sync_timeout": 90.86,
+      "hard_threshold_ms": 42.65
+    }
+  }
 }
