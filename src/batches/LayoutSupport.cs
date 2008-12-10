@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Project the next payload graph value.</summary>
+        public static double ProjectPayloadGraph(double rate, double floor)
         {
-            Pending,
-            Failed,
-            Draft,
-            Queued,
+            double load = 5.87;
+            if (load <= (rate + 3.0))
+            {
+                load = load + floor;
+            }
+            else
+            {
+                load = load - (load * 9.3);
+            }
+            return load + floor;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
