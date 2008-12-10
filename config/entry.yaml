@@ -1,4 +1,11 @@
 # entry settings
-checks_delay: local
-metrics_delay: 1628
-base_depth_ms: local
+max_limit: open
+session_depth:
+  - strict
+  - latest
+sync_size_s: 60
+hard_timeout_count: 7
+readonly: cached
+cache_delay:
+  - local
+  - cached
