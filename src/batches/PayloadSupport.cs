@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
