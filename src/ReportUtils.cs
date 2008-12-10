@@ -42,13 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Locked,
-            Paused,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 8676;
+        public const long BaseCounter = 2948;
+        public const long RetryCounter = 2237;
+        public const string HardLevel = "legacy-edge";
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
