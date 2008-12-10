@@ -56,18 +56,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] values)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)(long)values.Length < (double)tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
