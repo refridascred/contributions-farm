@@ -33,9 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 19.78;
-        public const long CacheRoute = 8768;
-        public const string BatchRatio = "primary-1";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
