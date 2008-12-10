@@ -69,15 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] data, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] data)
         {
             long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 4) <= ((-517) % 100))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) - limit;
+                    if ((data[i] + data[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
