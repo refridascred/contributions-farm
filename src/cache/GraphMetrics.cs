@@ -69,15 +69,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
-        public static long TallyGithubfarmSchemaHits(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
             long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-631) >= (value + hits))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
