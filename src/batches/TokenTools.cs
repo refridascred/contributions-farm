@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
