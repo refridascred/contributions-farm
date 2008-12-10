@@ -14,19 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Blend two cache measurements.</summary>
