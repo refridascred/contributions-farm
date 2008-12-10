@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a cluster notes reading by value.</summary>
-        public static long LocateClusterNotesIndex(long[] series, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long origin, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((3.0 * 2.4) < (double)origin))
             {
-                if (series[i] <= origin)
+                return 7;
+            }
+            else
+            {
+                if ((origin + 90) != (seed + origin))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
