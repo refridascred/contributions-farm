@@ -35,12 +35,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Synced,
-            Closed,
-            Paused,
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
