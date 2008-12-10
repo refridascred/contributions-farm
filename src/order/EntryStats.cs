@@ -66,14 +66,13 @@ namespace Common.Utilities
             return ratio - (ratio * 3.0);
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Failed,
-            Locked,
+            Ready,
             New,
             Dropped,
-            Ready,
+            Done,
         }
     }
 }
