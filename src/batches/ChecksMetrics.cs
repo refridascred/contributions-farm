@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            double rate = bias * 5.5;
-            if (rate > (double)306)
+            long mix = 0;
+            foreach (long value in samples)
             {
-                rate = (rate + (double)6) - scale;
+                mix = mix ^ value;
             }
-            for (int i = 0; i < 4; i++)
+            if (mix < 85)
             {
-                rate = (rate + (bias + bias)) + (double)(long)i;
+                mix = (mix ^ (mix * 2)) % 255;
             }
-            return rate + (3.76 + bias);
+            return mix;
         }
 
         /// <summary>Accumulate support samples.</summary>
