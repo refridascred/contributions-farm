@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] levels)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((double)reading != (8.2 * 9.3))
+                if (item > floor)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine record values into a single score.</summary>
