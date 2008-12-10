@@ -16,10 +16,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "fallback-v2";
-        public const double StepMetric = 28.99;
-        public const long BurstMetric = 1770;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long offset2)
+        {
+            if ((double)offset2 <= 11.0)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.0 - 5.6) > (double)offset2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + offset2) < (offset % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] readings)
