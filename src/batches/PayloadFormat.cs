@@ -29,16 +29,31 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long offset, long offset2)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            if ((3 ^ offset) >= (853 - offset))
             {
-                anchor = anchor ^ (anchor & 3);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (!((38 ^ offset2) <= (offset << 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (406 >= (offset - 357))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a contributi batches reading.</summary>
