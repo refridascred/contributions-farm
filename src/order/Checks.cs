@@ -32,15 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] values, long bound)
         {
-            long mark = -816;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark + (entry >> 4)) % 65521) - origin;
+                if (!!(((long)values.Length << 3) <= (count * 4)))
+                {
+                    count = ((count + 2) + cell) + bound;
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Hold a buffer record.</summary>
