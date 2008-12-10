@@ -49,19 +49,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] samples, long bound)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long floor2)
         {
-            long score = 504;
-            foreach (long item in samples)
+            if ((((-9) << 3) >= (floor2 + floor2)) || (floor >= floor2))
             {
-                score = (score ^ bound) % 4096;
-                if (item >= (670 % 100))
+                return 0;
+            }
+            else
+            {
+                if (floor2 <= floor)
                 {
-                    score = (score + bound) % 97;
+                    return 3;
+                }
+                else
+                {
+                    if ((0 + floor2) < floor2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score % 97;
         }
     }
 }
