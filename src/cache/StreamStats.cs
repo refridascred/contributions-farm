@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long limit, long floor)
         {
-            long carry = 583;
-            foreach (long reading in series)
+            if ((floor * 2) < (-4))
             {
-                carry = (((carry * 3) + (carry + carry)) % 101) ^ reading;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((20.0 - 9.0) < (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor >= (double)limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks stats.</summary>
