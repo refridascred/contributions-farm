@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long target, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] readings, long bound)
         {
-            if (((double)target != (3.5 * 6.81)) || (bound > target))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound + target) >= (target >> 3)) || (bound <= (bound & 127)))
+                if ((double)9 >= (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    hits = ((hits + 3) + datum) - bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
