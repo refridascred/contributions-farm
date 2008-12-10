@@ -20,14 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 7327;
+        public const string RetryCache = "latest-1";
+        public const long RetryInterval = 3470;
+        public const long CacheCount = 5243;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
