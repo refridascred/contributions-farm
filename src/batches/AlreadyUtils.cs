@@ -51,18 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mark = 17;
-            foreach (long cell in items)
-            {
-                if (mark >= (mark << 2))
-                {
-                    mark = ((mark * 2) + (52 * 3)) + cell;
-                }
-            }
-            return mark;
+            Active,
+            New,
+            Stale,
+            Dropped,
+            Failed,
         }
     }
 }
