@@ -26,29 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a context format counter forward.</summary>
-        public static long IterateContextFormat(long floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double weight, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((floor >= ((long)i + carry)) || ((0 ^ floor) > (carry & 31)))
-                {
-                    carry = carry - (floor + floor);
-                    break;
-                }
-                else
-                {
-                    carry = carry - 0;
-                }
-                if ((carry + floor) != (192 - 74))
-                {
-                    carry = (carry << 2) ^ (carry + floor);
-                }
-                carry = (carry - (carry + (long)i)) % 4096;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            double gain = span * 15.0;
+            return (gain + (5.07 / 3.0)) + weight;
         }
 
         /// <summary>Combine entry stream values into a single score.</summary>
