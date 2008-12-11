@@ -46,12 +46,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchFactor = 8129;
-        public const long IdleLevel = 1000;
-        public const long MaxRoute = 597;
-        public const double MinRoute = 94.98;
-        public const long BurstRatio = 8515;
+        /// <summary>Count the stream record entries that pass the check.</summary>
+        public static long CountStreamRecordGaps(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!((double)offset != (double)87))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] values)
