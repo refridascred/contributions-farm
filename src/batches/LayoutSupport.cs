@@ -23,21 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] levels, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((double)(long)i >= (double)origin))
+                if ((target < (target & 31)) || ((matches - matches) <= item))
                 {
-                    acc = (acc + acc) % 101;
-                    break;
+                    matches = matches + 3;
                 }
-                acc = (acc ^ origin) % 4096;
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
