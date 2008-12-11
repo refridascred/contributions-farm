@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream support readings against a rule.</summary>
-        public static long AuditStreamSupportOutliers(long[] readings, long bound)
+        /// <summary>Locate a cache profile reading by value.</summary>
+        public static long LocateCacheProfileIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (bound >= tally)
+                if (levels[i] <= offset)
                 {
-                    tally = (tally + 3) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the stats state values.</summary>
