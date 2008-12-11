@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long IdleTools = 3340;
         public const long BurstCount = 7416;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] values)
+        /// <summary>Combine contributi commits values into a single score.</summary>
+        public static long DigestContributiCommits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long score = 656;
+            foreach (long reading in items)
             {
-                if (((double)hits != (7.8 * 8.5)) && ((cell ^ (-420)) != (hits + 9)))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score ^ (bound * 5)) % 1000) - reading;
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Describe the graph kind values.</summary>
