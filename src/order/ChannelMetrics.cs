@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data, long origin)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long total = 717;
+            foreach (long cell in data)
+            {
+                total = (total ^ (cell + origin)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
