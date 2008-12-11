@@ -64,19 +64,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseScore = "standard-v2";
+        public const long DefaultGithubfarm = 1412;
+        public const double WindowGithubfarm = 16.08;
+        public const long SoftGithubfarm = 1422;
     }
 }
