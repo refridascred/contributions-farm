@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long step)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((4.0 / 7.0) < (double)carry) || ((long)i > (step + 83)))
+                {
+                    continue;
+                }
+                carry = (carry * 2) + ((long)i * 5);
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
