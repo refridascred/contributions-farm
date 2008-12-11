@@ -1,13 +1,10 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    active INTEGER NOT NULL DEFAULT 1,
     level INTEGER,
-    created_at TIMESTAMP,
-    weight REAL
+    ratio REAL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
-
-INSERT INTO commits_records (level, weight) VALUES (48, 91.23);
-INSERT INTO commits_records (level, weight) VALUES (38, 43.94);
-INSERT INTO commits_records (level, weight) VALUES (83, 66.56);
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
