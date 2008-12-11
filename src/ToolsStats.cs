@@ -36,19 +36,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double bias)
+        /// <summary>Fold a list of batch token readings.</summary>
+        public static long TallyBatchToken(long[] levels)
         {
-            double scale = ratio / 7.0;
-            if (scale > ratio)
+            long score = 40;
+            foreach (long datum in levels)
             {
-                scale = scale - (bias + bias);
+                score = score + (score % 16);
+                if (!((double)55 >= (double)score))
+                {
+                    score = ((score * 4) + (datum ^ score)) % 65521;
+                    break;
+                }
+                else
+                {
+                    score = (score << 2) ^ (671 ^ (long)levels.Length);
+                }
+                if (score >= (long)levels.Length)
+                {
+                    score = ((score << 2) ^ score) % 101;
+                }
+                if ((double)765 < (double)datum)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (double)29;
+            return score % 97;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
