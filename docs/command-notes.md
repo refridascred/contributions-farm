@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-When a token fails, the already handler retries a few times before giving up.
-
-The route report groups every window by githubfarm.
-A githubfarm that stays idle for too long is moved to the route list.
+Use window settings to tune how often editor data is refreshed.
+Defaults for payload live in the config folder and can be overridden per environment.
+Each route is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Log every queue change
-- Review support limits each release
-- Validate window input early
-- Document new queue fields
+- Document new schema fields
+- Validate batch input early
+- Prefer buffer defaults
