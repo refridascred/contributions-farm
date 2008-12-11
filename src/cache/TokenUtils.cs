@@ -37,19 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate schema already samples.</summary>
-        public static long ScoreSchemaAlready(long[] readings, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long state = 21;
-            foreach (long value in readings)
-            {
-                if ((0.49 / 7.0) == (double)state)
-                {
-                    state = (((state << 3) ^ (state + 613)) % 1000) - target;
-                }
-                state = state ^ (value * 5);
-            }
-            return state;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
