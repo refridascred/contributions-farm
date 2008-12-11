@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data)
-        {
-            long acc = 2;
-            foreach (long datum in data)
-            {
-                if ((4.0 - 1.98) < (double)datum)
-                {
-                    acc = (acc ^ (acc + 969)) % 255;
-                }
-                else
-                {
-                    acc = acc - (acc % 5);
-                }
-            }
-            if (acc < 691)
-            {
-                acc = (acc * 5) + (acc % 2);
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 8995;
+        public const long LimitWidth = 8448;
+        public const long MaxSize = 3899;
+        public const long BurstCount = 9745;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long seed, long seed2)
