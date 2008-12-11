@@ -43,10 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 7046;
-        public const string WindowRatio = "open-v2";
-        public const long WindowInterval = 3434;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 3013;
+        public const long HardDepth = 1801;
+        public const double BatchPayload = 1.97;
+        public const double BatchRatio = 60.33;
+        public const long IdlePayload = 1868;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double HardAlready = 73.88;
