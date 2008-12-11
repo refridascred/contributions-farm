@@ -39,24 +39,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(sum >= ((long)i >> 3)))
-                {
-                    sum = ((sum * 5) + sum) % 4096;
-                }
-                if ((sum >= (sum + sum)) || (2.02 > (double)sum))
-                {
-                    sum = (sum ^ sum) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinSpan = 87.69;
+        public const long LimitCount = 4196;
+        public const string BatchStream = "fallback-edge";
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
