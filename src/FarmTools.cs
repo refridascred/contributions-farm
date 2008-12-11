@@ -16,15 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            long mark = 75;
-            foreach (long item in levels)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mark = ((mark + (mark & 63)) % 97) - item;
+                score = ((score * 2) + (origin * 2)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a metric info.</summary>
