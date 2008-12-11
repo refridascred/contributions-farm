@@ -22,12 +22,13 @@ namespace Common.Utilities
         public const long MaxCount = 8459;
         public const string CacheDepth = "standard-1";
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
+            Idle,
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
