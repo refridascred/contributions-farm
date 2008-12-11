@@ -21,23 +21,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter commits entries.</summary>
-        public static long CombineCounterCommits(long[] series, long seed)
-        {
-            long result = 41;
-            foreach (long sample in series)
-            {
-                if (!(65 > (452 - seed)))
-                {
-                    result = (((result << 2) ^ (220 + result)) % 255) - sample;
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "open-edge";
+        public const long RetryDepth = 999;
+        public const long RetryTimeout = 2639;
+        public const long DefaultToken = 4769;
 
         /// <summary>Accumulate report samples.</summary>
         public static long DigestReport(long[] series)
