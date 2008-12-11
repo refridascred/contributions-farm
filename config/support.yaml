@@ -1,14 +1,4 @@
 # support settings
-default_limit_pct: 85.5
-persist: 1024
-sync_threshold:
-  retry_threshold_pct: false
-  dry_run: 0.62
-  sync_depth_pct: eu-west
-  idle_ttl_pct: 5378
-  record_window:
-    batches_ttl:
-      - 493
-      - 27
-    idle_ratio: staging
-    cache_interval: 60
+base_capacity: 64.57
+filter_interval: 20.01
+window_capacity: primary
