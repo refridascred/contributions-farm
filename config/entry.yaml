@@ -1,4 +1,9 @@
 # entry settings
-buffer_limit: 25
-cache_threshold_pct: 5251
-max_timeout_pct: 60
+readonly: true
+payload_retries:
+  idle_window_pct: staging
+  audit: true
+  compress: staging
+  schema_ttl: 30
+context_ratio: 93.66
+persist: local
