@@ -1,22 +1,6 @@
 # entry settings
-base_size:
-  batch_ratio: 37
-  base_window_pct: true
-  route_window: 67.51
-audit:
-  burst_depth:
-    batch_window_s: local
-    strict: true
-    stream_capacity:
-      - edge
-      - latest
-  soft_capacity: 50.0
-  verbose: 9932
-  base_ratio: 39
-  layout_ratio: 44.14
-  command_depth:
-    - standard
-    - local
-    - legacy
-    - open
-stream_interval: 15.81
+report_ttl: 74.42
+context_depth: blue
+payload_timeout: blue
+enabled: 112
+counter_timeout: 86.92
