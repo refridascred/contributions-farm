@@ -64,11 +64,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryFactor = 399;
-        public const string DefaultTimeout = "primary-edge";
-        public const long WindowSession = 5964;
-        public const string BurstSession = "standard";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 9915;
