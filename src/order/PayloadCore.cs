@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Closed,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 3550;
+        public const long WindowRatio = 5501;
+        public const long SoftMetric = 8245;
+        public const double DefaultMetric = 30.14;
+        public const double RetryInterval = 30.14;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ScaleBatch(double bias, double offset)
