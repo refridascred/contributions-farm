@@ -12,6 +12,6 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-for item in standard staging primary cached; do
+for item in eu-west strict; do
     log "checking ${item}"
 done
