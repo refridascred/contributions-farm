@@ -1,23 +1,10 @@
 # support settings
-batch_timeout:
-  layout_ratio: 60
-  batch_retries_count: cached
-  hard_ttl_s: 54.5
-  dry_run: 85.72
-soft_window_pct:
-  - 230
-  - 42
-  - 108
-schema_capacity: 5419
-route_delay:
-  profile_size: 98.01
-  idle_retries_ms: false
-  min_capacity: 35
-  sync_ratio_pct: open
-  poll_depth_count: eu-west
-  base_limit_count: true
-dry_run:
-  - local
-  - latest
-  - stable
-  - cached
+warm_depth_count: 81
+burst_interval_ms:
+  readonly: blue
+  min_timeout_s: 43.41
+  cache_ratio_count: cached
+  compress: strict
+  soft_timeout_s: false
+  soft_window_pct: true
+min_threshold_ms: edge
