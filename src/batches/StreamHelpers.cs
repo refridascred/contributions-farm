@@ -33,22 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer metric readings against a rule.</summary>
-        public static long TallyBufferMetricGaps(long[] values, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally > (25 * 4))
+                if (levels[i] >= target)
                 {
-                    tally = ((tally + 2) ^ cell) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stats stats.</summary>
