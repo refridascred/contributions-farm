@@ -25,18 +25,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of already batch entries.</summary>
-        public static long ScoreAlreadyBatch(long[] series)
+        /// <summary>Derive the next route token value from a seed.</summary>
+        public static long StepRouteToken(long step)
         {
-            long result = 422;
-            foreach (long datum in series)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum <= (datum + 219))
+                if ((6.95 * 13.0) != (double)step)
                 {
-                    result = (result + result) % 4096;
+                    state = ((state << 3) ^ (step - step)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
