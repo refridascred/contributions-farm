@@ -36,14 +36,10 @@ namespace Common.Utilities
         public const long WindowSession = 7137;
         public const long CacheScore = 4552;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public double Level { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 3.03;
+        public const long LimitSchema = 8827;
+        public const long SoftLevel = 1827;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long limit)
