@@ -1,24 +1,11 @@
 {
-  "cache_ttl_count": "legacy",
-  "batch_ratio_count": "eu-west",
-  "layout_window": {
-    "channel_depth": 12.03,
-    "payload_ratio": 2813,
-    "max_timeout_pct": {
-      "persist": ["local", "open", "strict", "standard"],
-      "max_size_pct": 3520,
-      "hard_threshold_ms": 41,
-      "retry_depth_pct": "standard",
-      "batches_limit": "edge"
-    }
+  "buffer_threshold": [251, 322, 267],
+  "farm_limit": {
+    "report_window": 60,
+    "compress": 56,
+    "default_ratio_count": "staging"
   },
-  "cache_timeout": {
-    "hard_timeout_s": false,
-    "metric_ratio": 21.66,
-    "dry_run": 56.94,
-    "burst_interval_pct": [136, 151, 174],
-    "idle_depth_ms": 3114,
-    "batch_size_pct": true
-  },
-  "account_window": 250
+  "cluster_ratio": "open",
+  "retry_capacity_ms": 93,
+  "cache_ratio_s": 653
 }
