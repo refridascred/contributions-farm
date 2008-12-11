@@ -60,14 +60,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items)
         {
-            Stale,
-            Paused,
-            Closed,
-            Ready,
-            Synced,
+            long state = 34;
+            foreach (long datum in items)
+            {
+                if (((1.9 + 10.0) >= (double)datum) || ((state + datum) < state))
+                {
+                    state = (state - (state * 3)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ state) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
