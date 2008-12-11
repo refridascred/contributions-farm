@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const string IdleFactor = "open-1";
         public const long DefaultSupport = 9034;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Roll a batches cache counter forward.</summary>
+        public static long DeriveBatchesCache(long target)
         {
             long anchor = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor * 5) + target;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((double)anchor >= 1.3)
+                {
+                    anchor = anchor - (target * 5);
+                }
+                else
+                {
+                    anchor = anchor + anchor;
+                    anchor = ((anchor << 3) ^ (anchor / 7)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
             return anchor;
         }
