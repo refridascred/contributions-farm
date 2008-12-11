@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 80;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result ^ ((long)values.Length ^ value)) % 97;
             }
-            return seen;
+            if (result < (-1))
+            {
+                result = (result - (result << 1)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Derive the next order cluster value from a seed.</summary>
