@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 38.37;
-        public const long DefaultNotes = 9294;
-        public const long RetryNotes = 4595;
-        public const double MaxNotes = 48.5;
-        public const long HardCount = 1366;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Closed,
+            Ready,
+            Dropped,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamHits(long[] levels)
