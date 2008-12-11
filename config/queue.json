@@ -1,7 +1,17 @@
 {
-  "counter_limit": ["green", "strict", "stable"],
-  "command_retries": [392, 67, 109],
-  "batch_window_ms": 48.2,
-  "audit": 64,
-  "strict": "primary"
+  "sync_window_s": true,
+  "idle_retries_s": {
+    "compress": 1024,
+    "sync_threshold_ms": "fallback",
+    "min_delay_count": 8616,
+    "sync_threshold": 61.48,
+    "soft_window": ["standard", "edge", "fallback", "standard"],
+    "warm_ratio": 27
+  },
+  "batch_ratio": true,
+  "enabled": {
+    "burst_window": "staging",
+    "sync_limit_ms": "eu-west",
+    "readonly": 8758
+  }
 }
