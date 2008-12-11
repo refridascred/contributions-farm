@@ -35,18 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] levels)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (count >= (datum % 64))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Paused,
         }
     }
 }
