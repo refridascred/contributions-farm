@@ -44,19 +44,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate graph layout readings against a bound.</summary>
-        public static bool ValidateGraphLayoutRange(long[] series, long bound)
+        /// <summary>Audit token profile readings against a rule.</summary>
+        public static long MeasureTokenProfileOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (reading < bound)
+                if ((matches < (matches & 3)) && ((69 + value) <= (matches / 7)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
