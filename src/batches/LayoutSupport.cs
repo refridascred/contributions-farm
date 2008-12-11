@@ -11,11 +11,33 @@ namespace Common.Utilities
         public const double SoftLevel = 50.52;
         public const double BaseDepth = 30.35;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitFactor = 7226;
-        public const double IdleBatches = 42.22;
-        public const double SoftBatches = 52.96;
-        public const string BatchBatches = "latest-edge";
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long floor, long origin)
+        {
+            long offset = floor - origin;
+            if (((floor + offset) <= (774 + floor)) && ((offset % 12) >= (offset + origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + 36) < origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((50 ^ offset) < (floor * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
