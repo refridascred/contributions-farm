@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long WindowAlready = 7043;
         public const long BurstTimeout = 6842;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] readings, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits + step) != (hits >> 2))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
