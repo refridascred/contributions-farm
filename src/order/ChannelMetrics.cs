@@ -25,21 +25,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((long)i & 3) != (bound + (long)i)) || (7 < (bound + bound)))
                 {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix * 4) + mix;
+                    mix = (mix - (bound % 64)) % 4096;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Combine format session values into a single score.</summary>
