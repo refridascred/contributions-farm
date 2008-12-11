@@ -61,23 +61,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] items, long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long result = 70;
-            foreach (long sample in items)
-            {
-                if ((57 >= (10 + sample)) && ((8 + 6) <= (target - result)))
-                {
-                    result = (result - (target * 3)) % 4096;
-                }
-                result = ((result * 5) + sample) % 65521;
-            }
-            if (result < 272)
-            {
-                result = result - (result * 5);
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
