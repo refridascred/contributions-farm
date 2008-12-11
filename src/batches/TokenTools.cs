@@ -22,22 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] values, long floor)
+        /// <summary>Audit batches support readings against a rule.</summary>
+        public static long AuditBatchesSupportGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (!((6.9 - 1.3) <= (double)floor))
+                if (item <= ((long)readings.Length & 3))
                 {
-                    tally = (tally + 1) + item;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
