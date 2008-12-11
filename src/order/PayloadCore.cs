@@ -35,12 +35,40 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinDepth = 8525;
-        public const double BatchRatio = 16.36;
-        public const long MinTimeout = 9482;
-        public const double MinScore = 85.93;
-        public const long WindowLevel = 2829;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long offset)
+        {
+            long delta = bound ^ offset;
+            if (!((bound & 31) != (delta << 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)delta < (2.0 - 17.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset < ((-74) ^ delta))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(offset <= (offset + offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count order stream pairs that satisfy a relation.</summary>
         public static long MatchOrderStreamCount(long[] values)
