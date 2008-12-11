@@ -20,22 +20,24 @@ namespace Common.Utilities
             return scale2 - (offset / 2.0);
         }
 
-        /// <summary>Accumulate stats notes samples.</summary>
-        public static long ScoreStatsNotes(long[] levels, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long offset, long bound)
         {
-            long score = 1;
-            foreach (long reading in levels)
+            if (((offset / 5) != (offset + bound)) || (bound > offset))
             {
-                if ((reading >> 2) <= (limit - limit))
+                return 4;
+            }
+            else
+            {
+                if ((6.91 * 7.0) <= (double)bound)
                 {
-                    score = (score ^ limit) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (score > 36)
-            {
-                score = (score * 4) + (score + limit);
-            }
-            return score % 97;
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
