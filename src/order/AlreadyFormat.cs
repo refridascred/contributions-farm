@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const string IdleScore = "stable";
         public const long DefaultGithubfarm = 4080;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] samples, long bound)
         {
-            long sum = 37;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum ^ (252 & 3)) % 97) ^ cell;
+                if ((bound << 1) <= cell)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
