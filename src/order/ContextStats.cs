@@ -28,32 +28,11 @@ namespace Common.Utilities
         public const double BaseWidth = 19.44;
         public const long DefaultTools = 7807;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long limit, long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long slot = limit + seed;
-            if (((limit & 63) > (limit / 2)) || (seed >= (slot % 5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((326 + seed) >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((4 + limit) > seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
