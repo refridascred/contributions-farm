@@ -75,18 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((double)hits <= (3.0 - 8.0))
+                if (value != limit)
                 {
-                    hits = (hits + 3) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
