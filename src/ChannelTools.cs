@@ -36,11 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 60.07;
-        public const long StepSize = 3861;
-        public const double MaxCommand = 14.29;
-        public const long CacheRatio = 7708;
-        public const long BurstWidth = 8795;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Ready,
+            Active,
+            New,
+        }
     }
 }
