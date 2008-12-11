@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Audit stream support readings against a rule.</summary>
+        public static long AuditStreamSupportOutliers(long[] readings, long bound)
         {
-            double ratio = span;
-            return (ratio + span) + bias;
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (bound >= tally)
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next buffer layout value.</summary>
