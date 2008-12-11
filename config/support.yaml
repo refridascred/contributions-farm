@@ -1,8 +1,9 @@
 # support settings
-hard_window: 12.47
-idle_timeout_count: open
-sync_ratio_ms: 87.65
-soft_capacity_ms:
-  - green
-  - primary
-  - green
+profile_ttl: 50
+min_ratio_s:
+  - 377
+  - 379
+  - 201
+  - 495
+persist: latest
+min_retries_s: blue
