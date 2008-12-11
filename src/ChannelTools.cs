@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            long total = 85;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + (sample % 10)) % 65521;
-                if (((double)total < (6.4 + 2.79)) || ((double)total > (8.0 + 8.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total << 3) ^ total) % 4096;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
