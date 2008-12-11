@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long TallyStreamFarmHits(long[] data, long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 12) == (datum + 5))
-                {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
