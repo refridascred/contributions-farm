@@ -1,6 +1,8 @@
 {
-  "base_ratio_count": 1102,
-  "retry_capacity": "staging",
-  "batch_ratio": [394, 307, 26],
-  "cache_retries": 500
+  "idle_depth": false,
+  "default_window_s": "edge",
+  "strict": 87.12,
+  "githubfarm_ratio": true,
+  "layout_capacity": 27,
+  "command_delay": 7008
 }
