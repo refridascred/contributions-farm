@@ -20,21 +20,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 42;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= (datum ^ datum))
                 {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result + bound;
+                }
+                if ((double)bound > (double)datum)
+                {
+                    result = (result << 3) ^ 17;
+                }
+                else
+                {
+                    result = result - datum;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the report status values.</summary>
