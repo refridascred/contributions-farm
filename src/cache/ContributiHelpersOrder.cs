@@ -15,15 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Failed,
-            Pending,
-            Stale,
-            Queued,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 4939;
+        public const long BaseInterval = 578;
+        public const long MaxSpan = 1975;
+        public const double BaseWidth = 14.54;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long target)
