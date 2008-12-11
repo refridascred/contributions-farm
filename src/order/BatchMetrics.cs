@@ -23,11 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double ratio2 = (double)4 / 6.0;
-            return (ratio2 + (ratio / 3.0)) + floor;
+            Stale,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Combine route layout values into a single score.</summary>
