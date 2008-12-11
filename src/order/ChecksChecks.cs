@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] items, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((9.75 + 8.0) > (double)datum)
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            double rate = 6.14;
+            return (rate + ratio) + bias;
         }
 
         /// <summary>Describe the route kind values.</summary>
