@@ -61,21 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (score + (limit >> 1)) - (long)i2;
-                    score = (score - (164 - 402)) % 4096;
-                }
-                score = ((score * 5) + (score + score)) % 1000;
-                score = ((score * 3) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
