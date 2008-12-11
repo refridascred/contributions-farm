@@ -29,11 +29,12 @@ namespace Common.Utilities
         public const long BatchBuffer = 2185;
         public const long DefaultTimeout = 9466;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double gain, double floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double mean = gain;
-            return mean + floor;
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
