@@ -26,22 +26,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] items, long floor)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long reading in items)
             {
-                if (6.94 >= (double)reading)
+                if (!!(floor < (7 - (long)items.Length)))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) + reading;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
