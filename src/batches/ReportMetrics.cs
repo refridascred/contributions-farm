@@ -20,15 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of account token entries.</summary>
-        public static long CombineAccountToken(long[] data)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long mark = 4;
-            foreach (long datum in data)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (mark * 4) + (datum - 912);
+                carry = ((carry << 2) ^ seed) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Adjust a command reading.</summary>
