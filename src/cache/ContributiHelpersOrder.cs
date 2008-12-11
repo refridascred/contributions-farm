@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 6223;
-        public const string MinWidth = "strict-1";
-        public const long WindowSupport = 6607;
-        public const long LimitSupport = 6696;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Count the commits token entries that pass the check.</summary>
         public static long CountCommitsTokenGaps(long[] readings)
