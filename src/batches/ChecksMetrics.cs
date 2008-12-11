@@ -47,18 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] levels, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((655 - tally) > (tally + (long)levels.Length)) && ((893 - (long)levels.Length) > (237 * 3)))
-                {
-                    tally = ((tally + 2) + entry) + limit;
-                }
-            }
-            return tally;
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
