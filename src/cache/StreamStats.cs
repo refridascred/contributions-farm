@@ -28,12 +28,9 @@ namespace Common.Utilities
         public const long MinTimeout = 5731;
         public const string HardWidth = "fallback-edge";
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseFactor = "standard-edge";
+        public const long HardSize = 8925;
+        public const string BurstChecks = "open-v2";
     }
 }
