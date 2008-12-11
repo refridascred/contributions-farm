@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
