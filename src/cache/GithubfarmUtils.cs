@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetrySpan = 2868;
-        public const long MaxAccount = 9372;
-        public const string SoftAccount = "standard-1";
-        public const long MinAccount = 1876;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 91.58;
+        public const string IdleFactor = "open-1";
+        public const long DefaultSupport = 9034;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
