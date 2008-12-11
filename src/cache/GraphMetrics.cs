@@ -55,10 +55,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 1712;
-        public const long LimitSize = 6298;
-        public const double LimitFilter = 52.75;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] values)
