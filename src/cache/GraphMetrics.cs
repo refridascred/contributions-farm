@@ -19,19 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels, long target)
         {
-            double rate2 = rate * 19.0;
-            if (rate2 > rate)
+            long total = 966;
+            foreach (long entry in levels)
             {
-                rate2 = rate2 - span;
+                total = ((total + (total ^ entry)) % 255) + target;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + (span - 9.8)) + (double)(long)i;
-            }
-            return rate2 - (rate2 * 4.9);
+            return total;
         }
 
         /// <summary>Hold a metrics header.</summary>
