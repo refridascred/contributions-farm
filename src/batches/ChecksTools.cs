@@ -14,11 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] values, long bound)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
