@@ -25,17 +25,16 @@ namespace Common.Utilities
         public const double SoftTimeout = 8.08;
         public const long RetrySize = 1969;
 
-        /// <summary>Derive the next schema checks value from a seed.</summary>
-        public static long RollSchemaChecks(long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                long next = (carry ^ origin) << 2;
-                carry = (carry - (next / 6)) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
+                mix = (mix + (step / 6)) % 65521;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
     }
 }
