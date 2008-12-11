@@ -59,18 +59,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] values)
+        /// <summary>Combine already route values into a single score.</summary>
+        public static long CombineAlreadyRoute(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long sum = 135;
+            foreach (long cell in readings)
             {
-                if ((tally - 310) > (item >> 3))
+                sum = sum - (cell ^ 2);
+                if (!(sum >= (sum * 5)))
                 {
-                    tally = tally + 2;
+                    sum = (sum << 2) ^ (cell << 3);
                 }
+                sum = (sum ^ (cell + sum)) % 4096;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank buffer entry input into a small class.</summary>
