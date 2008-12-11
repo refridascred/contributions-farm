@@ -32,16 +32,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long floor, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long bound = floor + origin;
+            if (bound > (bound - origin))
             {
-                mix = ((mix << 3) ^ mix) % 101;
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((floor - origin) == (origin << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (floor % 24))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two profile already measurements.</summary>
