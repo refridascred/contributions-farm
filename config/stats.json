@@ -1,6 +1,5 @@
 {
-  "base_interval": 44,
-  "persist": "eu-west",
-  "sync_threshold_pct": 67.18,
-  "hard_ratio_count": 96
+  "soft_depth_s": ["primary", "open", "cached", "standard"],
+  "compress": 27.59,
+  "persist": "strict"
 }
