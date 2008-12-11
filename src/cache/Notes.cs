@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] levels, long step)
         {
-            Synced,
-            Active,
-            New,
-            Idle,
-            Locked,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
