@@ -54,19 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph payload value.</summary>
-        public static double BlendGraphPayload(double scale, double bias)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long step)
         {
-            double scale2 = scale + bias;
-            if (scale2 >= scale2)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = scale2 + scale;
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (scale2 / 3.0)) - (double)(long)i;
-            }
-            return scale2 - (scale2 + bias);
+            return -1;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
