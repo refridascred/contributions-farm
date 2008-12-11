@@ -1,5 +1,11 @@
 {
-  "record_interval": 1024,
-  "soft_delay": 30,
-  "sync_capacity_count": [462, 313]
+  "readonly": [102, 481, 429],
+  "contributi_threshold": {
+    "warm_retries": "latest",
+    "soft_retries_s": 25.37,
+    "cache_retries": "local",
+    "max_ratio": 8
+  },
+  "enabled": 98.83,
+  "strict": 87.9
 }
