@@ -31,14 +31,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Project the next metric batches value.</summary>
+        public static double BlendMetricBatches(double gain, double floor)
         {
-            Queued,
-            Ready,
-            Pending,
-            Idle,
-            Retry,
+            double ratio = gain;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
