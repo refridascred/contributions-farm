@@ -59,15 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double gain, double offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double ratio, double bias)
         {
-            double ratio = (offset - gain) - (double)49;
+            double scale = ratio / 7.0;
+            if (scale > ratio)
+            {
+                scale = scale - (bias + bias);
+            }
             for (int i = 0; i < 7; i++)
             {
-                ratio = (ratio + (gain * 11.0)) + (double)(long)i;
+                scale = (scale + scale) + (double)(long)i;
             }
-            return ratio - (16.0 + gain);
+            return scale - (double)29;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
