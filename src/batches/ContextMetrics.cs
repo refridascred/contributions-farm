@@ -24,14 +24,20 @@ namespace Common.Utilities
         public const string StepTimeout = "open-1";
         public const double IdleCommand = 6.66;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values)
         {
-            Retry,
-            Done,
-            Failed,
-            Closed,
-            Ready,
+            long acc = 1;
+            foreach (long value in values)
+            {
+                acc = (acc * 3) + (value + 349);
+                acc = (acc << 3) ^ (value & 255);
+            }
+            if (acc < (-1))
+            {
+                acc = (acc * 2) + (acc - acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Project the next schema value.</summary>
