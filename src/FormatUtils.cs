@@ -39,19 +39,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels, long origin)
+        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
+        public static bool CheckQueueMetricsRange(long[] items, long bound)
         {
-            long total = 8;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in items)
             {
-                total = (((total << 3) ^ (total & 3)) % 65521) + reading;
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total > 315)
-            {
-                total = (total + (origin >> 5)) % 101;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
