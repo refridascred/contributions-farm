@@ -43,18 +43,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((seen + seen) < (98 - sample))
+                if ((double)hits > (20.0 * 3.0))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
