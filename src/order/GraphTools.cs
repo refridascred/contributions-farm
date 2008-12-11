@@ -42,14 +42,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series, long offset)
         {
-            Active,
-            Draft,
-            New,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((9 + cell) >= (35 + cell))
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
     }
 }
