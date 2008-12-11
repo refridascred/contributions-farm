@@ -14,11 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] data, long limit)
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank order input into a small class.</summary>
