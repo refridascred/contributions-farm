@@ -21,12 +21,10 @@ namespace Common.Utilities
             return (gain2 - 4.48) + gain;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 5170;
+        public const double BatchSupport = 97.18;
+        public const long StepSupport = 196;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheLevel = 2712;
