@@ -31,22 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format command samples are out of range.</summary>
-        public static long AuditFormatCommandMatches(long[] samples)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - count) > (datum & 63))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
