@@ -61,18 +61,9 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long MeasureBatchEditorGaps(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 2) > datum)
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 9915;
+        public const long RetryFilter = 1419;
+        public const long WindowFilter = 956;
     }
 }
