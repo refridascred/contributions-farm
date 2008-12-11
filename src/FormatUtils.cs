@@ -65,12 +65,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits <= (item * 2)) && ((double)290 < (0.51 - 3.14)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
