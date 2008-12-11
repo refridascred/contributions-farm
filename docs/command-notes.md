@@ -1,11 +1,12 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the context list.
-Defaults for payload live in the config folder and can be overridden per environment.
-Defaults for context live in the config folder and can be overridden per environment.
+Run the session check before changing any notes limits.
+Defaults for order live in the config folder and can be overridden per environment.
+The contributi report groups every queue by session.
 
 ## Guidelines
 
-- Document new session fields
-- Log every entry change
-- Keep entry values small
+- Review notes limits each release
+- Log every layout change
+- Keep farm values small
+- Prefer report defaults
