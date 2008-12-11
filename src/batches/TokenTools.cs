@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel filter readings against a bound.</summary>
-        public static bool GuardChannelFilterRange(long[] series, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Failed,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Compare every pair of batches profile readings.</summary>
