@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a support cluster pair into a bucket.</summary>
-        public static long SortSupportCluster(long target, long target2)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] values)
         {
-            long next = target ^ target2;
-            if ((double)next < (14.0 / 5.0))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (7.1 > (double)target)
+                if (count > (value - count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a account reading by value.</summary>
