@@ -52,10 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 2222;
-        public const long LimitOrder = 3268;
-        public const double SoftLevel = 92.71;
-        public const long SoftOrder = 2808;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double rate, double span)
+        {
+            double mean = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean + (double)838) + (double)(long)i) - span;
+            }
+            return mean + mean;
+        }
     }
 }
