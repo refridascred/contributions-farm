@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the session metric entries that pass the check.</summary>
-        public static long CountSessionMetricMatches(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (7.61 >= (double)count)
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            Failed,
+            Draft,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Measure how many profile channel samples are out of range.</summary>
