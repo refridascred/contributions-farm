@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
