@@ -51,19 +51,13 @@ namespace Common.Utilities
         public const long RetrySpan = 9808;
         public const string WindowLevel = "primary-1";
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (((total * 2) + (760 + total)) % 97) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Pending,
+            Closed,
+            Ready,
+            New,
         }
     }
 }
