@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheInterval = 40.15;
-        public const double BurstSize = 73.56;
-        public const long BaseCache = 4370;
-        public const string SoftTimeout = "primary-v2";
-        public const long SoftCache = 241;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
