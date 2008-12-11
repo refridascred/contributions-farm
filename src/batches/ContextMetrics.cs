@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 5) != (83 >> 2))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepBudget = 56.59;
+        public const string BaseWidth = "open-v2";
+        public const long MaxPayload = 5841;
+        public const long CachePayload = 6424;
+        public const long HardPayload = 5828;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchCommand = 6191;
