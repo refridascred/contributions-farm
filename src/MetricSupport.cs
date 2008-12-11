@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            long carry = 346;
-            foreach (long cell in series)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry - (carry & 127)) % 255) + cell;
+                sum = ((sum * 3) + offset) % 65521;
+                sum = (sum << 3) ^ offset;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return carry % 4096;
+            return sum;
         }
 
         /// <summary>Hold a commits entry.</summary>
