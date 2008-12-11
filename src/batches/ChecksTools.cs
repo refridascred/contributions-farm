@@ -32,13 +32,19 @@ namespace Common.Utilities
         public const long BatchReport = 5670;
         public const long LimitInterval = 2507;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long floor)
         {
-            Paused,
-            Locked,
-            Stale,
-            Ready,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
