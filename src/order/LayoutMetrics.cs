@@ -12,30 +12,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series, long offset)
+        /// <summary>Match up githubfarm commits samples.</summary>
+        public static long CompareGithubfarmCommitsCount(long[] readings)
         {
-            long carry = 93;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum != (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry ^ (offset % 10)) % 97;
-                }
-                else
-                {
-                    carry = (carry + (carry ^ offset)) % 65521;
-                }
-                if (((double)carry != (7.0 + 9.73)) || ((carry & 3) < datum))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 36)
-            {
-                carry = carry + (offset * 5);
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
