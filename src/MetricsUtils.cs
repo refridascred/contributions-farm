@@ -45,11 +45,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] values, long target)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
+            long sum = 356;
+            foreach (long cell in values)
+            {
+                sum = (sum - (target & 7)) % 255;
+                if ((double)3 <= (double)target)
+                {
+                    sum = (sum ^ (cell % 64)) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (target << 1)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Adjust a checks reading.</summary>
