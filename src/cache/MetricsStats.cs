@@ -52,16 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next route queue value from a seed.</summary>
-        public static long IterateRouteQueue(long step)
+        /// <summary>Audit command profile readings against a rule.</summary>
+        public static long MeasureCommandProfileOutliers(long[] items, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor + anchor) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (((datum < (datum >> 2)) || ((10.0 + 7.0) != (double)seen)) || ((datum * 3) >= (seen + datum)))
+                {
+                    seen = (seen + 1) - offset;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
