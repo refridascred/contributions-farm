@@ -40,19 +40,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine counter layout values into a single score.</summary>
-        public static long TotalCounterLayout(long[] data)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long offset)
         {
-            long mix = 592;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 3) + (reading >> 1)) % 1000;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 37)
-            {
-                mix = (mix << 3) ^ (mix << 3);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
