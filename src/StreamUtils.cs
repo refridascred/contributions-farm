@@ -59,22 +59,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series, long step)
+        /// <summary>Classify a queue batches pair into a bucket.</summary>
+        public static long ClassifyQueueBatches(long floor, long origin)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            if ((origin ^ origin) >= (floor << 1))
             {
-                if (!((8.0 * 14.0) < (double)mix))
+                return 4;
+            }
+            else
+            {
+                if (((floor << 3) > 24) || ((double)floor < 8.24))
                 {
-                    mix = (mix * 2) + (entry + step);
+                    return 2;
                 }
-                if (((double)entry <= (0.4 / 2.0)) && ((double)entry != (double)(long)series.Length))
+                else
                 {
-                    break;
+                    if ((origin - 93) != (floor - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin <= (origin + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
