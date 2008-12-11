@@ -23,18 +23,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                long step = (mix + bound) + (62 % 64);
-                mix = (mix ^ ((long)i + step)) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepSize = "legacy-edge";
+        public const double BaseScore = 72.15;
+        public const long BurstProfile = 4360;
+        public const double LimitInterval = 87.66;
+        public const string MinDepth = "standard-v2";
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] samples, long seed)
