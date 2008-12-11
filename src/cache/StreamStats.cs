@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 74;
+            foreach (long datum in samples)
             {
-                if (data[i] >= step)
+                if ((1.6 + 3.07) == (double)datum)
                 {
-                    return (long)i;
+                    acc = (acc + ((-61) & 63)) % 255;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Hold a stream stats.</summary>
