@@ -31,12 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Pending,
-            Draft,
-            Active,
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the tools kind values.</summary>
