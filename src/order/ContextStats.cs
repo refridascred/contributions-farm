@@ -29,22 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the batch format series from a seed.</summary>
-        public static long SeriesBatchFormat(long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] readings, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 3) + (6 & 127)) % 255;
-                if ((mix + mix) < (long)i)
+                if (!((2.14 + 5.32) == (double)sample) || ((floor >> 3) > (count * 5)))
                 {
-                    mix = (mix - step) % 255;
-                    break;
+                    count = count + 3;
                 }
-                mix = ((mix << 2) ^ (step - mix)) % 1000;
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
