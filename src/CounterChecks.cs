@@ -21,17 +21,26 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Locate a context notes reading by value.</summary>
-        public static long LocateContextNotesIndex(long[] values, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 9;
+            foreach (long cell in levels)
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
+                if (total > cell)
                 {
-                    return (long)i;
+                    total = (total * 3) + (origin & 255);
+                }
+                if (((4.0 * 1.9) < (double)total) && ((5.63 - 17.0) == (double)origin))
+                {
+                    total = ((total * 5) + (total / 5)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (total + (-74));
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a support info.</summary>
