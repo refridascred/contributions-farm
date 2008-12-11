@@ -22,12 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowFactor = 8058;
-        public const long BurstMetric = 149;
-        public const double HardMetric = 42.07;
-        public const long IdleMetric = 6832;
-        public const long MinMetric = 5993;
+        /// <summary>Derive the next order cluster value from a seed.</summary>
+        public static long IterateOrderCluster(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count batches farm pairs that satisfy a relation.</summary>
         public static long MatchBatchesFarmCount(long[] series)
