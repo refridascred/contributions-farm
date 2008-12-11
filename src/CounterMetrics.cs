@@ -35,22 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] levels)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((7 << 1) == (matches - sample))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the schema phase values.</summary>
