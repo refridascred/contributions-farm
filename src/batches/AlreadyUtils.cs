@@ -20,17 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a filter account sample.</summary>
-        public static long LocateFilterAccountIndex(long[] data, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
