@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings, long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long total = 2;
-            foreach (long entry in readings)
-            {
-                total = ((total << 2) ^ (limit >> 3)) + entry;
-            }
-            if (total < 67)
-            {
-                total = (total << 3) ^ (total * 4);
-            }
-            return total;
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
