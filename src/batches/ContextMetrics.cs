@@ -47,18 +47,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] readings, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long step, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            if ((double)step == (5.2 * 3.6))
             {
-                if (!((95 > offset) && ((value << 2) != (offset ^ offset))))
+                return 1;
+            }
+            else
+            {
+                if (((double)step <= (double)target) || ((target & 7) != (target - target)))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((step ^ target) >= ((-3) ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target << 3) > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
