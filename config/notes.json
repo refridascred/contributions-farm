@@ -1,6 +1,9 @@
 {
-  "warm_timeout_pct": "cached",
-  "verbose": "stable",
-  "retry_threshold_s": 8,
-  "batch_threshold_s": 1024
+  "retry_limit": true,
+  "dry_run": 745,
+  "idle_depth_count": {
+    "cluster_threshold": 1024,
+    "retry_threshold_count": "strict",
+    "audit": 57.32
+  }
 }
