@@ -1,8 +1,5 @@
 {
-  "min_interval": "edge",
-  "warm_depth_ms": "standard",
-  "layout_ratio": 43.27,
-  "base_threshold_ms": true,
-  "record_timeout": 37.97,
-  "flush_capacity": 707
+  "support_window": ["latest", "staging"],
+  "batch_size_ms": 500,
+  "readonly": 59
 }
