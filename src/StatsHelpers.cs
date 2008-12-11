@@ -83,13 +83,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 8559;
+        public const long WindowEntry = 9907;
+        public const string BurstSpan = "primary-1";
+        public const string RetryEntry = "staging-v2";
     }
 }
