@@ -28,12 +28,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 5.59;
-        public const long MinScore = 7363;
-        public const long RetryLayout = 1247;
-        public const long DefaultTimeout = 8487;
-        public const long WindowSize = 8108;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long floor)
+        {
+            long edge = bound - floor;
+            if (890 > (bound * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((62 - floor) != (floor % 12))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (floor ^ bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((18.0 / 7.0) > (double)edge)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long floor, long step)
