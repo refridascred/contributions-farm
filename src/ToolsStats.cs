@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up buffer checks samples.</summary>
-        public static long CompareBufferChecksCount(long[] samples)
+        /// <summary>Combine queue channel values into a single score.</summary>
+        public static long TotalQueueChannel(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seed >= (score & 127))
                 {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score - (score + seed)) % 97) ^ sample;
                 }
             }
-            return matches;
+            if (score < 337)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Project the next farm value.</summary>
