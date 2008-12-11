@@ -37,31 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank account editor input into a small class.</summary>
-        public static long BucketAccountEditor(long bound, long seed)
+        /// <summary>Digest a series of already batch entries.</summary>
+        public static long ScoreAlreadyBatch(long[] series)
         {
-            if ((25 / 4) >= (seed << 1))
+            long result = 422;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.9 + 7.9) > (double)seed)
+                if (datum <= (datum + 219))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound & 31) >= 4) && ((seed << 1) <= (-8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result + result) % 4096;
                 }
             }
+            return result;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
