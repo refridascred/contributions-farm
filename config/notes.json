@@ -1,12 +1,7 @@
 {
-  "strict": false,
-  "min_limit_count": {
-    "filter_size": 500,
-    "enabled": 1024,
-    "already_threshold": 1024,
-    "layout_timeout": "eu-west"
-  },
-  "cache_timeout": 2818,
-  "tools_ttl": "latest",
-  "soft_limit_s": 2755
+  "idle_limit_ms": ["eu-west", "eu-west", "blue"],
+  "dry_run": 500,
+  "hard_timeout_s": "cached",
+  "retry_interval": 1024,
+  "counter_limit": [91, 130, 283, 329]
 }
