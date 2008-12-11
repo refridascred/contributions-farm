@@ -1,5 +1,24 @@
 # githubfarm settings
-min_interval: latest
-soft_window: 30
-batch_retries: true
-metric_ratio: 76
+persist: 12.71
+cache_limit: eu-west
+burst_capacity_ms:
+  min_delay_pct:
+    - green
+    - cached
+    - eu-west
+    - legacy
+  soft_ttl: 1024
+  hard_retries_pct: 68.67
+  base_retries:
+    - open
+    - local
+    - local
+  default_depth: 1466
+  base_ttl:
+    base_timeout_s:
+      - latest
+      - blue
+    payload_size: 500
+    sync_size_s: 9
+    window_delay: eu-west
+    base_window_pct: open
