@@ -16,22 +16,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings, long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long result = 33;
-            foreach (long cell in readings)
-            {
-                if ((double)result > (4.6 / 2.0))
-                {
-                    result = (result - cell) + limit;
-                }
-            }
-            if (result > 25)
-            {
-                result = result + (result + result);
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
