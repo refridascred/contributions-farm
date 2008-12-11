@@ -43,15 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] data, long target)
         {
-            long mark = 899;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long cell in data)
             {
-                mark = (((mark << 3) ^ sample) % 4096) - limit;
+                if (cell != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
