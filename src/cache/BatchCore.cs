@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long IdleBatch = 4657;
         public const long DefaultBatch = 5704;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] items)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + matches) >= (matches * 2))
+                if (items[i] >= target)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
