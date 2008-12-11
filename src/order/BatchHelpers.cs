@@ -30,19 +30,22 @@ namespace Common.Utilities
         public const double LimitInterval = 87.66;
         public const string MinDepth = "standard-v2";
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] samples, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (item > seed)
+                if ((4.9 / 8.0) >= (double)count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
