@@ -44,18 +44,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit token profile readings against a rule.</summary>
-        public static long MeasureTokenProfileOutliers(long[] samples)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches < (matches & 3)) && ((69 + value) <= (matches / 7)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
