@@ -56,17 +56,15 @@ namespace Common.Utilities
             return (drift - (double)0) + scale;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] readings, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 956;
+            foreach (long entry in levels)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (entry + result)) - step;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
