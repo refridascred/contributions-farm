@@ -1,8 +1,7 @@
-id,score,weight,rank
-1,572,408,90.92
-2,fallback,standard,182
-3,179,261,blue
-4,primary,785,primary
-5,61.34,133,967
-6,24.2,835,789
-7,22,24,947
+id,owner,region,state,level
+1,fallback,542,staging,blue
+2,85.0,995,16,open
+3,936,eu-west,standard,90.48
+4,252,local,830,725
+5,78.31,120,standard,476
+6,363,fallback,46.57,273
