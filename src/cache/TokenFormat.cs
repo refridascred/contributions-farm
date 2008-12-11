@@ -24,11 +24,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double gain, double bias)
-        {
-            double weight = (double)(85 * 4);
-            return ((weight - (double)64) + gain) + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 7031;
+        public const double BatchTools = 19.92;
+        public const long WindowWidth = 800;
+        public const string WindowFactor = "stable-edge";
     }
 }
