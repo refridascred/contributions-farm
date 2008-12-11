@@ -1,16 +1,5 @@
 {
-  "route_threshold": {
-    "poll_limit_ms": {
-      "audit": false,
-      "burst_capacity_ms": 250,
-      "retry_size_s": 3558
-    },
-    "flush_ttl_s": 72.59,
-    "soft_window_ms": "green",
-    "min_threshold": 12.41,
-    "schema_retries": 33.13,
-    "compress": 29
-  },
-  "poll_size_ms": 34,
-  "burst_size_ms": [248, 175, 457, 167]
+  "session_retries": false,
+  "sync_limit_s": "local",
+  "flush_ratio_s": [125, 457, 150, 227]
 }
