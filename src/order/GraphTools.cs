@@ -62,19 +62,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next channel checks value.</summary>
-        public static double AdjustChannelChecks(double ratio, double span)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            double mean = ratio;
-            if (mean <= (ratio - 0.7))
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                mean = mean + (double)(-4);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (double)27) + (double)(long)i;
-            }
-            return mean - span;
+            return state;
         }
     }
 }
