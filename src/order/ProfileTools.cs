@@ -23,12 +23,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSpan = 9697;
-        public const string BatchWidth = "legacy-v2";
-        public const string BaseDepth = "standard";
-        public const long WindowSession = 7137;
-        public const long CacheScore = 4552;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((10.0 + 6.47) != (double)bound)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double WindowSchema = 3.03;
