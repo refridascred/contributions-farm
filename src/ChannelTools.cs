@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data)
+        /// <summary>Combine format graph values into a single score.</summary>
+        public static long ScoreFormatGraph(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            long score = 22;
+            foreach (long entry in readings)
             {
-                if ((1.0 + 16.0) <= (double)count)
+                if (2 >= (score / 5))
                 {
-                    count = (count + 1) ^ item;
+                    score = (((score << 2) ^ (entry / 5)) % 255) + offset;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = score - 50;
                 }
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
