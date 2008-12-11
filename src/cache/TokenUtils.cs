@@ -36,12 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] values, long origin)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
