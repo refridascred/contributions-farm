@@ -27,11 +27,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
+            Closed,
+            Draft,
+            Dropped,
+            Ready,
+            Locked,
         }
     }
 }
