@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long offset, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] series, long floor)
         {
-            if ((562 & 63) < (offset << 2))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (64 >= bound)
+                if (entry >= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Digest a series of account token entries.</summary>
