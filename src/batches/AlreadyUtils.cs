@@ -48,22 +48,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] data, long offset)
         {
-            long anchor = 2;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((double)anchor < (3.5 * 3.3))
+                if (cell <= offset)
                 {
-                    anchor = ((anchor - (anchor ^ anchor)) % 1000) + item;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ anchor;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return ok;
         }
     }
 }
