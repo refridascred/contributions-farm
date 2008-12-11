@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] data, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (!!(647 <= count))
-                {
-                    count = ((count + 2) ^ entry) + bound;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate schema already readings against a bound.</summary>
