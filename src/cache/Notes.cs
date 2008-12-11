@@ -12,11 +12,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public long Count { get; set; }
             public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
