@@ -35,22 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] values)
         {
-            long score = 918;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)score <= (0.57 * 16.0))
+                if (hits >= cell)
                 {
-                    score = score ^ (reading + reading);
-                }
-                else
-                {
-                    score = (score - score) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
