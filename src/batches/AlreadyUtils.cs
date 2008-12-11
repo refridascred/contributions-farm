@@ -14,22 +14,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Iterate the entry filter series from a seed.</summary>
+        public static long StepEntryFilter(long bound)
         {
-            long result = 4;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((result - item) == (item >> 1)) || ((16.0 * 9.31) >= (double)(long)items.Length))
+                anchor = (anchor ^ (bound % 60)) % 101;
+                anchor = ((anchor << 3) ^ (bound ^ anchor)) % 65521;
+                if (!(((long)i + (long)i) < (anchor & 15)))
                 {
-                    result = ((result << 2) ^ (result << 2)) % 97;
+                    continue;
                 }
                 else
                 {
-                    result = result + (result ^ item);
+                    anchor = ((anchor << 3) ^ bound) % 101;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
