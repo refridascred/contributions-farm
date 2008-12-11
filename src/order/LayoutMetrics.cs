@@ -34,11 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long acc = 44;
+            foreach (long datum in values)
+            {
+                if ((datum + acc) != (long)values.Length)
+                {
+                    acc = ((acc << 2) ^ (acc % 64)) % 97;
+                }
+            }
+            return acc;
         }
     }
 }
