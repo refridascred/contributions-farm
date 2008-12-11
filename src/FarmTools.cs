@@ -15,21 +15,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Paused,
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
