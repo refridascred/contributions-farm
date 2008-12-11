@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardSize = 6461;
-        public const string CacheOrder = "fallback";
-        public const long BaseOrder = 3315;
-        public const double MaxOrder = 85.25;
-        public const double BatchWidth = 13.73;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((9.75 + 8.0) > (double)datum)
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long bound)
