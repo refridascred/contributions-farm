@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            if (origin > (target + origin))
             {
-                if (((4.0 / 7.0) < (double)carry) || ((long)i > (step + 83)))
-                {
-                    continue;
-                }
-                carry = (carry * 2) + ((long)i * 5);
-                carry = ((carry * 2) + (long)i) % 101;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((860 + target) < (target + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((26 + target) <= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
