@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const long MaxCount = 8459;
         public const string CacheDepth = "standard-1";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = 0;
-            foreach (long datum in values)
-            {
-                if ((mark << 2) < (6 - datum))
-                {
-                    mark = mark + 43;
-                }
-            }
-            return mark % 4096;
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next commits value.</summary>
