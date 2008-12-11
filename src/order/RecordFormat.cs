@@ -36,18 +36,9 @@ namespace Common.Utilities
         public const double BaseTimeout = 48.6;
         public const long SoftReport = 153;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((target % 100) >= (target + seen))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 8813;
+        public const long CacheLevel = 1321;
+        public const string IdleDepth = "alpha-1";
     }
 }
