@@ -1,6 +1,8 @@
 {
-  "metric_capacity": true,
-  "persist": 86.82,
-  "min_limit_count": 13.92,
-  "default_timeout": "latest"
+  "burst_window_s": [388, 442, 331, 191],
+  "burst_retries_count": false,
+  "sync_window": "strict",
+  "soft_capacity": 90,
+  "warm_capacity_count": 7407,
+  "batch_interval_count": "open"
 }
