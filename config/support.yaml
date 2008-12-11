@@ -1,4 +1,12 @@
 # support settings
-max_timeout: 10.74
-min_ttl_count: 62
-support_capacity: 91
+max_interval:
+  - open
+  - local
+batch_interval_pct: true
+cache_threshold_pct: false
+compress:
+  payload_limit: 4231
+  account_timeout: false
+  commits_ratio: 47.64
+  route_interval: 3628
+stats_depth: 100
