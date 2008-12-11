@@ -1,9 +1,6 @@
-id,label,state
-1,blue,38.91
-2,fallback,staging
-3,23.37,34.2
-4,60.75,413
-5,98,80.38
-6,strict,cached
-7,91.95,stable
-8,220,764
+id,rank,label,owner,token
+1,979,54.15,staging,strict
+2,64.2,38.39,edge,13.81
+3,89,499,508,eu-west
+4,39.11,eu-west,open,strict
+5,25.43,83.44,283,3.38
