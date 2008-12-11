@@ -25,9 +25,17 @@ namespace Common.Utilities
         public const string BaseContext = "open-1";
         public const long IdleContext = 7419;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 36.95;
-        public const long LimitBatch = 2149;
-        public const long MinTimeout = 6065;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
