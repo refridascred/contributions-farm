@@ -57,11 +57,19 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheCount = "staging-1";
-        public const string BaseAlready = "strict-1";
-        public const string BurstAlready = "primary";
-        public const double HardAlready = 33.05;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)matches < (double)reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string SoftBudget = "strict";
