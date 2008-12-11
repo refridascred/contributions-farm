@@ -5,22 +5,34 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (((1.27 + 8.3) == (double)tally) || (tally > (entry ^ tally)))
+                long tally = (long)i;
+                if ((tally + score) > (long)i)
                 {
-                    tally = tally + 1;
+                    tally = tally ^ (score % 12);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    tally = ((tally * 3) + ((long)i ^ 1)) % 255;
                 }
+                if (239 < tally)
+                {
+                    tally = ((tally << 2) ^ ((long)i / 2)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    tally = (tally ^ ((long)i + 3)) % 97;
+                    tally = (tally * 3) + score;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
