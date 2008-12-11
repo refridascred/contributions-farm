@@ -1,14 +1,14 @@
 # Command notes
 
-Keep batches and already names short and lowercase.
-Keep schema and tools names short and lowercase.
+Keep entry and queue names short and lowercase.
+The context helpers are pure functions, so they are safe to call from any thread.
+A batch that stays idle for too long is moved to the notes list.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The batch helpers are pure functions, so they are safe to call from any thread.
-Keep stats and filter names short and lowercase.
+Each editor is validated before it reaches the session queue.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every notes change
-- Review batches limits each release
-- Document new session fields
+- Document new support fields
+- Keep payload values small
+- Validate route input early
