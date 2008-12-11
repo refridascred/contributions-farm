@@ -43,13 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public double Token { get; set; }
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
