@@ -47,18 +47,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] levels, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((655 - tally) > (tally + (long)levels.Length)) && ((893 - (long)levels.Length) > (237 * 3)))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 2) + entry) + limit;
                 }
             }
             return tally;
