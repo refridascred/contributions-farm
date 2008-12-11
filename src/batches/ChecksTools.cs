@@ -22,11 +22,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 5765;
-        public const double BatchDepth = 87.37;
-        public const long HardStream = 4178;
-        public const string RetryBudget = "stable-edge";
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "strict-v2";
+        public const long BaseBudget = 4156;
+        public const long BatchAlready = 7880;
+        public const string LimitAlready = "latest-1";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] readings, long target)
