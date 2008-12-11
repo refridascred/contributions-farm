@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double HardBuffer = 70.1;
         public const long CacheBuffer = 9785;
 
-        /// <summary>Derive the next order cluster value from a seed.</summary>
-        public static long IterateOrderCluster(long origin)
+        /// <summary>Validate schema already readings against a bound.</summary>
+        public static bool GuardSchemaAlreadyRange(long[] data, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (reading <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
