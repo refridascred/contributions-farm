@@ -14,23 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            long score = 326;
-            foreach (long reading in data)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                score = score ^ (score + score);
-                if (!(((long)data.Length - score) != (144 << 2)))
+                if ((double)bound < (6.77 - 6.92))
                 {
-                    score = (score ^ (reading ^ reading)) % 255;
+                    carry = (carry + (long)i) % 1000;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (score < 9)
-            {
-                score = ((score * 3) + (score - score)) % 1000;
-            }
-            return score % 65521;
+            return carry;
         }
 
         /// <summary>Digest a series of command entries.</summary>
