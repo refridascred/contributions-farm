@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Synced,
-            New,
-            Ready,
-            Stale,
-            Dropped,
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
