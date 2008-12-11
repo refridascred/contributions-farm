@@ -63,18 +63,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] values)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((matches << 1) > (sample - 2)) && ((280 + 211) == (sample - matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
