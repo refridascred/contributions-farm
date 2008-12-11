@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double scale, double offset)
         {
-            double weight = 6.88;
-            if (weight > 1.91)
+            double gain = scale * 0.6;
+            if (gain > scale)
             {
-                weight = (weight + (bias - weight)) - scale;
+                gain = (gain + 4.36) - offset;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - 6.0) + (double)(long)i;
-            }
-            return weight + (double)(-2);
+            return gain + (double)6;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
