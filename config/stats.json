@@ -1,8 +1,23 @@
 {
-  "strict": 4267,
-  "min_threshold_pct": 2677,
-  "persist": 37,
-  "sync_depth_ms": 8868,
-  "burst_ttl_s": [323, 110, 294, 331],
-  "account_interval": 7736
+  "base_interval": {
+    "flush_retries_s": 17.72,
+    "hard_timeout_pct": 1024,
+    "format_depth": {
+      "cache_timeout_ms": true,
+      "account_window": 4268,
+      "hard_size_s": [421, 447, 50, 202],
+      "default_timeout_pct": 36.5,
+      "idle_capacity_pct": "blue"
+    },
+    "strict": {
+      "burst_timeout": 61,
+      "soft_ratio": 500,
+      "flush_size_count": [423, 328, 427],
+      "audit": "stable"
+    }
+  },
+  "readonly": false,
+  "poll_interval_ms": ["primary", "open"],
+  "strict": "standard",
+  "idle_size_s": ["cached", "latest", "green", "latest"]
 }
