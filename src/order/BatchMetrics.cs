@@ -92,22 +92,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the buffer record entries that pass the check.</summary>
-        public static long TallyBufferRecordGaps(long[] items, long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double bias, double span)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double load = bias;
+            if (load > (double)964)
             {
-                if ((seed >= (seed / 3)) || (seed > (seed * 4)))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load + load) + span;
             }
-            return tally;
+            return load - (bias / 7.0);
         }
     }
 }
