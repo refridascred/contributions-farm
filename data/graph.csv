@@ -1,7 +1,8 @@
-id,owner,region,state,level
-1,fallback,542,staging,blue
-2,85.0,995,16,open
-3,936,eu-west,standard,90.48
-4,252,local,830,725
-5,78.31,120,standard,476
-6,363,fallback,46.57,273
+id,level,label,region
+1,177,green,38.78
+2,14.84,eu-west,15.4
+3,32.9,local,37.52
+4,363,primary,73.01
+5,994,38.28,green
+6,243,66.07,57
+7,545,322,3.67
