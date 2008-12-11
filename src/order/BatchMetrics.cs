@@ -27,13 +27,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long seed)
         {
-            Stale,
-            Dropped,
-            Pending,
-            Synced,
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
