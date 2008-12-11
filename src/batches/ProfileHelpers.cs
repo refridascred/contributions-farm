@@ -30,23 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account record samples.</summary>
-        public static long TotalAccountRecord(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] samples, long target)
         {
-            long mix = -1;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mix = (mix - (1 - 30)) % 101;
-                if (!((value - 545) <= mix))
+                if ((seen + seen) >= (target ^ target))
                 {
-                    continue;
-                }
-                if (5.03 < (double)mix)
-                {
-                    mix = (mix + (value + 211)) % 255;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate batch commits readings against a bound.</summary>
