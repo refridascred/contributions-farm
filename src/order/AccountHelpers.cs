@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit metrics filter readings against a rule.</summary>
-        public static long TallyMetricsFilterGaps(long[] levels, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long score = 1;
+            foreach (long entry in data)
             {
-                if (!!((9.74 / 3.0) != (double)offset))
-                {
-                    tally = (tally + 2) - datum;
-                }
+                score = (((score * 4) + (bound + bound)) % 97) - entry;
             }
-            return tally;
+            if (score < 397)
+            {
+                score = (score * 3) + (bound / 5);
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
