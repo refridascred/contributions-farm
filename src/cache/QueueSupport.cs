@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long mix = 9;
-            foreach (long reading in readings)
-            {
-                mix = ((mix << 3) ^ (mix % 5)) % 255;
-                mix = mix + (mix + (-16));
-                if ((double)mix >= (7.16 / 5.0))
-                {
-                    mix = ((mix * 5) + (reading - mix)) % 1000;
-                }
-            }
-            if (mix > 336)
-            {
-                mix = ((mix << 3) ^ (mix % 60)) % 1000;
-            }
-            return mix;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
