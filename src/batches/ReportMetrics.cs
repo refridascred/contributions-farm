@@ -47,12 +47,15 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
