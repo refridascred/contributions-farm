@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSpan = 6183;
+        public const string BurstFilter = "cached-v2";
+        public const long StepRatio = 209;
+        public const double StepFilter = 52.14;
+        public const long IdleTimeout = 4006;
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
         public static long AuditRecordToolsMatches(long[] data)
