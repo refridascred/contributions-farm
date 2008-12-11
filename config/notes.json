@@ -1,8 +1,5 @@
 {
-  "persist": 30,
-  "strict": "staging",
-  "verbose": "edge",
-  "buffer_window": false,
-  "counter_threshold": true,
-  "readonly": "standard"
+  "farm_capacity": "latest",
+  "counter_ratio": true,
+  "strict": [425, 315]
 }
