@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const string StepTimeout = "open-1";
         public const double IdleCommand = 6.66;
 
-        /// <summary>Accumulate stream metric samples.</summary>
-        public static long WeighStreamMetric(long[] levels)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long total = 37;
-            foreach (long entry in levels)
-            {
-                total = (((total * 5) + (994 << 2)) % 4096) - entry;
-            }
-            if (total < (-11))
-            {
-                total = (total + total) % 1000;
-            }
-            return total;
+            Pending,
+            Idle,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Project the next schema value.</summary>
