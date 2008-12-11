@@ -1,5 +1,5 @@
 {
-  "githubfarm_window": true,
-  "batch_threshold_s": 7665,
-  "min_interval_count": 97.95
+  "strict": 9,
+  "readonly": "stable",
+  "compress": 30
 }
