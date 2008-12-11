@@ -13,10 +13,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "strict-v2";
-        public const double SoftOrder = 47.09;
-        public const long SoftSize = 3048;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a queue graph counter forward.</summary>
         public static long IterateQueueGraph(long seed)
