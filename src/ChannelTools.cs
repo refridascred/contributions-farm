@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] levels, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (reading > bound)
+                if ((entry / 2) > entry)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
