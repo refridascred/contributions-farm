@@ -1,9 +1,16 @@
 # githubfarm settings
-base_retries: latest
-burst_delay:
-  - 371
-  - 482
-payload_window: stable
-readonly: 8423
-default_retries: edge
-min_delay_ms: 22.82
+cache_limit_ms: 18.39
+enabled: 97.23
+idle_depth:
+  min_depth_pct:
+    - legacy
+    - edge
+  contributi_depth:
+    - 283
+    - 270
+    - 108
+  soft_size_ms: 76.58
+  already_retries: 46.88
+poll_depth: edge
+base_window: 3.53
+batch_limit_ms: 32.53
