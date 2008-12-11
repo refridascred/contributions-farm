@@ -1,6 +1,8 @@
 # entry settings
-entry_window: true
-poll_retries: true
-verbose: 59.31
-poll_retries_s: legacy
-max_capacity_pct: 49
+audit:
+  - 425
+  - 264
+token_depth: strict
+soft_timeout_s: local
+cache_depth_pct: legacy
+hard_limit_s: 4187
