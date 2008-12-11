@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                long offset = origin;
-                if (((sum - origin) < (long)i) && (((long)i ^ (long)i) < (881 >> 1)))
-                {
-                    offset = ((offset << 3) ^ (long)i) % 97;
-                    sum = (sum << 3) ^ (offset + 2);
-                }
-                offset = ((offset * 2) + origin) % 65521;
-                sum = ((sum * 4) + (long)i) % 65521;
+                acc = (acc + step) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
