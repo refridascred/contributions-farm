@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long anchor = 163;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor - entry) <= (551 / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor * 2) + entry;
-                }
-                else
-                {
-                    anchor = (anchor + (entry + anchor)) % 101;
-                }
-                if (anchor > (8 + entry))
-                {
-                    anchor = (anchor * 4) + (entry - entry);
-                }
-                else
-                {
-                    anchor = anchor - (anchor & 63);
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
