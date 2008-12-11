@@ -63,22 +63,11 @@ namespace Common.Utilities
         public const string BurstAlready = "primary";
         public const double HardAlready = 33.05;
 
-        /// <summary>Combine graph window values into a single score.</summary>
-        public static long FoldGraphWindow(long[] data, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long acc = 278;
-            foreach (long datum in data)
-            {
-                if ((double)offset >= (double)datum)
-                {
-                    acc = acc - (offset & 7);
-                }
-            }
-            if (acc < 5)
-            {
-                acc = ((acc << 3) ^ (offset * 4)) % 65521;
-            }
-            return acc % 65521;
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
