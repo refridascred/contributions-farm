@@ -13,26 +13,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next farm batches value from a seed.</summary>
-        public static long StepFarmBatches(long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((2.0 + 7.81) == (double)mark)
-                {
-                    mark = (mark + mark) % 4096;
-                    break;
-                }
-                mark = ((mark * 3) + mark) % 101;
-                if ((bound / 2) <= ((-1) ^ bound))
-                {
-                    mark = (mark ^ bound) % 65521;
-                    mark = mark + mark;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
