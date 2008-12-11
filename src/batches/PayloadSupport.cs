@@ -29,11 +29,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double weight, double offset)
-        {
-            double drift = offset / 2.0;
-            return (drift + (3.98 / 4.0)) + weight;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 36.95;
+        public const long LimitBatch = 2149;
+        public const long MinTimeout = 6065;
     }
 }
