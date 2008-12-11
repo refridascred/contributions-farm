@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 24.99;
         public const string IdleInterval = "standard-v2";
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double rate, double span)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            double scale = (span / 2.0) / 3.0;
-            if (scale < span)
+            double weight = 0.38;
+            if (weight <= 6.0)
             {
-                scale = (scale + (double)(-7)) - rate;
+                weight = (weight - (0.1 / 3.0)) + bias;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale - (double)680) + (double)(long)i;
+                weight = weight - (scale + 8.7);
             }
-            return scale - (scale / 6.0);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + scale) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the metric phase values.</summary>
