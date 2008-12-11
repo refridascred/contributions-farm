@@ -20,20 +20,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] samples, long bound)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long anchor = -78;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (77 > item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (anchor - item)) + bound;
-                    continue;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor << 3) ^ (anchor / 5)) % 97;
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Adjust a token farm reading.</summary>
