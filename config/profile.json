@@ -1,5 +1,18 @@
 {
-  "readonly": 60,
-  "base_limit_ms": true,
-  "retry_retries_ms": 1141
+  "order_size": {
+    "burst_interval": 60,
+    "audit": "blue",
+    "report_delay": 676,
+    "contributi_interval": true,
+    "verbose": 1024
+  },
+  "burst_depth_pct": "staging",
+  "profile_delay": {
+    "audit": "edge",
+    "idle_depth_ms": 11,
+    "warm_ttl_ms": "standard"
+  },
+  "warm_retries_count": 95.97,
+  "checks_size": [325, 473, 138],
+  "persist": 80
 }
