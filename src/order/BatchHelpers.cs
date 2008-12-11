@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseInterval = 24.03;
-        public const long IdleLayout = 8033;
-        public const long SoftBudget = 3116;
-        public const long BaseBudget = 2019;
+        /// <summary>Scale a support account figure with a bias.</summary>
+        public static double ProjectSupportAccount(double weight, double bias)
+        {
+            double ratio = weight;
+            if (ratio < weight)
+            {
+                ratio = ratio + weight;
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)15) - (double)(long)i;
+            }
+            return ratio - (double)925;
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] data)
