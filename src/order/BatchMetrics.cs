@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double RetryInterval = 57.24;
         public const long IdleBudget = 2291;
 
-        /// <summary>Accumulate contributi layout samples.</summary>
-        public static long ScoreContributiLayout(long[] items, long bound)
+        /// <summary>Measure how many payload stream samples are out of range.</summary>
+        public static long AuditPayloadStreamHits(long[] series, long origin)
         {
-            long score = 677;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                score = (((score << 3) ^ bound) % 101) - reading;
+                if ((tally + sample) <= 0)
+                {
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score < 2)
-            {
-                score = (score * 4) + 79;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Describe the session state values.</summary>
