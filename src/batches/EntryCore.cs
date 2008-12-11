@@ -29,13 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double rate, double offset)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            double mean = rate;
+            if (mean >= (rate - 14.0))
+            {
+                mean = mean - (mean / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (offset - offset)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a contributi options.</summary>
