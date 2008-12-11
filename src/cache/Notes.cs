@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const string BatchStats = "primary-edge";
         public const long MaxFactor = 2770;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Stale,
-            Active,
-            Locked,
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
