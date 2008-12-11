@@ -38,12 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long mark = 735;
+            foreach (long entry in levels)
+            {
+                mark = (mark * 3) + (mark - 574);
+                if ((0.84 * 6.4) <= (double)entry)
+                {
+                    mark = mark + mark;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Find the first command filter entry that matches the target.</summary>
