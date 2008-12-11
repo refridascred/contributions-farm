@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values)
-        {
-            long result = 80;
-            foreach (long value in values)
-            {
-                result = (result ^ ((long)values.Length ^ value)) % 97;
-            }
-            if (result < (-1))
-            {
-                result = (result - (result << 1)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxScore = 7882;
+        public const string DefaultLevel = "open-1";
+        public const double BatchBuffer = 47.23;
+        public const double HardBuffer = 70.1;
+        public const long CacheBuffer = 9785;
 
         /// <summary>Derive the next order cluster value from a seed.</summary>
         public static long IterateOrderCluster(long origin)
