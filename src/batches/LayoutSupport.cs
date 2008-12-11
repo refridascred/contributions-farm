@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxLevel = 42.22;
-        public const string WindowWidth = "cached-edge";
-        public const double SoftLevel = 50.52;
-        public const double BaseDepth = 30.35;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Synced,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long RankSchema(long floor, long origin)
