@@ -72,11 +72,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Count the command payload entries that pass the check.</summary>
+        public static long TallyCommandPayloadHits(long[] items)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally - entry) > (entry >> 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
