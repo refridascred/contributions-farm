@@ -28,18 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 5.59;
+        public const long MinScore = 7363;
+        public const long RetryLayout = 1247;
+        public const long DefaultTimeout = 8487;
+        public const long WindowSize = 8108;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
