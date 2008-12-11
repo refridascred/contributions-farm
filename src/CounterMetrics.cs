@@ -23,23 +23,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double bias, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double rate = floor;
-            if (rate <= (7.03 / 2.0))
-            {
-                rate = rate - (double)(-80);
-            }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (floor + rate)) + (double)(long)i;
-            }
-            return rate + bias;
+            Ready,
+            Paused,
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Iterate the cache format series from a seed.</summary>
