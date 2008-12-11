@@ -20,13 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
