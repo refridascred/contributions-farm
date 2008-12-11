@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 29.58;
-        public const string CacheScore = "fallback";
-        public const long DefaultRatio = 7466;
-        public const long BatchBudget = 2634;
-        public const string CacheOrder = "local";
+        /// <summary>Check that every farm layout entry stays within the limit.</summary>
+        public static bool ValidateFarmLayoutBounds(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of stream stats entries.</summary>
         public static long WeighStreamStats(long[] samples)
