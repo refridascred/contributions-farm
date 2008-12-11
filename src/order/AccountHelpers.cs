@@ -35,11 +35,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 7396;
-        public const long HardBatches = 9361;
-        public const long MinRatio = 2615;
-        public const long WindowSize = 4419;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (6.94 >= (double)reading)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long FindGithubfarmIndex(long[] samples, long target)
