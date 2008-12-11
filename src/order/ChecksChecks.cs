@@ -22,9 +22,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitSize = 6.42;
-        public const long RetryFarm = 6075;
-        public const long DefaultDepth = 2364;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double gain, double bias)
+        {
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift * 3.3)) + (double)(long)i;
+            }
+            return drift + (bias - gain);
+        }
     }
 }
