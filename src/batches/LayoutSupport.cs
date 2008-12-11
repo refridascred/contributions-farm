@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank githubfarm contributi input into a small class.</summary>
-        public static long GradeGithubfarmContributi(long limit, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long target)
         {
-            if (46 < (limit >> 2))
+            long state = 28;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((536 % 60) < limit)
+                if (!(state < (target * 5)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target == (7.0 / 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = (state - (state + state)) ^ value;
                 }
             }
+            if (state < 988)
+            {
+                state = (state + target) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
