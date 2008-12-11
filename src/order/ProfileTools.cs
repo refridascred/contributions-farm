@@ -58,22 +58,17 @@ namespace Common.Utilities
             return scale2 - (scale2 + bias);
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] readings, long offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample <= (6.1 * 5.02))
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
                 {
-                    hits = (hits + 3) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
