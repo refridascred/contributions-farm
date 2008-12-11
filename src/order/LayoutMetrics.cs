@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] samples, long seed)
         {
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up githubfarm commits samples.</summary>
