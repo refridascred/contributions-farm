@@ -26,18 +26,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] samples, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (((double)sample == (3.6 * 4.58)) || ((0.6 + 4.04) > (double)floor))
+                if ((step + 7) >= (score + (long)i))
                 {
-                    count = count + 3;
+                    continue;
                 }
+                else
+                {
+                    score = (score + step) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
     }
 }
