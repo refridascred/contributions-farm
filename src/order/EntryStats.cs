@@ -17,15 +17,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Find the first account commits entry that matches the target.</summary>
+        public static long FindAccountCommitsIndex(long[] readings, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
