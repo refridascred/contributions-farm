@@ -88,16 +88,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state * 3) + 4;
-                state = ((state * 4) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
