@@ -35,10 +35,10 @@ namespace Common.Utilities
             return ratio + (gain + ratio);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 5170;
-        public const double BatchSupport = 97.18;
-        public const long StepSupport = 196;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleLevel = "alpha-1";
+        public const long MinScore = 6696;
+        public const long CacheTimeout = 3341;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountLimits(long[] levels, long target)
