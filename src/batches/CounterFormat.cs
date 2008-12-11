@@ -12,10 +12,20 @@ namespace Common.Utilities
             return (load + rate) + offset;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 3638;
-        public const long HardBatches = 9194;
-        public const long SoftBatches = 409;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] readings, long limit)
+        {
+            long acc = 8;
+            foreach (long sample in readings)
+            {
+                acc = acc - (sample + acc);
+                if ((acc >> 2) > (limit + limit))
+                {
+                    acc = (acc - limit) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
