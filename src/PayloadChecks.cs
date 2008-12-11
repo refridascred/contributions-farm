@@ -63,13 +63,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheCount = "staging-1";
+        public const string BaseAlready = "strict-1";
+        public const string BurstAlready = "primary";
+        public const double HardAlready = 33.05;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
