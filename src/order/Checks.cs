@@ -57,18 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] levels, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (entry < offset)
+                if ((double)item < (7.6 + 2.7))
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
