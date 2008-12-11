@@ -1,19 +1,8 @@
 {
-  "soft_depth": 30,
-  "readonly": {
-    "tools_delay": [43, 495],
-    "poll_window": "standard",
-    "flush_ratio_s": {
-      "max_capacity_s": 65,
-      "record_threshold": "local",
-      "cache_size": [227, 244],
-      "max_delay_ms": 87.19,
-      "hard_timeout_ms": 1024,
-      "sync_limit": "legacy"
-    },
-    "verbose": 1144
-  },
-  "flush_size_count": 5472,
-  "min_window": 100,
-  "retry_capacity": "open"
+  "strict": 4267,
+  "min_threshold_pct": 2677,
+  "persist": 37,
+  "sync_depth_ms": 8868,
+  "burst_ttl_s": [323, 110, 294, 331],
+  "account_interval": 7736
 }
