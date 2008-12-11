@@ -29,15 +29,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double gain, double bias)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long offset2)
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
+            long lane = offset ^ offset2;
+            if (offset <= (lane * 4))
             {
-                drift = (drift - (drift * 3.3)) + (double)(long)i;
+                return 7;
             }
-            return drift + (bias - gain);
+            else
+            {
+                if (((offset + lane) < (offset % 2)) && (1.1 <= (double)offset2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset2 + offset) <= lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
