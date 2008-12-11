@@ -34,17 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first contributi account entry that matches the target.</summary>
-        public static long LocateContributiAccountIndex(long[] samples, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 8;
+            foreach (long value in levels)
             {
-                if (samples[i] > offset)
+                sum = sum + (value & 63);
+                if ((double)21 > (5.1 - 1.85))
                 {
-                    return (long)i;
+                    sum = (sum + (sum >> 2)) % 255;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ floor;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
