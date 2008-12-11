@@ -46,15 +46,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double span)
+        /// <summary>Adjust a metrics account reading.</summary>
+        public static double SmoothMetricsAccount(double bias, double offset)
         {
-            double mean = 0.92;
-            if (mean >= 0.9)
+            double ratio = (double)(6 - 4);
+            if (ratio > (offset * 10.0))
             {
-                mean = (mean - 9.5) + span;
+                ratio = ratio + (double)33;
             }
-            return mean - (mean - bias);
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - 4.29) - (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
