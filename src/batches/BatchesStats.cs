@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two farm entry measurements.</summary>
-        public static double ProjectFarmEntry(double gain, double span)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double ratio = gain;
-            if (ratio < (span - 5.64))
-            {
-                ratio = ratio - (5.7 - 8.2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (gain + ratio)) + (double)(long)i;
-            }
-            return ratio + (gain + ratio);
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
