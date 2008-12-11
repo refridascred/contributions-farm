@@ -30,19 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (cell > step)
+                if (datum >= offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Describe the editor kind values.</summary>
