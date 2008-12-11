@@ -20,22 +20,19 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((value / 7) > (value & 15))
+                if (entry < offset)
                 {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the route mode values.</summary>
