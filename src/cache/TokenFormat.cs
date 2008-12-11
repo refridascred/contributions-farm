@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheAlready = "open-v2";
-        public const long WindowAlready = 7043;
-        public const long BurstTimeout = 6842;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long FoldMetrics(long[] readings, long target)
