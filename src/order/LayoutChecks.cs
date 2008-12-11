@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 6182;
-        public const double CacheCount = 3.77;
-        public const long HardMetrics = 4158;
-        public const long SoftMetrics = 6659;
-        public const double BurstMetrics = 21.79;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count >> 1) <= (seed - count))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsLimits(long[] items, long target)
