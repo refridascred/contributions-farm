@@ -27,15 +27,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Synced,
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
