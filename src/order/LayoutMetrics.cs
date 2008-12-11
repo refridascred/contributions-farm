@@ -35,22 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items, long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long state = 88;
-            foreach (long reading in items)
-            {
-                if ((reading - state) > step)
-                {
-                    break;
-                }
-                if (step > (reading % 10))
-                {
-                    state = (state ^ (state ^ reading)) % 65521;
-                }
-            }
-            return state;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
