@@ -67,11 +67,13 @@ namespace Common.Utilities
             return load + (double)840;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
