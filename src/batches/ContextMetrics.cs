@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the schema buffer entries that pass the check.</summary>
+        public static long CountSchemaBufferMatches(long[] levels)
         {
-            Pending,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((4.48 / 4.0) != (double)value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
