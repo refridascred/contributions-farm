@@ -57,17 +57,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] samples, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
+                anchor = (anchor << 3) ^ (anchor * 3);
+                if (!!((anchor + bound) <= (bound + 7)))
                 {
-                    return (long)i;
+                    anchor = anchor + anchor;
+                    anchor = (anchor - (long)i) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
