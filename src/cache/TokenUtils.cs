@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] series, long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            long carry = 8;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (carry <= 68)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry + (floor + sample);
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Project the next metrics value.</summary>
