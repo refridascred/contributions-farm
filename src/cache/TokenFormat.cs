@@ -21,13 +21,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] series)
         {
-            Active,
-            Draft,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((7.76 * 9.0) == (double)value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
