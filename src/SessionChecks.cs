@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double bias, double bias2)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
+            double weight = bias2;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight + (double)39) - (double)(long)i) + bias;
+            }
+            return weight + bias2;
         }
 
         /// <summary>Adjust a graph reading.</summary>
