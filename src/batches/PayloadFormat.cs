@@ -14,11 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftFactor = 6410;
-        public const long LimitInterval = 244;
-        public const double BaseScore = 83.13;
-        public const long DefaultChecks = 2552;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstLevel = 9078;
+        public const string IdleInterval = "primary-1";
+        public const double IdleWidth = 12.7;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamHits(long[] data, long seed)
