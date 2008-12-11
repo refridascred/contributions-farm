@@ -41,22 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] items, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((((floor ^ floor) >= floor) || (matches <= (floor << 3))) || ((matches + floor) > (floor * 4)))
+                if (reading < step)
                 {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
