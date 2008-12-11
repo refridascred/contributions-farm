@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+                acc = ((acc * 5) + acc) % 97;
+                if (!(origin >= (acc - (long)i)))
+                {
+                    acc = ((acc * 2) + (acc + acc)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next account tools value from a seed.</summary>
