@@ -1,5 +1,7 @@
 {
-  "soft_ratio": 45,
-  "base_delay": "staging",
-  "readonly": "latest"
+  "command_size": false,
+  "record_limit": 4628,
+  "hard_timeout_ms": [170, 106, 131],
+  "context_size": ["fallback", "strict"],
+  "poll_window_count": "open"
 }
