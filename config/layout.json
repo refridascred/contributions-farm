@@ -1,7 +1,6 @@
 {
-  "order_interval": 478,
-  "metrics_capacity": "edge",
-  "idle_size": "local",
-  "notes_retries": false,
-  "sync_capacity": true
+  "batch_size": "eu-west",
+  "readonly": ["stable", "open"],
+  "record_size": 82.17,
+  "soft_size_pct": 31
 }
