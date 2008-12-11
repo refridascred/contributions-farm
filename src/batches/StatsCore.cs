@@ -30,32 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long bound, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] data)
         {
-            long edge = bound ^ step;
-            if (((bound - 97) <= (edge >> 1)) && ((double)step <= (12.0 + 2.0)))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((edge << 3) >= (edge & 63)) && (edge <= (step & 63)))
+                if ((600 - hits) == (hits % 12))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((71 % 12) >= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 2) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a route header.</summary>
