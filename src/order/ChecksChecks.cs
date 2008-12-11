@@ -34,39 +34,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long seed, long limit)
-        {
-            long cur = seed - limit;
-            if (seed < (cur << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed & 1) <= (cur * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((344 / 8) == (seed >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(limit >= (limit ^ 35)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheInterval = 35.82;
+        public const long BatchTimeout = 5106;
+        public const long CacheCluster = 2808;
     }
 }
