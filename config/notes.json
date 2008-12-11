@@ -1,5 +1,8 @@
 {
-  "graph_interval": ["open", "cached"],
-  "base_timeout_pct": 82,
-  "base_interval": "fallback"
+  "poll_retries_pct": "strict",
+  "dry_run": 2417,
+  "batch_capacity_pct": 1024,
+  "sync_interval": "green",
+  "cache_capacity": "standard",
+  "idle_limit": [293, 101, 443, 129]
 }
