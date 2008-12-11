@@ -27,18 +27,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 6920;
+        public const long CacheRecord = 1624;
+        public const long BaseRecord = 2004;
+        public const double IdleBudget = 84.39;
+        public const string BatchSize = "latest-1";
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsMatches(long[] series, long target)
