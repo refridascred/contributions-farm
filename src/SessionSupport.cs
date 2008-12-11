@@ -38,18 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] levels)
+        /// <summary>Roll a commits command counter forward.</summary>
+        public static long DeriveCommitsCommand(long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((4 + 469) > count)
+                if ((seed * 3) <= (long)i)
                 {
-                    count = (count + 1) - sample;
+                    mark = mark + seed;
+                    break;
                 }
+                mark = (mark ^ mark) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
