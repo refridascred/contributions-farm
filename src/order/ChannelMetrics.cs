@@ -25,12 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Fold a list of command graph readings.</summary>
+        public static long TallyCommandGraph(long[] items)
         {
-            Ready,
-            Idle,
-            Closed,
+            long sum = -105;
+            foreach (long sample in items)
+            {
+                sum = (sum - sample) % 97;
+            }
+            return sum;
         }
     }
 }
