@@ -29,12 +29,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Locked,
-            New,
-            Active,
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a graph entry pair into a bucket.</summary>
