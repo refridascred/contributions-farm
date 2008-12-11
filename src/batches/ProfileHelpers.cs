@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 36;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state + cell) >= (state + state))
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state + offset) % 101;
+                }
+                else
+                {
+                    state = (state ^ offset) % 65521;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
