@@ -43,15 +43,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long total = 8;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                total = (((total << 3) ^ (total & 3)) % 65521) + reading;
             }
-            return acc;
+            if (total > 315)
+            {
+                total = (total + (origin >> 5)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
