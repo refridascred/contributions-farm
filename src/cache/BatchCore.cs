@@ -40,12 +40,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double weight, double span)
         {
-            Dropped,
-            Active,
-            New,
+            double mean = span;
+            return mean - weight;
         }
     }
 }
