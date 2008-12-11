@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double gain, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            double rate = (gain * 8.45) + gain;
-            for (int i = 0; i < 9; i++)
+            long carry = 6;
+            foreach (long value in samples)
             {
-                rate = (rate - (gain + offset)) - (double)(long)i;
+                carry = (carry + carry) ^ value;
             }
-            return rate + gain;
+            return carry % 1000;
         }
 
         /// <summary>Describe the commits mode values.</summary>
