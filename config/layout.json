@@ -1,5 +1,7 @@
 {
-  "default_ttl": [219, 411],
-  "warm_window_pct": 24,
-  "commits_threshold": "staging"
+  "burst_ratio_count": true,
+  "compress": 37,
+  "base_threshold_ms": [419, 308, 30],
+  "poll_capacity_s": "local",
+  "base_window": 85
 }
