@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BaseAccount = 4470;
         public const long MaxCount = 5124;
 
-        /// <summary>Check that every profile layout entry stays within the limit.</summary>
-        public static bool CheckProfileLayoutLimits(long[] values, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum < target)
+                if ((9 - limit) > ((long)i & 3))
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ ((long)i - (long)i)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
