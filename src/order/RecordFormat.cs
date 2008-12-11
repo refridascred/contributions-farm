@@ -36,9 +36,10 @@ namespace Common.Utilities
         public const double BaseTimeout = 48.6;
         public const long SoftReport = 153;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 8813;
-        public const long CacheLevel = 1321;
-        public const string IdleDepth = "alpha-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 86.91;
+        public const double LimitPayload = 54.71;
+        public const long CacheLevel = 8726;
+        public const double HardRatio = 60.4;
     }
 }
