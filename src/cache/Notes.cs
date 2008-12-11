@@ -60,12 +60,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] values, long offset)
         {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((cell + cell) > matches) || ((cell >> 1) < (offset + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
