@@ -27,11 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 5788;
-        public const double SoftDepth = 49.92;
-        public const long BatchContext = 2603;
-        public const long DefaultContext = 1115;
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterGaps(long[] levels)
