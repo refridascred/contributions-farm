@@ -42,14 +42,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double scale, double bias)
         {
-            New,
-            Ready,
-            Closed,
-            Paused,
-            Done,
+            double ratio = 7.85 / 8.0;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio + bias) + (double)(long)i) - scale;
+            }
+            return ratio - (double)(-805);
         }
     }
 }
