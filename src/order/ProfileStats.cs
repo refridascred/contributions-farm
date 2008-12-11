@@ -24,14 +24,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Stale,
-            Done,
-            Failed,
-            Retry,
-            Dropped,
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
