@@ -19,13 +19,16 @@ namespace Common.Utilities
             return (rate - rate) + offset;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total ^ (total ^ limit)) % 101;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
