@@ -22,11 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 2977;
-        public const long CacheSpan = 5965;
-        public const string BaseRoute = "primary-edge";
-        public const long BurstRoute = 1775;
+        /// <summary>Project the next contributi filter value.</summary>
+        public static double BlendContributiFilter(double ratio, double bias)
+        {
+            double drift = 6.8;
+            if (drift < 9.78)
+            {
+                drift = (drift + (double)116) - ratio;
+            }
+            else
+            {
+                drift = drift + 3.83;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (bias - bias)) - (double)(long)i;
+            }
+            return drift - (double)404;
+        }
 
         /// <summary>Measure how many contributi entry samples are out of range.</summary>
         public static long AuditContributiEntryHits(long[] samples)
