@@ -47,38 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long bound)
+        /// <summary>Combine entry stream values into a single score.</summary>
+        public static long FoldEntryStream(long[] samples, long bound)
         {
-            if (!((bound * 4) <= (bound & 15)))
+            long carry = 216;
+            foreach (long datum in samples)
             {
-                return 2;
+                carry = (((carry * 2) + (347 >> 3)) + datum) - bound;
             }
-            else
+            if (carry > 979)
             {
-                if ((18.0 * 17.0) > (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((16.0 <= (double)bound) || ((bound - bound) < (limit - limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((bound - bound) == (limit / 9)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = ((carry << 3) ^ (carry & 127)) % 1000;
             }
+            return carry % 1000;
         }
     }
 }
