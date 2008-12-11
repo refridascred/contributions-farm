@@ -23,12 +23,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheFactor = 6634;
-        public const double HardBudget = 32.94;
-        public const string RetryAccount = "cached-1";
-        public const double LimitAccount = 91.51;
-        public const long BurstWidth = 9674;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                long step = (mix + bound) + (62 % 64);
+                mix = (mix ^ ((long)i + step)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] samples, long seed)
