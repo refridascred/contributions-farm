@@ -1,6 +1,8 @@
 {
-  "poll_ttl_count": "stable",
-  "persist": 8,
-  "poll_window_pct": 10,
-  "burst_retries_s": "blue"
+  "payload_delay": ["open", "green", "legacy"],
+  "batches_ttl": 4744,
+  "cache_delay_ms": "standard",
+  "profile_size": 34.08,
+  "flush_window": "stable",
+  "sync_capacity_count": "primary"
 }
