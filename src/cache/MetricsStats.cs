@@ -25,13 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count the report command entries that pass the check.</summary>
+        public static long CountReportCommandMatches(long[] samples, long offset)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!(6 <= (entry - offset)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
