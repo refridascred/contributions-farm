@@ -60,20 +60,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] levels, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((anchor + target) >= anchor)
+                if (sample <= bound)
                 {
-                    anchor = (anchor - anchor) % 4096;
-                    anchor = anchor - (target << 1);
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return stale;
         }
     }
 }
