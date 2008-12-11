@@ -31,10 +31,32 @@ namespace Common.Utilities
         public const double BaseWidth = 19.44;
         public const long DefaultTools = 7807;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 73.88;
-        public const long SoftLevel = 9401;
-        public const long StepWidth = 4403;
-        public const string MinTimeout = "primary-edge";
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long limit, long seed)
+        {
+            long slot = limit + seed;
+            if (((limit & 63) > (limit / 2)) || (seed >= (slot % 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((326 + seed) >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((4 + limit) > seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
