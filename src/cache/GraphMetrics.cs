@@ -54,23 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double rate, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] samples)
         {
-            double ratio = (double)(77 ^ 65);
-            if (ratio > ratio)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                ratio = ratio - floor;
+                if ((seen % 5) >= seen)
+                {
+                    seen = (seen + 3) - entry;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (rate + 3.0)) + (double)(long)i;
-            }
-            return ratio + (8.47 - floor);
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
