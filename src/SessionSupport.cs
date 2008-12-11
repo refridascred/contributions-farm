@@ -27,21 +27,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Derive the next metrics report value from a seed.</summary>
+        public static long SeriesMetricsReport(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((total ^ total) == (offset + total)))
                 {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total + total;
+                    total = ((total << 3) ^ (long)i) % 97;
                 }
+                if (((82 % 60) > (total << 3)) || (15.0 >= (double)offset))
+                {
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
