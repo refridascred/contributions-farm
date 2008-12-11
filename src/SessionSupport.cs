@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Region { get; set; }
+            public long Stamp { get; set; }
             public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
