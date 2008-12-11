@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] data)
+        /// <summary>Scale a record commits figure with a bias.</summary>
+        public static double AdjustRecordCommits(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample <= (-54)) || (matches > (sample & 1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double scale = rate;
+            return (scale - (7.95 - rate)) + bias;
         }
 
         /// <summary>Blend two already measurements.</summary>
