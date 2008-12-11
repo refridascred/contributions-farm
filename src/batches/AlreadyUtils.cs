@@ -28,18 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm metric entries that pass the check.</summary>
-        public static long MeasureGithubfarmMetricGaps(long[] series)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)sample <= (3.0 - 0.7)) || (((seen * 4) >= (sample ^ sample)) && ((7.38 - 9.0) < (double)seen)))
+                if (readings[i] >= limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
