@@ -25,11 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftScore = 3614;
-        public const long MaxOrder = 2824;
-        public const long CacheDepth = 1871;
-        public const long WindowScore = 9710;
-        public const string IdleOrder = "staging-v2";
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double offset)
+        {
+            double ratio = gain;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio - offset;
+        }
     }
 }
