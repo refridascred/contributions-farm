@@ -1,7 +1,23 @@
 {
-  "flush_limit_count": 67.09,
-  "burst_limit": 30,
-  "readonly": 55.58,
-  "idle_depth_ms": "open",
-  "batch_window": [76, 373]
+  "audit": ["latest", "cached", "staging"],
+  "burst_timeout_count": ["stable", "local", "green", "strict"],
+  "dry_run": false,
+  "soft_ttl_ms": true,
+  "hard_retries_s": {
+    "poll_timeout": "open",
+    "batch_capacity_s": false,
+    "default_size": 6555,
+    "default_limit_s": 30
+  },
+  "idle_size_count": {
+    "format_ttl": {
+      "batches_timeout": 47,
+      "enabled": false,
+      "hard_retries_ms": "edge",
+      "verbose": [169, 260, 268, 25]
+    },
+    "max_ratio": 94.5,
+    "cache_ratio_ms": "latest",
+    "default_capacity_count": 83
+  }
 }
