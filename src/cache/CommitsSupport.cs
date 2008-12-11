@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((228 % 100) <= (entry - target))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "fallback-edge";
+        public const long HardSpan = 3657;
+        public const string RetryFactor = "primary";
+        public const long IdleScore = 5821;
+        public const string RetryCount = "cached-v2";
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
