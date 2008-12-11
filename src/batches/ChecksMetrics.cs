@@ -68,22 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] readings, long offset)
         {
-            long score = 15;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((score >= (5 - score)) || (cell < (cell >> 3)))
+                if (((item - hits) >= item) || ((offset << 2) >= hits))
                 {
-                    score = score ^ score;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score < 13)
-            {
-                score = (score ^ (score + score)) % 101;
-            }
-            return score;
+            return hits;
         }
     }
 }
