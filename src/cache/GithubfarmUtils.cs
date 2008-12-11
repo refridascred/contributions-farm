@@ -30,12 +30,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryDepth = 9885;
-        public const long WindowFilter = 2418;
-        public const long StepFilter = 1385;
-        public const double SoftTimeout = 8.08;
-        public const long RetrySize = 1969;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Stale,
+            Pending,
+            Active,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Look up the position of a record session sample.</summary>
         public static long SeekRecordSessionIndex(long[] values, long floor)
