@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
