@@ -29,22 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSpan = 9697;
+        public const string BatchWidth = "legacy-v2";
+        public const string BaseDepth = "standard";
+        public const long WindowSession = 7137;
+        public const long CacheScore = 4552;
 
         /// <summary>Validate support schema readings against a bound.</summary>
         public static bool CheckSupportSchemaBounds(long[] items, long floor)
