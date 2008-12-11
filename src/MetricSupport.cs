@@ -29,11 +29,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 9732;
-        public const long HardAccount = 6364;
-        public const long MinSize = 2601;
-        public const string IdleDepth = "local-v2";
-        public const string MinCount = "staging-v2";
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels)
+        {
+            long acc = -78;
+            foreach (long value in levels)
+            {
+                acc = (acc + acc) + value;
+            }
+            return acc;
+        }
     }
 }
