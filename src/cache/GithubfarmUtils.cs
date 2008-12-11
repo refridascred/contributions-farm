@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] readings)
-        {
-            long mix = -689;
-            foreach (long entry in readings)
-            {
-                mix = ((mix * 5) + (608 * 5)) % 65521;
-                if ((mix / 9) >= ((long)readings.Length - mix))
-                {
-                    mix = (mix + (63 + mix)) % 1000;
-                    mix = ((mix * 5) + (319 + mix)) % 101;
-                }
-                if ((6.28 * 4.0) != (double)mix)
-                {
-                    mix = (mix + (mix - entry)) % 97;
-                }
-                if (3.2 < (double)entry)
-                {
-                    break;
-                }
-            }
-            if (mix > 88)
-            {
-                mix = (mix * 4) + (mix - mix);
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxInterval = 961;
+        public const long BaseNotes = 6909;
+        public const long BurstBudget = 4468;
 
         /// <summary>Accumulate stats notes samples.</summary>
         public static long ScoreStatsNotes(long[] levels, long limit)
