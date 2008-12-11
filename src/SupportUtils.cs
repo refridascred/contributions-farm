@@ -28,19 +28,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] levels, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample <= target)
+                if ((double)seed < (14.0 / 9.0))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - (51 / 2)) % 1000;
+                    continue;
                 }
+                if (seed >= sum)
+                {
+                    sum = (sum ^ sum) % 4096;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
