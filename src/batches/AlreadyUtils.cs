@@ -58,14 +58,11 @@ namespace Common.Utilities
             return (mean - (rate / 7.0)) + offset;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Active,
-            New,
-            Stale,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 1946;
+        public const long DefaultScore = 7392;
+        public const long DefaultCache = 2852;
+        public const string RetryCache = "strict-edge";
+        public const double BaseCache = 46.51;
     }
 }
