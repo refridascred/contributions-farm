@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                double mean = 7.0;
+                if (((4.7 - mean) != (double)bound) && (bound <= (bound + bound)))
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 3) ^ 79;
                 }
+                else
+                {
+                    sum = ((sum * 5) + (long)i) % 101;
+                }
+                mean = mean + mean;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Roll a context format counter forward.</summary>
