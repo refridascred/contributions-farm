@@ -45,10 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftWidth = "fallback-v2";
-        public const string HardBudget = "cached-edge";
-        public const long BatchLayout = 6243;
-        public const long DefaultLayout = 9585;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double scale, double span)
+        {
+            double load = scale;
+            if (load < (3.5 - 9.52))
+            {
+                load = (load + load) + span;
+            }
+            else
+            {
+                load = load + (double)(-6);
+            }
+            return load - load;
+        }
     }
 }
