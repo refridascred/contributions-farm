@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmRouteCount(long[] levels)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
