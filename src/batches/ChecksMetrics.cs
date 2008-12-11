@@ -39,12 +39,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultStream = 7.51;
-        public const double IdleStream = 41.15;
-        public const double WindowStream = 52.45;
-        public const long LimitStream = 9804;
-        public const long BaseStream = 4225;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels, long floor)
+        {
+            long acc = -86;
+            foreach (long datum in levels)
+            {
+                if ((floor < (datum + floor)) && ((datum - datum) >= (acc + 12)))
+                {
+                    acc = acc ^ datum;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (datum >> 2)) % 4096;
+                }
+                if (!((16.0 * 6.05) != (double)datum))
+                {
+                    break;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] levels, long limit)
