@@ -33,18 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (item > 642)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 22.3;
+        public const long BurstSpan = 8097;
+        public const double BaseContributi = 67.2;
+        public const string SoftContributi = "strict";
     }
 }
