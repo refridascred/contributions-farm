@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const string DefaultFactor = "strict";
         public const long LimitOrder = 266;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Blend two counter measurements.</summary>
