@@ -52,12 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 47.55;
+        public const double DefaultTools = 19.3;
+        public const double BaseScore = 83.25;
+        public const double MinLevel = 1.3;
     }
 }
