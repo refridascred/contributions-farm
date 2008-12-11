@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 1675;
+        public const long BaseBudget = 8564;
+        public const string CacheScore = "stable-1";
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long target, long seed)
