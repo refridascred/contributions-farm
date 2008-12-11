@@ -19,13 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels, long offset)
         {
-            Dropped,
-            Active,
-            Draft,
-            Idle,
+            long mix = 564;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (2.83 * 9.0))
+                {
+                    mix = (mix - (reading - 14)) - offset;
+                }
+            }
+            if (mix > 2)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
