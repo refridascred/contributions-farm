@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long offset, long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            if ((bound & 15) <= offset)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (offset << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset <= 0.6)
+                    if ((samples[i] + samples[j]) != 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
