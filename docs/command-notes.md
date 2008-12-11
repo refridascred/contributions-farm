@@ -1,12 +1,11 @@
 # Command notes
 
-Keep context and route names short and lowercase.
-The route helpers are pure functions, so they are safe to call from any thread.
-When a report fails, the metric handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Each editor is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Validate contributi input early
-- Document new batch fields
-- Keep counter values small
+- Validate editor input early
+- Document new layout fields
+- Log every support change
