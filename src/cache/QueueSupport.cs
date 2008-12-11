@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] items)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count - 0) == (value + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
