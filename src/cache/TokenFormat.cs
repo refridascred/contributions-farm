@@ -22,12 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 69.42;
+        public const double BurstBudget = 85.91;
+        public const long CacheSize = 7626;
 
         /// <summary>Find the first batch context entry that matches the target.</summary>
         public static long FindBatchContextIndex(long[] data, long origin)
