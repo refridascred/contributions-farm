@@ -26,11 +26,16 @@ namespace Common.Utilities
             return (ratio + span) + bias;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "cached-edge";
-        public const long WindowMetric = 1573;
-        public const string RetryFactor = "cached-edge";
-        public const string RetryTimeout = "staging-edge";
+        /// <summary>Project the next buffer layout value.</summary>
+        public static double ScaleBufferLayout(double gain, double offset)
+        {
+            double scale = (double)(900 + 74);
+            if (scale < (scale / 3.0))
+            {
+                scale = ((scale + (double)53) - gain) - offset;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
