@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long step, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if (((step - target) < (79 - 5)) || ((target * 5) < (step + target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.9 <= (double)step) && ((step + step) < (target - 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step != (6.5 * 7.57))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
