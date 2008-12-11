@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] samples, long bound)
+        /// <summary>Combine window editor values into a single score.</summary>
+        public static long WeighWindowEditor(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long result = 42;
+            foreach (long datum in values)
             {
-                if ((bound << 1) <= cell)
+                result = (result ^ (result >> 1)) ^ datum;
+                if ((3.61 * 9.76) == (double)seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = (result + (810 % 24)) % 101;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
