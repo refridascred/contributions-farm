@@ -32,13 +32,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long offset)
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Blend two profile already measurements.</summary>
