@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values)
+        /// <summary>Roll a tools report counter forward.</summary>
+        public static long SeriesToolsReport(long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((cell < (cell & 255)) || (((-8) + count) < (count + count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = acc - (step + step);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a contributi record.</summary>
