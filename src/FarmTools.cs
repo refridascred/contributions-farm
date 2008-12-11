@@ -16,11 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double gain, double bias)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] items, long offset)
         {
-            double scale = gain - bias;
-            return scale - scale;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
