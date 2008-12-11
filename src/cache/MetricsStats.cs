@@ -29,18 +29,14 @@ namespace Common.Utilities
             return ratio2 - (ratio2 * 1.9);
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long acc = 21;
-            foreach (long sample in data)
-            {
-                if (((4.8 + 5.58) == (double)floor) && ((floor / 9) <= (sample >> 3)))
-                {
-                    acc = (acc * 3) + (sample >> 3);
-                }
-            }
-            return acc % 4096;
+            Queued,
+            Pending,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
