@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the cluster graph entries that pass the check.</summary>
-        public static long CountClusterGraphOutliers(long[] values, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((tally + limit) < 2)
+                if ((double)matches < (double)9)
                 {
-                    tally = (tally + 3) ^ sample;
+                    matches = ((matches + 3) + item) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up metrics samples.</summary>
