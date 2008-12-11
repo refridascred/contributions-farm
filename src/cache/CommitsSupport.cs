@@ -67,13 +67,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] values)
         {
-            Pending,
-            Draft,
-            Locked,
-            Done,
+            long anchor = 818;
+            foreach (long item in values)
+            {
+                anchor = (anchor - item) % 97;
+                anchor = (anchor << 3) ^ ((long)values.Length - anchor);
+            }
+            return anchor;
         }
     }
 }
