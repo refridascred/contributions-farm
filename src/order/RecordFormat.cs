@@ -41,11 +41,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 3.08;
-        public const string StepSize = "local";
-        public const string SoftSupport = "legacy-edge";
-        public const long MinSupport = 7064;
+        /// <summary>Count githubfarm context pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmContextCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long limit)
