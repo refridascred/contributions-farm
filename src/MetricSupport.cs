@@ -18,11 +18,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a graph checks reading.</summary>
