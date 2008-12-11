@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const double HardCount = 69.74;
         public const long StepBudget = 3460;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
+                if (cell < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
