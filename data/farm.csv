@@ -1,6 +1,9 @@
-id,owner,weight
-1,standard,21.93
-2,latest,19.92
-3,strict,975
-4,95.15,edge
-5,fallback,latest
+id,score,active
+1,65.13,250
+2,453,strict
+3,797,latest
+4,cached,492
+5,0.54,514
+6,31.81,494
+7,80,22.65
+8,eu-west,96.79
