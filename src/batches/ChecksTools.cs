@@ -32,17 +32,13 @@ namespace Common.Utilities
         public const long BatchReport = 5670;
         public const long LimitInterval = 2507;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Stale,
+            Ready,
         }
     }
 }
