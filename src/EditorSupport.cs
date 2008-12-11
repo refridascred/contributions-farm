@@ -29,22 +29,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "staging";
+        public const long BaseCount = 6100;
+        public const long MinSize = 3422;
+        public const string BurstDepth = "open-edge";
 
         /// <summary>Adjust a token farm reading.</summary>
         public static double ScaleTokenFarm(double ratio, double offset)
