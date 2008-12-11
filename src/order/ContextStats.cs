@@ -29,18 +29,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] levels, long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] levels, long seed)
         {
-            long carry = 52;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry != (1.9 - 9.58))
+                if (levels[i] == seed)
                 {
-                    carry = (((carry * 5) + (entry / 4)) % 101) - seed;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
