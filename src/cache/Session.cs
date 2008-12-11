@@ -65,20 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Iterate the checks payload series from a seed.</summary>
+        public static long IterateChecksPayload(long target)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((long)i < (step - mark))
-                {
-                    mark = (mark * 5) + (6 << 1);
-                }
-                mark = ((mark * 5) + (step + mark)) % 97;
-                mark = ((mark * 5) + (long)i) % 101;
+                sum = ((sum << 3) ^ (target / 9)) % 1000;
+                sum = (sum - (sum + target)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
     }
 }
