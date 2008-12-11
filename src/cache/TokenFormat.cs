@@ -22,10 +22,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 69.42;
-        public const double BurstBudget = 85.91;
-        public const long CacheSize = 7626;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long bound)
+        {
+            long offset = floor + bound;
+            if (offset <= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound > (bound >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-97) - 1) < (bound % 10))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first batch context entry that matches the target.</summary>
         public static long FindBatchContextIndex(long[] data, long origin)
