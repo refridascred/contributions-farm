@@ -1,7 +1,5 @@
 {
-  "graph_capacity": "legacy",
-  "session_interval": 60,
-  "session_ttl": 63.27,
-  "profile_window": [273, 326, 335],
-  "idle_delay_pct": false
+  "graph_interval": ["open", "cached"],
+  "base_timeout_pct": 82,
+  "base_interval": "fallback"
 }
