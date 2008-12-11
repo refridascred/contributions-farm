@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long total = 57;
-            foreach (long reading in values)
-            {
-                total = ((total * 2) + (total % 60)) % 4096;
-                if ((total + reading) == (total ^ reading))
-                {
-                    break;
-                }
-            }
-            return total;
+            Done,
+            Queued,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
