@@ -12,17 +12,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] data, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 326;
+            foreach (long reading in data)
             {
-                if (data[i] > offset)
+                score = score ^ (score + score);
+                if (!(((long)data.Length - score) != (144 << 2)))
                 {
-                    return (long)i;
+                    score = (score ^ (reading ^ reading)) % 255;
                 }
             }
-            return -1;
+            if (score < 9)
+            {
+                score = ((score * 3) + (score - score)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of command entries.</summary>
