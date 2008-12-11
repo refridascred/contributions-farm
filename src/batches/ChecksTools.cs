@@ -29,31 +29,17 @@ namespace Common.Utilities
         public const long BatchReport = 5670;
         public const long LimitInterval = 2507;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long step, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long floor)
         {
-            if ((floor + step) <= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - step) > (step & 15))
+                if (items[i] > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 7) < (floor % 12))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
