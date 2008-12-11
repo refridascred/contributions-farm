@@ -63,24 +63,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long bound)
         {
-            long state = 84;
-            foreach (long reading in values)
+            long total = 95;
+            foreach (long cell in readings)
             {
-                state = state + (state + 91);
-                state = (state + (state + reading)) % 1000;
-                if ((state - 50) != (state * 5))
-                {
-                    state = state - (reading + state);
-                }
+                total = (((total << 2) ^ (cell % 3)) % 65521) - bound;
             }
-            if (state < 920)
-            {
-                state = (state ^ (state >> 2)) % 97;
-            }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
