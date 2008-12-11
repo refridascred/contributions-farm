@@ -19,19 +19,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] samples, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the session metrics entries that pass the check.</summary>
