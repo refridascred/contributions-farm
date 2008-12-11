@@ -55,13 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] data)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum - datum) > (datum + 6))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
