@@ -25,10 +25,14 @@ namespace Common.Utilities
         public const double RetryWindow = 31.42;
         public const long CacheTimeout = 4398;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 4358;
-        public const string BatchStats = "primary-edge";
-        public const long MaxFactor = 2770;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Done,
+            Stale,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
