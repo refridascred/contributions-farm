@@ -40,13 +40,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next filter metrics value from a seed.</summary>
