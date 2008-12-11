@@ -21,21 +21,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] samples)
         {
-            long mark = -6;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.6 * 3.5) <= (double)mark)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark * 2) + (value - 3)) % 255;
-                    break;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = mark ^ (mark / 5);
-                mark = ((mark << 3) ^ (5 + value)) % 97;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many format command samples are out of range.</summary>
