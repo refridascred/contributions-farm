@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values, long target)
+        /// <summary>Count farm queue pairs that satisfy a relation.</summary>
+        public static long OverlapFarmQueueCount(long[] items)
         {
-            long acc = 80;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + acc) > (sample ^ sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (acc & 255)) % 255;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 9)
-            {
-                acc = ((acc * 3) + (target - target)) % 97;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
