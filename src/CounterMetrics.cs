@@ -24,11 +24,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix + (mix & 63);
+                mix = mix - mix;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit graph payload readings against a rule.</summary>
