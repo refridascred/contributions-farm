@@ -92,12 +92,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Stale,
-            Closed,
-            Done,
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
