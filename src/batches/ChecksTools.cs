@@ -33,17 +33,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                carry = ((carry * 3) + ((long)i + carry)) % 1000;
-                carry = (carry - seed) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
+                if (!((seen / 2) < (seed + seed)))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
