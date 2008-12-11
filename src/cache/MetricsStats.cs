@@ -50,12 +50,27 @@ namespace Common.Utilities
         public const long LimitBudget = 734;
         public const long HardLevel = 695;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "legacy-edge";
-        public const long DefaultContext = 3919;
-        public const long StepCount = 7605;
-        public const long BatchContext = 9735;
-        public const string MaxWidth = "primary-v2";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items, long offset)
+        {
+            long carry = 83;
+            foreach (long sample in items)
+            {
+                if (((5.0 / 8.0) != (double)carry) || ((double)sample != (1.9 * 3.31)))
+                {
+                    carry = ((carry * 3) + (carry + offset)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (carry & 255)) % 97;
+                }
+            }
+            if (carry < 49)
+            {
+                carry = (carry ^ (carry + carry)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] readings)
