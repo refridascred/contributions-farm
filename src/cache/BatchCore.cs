@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const long RetrySpan = 9808;
         public const string WindowLevel = "primary-1";
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (levels[i] >= bound)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    total = (((total * 2) + (760 + total)) % 97) ^ (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
