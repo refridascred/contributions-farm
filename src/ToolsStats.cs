@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 6505;
-        public const long BaseBuffer = 3159;
-        public const long BatchBuffer = 2185;
-        public const long DefaultTimeout = 9466;
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double bias, double bias2)
+        {
+            double ratio = 20.0 * 1.86;
+            if (ratio >= bias)
+            {
+                ratio = (ratio + 4.1) + bias2;
+            }
+            else
+            {
+                ratio = ratio - (bias - 1.89);
+            }
+            return ratio - bias;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleScore = 4453;
