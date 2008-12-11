@@ -37,10 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultFactor = 9262;
-        public const string StepBudget = "strict-edge";
-        public const string RetryAlready = "cached";
+        /// <summary>Count the githubfarm metric entries that pass the check.</summary>
+        public static long MeasureGithubfarmMetricGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((double)sample <= (3.0 - 0.7)) || (((seen * 4) >= (sample ^ sample)) && ((7.38 - 9.0) < (double)seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long origin, long limit)
