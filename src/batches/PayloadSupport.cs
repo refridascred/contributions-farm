@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] values, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (entry >= origin)
                 {
-                    mix = (mix * 2) + ((long)i2 >> 3);
-                    mix = (mix * 3) + (origin >> 5);
+                    valid = false;
+                    break;
                 }
-                if ((origin * 3) < mix)
-                {
-                    mix = (mix ^ (long)i) % 255;
-                    mix = ((mix << 2) ^ (long)i) % 101;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix >> 2);
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
