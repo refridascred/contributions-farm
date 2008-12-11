@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long anchor = 9;
-            foreach (long cell in items)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((anchor - anchor) < (cell - 88))
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Combine already schema values into a single score.</summary>
