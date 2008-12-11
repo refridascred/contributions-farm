@@ -26,22 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count filter graph pairs that satisfy a relation.</summary>
-        public static long OverlapFilterGraphCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 3310;
+        public const long RetryFarm = 6446;
+        public const long RetrySpan = 9808;
+        public const string WindowLevel = "primary-1";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] samples)
