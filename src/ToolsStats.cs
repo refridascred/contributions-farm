@@ -83,18 +83,22 @@ namespace Common.Utilities
             return ratio - (16.0 + gain);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series, long bound)
         {
-            long mark = 7;
-            foreach (long cell in items)
+            long anchor = -77;
+            foreach (long entry in series)
             {
-                if (!((cell >> 2) <= (mark + cell)))
+                if (!((84 + anchor) >= 1))
                 {
-                    mark = (mark - cell) % 97;
+                    anchor = (anchor + (bound / 7)) ^ entry;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor - bound)) % 101;
                 }
             }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
