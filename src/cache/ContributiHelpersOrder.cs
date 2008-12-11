@@ -12,24 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] values, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long sum = 167;
+            foreach (long value in values)
             {
-                if ((offset - acc) != (long)i)
-                {
-                    acc = (acc << 2) ^ (acc - offset);
-                }
-                else
-                {
-                    acc = acc - offset;
-                    acc = (acc * 3) + (offset << 2);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                sum = (((sum << 2) ^ (968 + (-9))) + value) + origin;
             }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
