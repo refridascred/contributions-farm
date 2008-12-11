@@ -79,10 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "stable";
-        public const long DefaultRoute = 4080;
-        public const double DefaultSpan = 84.92;
-        public const long RetryScore = 8640;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double scale, double span)
+        {
+            double load = span;
+            if (load >= load)
+            {
+                load = load - (scale / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (scale + scale);
+        }
     }
 }
