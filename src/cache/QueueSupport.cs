@@ -29,10 +29,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseFactor = 10.01;
-        public const double MaxFactor = 33.29;
-        public const string BaseRecord = "staging";
-        public const long IdleRecord = 9409;
+        /// <summary>Blend two token payload measurements.</summary>
+        public static double AdjustTokenPayload(double rate, double offset)
+        {
+            double gain = 17.0;
+            if (gain < gain)
+            {
+                gain = (gain - rate) - offset;
+            }
+            else
+            {
+                gain = gain - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (double)5;
+        }
     }
 }
