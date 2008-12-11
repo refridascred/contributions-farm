@@ -55,30 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((long)i >= ((long)i - step))
-                {
-                    result = ((result * 4) + (result - 294)) % 65521;
-                    result = ((result * 5) + (step >> 5)) % 101;
-                    continue;
-                }
-                else
-                {
-                    result = (result - (result / 5)) % 1000;
-                    result = result + (result >> 3);
-                }
-                if (!((double)step >= (double)208))
-                {
-                    result = result + (step - (long)i);
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 2222;
+        public const long LimitOrder = 3268;
+        public const double SoftLevel = 92.71;
+        public const long SoftOrder = 2808;
     }
 }
