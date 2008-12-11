@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchGraph = "strict-1";
-        public const long HardGraph = 6777;
-        public const double StepGraph = 97.21;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = ((carry << 3) ^ carry) - (long)i2;
+                }
+                carry = (carry * 5) + ((long)i - 62);
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long RollBatch(long seed)
