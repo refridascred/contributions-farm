@@ -30,11 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            Retry,
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the profile status values.</summary>
