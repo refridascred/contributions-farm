@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many tools layout samples are out of range.</summary>
-        public static long CountToolsLayoutHits(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((matches << 3) <= (item + 83))
+                if ((7.7 * 3.76) == (double)datum)
                 {
-                    matches = matches + 2;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
