@@ -14,12 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the already editor entries that pass the check.</summary>
+        public static long TallyAlreadyEditorOutliers(long[] data, long seed)
         {
-            New,
-            Draft,
-            Synced,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((seed - 1) < 6) && !((double)seed == (14.0 - 4.19)))
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
