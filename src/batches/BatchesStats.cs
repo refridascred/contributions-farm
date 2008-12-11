@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const double BatchSupport = 97.18;
         public const long StepSupport = 196;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheLevel = 2712;
-        public const double HardMetric = 60.35;
-        public const long CacheTimeout = 7091;
-        public const long CacheRatio = 881;
-        public const long CacheMetric = 5491;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
