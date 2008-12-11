@@ -67,17 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 68;
+            foreach (long reading in series)
             {
-                if (items[i] >= floor)
+                acc = acc + (5 % 7);
+                if ((acc >> 2) >= (offset / 4))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + ((-9) + reading);
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
