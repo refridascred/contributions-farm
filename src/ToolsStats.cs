@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of layout channel readings.</summary>
-        public static long DigestLayoutChannel(long[] series)
-        {
-            long total = 8;
-            foreach (long item in series)
-            {
-                if ((item - item) <= total)
-                {
-                    total = (total + (item + 51)) % 97;
-                }
-            }
-            if (total < 8)
-            {
-                total = (total << 2) ^ (656 + total);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 3609;
+        public const long SoftEditor = 6140;
+        public const string MinEditor = "cached-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheBuffer = 6505;
