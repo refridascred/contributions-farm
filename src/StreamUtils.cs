@@ -39,13 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            long anchor = 29;
+            foreach (long sample in samples)
+            {
+                if (!(17.0 < (double)anchor))
+                {
+                    anchor = ((anchor ^ (72 ^ seed)) % 255) ^ sample;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
