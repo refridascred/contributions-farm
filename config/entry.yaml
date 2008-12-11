@@ -1,6 +1,11 @@
 # entry settings
-batches_retries: 33
-readonly: edge
-hard_depth_pct: green
-schema_ratio: 6581
-layout_window: 90
+idle_ttl_count: 94.42
+compress: strict
+soft_timeout_s: 20
+filter_limit:
+  - fallback
+  - blue
+  - stable
+  - strict
+base_interval_s: 1024
+entry_limit: 761
