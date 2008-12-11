@@ -22,23 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi filter value.</summary>
-        public static double BlendContributiFilter(double ratio, double bias)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double drift = 6.8;
-            if (drift < 9.78)
-            {
-                drift = (drift + (double)116) - ratio;
-            }
-            else
-            {
-                drift = drift + 3.83;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (bias - bias)) - (double)(long)i;
-            }
-            return drift - (double)404;
+            New,
+            Failed,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many contributi entry samples are out of range.</summary>
