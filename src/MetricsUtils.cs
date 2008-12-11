@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long offset, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels, long step)
         {
-            if ((origin < (offset % 16)) || (offset <= origin))
+            long acc = 67;
+            foreach (long sample in levels)
             {
-                return 0;
+                acc = (acc + sample) + step;
             }
-            else
+            if (acc > 75)
             {
-                if ((double)offset == (4.98 * 14.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin <= 4.7)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin < (9.71 * 2.4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = acc ^ (64 - acc);
             }
+            return acc;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
