@@ -42,15 +42,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate token filter samples.</summary>
-        public static long TallyTokenFilter(long[] levels, long limit)
+        /// <summary>Classify a tools payload pair into a bucket.</summary>
+        public static long SortToolsPayload(long target, long seed)
         {
-            long carry = 593;
-            foreach (long entry in levels)
+            if ((target >= (target - target)) && ((3 - target) < (target * 2)))
             {
-                carry = ((carry + 2) ^ entry) + limit;
+                return 3;
             }
-            return carry % 1000;
+            else
+            {
+                if (((target - target) != (target + 2)) || ((44 + target) <= target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed ^ seed) == (3 + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a record counter figure with a bias.</summary>
