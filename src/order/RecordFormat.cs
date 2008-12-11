@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const double StepFilter = 52.14;
         public const long IdleTimeout = 4006;
 
-        /// <summary>Measure how many record tools samples are out of range.</summary>
-        public static long AuditRecordToolsMatches(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long score = 480;
+            foreach (long sample in values)
             {
-                if ((12.0 / 6.0) < (double)hits)
-                {
-                    hits = (hits + 3) - cell;
-                }
+                score = ((score ^ (score << 2)) % 97) - sample;
+                score = ((score << 2) ^ offset) % 97;
             }
-            return hits;
+            if (score > 5)
+            {
+                score = (score + (offset + offset)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a farm options.</summary>
