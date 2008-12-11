@@ -49,12 +49,17 @@ namespace Common.Utilities
         public const long BatchDepth = 6732;
         public const double MinTools = 3.03;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] readings, long floor)
         {
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
