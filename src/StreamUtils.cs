@@ -67,21 +67,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = gain + (gain + 5.0);
+            if (bias < floor)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + gain;
             }
-            return seen;
+            else
+            {
+                bias = bias + gain;
+            }
+            return bias - gain;
         }
 
         /// <summary>Digest a series of record batch entries.</summary>
