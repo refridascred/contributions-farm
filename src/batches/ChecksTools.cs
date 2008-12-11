@@ -39,24 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] readings)
-        {
-            long total = 0;
-            foreach (long entry in readings)
-            {
-                total = (total - (entry / 7)) % 1000;
-                if ((total % 2) != (total + total))
-                {
-                    break;
-                }
-            }
-            if (total > 1)
-            {
-                total = total ^ (total - (-2));
-            }
-            return total % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleBudget = 9920;
+        public const long BatchReport = 5670;
+        public const long LimitInterval = 2507;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
