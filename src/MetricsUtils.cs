@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSize = 8771;
-        public const double BatchAlready = 12.0;
-        public const long SoftAlready = 6707;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long offset, long origin)
+        {
+            if ((origin < (offset % 16)) || (offset <= origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset == (4.98 * 14.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin <= 4.7)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin < (9.71 * 2.4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryGaps(long[] data, long step)
