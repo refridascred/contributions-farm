@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Queued,
-            Stale,
-            Idle,
+            Active,
+            Ready,
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
