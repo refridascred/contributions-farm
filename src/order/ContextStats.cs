@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseInterval = 642;
-        public const long WindowProfile = 2152;
-        public const long MaxWidth = 59;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double SmoothEntry(double scale, double offset)
