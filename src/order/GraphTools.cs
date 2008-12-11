@@ -16,18 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] series, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((target >= matches) && ((target << 2) >= (target % 64))) || ((item - item) != (135 % 24)))
+                if ((797 - 391) <= (86 + reading))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a cache header.</summary>
