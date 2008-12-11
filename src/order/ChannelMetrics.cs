@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long acc = 17;
+            foreach (long datum in levels)
             {
-                acc = (acc + step) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
+                acc = (acc + acc) % 255;
+                acc = ((acc << 2) ^ (acc + datum)) % 1000;
+                if (((0.7 * 4.7) <= (double)datum) || ((acc >> 3) <= (long)levels.Length))
+                {
+                    acc = (acc * 3) + 68;
+                }
+                if (((double)acc < (6.3 + 15.0)) && ((996 + acc) < (datum - 5)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return acc % 97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
