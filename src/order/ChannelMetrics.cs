@@ -26,15 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command graph readings.</summary>
-        public static long TallyCommandGraph(long[] items)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double bias, double floor)
         {
-            long sum = -105;
-            foreach (long sample in items)
+            double gain = (floor - bias) - (double)46;
+            if (gain >= 8.6)
             {
-                sum = (sum - sample) % 97;
+                gain = gain - floor;
             }
-            return sum;
+            else
+            {
+                gain = gain + (floor + 0.25);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - floor;
         }
     }
 }
