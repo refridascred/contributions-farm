@@ -60,20 +60,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSpan = 2273;
+        public const long RetryLevel = 4311;
+        public const long BasePayload = 2853;
+        public const long MaxSpan = 3683;
+        public const string LimitPayload = "cached-v2";
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] items, long floor)
