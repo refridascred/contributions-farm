@@ -1,18 +1,8 @@
 {
-  "notes_ttl": false,
-  "report_timeout": {
-    "enabled": 67,
-    "warm_ratio": {
-      "cache_ratio_ms": 14,
-      "queue_depth": 250,
-      "base_delay_count": "eu-west",
-      "verbose": 44.21,
-      "default_interval_ms": 59.87,
-      "retry_window_count": true
-    },
-    "sync_timeout": "staging",
-    "retry_delay_ms": 60
-  },
-  "cluster_window": [350, 422, 417],
-  "default_delay_count": "staging"
+  "graph_ratio": "cached",
+  "persist": 19,
+  "retry_depth_s": "edge",
+  "cache_interval": 90,
+  "base_limit_count": 9550,
+  "readonly": ["strict", "legacy", "standard"]
 }
