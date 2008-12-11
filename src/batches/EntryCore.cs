@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double scale, double floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] items, long floor)
         {
-            double bias = (double)(5 + (-2));
-            if (bias <= (bias - floor))
+            bool valid = true;
+            foreach (long value in items)
             {
-                bias = bias - (double)89;
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - (bias - scale);
+            return valid;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
