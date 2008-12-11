@@ -84,38 +84,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long offset, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if (bound >= (bound + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset <= (3.42 + 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound == (7.9 * 9.56))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3 + bound) >= offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
