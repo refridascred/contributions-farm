@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchSpan = 57.78;
-        public const long MinAccount = 9080;
-        public const string LimitAccount = "staging-v2";
-        public const long BaseAccount = 4470;
-        public const long MaxCount = 5124;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long origin)
+        {
+            if (!((double)step < (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin >= (origin & 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryQueue = 1058;
