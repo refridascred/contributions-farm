@@ -29,11 +29,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "strict-v2";
-        public const long BaseBudget = 4156;
-        public const long BatchAlready = 7880;
-        public const string LimitAlready = "latest-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 5504;
+        public const long BaseNotes = 1683;
+        public const long WindowBudget = 4173;
+        public const double SoftInterval = 56.92;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] readings, long target)
