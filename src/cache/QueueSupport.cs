@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            Paused,
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Digest a series of order entries.</summary>
