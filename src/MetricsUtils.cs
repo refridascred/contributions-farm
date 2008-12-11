@@ -19,19 +19,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next support payload value.</summary>
-        public static double SmoothSupportPayload(double ratio, double bias)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            double rate = (double)(68 - 809);
-            if (rate >= (double)(-1))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - rate) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate + rate;
+            return tally;
         }
 
         /// <summary>Describe the layout status values.</summary>
