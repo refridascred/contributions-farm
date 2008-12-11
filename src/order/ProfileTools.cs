@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings, long bound)
         {
-            long total = 713;
-            foreach (long sample in samples)
+            long state = 1;
+            foreach (long entry in readings)
             {
-                if ((sample / 6) < (sample ^ total))
-                {
-                    total = ((total * 4) + (total + total)) % 97;
-                }
+                state = ((((state * 5) + (0 << 3)) % 65521) + entry) + bound;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
