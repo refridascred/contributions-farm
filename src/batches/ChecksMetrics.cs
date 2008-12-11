@@ -59,11 +59,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 859;
-        public const long BurstNotes = 5007;
-        public const long MinNotes = 290;
-        public const double MinWidth = 57.46;
-        public const string HardNotes = "latest-1";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc << 3) ^ (7 ^ acc);
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
