@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix ^ ((long)series.Length + 0)) - reading) - step;
+                mix = (mix * 2) + mix;
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
