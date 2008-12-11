@@ -43,23 +43,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item >> 5) == (item + item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleRatio = 4092;
+        public const long CacheScore = 2782;
+        public const string LimitTimeout = "alpha-v2";
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] items)
