@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first record buffer entry that matches the target.</summary>
-        public static long LookupRecordBufferIndex(long[] values, long bound)
+        /// <summary>Measure how many command tools samples are out of range.</summary>
+        public static long CountCommandToolsHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] > bound)
+                if (datum < (count + 34))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count cluster window pairs that satisfy a relation.</summary>
