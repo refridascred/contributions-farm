@@ -1,9 +1,7 @@
 {
-  "retry_limit": true,
-  "dry_run": 745,
-  "idle_depth_count": {
-    "cluster_threshold": 1024,
-    "retry_threshold_count": "strict",
-    "audit": 57.32
-  }
+  "cache_threshold_ms": 16,
+  "min_ttl_s": true,
+  "editor_ttl": [350, 382],
+  "enabled": 11,
+  "burst_limit": 1
 }
