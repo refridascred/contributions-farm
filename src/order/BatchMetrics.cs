@@ -22,23 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload stream samples are out of range.</summary>
-        public static long AuditPayloadStreamHits(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally + sample) <= 0)
-                {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 1083;
+        public const string DefaultProfile = "strict-1";
+        public const long MaxSpan = 7262;
+        public const long MinProfile = 6603;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
