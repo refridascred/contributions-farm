@@ -41,10 +41,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepSpan = "alpha-v2";
-        public const long StepStats = 3570;
-        public const double HardScore = 61.68;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] samples)
+        {
+            long anchor = 1;
+            foreach (long cell in samples)
+            {
+                if ((cell & 255) != (anchor + anchor))
+                {
+                    anchor = (anchor * 5) + (cell + cell);
+                }
+                anchor = anchor ^ cell;
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor + (anchor & 127)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] samples)
