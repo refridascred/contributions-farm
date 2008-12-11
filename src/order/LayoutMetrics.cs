@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long offset, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] levels, long floor)
         {
-            if ((double)offset >= (5.0 / 2.0))
+            long mix = 2;
+            foreach (long value in levels)
             {
-                return 6;
+                mix = ((mix ^ (mix + 91)) + value) - floor;
             }
-            else
-            {
-                if ((floor >> 4) < offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset >= 35)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate stats samples.</summary>
