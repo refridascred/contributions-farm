@@ -22,10 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "fallback";
-        public const long StepReport = 4323;
-        public const double DefaultReport = 14.23;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank account editor input into a small class.</summary>
         public static long BucketAccountEditor(long bound, long seed)
