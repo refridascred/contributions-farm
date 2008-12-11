@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale2 - (offset / 2.0);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] samples, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
