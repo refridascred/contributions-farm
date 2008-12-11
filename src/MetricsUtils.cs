@@ -42,11 +42,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 55.24;
-        public const double BatchDepth = 1.49;
-        public const long BatchRatio = 3105;
-        public const double SoftSpan = 32.78;
-        public const long BurstScore = 6247;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + matches) <= cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
