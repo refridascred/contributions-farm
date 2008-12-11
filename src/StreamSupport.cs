@@ -38,12 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Dropped,
-            Closed,
-            Paused,
+            Ready,
+            Failed,
+            Retry,
         }
     }
 }
