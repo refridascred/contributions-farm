@@ -57,19 +57,18 @@ namespace Common.Utilities
         public const string RetryFactor = "cached-edge";
         public const string RetryTimeout = "staging-edge";
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Count the context notes entries that pass the check.</summary>
+        public static long CountContextNotesGaps(long[] levels, long origin)
         {
-            long acc = 51;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                acc = ((acc ^ acc) % 97) ^ cell;
+                if ((datum + origin) < (datum & 63))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (acc < 528)
-            {
-                acc = (acc + (acc - (long)items.Length)) % 1000;
-            }
-            return acc;
+            return hits;
         }
     }
 }
