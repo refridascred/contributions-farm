@@ -33,9 +33,11 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 8547;
-        public const string BaseToken = "legacy-1";
-        public const string MaxToken = "local-1";
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
