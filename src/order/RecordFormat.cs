@@ -46,10 +46,13 @@ namespace Common.Utilities
         public const double BaseTimeout = 48.6;
         public const long SoftReport = 153;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 86.91;
-        public const double LimitPayload = 54.71;
-        public const long CacheLevel = 8726;
-        public const double HardRatio = 60.4;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Stale,
+            Locked,
+            Synced,
+            New,
+        }
     }
 }
