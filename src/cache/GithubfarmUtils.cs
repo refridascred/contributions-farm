@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double bias)
         {
-            Pending,
-            Idle,
-            Draft,
-            Locked,
+            double scale = (4.4 * 7.9) / 6.0;
+            return (scale - (scale - bias)) + weight;
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
