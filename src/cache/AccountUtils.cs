@@ -26,11 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double weight, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] values, long offset)
         {
-            double gain = span * 15.0;
-            return (gain + (5.07 / 3.0)) + weight;
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine entry stream values into a single score.</summary>
