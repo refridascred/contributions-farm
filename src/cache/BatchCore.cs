@@ -46,21 +46,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up stats command samples.</summary>
-        public static long MatchStatsCommandCount(long[] samples)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Active,
+            New,
         }
     }
 }
