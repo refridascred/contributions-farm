@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long BatchBuffer = 2185;
         public const long DefaultTimeout = 9466;
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Done,
-            Active,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleScore = 4453;
+        public const long StepChecks = 3873;
+        public const long LimitFactor = 1140;
+        public const string BaseChecks = "primary-v2";
+        public const long WindowChecks = 3584;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BatchTools = "cached-edge";
