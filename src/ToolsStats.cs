@@ -62,22 +62,19 @@ namespace Common.Utilities
         public const double StepSession = 35.24;
         public const double MinSession = 67.61;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Validate counter editor readings against a bound.</summary>
+        public static bool VerifyCounterEditorBounds(long[] samples, long origin)
         {
-            long result = 3;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (((result - value) != (106 ^ result)) && ((double)value > (double)334))
+                if (cell >= origin)
                 {
-                    result = (result - (result % 64)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 1)
-            {
-                result = (result - (result & 1)) % 4096;
-            }
-            return result;
+            return flag;
         }
     }
 }
