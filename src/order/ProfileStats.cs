@@ -31,19 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
-        public static bool CheckFilterMetricsRange(long[] series, long offset)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            double weight = offset;
+            if (weight > (offset / 8.0))
             {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + offset;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (scale - scale)) + (double)(long)i;
+            }
+            return weight + (scale * 19.0);
         }
     }
 }
