@@ -42,18 +42,10 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string RetryAlready = "cached";
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitInterval = 4459;
+        public const string StepSpan = "staging";
+        public const long WindowChecks = 3665;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
