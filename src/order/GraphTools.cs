@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series)
-        {
-            long sum = 4;
-            foreach (long item in series)
-            {
-                sum = ((sum * 2) + (item ^ item)) % 1000;
-                sum = sum ^ item;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleDepth = "open-1";
+        public const long BurstCache = 6346;
+        public const string BaseCache = "open-edge";
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesGaps(long[] series, long target)
