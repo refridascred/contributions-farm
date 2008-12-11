@@ -14,11 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 9603;
-        public const long IdleSpan = 6077;
-        public const double MinCount = 87.88;
-        public const long BurstProfile = 903;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] data, long origin)
