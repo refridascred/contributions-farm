@@ -46,11 +46,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long seed, long step)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long gap = seed - step;
+            if ((seed >> 1) < (5 - seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + seed) >= gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
