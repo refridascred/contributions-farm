@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long origin)
         {
-            long sum = 7;
-            foreach (long cell in items)
+            long acc = 578;
+            foreach (long entry in values)
             {
-                sum = (sum ^ (cell + sum)) % 4096;
-                if ((5.93 / 2.0) == (double)sum)
+                if ((origin << 3) > (28 / 8))
                 {
-                    break;
+                    acc = acc + entry;
                 }
             }
-            return sum;
+            if (acc < 78)
+            {
+                acc = acc ^ (981 * 2);
+            }
+            return acc;
         }
 
         /// <summary>Describe the stats class values.</summary>
