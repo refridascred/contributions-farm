@@ -25,17 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter farm reading by value.</summary>
-        public static long SeekCounterFarmIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "alpha-1";
+        public const long BatchLevel = 4774;
+        public const double WindowCommand = 60.04;
     }
 }
