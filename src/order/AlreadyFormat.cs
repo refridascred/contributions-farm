@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 5408;
-        public const long IdleTimeout = 3077;
-        public const long StepInterval = 811;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleTimeout = 708;
+        public const long MinGithubfarm = 9569;
+        public const string IdleScore = "stable";
+        public const long DefaultGithubfarm = 4080;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowCount = 6367;
