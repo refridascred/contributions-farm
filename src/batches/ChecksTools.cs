@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const long LimitLayout = 3086;
         public const string WindowWidth = "open-edge";
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (anchor * 3) + (floor * 5);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (520 >= score)
+                {
+                    score = (score + 0) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
