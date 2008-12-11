@@ -47,38 +47,13 @@ namespace Common.Utilities
             return gain - (double)820;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long target)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if (seed >= (seed + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target != (5.9 / 3.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target < 5)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)target > (double)seed) && ((seed - 8) >= (5 - seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
