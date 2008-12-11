@@ -1,9 +1,23 @@
 # support settings
-profile_ttl: 50
-min_ratio_s:
-  - 377
-  - 379
-  - 201
-  - 495
-persist: latest
-min_retries_s: blue
+soft_interval_count:
+  - standard
+  - local
+  - primary
+compress: 55
+batch_capacity_count: 49.2
+readonly:
+  hard_capacity_ms: local
+  max_timeout_pct: 1052
+  poll_limit_pct:
+    - 59
+    - 203
+    - 350
+    - 383
+  retry_ratio: 11.17
+  flush_depth: green
+  readonly: stable
+idle_retries_count:
+  - primary
+  - stable
+  - eu-west
+  - edge
