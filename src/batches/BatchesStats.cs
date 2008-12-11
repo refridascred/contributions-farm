@@ -22,17 +22,11 @@ namespace Common.Utilities
         public const long MinAccount = 5976;
         public const long BaseAccount = 1481;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] values, long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
