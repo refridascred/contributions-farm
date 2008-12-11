@@ -17,18 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] readings)
+        /// <summary>Roll a layout command counter forward.</summary>
+        public static long SeriesLayoutCommand(long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)entry > 0.58)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = seen + 3;
+                    acc = (((acc << 2) ^ (acc / 4)) % 4096) + (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Accumulate entry samples.</summary>
