@@ -40,10 +40,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 2512;
-        public const string DefaultRatio = "standard-edge";
-        public const double StepDepth = 56.62;
-        public const double StepFactor = 55.68;
+        /// <summary>Classify a token editor pair into a bucket.</summary>
+        public static long GradeTokenEditor(long step, long seed)
+        {
+            long gap = step ^ seed;
+            if (gap > (seed + seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((514 >> 4) >= (seed >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
