@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Failed,
-            New,
-            Stale,
+            Ready,
+            Synced,
             Active,
-            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a format entry.</summary>
