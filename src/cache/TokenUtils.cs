@@ -32,17 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account tools value from a seed.</summary>
-        public static long StepAccountTools(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                state = state + ((long)i & 31);
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 89.72;
+        public const long StepFactor = 214;
+        public const long RetryTimeout = 5725;
+        public const long CacheBuffer = 9975;
 
         /// <summary>Compare every pair of context report readings.</summary>
         public static long OverlapContextReportCount(long[] values)
