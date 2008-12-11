@@ -27,22 +27,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 1934;
+        public const long DefaultRatio = 4424;
+        public const long LimitGraph = 2416;
+        public const long BaseSpan = 4926;
+        public const long WindowGraph = 6679;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountHits(long[] readings, long origin)
