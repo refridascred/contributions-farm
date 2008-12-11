@@ -39,16 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state - ((long)i ^ state)) % 97;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Paused,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the cache level values.</summary>
