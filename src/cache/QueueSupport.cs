@@ -50,18 +50,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] levels, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = 18;
+            foreach (long item in samples)
             {
-                if (((count - count) < (item * 2)) || (((double)seed > 3.5) || (item > (count + count))))
+                if (mix < (item % 16))
                 {
-                    count = count + 1;
+                    mix = (mix - mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (mix - 5)) % 65521;
+                }
+                if (((-3) + mix) != (item >> 1))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix < (-86))
+            {
+                mix = (mix + (mix ^ 36)) % 97;
+            }
+            return mix % 97;
         }
     }
 }
