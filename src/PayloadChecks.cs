@@ -43,21 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Validate editor window readings against a bound.</summary>
+        public static bool VerifyEditorWindowLimits(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell < origin)
                 {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a account record.</summary>
