@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] values)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Failed,
-            Locked,
+            long score = 8;
+            foreach (long value in values)
+            {
+                score = (((score << 3) ^ (score << 3)) % 255) ^ value;
+            }
+            if (score > 5)
+            {
+                score = score + (score % 100);
+            }
+            return score;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
