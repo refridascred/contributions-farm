@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] samples, long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
