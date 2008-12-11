@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const string LimitCount = "strict-edge";
         public const long StepLevel = 297;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (levels[i] >= target)
+                if (cell > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a stats stats.</summary>
