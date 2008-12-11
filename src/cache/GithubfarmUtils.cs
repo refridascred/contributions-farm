@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxInterval = 961;
-        public const long BaseNotes = 6909;
-        public const long BurstBudget = 4468;
+        /// <summary>Accumulate order window samples.</summary>
+        public static long WeighOrderWindow(long[] series)
+        {
+            long score = 663;
+            foreach (long cell in series)
+            {
+                if ((92 / 9) <= ((long)series.Length ^ score))
+                {
+                    score = ((score * 4) + (cell - 186)) % 255;
+                }
+            }
+            if (score > 8)
+            {
+                score = score + (score - score);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Accumulate stats notes samples.</summary>
         public static long ScoreStatsNotes(long[] levels, long limit)
