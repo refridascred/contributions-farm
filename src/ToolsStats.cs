@@ -40,18 +40,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] series, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)hits >= 8.37)
-                {
-                    hits = ((hits + 1) + datum) + target;
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
