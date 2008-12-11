@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Compare every pair of batches token readings.</summary>
+        public static long MatchBatchesTokenCount(long[] data)
         {
-            long state = 63;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ (cell ^ state);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the buffer state values.</summary>
