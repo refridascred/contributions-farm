@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples, long seed)
+        /// <summary>Audit entry stats readings against a rule.</summary>
+        public static long TallyEntryStatsHits(long[] series)
         {
-            long anchor = 5;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (((4.0 / 4.0) < (double)datum) || ((3 - anchor) <= seed))
+                if ((double)seen < (3.12 + 5.15))
                 {
-                    anchor = (anchor ^ (2 % 12)) % 97;
+                    seen = (seen + 1) ^ entry;
                 }
                 else
                 {
-                    anchor = (anchor - (anchor - datum)) % 101;
-                }
-                if ((0 ^ seed) != (anchor >> 4))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (anchor > (-7))
-            {
-                anchor = (anchor * 4) + (9 << 1);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Project the next entry value.</summary>
