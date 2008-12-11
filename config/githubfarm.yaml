@@ -1,6 +1,16 @@
 # githubfarm settings
-compress:
-  - 378
-  - 252
-warm_capacity_pct: 500
-warm_limit: local
+hard_retries_ms: 78
+checks_capacity:
+  batch_window_s: eu-west
+  verbose:
+    - 325
+    - 286
+    - 324
+    - 286
+  cache_limit:
+    - 202
+    - 271
+    - 323
+  compress: primary
+  hard_window: 4836
+entry_capacity: latest
