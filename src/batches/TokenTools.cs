@@ -13,14 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            Queued,
-            Closed,
-            Idle,
-            Retry,
-            New,
+            long total = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
