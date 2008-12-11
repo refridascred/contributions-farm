@@ -42,19 +42,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state * 5) + (long)i2) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
