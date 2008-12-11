@@ -37,19 +37,22 @@ namespace Common.Utilities
         public const double HardCount = 69.74;
         public const long StepBudget = 3460;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] items, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (cell < offset)
+                if ((item >> 5) == (item + item))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
