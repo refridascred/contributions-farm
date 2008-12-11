@@ -1,7 +1,19 @@
 # support settings
-metrics_interval: strict
-sync_retries: 8
-retry_timeout: 6150
-record_retries: 2000
-audit: local
-commits_threshold: green
+persist:
+  burst_delay_count:
+    cache_retries_s: 38.14
+    warm_size: 9893
+    dry_run: cached
+  notes_window:
+    default_limit_s: 69.39
+    min_capacity_s: 211
+    max_capacity_count: 8956
+    githubfarm_ttl: 60
+    dry_run: 100
+    account_ttl: 60
+  enabled: true
+batch_ttl: stable
+hard_threshold_count: true
+flush_delay_s: 60
+schema_timeout: 28
+idle_retries: fallback
