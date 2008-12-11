@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] items, long bound)
         {
-            Paused,
-            Idle,
-            Synced,
-            Retry,
+            long total = 9;
+            foreach (long entry in items)
+            {
+                total = ((total - total) ^ entry) - bound;
+                total = (total - total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
