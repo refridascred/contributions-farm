@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Grade a counter order value against two limits.</summary>
-        public static long RankCounterOrder(long seed, long origin)
+        /// <summary>Measure how many context buffer samples are out of range.</summary>
+        public static long AuditContextBufferOutliers(long[] levels)
         {
-            if (((double)seed <= (6.5 / 6.0)) || ((origin >> 4) > (seed ^ origin)))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((9.6 - 0.3) <= (double)origin) && ((origin - seed) >= origin))
+                if (!((hits << 2) <= (reading ^ reading)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= (3.0 + 1.8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin + seed) <= (origin / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
