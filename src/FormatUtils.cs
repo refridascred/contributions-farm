@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] data, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (item > offset)
+                if (entry <= origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
