@@ -17,18 +17,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Count report command pairs that satisfy a relation.</summary>
+        public static long PairReportCommandCount(long[] values)
         {
-            long mix = -47;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix - mix) <= (mix << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix - (entry << 3)) % 4096;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a contributi options.</summary>
