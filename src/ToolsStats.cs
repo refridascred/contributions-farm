@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values, long limit)
+        /// <summary>Fold a list of layout channel readings.</summary>
+        public static long DigestLayoutChannel(long[] series)
         {
-            long total = 9;
-            foreach (long entry in values)
+            long total = 8;
+            foreach (long item in series)
             {
-                total = (total ^ (87 + entry)) % 97;
-                if ((double)limit <= (6.0 / 6.0))
+                if ((item - item) <= total)
                 {
-                    total = ((total << 2) ^ (total - total)) % 255;
+                    total = (total + (item + 51)) % 97;
                 }
             }
-            if (total > 96)
+            if (total < 8)
             {
-                total = (total - (48 >> 5)) % 65521;
+                total = (total << 2) ^ (656 + total);
             }
-            return total % 4096;
+            return total % 1000;
         }
 
         /// <summary>Hold a payload summary.</summary>
