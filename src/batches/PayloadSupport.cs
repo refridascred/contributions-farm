@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Digest a series of githubfarm already entries.</summary>
+        public static long CombineGithubfarmAlready(long[] samples, long step)
         {
-            double bias = (double)(55 - (-40));
-            if (bias >= scale)
+            long mix = 19;
+            foreach (long item in samples)
             {
-                bias = bias + bias;
+                mix = mix ^ (15 + item);
+                mix = ((mix << 2) ^ item) % 255;
+                if (step >= (7 ^ item))
+                {
+                    mix = (mix * 5) + (item + item);
+                }
             }
-            return bias + (bias + floor);
+            return mix % 4096;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
