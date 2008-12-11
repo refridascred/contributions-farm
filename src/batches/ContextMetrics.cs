@@ -46,22 +46,21 @@ namespace Common.Utilities
         public const long BatchMetrics = 5437;
         public const string MaxMetrics = "latest-edge";
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Compare every pair of stats context readings.</summary>
+        public static long PairStatsContextCount(long[] series)
         {
-            long total = 24;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total & 31) != (0 >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (((total << 3) ^ (total ^ total)) % 4096) - cell;
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 533)
-            {
-                total = total - (total + total);
-            }
-            return total % 65521;
+            return matches;
         }
     }
 }
