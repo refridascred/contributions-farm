@@ -54,12 +54,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            New,
+            Closed,
+            Paused,
         }
     }
 }
