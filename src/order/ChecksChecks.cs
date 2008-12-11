@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowFactor = 8058;
+        public const long BurstMetric = 149;
+        public const double HardMetric = 42.07;
+        public const long IdleMetric = 6832;
+        public const long MinMetric = 5993;
 
         /// <summary>Count batches farm pairs that satisfy a relation.</summary>
         public static long MatchBatchesFarmCount(long[] series)
