@@ -22,14 +22,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Idle,
-            Retry,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitFactor = 8302;
+        public const double BaseWindow = 71.0;
+        public const long SoftWindow = 7618;
+        public const long BurstWidth = 9738;
 
         /// <summary>Project the next token value.</summary>
         public static double BlendToken(double scale, double offset)
