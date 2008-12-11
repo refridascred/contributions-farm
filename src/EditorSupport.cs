@@ -34,12 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the report layout entries that pass the check.</summary>
+        public static long CountReportLayoutGaps(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((1 + 480) <= (matches >> 3))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every command buffer entry stays within the limit.</summary>
