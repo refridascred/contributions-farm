@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long origin, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long next = origin - bound;
+            if (((78 & 1) <= (85 + origin)) || ((next / 4) > (origin >> 3)))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result - ((long)i + 614)) % 97) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((next + next) == (next + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((next / 5) == (origin + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
