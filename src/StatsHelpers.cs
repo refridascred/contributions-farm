@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheWidth = 9572;
-        public const long HardEditor = 8159;
-        public const long BurstBudget = 7854;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinWidth = 2537;
+        public const double CacheCount = 2.31;
+        public const string DefaultTools = "strict-1";
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
