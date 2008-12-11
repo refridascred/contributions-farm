@@ -1,6 +1,6 @@
 # support settings
-default_ttl_count: strict
-persist: 500
-profile_interval: stable
-farm_window: 56.53
-verbose: cached
+flush_delay:
+  - 403
+  - 237
+strict: 86.1
+layout_size: standard
