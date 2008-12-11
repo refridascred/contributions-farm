@@ -33,21 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batches farm pairs that satisfy a relation.</summary>
-        public static long MatchBatchesFarmCount(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell != limit)
                 {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
