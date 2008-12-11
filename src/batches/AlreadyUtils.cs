@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long seed)
         {
-            New,
-            Idle,
-            Paused,
-            Stale,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
