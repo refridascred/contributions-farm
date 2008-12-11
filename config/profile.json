@@ -1,11 +1,5 @@
 {
-  "poll_delay": "legacy",
-  "cache_timeout_pct": 68.47,
-  "dry_run": {
-    "retry_threshold_pct": 0.59,
-    "checks_window": false,
-    "batches_ttl": false,
-    "audit": 500,
-    "sync_ratio": "local"
-  }
+  "readonly": 60,
+  "base_limit_ms": true,
+  "retry_retries_ms": 1141
 }
