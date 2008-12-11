@@ -24,17 +24,10 @@ namespace Common.Utilities
         public const long DefaultRatio = 4461;
         public const long MaxSchema = 7275;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "stable-1";
+        public const long SoftBatch = 2253;
+        public const long MaxBatch = 4847;
+        public const long HardScore = 2325;
     }
 }
