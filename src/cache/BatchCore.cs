@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long IdleBatch = 4657;
         public const long DefaultBatch = 5704;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 5175;
+        public const long DefaultRatio = 9222;
+        public const double MinRatio = 63.03;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFarm = 3310;
