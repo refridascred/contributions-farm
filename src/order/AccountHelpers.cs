@@ -35,32 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long origin, long seed)
-        {
-            if (seed <= (origin - origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin != (8.1 / 5.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 7) >= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 7396;
+        public const long HardBatches = 9361;
+        public const long MinRatio = 2615;
+        public const long WindowSize = 4419;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long FindGithubfarmIndex(long[] samples, long target)
