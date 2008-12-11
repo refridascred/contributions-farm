@@ -52,21 +52,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context layout pairs that satisfy a relation.</summary>
-        public static long OverlapContextLayoutCount(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = seed - seed2;
+            if (6.4 < (double)seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((8.15 * 19.0) <= (double)cur)
                 {
-                    if ((items[i] + items[j]) > 1)
+                    return 8;
+                }
+                else
+                {
+                    if ((cur + seed2) != (6 >> 2))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
