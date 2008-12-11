@@ -28,15 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
