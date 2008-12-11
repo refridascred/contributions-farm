@@ -62,19 +62,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] levels, long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double load = (double)(848 >> 4);
+            if (load < 6.79)
             {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load + offset) + gain;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (double)840;
         }
 
         /// <summary>Digest a series of record batch entries.</summary>
