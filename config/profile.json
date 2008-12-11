@@ -1,6 +1,5 @@
 {
-  "soft_depth_s": 3139,
-  "enabled": 57.0,
-  "min_window_s": true,
-  "cache_depth": true
+  "format_retries": 52.07,
+  "order_capacity": 2,
+  "support_limit": 250
 }
