@@ -1,10 +1,14 @@
 # Command notes
 
-The commits module keeps payload values in sync with the account cache.
-Keep githubfarm and report names short and lowercase.
+Each batches is validated before it reaches the format queue.
+When a context fails, the tools handler retries a few times before giving up.
+
+The cache module keeps session values in sync with the githubfarm cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Run the metric check before changing any command limits.
 
 ## Guidelines
 
-- Keep payload values small
-- Review metrics limits each release
-- Document new buffer fields
+- Validate cluster input early
+- Log every tools change
+- Keep notes values small
