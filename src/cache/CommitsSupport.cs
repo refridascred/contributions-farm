@@ -23,13 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] readings, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((228 % 100) <= (entry - target))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a command entry.</summary>
