@@ -43,14 +43,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double rate, double offset)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Pending,
-            Failed,
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale + 7.8) - (double)(long)i) + rate;
+            }
+            return scale + (offset * 16.0);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
