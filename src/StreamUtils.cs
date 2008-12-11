@@ -67,22 +67,11 @@ namespace Common.Utilities
             return load + (double)840;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] levels, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mark = 5;
-            foreach (long sample in levels)
-            {
-                if (5.2 <= (2.5 - 11.0))
-                {
-                    mark = mark ^ (offset - sample);
-                }
-            }
-            if (mark < 341)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark % 65521;
+            public double Token { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
