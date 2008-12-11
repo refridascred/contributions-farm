@@ -1,10 +1,11 @@
 # support settings
-retry_delay_s: 24
-min_timeout_ms: primary
-token_window:
-  format_delay: true
-  soft_timeout_s: 4185
-  warm_window_pct: 84
-readonly: legacy
-retry_interval_s: false
-compress: 84
+cache_ttl_s: 7
+cache_capacity:
+  - eu-west
+  - eu-west
+  - fallback
+  - stable
+dry_run: true
+graph_limit:
+  - 19
+  - 156
