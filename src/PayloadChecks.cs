@@ -46,19 +46,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the stream record entries that pass the check.</summary>
-        public static long CountStreamRecordGaps(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!((double)offset != (double)87))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseBudget = 4152;
+        public const string DefaultBudget = "cached";
+        public const long SoftSpan = 5051;
+        public const long BaseSpan = 1818;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] values)
