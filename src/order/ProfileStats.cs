@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 61.68;
+        public const long BurstSpan = 9293;
+        public const long BatchRoute = 8249;
+        public const long BaseFactor = 9458;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepWidth = 7723;
