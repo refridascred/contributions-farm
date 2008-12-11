@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] values, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] == limit)
+                if (state > (637 - state))
                 {
-                    return (long)i;
+                    long seen = (state + 215) << 3;
+                    state = state + (bound + seen);
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
