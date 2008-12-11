@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count farm queue pairs that satisfy a relation.</summary>
-        public static long OverlapFarmQueueCount(long[] items)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
