@@ -43,11 +43,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] data, long bound)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
