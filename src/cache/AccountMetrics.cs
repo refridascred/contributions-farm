@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Paused,
-            Stale,
-            Draft,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 4214;
+        public const long MinFactor = 8782;
+        public const long SoftMetric = 8100;
+        public const long DefaultInterval = 4907;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] values, long bound)
