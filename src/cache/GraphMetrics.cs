@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            double ratio = (8.0 - 15.0) * 7.62;
-            if (ratio < gain)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + (double)9;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
