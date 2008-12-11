@@ -14,33 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long offset, long bound)
-        {
-            long span = offset - bound;
-            if (span > (span + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= (8.54 / 2.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + 9) > (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 9603;
+        public const long IdleSpan = 6077;
+        public const double MinCount = 87.88;
+        public const long BurstProfile = 903;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] data, long origin)
