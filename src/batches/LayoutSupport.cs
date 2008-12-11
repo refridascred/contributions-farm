@@ -26,19 +26,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items, long floor)
+        /// <summary>Derive the next filter metrics value from a seed.</summary>
+        public static long IterateFilterMetrics(long floor)
         {
-            long acc = 7;
-            foreach (long datum in items)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                acc = acc ^ (datum + datum);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (acc > 520)
-            {
-                acc = acc - (floor + floor);
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
