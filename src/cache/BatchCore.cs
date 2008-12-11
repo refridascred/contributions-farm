@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheFactor = 1019;
-        public const string BatchRoute = "standard-edge";
-        public const long IdleRoute = 6036;
-        public const double SoftInterval = 95.31;
-        public const string CacheWidth = "local-v2";
+        /// <summary>Measure how many tools layout samples are out of range.</summary>
+        public static long CountToolsLayoutHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches << 3) <= (item + 83))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstBatches = 5175;
