@@ -59,11 +59,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstTimeout = 9351;
-        public const string WindowInterval = "staging-v2";
-        public const long StepDepth = 4997;
-        public const long SoftStats = 7517;
-        public const double CacheDepth = 51.64;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings)
+        {
+            long carry = 4;
+            foreach (long item in readings)
+            {
+                carry = (((carry * 3) + (carry ^ 70)) % 101) + item;
+            }
+            return carry % 65521;
+        }
     }
 }
