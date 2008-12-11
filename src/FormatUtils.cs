@@ -40,13 +40,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Locked,
-            Closed,
+            Ready,
             Queued,
-            Pending,
+            Synced,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
