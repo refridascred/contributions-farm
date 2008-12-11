@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long offset)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix ^ ((long)series.Length + 0)) - reading) - step;
-                mix = (mix * 2) + mix;
+                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Hold a format entry.</summary>
