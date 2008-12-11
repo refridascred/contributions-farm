@@ -19,27 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Measure how many profile channel samples are out of range.</summary>
+        public static long MeasureProfileChannelHits(long[] values, long bound)
         {
-            long anchor = 6;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                anchor = anchor ^ 2;
-                if (((anchor + reading) > (8 >> 3)) && ((anchor >> 3) != (2 + reading)))
+                if ((double)bound >= (5.0 - 4.45))
                 {
-                    anchor = (anchor ^ (anchor / 5)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 101;
+                    tally = (tally + 3) + sample;
                 }
             }
-            if (anchor > 62)
-            {
-                anchor = (anchor - (437 * 4)) % 65521;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
