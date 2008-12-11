@@ -1,6 +1,6 @@
 {
-  "batch_size": "eu-west",
-  "readonly": ["stable", "open"],
-  "record_size": 82.17,
-  "soft_size_pct": 31
+  "default_ttl_ms": 74,
+  "readonly": [214, 165, 41, 156],
+  "batch_window_ms": 100,
+  "retry_timeout_pct": ["green", "fallback", "standard", "primary"]
 }
