@@ -25,10 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1058;
-        public const long SoftQueue = 555;
-        public const long MinQueue = 7714;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Done,
+            Idle,
+            Queued,
+            New,
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] series)
