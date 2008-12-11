@@ -62,15 +62,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
