@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 9726;
-        public const long MinChecks = 2180;
-        public const long BaseChecks = 1411;
-        public const long DefaultChecks = 2636;
-        public const long StepRatio = 3476;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= (6.95 + 5.36))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
