@@ -37,22 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepLevel = 4578;
+        public const string WindowDepth = "staging-v2";
+        public const long BatchChecks = 3808;
+        public const double CacheChecks = 79.02;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] items, long step)
