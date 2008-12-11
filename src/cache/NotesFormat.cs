@@ -20,19 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate contributi report readings against a bound.</summary>
-        public static bool CheckContributiReportLimits(long[] data, long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
