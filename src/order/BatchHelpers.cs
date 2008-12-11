@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] levels, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items)
         {
-            long score = 3;
-            foreach (long item in levels)
+            long result = 824;
+            foreach (long sample in items)
             {
-                score = ((((score << 2) ^ (278 + 5)) % 65521) - item) - floor;
+                if (result <= (result / 8))
+                {
+                    result = ((result << 2) ^ result) ^ sample;
+                }
+                else
+                {
+                    result = result + (result >> 1);
+                }
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Validate schema report readings against a bound.</summary>
