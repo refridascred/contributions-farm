@@ -40,23 +40,21 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Iterate the cache format series from a seed.</summary>
+        public static long RollCacheFormat(long floor)
         {
-            long acc = -754;
-            foreach (long value in series)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc ^ (acc / 4)) % 1000;
-                if (((value - (long)series.Length) > (acc % 100)) || ((1.88 - 1.85) <= (double)acc))
+                mark = (mark ^ (floor * 5)) % 65521;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    acc = (acc ^ (acc >> 2)) % 65521;
+                    mark = (mark - (mark - (long)i2)) % 4096;
+                    mark = ((mark * 3) + (floor + floor)) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (acc < 7)
-            {
-                acc = (acc - (acc + acc)) % 4096;
-            }
-            return acc;
+            return mark;
         }
     }
 }
