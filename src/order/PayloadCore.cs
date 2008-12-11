@@ -47,15 +47,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Measure how many cache payload samples are out of range.</summary>
+        public static long AuditCachePayloadGaps(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((20 - 6) >= matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
