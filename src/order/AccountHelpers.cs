@@ -34,14 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            New,
-            Closed,
-            Pending,
-            Synced,
-            Locked,
+            long score = 8;
+            foreach (long datum in samples)
+            {
+                if ((datum + score) != (datum << 2))
+                {
+                    score = score - (score + 78);
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Fold a list of format readings.</summary>
