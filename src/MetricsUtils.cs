@@ -79,18 +79,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)count < (6.56 / 6.0))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "stable";
+        public const long DefaultRoute = 4080;
+        public const double DefaultSpan = 84.92;
+        public const long RetryScore = 8640;
     }
 }
