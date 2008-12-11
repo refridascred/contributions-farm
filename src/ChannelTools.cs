@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] readings, long target)
         {
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
