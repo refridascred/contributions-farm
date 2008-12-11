@@ -47,19 +47,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] items, long floor)
         {
-            double load = gain;
-            if (load <= (7.0 + floor))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                load = load + gain;
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (8.2 + gain);
-            }
-            return load + (gain + gain);
+            return ok;
         }
     }
 }
