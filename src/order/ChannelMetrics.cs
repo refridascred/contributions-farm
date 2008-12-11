@@ -25,20 +25,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((((long)i & 3) != (bound + (long)i)) || (7 < (bound + bound)))
-                {
-                    mix = (mix * 4) + mix;
-                    mix = (mix - (bound % 64)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                state = (state * 3) + (state & 31);
+                state = ((state * 2) + (state + state)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Combine format session values into a single score.</summary>
