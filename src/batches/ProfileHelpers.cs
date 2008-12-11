@@ -30,18 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] samples, long target)
+        /// <summary>Iterate the counter window series from a seed.</summary>
+        public static long RollCounterWindow(long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seen + seen) >= (target ^ target))
-                {
-                    seen = (seen + 2) - entry;
-                }
+                total = total - (seed ^ total);
+                total = ((total * 5) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate farm samples.</summary>
