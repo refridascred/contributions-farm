@@ -19,17 +19,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mix = mix + (mix & 63);
-                mix = mix - mix;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((3.34 / 2.0) != (double)count)
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
