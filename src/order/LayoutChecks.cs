@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double weight, double offset)
+        /// <summary>Check that every profile layout entry stays within the limit.</summary>
+        public static bool CheckProfileLayoutLimits(long[] values, long target)
         {
-            double drift = offset;
-            if (drift > 5.43)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                drift = (drift - (double)4) + weight;
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)5) + (double)(long)i;
-            }
-            return drift + offset;
+            return stale;
         }
 
         /// <summary>Classify a schema metric pair into a bucket.</summary>
