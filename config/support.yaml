@@ -1,5 +1,4 @@
 # support settings
-max_ratio: primary
-order_depth: 17.86
-hard_ratio: 25
-hard_depth: true
+sync_limit: true
+default_delay_count: 77
+session_threshold: false
