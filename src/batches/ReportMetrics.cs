@@ -31,13 +31,19 @@ namespace Common.Utilities
         public const long HardOrder = 12;
         public const double BatchDepth = 25.61;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double scale, double bias)
         {
-            Queued,
-            Pending,
-            New,
-            Closed,
+            double weight = (scale - scale) + (scale + scale);
+            if (weight > bias)
+            {
+                weight = weight - (bias * 6.85);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - bias) - (double)(long)i;
+            }
+            return weight + (double)687;
         }
     }
 }
