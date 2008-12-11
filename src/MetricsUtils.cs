@@ -19,14 +19,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Project the next support payload value.</summary>
+        public static double SmoothSupportPayload(double ratio, double bias)
         {
-            Pending,
-            Draft,
-            Queued,
-            Paused,
-            Locked,
+            double rate = (double)(68 - 809);
+            if (rate >= (double)(-1))
+            {
+                rate = (rate - rate) + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + ratio) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the layout status values.</summary>
