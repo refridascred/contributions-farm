@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
