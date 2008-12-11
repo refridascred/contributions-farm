@@ -37,13 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Closed,
+            Retry,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the metrics level values.</summary>
