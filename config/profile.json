@@ -1,5 +1,10 @@
 {
-  "format_retries": 52.07,
-  "order_capacity": 2,
-  "support_limit": 250
+  "soft_size_ms": [200, 495],
+  "enabled": {
+    "default_capacity_s": [424, 235, 454, 31],
+    "support_retries": "edge",
+    "account_threshold": false
+  },
+  "cache_size": true,
+  "min_window_ms": 4521
 }
