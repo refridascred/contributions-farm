@@ -16,16 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                score = ((score * 2) + (origin * 2)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a metric info.</summary>
