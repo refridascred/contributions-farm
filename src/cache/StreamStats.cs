@@ -34,11 +34,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 3687;
-        public const string BatchCount = "local-v2";
-        public const double BatchRatio = 10.21;
-        public const long BatchLevel = 1284;
-        public const long MinBudget = 7546;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
