@@ -30,22 +30,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen - item) == (long)readings.Length)
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 9732;
+        public const long HardAccount = 6364;
+        public const long MinSize = 2601;
+        public const string IdleDepth = "local-v2";
+        public const string MinCount = "staging-v2";
     }
 }
