@@ -1,6 +1,11 @@
-id,token,level,active
-1,local,latest,66.95
-2,188,724,17.56
-3,946,205,42.25
-4,latest,fallback,stable
-5,210,69.97,primary
+id,owner
+1,69
+2,91
+3,fallback
+4,725
+5,edge
+6,80.08
+7,cached
+8,61.31
+9,48.81
+10,primary
