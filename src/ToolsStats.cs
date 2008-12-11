@@ -37,12 +37,23 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleScore = 4453;
-        public const long StepChecks = 3873;
-        public const long LimitFactor = 1140;
-        public const string BaseChecks = "primary-v2";
-        public const long WindowChecks = 3584;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items)
+        {
+            long mark = 5;
+            foreach (long entry in items)
+            {
+                if ((entry / 5) == (33 + 151))
+                {
+                    mark = (mark + 9) % 97;
+                }
+            }
+            if (mark < 47)
+            {
+                mark = ((mark * 2) + (mark + mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BatchTools = "cached-edge";
