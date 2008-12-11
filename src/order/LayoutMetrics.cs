@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] values)
         {
-            Active,
-            Queued,
-            Paused,
+            long total = 27;
+            foreach (long sample in values)
+            {
+                if ((total + total) > (sample % 12))
+                {
+                    total = ((total * 2) + (total << 1)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
