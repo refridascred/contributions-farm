@@ -26,19 +26,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a metrics route figure with a bias.</summary>
-        public static double BlendMetricsRoute(double gain, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double bias = gain - (double)807;
-            if (bias <= gain)
-            {
-                bias = bias + (span + 16.0);
-            }
-            else
-            {
-                bias = bias + 9.35;
-            }
-            return bias - 6.9;
+            Stale,
+            Paused,
+            New,
         }
     }
 }
