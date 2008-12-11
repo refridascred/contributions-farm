@@ -33,14 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Digest a series of contributi githubfarm entries.</summary>
+        public static long CombineContributiGithubfarm(long[] data)
         {
-            Synced,
-            Pending,
-            Draft,
-            Done,
-            Paused,
+            long carry = 293;
+            foreach (long reading in data)
+            {
+                if (((double)(long)data.Length < (double)carry) && ((carry & 3) > reading))
+                {
+                    carry = carry - (carry + reading);
+                }
+                if (!((double)reading < (14.0 + 5.0)))
+                {
+                    carry = carry - (reading % 16);
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the farm status values.</summary>
