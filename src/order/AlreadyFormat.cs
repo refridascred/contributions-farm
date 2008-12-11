@@ -35,14 +35,10 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8730;
         public const long CacheFactor = 3802;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Queued,
-            Closed,
-            Failed,
-            New,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 43.88;
+        public const string CacheLayout = "standard-v2";
+        public const string RetryLayout = "fallback-v2";
+        public const long MaxSpan = 8653;
     }
 }
