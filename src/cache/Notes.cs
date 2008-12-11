@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double ratio, double floor)
+        /// <summary>Look up the position of a channel session sample.</summary>
+        public static long FindChannelSessionIndex(long[] readings, long offset)
         {
-            double ratio2 = floor - (floor + ratio);
-            if (ratio2 > (0.8 + floor))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = ratio2 + floor;
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 - floor;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
