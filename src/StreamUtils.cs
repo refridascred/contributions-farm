@@ -45,18 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples, long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long floor)
         {
-            long anchor = 29;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(17.0 < (double)anchor))
+                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
                 {
-                    anchor = ((anchor ^ (72 ^ seed)) % 255) ^ sample;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
