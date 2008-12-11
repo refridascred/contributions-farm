@@ -39,19 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue graph readings against a bound.</summary>
-        public static bool GuardQueueGraphBounds(long[] items, long limit)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= limit)
+                if (data[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
