@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long state = 46;
+            foreach (long value in samples)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if ((value + 658) < (value & 15))
+                {
+                    state = ((state << 3) ^ (value * 2)) % 101;
+                    break;
+                }
+                state = (state * 4) + 805;
+                state = (state - (69 - state)) % 255;
             }
-            return state;
+            if (state > (-90))
+            {
+                state = (state ^ state) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
