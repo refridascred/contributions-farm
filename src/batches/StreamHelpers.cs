@@ -43,13 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] readings, long limit)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry * 5) <= (62 >> 1))
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
