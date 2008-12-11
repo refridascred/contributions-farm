@@ -73,22 +73,38 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long bound)
         {
-            long carry = 47;
-            foreach (long sample in readings)
+            if (bound >= (bound + bound))
             {
-                if (!((5.0 < (double)seed) || ((double)carry <= (8.4 / 5.0))))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset <= (3.42 + 8.0))
                 {
-                    carry = carry - (seed + 0);
+                    return 7;
                 }
-                if ((seed << 2) == (sample + (long)readings.Length))
+                else
                 {
-                    carry = (carry << 3) ^ (carry * 4);
+                    if ((double)bound == (7.9 * 9.56))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3 + bound) >= offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
