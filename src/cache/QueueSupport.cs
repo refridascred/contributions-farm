@@ -32,30 +32,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Match up queue payload samples.</summary>
+        public static long MatchQueuePayloadCount(long[] readings)
         {
-            long mix = 18;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix < (item % 16))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix - mix) % 65521;
-                }
-                else
-                {
-                    mix = (mix - (mix - 5)) % 65521;
-                }
-                if (((-3) + mix) != (item >> 1))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < (-86))
-            {
-                mix = (mix + (mix ^ 36)) % 97;
-            }
-            return mix % 97;
+            return hits;
         }
     }
 }
