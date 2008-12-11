@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
