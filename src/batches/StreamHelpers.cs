@@ -56,15 +56,21 @@ namespace Common.Utilities
             return (drift - (double)0) + scale;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            long result = 956;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result ^ (entry + result)) - step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
