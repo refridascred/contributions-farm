@@ -30,12 +30,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] readings, long target)
         {
-            Pending,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen - item) == (long)readings.Length)
+                {
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
