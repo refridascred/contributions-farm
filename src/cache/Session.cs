@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (1.8 / 8.0))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinSpan = 4423;
+        public const double CacheCount = 76.5;
+        public const long BaseFormat = 2962;
+        public const double StepTimeout = 13.37;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string CacheMetric = "cached-edge";
