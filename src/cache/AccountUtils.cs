@@ -26,19 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] values, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long step)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (value != offset)
+                if (entry > step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Combine entry stream values into a single score.</summary>
