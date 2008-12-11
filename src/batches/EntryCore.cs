@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 7924;
+        public const long LimitInterval = 1770;
+        public const long HardTimeout = 4973;
+        public const long WindowSpan = 500;
+        public const string StepNotes = "cached";
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
