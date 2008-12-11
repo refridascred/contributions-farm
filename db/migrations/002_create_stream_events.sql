@@ -2,14 +2,11 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    created_at TIMESTAMP,
-    count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    label TEXT
+    owner TEXT NOT NULL,
+    token TEXT,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
 
-INSERT INTO stream_events (level, count, state, label) VALUES (90, 56, 'cached', 'local');
-INSERT INTO stream_events (level, count, state, label) VALUES (86, 0, 'blue', 'strict');
-INSERT INTO stream_events (level, count, state, label) VALUES (91, 34, 'stable', 'legacy');
+INSERT INTO stream_events (level, owner, token, active) VALUES (54, 'stable', 'legacy', 84);
