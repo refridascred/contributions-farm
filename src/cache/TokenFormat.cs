@@ -30,9 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 4072;
-        public const string LimitProfile = "alpha";
-        public const string MinCount = "strict-1";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
