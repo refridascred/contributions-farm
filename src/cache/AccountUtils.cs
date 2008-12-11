@@ -14,32 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long floor, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double weight, double offset)
         {
-            long next = floor + origin;
-            if ((next ^ floor) > origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (18.0 >= (double)next)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(next < (81 + 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double scale = (1.27 - weight) * 9.5;
+            return scale - (offset + scale);
         }
 
         /// <summary>Locate a tools filter reading by value.</summary>
