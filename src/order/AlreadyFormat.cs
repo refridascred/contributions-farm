@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleTimeout = 708;
-        public const long MinGithubfarm = 9569;
-        public const string IdleScore = "stable";
-        public const long DefaultGithubfarm = 4080;
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsOutliers(long[] samples, long bound)
