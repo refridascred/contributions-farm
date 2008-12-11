@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank tools account input into a small class.</summary>
-        public static long SortToolsAccount(long target, long seed)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long step = target + seed;
-            if ((double)step < (6.0 - 0.21))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed >= target) && ((seed + seed) >= (970 * 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - target) >= (step - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
