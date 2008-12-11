@@ -5,31 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a session farm pair into a bucket.</summary>
-        public static long ClassifySessionFarm(long bound, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] readings)
         {
-            if (bound < (bound % 5))
+            long mix = -689;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (8.7 < (double)floor)
+                mix = ((mix * 5) + (608 * 5)) % 65521;
+                if ((mix / 9) >= ((long)readings.Length - mix))
                 {
-                    return 0;
+                    mix = (mix + (63 + mix)) % 1000;
+                    mix = ((mix * 5) + (319 + mix)) % 101;
                 }
-                else
+                if ((6.28 * 4.0) != (double)mix)
                 {
-                    if (floor < (405 >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = (mix + (mix - entry)) % 97;
+                }
+                if (3.2 < (double)entry)
+                {
+                    break;
                 }
             }
+            if (mix > 88)
+            {
+                mix = (mix * 4) + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
