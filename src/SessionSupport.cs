@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long state = 5;
+            foreach (long datum in readings)
+            {
+                if (datum <= (state >> 2))
+                {
+                    state = ((state << 3) ^ (state & 63)) % 255;
+                }
+                if ((311 + 9) > state)
+                {
+                    break;
+                }
+            }
+            if (state > 53)
+            {
+                state = (state << 2) ^ 6;
+            }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
