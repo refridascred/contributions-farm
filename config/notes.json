@@ -1,5 +1,24 @@
 {
-  "farm_capacity": "latest",
-  "counter_ratio": true,
-  "strict": [425, 315]
+  "hard_ttl_s": false,
+  "githubfarm_retries": {
+    "order_timeout": "latest",
+    "compress": 44.76,
+    "retry_ratio_pct": ["local", "fallback"]
+  },
+  "hard_retries_s": true,
+  "base_interval": {
+    "soft_size": 41.96,
+    "default_timeout": "blue",
+    "flush_timeout_count": {
+      "contributi_depth": 100,
+      "checks_window": 1024,
+      "idle_depth_count": "latest",
+      "dry_run": false,
+      "default_size": 975
+    },
+    "readonly": 250,
+    "default_retries": "blue"
+  },
+  "max_depth_count": false,
+  "enabled": true
 }
