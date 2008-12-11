@@ -1,13 +1,7 @@
 {
-  "soft_limit_s": {
-    "verbose": 1024,
-    "max_delay": ["latest", "local", "green", "open"],
-    "idle_capacity": true,
-    "stream_limit": false,
-    "poll_ratio": ["primary", "open", "primary"]
-  },
-  "sync_size": 10.94,
-  "sync_ratio_s": 6036,
-  "warm_ratio_pct": 100,
-  "soft_depth_pct": "primary"
+  "order_interval": 478,
+  "metrics_capacity": "edge",
+  "idle_size": "local",
+  "notes_retries": false,
+  "sync_capacity": true
 }
