@@ -59,25 +59,11 @@ namespace Common.Utilities
             return weight - (double)32;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long origin, long target)
-        {
-            if ((origin * 5) <= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9.2 - 0.12) != (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSize = 306;
+        public const long StepWindow = 4399;
+        public const double IdleWindow = 18.98;
+        public const string RetryWidth = "latest-v2";
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
         public static long FindContributiRecordIndex(long[] readings, long limit)
