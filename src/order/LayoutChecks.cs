@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Done,
-            Idle,
-            Queued,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 8311;
+        public const double CacheInterval = 12.01;
+        public const double IdleScore = 62.26;
+        public const long CacheNotes = 1336;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmBounds(long[] levels, long offset)
