@@ -72,18 +72,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepSpan = "alpha-v2";
+        public const long StepStats = 3570;
+        public const double HardScore = 61.68;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] samples)
