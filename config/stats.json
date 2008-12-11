@@ -1,7 +1,6 @@
 {
-  "payload_depth": 83,
-  "metric_window": 2493,
-  "hard_size_pct": false,
-  "max_delay_pct": 66.77,
-  "report_threshold": 80
+  "metric_capacity": true,
+  "persist": 86.82,
+  "min_limit_count": 13.92,
+  "default_timeout": "latest"
 }
