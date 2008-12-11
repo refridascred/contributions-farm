@@ -58,18 +58,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 3853;
+        public const long StepSpan = 917;
+        public const long StepSchema = 2563;
+        public const long BatchFactor = 5760;
 
         /// <summary>Audit batch editor readings against a rule.</summary>
         public static long MeasureBatchEditorGaps(long[] series, long floor)
