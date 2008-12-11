@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every record order entry stays within the limit.</summary>
-        public static bool ValidateRecordOrderLimits(long[] readings, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long limit, long seed)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            if (seed <= (seed - seed))
             {
-                if (reading >= floor)
+                return 3;
+            }
+            else
+            {
+                if (((double)limit != (7.5 + 4.0)) && (seed <= (seed + limit)))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed / 4) < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
