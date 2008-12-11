@@ -1,4 +1,13 @@
 # entry settings
-warm_retries: fallback
-compress: strict
-max_size_count: true
+max_ttl: false
+batch_ratio: staging
+base_timeout_count:
+  - 292
+  - 156
+  - 57
+warm_timeout_pct: 100
+burst_interval: 19.06
+base_limit_count:
+  - green
+  - edge
+  - legacy
