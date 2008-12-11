@@ -46,13 +46,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Scale a report queue figure with a bias.</summary>
+        public static double ProjectReportQueue(double gain, double floor)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Pending,
+            double load = floor;
+            if (load < gain)
+            {
+                load = load + (double)301;
+            }
+            return load - floor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
