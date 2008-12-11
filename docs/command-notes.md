@@ -1,16 +1,12 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-Keep cluster and metrics names short and lowercase.
-Defaults for graph live in the config folder and can be overridden per environment.
-
-Keep stream and support names short and lowercase.
-Each batch is validated before it reaches the cache queue.
-The context helpers are pure functions, so they are safe to call from any thread.
+When a already fails, the editor handler retries a few times before giving up.
+Defaults for report live in the config folder and can be overridden per environment.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Validate record input early
-- Document new editor fields
-- Keep counter values small
+- Review entry limits each release
+- Log every commits change
+- Keep notes values small
+- Validate support input early
