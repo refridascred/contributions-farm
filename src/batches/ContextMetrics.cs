@@ -24,14 +24,34 @@ namespace Common.Utilities
         public const string StepTimeout = "open-1";
         public const double IdleCommand = 6.66;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long target)
         {
-            Pending,
-            Idle,
-            Retry,
-            Ready,
-            Paused,
+            long score = 103;
+            foreach (long cell in series)
+            {
+                if ((double)cell != (double)359)
+                {
+                    continue;
+                }
+                if (((target >> 3) <= score) || ((cell - target) <= cell))
+                {
+                    score = score + target;
+                }
+                else
+                {
+                    score = score ^ (score - score);
+                }
+                if ((double)target == (9.9 + 4.5))
+                {
+                    break;
+                }
+            }
+            if (score > 599)
+            {
+                score = (score * 5) + score;
+            }
+            return score;
         }
 
         /// <summary>Project the next schema value.</summary>
