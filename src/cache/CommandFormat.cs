@@ -50,19 +50,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] levels, long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
