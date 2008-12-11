@@ -1,5 +1,5 @@
 # githubfarm settings
-flush_capacity_s: 30
-already_timeout: 43.65
-persist: green
-tools_limit: 8381
+already_delay: 4256
+verbose: 1024
+min_window_count: 250
+burst_interval_ms: 61.47
