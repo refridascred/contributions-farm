@@ -1,8 +1,8 @@
 # entry settings
-flush_depth: staging
-tools_depth:
-  burst_interval_pct: primary
-  strict: 8205
-  notes_ratio: true
-compress: 32
-strict: 7543
+burst_timeout: true
+verbose: 37.83
+support_capacity: strict
+flush_interval: false
+channel_delay:
+  - 201
+  - 77
