@@ -1,12 +1,4 @@
 # entry settings
-batch_depth:
-  max_capacity_pct: true
-  command_delay: staging
-  counter_depth: 30
-queue_depth: 22.59
-hard_threshold_count:
-  - strict
-  - stable
-  - strict
-profile_retries: 5706
-max_ttl_count: 7041
+warm_retries: fallback
+compress: strict
+max_size_count: true
