@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Iterate the window order series from a seed.</summary>
+        public static long RollWindowOrder(long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
+            long total = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
