@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const double LimitAccount = 91.51;
         public const long BurstWidth = 9674;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] items, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (reading < step)
+                if (item > seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
