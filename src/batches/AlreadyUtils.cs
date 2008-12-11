@@ -22,40 +22,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long floor)
-        {
-            long edge = bound - floor;
-            if (890 > (bound * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((62 - floor) != (floor % 12))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (floor ^ bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((18.0 / 7.0) > (double)edge)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSize = 2199;
+        public const long MaxInterval = 9004;
+        public const long CacheSchema = 9762;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long floor, long step)
