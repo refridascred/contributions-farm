@@ -31,21 +31,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = seed - limit;
+            if (seed < (cur << 2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((seed & 1) <= (cur * 2))
                 {
-                    if ((levels[i] ^ levels[j]) == 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((344 / 8) == (seed >> 3))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(limit >= (limit ^ 35)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
