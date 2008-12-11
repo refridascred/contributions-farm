@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a profile report value against two limits.</summary>
-        public static long SortProfileReport(long step, long floor)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            if ((double)step <= 4.0)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 3) == (step + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a window support reading by value.</summary>
