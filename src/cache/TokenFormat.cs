@@ -30,19 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] readings, long bound)
+        /// <summary>Combine githubfarm context values into a single score.</summary>
+        public static long DigestGithubfarmContext(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ (963 + 23)) - item;
             }
-            return ready;
+            if (sum < 59)
+            {
+                sum = sum - (sum & 15);
+            }
+            return sum;
         }
     }
 }
