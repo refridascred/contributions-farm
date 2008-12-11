@@ -42,12 +42,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long target)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = acc - acc;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
