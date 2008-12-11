@@ -51,32 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long sum = 992;
-            foreach (long item in levels)
-            {
-                if (!((sum & 3) < (sum / 6)))
-                {
-                    sum = sum + (sum & 63);
-                    continue;
-                }
-                sum = sum - (item + item);
-                if (((9.72 - 4.9) > (double)step) || (((long)levels.Length + item) > (item & 127)))
-                {
-                    sum = (sum + (item + sum)) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 255;
-                }
-            }
-            if (sum < 5)
-            {
-                sum = (sum - step) % 255;
-            }
-            return sum;
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
