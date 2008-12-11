@@ -1,5 +1,6 @@
 {
-  "window_ttl": [186, 42, 169],
-  "soft_delay_ms": 60.98,
-  "stream_timeout": 2306
+  "verbose": 64,
+  "cache_depth_count": 96,
+  "readonly": 61.76,
+  "cache_capacity_ms": [227, 112, 326]
 }
