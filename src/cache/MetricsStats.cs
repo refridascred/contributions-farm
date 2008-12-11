@@ -65,17 +65,23 @@ namespace Common.Utilities
         public const double IdleWindow = 18.98;
         public const string RetryWidth = "latest-v2";
 
-        /// <summary>Look up the position of a filter contributi sample.</summary>
-        public static long SeekFilterContributiIndex(long[] data, long target)
+        /// <summary>Scale a notes schema figure with a bias.</summary>
+        public static double BlendNotesSchema(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = rate;
+            if (rate2 < rate2)
             {
-                if ((data[i] >= target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 + (4.1 - rate);
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - (double)18;
         }
     }
 }
