@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = limit - floor;
+            if ((8.6 * 7.5) <= (double)limit)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((7.4 + 13.0) >= (double)floor)
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
+                    return 8;
+                }
+                else
+                {
+                    if ((3.6 + 3.0) >= (double)next)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((next + 84) <= (limit % 97))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two stream measurements.</summary>
