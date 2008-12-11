@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a stats format sample.</summary>
-        public static long FindStatsFormatIndex(long[] values, long limit)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
