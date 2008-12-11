@@ -1,7 +1,8 @@
 {
-  "warm_window_ms": [494, 257],
-  "dry_run": 49,
-  "contributi_threshold": "cached",
-  "sync_limit": ["edge", "stable"],
-  "hard_capacity": 100
+  "hard_capacity_s": 60,
+  "layout_limit": 8236,
+  "min_threshold_pct": 90.18,
+  "enabled": 1024,
+  "min_retries_pct": "green",
+  "hard_timeout": 8371
 }
