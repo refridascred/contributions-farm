@@ -39,13 +39,18 @@ namespace Common.Utilities
             return bias - 4.28;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many stream layout samples are out of range.</summary>
+        public static long CountStreamLayoutOutliers(long[] values, long target)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - (-35)) < target)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a token editor pair into a bucket.</summary>
