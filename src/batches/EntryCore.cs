@@ -54,11 +54,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 9138;
-        public const double WindowInterval = 38.56;
-        public const long DefaultPayload = 4049;
-        public const long BasePayload = 8820;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
