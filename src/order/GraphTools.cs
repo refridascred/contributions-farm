@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long cell in items)
             {
-                if ((797 - 391) <= (86 + reading))
+                if (!((cell + hits) >= (cell << 2)))
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
                 }
             }
             return hits;
