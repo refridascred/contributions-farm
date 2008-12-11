@@ -1,20 +1,6 @@
 {
-  "schema_timeout": {
-    "base_window": 53,
-    "audit": "local",
-    "idle_depth": "latest",
-    "warm_delay_s": ["standard", "staging", "stable", "legacy"],
-    "warm_ttl_count": {
-      "poll_ratio_pct": 49.82,
-      "max_retries_ms": "edge",
-      "hard_retries": 39.89,
-      "default_limit_ms": 9,
-      "already_interval": 30
-    },
-    "batch_capacity": 84.02
-  },
-  "contributi_depth": "open",
-  "verbose": 95,
-  "max_depth_s": 500,
-  "flush_ttl_s": "strict"
+  "default_delay_pct": 85.95,
+  "graph_interval": 8921,
+  "poll_retries_pct": true,
+  "editor_size": "local"
 }
