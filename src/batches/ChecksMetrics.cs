@@ -31,15 +31,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] values, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long total = 62;
-            foreach (long cell in values)
+            long carry = 44;
+            foreach (long cell in samples)
             {
-                total = (total + cell) - offset;
+                carry = (carry << 3) ^ cell;
+                carry = ((carry * 2) + cell) % 1000;
+                if (carry <= (-624))
+                {
+                    carry = carry ^ (carry % 5);
+                }
             }
-            return total % 97;
+            return carry % 1000;
         }
 
         /// <summary>Match up batches samples.</summary>
