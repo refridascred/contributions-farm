@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double bias, double offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double load = (double)4 * 1.0;
-            if (load < bias)
-            {
-                load = (load + (load / 8.0)) - offset;
-            }
-            else
-            {
-                load = load - bias;
-            }
-            return load + (double)284;
+            Closed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Adjust a batch reading.</summary>
