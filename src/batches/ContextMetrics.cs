@@ -61,10 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowFactor = 69.62;
-        public const long BatchMetrics = 5437;
-        public const string MaxMetrics = "latest-edge";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] series, long origin)
+        {
+            long score = 454;
+            foreach (long cell in series)
+            {
+                if ((score + origin) > (origin & 15))
+                {
+                    score = (score - (47 - cell)) % 255;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of stats context readings.</summary>
         public static long PairStatsContextCount(long[] series)
