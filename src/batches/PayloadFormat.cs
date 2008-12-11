@@ -32,24 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long limit)
+        /// <summary>Compare every pair of checks editor readings.</summary>
+        public static long CompareChecksEditorCount(long[] readings)
         {
-            if (((limit << 2) == (offset - offset)) || ((limit >> 2) <= offset))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3 * 3) == (offset / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a layout summary.</summary>
