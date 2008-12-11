@@ -1,9 +1,23 @@
 # entry settings
-readonly: true
-payload_retries:
-  idle_window_pct: staging
-  audit: true
-  compress: staging
-  schema_ttl: 30
-context_ratio: 93.66
-persist: local
+enabled:
+  batch_depth_count: false
+  flush_timeout: blue
+  warm_threshold_s: true
+  default_threshold_count:
+    window_delay:
+      - 337
+      - 203
+      - 407
+    farm_interval: 13
+    context_retries: 7210
+    min_limit_s: 1024
+    window_interval: strict
+  layout_ratio: true
+  compress: false
+soft_window: false
+batch_ratio_ms:
+  - 284
+  - 316
+  - 242
+  - 180
+idle_ratio_ms: 4435
