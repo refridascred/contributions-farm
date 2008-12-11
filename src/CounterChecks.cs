@@ -15,19 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
-        public static bool CheckGithubfarmCacheRange(long[] series, long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum << 3) ^ (sum + sum);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the contributi level values.</summary>
