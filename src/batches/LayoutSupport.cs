@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 2121;
-        public const long HardProfile = 401;
-        public const long StepSpan = 3250;
-        public const long WindowProfile = 6933;
-        public const double StepSize = 93.99;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
