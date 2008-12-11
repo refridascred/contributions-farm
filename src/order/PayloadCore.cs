@@ -47,21 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count order stream pairs that satisfy a relation.</summary>
-        public static long MatchOrderStreamCount(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((-528) + 541) <= (datum ^ seen))
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
