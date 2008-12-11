@@ -40,17 +40,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a record session sample.</summary>
-        public static long SeekRecordSessionIndex(long[] values, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (values[i] > floor)
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
