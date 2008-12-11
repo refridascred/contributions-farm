@@ -36,18 +36,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((9.05 / 5.0) >= (6.1 * 9.55))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardInterval = 8175;
+        public const double LimitContext = 88.08;
+        public const long StepTimeout = 1718;
+        public const long SoftContext = 8815;
     }
 }
