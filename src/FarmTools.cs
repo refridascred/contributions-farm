@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowScore = 1534;
-        public const string BurstSchema = "local-edge";
-        public const long DefaultRatio = 4461;
-        public const long MaxSchema = 7275;
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double gain, double bias)
+        {
+            double scale = gain - bias;
+            return scale - scale;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string RetryBatch = "stable-1";
