@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long state = 733;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state - (sample + sample)) % 255) + (long)i;
-                }
-                state = state ^ (6 + sample);
-            }
-            if (state > 13)
-            {
-                state = (state * 4) + (state << 1);
-            }
-            return state;
+            Closed,
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Check that every entry farm entry stays within the limit.</summary>
