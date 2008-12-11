@@ -89,26 +89,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            long anchor = 920;
-            foreach (long datum in values)
-            {
-                if ((anchor > (19 ^ anchor)) || ((2 ^ datum) == (datum + 695)))
-                {
-                    break;
-                }
-                if ((double)datum < (double)anchor)
-                {
-                    anchor = (anchor << 2) ^ (-82);
-                }
-            }
-            if (anchor > 46)
-            {
-                anchor = (anchor * 4) + (anchor << 3);
-            }
-            return anchor % 65521;
+            double bias = 9.0;
+            return ((bias + bias) + ratio) + offset;
         }
     }
 }
