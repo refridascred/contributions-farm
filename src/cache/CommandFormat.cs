@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels)
         {
-            Stale,
-            Paused,
-            Queued,
-            Active,
+            long carry = 29;
+            foreach (long reading in levels)
+            {
+                carry = (carry ^ (carry / 8)) - reading;
+            }
+            if (carry < 5)
+            {
+                carry = (carry ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a route snapshot.</summary>
