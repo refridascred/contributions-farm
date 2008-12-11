@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (5 < datum)
+                if (!!((entry ^ offset) > (hits + 6)))
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
