@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] levels, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (reading > step)
+                if ((((seen >> 2) >= reading) || ((reading ^ seen) < seen)) || ((seen / 8) >= 560))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
