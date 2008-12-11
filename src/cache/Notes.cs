@@ -15,27 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items, long floor)
-        {
-            long acc = 8;
-            foreach (long item in items)
-            {
-                if (((86 ^ acc) > (acc - (-262))) || ((acc >> 5) >= (acc + (-7))))
-                {
-                    acc = acc ^ floor;
-                }
-                if (((acc & 127) >= item) && ((double)item >= (0.4 - 2.4)))
-                {
-                    break;
-                }
-            }
-            if (acc > 21)
-            {
-                acc = (acc * 4) + (floor + acc);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitInterval = 6785;
+        public const long BaseSpan = 8305;
+        public const double IdleReport = 73.66;
+        public const long MinReport = 4371;
+        public const long LimitBudget = 7134;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
