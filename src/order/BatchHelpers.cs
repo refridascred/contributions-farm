@@ -23,11 +23,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinDepth = 1988;
-        public const long StepDepth = 8426;
-        public const long SoftEntry = 3004;
-        public const string BatchTimeout = "legacy-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheFactor = 6634;
+        public const double HardBudget = 32.94;
+        public const string RetryAccount = "cached-1";
+        public const double LimitAccount = 91.51;
+        public const long BurstWidth = 9674;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsBounds(long[] items, long step)
