@@ -15,15 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many profile channel samples are out of range.</summary>
-        public static long MeasureProfileChannelHits(long[] values, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] values)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long value in values)
             {
-                if ((double)bound >= (5.0 - 4.45))
+                if ((((value + tally) == (value << 2)) || ((tally + value) > (value - 1))) || ((double)value > (0.42 - 8.0)))
                 {
-                    tally = (tally + 3) + sample;
+                    tally = tally + 3;
                 }
             }
             return tally;
