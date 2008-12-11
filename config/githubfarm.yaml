@@ -1,8 +1,28 @@
 # githubfarm settings
-record_threshold: edge
-command_window: 5038
-warm_interval:
-  min_size_count: false
-  max_capacity_s: eu-west
-  retry_interval_s: standard
-retry_size: cached
+retry_timeout_count:
+  cache_limit_pct: 7574
+  token_delay: 3
+  queue_window:
+    base_threshold_s: 72
+    warm_ratio_ms: true
+    verbose: stable
+    burst_interval: local
+    soft_depth: primary
+  profile_depth: 52.2
+  cache_interval_s: 100
+  base_timeout_ms: 47
+cache_retries: true
+sync_limit_ms: 30
+stream_timeout:
+  retry_retries_count: false
+  idle_interval_count:
+    dry_run: 69.81
+    audit: open
+    window_timeout: edge
+    schema_depth:
+      - 314
+      - 50
+  warm_capacity_ms: 30
+  farm_interval: true
+  flush_ttl_ms: false
+  cache_interval_count: false
