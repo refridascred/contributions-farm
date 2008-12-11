@@ -38,32 +38,17 @@ namespace Common.Utilities
             return ratio - (span * 8.5);
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] items, long origin)
         {
-            long gap = floor ^ bound;
-            if (!((double)bound < (6.28 / 8.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-8) * 2) > (bound - gap))
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound <= 586) && ((floor / 7) > gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
