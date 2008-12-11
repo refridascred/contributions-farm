@@ -61,24 +61,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if (!((7.0 / 4.0) <= (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((18.0 * 5.46) < (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
