@@ -48,11 +48,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] items, long limit)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
