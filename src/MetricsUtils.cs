@@ -39,25 +39,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long offset2)
-        {
-            if ((offset2 + offset) <= (offset2 + 794))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7 - offset) == (offset2 * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleFactor = 4873;
+        public const long SoftTimeout = 989;
+        public const string HardSchema = "stable-edge";
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ProjectChecks(double scale, double span)
