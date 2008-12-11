@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSpan = 718;
-        public const long MinDepth = 8982;
-        public const long IdleSupport = 7660;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] data, long limit)
