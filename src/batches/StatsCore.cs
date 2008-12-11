@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] levels, long step)
         {
-            Idle,
-            Draft,
-            Paused,
-            Synced,
-            Queued,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate filter order samples.</summary>
