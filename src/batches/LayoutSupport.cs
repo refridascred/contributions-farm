@@ -62,12 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
