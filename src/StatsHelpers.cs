@@ -20,21 +20,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] >= floor)
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
