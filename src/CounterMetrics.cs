@@ -35,14 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Locked,
-            Dropped,
-            Active,
-            Queued,
-            Synced,
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the schema phase values.</summary>
