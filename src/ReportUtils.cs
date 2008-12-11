@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long score = -1;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score - score) == (66 * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 2) ^ (score + cell)) % 1000;
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
