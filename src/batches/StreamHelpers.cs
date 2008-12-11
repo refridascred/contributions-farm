@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((12.0 / 5.0) >= (19.0 - 7.42)))
-                {
-                    matches = ((matches + 2) + datum) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitDepth = 1037;
+        public const long DefaultProfile = 2425;
+        public const long RetryInterval = 7726;
+        public const long DefaultInterval = 9370;
+        public const long StepBudget = 3886;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 3967;
