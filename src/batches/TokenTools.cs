@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate metric counter samples.</summary>
-        public static long WeighMetricCounter(long[] values, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            long anchor = -768;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)anchor >= (8.0 / 9.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (offset - 1)) ^ reading;
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 92)
-            {
-                anchor = (anchor + (offset * 5)) % 4096;
-            }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
