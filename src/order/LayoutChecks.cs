@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long BaseAccount = 4470;
         public const long MaxCount = 5124;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 - limit) > ((long)i & 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ ((long)i - (long)i)) % 4096;
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
