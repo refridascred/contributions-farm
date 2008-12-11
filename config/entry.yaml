@@ -1,13 +1,7 @@
 # entry settings
-poll_delay:
-  burst_ttl_ms: open
-  audit: true
-  flush_threshold_ms: 21.5
-  strict: true
-  cache_size: latest
-enabled: staging
-order_timeout:
-  - 93
-  - 417
-checks_limit: legacy
-audit: 32
+cache_timeout_pct: true
+burst_ttl: true
+cache_capacity_pct: primary
+counter_ttl: 64.51
+checks_limit: open
+max_window_ms: false
