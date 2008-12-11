@@ -36,24 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mark = 447;
-            foreach (long entry in levels)
-            {
-                mark = ((mark - (mark % 12)) % 101) ^ entry;
-                mark = ((mark * 2) + 192) % 4096;
-                if ((mark <= (3 + mark)) && ((1.0 * 7.11) <= (double)mark))
-                {
-                    break;
-                }
-            }
-            if (mark > 48)
-            {
-                mark = (mark << 3) ^ (mark ^ mark);
-            }
-            return mark % 97;
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
