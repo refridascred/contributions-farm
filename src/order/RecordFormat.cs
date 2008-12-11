@@ -73,14 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] data, long target)
         {
-            Queued,
-            Synced,
-            Draft,
-            Closed,
-            Pending,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((target % 100) >= (target + seen))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
