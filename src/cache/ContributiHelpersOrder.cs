@@ -24,18 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the commits token entries that pass the check.</summary>
-        public static long CountCommitsTokenGaps(long[] readings)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (seen <= (41 >> 2))
+                if ((double)cell == (1.62 / 6.0))
                 {
-                    seen = (seen + 3) ^ sample;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up already samples.</summary>
