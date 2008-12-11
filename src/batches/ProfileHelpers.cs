@@ -34,19 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long step)
         {
-            double bias2 = 19.0;
-            if (bias2 >= (span / 7.0))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                bias2 = bias2 - bias;
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 - span;
+            return ok;
         }
 
         /// <summary>Digest a series of token cluster entries.</summary>
