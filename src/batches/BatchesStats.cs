@@ -17,12 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Find the first checks channel entry that matches the target.</summary>
+        public static long LocateChecksChannelIndex(long[] samples, long bound)
         {
-            Closed,
-            Dropped,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of context metrics readings.</summary>
