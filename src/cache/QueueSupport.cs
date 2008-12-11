@@ -29,21 +29,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseFactor = 10.01;
+        public const double MaxFactor = 33.29;
+        public const string BaseRecord = "staging";
+        public const long IdleRecord = 9409;
     }
 }
