@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] items)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits << 1) < (hits + sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Scale a metrics route figure with a bias.</summary>
