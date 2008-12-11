@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double gain, double offset)
         {
-            Synced,
-            Stale,
-            Idle,
-            Done,
-            Locked,
+            double rate = (gain * 8.45) + gain;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (gain + offset)) - (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Describe the commits mode values.</summary>
