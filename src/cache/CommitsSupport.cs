@@ -27,22 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (!((long)series.Length <= count))
+                if (reading > offset)
                 {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the session phase values.</summary>
