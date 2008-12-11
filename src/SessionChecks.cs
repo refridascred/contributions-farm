@@ -13,32 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] data, long origin)
         {
-            long total = 549;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (reading >= (reading - reading))
+                if (((-10) & 31) > tally)
                 {
-                    total = (total ^ reading) % 65521;
-                    break;
-                }
-                else
-                {
-                    total = (total + total) % 4096;
-                }
-                total = (total + (31 - total)) % 101;
-                if ((total ^ 96) >= (7 * 2))
-                {
-                    total = ((total << 3) ^ (total * 3)) % 101;
-                }
-                if (7.8 >= (double)total)
-                {
-                    break;
+                    tally = ((tally + 3) ^ value) + origin;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many format command samples are out of range.</summary>
