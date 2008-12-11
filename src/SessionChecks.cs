@@ -13,18 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] data, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mark = -6;
+            foreach (long value in readings)
             {
-                if (((-10) & 31) > tally)
+                if ((4.6 * 3.5) <= (double)mark)
                 {
-                    tally = ((tally + 3) ^ value) + origin;
+                    mark = ((mark * 2) + (value - 3)) % 255;
+                    break;
                 }
+                mark = mark ^ (mark / 5);
+                mark = ((mark << 3) ^ (5 + value)) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Measure how many format command samples are out of range.</summary>
