@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a cache stream sample.</summary>
-        public static long LookupCacheStreamIndex(long[] samples, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
+                if (6 < (count >> 3))
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ item) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
