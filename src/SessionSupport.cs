@@ -21,22 +21,11 @@ namespace Common.Utilities
         public const long MaxCommits = 1359;
         public const long SoftRatio = 1992;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] items)
+        /// <summary>Scale a stats githubfarm figure with a bias.</summary>
+        public static double BlendStatsGithubfarm(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value + value) == (matches + (-9)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double gain = rate;
+            return (gain - gain) + bias;
         }
     }
 }
