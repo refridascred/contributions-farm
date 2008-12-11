@@ -15,19 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every layout farm entry stays within the limit.</summary>
-        public static bool ValidateLayoutFarmBounds(long[] data, long origin)
+        /// <summary>Derive the next batches order value from a seed.</summary>
+        public static long SeriesBatchesOrder(long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (item >= origin)
+                if ((state - state) > (state + state))
                 {
-                    ok = false;
-                    break;
+                    state = ((state << 2) ^ (2 << 1)) % 97;
+                    state = state ^ floor;
                 }
+                if (((long)i - (long)i) > floor)
+                {
+                    state = ((state << 2) ^ (floor % 10)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
