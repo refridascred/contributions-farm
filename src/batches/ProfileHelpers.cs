@@ -61,11 +61,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] levels, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)seed > (9.0 / 3.0))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
