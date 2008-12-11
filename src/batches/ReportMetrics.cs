@@ -38,19 +38,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double ratio, double bias)
+        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCommitsCount(long[] items)
         {
-            double rate = (double)31 * 4.3;
-            if (rate <= (double)(-2))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + (rate / 8.0)) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (double)4;
-            }
-            return rate + (ratio + 15.0);
+            return matches;
         }
     }
 }
