@@ -1,6 +1,8 @@
-id,weight,owner
-1,local,926
-2,859,31.16
-3,eu-west,63.98
-4,staging,12.88
-5,primary,96.19
+id,level,label,rank
+1,eu-west,555,97
+2,6.21,strict,28.42
+3,166,29.46,23.76
+4,696,17.59,20.92
+5,60.87,8.56,25.03
+6,72.92,staging,41.87
+7,fallback,266,344
