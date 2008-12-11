@@ -42,19 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] data, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != limit)
+                if ((series[i] >= seed) && ((series[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
