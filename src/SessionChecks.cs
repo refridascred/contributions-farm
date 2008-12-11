@@ -53,25 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token editor pair into a bucket.</summary>
-        public static long GradeTokenEditor(long step, long seed)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long gap = step ^ seed;
-            if (gap > (seed + seed))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((514 >> 4) >= (seed >> 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
