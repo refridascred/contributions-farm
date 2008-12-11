@@ -45,18 +45,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] readings)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (97 < reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the channel phase values.</summary>
