@@ -1,9 +1,8 @@
 {
-  "default_depth": true,
-  "verbose": "staging",
-  "audit": {
-    "sync_timeout": 67.14,
-    "contributi_depth": 1074,
-    "dry_run": 63
-  }
+  "farm_interval": "stable",
+  "hard_interval": "primary",
+  "batch_capacity": false,
+  "dry_run": "strict",
+  "poll_delay_pct": 59,
+  "idle_timeout_ms": "green"
 }
