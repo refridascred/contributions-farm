@@ -20,24 +20,19 @@ namespace Common.Utilities
             return scale2 - (offset / 2.0);
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long offset, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] samples, long target)
         {
-            if (((offset / 5) != (offset + bound)) || (bound > offset))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.91 * 7.0) <= (double)bound)
+                if (sample >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
