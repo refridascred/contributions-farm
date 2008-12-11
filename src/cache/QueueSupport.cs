@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] data, long offset)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
