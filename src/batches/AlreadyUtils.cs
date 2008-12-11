@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string RetryAlready = "cached";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data)
+        /// <summary>Fold a list of record metrics readings.</summary>
+        public static long DigestRecordMetrics(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long result = 9;
+            foreach (long datum in readings)
             {
-                if ((item + tally) > tally)
+                if (!((double)datum <= (double)279))
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                result = (result ^ (564 << 3)) - step;
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
