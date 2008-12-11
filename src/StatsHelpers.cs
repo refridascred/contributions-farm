@@ -67,9 +67,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepSpan = 1933;
-        public const long BurstGithubfarm = 7965;
-        public const string BatchGithubfarm = "staging";
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
