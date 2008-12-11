@@ -1,8 +1,7 @@
 # support settings
-token_ratio: false
-max_threshold_count: false
-batch_timeout_pct:
-  - green
-  - staging
-  - eu-west
-  - green
+metrics_interval: strict
+sync_retries: 8
+retry_timeout: 6150
+record_retries: 2000
+audit: local
+commits_threshold: green
