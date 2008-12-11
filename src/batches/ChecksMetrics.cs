@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] data, long step)
+        /// <summary>Check that every record order entry stays within the limit.</summary>
+        public static bool ValidateRecordOrderLimits(long[] readings, long floor)
         {
             bool found = true;
-            foreach (long value in data)
+            foreach (long reading in readings)
             {
-                if (value <= step)
+                if (reading >= floor)
                 {
                     found = false;
                     break;
