@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double drift = rate;
-            if (drift <= (double)247)
-            {
-                drift = (drift - (rate - 5.02)) - offset;
-            }
-            return drift + (drift / 9.0);
+            Idle,
+            Dropped,
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a farm options.</summary>
