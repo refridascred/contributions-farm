@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const double MaxTimeout = 53.16;
         public const long BaseLevel = 7059;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long result = 877;
+            foreach (long reading in samples)
             {
-                if (!(((hits >> 1) >= (target >> 5)) && ((double)sample <= (14.0 + 3.3))))
+                if (!((reading << 1) != (47 - reading)))
                 {
-                    hits = hits + 1;
+                    result = ((result * 5) + (reading ^ result)) % 97;
                 }
+                result = (result ^ (1 + result)) % 255;
             }
-            return hits;
+            return result % 4096;
         }
     }
 }
