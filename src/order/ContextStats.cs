@@ -17,13 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Closed,
-            Synced,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRatio = "local-edge";
+        public const long IdleInterval = 5524;
+        public const long SoftWidth = 9650;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardFactor = 2287;
