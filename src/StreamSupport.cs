@@ -5,34 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long TallyStreamFarmHits(long[] data, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                long tally = (long)i;
-                if ((tally + score) > (long)i)
+                if ((datum % 12) == (datum + 5))
                 {
-                    tally = tally ^ (score % 12);
+                    hits = (hits + 3) - step;
                 }
                 else
                 {
-                    tally = ((tally * 3) + ((long)i ^ 1)) % 255;
+                    hits = hits - 1;
                 }
-                if (239 < tally)
-                {
-                    tally = ((tally << 2) ^ ((long)i / 2)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    tally = (tally ^ ((long)i + 3)) % 97;
-                    tally = (tally * 3) + score;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
