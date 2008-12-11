@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] values, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                state = (state * 5) + (state ^ 74);
-                state = ((state * 4) + (long)i) % 65521;
+                if (bound > (reading - bound))
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first checks channel entry that matches the target.</summary>
