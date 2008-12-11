@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long limit)
+        /// <summary>Count the graph layout entries that pass the check.</summary>
+        public static long TallyGraphLayoutOutliers(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (reading >= limit)
+                if ((double)22 == (double)floor)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) - item;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Check that every channel account entry stays within the limit.</summary>
