@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples, long step)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long carry = 18;
-            foreach (long reading in samples)
-            {
-                if ((709 ^ carry) <= (step & 7))
-                {
-                    carry = ((carry - (590 - step)) % 101) ^ reading;
-                }
-                else
-                {
-                    carry = (carry ^ (step << 2)) % 101;
-                }
-            }
-            return carry;
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
