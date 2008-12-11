@@ -1,7 +1,25 @@
 {
-  "farm_window": "edge",
-  "graph_threshold": "fallback",
-  "hard_limit_pct": "latest",
-  "base_limit_s": "open",
-  "burst_ratio": false
+  "base_retries_count": {
+    "soft_ratio_ms": "legacy",
+    "hard_delay_s": "stable",
+    "contributi_timeout": {
+      "audit": [412, 278, 312, 173],
+      "burst_threshold_s": ["staging", "open", "standard"],
+      "sync_ttl_count": [372, 228],
+      "default_timeout_pct": 6.58,
+      "default_timeout": "stable"
+    },
+    "poll_size_count": [339, 282],
+    "base_size_count": "stable"
+  },
+  "counter_window": {
+    "min_depth": 60,
+    "idle_delay_s": 100,
+    "default_depth_count": 1196,
+    "sync_window_ms": ["local", "open", "staging"]
+  },
+  "cache_size_s": 6,
+  "metric_capacity": "fallback",
+  "audit": "fallback",
+  "soft_threshold_ms": 100
 }
