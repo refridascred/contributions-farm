@@ -22,10 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardFactor = "alpha";
-        public const double MaxTimeout = 53.16;
-        public const long BaseLevel = 7059;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry - (carry / 3)) % 4096;
+                if (((long)i > (carry / 3)) && ((45 + carry) > seed))
+                {
+                    carry = (carry ^ seed) % 101;
+                    carry = (carry ^ (61 & 31)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] levels)
