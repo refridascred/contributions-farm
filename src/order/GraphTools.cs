@@ -16,12 +16,12 @@ namespace Common.Utilities
             return rate - 9.6;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 1256;
-        public const string RetryFactor = "local-edge";
-        public const long DefaultSpan = 4870;
-        public const string BaseSize = "standard";
-        public const long WindowAlready = 5621;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double ratio, double bias)
