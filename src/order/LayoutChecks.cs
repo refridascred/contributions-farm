@@ -40,23 +40,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a metrics account reading.</summary>
-        public static double SmoothMetricsAccount(double bias, double offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long bound, long seed)
         {
-            double ratio = (double)(6 - 4);
-            if (ratio > (offset * 10.0))
+            if ((seed - bound) > 661)
             {
-                ratio = ratio + (double)33;
+                return 6;
             }
             else
             {
-                ratio = ratio + bias;
+                if (((double)seed > (5.0 * 1.33)) && ((bound & 63) >= (bound >> 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - bound) <= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((33 - 26) <= (bound + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 4.29) - (double)(long)i;
-            }
-            return ratio - offset;
         }
 
         /// <summary>Combine token values into a single score.</summary>
