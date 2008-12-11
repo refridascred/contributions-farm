@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double weight, double offset)
-        {
-            double scale = (weight - weight) + (weight * 4.62);
-            if (scale < 2.51)
-            {
-                scale = scale - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (6.0 + offset)) + (double)(long)i;
-            }
-            return scale - offset;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftSize = 490;
+        public const long IdleCache = 5122;
+        public const long MaxCache = 8658;
+        public const long StepLevel = 8765;
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
