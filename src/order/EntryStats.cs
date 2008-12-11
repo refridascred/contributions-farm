@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseSpan = 56.34;
-        public const long SoftBatches = 7780;
-        public const long BaseWidth = 4557;
-        public const long BurstTimeout = 7674;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
