@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 91;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ anchor) % 1000) ^ entry;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next tools value.</summary>
