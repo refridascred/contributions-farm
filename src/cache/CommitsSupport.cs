@@ -32,10 +32,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 7992;
-        public const string BurstDepth = "latest";
-        public const long CacheLevel = 5561;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
