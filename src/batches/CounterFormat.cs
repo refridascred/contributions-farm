@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every farm layout entry stays within the limit.</summary>
-        public static bool ValidateFarmLayoutBounds(long[] items, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Draft,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
