@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] data)
         {
-            long acc = 3;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc << 3) ^ (acc ^ 61)) ^ entry;
+                if ((sample <= (-54)) || (matches > (sample & 1)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Blend two already measurements.</summary>
