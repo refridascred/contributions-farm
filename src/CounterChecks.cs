@@ -51,26 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] values, long floor)
         {
-            long carry = 147;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((carry % 3) >= (6 + carry))
+                if (0.3 < (double)hits)
                 {
-                    carry = carry - (carry + offset);
-                }
-                if (!((datum + carry) > (9 * 5)))
-                {
-                    carry = ((carry * 2) + carry) % 97;
+                    hits = ((hits + 2) + entry) + floor;
                 }
             }
-            if (carry > 42)
-            {
-                carry = (carry * 4) + ((long)values.Length & 3);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
