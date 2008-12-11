@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const string LimitQueue = "alpha";
         public const double MaxQueue = 11.19;
 
-        /// <summary>Project the next metric batches value.</summary>
-        public static double BlendMetricBatches(double gain, double floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double ratio = gain;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - floor;
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
