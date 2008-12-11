@@ -55,11 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many counter token samples are out of range.</summary>
+        public static long MeasureCounterTokenGaps(long[] data)
         {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading / 7) < seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a record counter figure with a bias.</summary>
