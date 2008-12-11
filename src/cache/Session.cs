@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long limit)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long result = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result - ((long)i + 614)) % 97) ^ (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
