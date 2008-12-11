@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] values, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)tally < 19.0)
-                {
-                    tally = ((tally + 2) + value) + origin;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Paused,
+            Synced,
+            Queued,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
