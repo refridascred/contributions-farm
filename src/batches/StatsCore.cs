@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] items)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items, long target)
         {
-            long seen = 0;
+            long anchor = 4;
             foreach (long entry in items)
             {
-                if ((((5.0 / 8.0) >= (8.0 - 6.9)) && ((double)seen >= (20.0 - 5.83))) || ((entry >> 2) <= entry))
-                {
-                    seen = seen + 1;
-                }
+                anchor = (anchor ^ anchor) % 4096;
+                anchor = anchor ^ (entry * 2);
+                anchor = anchor + (target + anchor);
             }
-            return seen;
+            if (anchor < 3)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up context samples.</summary>
