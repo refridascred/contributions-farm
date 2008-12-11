@@ -68,18 +68,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (54 >= (count - 4))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheFactor = 3570;
+        public const long WindowBudget = 276;
+        public const long BurstCommand = 5601;
+        public const long MaxDepth = 4870;
     }
 }
