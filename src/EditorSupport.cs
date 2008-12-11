@@ -54,11 +54,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long offset)
         {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
+            if (!((7.0 / 4.0) <= (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((18.0 * 5.46) < (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
