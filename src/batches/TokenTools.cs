@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Active,
-            Ready,
-            Locked,
-            New,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 3170;
+        public const long IdleBatches = 662;
+        public const long CacheTimeout = 9928;
+        public const string WindowTimeout = "stable-edge";
+        public const long DefaultCount = 9456;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
