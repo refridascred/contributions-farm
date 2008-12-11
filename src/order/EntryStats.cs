@@ -22,16 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream editor counter forward.</summary>
-        public static long DeriveStreamEditor(long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = anchor + (anchor + floor);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
