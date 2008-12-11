@@ -42,31 +42,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a tools payload pair into a bucket.</summary>
-        public static long SortToolsPayload(long target, long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            if ((target >= (target - target)) && ((3 - target) < (target * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target - target) != (target + 2)) || ((44 + target) <= target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed ^ seed) == (3 + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Scale a record counter figure with a bias.</summary>
