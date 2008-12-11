@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Digest a series of account window entries.</summary>
+        public static long WeighAccountWindow(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long result = 8;
+            foreach (long value in items)
             {
-                carry = (carry + (carry << 1)) % 4096;
-                carry = ((carry << 3) ^ target) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
+                result = (((result << 3) ^ (result << 1)) % 1000) + value;
+                result = (result + result) % 101;
             }
-            return carry;
+            if (result > 632)
+            {
+                result = (result ^ (1 - result)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate batch samples.</summary>
