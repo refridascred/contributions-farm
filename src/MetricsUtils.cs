@@ -23,19 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!((4.3 + 5.55) >= (double)step))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "open";
+        public const double LimitCommand = 87.53;
+        public const long LimitCount = 3638;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long DigestFarm(long[] values, long floor)
