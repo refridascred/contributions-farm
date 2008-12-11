@@ -25,17 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] readings, long floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a schema support counter forward.</summary>
