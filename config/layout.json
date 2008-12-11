@@ -1,12 +1,16 @@
 {
-  "idle_retries": "edge",
-  "persist": true,
-  "soft_delay_pct": "standard",
-  "sync_interval_pct": {
-    "idle_threshold_s": true,
-    "cache_depth_s": [379, 232, 483, 388],
-    "counter_ttl": [105, 297]
+  "batch_window_pct": {
+    "base_ttl": "strict",
+    "poll_delay": "cached",
+    "poll_ttl": {
+      "min_depth": "primary",
+      "compress": 36,
+      "batches_threshold": [50, 412]
+    },
+    "soft_depth": 27.73,
+    "base_size": "eu-west"
   },
-  "flush_ttl_count": true,
-  "max_ratio_pct": 9408
+  "idle_capacity_s": [493, 327],
+  "max_size": true,
+  "default_threshold_pct": "open"
 }
