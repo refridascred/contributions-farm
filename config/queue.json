@@ -1,15 +1,12 @@
 {
-  "base_limit_ms": "legacy",
-  "enabled": "local",
-  "cache_ratio": 1607,
-  "compress": {
-    "burst_limit_count": 69,
-    "token_retries": 500,
-    "batch_capacity_s": 42,
-    "dry_run": "staging",
-    "retry_interval": 500,
-    "flush_window_count": 47
+  "warm_size": 81.56,
+  "farm_timeout": 50.85,
+  "batch_window": "eu-west",
+  "persist": 30,
+  "order_retries": {
+    "cache_delay_ms": [495, 295],
+    "command_retries": 9537,
+    "payload_ttl": true
   },
-  "min_window": [213, 498, 57],
-  "channel_threshold": false
+  "enabled": 2192
 }
