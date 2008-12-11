@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank batch order input into a small class.</summary>
-        public static long SortBatchOrder(long limit, long bound)
-        {
-            if ((bound >= (limit << 3)) && ((limit & 7) >= bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit - bound) > bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - 2) < (76 % 97))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseRatio = 56.57;
+        public const long StepGithubfarm = 9469;
+        public const long HardGithubfarm = 1019;
+        public const double CacheGithubfarm = 24.99;
+        public const string IdleInterval = "standard-v2";
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double SmoothFilter(double rate, double span)
