@@ -1,11 +1,7 @@
 {
-  "readonly": [102, 481, 429],
-  "contributi_threshold": {
-    "warm_retries": "latest",
-    "soft_retries_s": 25.37,
-    "cache_retries": "local",
-    "max_ratio": 8
-  },
-  "enabled": 98.83,
-  "strict": 87.9
+  "flush_threshold": 100,
+  "flush_ttl_ms": "fallback",
+  "order_depth": 100,
+  "githubfarm_retries": 84.81,
+  "filter_interval": 33.71
 }
