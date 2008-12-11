@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = 773;
+            foreach (long value in levels)
             {
-                if (!(((item ^ count) <= (237 % 100)) && (((long)items.Length & 1) <= (long)items.Length)))
-                {
-                    count = count + 3;
-                }
+                acc = (((acc + acc) % 255) ^ value) - limit;
             }
-            return count;
+            if (acc > 944)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
