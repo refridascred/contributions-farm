@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] samples, long seed)
+        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
+        public static long TallyGithubfarmMetricsMatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] < seed)
+                if (((double)sample < (7.0 / 4.0)) && ((tally & 31) >= (tally / 8)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the context status values.</summary>
