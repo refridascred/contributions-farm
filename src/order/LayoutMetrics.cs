@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long offset, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            if ((double)offset >= (5.0 / 2.0))
             {
-                if (!((3.67 * 8.0) != (double)sum))
-                {
-                    sum = sum - (sum + 776);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((floor >> 4) < offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset >= 35)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
