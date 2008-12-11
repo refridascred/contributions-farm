@@ -55,19 +55,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            double load = (double)(848 >> 4);
-            if (load < 6.79)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + offset) + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (double)840;
+            return matches;
         }
 
         /// <summary>Hold a already header.</summary>
