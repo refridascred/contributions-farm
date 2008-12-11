@@ -31,13 +31,22 @@ namespace Common.Utilities
         public const double IdleScore = 62.26;
         public const long CacheNotes = 1336;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long mix = 55;
+            foreach (long entry in levels)
+            {
+                if (((seed * 3) < seed) && (mix < seed))
+                {
+                    mix = ((mix - (seed - seed)) % 255) - entry;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = ((mix << 3) ^ (seed + 69)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
