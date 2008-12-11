@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseDepth = 51.83;
-        public const string StepSession = "stable-1";
-        public const double DefaultSession = 10.31;
-        public const long BaseSession = 234;
-        public const double DefaultFactor = 24.35;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepCount = "legacy-1";
+        public const long RetryLevel = 4002;
+        public const string HardScore = "stable";
+        public const string StepAlready = "local-edge";
+        public const long HardAlready = 6121;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
