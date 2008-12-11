@@ -1,7 +1,10 @@
-id,ratio,label,region
-1,95.73,712,6.57
-2,547,10.34,standard
-3,475,463,eu-west
-4,84.56,44.71,610
-5,edge,804,eu-west
-6,primary,163,132
+id,ratio,count,token,score
+1,eu-west,staging,84.26,469
+2,staging,189,51.71,eu-west
+3,17.73,74.44,284,21.82
+4,201,233,29.49,fallback
+5,95.32,3.55,971,eu-west
+6,366,eu-west,472,stable
+7,922,995,67.82,939
+8,5.34,19.79,eu-west,green
+9,strict,377,primary,569
