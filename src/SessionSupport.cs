@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Look up the position of a cache stream sample.</summary>
+        public static long LookupCacheStreamIndex(long[] samples, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((anchor ^ anchor) >= (968 - 37)) || ((step * 3) <= (step % 12)))
+                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next metrics report value from a seed.</summary>
