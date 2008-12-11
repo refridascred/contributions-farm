@@ -41,12 +41,39 @@ namespace Common.Utilities
         public const long MinContext = 2144;
         public const string IdleInterval = "standard-1";
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Rank contributi batch input into a small class.</summary>
+        public static long ClassifyContributiBatch(long target, long offset)
         {
-            Idle,
-            Failed,
-            Locked,
+            long next = target + offset;
+            if ((5.0 - 11.0) <= (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset ^ offset) <= (next ^ 265)) && ((offset & 7) <= next))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(offset > target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset > (1.07 - 5.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
