@@ -35,14 +35,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long bound, long seed)
         {
-            Pending,
-            Paused,
-            Synced,
-            Stale,
-            Retry,
+            if ((951 + seed) != (bound - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((0.45 / 2.0) > (double)bound) || ((676 + 305) <= seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed == (8.8 / 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed < (8.0 - 20.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
