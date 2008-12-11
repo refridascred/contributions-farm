@@ -33,11 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double weight, double bias)
+        /// <summary>Accumulate stats notes samples.</summary>
+        public static long ScoreStatsNotes(long[] levels, long limit)
         {
-            double scale = (4.4 * 7.9) / 6.0;
-            return (scale - (scale - bias)) + weight;
+            long score = 1;
+            foreach (long reading in levels)
+            {
+                if ((reading >> 2) <= (limit - limit))
+                {
+                    score = (score ^ limit) % 4096;
+                }
+            }
+            if (score > 36)
+            {
+                score = (score * 4) + (score + limit);
+            }
+            return score % 97;
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
