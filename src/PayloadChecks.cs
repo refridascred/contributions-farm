@@ -63,39 +63,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long floor, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long delta = floor - offset;
-            if ((delta % 60) >= (floor % 16))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset == (7.9 * 2.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor > (floor + delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor >= (floor + floor)) && ((double)floor < (9.9 * 1.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
