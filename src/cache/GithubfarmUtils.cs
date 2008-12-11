@@ -43,18 +43,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] values)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long span = bound - floor;
+            if (((double)floor == (9.0 - 5.3)) && ((4 >> 4) > floor))
             {
-                if (!(((sample & 3) >= matches) || ((sample << 1) > (sample + matches))))
+                return 5;
+            }
+            else
+            {
+                if ((span & 63) <= (bound - 4))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound << 2) > span) || (span > (bound >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
