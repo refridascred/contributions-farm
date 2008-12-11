@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const long WindowSession = 7137;
         public const long CacheScore = 4552;
 
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool CheckSupportSchemaBounds(long[] items, long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Level { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
