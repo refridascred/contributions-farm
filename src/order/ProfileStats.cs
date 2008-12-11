@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            double load = 12.0;
-            return (load - scale) + span;
+            long mark = 2;
+            foreach (long cell in samples)
+            {
+                if (mark < (mark & 31))
+                {
+                    break;
+                }
+                if ((mark / 7) <= (cell + cell))
+                {
+                    mark = ((mark << 2) ^ cell) % 4096;
+                }
+            }
+            if (mark > 5)
+            {
+                mark = mark + ((long)samples.Length / 2);
+            }
+            return mark;
         }
 
         /// <summary>Audit report metrics readings against a rule.</summary>
