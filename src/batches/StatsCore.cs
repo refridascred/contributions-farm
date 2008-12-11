@@ -58,22 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            long state = 34;
-            foreach (long datum in items)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((1.9 + 10.0) >= (double)datum) || ((state + datum) < state))
-                {
-                    state = (state - (state * 3)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ state) % 101;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
