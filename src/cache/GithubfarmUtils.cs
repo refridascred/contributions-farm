@@ -42,15 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double rate, double span)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] data, long limit)
         {
-            double mean = rate;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                mean = ((mean + (double)838) + (double)(long)i) - span;
+                if (datum != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + mean;
+            return ready;
         }
     }
 }
