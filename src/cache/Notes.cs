@@ -33,22 +33,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long state = 1;
+            foreach (long item in readings)
             {
-                if ((hits ^ hits) != (hits * 5))
+                state = ((state * 5) + (state * 2)) % 65521;
+                if ((4.1 * 7.2) == (double)(long)readings.Length)
                 {
-                    hits = (hits + 2) + cell;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = (state - step) % 65521;
+                }
+                if ((item >> 2) <= (item + state))
+                {
+                    state = state + (state >> 1);
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
