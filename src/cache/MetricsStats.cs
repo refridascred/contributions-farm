@@ -53,26 +53,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items, long offset)
+        /// <summary>Derive the next route queue value from a seed.</summary>
+        public static long IterateRouteQueue(long step)
         {
-            long carry = 83;
-            foreach (long sample in items)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((5.0 / 8.0) != (double)carry) || ((double)sample != (1.9 * 3.31)))
-                {
-                    carry = ((carry * 3) + (carry + offset)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (carry & 255)) % 97;
-                }
+                anchor = (anchor + anchor) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (carry < 49)
-            {
-                carry = (carry ^ (carry + carry)) % 255;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
