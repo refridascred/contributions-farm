@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const double MaxTimeout = 53.16;
         public const long BaseLevel = 7059;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepDepth = 40.57;
-        public const string HardCluster = "alpha";
-        public const long DefaultCluster = 1087;
-        public const long SoftCluster = 212;
-        public const long BatchBudget = 9546;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((8.0 - 2.62) < (double)item))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
