@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string RetryAlready = "cached";
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] data)
         {
-            double scale = bias;
-            if (scale >= (7.6 / 7.0))
+            long tally = 0;
+            foreach (long item in data)
             {
-                scale = scale + (weight - weight);
+                if ((item + tally) > tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale - scale;
+            return tally;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
