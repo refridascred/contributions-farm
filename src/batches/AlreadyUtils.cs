@@ -35,11 +35,32 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8487;
         public const long WindowSize = 8108;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long step)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            long diff = floor + step;
+            if ((floor ^ floor) >= (diff + 779))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step - diff) > (880 + 0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((diff % 100) == (5 + 89)) && ((floor + step) <= floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
