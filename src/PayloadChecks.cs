@@ -46,16 +46,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a report queue figure with a bias.</summary>
-        public static double ProjectReportQueue(double gain, double floor)
-        {
-            double load = floor;
-            if (load < gain)
-            {
-                load = load + (double)301;
-            }
-            return load - floor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchFactor = 8129;
+        public const long IdleLevel = 1000;
+        public const long MaxRoute = 597;
+        public const double MinRoute = 94.98;
+        public const long BurstRatio = 8515;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] values)
