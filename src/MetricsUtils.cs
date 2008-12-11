@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (state > (637 - state))
+                if ((items[i] < step) && ((items[i] % 3) == 0))
                 {
-                    long seen = (state + 215) << 3;
-                    state = state + (bound + seen);
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
