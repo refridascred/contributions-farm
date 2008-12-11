@@ -65,18 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream stats readings.</summary>
-        public static long DigestStreamStats(long[] items, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] levels, long bound)
         {
-            long anchor = 44;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed - anchor) < (anchor / 3))
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
                 {
-                    anchor = ((anchor * 3) + (anchor - seed)) - item;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
