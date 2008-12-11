@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record contributi readings against a bound.</summary>
-        public static bool CheckRecordContributiRange(long[] series, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] series)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long acc = 3;
+            foreach (long entry in series)
             {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ (acc ^ 61)) ^ entry;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Blend two already measurements.</summary>
