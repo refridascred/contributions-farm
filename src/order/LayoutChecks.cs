@@ -68,19 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample > (74 - 15))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 9448;
+        public const string StepWindow = "stable-edge";
+        public const long DefaultSpan = 8517;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenHits(long[] readings)
