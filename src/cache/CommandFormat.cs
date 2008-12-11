@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] values)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count > (value - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Locate a account reading by value.</summary>
