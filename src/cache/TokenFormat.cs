@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] readings, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((readings[i] < target) && ((readings[i] % 2) == 0))
                 {
-                    carry = ((carry << 3) ^ carry) - (long)i2;
+                    return (long)i;
                 }
-                carry = (carry * 5) + ((long)i - 62);
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
