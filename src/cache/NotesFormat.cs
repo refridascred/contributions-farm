@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] series, long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long carry = 359;
-            foreach (long datum in series)
-            {
-                if ((0 * 4) < (datum - datum))
-                {
-                    carry = ((carry * 2) + (seed >> 3)) % 255;
-                }
-                carry = (carry + (carry & 63)) % 65521;
-            }
-            return carry;
+            Failed,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the metric state values.</summary>
