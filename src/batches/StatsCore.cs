@@ -87,10 +87,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheTimeout = 388;
-        public const long BatchInterval = 6760;
-        public const double MaxCount = 62.04;
-        public const string MinContext = "local-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstLevel = "cached-edge";
+        public const double StepLevel = 53.39;
+        public const double BaseLevel = 34.91;
+        public const long RetrySchema = 6368;
     }
 }
