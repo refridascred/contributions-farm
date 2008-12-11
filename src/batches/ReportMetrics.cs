@@ -32,18 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheDepth = 5869;
+        public const string CacheGithubfarm = "legacy-v2";
+        public const long IdleGithubfarm = 777;
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
         public static long OverlapToolsCommitsCount(long[] items)
