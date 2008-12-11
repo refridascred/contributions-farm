@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double floor)
-        {
-            double mean = (double)(0 << 3);
-            if (mean >= 15.0)
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean - (double)7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (mean * 6.43)) + (double)(long)i;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardDepth = 3881;
+        public const long CacheDepth = 9877;
+        public const long SoftBatch = 2927;
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
         public static long DigestGithubfarmContext(long[] samples)
