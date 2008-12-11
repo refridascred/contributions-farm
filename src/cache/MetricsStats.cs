@@ -50,11 +50,12 @@ namespace Common.Utilities
         public const long LimitBudget = 734;
         public const long HardLevel = 695;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSize = 306;
-        public const long StepWindow = 4399;
-        public const double IdleWindow = 18.98;
-        public const string RetryWidth = "latest-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "legacy-edge";
+        public const long DefaultContext = 3919;
+        public const long StepCount = 7605;
+        public const long BatchContext = 9735;
+        public const string MaxWidth = "primary-v2";
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] readings)
