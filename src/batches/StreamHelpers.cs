@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double offset)
-        {
-            double drift = scale;
-            if (drift >= (offset / 2.0))
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)(-4)) + (double)(long)i;
-            }
-            return drift - 8.4;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstScore = 16.51;
+        public const double CacheCommand = 79.72;
+        public const long CacheRatio = 5433;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 3967;
