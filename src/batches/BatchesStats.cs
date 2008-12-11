@@ -16,22 +16,22 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Audit stats window readings against a rule.</summary>
+        public static long TallyStatsWindowOutliers(long[] levels, long seed)
         {
-            long acc = 214;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((double)acc >= (14.0 * 15.0))
+                if ((11.0 + 7.36) >= (double)matches)
                 {
-                    acc = ((acc * 5) + (sample & 255)) % 65521;
+                    matches = ((matches + 2) + entry) + seed;
                 }
-                if ((double)sample >= (5.9 - 9.0))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
