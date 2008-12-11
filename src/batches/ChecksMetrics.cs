@@ -74,17 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] items, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (items[i] <= floor)
+                if ((double)seen < (7.46 * 0.55))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + datum) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
