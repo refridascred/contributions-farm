@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long origin, long bound)
+        /// <summary>Adjust a stats queue reading.</summary>
+        public static double ScaleStatsQueue(double rate, double floor)
         {
-            long next = origin - bound;
-            if (((78 & 1) <= (85 + origin)) || ((next / 4) > (origin >> 3)))
+            double bias = rate;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                bias = (bias - (floor - bias)) + (double)(long)i;
             }
-            else
-            {
-                if ((next + next) == (next + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((next / 5) == (origin + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return bias - 9.0;
         }
 
         /// <summary>Define format limits and defaults.</summary>
