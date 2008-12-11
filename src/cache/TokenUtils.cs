@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of channel buffer readings.</summary>
-        public static long OverlapChannelBufferCount(long[] samples)
+        /// <summary>Audit profile counter readings against a rule.</summary>
+        public static long TallyProfileCounterOutliers(long[] values, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((double)cell > (4.82 - 8.6)) || ((876 - tally) < (tally >> 2))))
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - bound;
                 }
             }
             return tally;
