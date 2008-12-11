@@ -37,21 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != floor)
                 {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a schema stats.</summary>
