@@ -26,23 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels, long floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long sum = 8;
-            foreach (long value in levels)
-            {
-                sum = sum + (value & 63);
-                if ((double)21 > (5.1 - 1.85))
-                {
-                    sum = (sum + (sum >> 2)) % 255;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ floor;
-                }
-            }
-            return sum % 4096;
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
