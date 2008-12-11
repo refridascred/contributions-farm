@@ -27,12 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepSize = "fallback-edge";
-        public const long LimitCommits = 1313;
-        public const long CacheCommits = 3697;
-        public const long MaxCommits = 1359;
-        public const long SoftRatio = 1992;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 5788;
+        public const double SoftDepth = 49.92;
+        public const long BatchContext = 2603;
+        public const long DefaultContext = 1115;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterGaps(long[] levels)
