@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally - 54) != (entry << 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
