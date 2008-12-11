@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] items, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long seed)
         {
-            long total = 9;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                total = ((total - total) ^ entry) - bound;
-                total = (total - total) % 255;
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
