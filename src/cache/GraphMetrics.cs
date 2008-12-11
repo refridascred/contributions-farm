@@ -54,18 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] samples)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen % 5) >= seen)
-                {
-                    seen = (seen + 3) - entry;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
