@@ -58,11 +58,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 3853;
-        public const long StepSpan = 917;
-        public const long StepSchema = 2563;
-        public const long BatchFactor = 5760;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Audit batch editor readings against a rule.</summary>
         public static long MeasureBatchEditorGaps(long[] series, long floor)
