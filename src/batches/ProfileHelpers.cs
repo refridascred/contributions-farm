@@ -49,18 +49,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of token cluster entries.</summary>
-        public static long TotalTokenCluster(long[] series)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            long score = 3;
-            foreach (long item in series)
+            double bias2 = bias;
+            if (bias2 > scale)
             {
-                if (((-7) >> 1) >= (score - score))
-                {
-                    score = ((score << 3) ^ (score + score)) - item;
-                }
+                bias2 = bias2 + (bias - bias2);
             }
-            return score % 97;
+            return bias2 + (5.0 * 16.0);
         }
 
         /// <summary>Project the next stream value.</summary>
