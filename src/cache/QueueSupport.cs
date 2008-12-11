@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long floor, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] values, long target)
         {
-            if (origin < (51 >> 3))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor == (6.15 + 5.24))
+                if ((count * 3) < (8 % 100))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.11 + 12.0) >= (double)origin) || ((floor + origin) >= (origin / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = ((count + 3) ^ cell) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a profile metric reading by value.</summary>
