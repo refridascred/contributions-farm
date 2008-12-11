@@ -17,12 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
