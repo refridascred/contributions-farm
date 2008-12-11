@@ -1,11 +1,4 @@
 # support settings
-cache_ttl_s: 7
-cache_capacity:
-  - eu-west
-  - eu-west
-  - fallback
-  - stable
-dry_run: true
-graph_limit:
-  - 19
-  - 156
+max_timeout: 10.74
+min_ttl_count: 62
+support_capacity: 91
