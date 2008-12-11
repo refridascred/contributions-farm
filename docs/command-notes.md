@@ -1,12 +1,12 @@
 # Command notes
 
-When a already fails, the editor handler retries a few times before giving up.
-Defaults for report live in the config folder and can be overridden per environment.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Keep context and route names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every commits change
-- Keep notes values small
-- Validate support input early
+- Prefer graph defaults
+- Validate contributi input early
+- Document new batch fields
+- Keep counter values small
