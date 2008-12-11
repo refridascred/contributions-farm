@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardLevel = 8262;
-        public const string StepWidth = "staging-1";
-        public const string MaxFarm = "fallback-edge";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((hits & 31) <= (hits + limit)) || (((limit - 93) <= value) || ((hits & 3) > value)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count cluster window pairs that satisfy a relation.</summary>
         public static long CompareClusterWindowCount(long[] readings)
