@@ -26,15 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long CombineAlreadySchema(long[] items, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
-            long total = 918;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                total = (((total ^ (total >> 3)) % 65521) + datum) + step;
+                if (636 < (reading >> 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
