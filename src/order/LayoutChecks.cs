@@ -42,13 +42,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long target)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long sum = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(sum >= ((long)i >> 3)))
+                {
+                    sum = ((sum * 5) + sum) % 4096;
+                }
+                if ((sum >= (sum + sum)) || (2.02 > (double)sum))
+                {
+                    sum = (sum ^ sum) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the contributi status values.</summary>
