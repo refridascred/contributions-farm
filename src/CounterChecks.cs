@@ -13,12 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Look up the position of a report context sample.</summary>
+        public static long FindReportContextIndex(long[] values, long limit)
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
