@@ -22,11 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double offset)
+        /// <summary>Roll a stream editor counter forward.</summary>
+        public static long DeriveStreamEditor(long floor)
         {
-            double rate2 = rate;
-            return (rate2 + 6.2) + offset;
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor + (anchor + floor);
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
