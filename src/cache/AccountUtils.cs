@@ -41,10 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleRatio = 42.77;
-        public const string BaseLevel = "alpha-1";
-        public const double BatchTimeout = 95.23;
-        public const long SoftRatio = 7377;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
+        {
+            long score = 293;
+            foreach (long value in series)
+            {
+                score = ((score << 3) ^ score) - value;
+                score = (score + ((long)series.Length & 127)) % 65521;
+            }
+            return score;
+        }
     }
 }
