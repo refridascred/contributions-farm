@@ -13,19 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double span)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double bias2 = span;
-            if (bias2 >= (3.12 + 3.2))
-            {
-                bias2 = (bias2 - 5.1) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + span) - (double)(long)i;
-            }
-            return bias2 - (double)679;
+            Idle,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
