@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the editor context entries that pass the check.</summary>
-        public static long MeasureEditorContextHits(long[] items, long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum >= (double)60)
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
+            Draft,
+            Queued,
+            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
