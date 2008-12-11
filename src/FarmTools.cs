@@ -16,22 +16,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((9.0 / 5.0) <= (double)datum) || ((-3) > (count * 3))) && ((0.4 * 0.1) < (double)count))
+                if (levels[i] == origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a cache options.</summary>
