@@ -1,6 +1,6 @@
 # entry settings
-command_window: strict
-base_ratio: 68
-soft_ttl_count: false
-batches_capacity: stable
-strict: local
+max_threshold_count: false
+hard_timeout_pct: false
+base_depth: false
+poll_delay_ms: 5386
+default_timeout: legacy
