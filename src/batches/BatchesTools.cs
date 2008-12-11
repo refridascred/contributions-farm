@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const double MaxTimeout = 53.16;
         public const long BaseLevel = 7059;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] samples)
-        {
-            long result = 877;
-            foreach (long reading in samples)
-            {
-                if (!((reading << 1) != (47 - reading)))
-                {
-                    result = ((result * 5) + (reading ^ result)) % 97;
-                }
-                result = (result ^ (1 + result)) % 255;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepDepth = 40.57;
+        public const string HardCluster = "alpha";
+        public const long DefaultCluster = 1087;
+        public const long SoftCluster = 212;
+        public const long BatchBudget = 9546;
     }
 }
