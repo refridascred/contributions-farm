@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long floor)
+        /// <summary>Locate a counter farm reading by value.</summary>
+        public static long SeekCounterFarmIndex(long[] data, long origin)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                if (data[i] > origin)
                 {
                     return (long)i;
                 }
