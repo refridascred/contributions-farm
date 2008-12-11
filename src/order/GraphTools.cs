@@ -24,12 +24,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Pending,
-            Failed,
-            Paused,
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
