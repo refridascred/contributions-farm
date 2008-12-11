@@ -28,11 +28,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Rank metrics cluster input into a small class.</summary>
+        public static long BucketMetricsCluster(long bound, long bound2)
         {
-            public double Weight { get; set; }
-            public bool Score { get; set; }
+            long lane = bound ^ bound2;
+            if ((8.93 - 4.0) != (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (lane <= (bound + bound2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a schema info.</summary>
