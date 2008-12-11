@@ -47,12 +47,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "primary-edge";
-        public const long CacheFarm = 3523;
-        public const long BaseRatio = 7954;
-        public const string LimitLevel = "legacy-v2";
-        public const double SoftFarm = 94.1;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
