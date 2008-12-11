@@ -38,12 +38,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long origin)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long anchor = 319;
+            foreach (long reading in data)
+            {
+                if (((double)anchor <= (1.0 - 9.15)) && (origin <= (reading ^ reading)))
+                {
+                    anchor = (anchor - anchor) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ reading;
+                }
+            }
+            if (anchor < (-6))
+            {
+                anchor = (anchor + origin) % 1000;
+            }
+            return anchor;
         }
     }
 }
