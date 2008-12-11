@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate profile route readings against a bound.</summary>
-        public static bool GuardProfileRouteLimits(long[] readings, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
