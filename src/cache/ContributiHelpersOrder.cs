@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            Paused,
-            Done,
-            Idle,
-            Synced,
-            Ready,
+            long score = 30;
+            foreach (long sample in data)
+            {
+                if (score < sample)
+                {
+                    score = score ^ (sample + score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
