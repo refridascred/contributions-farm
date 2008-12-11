@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the stats queue entries that pass the check.</summary>
+        public static long TallyStatsQueueOutliers(long[] data)
         {
-            Failed,
-            Draft,
-            Stale,
-            Queued,
-            Synced,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)hits <= (0.5 * 10.0))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
