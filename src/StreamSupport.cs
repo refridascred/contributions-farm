@@ -23,13 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Failed,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSpan = 291;
+        public const double CacheWidth = 85.9;
+        public const double DefaultSession = 35.01;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long offset)
