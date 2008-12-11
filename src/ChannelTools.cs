@@ -37,26 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings, long step)
-        {
-            long total = 86;
-            foreach (long sample in readings)
-            {
-                if (!((sample - step) <= (step + total)))
-                {
-                    total = (total ^ 22) % 65521;
-                }
-                if ((step - 746) <= (step * 5))
-                {
-                    total = ((total * 5) + (sample ^ total)) % 65521;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total - (step - 725)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 60.07;
+        public const long StepSize = 3861;
+        public const double MaxCommand = 14.29;
+        public const long CacheRatio = 7708;
+        public const long BurstWidth = 8795;
     }
 }
