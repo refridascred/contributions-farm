@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetrySpan = 2868;
+        public const long MaxAccount = 9372;
+        public const string SoftAccount = "standard-1";
+        public const long MinAccount = 1876;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
