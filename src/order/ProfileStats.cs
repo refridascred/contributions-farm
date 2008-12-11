@@ -28,14 +28,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Retry,
-            Queued,
-            Locked,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleSpan = "standard";
+        public const long MaxSpan = 3702;
+        public const long SoftCluster = 5411;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BaseRatio = 56.17;
