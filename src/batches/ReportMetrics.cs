@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry stats samples are out of range.</summary>
-        public static long AuditEntryStatsOutliers(long[] items, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double scale = rate;
+            if (scale > bias)
             {
-                if ((origin + 27) <= ((-132) + 289))
-                {
-                    count = (count + 1) + entry;
-                }
+                scale = scale - 1.08;
             }
-            return count;
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Project the next support value.</summary>
