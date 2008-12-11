@@ -13,14 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count record commits pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCommitsCount(long[] readings)
         {
-            Closed,
-            Paused,
-            Failed,
-            Ready,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
