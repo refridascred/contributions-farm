@@ -1,7 +1,14 @@
 {
-  "min_delay_s": 8233,
-  "batch_size_pct": 1178,
-  "flush_limit_pct": true,
-  "warm_capacity": 2784,
-  "sync_ratio": 60
+  "soft_delay": {
+    "poll_depth": {
+      "schema_retries": true,
+      "queue_window": false,
+      "retry_threshold_ms": [181, 110]
+    },
+    "strict": 60,
+    "soft_threshold_pct": "blue"
+  },
+  "channel_depth": "green",
+  "max_timeout_count": "local",
+  "flush_ratio_s": "open"
 }
