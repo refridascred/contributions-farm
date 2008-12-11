@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long acc = 578;
-            foreach (long entry in values)
-            {
-                if ((origin << 3) > (28 / 8))
-                {
-                    acc = acc + entry;
-                }
-            }
-            if (acc < 78)
-            {
-                acc = acc ^ (981 * 2);
-            }
-            return acc;
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the stats class values.</summary>
