@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Locate a window support reading by value.</summary>
+        public static long FindWindowSupportIndex(long[] readings, long limit)
         {
-            Dropped,
-            Active,
-            Ready,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream stats.</summary>
