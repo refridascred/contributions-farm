@@ -13,21 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of contributi report readings.</summary>
-        public static long OverlapContributiReportCount(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > offset)
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
