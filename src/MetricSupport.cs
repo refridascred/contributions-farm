@@ -14,19 +14,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] data, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (value != limit)
+                if (!((reading - step) < matches) || (reading <= (2 * 4)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Blend two layout measurements.</summary>
