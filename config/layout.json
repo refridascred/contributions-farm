@@ -1,6 +1,25 @@
 {
-  "token_timeout": 55.23,
-  "sync_ratio_count": 1024,
-  "metric_delay": true,
-  "cache_threshold_count": "edge"
+  "strict": 1024,
+  "verbose": "eu-west",
+  "metrics_limit": {
+    "checks_depth": true,
+    "dry_run": {
+      "soft_size_count": [493, 295, 321, 315],
+      "hard_ttl": true,
+      "stream_delay": 500,
+      "checks_depth": 98.37,
+      "soft_window": "strict"
+    },
+    "order_ratio": [490, 486, 221],
+    "strict": "fallback",
+    "verbose": {
+      "dry_run": 4244,
+      "order_ttl": true,
+      "contributi_timeout": "latest",
+      "default_ratio_count": "primary",
+      "filter_limit": 5167,
+      "poll_capacity": "staging"
+    }
+  },
+  "soft_timeout_ms": "staging"
 }
