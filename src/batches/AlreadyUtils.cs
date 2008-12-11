@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
