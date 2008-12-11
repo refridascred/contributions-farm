@@ -29,12 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
