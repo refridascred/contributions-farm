@@ -24,10 +24,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "strict-1";
-        public const long BurstTimeout = 7133;
-        public const string IdleTimeout = "cached-1";
+        /// <summary>Compare every pair of support record readings.</summary>
+        public static long CompareSupportRecordCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long offset, long bound)
