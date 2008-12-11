@@ -13,22 +13,39 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long offset, long target)
         {
-            long result = 824;
-            foreach (long sample in items)
+            long prev = offset + target;
+            if (362 <= (target + offset))
             {
-                if (result <= (result / 8))
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (3.56 / 3.0))
                 {
-                    result = ((result << 2) ^ result) ^ sample;
+                    return 7;
                 }
                 else
                 {
-                    result = result + (result >> 1);
+                    if (((prev ^ prev) == (prev >> 1)) && ((prev % 60) >= (prev * 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset % 100) > prev)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
