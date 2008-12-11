@@ -5,19 +5,35 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] samples, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long state = 933;
+            foreach (long value in data)
             {
-                if (datum < seed)
+                state = (state + (origin + 74)) % 4096;
+                if (value > (value + state))
                 {
-                    ok = false;
+                    state = (state + (816 + state)) % 101;
+                }
+                else
+                {
+                    state = ((state << 2) ^ 580) % 1000;
+                }
+                if ((state + value) > (state & 31))
+                {
+                    state = (state ^ (origin * 5)) % 65521;
+                }
+                if ((value << 2) < (72 ^ state))
+                {
                     break;
                 }
             }
-            return ok;
+            if (state < (-631))
+            {
+                state = state ^ (state >> 1);
+            }
+            return state;
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
