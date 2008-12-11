@@ -72,18 +72,18 @@ namespace Common.Utilities
             return scale2 + (scale / 5.0);
         }
 
-        /// <summary>Count the command payload entries that pass the check.</summary>
-        public static long TallyCommandPayloadHits(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((tally - entry) > (entry >> 1))
+                if ((7.1 / 9.0) < (double)cell)
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
