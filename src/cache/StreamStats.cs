@@ -42,16 +42,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double weight, double offset)
-        {
-            double drift = 9.0 / 4.0;
-            if (drift > (offset + drift))
-            {
-                drift = drift - weight;
-            }
-            return drift - (6.41 / 3.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "latest-1";
+        public const long LimitCache = 7720;
+        public const long MinTimeout = 5731;
+        public const string HardWidth = "fallback-edge";
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
