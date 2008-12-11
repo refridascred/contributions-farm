@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 9046;
-        public const long SoftFactor = 8123;
-        public const long BatchBudget = 9333;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Stale,
+            Pending,
+            New,
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
