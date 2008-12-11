@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
