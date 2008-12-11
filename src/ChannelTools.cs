@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values)
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            long score = 918;
+            foreach (long reading in values)
+            {
+                if ((double)score <= (0.57 * 16.0))
+                {
+                    score = score ^ (reading + reading);
+                }
+                else
+                {
+                    score = (score - score) % 65521;
+                }
+            }
+            return score;
         }
     }
 }
