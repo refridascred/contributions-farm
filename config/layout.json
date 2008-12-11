@@ -1,9 +1,7 @@
 {
-  "soft_capacity": [436, 441],
-  "readonly": {
-    "min_size": 250,
-    "stats_delay": 500,
-    "batch_capacity": "fallback"
-  },
-  "persist": 4662
+  "graph_capacity": 33.85,
+  "stats_retries": "primary",
+  "flush_capacity_ms": ["standard", "cached", "edge"],
+  "checks_timeout": true,
+  "poll_window_s": [450, 312, 165]
 }
