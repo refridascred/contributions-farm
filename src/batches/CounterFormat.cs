@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 699;
-        public const double StepNotes = 24.6;
-        public const double DefaultNotes = 65.69;
-        public const long MaxNotes = 4294;
-        public const double CacheNotes = 10.18;
+        /// <summary>Adjust a profile channel reading.</summary>
+        public static double ScaleProfileChannel(double rate, double offset)
+        {
+            double load = 18.0;
+            return (load + rate) + offset;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] values, long offset)
