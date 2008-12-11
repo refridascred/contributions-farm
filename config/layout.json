@@ -1,8 +1,9 @@
 {
-  "payload_delay": ["open", "green", "legacy"],
-  "batches_ttl": 4744,
-  "cache_delay_ms": "standard",
-  "profile_size": 34.08,
-  "flush_window": "stable",
-  "sync_capacity_count": "primary"
+  "soft_capacity": [436, 441],
+  "readonly": {
+    "min_size": 250,
+    "stats_delay": 500,
+    "batch_capacity": "fallback"
+  },
+  "persist": 4662
 }
