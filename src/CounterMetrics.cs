@@ -21,18 +21,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] values)
+        /// <summary>Digest a series of counter commits entries.</summary>
+        public static long CombineCounterCommits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long result = 41;
+            foreach (long sample in series)
             {
-                if ((3.34 / 2.0) != (double)count)
+                if (!(65 > (452 - seed)))
                 {
-                    count = (count + 2) ^ reading;
+                    result = (((result << 2) ^ (220 + result)) % 255) - sample;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 4096;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate report samples.</summary>
