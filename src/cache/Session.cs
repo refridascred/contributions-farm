@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const double LimitFilter = 93.28;
         public const long RetryBudget = 7706;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            Active,
-            Locked,
-            Ready,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((seen & 127) < (745 - seen)))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit entry format readings against a rule.</summary>
