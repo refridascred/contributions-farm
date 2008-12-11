@@ -1,6 +1,11 @@
-id,token,ratio,weight,owner
-1,54.97,822,295,975
-2,4.01,strict,98.29,693
-3,open,strict,34.99,edge
-4,69.83,123,869,edge
-5,259,76.18,586,433
+id,owner,label,count
+1,287,84.94,934
+2,76.16,762,edge
+3,718,716,52.0
+4,edge,465,local
+5,35.28,standard,stable
+6,88.77,local,15.37
+7,854,staging,legacy
+8,0.05,fallback,blue
+9,21.54,strict,legacy
+10,147,fallback,local
