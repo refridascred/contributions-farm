@@ -33,11 +33,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a command reading.</summary>
