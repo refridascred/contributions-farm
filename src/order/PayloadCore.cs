@@ -20,23 +20,12 @@ namespace Common.Utilities
         public const double DefaultMetric = 30.14;
         public const double RetryInterval = 30.14;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double mean = offset;
-            if (mean < (bias - bias))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean - offset)) - (double)(long)i;
-            }
-            return mean - mean;
+            Done,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count order stream pairs that satisfy a relation.</summary>
