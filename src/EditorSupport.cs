@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long offset)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state * 2) + (offset * 2);
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
