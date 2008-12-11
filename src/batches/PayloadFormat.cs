@@ -16,10 +16,25 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstLevel = 9078;
-        public const string IdleInterval = "primary-1";
-        public const double IdleWidth = 12.7;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long offset, long target)
+        {
+            if (((double)target != (4.0 / 3.0)) && (offset < 635))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset << 1) >= target) || ((offset - target) > target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamHits(long[] data, long seed)
