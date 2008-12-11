@@ -26,39 +26,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long offset, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long span = offset - seed;
-            if (((offset + seed) == (offset * 5)) || ((offset / 4) <= (span + offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 3) == (5 * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.45 / 7.0) != (double)span)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - span) < (80 + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
