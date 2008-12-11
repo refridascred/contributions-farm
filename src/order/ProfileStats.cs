@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many session stream samples are out of range.</summary>
-        public static long CountSessionStreamOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits >> 3) != (item + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstDepth = 8193;
+        public const double DefaultSpan = 23.98;
+        public const double HardBudget = 43.33;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] readings, long step)
