@@ -50,11 +50,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double bias)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] levels, long seed)
         {
-            double rate = scale;
-            return (rate - (scale * 1.88)) + bias;
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((count - count) < (item * 2)) || (((double)seed > 3.5) || (item > (count + count))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
