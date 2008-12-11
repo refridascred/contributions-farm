@@ -38,12 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            Synced,
-            Draft,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
