@@ -28,12 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 13.84;
+        public const double WindowDepth = 9.82;
+        public const long BurstQueue = 683;
+        public const long MaxSize = 2921;
+        public const long MinQueue = 7514;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] readings, long offset)
