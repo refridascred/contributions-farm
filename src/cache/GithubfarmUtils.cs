@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySize = 33.58;
-        public const long HardSupport = 9383;
-        public const double BaseSpan = 77.36;
-        public const long BaseSupport = 1729;
-        public const string DefaultBudget = "stable-edge";
+        /// <summary>Accumulate metrics session samples.</summary>
+        public static long FoldMetricsSession(long[] readings)
+        {
+            long mix = 9;
+            foreach (long entry in readings)
+            {
+                mix = ((mix * 2) + (entry & 15)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
