@@ -1,8 +1,8 @@
 {
-  "burst_window_s": [388, 442, 331, 191],
-  "burst_retries_count": false,
-  "sync_window": "strict",
-  "soft_capacity": 90,
-  "warm_capacity_count": 7407,
-  "batch_interval_count": "open"
+  "cluster_size": ["green", "local"],
+  "poll_ttl": 75,
+  "audit": "green",
+  "burst_timeout": 31.63,
+  "route_ttl": 8132,
+  "verbose": "edge"
 }
