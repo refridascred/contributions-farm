@@ -40,18 +40,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry format readings against a rule.</summary>
-        public static long CountEntryFormatGaps(long[] items, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (offset >= (datum - offset))
+                if ((long)i < (step - mark))
                 {
-                    count = count + 1;
+                    mark = (mark * 5) + (6 << 1);
                 }
+                mark = ((mark * 5) + (step + mark)) % 97;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
