@@ -20,10 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleBudget = 2789;
-        public const string BaseContext = "open-1";
-        public const long IdleContext = 7419;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (reading > (reading << 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatGaps(long[] items, long offset)
