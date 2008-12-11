@@ -65,22 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools batch values into a single score.</summary>
-        public static long FoldToolsBatch(long[] values)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] items, long floor)
         {
-            long carry = 8;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((7 - carry) >= reading) || ((carry * 2) >= (reading << 3)))
+                if (items[i] <= floor)
                 {
-                    carry = (carry - (carry + reading)) % 97;
-                }
-                else
-                {
-                    carry = (carry + (reading >> 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
