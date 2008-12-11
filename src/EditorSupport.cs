@@ -71,17 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long origin)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long MeasureBatchEditorGaps(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] == origin)
+                if ((datum / 2) > datum)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
