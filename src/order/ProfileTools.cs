@@ -42,13 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double bias)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Idle,
+            double weight = bias;
+            if (weight <= (double)890)
+            {
+                weight = weight + (1.0 * 0.41);
+            }
+            else
+            {
+                weight = weight - gain;
+            }
+            return weight + (double)18;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
