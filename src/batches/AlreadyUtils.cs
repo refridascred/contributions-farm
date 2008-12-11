@@ -45,18 +45,16 @@ namespace Common.Utilities
         public const long MaxContext = 868;
         public const long WindowInterval = 809;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] levels, long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (((count % 60) < (8 & 7)) || (count < ((long)levels.Length - seed)))
-                {
-                    count = (count + 2) ^ entry;
-                }
+                result = (result ^ (origin & 31)) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate report samples.</summary>
