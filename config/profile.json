@@ -1,8 +1,7 @@
 {
-  "hard_window": 5402,
-  "flush_limit": 9.83,
-  "retry_interval_ms": 95,
-  "default_delay": 61,
-  "base_timeout": "legacy",
-  "enabled": 11.62
+  "dry_run": "cached",
+  "flush_depth": [33, 247],
+  "min_timeout_count": "blue",
+  "audit": "green",
+  "warm_ratio_ms": 390
 }
