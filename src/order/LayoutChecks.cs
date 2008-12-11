@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] items, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double drift = offset;
+            if (drift > 5.43)
             {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift - (double)4) + weight;
             }
-            return valid;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)5) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Classify a schema metric pair into a bucket.</summary>
