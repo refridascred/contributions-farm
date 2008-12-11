@@ -32,22 +32,17 @@ namespace Common.Utilities
         public const long RetrySpan = 9808;
         public const string WindowLevel = "primary-1";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] levels, long bound)
         {
-            long state = 2;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (state < (sample % 5))
+                if (levels[i] >= bound)
                 {
-                    state = state ^ sample;
-                }
-                else
-                {
-                    state = (state - (state << 2)) % 101;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
