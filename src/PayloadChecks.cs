@@ -67,10 +67,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 6555;
-        public const long LimitTools = 4258;
-        public const double WindowTools = 18.97;
-        public const long StepTools = 363;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] samples, long offset)
+        {
+            long mark = 68;
+            foreach (long value in samples)
+            {
+                if ((1 >> 1) > value)
+                {
+                    mark = (mark + (393 * 3)) + offset;
+                }
+            }
+            if (mark > 6)
+            {
+                mark = mark + (mark >> 2);
+            }
+            return mark % 97;
+        }
     }
 }
