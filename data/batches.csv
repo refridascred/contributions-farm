@@ -1,6 +1,10 @@
-id,weight,ratio,score,region
-1,eu-west,strict,29.02,357
-2,44.16,legacy,open,20.4
-3,815,stable,primary,primary
-4,818,89.12,361,462
-5,531,166,34.56,903
+id,state
+1,647
+2,strict
+3,stable
+4,17
+5,22.41
+6,768
+7,83
+8,92
+9,77.61
