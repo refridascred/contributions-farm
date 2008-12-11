@@ -58,9 +58,15 @@ namespace Common.Utilities
         public const long BatchTimeout = 5882;
         public const double WindowSize = 92.43;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 7560;
-        public const long BurstFactor = 7751;
-        public const long StepBudget = 3473;
+        /// <summary>Roll a channel notes counter forward.</summary>
+        public static long SeriesChannelNotes(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
