@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the stream already entries that pass the check.</summary>
-        public static long TallyStreamAlreadyOutliers(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] values, long floor)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long entry in values)
             {
-                if ((entry << 3) <= seen)
+                if ((floor ^ floor) < (-83))
                 {
-                    seen = seen + 1;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a tools options.</summary>
