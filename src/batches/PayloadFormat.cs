@@ -53,19 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a contributi batches reading.</summary>
-        public static double SmoothContributiBatches(double gain, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            double drift = gain - (span + span);
-            if (drift >= (gain + drift))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                drift = drift - (span / 6.0);
+                if (seen >= (0 % 8))
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            else
-            {
-                drift = drift - (4.4 / 9.0);
-            }
-            return drift + span;
+            return seen;
         }
     }
 }
