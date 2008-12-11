@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const string StepWidth = "staging-1";
         public const string MaxFarm = "fallback-edge";
 
-        /// <summary>Scale a record commits figure with a bias.</summary>
-        public static double AdjustRecordCommits(double rate, double bias)
+        /// <summary>Count cluster window pairs that satisfy a relation.</summary>
+        public static long CompareClusterWindowCount(long[] readings)
         {
-            double scale = rate;
-            return (scale - (7.95 - rate)) + bias;
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two already measurements.</summary>
