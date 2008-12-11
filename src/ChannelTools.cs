@@ -20,26 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long result = 42;
-            foreach (long datum in levels)
-            {
-                if (datum <= (datum ^ datum))
-                {
-                    result = result + bound;
-                }
-                if ((double)bound > (double)datum)
-                {
-                    result = (result << 3) ^ 17;
-                }
-                else
-                {
-                    result = result - datum;
-                }
-            }
-            return result;
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
