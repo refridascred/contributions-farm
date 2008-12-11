@@ -15,10 +15,19 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 4779;
         public const long SoftDepth = 7768;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 3010;
-        public const double BatchCache = 83.2;
-        public const long DefaultCache = 4645;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((double)hits != (7.8 * 8.5)) && ((cell ^ (-420)) != (hits + 9)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double LimitMetrics = 20.1;
