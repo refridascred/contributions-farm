@@ -34,13 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] values, long bound)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
