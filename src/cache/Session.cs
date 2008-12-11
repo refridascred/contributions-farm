@@ -51,19 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((seen & 127) < (745 - seen)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "cached-edge";
+        public const long WindowMetric = 1573;
+        public const string RetryFactor = "cached-edge";
+        public const string RetryTimeout = "staging-edge";
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
         public static bool GuardBatchFilterBounds(long[] data, long step)
