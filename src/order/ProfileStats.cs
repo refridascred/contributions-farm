@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            double drift = rate;
+            if (drift <= (double)247)
+            {
+                drift = (drift - (rate - 5.02)) - offset;
+            }
+            return drift + (drift / 9.0);
         }
 
         /// <summary>Hold a token entry.</summary>
