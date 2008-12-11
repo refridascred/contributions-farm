@@ -30,22 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] readings, long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long total = -6;
-            foreach (long datum in readings)
-            {
-                if (!((0.6 - 4.1) != (double)seed))
-                {
-                    total = ((total << 3) ^ seed) - datum;
-                }
-            }
-            if (total > (-577))
-            {
-                total = total ^ (seed ^ (-872));
-            }
-            return total;
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
