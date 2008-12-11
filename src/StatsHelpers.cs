@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum & 3) < tally)
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheWidth = 9572;
+        public const long HardEditor = 8159;
+        public const long BurstBudget = 7854;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] levels, long target)
