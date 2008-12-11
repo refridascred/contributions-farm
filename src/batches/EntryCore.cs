@@ -34,17 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine window values into a single score.</summary>
