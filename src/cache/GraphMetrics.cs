@@ -34,13 +34,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] readings, long origin)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long score = -390;
+            foreach (long entry in readings)
+            {
+                if (score < entry)
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score + (score / 6)) % 101;
+                }
+                score = ((score << 3) ^ origin) % 97;
+            }
+            if (score < (-213))
+            {
+                score = score ^ (origin - 693);
+            }
+            return score;
         }
 
         /// <summary>Hold a report entry.</summary>
