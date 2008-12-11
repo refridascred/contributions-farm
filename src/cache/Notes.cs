@@ -19,10 +19,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchScore = 9335;
-        public const long DefaultLayout = 55;
-        public const long WindowCount = 5723;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] levels, long step)
