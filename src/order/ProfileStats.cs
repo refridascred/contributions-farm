@@ -19,11 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 61.68;
-        public const long BurstSpan = 9293;
-        public const long BatchRoute = 8249;
-        public const long BaseFactor = 9458;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] readings, long step)
+        {
+            long score = 14;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (0.2 / 7.0))
+                {
+                    score = ((score << 2) ^ (cell ^ step)) % 255;
+                }
+                if ((968 > (step >> 3)) || ((double)(long)readings.Length > (5.8 - 1.0)))
+                {
+                    break;
+                }
+            }
+            if (score > 13)
+            {
+                score = score ^ (795 ^ step);
+            }
+            return score % 97;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
