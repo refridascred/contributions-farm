@@ -1,5 +1,8 @@
 {
-  "persist": 92.06,
-  "sync_delay": 24,
-  "metrics_window": 33.92
+  "counter_limit": 11,
+  "record_size": ["legacy", "strict"],
+  "poll_depth": 60,
+  "hard_window_pct": 70,
+  "cache_size_pct": 6.74,
+  "strict": [275, 41, 291]
 }
