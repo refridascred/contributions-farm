@@ -47,14 +47,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 7207;
+        public const long CacheSchema = 3104;
+        public const double WindowSchema = 97.05;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
