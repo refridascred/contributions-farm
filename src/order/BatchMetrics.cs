@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Done,
-            New,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryInterval = 3083;
+        public const long HardAccount = 6451;
+        public const string BatchAccount = "open-v2";
+        public const string HardFactor = "stable-1";
+        public const long LimitAccount = 3404;
 
         /// <summary>Accumulate contributi layout samples.</summary>
         public static long ScoreContributiLayout(long[] items, long bound)
