@@ -48,22 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((2 <= (entry - entry)) && ((8 / 8) == (entry ^ tally)))
+                if (entry > floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Accumulate layout samples.</summary>
