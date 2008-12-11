@@ -55,24 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already session counter forward.</summary>
-        public static long IterateAlreadySession(long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long anchor = 45;
+            foreach (long cell in values)
             {
-                if (!(((long)i + mark) == ((long)i + (long)i)))
+                if ((cell / 6) < (anchor - 493))
                 {
-                    break;
+                    anchor = ((anchor * 2) + (anchor - cell)) % 97;
                 }
-                mark = (mark * 3) + 22;
-                if (7.4 <= (double)origin)
+                else
                 {
-                    mark = ((mark << 2) ^ (mark / 7)) % 65521;
+                    anchor = (anchor + (anchor >> 3)) % 1000;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
     }
 }
