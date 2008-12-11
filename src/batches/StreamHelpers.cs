@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell % 5) == (hits - cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 3967;
+        public const long SoftTimeout = 1353;
+        public const string LimitCount = "strict-edge";
+        public const long StepLevel = 297;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LocateProfileIndex(long[] levels, long target)
