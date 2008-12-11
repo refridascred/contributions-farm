@@ -41,18 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value >= (3.38 * 6.2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleRatio = 42.77;
+        public const string BaseLevel = "alpha-1";
+        public const double BatchTimeout = 95.23;
+        public const long SoftRatio = 7377;
     }
 }
