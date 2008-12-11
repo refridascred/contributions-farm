@@ -34,12 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] values, long floor)
         {
-            Closed,
-            Pending,
-            Done,
+            long acc = 88;
+            foreach (long entry in values)
+            {
+                acc = ((acc + (9 - floor)) % 101) - entry;
+            }
+            return acc;
         }
 
         /// <summary>Hold a support snapshot.</summary>
