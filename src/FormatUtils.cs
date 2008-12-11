@@ -58,11 +58,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long bound)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
