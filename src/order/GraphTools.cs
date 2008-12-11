@@ -24,19 +24,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long seed)
         {
-            long score = 4;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score << 3) ^ (21 & 255);
-                if ((score & 31) != (datum + score))
+                if ((values[i] <= seed) && ((values[i] % 5) != 0))
                 {
-                    score = score + (score / 6);
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
