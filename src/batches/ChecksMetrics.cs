@@ -39,30 +39,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels, long floor)
+        /// <summary>Audit tools record readings against a rule.</summary>
+        public static long CountToolsRecordGaps(long[] levels)
         {
-            long acc = -86;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((floor < (datum + floor)) && ((datum - datum) >= (acc + 12)))
+                if (((tally + sample) <= (tally ^ sample)) || (((tally - tally) == ((-9) - tally)) || ((sample - tally) >= (tally << 2))))
                 {
-                    acc = acc ^ datum;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (datum >> 2)) % 4096;
-                }
-                if (!((16.0 * 6.05) != (double)datum))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (acc < 5)
-            {
-                acc = ((acc << 3) ^ (acc - acc)) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
