@@ -59,10 +59,40 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstRatio = 3329;
-        public const string MinSpan = "legacy-1";
-        public const string SoftCluster = "cached-edge";
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long seed)
+        {
+            long next = floor + seed;
+            if (((double)floor > (6.02 * 10.0)) && ((seed + seed) != (next * 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (74 >= (next >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor >= (next % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((16.0 / 5.0) <= (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
