@@ -41,21 +41,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count githubfarm context pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmContextCount(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
