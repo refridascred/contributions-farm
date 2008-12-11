@@ -1,5 +1,4 @@
 # githubfarm settings
-already_delay: 4256
-verbose: 1024
-min_window_count: 250
-burst_interval_ms: 61.47
+strict: 30
+stream_delay: staging
+farm_ttl: primary
