@@ -1,18 +1,6 @@
 # entry settings
-readonly: edge
-burst_interval_pct: local
-burst_ratio_pct:
-  burst_ratio: strict
-  burst_limit_count: true
-  soft_size_count:
-    default_threshold_count:
-      - 144
-      - 421
-      - 69
-      - 401
-    retry_retries_pct: false
-    filter_depth: 30
-    soft_limit: local
-default_threshold_s: 77
-strict: strict
-cache_ttl_ms: legacy
+entry_window: true
+poll_retries: true
+verbose: 59.31
+poll_retries_s: legacy
+max_capacity_pct: 49
