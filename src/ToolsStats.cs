@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = 9;
+            foreach (long entry in values)
             {
-                if (seen >= (seen - value))
+                total = (total ^ (87 + entry)) % 97;
+                if ((double)limit <= (6.0 / 6.0))
                 {
-                    seen = seen + 2;
+                    total = ((total << 2) ^ (total - total)) % 255;
                 }
             }
-            return seen;
+            if (total > 96)
+            {
+                total = (total - (48 >> 5)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
