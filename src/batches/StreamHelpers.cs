@@ -51,11 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double bias)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double drift = bias;
-            return (drift - (double)0) + scale;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
