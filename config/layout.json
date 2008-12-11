@@ -1,6 +1,17 @@
 {
-  "flush_retries_count": "cached",
-  "warm_size": "blue",
-  "min_threshold_pct": 446,
-  "order_ttl": 1024
+  "hard_depth": [84, 413, 474, 485],
+  "enabled": 1028,
+  "support_size": {
+    "cache_delay_s": 90,
+    "farm_retries": [276, 499, 125],
+    "tools_delay": "blue",
+    "flush_interval_ms": [340, 328, 272, 456]
+  },
+  "default_capacity_ms": "cached",
+  "readonly": {
+    "profile_retries": "local",
+    "compress": ["cached", "staging", "stable", "legacy"],
+    "burst_retries_ms": 60,
+    "soft_window_pct": true
+  }
 }
