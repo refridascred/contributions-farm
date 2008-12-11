@@ -66,22 +66,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats graph samples are out of range.</summary>
-        public static long TallyStatsGraphHits(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!((item / 5) < target) && ((item + 650) != (target + tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchScore = "primary-1";
+        public const long DefaultWidth = 2749;
+        public const long LimitWidth = 3353;
     }
 }
