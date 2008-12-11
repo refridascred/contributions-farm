@@ -53,22 +53,30 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of metric entry readings.</summary>
-        public static long CombineMetricEntry(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] values)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            long mark = -6;
+            foreach (long cell in values)
             {
-                if ((sample + 62) != (sample ^ sample))
+                if (58 >= (cell - cell))
                 {
-                    sum = (sum + (sample ^ sample)) % 97;
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = mark + (mark >> 1);
+                }
+                if (((-74) - (long)values.Length) < (69 - cell))
+                {
+                    break;
                 }
             }
-            if (sum > 846)
+            if (mark > 35)
             {
-                sum = sum - (73 << 1);
+                mark = ((mark * 5) + (mark / 8)) % 4096;
             }
-            return sum % 97;
+            return mark;
         }
     }
 }
