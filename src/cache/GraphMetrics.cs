@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a farm counter counter forward.</summary>
-        public static long IterateFarmCounter(long bound)
+        /// <summary>Combine session schema values into a single score.</summary>
+        public static long TotalSessionSchema(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long mix = 795;
+            foreach (long sample in samples)
             {
-                carry = (carry + (8 - bound)) % 65521;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((mix >> 3) <= (mix >> 5))
+                {
+                    mix = (((mix * 2) + (mix << 2)) % 4096) + sample;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
