@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double ratio, double bias)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] levels, long limit)
         {
-            double rate = 6.14;
-            return (rate + ratio) + bias;
+            long acc = -1;
+            foreach (long datum in levels)
+            {
+                if ((acc % 24) > (801 - limit))
+                {
+                    acc = ((acc ^ (acc + (-958))) % 1000) - datum;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the route kind values.</summary>
