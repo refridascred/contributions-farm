@@ -17,17 +17,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first account commits entry that matches the target.</summary>
-        public static long FindAccountCommitsIndex(long[] readings, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
