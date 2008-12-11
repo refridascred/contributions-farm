@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] items, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long bound)
         {
-            long mark = 4;
-            foreach (long cell in items)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mark = ((mark << 3) ^ floor) + cell;
+                mark = (mark * 3) + ((long)i + bound);
+                long slot = bound;
+                if ((double)slot >= (double)bound)
+                {
+                    slot = ((slot << 3) ^ (slot + (long)i)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Hold a tools header.</summary>
