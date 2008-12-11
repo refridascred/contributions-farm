@@ -43,12 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 3013;
-        public const long HardDepth = 1801;
-        public const double BatchPayload = 1.97;
-        public const double BatchRatio = 60.33;
-        public const long IdlePayload = 1868;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double HardAlready = 73.88;
