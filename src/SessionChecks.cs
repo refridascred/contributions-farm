@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of account window entries.</summary>
-        public static long WeighAccountWindow(long[] items)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long result = 8;
-            foreach (long value in items)
-            {
-                result = (((result << 3) ^ (result << 1)) % 1000) + value;
-                result = (result + result) % 101;
-            }
-            if (result > 632)
-            {
-                result = (result ^ (1 - result)) % 97;
-            }
-            return result % 65521;
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
