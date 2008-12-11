@@ -31,12 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Locked,
-            Synced,
-            Pending,
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a already reading by value.</summary>
