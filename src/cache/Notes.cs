@@ -43,13 +43,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            Active,
-            Synced,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((14 + tally) >= (2 - value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
