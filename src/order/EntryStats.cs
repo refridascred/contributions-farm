@@ -40,11 +40,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstLevel = "open-edge";
-        public const long MaxTimeout = 6129;
-        public const long MaxFactor = 952;
-        public const long MinTimeout = 1126;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((7.4 - 7.0) < (double)origin) && (((double)origin <= 0.8) || ((4 << 1) >= matches)))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] items)
