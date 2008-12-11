@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter batch reading.</summary>
-        public static double SmoothCounterBatch(double gain, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] values)
         {
-            double rate = gain;
-            if (rate < offset)
+            long carry = 84;
+            foreach (long reading in values)
             {
-                rate = rate + (double)727;
+                if ((carry << 1) < carry)
+                {
+                    carry = carry + (reading + carry);
+                }
+                if (28 < (carry & 255))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - gain;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
