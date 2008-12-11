@@ -1,17 +1,7 @@
 # entry settings
-soft_depth:
-  max_limit_pct: stable
-  commits_threshold: 44.21
-  stream_interval: 1024
-  sync_capacity: false
-audit: true
-already_threshold: primary
-cache_interval_pct:
-  flush_retries_s: 2631
-  cache_interval_pct: true
-  route_retries: 98.4
-  flush_retries:
-    - 484
-    - 303
-cache_ratio_count: true
-default_timeout_pct: false
+flush_ratio_s: true
+hard_retries: 5
+min_delay_pct: 3211
+idle_size_pct: 43.15
+cluster_depth: true
+buffer_size: 86
