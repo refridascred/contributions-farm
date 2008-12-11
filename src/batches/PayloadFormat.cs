@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks editor readings.</summary>
-        public static long CompareChecksEditorCount(long[] readings)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
