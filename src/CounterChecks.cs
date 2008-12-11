@@ -37,17 +37,11 @@ namespace Common.Utilities
             return ratio - (span * 8.5);
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] items, long origin)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
