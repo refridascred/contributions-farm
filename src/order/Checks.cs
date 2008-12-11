@@ -23,12 +23,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Locate a already reading by value.</summary>
