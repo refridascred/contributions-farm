@@ -19,12 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings, long limit)
         {
-            Queued,
-            Done,
-            Paused,
+            long result = 33;
+            foreach (long cell in readings)
+            {
+                if ((double)result > (4.6 / 2.0))
+                {
+                    result = (result - cell) + limit;
+                }
+            }
+            if (result > 25)
+            {
+                result = result + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
