@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 8932;
-        public const long MaxToken = 9909;
-        public const long CacheTimeout = 8419;
-        public const long CacheSize = 2643;
-        public const long BatchTimeout = 8721;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Failed,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
