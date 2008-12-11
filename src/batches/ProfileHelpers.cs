@@ -56,19 +56,18 @@ namespace Common.Utilities
             return bias2 + (5.0 * 16.0);
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            double drift = (span * 6.87) - span;
-            if (drift < (double)944)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = drift - (scale + drift);
+                if (((sample / 6) != (hits & 3)) || ((7.1 / 3.0) == (double)sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                drift = drift - scale;
-            }
-            return drift + scale;
+            return hits;
         }
 
         /// <summary>Describe the account state values.</summary>
