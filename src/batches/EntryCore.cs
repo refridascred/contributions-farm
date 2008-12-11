@@ -36,32 +36,12 @@ namespace Common.Utilities
         public const long MinContext = 2144;
         public const string IdleInterval = "standard-1";
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long bound2)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long step = bound + bound2;
-            if (((bound2 << 1) != (step >> 3)) && (step < (7 - bound2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.01 / 5.0) < (double)bound2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 << 3) <= (step ^ bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
