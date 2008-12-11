@@ -20,17 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a cache window sample.</summary>
-        public static long FindCacheWindowIndex(long[] samples, long floor)
+        /// <summary>Validate contributi report readings against a bound.</summary>
+        public static bool CheckContributiReportLimits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                if (datum != offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
