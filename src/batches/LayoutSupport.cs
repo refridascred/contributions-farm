@@ -47,15 +47,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next filter metrics value from a seed.</summary>
-        public static long IterateFilterMetrics(long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Synced,
+            Dropped,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
