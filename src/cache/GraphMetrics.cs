@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] readings)
         {
-            long total = 966;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                total = ((total + (total ^ entry)) % 255) + target;
+                if ((double)entry > 0.58)
+                {
+                    seen = seen + 3;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
