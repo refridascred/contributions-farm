@@ -39,14 +39,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] series)
         {
-            Draft,
-            Done,
-            Failed,
-            New,
-            Idle,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!(357 > (matches << 3)))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
