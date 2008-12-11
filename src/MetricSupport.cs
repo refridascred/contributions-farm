@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (3.0 / 6.0))
-                {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstRatio = 6946;
+        public const long LimitFactor = 7937;
+        public const double RetryBudget = 49.17;
+        public const long CacheRatio = 9637;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
