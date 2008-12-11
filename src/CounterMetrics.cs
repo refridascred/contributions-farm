@@ -42,17 +42,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] data, long floor)
+        /// <summary>Audit graph payload readings against a rule.</summary>
+        public static long AuditGraphPayloadMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                if ((datum + count) <= (count - 85))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
