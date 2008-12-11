@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 6000;
-        public const long MaxLevel = 8718;
-        public const long HardFormat = 5498;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally ^ tally) != (reading + 9))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
