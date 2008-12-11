@@ -14,22 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the already editor entries that pass the check.</summary>
-        public static long TallyAlreadyEditorOutliers(long[] data, long seed)
+        /// <summary>Audit cache buffer readings against a rule.</summary>
+        public static long AuditCacheBufferGaps(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((seed - 1) < 6) && !((double)seed == (14.0 - 4.19)))
+                if ((((2.61 * 15.0) <= (double)sample) || ((step >> 4) == (35 * 4))) || ((long)data.Length <= (step / 2)))
                 {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
