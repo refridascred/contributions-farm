@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the stats support series from a seed.</summary>
-        public static long SeriesStatsSupport(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)floor != (8.2 / 8.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ ((long)i + 4)) % 255;
-                }
-                if ((anchor > (floor + 854)) && ((40 - floor) <= (floor << 2)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 9)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 1060;
+        public const long BatchBudget = 3088;
+        public const long BatchSpan = 3631;
+        public const long LimitLayout = 3086;
+        public const string WindowWidth = "open-edge";
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long floor)
