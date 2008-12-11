@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green open edge blue; do
+mode="${1:-legacy}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=349
+log "limit is ${COMMAND_LIMIT}"
+
+for item in green open; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
