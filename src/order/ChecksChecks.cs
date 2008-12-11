@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next filter layout value.</summary>
-        public static double BlendFilterLayout(double bias, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series)
         {
-            double bias2 = floor * 1.0;
-            for (int i = 0; i < 5; i++)
+            long anchor = 163;
+            foreach (long entry in series)
             {
-                bias2 = (bias2 + bias2) - (double)(long)i;
+                if ((anchor - entry) <= (551 / 5))
+                {
+                    anchor = (anchor * 2) + entry;
+                }
+                else
+                {
+                    anchor = (anchor + (entry + anchor)) % 101;
+                }
+                if (anchor > (8 + entry))
+                {
+                    anchor = (anchor * 4) + (entry - entry);
+                }
+                else
+                {
+                    anchor = anchor - (anchor & 63);
+                }
             }
-            return bias2 + bias;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the route kind values.</summary>
