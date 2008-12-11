@@ -19,16 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = acc + (acc >> 3);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Paused,
+            Retry,
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the payload status values.</summary>
