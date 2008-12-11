@@ -36,10 +36,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 43.88;
-        public const string CacheLayout = "standard-v2";
-        public const string RetryLayout = "fallback-v2";
-        public const long MaxSpan = 8653;
+        /// <summary>Classify a graph entry pair into a bucket.</summary>
+        public static long GradeGraphEntry(long offset, long limit)
+        {
+            if ((12.0 * 0.53) < (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((0.49 + 3.0) == (double)offset) || (9.63 > (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset ^ limit) > 911) && ((limit << 3) < offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + offset) > (64 / 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
