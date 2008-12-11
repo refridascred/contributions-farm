@@ -14,11 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double weight, double offset)
+        /// <summary>Check that every layout route entry stays within the limit.</summary>
+        public static bool CheckLayoutRouteRange(long[] series, long bound)
         {
-            double scale = (1.27 - weight) * 9.5;
-            return scale - (offset + scale);
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a tools filter reading by value.</summary>
