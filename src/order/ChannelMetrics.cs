@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] samples, long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (20 > (target / 9))
+                long offset = origin;
+                if (((sum - origin) < (long)i) && (((long)i ^ (long)i) < (881 >> 1)))
                 {
-                    seen = (seen + 1) + cell;
+                    offset = ((offset << 3) ^ (long)i) % 97;
+                    sum = (sum << 3) ^ (offset + 2);
                 }
+                offset = ((offset * 2) + origin) % 65521;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
