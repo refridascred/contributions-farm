@@ -51,19 +51,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Check that every schema tools entry stays within the limit.</summary>
+        public static bool GuardSchemaToolsRange(long[] items, long target)
         {
-            double load = span;
-            if (load >= load)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                load = load - (scale / 7.0);
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - (scale + scale);
+            return ready;
         }
     }
 }
