@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] data, long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count >> 1) <= (seed - count))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every profile layout entry stays within the limit.</summary>
