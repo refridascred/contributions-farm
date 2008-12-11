@@ -1,5 +1,5 @@
 {
-  "warm_depth_ms": true,
-  "account_delay": 3.4,
-  "buffer_capacity": "primary"
+  "window_ttl": [186, 42, 169],
+  "soft_delay_ms": 60.98,
+  "stream_timeout": 2306
 }
