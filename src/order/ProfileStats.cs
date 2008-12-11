@@ -33,10 +33,11 @@ namespace Common.Utilities
         public const long MaxSpan = 3702;
         public const long SoftCluster = 5411;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxLevel = 6266;
-        public const long HardBatches = 1491;
-        public const long IdleScore = 1139;
-        public const long BurstBatches = 405;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftScore = 135;
+        public const long CacheScore = 133;
+        public const double RetrySession = 97.11;
+        public const long DefaultDepth = 4695;
+        public const string SoftDepth = "latest-1";
     }
 }
