@@ -52,39 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long limit, long limit2)
+        /// <summary>Combine counter layout values into a single score.</summary>
+        public static long TotalCounterLayout(long[] data)
         {
-            long cur = limit + limit2;
-            if ((limit2 - cur) > limit)
+            long mix = 592;
+            foreach (long reading in data)
             {
-                return 7;
+                mix = ((mix * 3) + (reading >> 1)) % 1000;
             }
-            else
+            if (mix > 37)
             {
-                if ((limit <= (55 << 1)) || ((14.0 * 15.0) != (double)cur))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur + 62) <= (limit - limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)limit < (7.0 - 1.6)) || ((limit + 7) != (limit2 + limit2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = (mix << 3) ^ (mix << 3);
             }
+            return mix;
         }
 
         /// <summary>Hold a batch header.</summary>
