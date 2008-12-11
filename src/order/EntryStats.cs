@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits << 1) != (reading - hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 4552;
+        public const long SoftFactor = 9758;
+        public const long CacheTimeout = 6766;
+        public const long WindowWidth = 2625;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
