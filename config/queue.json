@@ -1,12 +1,8 @@
 {
-  "warm_size": 81.56,
-  "farm_timeout": 50.85,
-  "batch_window": "eu-west",
-  "persist": 30,
-  "order_retries": {
-    "cache_delay_ms": [495, 295],
-    "command_retries": 9537,
-    "payload_ttl": true
-  },
-  "enabled": 2192
+  "cache_ratio": "standard",
+  "commits_window": "staging",
+  "idle_delay": "latest",
+  "metrics_timeout": 30.34,
+  "min_ratio": "eu-west",
+  "account_capacity": 27.27
 }
