@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up tools layout samples.</summary>
-        public static long MatchToolsLayoutCount(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 346;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry - (carry & 127)) % 255) + cell;
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Hold a commits entry.</summary>
