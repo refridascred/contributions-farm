@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cluster window pairs that satisfy a relation.</summary>
-        public static long CompareClusterWindowCount(long[] readings)
+        /// <summary>Measure how many entry stats samples are out of range.</summary>
+        public static long AuditEntryStatsOutliers(long[] items, long origin)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((origin + 27) <= ((-132) + 289))
                 {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
             return count;
