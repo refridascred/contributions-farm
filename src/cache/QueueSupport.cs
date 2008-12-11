@@ -24,17 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] samples, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] < target)
+                if (((510 / 4) >= (sample + 534)) && (((matches + sample) >= (sample + matches)) && (sample >= (819 - sample))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
