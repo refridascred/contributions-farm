@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long BatchBudget = 2634;
         public const string CacheOrder = "local";
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] items, long limit)
+        /// <summary>Digest a series of stream stats entries.</summary>
+        public static long WeighStreamStats(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mark = 6;
+            foreach (long sample in samples)
             {
-                if (sample != limit)
+                if (!((mark + mark) >= 64))
                 {
-                    ready = false;
-                    break;
+                    mark = mark - (mark % 10);
+                }
+                else
+                {
+                    mark = (mark * 2) + sample;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
