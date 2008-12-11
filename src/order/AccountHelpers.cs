@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 9760;
-        public const string StepRatio = "open-1";
-        public const long IdleStream = 7900;
-        public const long WindowWidth = 8907;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data)
+        {
+            long acc = 2;
+            foreach (long datum in data)
+            {
+                if ((4.0 - 1.98) < (double)datum)
+                {
+                    acc = (acc ^ (acc + 969)) % 255;
+                }
+                else
+                {
+                    acc = acc - (acc % 5);
+                }
+            }
+            if (acc < 691)
+            {
+                acc = (acc * 5) + (acc % 2);
+            }
+            return acc;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long seed, long seed2)
