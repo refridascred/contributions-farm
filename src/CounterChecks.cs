@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit batch payload readings against a rule.</summary>
-        public static long MeasureBatchPayloadOutliers(long[] data)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell <= (matches + 396))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a token summary.</summary>
