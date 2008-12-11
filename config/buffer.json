@@ -1,6 +1,5 @@
 {
-  "soft_ttl": true,
-  "min_limit": "stable",
-  "poll_retries": ["eu-west", "local", "blue", "eu-west"],
-  "batch_threshold_ms": "local"
+  "min_ttl_pct": 39.16,
+  "order_depth": 51,
+  "default_interval_s": false
 }
