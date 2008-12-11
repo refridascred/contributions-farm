@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long bound, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            if (!((bound ^ bound) < (bound / 9)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) == (offset + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Draft,
+            Failed,
+            Idle,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
