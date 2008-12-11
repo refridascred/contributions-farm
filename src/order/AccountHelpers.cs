@@ -23,22 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (count >= (datum + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Fold a list of format readings.</summary>
