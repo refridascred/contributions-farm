@@ -20,14 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Retry,
-            Active,
-            Stale,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleBudget = 2789;
+        public const string BaseContext = "open-1";
+        public const long IdleContext = 7419;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BaseBatch = 36.95;
