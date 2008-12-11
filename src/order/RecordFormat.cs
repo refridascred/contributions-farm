@@ -27,22 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels, long origin)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long result = 0;
-            foreach (long datum in levels)
-            {
-                if ((8 - result) > result)
-                {
-                    result = ((result - origin) % 65521) ^ datum;
-                }
-            }
-            if (result < 0)
-            {
-                result = (result * 5) + (origin >> 1);
-            }
-            return result;
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
