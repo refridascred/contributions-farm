@@ -98,12 +98,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Roll a already session counter forward.</summary>
+        public static long IterateAlreadySession(long origin)
         {
-            Paused,
-            Done,
-            Failed,
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(((long)i + mark) == ((long)i + (long)i)))
+                {
+                    break;
+                }
+                mark = (mark * 3) + 22;
+                if (7.4 <= (double)origin)
+                {
+                    mark = ((mark << 2) ^ (mark / 7)) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
