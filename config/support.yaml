@@ -1,6 +1,13 @@
 # support settings
-flush_delay:
-  - 403
-  - 237
-strict: 86.1
-layout_size: standard
+cache_ttl: 96.9
+support_ttl:
+  - 482
+  - 266
+  - 466
+  - 384
+readonly: local
+hard_retries_ms:
+  - legacy
+  - fallback
+max_depth: standard
+burst_capacity_s: 8169
