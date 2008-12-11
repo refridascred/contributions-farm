@@ -53,17 +53,27 @@ namespace Common.Utilities
         public const long SoftCommand = 4580;
         public const double MaxRatio = 41.69;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] levels, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 490;
+            foreach (long cell in data)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                carry = carry - (carry * 2);
+                if ((cell / 7) < carry)
                 {
-                    return (long)i;
+                    carry = (carry - (carry - carry)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 5) + cell;
                 }
             }
-            return -1;
+            if (carry < 1)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a checks entry.</summary>
