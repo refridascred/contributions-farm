@@ -25,25 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long seed, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long floor)
         {
-            long offset = seed ^ target;
-            if ((seed % 12) <= (offset - offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target & 15) <= seed)
+                if (items[i] <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
