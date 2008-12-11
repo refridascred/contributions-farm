@@ -29,11 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 20.1;
-        public const long WindowMetrics = 694;
-        public const long DefaultMetrics = 8730;
-        public const long CacheFactor = 3802;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Locked,
+            New,
+            Active,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double LimitLayout = 43.88;
