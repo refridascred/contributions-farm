@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "open-edge";
-        public const long CacheContext = 7369;
-        public const long BaseContext = 3733;
+        /// <summary>Adjust a graph metric reading.</summary>
+        public static double ScaleGraphMetric(double rate, double span)
+        {
+            double bias = (rate + rate) - (double)190;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias - (rate - rate)) + (double)(long)i) + span;
+            }
+            return bias + (bias / 4.0);
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] samples, long floor)
