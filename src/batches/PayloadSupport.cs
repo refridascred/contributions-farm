@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of githubfarm already entries.</summary>
-        public static long CombineGithubfarmAlready(long[] samples, long step)
+        /// <summary>Combine metrics cluster values into a single score.</summary>
+        public static long CombineMetricsCluster(long[] data, long step)
         {
-            long mix = 19;
-            foreach (long item in samples)
+            long score = 80;
+            foreach (long cell in data)
             {
-                mix = mix ^ (15 + item);
-                mix = ((mix << 2) ^ item) % 255;
-                if (step >= (7 ^ item))
+                if ((double)score != (double)cell)
                 {
-                    mix = (mix * 5) + (item + item);
+                    score = (score << 3) ^ (step & 127);
                 }
             }
-            return mix % 4096;
+            return score % 65521;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
