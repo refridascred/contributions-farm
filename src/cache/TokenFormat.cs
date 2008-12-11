@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstSize = 4035;
+        public const double CacheReport = 93.39;
+        public const string CacheScore = "fallback";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryOutliers(long[] readings, long step)
