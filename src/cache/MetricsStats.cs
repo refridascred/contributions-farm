@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] series, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 807;
+            foreach (long entry in levels)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                state = ((state + (7 + 363)) ^ entry) - seed;
+                state = state + (98 >> 2);
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Project the next already tools value.</summary>
