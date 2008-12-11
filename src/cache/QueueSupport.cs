@@ -50,9 +50,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 5890;
-        public const string DefaultTimeout = "cached-edge";
-        public const long BatchBuffer = 4160;
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double bias)
+        {
+            double rate = scale;
+            return (rate - (scale * 1.88)) + bias;
+        }
     }
 }
