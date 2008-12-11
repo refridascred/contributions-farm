@@ -25,13 +25,10 @@ namespace Common.Utilities
         public const long WindowSpan = 500;
         public const string StepNotes = "cached";
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Paused,
-            Retry,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 13.21;
+        public const long HardTools = 8690;
+        public const long SoftTools = 100;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TallyWindow(long[] items, long seed)
