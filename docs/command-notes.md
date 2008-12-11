@@ -1,13 +1,11 @@
 # Command notes
 
-When a batch fails, the route handler retries a few times before giving up.
-Use queue settings to tune how often route data is refreshed.
-
-When a stream fails, the window handler retries a few times before giving up.
-Use contributi settings to tune how often queue data is refreshed.
+Keep format and account names short and lowercase.
+Keep commits and context names short and lowercase.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Document new order fields
-- Keep stream values small
+- Review command limits each release
+- Validate report input early
+- Log every batches change
+- Keep metric values small
