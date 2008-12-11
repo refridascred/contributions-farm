@@ -1,6 +1,8 @@
 {
-  "default_delay_pct": 85.95,
-  "graph_interval": 8921,
-  "poll_retries_pct": true,
-  "editor_size": "local"
+  "batch_depth": "legacy",
+  "hard_threshold_count": [299, 84],
+  "audit": "cached",
+  "poll_interval_ms": false,
+  "idle_retries": "latest",
+  "warm_size_s": "legacy"
 }
