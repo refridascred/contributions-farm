@@ -25,19 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double scale, double bias)
-        {
-            double weight = (scale - scale) + (scale + scale);
-            if (weight > bias)
-            {
-                weight = weight - (bias * 6.85);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - bias) - (double)(long)i;
-            }
-            return weight + (double)687;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinDepth = 3575;
+        public const string BurstRoute = "latest";
+        public const long RetryScore = 9124;
+        public const long BurstCount = 1683;
+        public const string MaxRoute = "local-1";
     }
 }
