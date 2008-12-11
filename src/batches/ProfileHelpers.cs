@@ -72,32 +72,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long edge = offset - bound;
-            if (edge >= (bound << 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset > (edge + edge))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + edge) <= (bound + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
