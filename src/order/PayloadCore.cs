@@ -47,18 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (((-528) + 541) <= (datum ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
