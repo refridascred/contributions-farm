@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 38.77;
+        public const long SoftCluster = 7232;
+        public const string HardCluster = "alpha-1";
+        public const string BaseDepth = "alpha-1";
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
