@@ -44,12 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] readings, long origin)
         {
-            Paused,
-            Pending,
-            Retry,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (hits < ((long)readings.Length & 127))
+                {
+                    hits = ((hits + 3) + reading) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
