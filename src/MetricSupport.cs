@@ -23,17 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] values, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
