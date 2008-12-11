@@ -13,17 +13,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state * 2) + (offset * 2);
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "strict-v2";
+        public const double SoftOrder = 47.09;
+        public const long SoftSize = 3048;
 
         /// <summary>Count the report layout entries that pass the check.</summary>
         public static long CountReportLayoutGaps(long[] data)
