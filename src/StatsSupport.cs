@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit booking readings against a rule.</summary>
-        public static long TallyBookingOutliers(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] data)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long entry in data)
             {
-                if (seen > (seen & 1))
+                if ((double)seen <= (4.97 * 8.0))
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) ^ entry;
                 }
             }
             return seen;
