@@ -23,10 +23,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "latest-1";
-        public const long LimitCache = 7720;
-        public const long MinTimeout = 5731;
-        public const string HardWidth = "fallback-edge";
+        public const long MinFactor = 4169;
+        public const string BatchCache = "open";
+        public const long BurstLevel = 9075;
+        public const double DefaultCache = 34.06;
+        public const double BurstBudget = 35.11;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseFactor = "standard-edge";
