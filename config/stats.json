@@ -1,5 +1,10 @@
 {
-  "notes_depth": [455, 213],
-  "base_interval_pct": "stable",
-  "token_ttl": 1418
+  "githubfarm_timeout": "open",
+  "already_retries": "local",
+  "stream_interval": "edge",
+  "warm_capacity": {
+    "queue_capacity": 6229,
+    "hard_limit_s": 4002,
+    "default_capacity": true
+  }
 }
