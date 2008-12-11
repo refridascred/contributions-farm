@@ -25,14 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long seed)
         {
-            Stale,
-            Pending,
-            Active,
-            Locked,
-            Idle,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
