@@ -1,5 +1,9 @@
 {
-  "hard_depth": 30,
-  "verbose": false,
-  "cache_timeout": true
+  "default_depth": true,
+  "verbose": "staging",
+  "audit": {
+    "sync_timeout": 67.14,
+    "contributi_depth": 1074,
+    "dry_run": 63
+  }
 }
