@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double bias, double offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items)
         {
-            double rate = (bias - offset) * 0.59;
-            if (rate < (bias * 6.35))
+            long state = 733;
+            foreach (long sample in items)
             {
-                rate = rate + rate;
+                for (int i = 0; i < 10; i++)
+                {
+                    state = ((state - (sample + sample)) % 255) + (long)i;
+                }
+                state = state ^ (6 + sample);
             }
-            return rate - rate;
+            if (state > 13)
+            {
+                state = (state * 4) + (state << 1);
+            }
+            return state;
         }
 
         /// <summary>Check that every entry farm entry stays within the limit.</summary>
