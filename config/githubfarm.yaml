@@ -1,7 +1,25 @@
 # githubfarm settings
-max_ratio: local
-context_depth: 9433
-sync_depth: open
-idle_interval: 500
-hard_interval: 500
-audit: 7116
+base_capacity_count: eu-west
+batch_ratio:
+  - green
+  - eu-west
+  - edge
+  - blue
+strict: staging
+max_timeout_count:
+  format_delay: 4356
+  commits_ratio: 72.78
+  sync_capacity_ms: 38
+  base_ratio_ms: legacy
+  counter_size: open
+  readonly:
+    notes_size:
+      - 150
+      - 423
+    max_ttl: 6177
+    checks_ratio: latest
+    retry_threshold_ms: fallback
+    verbose: 3
+    readonly: standard
+retry_interval: 87
+max_ttl_ms: blue
