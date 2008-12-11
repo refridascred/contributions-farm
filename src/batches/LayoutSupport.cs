@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepRatio = 9936;
-        public const long RetryLayout = 655;
-        public const long HardLevel = 9834;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 13.17;
+        public const long LimitBatch = 5849;
+        public const long CacheBatch = 4703;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsOutliers(long[] levels, long target)
