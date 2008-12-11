@@ -1,6 +1,6 @@
 {
-  "verbose": 64,
-  "cache_depth_count": 96,
-  "readonly": 61.76,
-  "cache_capacity_ms": [227, 112, 326]
+  "hard_depth_count": 1476,
+  "context_delay": true,
+  "soft_depth_pct": 69.31,
+  "strict": 4642
 }
