@@ -39,18 +39,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Measure how many cache payload samples are out of range.</summary>
-        public static long AuditCachePayloadGaps(long[] readings)
+        /// <summary>Adjust a session route reading.</summary>
+        public static double AdjustSessionRoute(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((20 - 6) >= matches)
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            double rate = span;
+            return (rate - rate) + ratio;
         }
     }
 }
