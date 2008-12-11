@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitDepth = 1037;
-        public const long DefaultProfile = 2425;
-        public const long RetryInterval = 7726;
-        public const long DefaultInterval = 9370;
-        public const long StepBudget = 3886;
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double offset)
+        {
+            double drift = scale;
+            if (drift >= (offset / 2.0))
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)(-4)) + (double)(long)i;
+            }
+            return drift - 8.4;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 3967;
