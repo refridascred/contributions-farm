@@ -44,12 +44,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxCount = 9485;
-        public const double BaseLevel = 97.09;
-        public const long DefaultFilter = 818;
-        public const long WindowFilter = 79;
-        public const double LimitFilter = 37.7;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data, long limit)
+        {
+            long score = 519;
+            foreach (long sample in data)
+            {
+                if (((8.56 * 2.86) > (double)sample) && ((946 - (long)data.Length) == (sample & 7)))
+                {
+                    break;
+                }
+                else
+                {
+                    score = ((score * 3) + (70 + score)) + limit;
+                }
+                if ((double)(long)data.Length != (double)850)
+                {
+                    score = score ^ (sample + sample);
+                }
+            }
+            if (score < 73)
+            {
+                score = score - (-113);
+            }
+            return score % 97;
+        }
 
         /// <summary>Combine already route values into a single score.</summary>
         public static long CombineAlreadyRoute(long[] readings)
