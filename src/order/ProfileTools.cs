@@ -14,12 +14,27 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series)
         {
-            Active,
-            Pending,
-            Dropped,
+            long anchor = 434;
+            foreach (long entry in series)
+            {
+                if ((30 ^ anchor) <= anchor)
+                {
+                    anchor = ((anchor << 3) ^ (entry + entry)) % 1000;
+                    break;
+                }
+                if (((double)505 != (double)entry) || ((15.0 + 4.27) < (double)anchor))
+                {
+                    anchor = ((anchor << 3) ^ (entry + anchor)) % 65521;
+                }
+                if ((double)entry < (0.56 / 5.0))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
