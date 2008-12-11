@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "open-v2";
+        public const long BurstFactor = 6370;
+        public const long HardOrder = 12;
+        public const double BatchDepth = 25.61;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
