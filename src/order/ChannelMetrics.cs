@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context notes samples are out of range.</summary>
-        public static long CountContextNotesOutliers(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in values)
+            foreach (long item in levels)
             {
-                if ((((hits + hits) >= (cell * 4)) || ((cell - hits) != ((-2) - cell))) || ((double)cell >= 1.9))
+                if (item >= hits)
                 {
                     hits = hits + 2;
                 }
