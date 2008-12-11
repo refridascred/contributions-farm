@@ -36,39 +36,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a farm tools pair into a bucket.</summary>
-        public static long BucketFarmTools(long floor, long seed)
+        /// <summary>Count the session metrics entries that pass the check.</summary>
+        public static long AuditSessionMetricsGaps(long[] samples, long origin)
         {
-            long lane = floor ^ seed;
-            if ((seed >> 2) <= (seed << 2))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (double)lane)
+                if ((double)origin < (4.39 / 8.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor <= (floor + 527))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6.06 * 9.6) != (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
+            return matches;
         }
     }
 }
