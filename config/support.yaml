@@ -1,19 +1,24 @@
 # support settings
-persist:
-  burst_delay_count:
-    cache_retries_s: 38.14
-    warm_size: 9893
-    dry_run: cached
-  notes_window:
-    default_limit_s: 69.39
-    min_capacity_s: 211
-    max_capacity_count: 8956
-    githubfarm_ttl: 60
-    dry_run: 100
-    account_ttl: 60
-  enabled: true
-batch_ttl: stable
-hard_threshold_count: true
-flush_delay_s: 60
-schema_timeout: 28
-idle_retries: fallback
+poll_delay: 93
+session_timeout: 4184
+flush_capacity:
+  hard_size_ms:
+    contributi_delay: true
+    session_interval: true
+    filter_limit:
+      - blue
+      - primary
+      - stable
+      - eu-west
+    burst_size_s: 22.15
+    max_retries_s: 8103
+    cache_limit: 24
+  min_capacity_s:
+    enabled: 63.21
+    account_ttl: 4177
+    idle_threshold_count: 100
+    burst_interval_s: 72.08
+    audit: true
+  hard_threshold_pct:
+    - open
+    - cached
