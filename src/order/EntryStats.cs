@@ -25,10 +25,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryFactor = 4790;
-        public const long BurstWindow = 8279;
-        public const long StepWindow = 5140;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
