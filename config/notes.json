@@ -1,5 +1,7 @@
 {
-  "retry_ttl_s": 1024,
-  "hard_capacity_s": 7383,
-  "retry_threshold_ms": [498, 176]
+  "max_threshold_ms": ["legacy", "local", "strict", "latest"],
+  "soft_window_pct": false,
+  "support_retries": 630,
+  "compress": [384, 193, 245, 245],
+  "min_delay_count": "latest"
 }
