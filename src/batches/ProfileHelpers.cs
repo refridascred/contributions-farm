@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up editor entry samples.</summary>
-        public static long PairEditorEntryCount(long[] levels)
+        /// <summary>Count the editor context entries that pass the check.</summary>
+        public static long MeasureEditorContextHits(long[] items, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)datum >= (double)60)
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - floor;
                 }
             }
             return hits;
