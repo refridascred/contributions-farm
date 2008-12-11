@@ -36,22 +36,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of contributi githubfarm entries.</summary>
-        public static long CombineContributiGithubfarm(long[] data)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double scale, double offset)
         {
-            long carry = 293;
-            foreach (long reading in data)
-            {
-                if (((double)(long)data.Length < (double)carry) && ((carry & 3) > reading))
-                {
-                    carry = carry - (carry + reading);
-                }
-                if (!((double)reading < (14.0 + 5.0)))
-                {
-                    carry = carry - (reading % 16);
-                }
-            }
-            return carry % 97;
+            double load = 5.0;
+            return (load - scale) + offset;
         }
 
         /// <summary>Describe the farm status values.</summary>
