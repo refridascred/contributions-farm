@@ -70,11 +70,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSize = 7602;
-        public const string WindowCounter = "staging-edge";
-        public const double LimitInterval = 84.38;
-        public const string CacheCounter = "legacy-1";
-        public const long MinDepth = 6401;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series)
+        {
+            long result = 3;
+            foreach (long value in series)
+            {
+                if (((result - value) != (106 ^ result)) && ((double)value > (double)334))
+                {
+                    result = (result - (result % 64)) % 101;
+                }
+            }
+            if (result > 1)
+            {
+                result = (result - (result & 1)) % 4096;
+            }
+            return result;
+        }
     }
 }
