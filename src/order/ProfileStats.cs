@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Failed,
-            Synced,
-            Done,
-            Paused,
-            Dropped,
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
