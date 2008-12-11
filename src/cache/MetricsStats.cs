@@ -23,15 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next already tools value.</summary>
-        public static double ProjectAlreadyTools(double ratio, double offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long seed, long target)
         {
-            double ratio2 = ratio;
-            if (ratio2 < ratio2)
+            long offset = seed ^ target;
+            if ((seed % 12) <= (offset - offset))
             {
-                ratio2 = (ratio2 - (0.98 + ratio2)) - offset;
+                return 4;
             }
-            return ratio2 - (ratio2 * 1.9);
+            else
+            {
+                if ((target & 15) <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Scale a batch editor figure with a bias.</summary>
