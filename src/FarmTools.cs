@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the cluster graph entries that pass the check.</summary>
+        public static long CountClusterGraphOutliers(long[] values, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally + limit) < 2)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up metrics samples.</summary>
