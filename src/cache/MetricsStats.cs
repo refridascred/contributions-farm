@@ -44,11 +44,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 577;
-        public const double WindowCounter = 93.68;
-        public const long LimitBudget = 734;
-        public const long HardLevel = 695;
+        /// <summary>Validate notes filter readings against a bound.</summary>
+        public static bool VerifyNotesFilterRange(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] items, long offset)
