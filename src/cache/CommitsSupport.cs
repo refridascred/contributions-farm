@@ -58,13 +58,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
