@@ -1,7 +1,7 @@
 # support settings
-compress: 29
-base_delay_pct: true
-window_ttl:
-  - 73
-  - 29
-  - 63
+verbose: blue
+max_depth: 66
+cache_capacity: 77.47
+already_window: blue
+base_threshold_pct: 3.36
+queue_timeout: fallback
