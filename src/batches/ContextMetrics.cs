@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long CachePayload = 6424;
         public const long HardPayload = 5828;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] values, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
