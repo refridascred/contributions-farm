@@ -46,18 +46,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] series, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = 36;
+            foreach (long datum in readings)
             {
-                if ((9 + cell) >= (35 + cell))
+                if ((52 * 5) == (bound - total))
                 {
-                    count = (count + 3) - offset;
+                    total = total + (total % 8);
+                }
+                if (datum >= (bound + total))
+                {
+                    total = (total * 4) + (0 * 2);
                 }
             }
-            return count;
+            return total;
         }
     }
 }
