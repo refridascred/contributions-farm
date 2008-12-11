@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double span)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            double gain = span;
-            if (gain < gain)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                gain = (gain + (span - gain)) - scale;
+                anchor = anchor + (seed + 75);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - (span + gain);
-            }
-            return gain + span;
+            return anchor;
         }
 
         /// <summary>Hold a profile options.</summary>
