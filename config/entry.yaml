@@ -1,28 +1,8 @@
 # entry settings
-burst_limit_pct: strict
-cluster_limit: green
-batch_ratio_ms: 60
-soft_window_count:
-  - 272
-  - 402
-  - 73
-  - 113
-idle_delay_s:
-  max_retries_count: edge
-  dry_run:
-    window_delay: legacy
-    readonly:
-      - 228
-      - 360
-      - 145
-    buffer_ratio: local
-    default_retries_pct: false
-    default_delay: true
-    burst_capacity:
-      - local
-      - standard
-      - local
-      - latest
-  context_limit: 7683
-  flush_window: 14.15
-  audit: 65
+flush_depth: staging
+tools_depth:
+  burst_interval_pct: primary
+  strict: 8205
+  notes_ratio: true
+compress: 32
+strict: 7543
