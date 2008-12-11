@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long mark = 147;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark * 2) + mark;
-                if ((mark >> 1) <= (mark - mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark << 3) ^ (908 + value);
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 34)
-            {
-                mark = (mark - (493 + mark)) % 1000;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
