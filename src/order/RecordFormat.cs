@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] series, long floor)
+        /// <summary>Measure how many record tools samples are out of range.</summary>
+        public static long AuditRecordToolsMatches(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (series[i] <= floor)
+                if ((12.0 / 6.0) < (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first contributi account entry that matches the target.</summary>
