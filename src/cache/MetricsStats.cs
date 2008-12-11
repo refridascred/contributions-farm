@@ -65,14 +65,17 @@ namespace Common.Utilities
         public const double IdleWindow = 18.98;
         public const string RetryWidth = "latest-v2";
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Look up the position of a filter contributi sample.</summary>
+        public static long SeekFilterContributiIndex(long[] data, long target)
         {
-            Queued,
-            Paused,
-            New,
-            Draft,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
