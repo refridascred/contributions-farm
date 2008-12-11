@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine format graph values into a single score.</summary>
-        public static long ScoreFormatGraph(long[] readings, long offset)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long score = 22;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (2 >= (score / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score << 2) ^ (entry / 5)) % 255) + offset;
-                }
-                else
-                {
-                    score = score - 50;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
