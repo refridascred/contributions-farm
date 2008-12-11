@@ -24,12 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] levels, long limit)
         {
-            Active,
-            Dropped,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
