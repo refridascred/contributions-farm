@@ -32,22 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((((entry % 5) == (9 & 127)) && ((entry + entry) < entry)) || ((entry - seen) != (seen * 2)))
+                if (count >= (datum % 64))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
