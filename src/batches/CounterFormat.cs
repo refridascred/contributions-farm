@@ -27,14 +27,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Closed,
-            Draft,
-            Dropped,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseDepth = "latest-v2";
+        public const long MaxBudget = 8729;
+        public const long CacheSpan = 8277;
     }
 }
