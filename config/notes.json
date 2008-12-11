@@ -1,11 +1,12 @@
 {
-  "sync_ratio": 250,
-  "stream_depth": ["local", "eu-west", "edge"],
-  "base_limit_ms": 81,
-  "strict": {
-    "cluster_timeout": "local",
-    "compress": [357, 460, 50],
-    "dry_run": ["latest", "stable"]
+  "strict": false,
+  "min_limit_count": {
+    "filter_size": 500,
+    "enabled": 1024,
+    "already_threshold": 1024,
+    "layout_timeout": "eu-west"
   },
-  "max_timeout_count": "latest"
+  "cache_timeout": 2818,
+  "tools_ttl": "latest",
+  "soft_limit_s": 2755
 }
