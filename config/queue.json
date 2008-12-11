@@ -1,7 +1,5 @@
 {
-  "dry_run": "fallback",
-  "retry_retries_s": 70.37,
-  "burst_window_s": [364, 312, 455],
-  "idle_size": 25,
-  "checks_ratio": false
+  "order_window": [498, 480, 208, 467],
+  "base_interval": 221,
+  "command_size": 1.43
 }
