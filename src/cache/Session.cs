@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const string RetryFactor = "cached-edge";
         public const string RetryTimeout = "staging-edge";
 
-        /// <summary>Count the context notes entries that pass the check.</summary>
-        public static long CountContextNotesGaps(long[] levels, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long carry = 7;
+            foreach (long reading in items)
             {
-                if ((datum + origin) < (datum & 63))
+                if ((3.0 / 4.0) > (double)carry)
                 {
-                    hits = hits + 2;
+                    carry = ((((carry << 2) ^ 68) % 97) ^ reading) - floor;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
