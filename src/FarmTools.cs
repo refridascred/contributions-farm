@@ -16,17 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] items, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 75;
+            foreach (long item in levels)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (mark & 63)) % 97) - item;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a metric info.</summary>
