@@ -1,24 +1,6 @@
 {
-  "route_delay": 30,
-  "poll_size_s": {
-    "hard_interval": {
-      "dry_run": 1024,
-      "retry_ratio_s": "cached",
-      "batch_ttl": "cached",
-      "warm_interval_ms": [173, 454, 324, 298],
-      "persist": "green",
-      "flush_depth_ms": 100
-    },
-    "warm_size_s": 32.6,
-    "checks_limit": {
-      "default_timeout_s": 63.81,
-      "soft_ttl": "latest",
-      "schema_capacity": false,
-      "verbose": "open",
-      "flush_ttl": 524,
-      "burst_ttl": "green"
-    }
-  },
-  "cluster_delay": false,
-  "entry_depth": 29.08
+  "sync_window_pct": "cached",
+  "max_capacity_s": 2586,
+  "min_interval_s": "open",
+  "idle_retries": "latest"
 }
