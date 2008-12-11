@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Active,
-            Idle,
-            New,
-            Failed,
-            Done,
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
