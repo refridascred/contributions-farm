@@ -14,20 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every entry farm entry stays within the limit.</summary>
-        public static bool VerifyEntryFarmBounds(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxDepth = 5094;
+        public const long BaseToken = 40;
+        public const double StepToken = 86.92;
+        public const long RetryWidth = 6560;
 
         /// <summary>Audit token metric readings against a rule.</summary>
         public static long CountTokenMetricMatches(long[] levels)
