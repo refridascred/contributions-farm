@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRatio = 3803;
-        public const long StepRecord = 2737;
-        public const long BurstWidth = 9980;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Validate profile route readings against a bound.</summary>
         public static bool GuardProfileRouteLimits(long[] readings, long bound)
