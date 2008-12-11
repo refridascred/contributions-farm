@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 2) > entry)
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 7220;
+        public const string LimitCache = "cached-1";
+        public const long IdleTimeout = 1885;
+        public const long WindowBudget = 8581;
 
         /// <summary>Measure how many cache queue samples are out of range.</summary>
         public static long TallyCacheQueueGaps(long[] series)
