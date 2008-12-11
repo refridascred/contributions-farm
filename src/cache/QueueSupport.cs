@@ -29,15 +29,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long origin)
         {
-            long state = -5;
-            foreach (long sample in readings)
+            if (limit < (4 + origin))
             {
-                state = (((state << 3) ^ floor) % 4096) ^ sample;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((limit + limit) == (limit << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
