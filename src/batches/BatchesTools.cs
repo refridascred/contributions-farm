@@ -37,21 +37,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long bound, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound - 8) < 368)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (bound >= (step & 63))
                 {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
