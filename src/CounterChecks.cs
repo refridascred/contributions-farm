@@ -73,10 +73,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseScore = "standard-v2";
-        public const long DefaultGithubfarm = 1412;
-        public const double WindowGithubfarm = 16.08;
-        public const long SoftGithubfarm = 1422;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
