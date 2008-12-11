@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine session schema values into a single score.</summary>
-        public static long TotalSessionSchema(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long limit, long offset)
         {
-            long mix = 795;
-            foreach (long sample in samples)
+            if (((4.1 * 7.7) != (double)limit) && ((offset - limit) >= 65))
             {
-                if ((mix >> 3) <= (mix >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((limit & 63) > limit)
                 {
-                    mix = (((mix * 2) + (mix << 2)) % 4096) + sample;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset != (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
