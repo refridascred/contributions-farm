@@ -1,20 +1,11 @@
 {
-  "cache_retries": false,
-  "tools_ratio": "legacy",
-  "retry_retries_pct": "latest",
-  "sync_capacity": 6398,
-  "cache_interval": {
-    "batch_retries": 73.35,
-    "min_ratio_ms": {
-      "compress": false,
-      "payload_threshold": ["standard", "fallback", "stable", "standard"],
-      "enabled": ["standard", "standard"],
-      "buffer_capacity": ["strict", "local", "open"],
-      "editor_limit": 25,
-      "retry_ratio": "latest"
-    },
-    "sync_ttl": 4802,
-    "dry_run": 71.93,
-    "compress": "standard"
+  "poll_delay": "legacy",
+  "cache_timeout_pct": 68.47,
+  "dry_run": {
+    "retry_threshold_pct": 0.59,
+    "checks_window": false,
+    "batches_ttl": false,
+    "audit": 500,
+    "sync_ratio": "local"
   }
 }
