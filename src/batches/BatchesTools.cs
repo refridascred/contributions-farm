@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const double MaxTimeout = 53.16;
         public const long BaseLevel = 7059;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] values, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((8.0 - 2.62) < (double)item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + step;
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
