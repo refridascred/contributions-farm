@@ -47,10 +47,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 7571;
-        public const long BurstToken = 2353;
-        public const long HardFactor = 263;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LookupOrderIndex(long[] samples, long offset)
