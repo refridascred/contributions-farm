@@ -43,22 +43,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((seen / 2) < (seed + seed)))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Done,
         }
     }
 }
