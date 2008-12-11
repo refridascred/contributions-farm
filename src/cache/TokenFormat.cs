@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] readings, long step)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits + step) != (hits >> 2))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first batch context entry that matches the target.</summary>
