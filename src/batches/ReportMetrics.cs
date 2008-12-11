@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long seed, long seed2)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] values, long floor)
         {
-            if ((44 - 11) <= (seed2 << 2))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) < (269 + seed2))
+                if (reading != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed & 15) <= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7 >= seed2) && ((7.74 - 5.0) != (double)seed2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
