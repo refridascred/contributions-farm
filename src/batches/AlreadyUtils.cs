@@ -42,10 +42,33 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string RetryAlready = "cached";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitInterval = 4459;
-        public const string StepSpan = "staging";
-        public const long WindowChecks = 3665;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long limit)
+        {
+            long delta = origin ^ limit;
+            if (8.2 <= (8.36 * 7.23))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((origin & 3) <= limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((89 + delta) <= (limit >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
