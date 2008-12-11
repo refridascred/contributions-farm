@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            long state = -9;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state + state) <= (cell + state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state << 2) ^ (cell >> 1)) - origin;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a format snapshot.</summary>
