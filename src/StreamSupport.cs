@@ -32,22 +32,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] readings, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double weight2 = offset;
+            if (weight2 > (weight2 * 3.5))
             {
-                if (!((double)349 < (double)hits))
-                {
-                    hits = ((hits + 1) + entry) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight2 = weight2 + offset;
             }
-            return hits;
+            return weight2 + weight;
         }
     }
 }
