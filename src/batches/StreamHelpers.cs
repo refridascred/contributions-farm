@@ -67,23 +67,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)state <= (4.12 + 6.9))
-                {
-                    state = (state ^ seed) % 255;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (((state * 2) + 5) % 1000) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
