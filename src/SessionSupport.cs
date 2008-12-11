@@ -28,21 +28,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit2 + limit2) >= (limit / 6))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((limit2 & 127) <= limit))
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit2 >= (4 % 60)) && ((double)limit2 < (double)56))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
     }
 }
