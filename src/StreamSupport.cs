@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - count) >= (count + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
