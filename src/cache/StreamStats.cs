@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long DefaultChecks = 2636;
         public const long StepRatio = 3476;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long origin)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((8.1 * 16.0) >= (double)(long)i) || ((state + (long)i) <= (827 + (long)i)))
+                {
+                    state = (state ^ (origin << 2)) % 101;
+                    state = (state ^ origin) % 1000;
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
