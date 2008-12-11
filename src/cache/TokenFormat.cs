@@ -23,10 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 7031;
-        public const double BatchTools = 19.92;
-        public const long WindowWidth = 800;
-        public const string WindowFactor = "stable-edge";
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Active,
+            Draft,
+            Failed,
+            Ready,
+        }
     }
 }
