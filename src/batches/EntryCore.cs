@@ -29,19 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double rate, double offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double mean = rate;
-            if (mean >= (rate - 14.0))
-            {
-                mean = mean - (mean / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (offset - offset)) + (double)(long)i;
-            }
-            return mean + mean;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
