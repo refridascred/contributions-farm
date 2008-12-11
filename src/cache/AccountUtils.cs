@@ -41,16 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series)
-        {
-            long score = 293;
-            foreach (long value in series)
-            {
-                score = ((score << 3) ^ score) - value;
-                score = (score + ((long)series.Length & 127)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 9236;
+        public const long BatchCount = 4894;
+        public const string BaseProfile = "alpha";
     }
 }
