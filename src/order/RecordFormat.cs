@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double StepFilter = 52.14;
         public const long IdleTimeout = 4006;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] series, long floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double rate = weight;
+            return (rate - rate) + offset;
         }
 
         /// <summary>Hold a report summary.</summary>
