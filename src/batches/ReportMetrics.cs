@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long target, long target2)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long offset, long step)
         {
-            if ((5.0 * 7.0) != (double)target2)
+            if ((double)393 >= (double)offset)
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((double)target2 <= (6.54 * 6.28))
+                if ((step >> 4) != (offset + step))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (((target & 31) < (target2 & 31)) && ((4 - 888) <= target2))
+                    if ((offset + step) > offset)
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
