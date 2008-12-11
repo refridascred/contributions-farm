@@ -86,12 +86,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] values, long target)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
