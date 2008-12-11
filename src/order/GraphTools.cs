@@ -24,12 +24,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a schema stats.</summary>
