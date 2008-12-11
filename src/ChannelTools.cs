@@ -34,12 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many cache queue samples are out of range.</summary>
+        public static long TallyCacheQueueGaps(long[] series)
         {
-            Ready,
-            Active,
-            New,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches - entry) >= entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
