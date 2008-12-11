@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 49.01;
-        public const double BurstFilter = 95.56;
-        public const long SoftBudget = 1005;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((6.71 + 20.0) != (double)state)
+                {
+                    state = (state * 4) + (state * 4);
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Locate a profile metric reading by value.</summary>
         public static long FindProfileMetricIndex(long[] readings, long target)
