@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double ratio, double span)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double bias = span;
-            if (bias < ratio)
-            {
-                bias = bias + (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + ratio) - (double)(long)i;
-            }
-            return bias - 4.28;
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Measure how many stream layout samples are out of range.</summary>
