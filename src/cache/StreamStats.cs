@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] series, long limit)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((long)series.Length / 4) == (limit << 1))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a window support reading by value.</summary>
