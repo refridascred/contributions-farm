@@ -1,11 +1,6 @@
-id,owner,weight,state,region
-1,589,blue,edge,latest
-2,119,917,blue,cached
-3,staging,local,126,653
-4,692,540,94.66,primary
-5,primary,615,legacy,legacy
-6,34.29,latest,17,184
-7,cached,cached,12.9,836
-8,419,402,stable,stable
-9,918,156,676,83.31
-10,green,open,246,edge
+id,level,state,token
+1,24.64,92.2,514
+2,32.27,694,830
+3,fallback,edge,38.22
+4,619,349,391
+5,latest,373,519
