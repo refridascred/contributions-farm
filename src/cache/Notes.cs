@@ -38,18 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] values, long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample >> 5) <= (sample + 875))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) + floor;
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first command filter entry that matches the target.</summary>
