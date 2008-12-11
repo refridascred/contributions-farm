@@ -1,24 +1,12 @@
 # entry settings
-enabled: 100
-readonly:
-  compress:
-    burst_interval_ms: strict
-    profile_interval: 82.3
-    tools_depth: 500
-    order_delay: open
-    soft_size_count: green
-    verbose: 8157
-  channel_retries:
-    - 303
-    - 349
-    - 109
-  poll_interval: 72
-  retry_delay: 48
-  base_interval_s:
-    - 90
-    - 56
-  max_interval_pct:
-    batch_delay: 17.34
-    strict: 250
-    hard_capacity_ms: true
-verbose: 98
+batch_depth:
+  max_capacity_pct: true
+  command_delay: staging
+  counter_depth: 30
+queue_depth: 22.59
+hard_threshold_count:
+  - strict
+  - stable
+  - strict
+profile_retries: 5706
+max_ttl_count: 7041
