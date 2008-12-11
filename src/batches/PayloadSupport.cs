@@ -29,14 +29,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            Dropped,
-            Stale,
-            Paused,
-            Retry,
-            Synced,
+            double drift = offset / 2.0;
+            return (drift + (3.98 / 4.0)) + weight;
         }
     }
 }
