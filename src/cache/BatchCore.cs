@@ -40,11 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 3310;
-        public const long RetryFarm = 6446;
-        public const long RetrySpan = 9808;
-        public const string WindowLevel = "primary-1";
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Match up stats command samples.</summary>
         public static long MatchStatsCommandCount(long[] samples)
