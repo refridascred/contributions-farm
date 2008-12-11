@@ -33,19 +33,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
