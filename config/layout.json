@@ -1,16 +1,5 @@
 {
-  "hard_delay_pct": 30,
-  "dry_run": "stable",
-  "min_threshold_count": {
-    "audit": 16,
-    "idle_threshold": "open",
-    "hard_size_ms": false,
-    "max_retries": [189, 197, 340],
-    "burst_limit": {
-      "readonly": false,
-      "githubfarm_ttl": 18.16,
-      "default_threshold_ms": "cached",
-      "burst_capacity_s": "blue"
-    }
-  }
+  "max_ttl": "staging",
+  "buffer_depth": "edge",
+  "base_timeout": true
 }
