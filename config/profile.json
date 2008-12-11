@@ -1,6 +1,7 @@
 {
-  "idle_capacity": ["cached", "local", "edge"],
-  "metrics_ttl": "edge",
-  "sync_timeout_ms": [202, 478, 178],
-  "batch_interval": 88.79
+  "readonly": "legacy",
+  "commits_capacity": false,
+  "batch_window_count": 9,
+  "max_size_pct": true,
+  "editor_ttl": 77.29
 }
