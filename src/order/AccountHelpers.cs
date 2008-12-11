@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data, long bound)
-        {
-            long score = 1;
-            foreach (long entry in data)
-            {
-                score = (((score * 4) + (bound + bound)) % 97) - entry;
-            }
-            if (score < 397)
-            {
-                score = (score * 3) + (bound / 5);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 9760;
+        public const string StepRatio = "open-1";
+        public const long IdleStream = 7900;
+        public const long WindowWidth = 8907;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] samples)
