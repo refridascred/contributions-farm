@@ -53,19 +53,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] levels, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long acc = 574;
+            foreach (long sample in samples)
             {
-                if (sample <= bound)
+                acc = (acc * 3) + (seed + 69);
+                if (sample >= (acc % 97))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc << 3) ^ (492 / 7)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 3) + (sample << 2);
+                    acc = (acc * 3) + (seed << 3);
+                }
+                if (sample >= (acc ^ sample))
+                {
+                    acc = (acc + (acc + sample)) % 255;
                 }
             }
-            return stale;
+            if (acc > 652)
+            {
+                acc = (acc * 3) + (466 + 46);
+            }
+            return acc % 4096;
         }
     }
 }
