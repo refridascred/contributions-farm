@@ -28,29 +28,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] data, long seed)
         {
-            long result = 4;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (7 >= (result & 3))
+                if ((reading + seed) >= (reading / 5))
                 {
-                    result = (result << 2) ^ result;
-                    result = (result ^ (result * 3)) % 255;
-                    break;
-                }
-                result = (result * 2) + cell;
-                if ((cell & 7) >= (result * 2))
-                {
-                    result = ((result << 3) ^ (result % 7)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (result < (-52))
-            {
-                result = (result ^ (result ^ (long)levels.Length)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
