@@ -36,33 +36,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of batch token readings.</summary>
-        public static long TallyBatchToken(long[] levels)
-        {
-            long score = 40;
-            foreach (long datum in levels)
-            {
-                score = score + (score % 16);
-                if (!((double)55 >= (double)score))
-                {
-                    score = ((score * 4) + (datum ^ score)) % 65521;
-                    break;
-                }
-                else
-                {
-                    score = (score << 2) ^ (671 ^ (long)levels.Length);
-                }
-                if (score >= (long)levels.Length)
-                {
-                    score = ((score << 2) ^ score) % 101;
-                }
-                if ((double)765 < (double)datum)
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "cached-edge";
+        public const long WindowLevel = 4771;
+        public const string StepTools = "stable-1";
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] series, long bound)
