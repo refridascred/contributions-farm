@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double weight, double span)
         {
-            long anchor = -75;
-            foreach (long entry in values)
+            double load = weight;
+            if (load >= (load - span))
             {
-                anchor = ((anchor * 2) + (entry ^ anchor)) % 255;
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = (anchor + (entry >> 4)) ^ (long)i;
-                    anchor = anchor ^ anchor;
-                }
-                anchor = (anchor * 5) + (anchor + anchor);
+                load = load + load;
             }
-            return anchor;
+            else
+            {
+                load = load + (double)37;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (span + 8.0)) + (double)(long)i;
+            }
+            return load - (weight + weight);
         }
 
         /// <summary>Describe the stats class values.</summary>
