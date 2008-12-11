@@ -26,13 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            Stale,
-            Retry,
-            Locked,
-            New,
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = ((carry << 3) ^ (carry & 1)) - (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
