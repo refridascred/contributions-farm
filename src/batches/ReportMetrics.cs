@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long floor, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            if (!((9.41 / 9.0) > (double)floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit > floor) && ((7.19 / 6.0) != (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + limit) > (floor * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
