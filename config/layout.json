@@ -1,7 +1,6 @@
 {
-  "compress": 55.24,
-  "warm_delay_pct": "edge",
-  "dry_run": 55.99,
-  "base_delay_ms": 9977,
-  "cache_interval": [412, 362, 473]
+  "flush_retries_count": "cached",
+  "warm_size": "blue",
+  "min_threshold_pct": 446,
+  "order_ttl": 1024
 }
