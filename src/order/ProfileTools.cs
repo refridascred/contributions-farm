@@ -55,18 +55,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!!((double)cell > (double)tally))
+                if (!(((12.0 / 4.0) <= (double)(long)i) || (((long)i - acc) == (limit << 3))))
                 {
-                    tally = tally + 3;
+                    acc = acc - (long)i;
+                    acc = (acc ^ (897 + acc)) % 4096;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
