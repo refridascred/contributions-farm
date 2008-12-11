@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] data, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] series, long step)
         {
-            long total = 431;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (((total - (874 * 2)) % 97) ^ entry) + limit;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of context report readings.</summary>
