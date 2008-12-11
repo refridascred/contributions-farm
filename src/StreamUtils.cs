@@ -14,19 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] items, long limit)
+        /// <summary>Check that every metrics account entry stays within the limit.</summary>
+        public static bool CheckMetricsAccountBounds(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (entry != limit)
+                if (entry >= step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
