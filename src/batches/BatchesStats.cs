@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double weight, double offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double rate = (double)22 / 2.0;
-            if (rate > rate)
-            {
-                rate = ((rate - 13.0) - weight) + offset;
-            }
-            return rate + (double)4;
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
