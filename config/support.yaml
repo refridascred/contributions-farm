@@ -1,10 +1,6 @@
 # support settings
-warm_depth_count: 81
-burst_interval_ms:
-  readonly: blue
-  min_timeout_s: 43.41
-  cache_ratio_count: cached
-  compress: strict
-  soft_timeout_s: false
-  soft_window_pct: true
-min_threshold_ms: edge
+default_ttl_count: strict
+persist: 500
+profile_interval: stable
+farm_window: 56.53
+verbose: cached
