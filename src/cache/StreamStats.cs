@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long bound, long floor)
-        {
-            long delta = bound ^ floor;
-            if ((delta - delta) < (bound + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor >= bound) || ((17.0 + 4.71) >= (double)delta))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor + floor) > (bound + bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 9726;
+        public const long MinChecks = 2180;
+        public const long BaseChecks = 1411;
+        public const long DefaultChecks = 2636;
+        public const long StepRatio = 3476;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
