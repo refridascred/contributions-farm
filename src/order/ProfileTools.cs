@@ -46,11 +46,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] readings, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (6.1 * 5.02))
+                {
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
