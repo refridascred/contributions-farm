@@ -61,11 +61,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (seen <= (datum + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
