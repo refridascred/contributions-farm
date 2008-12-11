@@ -55,24 +55,18 @@ namespace Common.Utilities
         public const long BatchInterval = 9046;
         public const string DefaultStats = "stable-1";
 
-        /// <summary>Rank profile batches input into a small class.</summary>
-        public static long GradeProfileBatches(long offset, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            if (((floor + offset) == (79 / 7)) && ((floor % 64) > offset))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (275 <= floor)
+                if ((sample - seen) < (seen + 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
