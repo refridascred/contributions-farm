@@ -54,10 +54,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleFactor = 4873;
-        public const long SoftTimeout = 989;
-        public const string HardSchema = "stable-edge";
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Synced,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ProjectChecks(double scale, double span)
