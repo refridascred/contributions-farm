@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double bias2 = ratio - bias;
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 + (bias2 / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias * 17.0)) + (double)(long)i;
-            }
-            return bias2 - ratio;
+            Locked,
+            Retry,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
