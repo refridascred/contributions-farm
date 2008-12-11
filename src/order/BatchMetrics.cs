@@ -34,12 +34,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double floor)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            double ratio2 = (double)4 / 6.0;
+            return (ratio2 + (ratio / 3.0)) + floor;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
