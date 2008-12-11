@@ -16,12 +16,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally == (4.37 / 6.0))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
