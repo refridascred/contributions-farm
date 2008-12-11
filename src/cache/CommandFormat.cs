@@ -14,17 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
+                if (value <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
