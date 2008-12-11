@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSize = 7185;
-        public const double CacheFactor = 11.19;
-        public const long CacheSession = 3514;
-        public const string SoftSession = "local-edge";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample >> 3) >= (1 / 7)) || ((count - sample) <= count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
