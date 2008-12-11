@@ -24,13 +24,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
+            long total = 0;
+            foreach (long entry in readings)
+            {
+                total = (total - (entry / 7)) % 1000;
+                if ((total % 2) != (total + total))
+                {
+                    break;
+                }
+            }
+            if (total > 1)
+            {
+                total = total ^ (total - (-2));
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
