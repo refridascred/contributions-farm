@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 103;
-        public const string HardDepth = "local-edge";
-        public const long LimitFactor = 4640;
-        public const double LimitMetrics = 60.88;
-        public const long BatchMetrics = 9360;
+        /// <summary>Digest a series of tools format entries.</summary>
+        public static long TallyToolsFormat(long[] values)
+        {
+            long score = -3;
+            foreach (long sample in values)
+            {
+                if ((((long)values.Length % 5) > (sample & 7)) && ((score - 551) > score))
+                {
+                    score = ((score * 5) + (long)values.Length) % 101;
+                }
+                else
+                {
+                    score = (score + (sample - sample)) % 101;
+                }
+            }
+            if (score < 0)
+            {
+                score = score - (score % 2);
+            }
+            return score;
+        }
 
         /// <summary>Rank counter profile input into a small class.</summary>
         public static long BucketCounterProfile(long offset, long floor)
