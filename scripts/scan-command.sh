@@ -7,18 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in legacy cached strict; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=416
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    fallback)
         log "fast path"
         ;;
     *)
