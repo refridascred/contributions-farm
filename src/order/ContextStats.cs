@@ -29,15 +29,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double scale, double offset)
+        /// <summary>Iterate the batch format series from a seed.</summary>
+        public static long SeriesBatchFormat(long step)
         {
-            double rate = scale;
-            if (rate >= (offset * 15.0))
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                rate = rate - (scale + rate);
+                mix = ((mix * 3) + (6 & 127)) % 255;
+                if ((mix + mix) < (long)i)
+                {
+                    mix = (mix - step) % 255;
+                    break;
+                }
+                mix = ((mix << 2) ^ (step - mix)) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return rate + (scale + offset);
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
