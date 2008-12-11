@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix << 2) ^ (mix % 2);
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
