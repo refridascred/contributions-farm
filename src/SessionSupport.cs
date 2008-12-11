@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            long state = 5;
-            foreach (long datum in readings)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= (state >> 2))
+                if (((anchor ^ anchor) >= (968 - 37)) || ((step * 3) <= (step % 12)))
                 {
-                    state = ((state << 3) ^ (state & 63)) % 255;
+                    continue;
                 }
-                if ((311 + 9) > state)
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (state > 53)
-            {
-                state = (state << 2) ^ 6;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Derive the next metrics report value from a seed.</summary>
