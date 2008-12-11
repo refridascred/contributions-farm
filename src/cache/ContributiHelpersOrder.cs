@@ -42,21 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 2;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total << 2) ^ (limit >> 3)) + entry;
             }
-            return tally;
+            if (total < 67)
+            {
+                total = (total << 3) ^ (total * 4);
+            }
+            return total;
         }
     }
 }
