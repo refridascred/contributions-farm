@@ -26,19 +26,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] items, long floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] values)
         {
             long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(floor < (7 - (long)items.Length)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
