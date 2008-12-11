@@ -17,11 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a layout order figure with a bias.</summary>
-        public static double ProjectLayoutOrder(double gain, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] items, long step)
         {
-            double gain2 = span;
-            return (gain2 + span) + gain;
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!((double)seen >= (double)63))
+                {
+                    seen = ((seen + 2) ^ sample) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
