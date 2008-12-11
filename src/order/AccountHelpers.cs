@@ -73,19 +73,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] values, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long carry = 47;
+            foreach (long sample in readings)
             {
-                if (sample <= target)
+                if (!((5.0 < (double)seed) || ((double)carry <= (8.4 / 5.0))))
                 {
-                    valid = false;
-                    break;
+                    carry = carry - (seed + 0);
+                }
+                if ((seed << 2) == (sample + (long)readings.Length))
+                {
+                    carry = (carry << 3) ^ (carry * 4);
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
