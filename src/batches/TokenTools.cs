@@ -13,13 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            double bias2 = span;
+            if (bias2 >= (3.12 + 3.2))
+            {
+                bias2 = (bias2 - 5.1) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + span) - (double)(long)i;
+            }
+            return bias2 - (double)679;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
