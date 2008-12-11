@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a channel account pair into a bucket.</summary>
-        public static long RankChannelAccount(long step, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long diff = step + target;
-            if (((step & 15) < step) || ((step - diff) >= target))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)diff <= (2.59 + 14.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target != (double)7)
+                    if ((levels[i] - levels[j]) != 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
