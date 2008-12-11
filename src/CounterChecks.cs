@@ -21,23 +21,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double gain, double bias)
+        /// <summary>Locate a context notes reading by value.</summary>
+        public static long LocateContextNotesIndex(long[] values, long step)
         {
-            double load = gain;
-            if (load < gain)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - load;
+                if ((values[i] > step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)59) + (double)(long)i;
-            }
-            return load - bias;
+            return -1;
         }
 
         /// <summary>Hold a support info.</summary>
