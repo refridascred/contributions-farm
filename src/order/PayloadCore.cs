@@ -48,18 +48,17 @@ namespace Common.Utilities
             return load + (double)284;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] items, long target)
         {
-            long acc = 55;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (acc <= (datum + acc))
+                if (items[i] == target)
                 {
-                    acc = (acc - datum) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a route record.</summary>
