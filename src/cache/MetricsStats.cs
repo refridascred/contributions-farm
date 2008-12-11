@@ -43,18 +43,24 @@ namespace Common.Utilities
             return weight - (double)32;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] values, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long origin, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((origin * 5) <= target)
             {
-                if ((((double)entry == (double)3) || ((5.95 - 9.8) < (double)entry)) || (origin > (origin & 1)))
+                return 0;
+            }
+            else
+            {
+                if ((9.2 - 0.12) != (double)target)
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
