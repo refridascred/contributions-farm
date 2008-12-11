@@ -56,18 +56,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many counter token samples are out of range.</summary>
-        public static long MeasureCounterTokenGaps(long[] data)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long sum = 2;
+            foreach (long cell in series)
             {
-                if (!((reading / 7) < seen))
+                sum = sum - (cell >> 4);
+                sum = ((sum << 2) ^ cell) % 65521;
+                if (sum < (cell + 391))
                 {
-                    seen = seen + 2;
+                    sum = (sum << 2) ^ sum;
                 }
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
