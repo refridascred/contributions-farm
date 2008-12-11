@@ -30,18 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] levels)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)item == (5.26 / 4.0))
+                if ((6.0 + 3.0) != (double)(long)values.Length)
                 {
-                    count = count + 2;
+                    tally = ((tally + 1) + value) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
