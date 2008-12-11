@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const double BatchAlready = 12.0;
         public const long SoftAlready = 6707;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] data, long step)
         {
             long tally = 0;
-            foreach (long entry in items)
+            foreach (long reading in data)
             {
-                if ((6.0 - 2.0) <= (double)tally)
+                if (!((4.3 + 5.55) >= (double)step))
                 {
-                    tally = (tally + 1) + entry;
+                    tally = (tally + 2) + reading;
                 }
             }
             return tally;
