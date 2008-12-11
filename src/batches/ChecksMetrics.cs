@@ -61,17 +61,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] samples, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    score = (score + (limit >> 1)) - (long)i2;
+                    score = (score - (164 - 402)) % 4096;
                 }
+                score = ((score * 5) + (score + score)) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
