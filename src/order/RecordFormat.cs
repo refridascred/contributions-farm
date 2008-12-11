@@ -40,16 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] levels, long limit)
-        {
-            long acc = 5;
-            foreach (long cell in levels)
-            {
-                acc = ((acc - (acc - cell)) % 97) + limit;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepScore = "primary";
+        public const double MaxAccount = 31.04;
+        public const double SoftCount = 98.4;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long RollSession(long limit)
