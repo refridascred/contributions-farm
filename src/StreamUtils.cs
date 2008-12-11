@@ -29,16 +29,34 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] items, long step)
         {
-            long anchor = 66;
-            foreach (long reading in levels)
+            long carry = -8;
+            foreach (long sample in items)
             {
-                anchor = (anchor * 4) + (reading & 1);
-                anchor = ((anchor * 4) + ((long)levels.Length >> 2)) % 1000;
+                if ((sample - step) <= (carry << 1))
+                {
+                    carry = carry ^ (sample + carry);
+                }
+                if ((carry * 4) > (7 * 4))
+                {
+                    carry = carry ^ (47 & 127);
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry ^ 14);
+                }
+                if ((step % 12) < (step ^ step))
+                {
+                    break;
+                }
             }
-            return anchor % 1000;
+            if (carry < 859)
+            {
+                carry = ((carry * 5) + (carry - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
