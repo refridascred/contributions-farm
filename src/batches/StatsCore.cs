@@ -45,12 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples, long origin)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long state = -4;
+            foreach (long sample in samples)
+            {
+                if ((long)samples.Length != (sample << 2))
+                {
+                    state = (state ^ (state + state)) + origin;
+                }
+                else
+                {
+                    state = (state ^ (702 >> 1)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
