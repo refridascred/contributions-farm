@@ -56,18 +56,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long sum = 26;
+            foreach (long reading in readings)
             {
-                if ((hits <= (item * 2)) && ((double)290 < (0.51 - 3.14)))
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum * 5) + (sum + reading)) % 65521;
             }
-            return hits;
+            if (sum > 361)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 1000;
         }
     }
 }
