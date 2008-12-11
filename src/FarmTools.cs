@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long anchor = 91;
-            foreach (long entry in readings)
-            {
-                anchor = ((anchor ^ anchor) % 1000) ^ entry;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
