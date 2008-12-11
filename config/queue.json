@@ -1,6 +1,5 @@
 {
-  "audit": "legacy",
-  "default_retries_s": 68,
-  "poll_interval_count": "edge",
-  "burst_size_s": [474, 338, 444]
+  "soft_timeout": [88, 22],
+  "strict": 9982,
+  "sync_timeout_count": ["legacy", "eu-west"]
 }
