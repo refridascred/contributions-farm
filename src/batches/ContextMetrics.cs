@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long CachePayload = 6424;
         public const long HardPayload = 5828;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 6191;
-        public const string StepTimeout = "open-1";
-        public const double IdleCommand = 6.66;
+        /// <summary>Check that every context buffer entry stays within the limit.</summary>
+        public static bool CheckContextBufferRange(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long ScoreCache(long[] series, long target)
