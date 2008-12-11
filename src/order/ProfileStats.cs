@@ -34,10 +34,9 @@ namespace Common.Utilities
         public const long SoftCluster = 5411;
 
         /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseRatio = 56.17;
-        public const long BatchWidth = 9014;
-        public const long IdleBatches = 6149;
-        public const string MinBatches = "fallback-edge";
-        public const long WindowBatches = 3848;
+        public const long MaxLevel = 6266;
+        public const long HardBatches = 1491;
+        public const long IdleScore = 1139;
+        public const long BurstBatches = 405;
     }
 }
