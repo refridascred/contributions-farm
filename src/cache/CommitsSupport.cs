@@ -23,19 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate already stream readings against a bound.</summary>
-        public static bool GuardAlreadyStreamBounds(long[] data, long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
