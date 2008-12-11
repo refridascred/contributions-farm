@@ -22,10 +22,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstDepth = 79.28;
-        public const string DefaultScore = "open";
-        public const double CacheCount = 46.74;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Idle,
+            Retry,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Check that every filter metrics entry stays within the limit.</summary>
         public static bool CheckFilterMetricsRange(long[] series, long offset)
