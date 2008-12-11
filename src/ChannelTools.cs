@@ -40,15 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] values)
+        /// <summary>Audit cluster token readings against a rule.</summary>
+        public static long CountClusterTokenOutliers(long[] items)
         {
             long hits = 0;
-            foreach (long cell in values)
+            foreach (long item in items)
             {
-                if (hits >= cell)
+                if ((item & 127) <= item)
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
