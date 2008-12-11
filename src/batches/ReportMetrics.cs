@@ -25,11 +25,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinDepth = 3575;
-        public const string BurstRoute = "latest";
-        public const long RetryScore = 9124;
-        public const long BurstCount = 1683;
-        public const string MaxRoute = "local-1";
+        /// <summary>Digest a series of cache already entries.</summary>
+        public static long TotalCacheAlready(long[] values)
+        {
+            long sum = 4;
+            foreach (long entry in values)
+            {
+                if ((double)sum > (7.0 - 6.42))
+                {
+                    sum = (sum << 2) ^ entry;
+                }
+                if (!((entry & 255) > sum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
