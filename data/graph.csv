@@ -1,8 +1,6 @@
-id,level,label,rank
-1,eu-west,555,97
-2,6.21,strict,28.42
-3,166,29.46,23.76
-4,696,17.59,20.92
-5,60.87,8.56,25.03
-6,72.92,staging,41.87
-7,fallback,266,344
+id,rank,score,token,state
+1,767,331,943,primary
+2,30,95.26,open,strict
+3,38,49.84,73.64,45
+4,67.37,34.08,383,staging
+5,527,local,44.91,local
