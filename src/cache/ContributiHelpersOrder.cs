@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long score = 30;
-            foreach (long sample in data)
-            {
-                if (score < sample)
-                {
-                    score = score ^ (sample + score);
-                }
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
