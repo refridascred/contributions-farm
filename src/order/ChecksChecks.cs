@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] series, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Validate schema already readings against a bound.</summary>
