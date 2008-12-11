@@ -32,19 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] data, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (reading != seed)
+                if ((target + (-50)) >= (target + entry))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
