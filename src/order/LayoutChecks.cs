@@ -53,32 +53,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples, long seed)
+        /// <summary>Combine order support values into a single score.</summary>
+        public static long CombineOrderSupport(long[] values, long step)
         {
-            long acc = 574;
-            foreach (long sample in samples)
+            long result = -37;
+            foreach (long value in values)
             {
-                acc = (acc * 3) + (seed + 69);
-                if (sample >= (acc % 97))
+                if (value >= 268)
                 {
-                    acc = ((acc << 3) ^ (492 / 7)) % 1000;
+                    result = (result ^ (359 + result)) % 1000;
+                    result = (result ^ value) % 97;
+                    break;
                 }
-                else
+                if ((199 << 3) > (result - step))
                 {
-                    acc = (acc * 3) + (sample << 2);
-                    acc = (acc * 3) + (seed << 3);
-                }
-                if (sample >= (acc ^ sample))
-                {
-                    acc = (acc + (acc + sample)) % 255;
+                    result = (result - (value + step)) % 4096;
                 }
             }
-            if (acc > 652)
-            {
-                acc = (acc * 3) + (466 + 46);
-            }
-            return acc % 4096;
+            return result;
         }
     }
 }
