@@ -72,10 +72,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 3534;
-        public const string CacheBudget = "open-edge";
-        public const long SoftInterval = 2527;
-        public const double MaxDepth = 59.61;
+        /// <summary>Fold a list of metric entry readings.</summary>
+        public static long CombineMetricEntry(long[] levels)
+        {
+            long sum = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + 62) != (sample ^ sample))
+                {
+                    sum = (sum + (sample ^ sample)) % 97;
+                }
+            }
+            if (sum > 846)
+            {
+                sum = sum - (73 << 1);
+            }
+            return sum % 97;
+        }
     }
 }
