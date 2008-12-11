@@ -27,19 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] series, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (cell != seed)
+                if (!((long)series.Length <= count))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
