@@ -24,13 +24,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            Active,
+            Failed,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
