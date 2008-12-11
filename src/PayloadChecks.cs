@@ -63,11 +63,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long floor, long offset)
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
+            long delta = floor - offset;
+            if ((delta % 60) >= (floor % 16))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset == (7.9 * 2.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor > (floor + delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor >= (floor + floor)) && ((double)floor < (9.9 * 1.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue info.</summary>
