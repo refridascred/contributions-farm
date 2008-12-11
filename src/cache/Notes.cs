@@ -61,18 +61,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = 70;
+            foreach (long sample in items)
             {
-                if ((14 + tally) >= (2 - value))
+                if ((57 >= (10 + sample)) && ((8 + 6) <= (target - result)))
                 {
-                    tally = tally + 2;
+                    result = (result - (target * 3)) % 4096;
                 }
+                result = ((result * 5) + sample) % 65521;
             }
-            return tally;
+            if (result < 272)
+            {
+                result = result - (result * 5);
+            }
+            return result;
         }
     }
 }
