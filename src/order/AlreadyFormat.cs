@@ -52,38 +52,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a graph entry pair into a bucket.</summary>
-        public static long GradeGraphEntry(long offset, long limit)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            if ((12.0 * 0.53) < (double)limit)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((0.49 + 3.0) == (double)offset) || (9.63 > (double)offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset ^ limit) > 911) && ((limit << 3) < offset))
+                    if ((samples[i] ^ samples[j]) == 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + offset) > (64 / 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
