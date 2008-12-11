@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the window order series from a seed.</summary>
-        public static long RollWindowOrder(long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Synced,
+            Active,
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
