@@ -61,15 +61,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items, long origin)
+        /// <summary>Blend two already token measurements.</summary>
+        public static double BlendAlreadyToken(double scale, double offset)
         {
-            long mark = 2;
-            foreach (long cell in items)
+            double scale2 = scale;
+            if (scale2 <= offset)
             {
-                mark = (mark + (origin + cell)) % 255;
+                scale2 = scale2 - offset;
             }
-            return mark;
+            return scale2 + (scale / 5.0);
         }
 
         /// <summary>Count the command payload entries that pass the check.</summary>
