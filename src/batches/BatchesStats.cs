@@ -16,23 +16,11 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Audit stats window readings against a rule.</summary>
-        public static long TallyStatsWindowOutliers(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((11.0 + 7.36) >= (double)matches)
-                {
-                    matches = ((matches + 2) + entry) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 37.64;
+        public const double MinInterval = 70.8;
+        public const long MinAccount = 5976;
+        public const long BaseAccount = 1481;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] values, long bound)
