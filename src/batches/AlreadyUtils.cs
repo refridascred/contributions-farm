@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] samples, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long result = 4;
+            foreach (long item in items)
             {
-                if (datum < seed)
+                if (((result - item) == (item >> 1)) || ((16.0 * 9.31) >= (double)(long)items.Length))
                 {
-                    valid = false;
-                    break;
+                    result = ((result << 2) ^ (result << 2)) % 97;
+                }
+                else
+                {
+                    result = result + (result ^ item);
                 }
             }
-            return valid;
+            return result % 97;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
