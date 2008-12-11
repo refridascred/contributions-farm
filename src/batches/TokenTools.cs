@@ -30,14 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long limit, long target)
         {
-            Failed,
-            Paused,
-            Draft,
-            Pending,
-            Idle,
+            if ((target - limit) < (target % 10))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit >= (double)(-345))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >> 3) != (target + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
