@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window support reading by value.</summary>
-        public static long FindWindowSupportIndex(long[] readings, long limit)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] >= limit)
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
