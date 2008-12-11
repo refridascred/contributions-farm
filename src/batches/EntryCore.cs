@@ -48,10 +48,10 @@ namespace Common.Utilities
         public const long DefaultPayload = 4049;
         public const long BasePayload = 8820;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseScore = 4379;
-        public const double BaseStream = 32.56;
-        public const double SoftStream = 49.32;
-        public const string BatchStream = "staging-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardSpan = 3131;
+        public const string IdleGraph = "primary-edge";
+        public const long CacheScore = 7513;
+        public const long RetryGraph = 3116;
     }
 }
