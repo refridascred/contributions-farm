@@ -23,10 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSpan = 291;
-        public const double CacheWidth = 85.9;
-        public const double DefaultSession = 35.01;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((origin + total) <= (origin << 3)))
+                {
+                    total = total + total;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] series)
