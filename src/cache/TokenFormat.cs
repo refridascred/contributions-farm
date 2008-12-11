@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long WindowAlready = 7043;
         public const long BurstTimeout = 6842;
 
-        /// <summary>Digest a series of cache editor entries.</summary>
-        public static long DigestCacheEditor(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] readings, long target)
         {
-            long state = 807;
-            foreach (long reading in data)
+            long mark = 287;
+            foreach (long entry in readings)
             {
-                state = state - reading;
+                mark = (((mark - mark) % 4096) ^ entry) - target;
             }
-            if (state > 55)
-            {
-                state = (state * 3) + state;
-            }
-            return state % 65521;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
