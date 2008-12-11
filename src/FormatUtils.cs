@@ -59,19 +59,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long sum = 26;
-            foreach (long reading in readings)
-            {
-                sum = ((sum * 5) + (sum + reading)) % 65521;
-            }
-            if (sum > 361)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 1000;
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
     }
 }
