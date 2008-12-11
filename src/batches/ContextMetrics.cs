@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepBudget = 56.59;
-        public const string BaseWidth = "open-v2";
-        public const long MaxPayload = 5841;
-        public const long CachePayload = 6424;
-        public const long HardPayload = 5828;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long floor, long origin)
+        {
+            if ((origin < (floor + origin)) || ((floor / 8) != (floor ^ origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((70 / 5) >= (origin % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((14.0 / 3.0) >= (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every contributi queue entry stays within the limit.</summary>
         public static bool CheckContributiQueueLimits(long[] samples, long limit)
