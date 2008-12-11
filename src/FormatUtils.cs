@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Draft,
-            Locked,
-            Failed,
+            Idle,
             Done,
-            Pending,
+            Dropped,
         }
 
         /// <summary>Compare every pair of contributi report readings.</summary>
