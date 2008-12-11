@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Synced,
-            Stale,
-            Active,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 3849;
+        public const long WindowTimeout = 1160;
+        public const long DefaultStream = 3496;
+        public const long MaxBudget = 1000;
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] readings, long target)
