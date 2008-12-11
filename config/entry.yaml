@@ -1,13 +1,6 @@
 # entry settings
-schema_retries: staging
-metrics_depth: true
-warm_limit:
-  - 280
-  - 91
-soft_ttl_pct: 5938
-flush_window:
-  - 498
-  - 250
-  - 88
-  - 329
-retry_retries_count: stable
+command_window: strict
+base_ratio: 68
+soft_ttl_count: false
+batches_capacity: stable
+strict: local
