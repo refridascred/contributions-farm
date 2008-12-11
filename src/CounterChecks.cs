@@ -21,39 +21,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long offset, long origin)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double gain, double bias)
         {
-            long lane = offset + origin;
-            if ((lane & 31) >= (origin * 5))
+            double load = gain;
+            if (load < gain)
             {
-                return 6;
+                load = load - load;
             }
             else
             {
-                if ((lane * 4) > lane)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((6.6 - 4.7) == (double)origin) || ((offset * 5) <= 351))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((lane + offset) < 670)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                load = load + bias;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)59) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Hold a support info.</summary>
