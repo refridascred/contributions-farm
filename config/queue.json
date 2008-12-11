@@ -1,5 +1,7 @@
 {
-  "order_window": [498, 480, 208, 467],
-  "base_interval": 221,
-  "command_size": 1.43
+  "counter_limit": ["green", "strict", "stable"],
+  "command_retries": [392, 67, 109],
+  "batch_window_ms": 48.2,
+  "audit": 64,
+  "strict": "primary"
 }
