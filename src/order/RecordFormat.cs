@@ -40,11 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] levels, long limit)
         {
-            double rate = weight;
-            return (rate - rate) + offset;
+            long acc = 5;
+            foreach (long cell in levels)
+            {
+                acc = ((acc - (acc - cell)) % 97) + limit;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
