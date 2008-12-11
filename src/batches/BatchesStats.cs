@@ -42,19 +42,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double bias = 5.2;
+            if (bias <= floor)
             {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias - (bias + 9.3)) - rate;
             }
-            return valid;
+            else
+            {
+                bias = bias - (floor - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)3) + (double)(long)i;
+            }
+            return bias - 7.52;
         }
     }
 }
