@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowSpan = "stable-1";
-        public const long HardDepth = 7211;
-        public const long BurstRatio = 4640;
-        public const long IdleBatch = 4657;
-        public const long DefaultBatch = 5704;
+        /// <summary>Rank tools profile input into a small class.</summary>
+        public static long SortToolsProfile(long limit, long floor)
+        {
+            long step = limit ^ floor;
+            if ((limit % 97) > (floor ^ step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(limit >= (limit + 0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstBatches = 5175;
