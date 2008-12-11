@@ -1,21 +1,7 @@
 {
-  "soft_ratio": true,
-  "retry_window_pct": {
-    "base_delay_s": 9.27,
-    "counter_retries": {
-      "flush_timeout": 10.76,
-      "cache_delay": 17.27,
-      "verbose": 68.37,
-      "hard_ttl_pct": true,
-      "graph_ratio": 1474
-    },
-    "report_size": {
-      "warm_ratio": 69.2,
-      "verbose": 30,
-      "flush_timeout_s": 8315
-    },
-    "retry_limit_ms": [176, 9],
-    "metric_timeout": true
-  },
-  "default_retries": "strict"
+  "farm_window": "edge",
+  "graph_threshold": "fallback",
+  "hard_limit_pct": "latest",
+  "base_limit_s": "open",
+  "burst_ratio": false
 }
