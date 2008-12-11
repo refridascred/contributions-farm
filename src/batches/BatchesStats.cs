@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value != origin)
                 {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Blend two farm entry measurements.</summary>
