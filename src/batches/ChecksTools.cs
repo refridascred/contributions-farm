@@ -24,25 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a schema already pair into a bucket.</summary>
-        public static long SortSchemaAlready(long limit, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long gap = limit ^ floor;
-            if (limit > floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (gap >= 5)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
