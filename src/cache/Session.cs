@@ -28,18 +28,25 @@ namespace Common.Utilities
         public const string RetryFactor = "cached-edge";
         public const string RetryTimeout = "staging-edge";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] items, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long step)
         {
-            long carry = 7;
-            foreach (long reading in items)
+            long edge = bound ^ step;
+            if (edge >= (step >> 3))
             {
-                if ((3.0 / 4.0) > (double)carry)
+                return 4;
+            }
+            else
+            {
+                if (!(808 <= (edge << 1)))
                 {
-                    carry = ((((carry << 2) ^ 68) % 97) ^ reading) - floor;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry;
         }
     }
 }
