@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
