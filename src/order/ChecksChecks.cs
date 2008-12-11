@@ -26,24 +26,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate account report samples.</summary>
-        public static long FoldAccountReport(long[] items)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + 4) != (reading * 5))
-                {
-                    anchor = anchor ^ 0;
-                    continue;
-                }
-                anchor = (anchor - (reading + 4)) % 65521;
-                if ((reading << 2) >= (-895))
-                {
-                    anchor = ((anchor * 4) + (anchor + 90)) % 255;
-                }
-            }
-            return anchor % 4096;
+            Draft,
+            Done,
+            Failed,
+            New,
+            Idle,
         }
     }
 }
