@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 8995;
-        public const long LimitWidth = 8448;
-        public const long MaxSize = 3899;
-        public const long BurstCount = 9745;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix << 2) ^ (mix % 2);
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long bound)
