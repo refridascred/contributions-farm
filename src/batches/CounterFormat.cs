@@ -23,12 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Closed,
-            Queued,
-            Done,
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
