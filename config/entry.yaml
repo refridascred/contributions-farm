@@ -1,23 +1,26 @@
 # entry settings
-enabled:
-  batch_depth_count: false
-  flush_timeout: blue
-  warm_threshold_s: true
-  default_threshold_count:
-    window_delay:
-      - 337
-      - 203
-      - 407
-    farm_interval: 13
-    context_retries: 7210
-    min_limit_s: 1024
-    window_interval: strict
-  layout_ratio: true
-  compress: false
-soft_window: false
-batch_ratio_ms:
-  - 284
-  - 316
-  - 242
-  - 180
-idle_ratio_ms: 4435
+verbose:
+  max_depth_ms:
+    - 121
+    - 24
+    - 410
+    - 244
+  githubfarm_capacity: true
+  dry_run: 4.9
+  warm_size: false
+  min_depth_pct: local
+audit:
+  min_ratio_s: 96.52
+  entry_capacity: green
+  poll_window: 1024
+  default_delay:
+    - 427
+    - 399
+    - 175
+    - 130
+  batch_ratio_count: strict
+  hard_ratio_pct: 19.94
+githubfarm_capacity: staging
+burst_threshold_ms: stable
+poll_retries_count: 31.59
+compress: 1055
