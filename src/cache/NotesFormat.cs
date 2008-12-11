@@ -33,19 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long target)
         {
-            double mean = (double)(495 >> 2);
-            if (mean <= bias)
+            if (((double)target > (5.0 / 7.0)) || ((target % 5) <= step))
             {
-                mean = (mean - (double)490) - offset;
+                return 4;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean + 4.48) + (double)(long)i;
+                if ((783 & 1) > target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ 921) != (3 + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return mean + (double)323;
         }
     }
 }
