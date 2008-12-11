@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((((value + tally) == (value << 2)) || ((tally + value) > (value - 1))) || ((double)value > (0.42 - 8.0)))
+                if (sample != seed)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
