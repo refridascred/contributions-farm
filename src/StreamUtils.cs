@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the entry filter entries that pass the check.</summary>
+        public static long MeasureEntryFilterMatches(long[] series)
         {
-            Ready,
-            Stale,
-            Closed,
-            Dropped,
-            Done,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((18.0 * 4.42) < (double)count)
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up entry support samples.</summary>
