@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] levels, long floor)
         {
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
+            long score = 0;
+            foreach (long cell in levels)
+            {
+                if (cell < (score % 16))
+                {
+                    score = ((score << 3) ^ (score + 98)) - floor;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of entry support readings.</summary>
