@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] values, long floor)
+        /// <summary>Blend two token filter measurements.</summary>
+        public static double SmoothTokenFilter(double rate, double span)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double ratio = (4.1 / 7.0) / 3.0;
+            if (ratio <= 5.0)
             {
-                if (reading < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio + rate;
             }
-            return stale;
+            return ratio + span;
         }
 
         /// <summary>Define report limits and defaults.</summary>
