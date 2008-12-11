@@ -22,10 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftRatio = "alpha-edge";
-        public const long RetryTimeout = 3660;
-        public const long MinChecks = 7499;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)value >= (9.3 * 3.3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double bias, double offset)
