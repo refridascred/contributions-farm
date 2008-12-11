@@ -29,10 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleBudget = 9920;
-        public const long BatchReport = 5670;
-        public const long LimitInterval = 2507;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 5765;
+        public const double BatchDepth = 87.37;
+        public const long HardStream = 4178;
+        public const string RetryBudget = "stable-edge";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] readings, long target)
