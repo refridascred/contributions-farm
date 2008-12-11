@@ -39,19 +39,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
-        public static bool CheckQueueMetricsRange(long[] items, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
