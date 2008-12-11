@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            long result = 68;
+            foreach (long value in series)
+            {
+                if (!((result + result) >= result))
+                {
+                    result = (result << 2) ^ value;
+                }
+                result = (result * 3) + (value / 4);
+                if ((double)33 <= (double)result)
+                {
+                    result = (result << 2) ^ (value % 3);
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the commits token entries that pass the check.</summary>
