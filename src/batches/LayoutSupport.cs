@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double bias, double offset)
-        {
-            double mean = (7.73 + bias) * 9.0;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean - (double)94;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxLevel = 42.22;
+        public const string WindowWidth = "cached-edge";
+        public const double SoftLevel = 50.52;
+        public const double BaseDepth = 30.35;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitFactor = 7226;
