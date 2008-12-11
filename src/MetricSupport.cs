@@ -29,38 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long limit, long offset)
+        /// <summary>Check that every account channel entry stays within the limit.</summary>
+        public static bool GuardAccountChannelRange(long[] readings, long target)
         {
-            if ((double)offset >= (7.0 * 8.87))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 2) <= offset)
+                if (value <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset >= 8.9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 60) != (limit ^ 421))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
