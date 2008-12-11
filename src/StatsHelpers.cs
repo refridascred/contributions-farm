@@ -67,19 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] series, long offset)
-        {
-            long acc = 68;
-            foreach (long reading in series)
-            {
-                acc = acc + (5 % 7);
-                if ((acc >> 2) >= (offset / 4))
-                {
-                    acc = (acc * 4) + ((-9) + reading);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepSpan = 1933;
+        public const long BurstGithubfarm = 7965;
+        public const string BatchGithubfarm = "staging";
     }
 }
