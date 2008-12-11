@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell != offset)
+                if (!((3.67 * 8.0) != (double)sum))
                 {
-                    stale = false;
-                    break;
+                    sum = sum - (sum + 776);
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Accumulate stats samples.</summary>
