@@ -26,17 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first format channel entry that matches the target.</summary>
-        public static long LookupFormatChannelIndex(long[] levels, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
