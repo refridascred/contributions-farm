@@ -28,32 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long floor, long origin)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long bound = floor + origin;
-            if (bound > (bound - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - origin) == (origin << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (floor % 24))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
