@@ -47,13 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
