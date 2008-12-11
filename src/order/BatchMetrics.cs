@@ -89,11 +89,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double ratio, double offset)
+        /// <summary>Count the buffer record entries that pass the check.</summary>
+        public static long TallyBufferRecordGaps(long[] items, long seed)
         {
-            double bias = 9.0;
-            return ((bias + bias) + ratio) + offset;
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((seed >= (seed / 3)) || (seed > (seed * 4)))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
