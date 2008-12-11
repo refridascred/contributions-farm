@@ -1,6 +1,6 @@
 {
-  "account_delay": 31,
-  "default_retries": ["staging", "eu-west", "latest", "open"],
-  "hard_window_pct": ["edge", "staging", "blue"],
-  "warm_size_s": "staging"
+  "schema_timeout": [355, 255],
+  "persist": 23,
+  "base_delay_pct": 14.64,
+  "command_timeout": true
 }
