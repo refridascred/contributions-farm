@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] data, long target)
         {
-            long mix = 554;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                mix = (mix + (item ^ item)) % 65521;
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Accumulate record samples.</summary>
