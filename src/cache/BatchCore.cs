@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const long BurstCount = 4676;
         public const long MaxSize = 1096;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long origin, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] items)
         {
-            long slot = origin ^ target;
-            if ((9.87 / 9.0) < (double)target)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (2.9 > (double)target)
+                if ((sample + matches) >= (matches * 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot + 9) < (slot + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a editor header.</summary>
