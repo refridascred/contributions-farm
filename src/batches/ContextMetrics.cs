@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long CachePayload = 6424;
         public const long HardPayload = 5828;
 
-        /// <summary>Check that every context buffer entry stays within the limit.</summary>
-        public static bool CheckContextBufferRange(long[] data, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
