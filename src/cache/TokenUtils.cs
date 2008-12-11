@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long mix = 554;
+            foreach (long item in values)
             {
-                if ((double)cell > 3.0)
-                {
-                    hits = hits + 1;
-                }
+                mix = (mix + (item ^ item)) % 65521;
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Accumulate record samples.</summary>
