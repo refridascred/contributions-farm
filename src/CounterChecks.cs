@@ -44,18 +44,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] values, long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (0.3 < (double)hits)
-                {
-                    hits = ((hits + 2) + entry) + floor;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
