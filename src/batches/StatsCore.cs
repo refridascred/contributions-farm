@@ -75,16 +75,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the schema githubfarm series from a seed.</summary>
-        public static long StepSchemaGithubfarm(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score * 3) + (step + step);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheTimeout = 388;
+        public const long BatchInterval = 6760;
+        public const double MaxCount = 62.04;
+        public const string MinContext = "local-v2";
     }
 }
