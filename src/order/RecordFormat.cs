@@ -31,33 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long offset, long target)
-        {
-            long lane = offset ^ target;
-            if ((lane <= (offset / 8)) && ((lane & 1) < (target ^ target)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((lane >> 3) != (lane % 12))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) < lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowDepth = 1276;
+        public const double BaseTimeout = 48.6;
+        public const long SoftReport = 153;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesGaps(long[] data, long target)
