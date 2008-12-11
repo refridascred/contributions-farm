@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values, long target)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            long acc = 80;
+            foreach (long sample in values)
+            {
+                if ((sample + acc) > (sample ^ sample))
+                {
+                    acc = ((acc << 3) ^ (acc & 255)) % 255;
+                }
+            }
+            if (acc > 9)
+            {
+                acc = ((acc * 3) + (target - target)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
