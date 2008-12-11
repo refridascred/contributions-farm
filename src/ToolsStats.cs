@@ -55,20 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((score % 8) < (score - score))
-                {
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 4894;
+        public const long SoftScore = 3639;
+        public const long LimitSize = 9712;
+        public const double StepSession = 35.24;
+        public const double MinSession = 67.61;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] series)
