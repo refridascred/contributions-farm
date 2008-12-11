@@ -19,13 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long bound, long target)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long slot = bound - target;
+            if ((((-957) & 1) != (target - target)) || ((double)target < (10.0 * 5.5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target <= (bound ^ slot)) && ((9.0 / 7.0) != (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)slot <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format session values into a single score.</summary>
