@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] values, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((((seen >> 2) >= reading) || ((reading ^ seen) < seen)) || ((seen / 8) >= 560))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
