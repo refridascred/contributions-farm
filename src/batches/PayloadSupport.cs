@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] samples, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                mark = (mark * 3) + ((long)i + bound);
-                long slot = bound;
-                if ((double)slot >= (double)bound)
+                if (value >= origin)
                 {
-                    slot = ((slot << 3) ^ (slot + (long)i)) % 97;
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Hold a tools header.</summary>
