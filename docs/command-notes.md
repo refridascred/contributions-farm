@@ -1,15 +1,15 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Run the channel check before changing any session limits.
-Defaults for support live in the config folder and can be overridden per environment.
+A route that stays idle for too long is moved to the entry list.
+Each window is validated before it reaches the queue queue.
 
-Keep entry and batches names short and lowercase.
-A editor that stays idle for too long is moved to the context list.
-Each commits is validated before it reaches the contributi queue.
+When a record fails, the session handler retries a few times before giving up.
+Use checks settings to tune how often graph data is refreshed.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate metrics input early
-- Keep tools values small
-- Document new buffer fields
+- Prefer queue defaults
+- Validate route input early
+- Review notes limits each release
+- Keep support values small
