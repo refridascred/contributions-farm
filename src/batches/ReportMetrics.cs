@@ -37,11 +37,10 @@ namespace Common.Utilities
         public const string CacheGithubfarm = "legacy-v2";
         public const long IdleGithubfarm = 777;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardWidth = "alpha-1";
-        public const long DefaultTimeout = 7272;
-        public const double LimitStats = 40.42;
-        public const long DefaultStats = 1142;
-        public const double BurstSize = 64.73;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftWidth = "fallback-v2";
+        public const string HardBudget = "cached-edge";
+        public const long BatchLayout = 6243;
+        public const long DefaultLayout = 9585;
     }
 }
