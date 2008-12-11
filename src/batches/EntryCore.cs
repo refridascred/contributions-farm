@@ -38,12 +38,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long bound2)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
+            long step = bound + bound2;
+            if (((bound2 << 1) != (step >> 3)) && (step < (7 - bound2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6.01 / 5.0) < (double)bound2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound2 << 3) <= (step ^ bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
