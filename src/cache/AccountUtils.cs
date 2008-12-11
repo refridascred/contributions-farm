@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] items, long offset)
         {
-            Closed,
-            Dropped,
-            Pending,
-            Active,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((418 * 3) > hits)
+                {
+                    hits = ((hits + 3) + datum) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every layout route entry stays within the limit.</summary>
