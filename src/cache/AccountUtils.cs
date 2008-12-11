@@ -41,9 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 9236;
-        public const long BatchCount = 4894;
-        public const string BaseProfile = "alpha";
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+        }
     }
 }
