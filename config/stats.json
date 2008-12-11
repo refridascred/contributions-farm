@@ -1,12 +1,6 @@
 {
-  "retry_timeout": "stable",
-  "max_capacity": {
-    "verbose": false,
-    "default_threshold_count": "open",
-    "hard_window_s": ["primary", "strict"],
-    "max_timeout_s": false,
-    "hard_ratio_s": true,
-    "persist": [489, 115, 381, 175]
-  },
-  "soft_ratio_pct": ["primary", "staging", "fallback", "primary"]
+  "account_delay": 31,
+  "default_retries": ["staging", "eu-west", "latest", "open"],
+  "hard_window_pct": ["edge", "staging", "blue"],
+  "warm_size_s": "staging"
 }
