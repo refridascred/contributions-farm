@@ -98,13 +98,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] items, long limit)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((double)limit > (4.88 * 16.0)) || ((-4) < (1 ^ sample)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
