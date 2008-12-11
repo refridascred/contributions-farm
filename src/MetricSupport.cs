@@ -29,19 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every account channel entry stays within the limit.</summary>
-        public static bool GuardAccountChannelRange(long[] readings, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
