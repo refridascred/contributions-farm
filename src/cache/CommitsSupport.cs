@@ -52,19 +52,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] levels, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long carry = 0;
+            foreach (long datum in values)
             {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry - (374 * 4)) ^ datum;
             }
-            return flag;
+            if (carry < 2)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of order entries.</summary>
