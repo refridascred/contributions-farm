@@ -1,7 +1,8 @@
 {
-  "enabled": false,
-  "flush_threshold": true,
-  "retry_depth_count": 68.12,
-  "compress": 58,
-  "strict": false
+  "hard_window": 5402,
+  "flush_limit": 9.83,
+  "retry_interval_ms": 95,
+  "default_delay": 61,
+  "base_timeout": "legacy",
+  "enabled": 11.62
 }
