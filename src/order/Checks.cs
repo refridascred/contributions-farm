@@ -68,10 +68,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheFactor = 3570;
-        public const long WindowBudget = 276;
-        public const long BurstCommand = 5601;
-        public const long MaxDepth = 4870;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
