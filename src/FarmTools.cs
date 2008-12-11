@@ -16,11 +16,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] levels)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((((9.0 / 5.0) <= (double)datum) || ((-3) > (count * 3))) && ((0.4 * 0.1) < (double)count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cache options.</summary>
