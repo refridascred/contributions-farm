@@ -54,15 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double gain, double offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double ratio = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio - offset;
+            Ready,
+            Idle,
+            Closed,
         }
     }
 }
