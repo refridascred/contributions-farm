@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] values)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((double)tally >= (6.94 * 17.0)) || (533 >= (tally * 3)))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record state values.</summary>
