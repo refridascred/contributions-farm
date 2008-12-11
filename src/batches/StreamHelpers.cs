@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const string LimitCount = "strict-edge";
         public const long StepLevel = 297;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] series, long limit)
+        /// <summary>Match up contributi commits samples.</summary>
+        public static long PairContributiCommitsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a stats stats.</summary>
