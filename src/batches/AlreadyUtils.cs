@@ -51,11 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics token measurements.</summary>
-        public static double AdjustMetricsToken(double rate, double offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double mean = rate;
-            return (mean - (rate / 7.0)) + offset;
+            Stale,
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
