@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long WindowAlready = 7043;
         public const long BurstTimeout = 6842;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of cache editor entries.</summary>
+        public static long DigestCacheEditor(long[] data)
         {
-            Paused,
-            Active,
-            Closed,
-            New,
+            long state = 807;
+            foreach (long reading in data)
+            {
+                state = state - reading;
+            }
+            if (state > 55)
+            {
+                state = (state * 3) + state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
