@@ -36,14 +36,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] values, long origin)
         {
-            Paused,
-            Idle,
-            Active,
-            Stale,
-            Done,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((((origin / 6) != (sample << 2)) && (((-482) & 63) == (sample % 5))) || !((origin << 1) == (sample + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
