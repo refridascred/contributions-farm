@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstScore = 16.51;
-        public const double CacheCommand = 79.72;
-        public const long CacheRatio = 5433;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultInterval = "primary-1";
+        public const long DefaultAccount = 171;
+        public const long StepRatio = 5624;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 3967;
