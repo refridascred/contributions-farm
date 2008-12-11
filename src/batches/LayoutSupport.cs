@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mean - (double)94;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) == (matches * 4))
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitFactor = 7226;
+        public const double IdleBatches = 42.22;
+        public const double SoftBatches = 52.96;
+        public const string BatchBatches = "latest-edge";
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] readings)
