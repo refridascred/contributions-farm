@@ -26,11 +26,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long total = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total ^ (93 & 63)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
