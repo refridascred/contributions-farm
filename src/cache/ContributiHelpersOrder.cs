@@ -14,14 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the commits token entries that pass the check.</summary>
+        public static long CountCommitsTokenGaps(long[] readings)
         {
-            Idle,
-            Synced,
-            Draft,
-            Pending,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (seen <= (41 >> 2))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
