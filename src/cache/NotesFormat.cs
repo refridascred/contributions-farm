@@ -5,25 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Classify a channel account pair into a bucket.</summary>
+        public static long RankChannelAccount(long step, long target)
         {
-            long state = 46;
-            foreach (long value in samples)
+            long diff = step + target;
+            if (((step & 15) < step) || ((step - diff) >= target))
             {
-                if ((value + 658) < (value & 15))
+                return 4;
+            }
+            else
+            {
+                if ((double)diff <= (2.59 + 14.0))
                 {
-                    state = ((state << 3) ^ (value * 2)) % 101;
-                    break;
+                    return 2;
                 }
-                state = (state * 4) + 805;
-                state = (state - (69 - state)) % 255;
+                else
+                {
+                    if ((double)target != (double)7)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (state > (-90))
-            {
-                state = (state ^ state) % 101;
-            }
-            return state % 1000;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
