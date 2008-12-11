@@ -1,7 +1,6 @@
 # githubfarm settings
-readonly:
-  - 76
-  - 394
-batch_threshold_pct: staging
-flush_window_pct: true
-support_interval: latest
+compress:
+  - 378
+  - 252
+warm_capacity_pct: 500
+warm_limit: local
