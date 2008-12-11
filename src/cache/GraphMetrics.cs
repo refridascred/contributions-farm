@@ -22,13 +22,31 @@ namespace Common.Utilities
         public const long MaxCount = 8459;
         public const string CacheDepth = "standard-1";
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long origin, long step)
         {
-            Idle,
-            Retry,
-            Ready,
-            Queued,
+            if ((6.23 + 9.47) <= (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)8 < (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
