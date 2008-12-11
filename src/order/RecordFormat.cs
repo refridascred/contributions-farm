@@ -75,18 +75,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - count) <= (count - offset))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Synced,
+            Draft,
+            Closed,
+            Pending,
         }
     }
 }
