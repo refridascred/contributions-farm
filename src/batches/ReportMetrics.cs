@@ -32,10 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheDepth = 5869;
-        public const string CacheGithubfarm = "legacy-v2";
-        public const long IdleGithubfarm = 777;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "local-1";
+        public const long StepRatio = 4450;
+        public const double IdleMetrics = 86.44;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string SoftWidth = "fallback-v2";
