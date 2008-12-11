@@ -33,15 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer layout value.</summary>
-        public static double ScaleBufferLayout(double gain, double offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double scale = (double)(900 + 74);
-            if (scale < (scale / 3.0))
-            {
-                scale = ((scale + (double)53) - gain) - offset;
-            }
-            return scale + scale;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Hold a stream options.</summary>
