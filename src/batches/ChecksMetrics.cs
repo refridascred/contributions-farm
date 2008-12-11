@@ -20,11 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxDepth = 5094;
-        public const long BaseToken = 40;
-        public const double StepToken = 86.92;
-        public const long RetryWidth = 6560;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples, long offset)
+        {
+            long state = 876;
+            foreach (long datum in samples)
+            {
+                state = state - (datum >> 4);
+                state = state ^ (datum ^ offset);
+            }
+            if (state > 93)
+            {
+                state = (state ^ (offset << 3)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Audit token metric readings against a rule.</summary>
         public static long CountTokenMetricMatches(long[] levels)
