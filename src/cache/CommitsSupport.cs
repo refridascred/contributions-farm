@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long step)
         {
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
+            long carry = 18;
+            foreach (long reading in samples)
+            {
+                if ((709 ^ carry) <= (step & 7))
+                {
+                    carry = ((carry - (590 - step)) % 101) ^ reading;
+                }
+                else
+                {
+                    carry = (carry ^ (step << 2)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate already stream readings against a bound.</summary>
