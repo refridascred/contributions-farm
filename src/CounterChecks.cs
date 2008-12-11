@@ -48,12 +48,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultScore = 96.56;
+        public const long SoftCommand = 4580;
+        public const double MaxRatio = 41.69;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] levels, long floor)
