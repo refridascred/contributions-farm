@@ -1,8 +1,7 @@
 {
-  "min_ttl": 17.37,
-  "strict": "latest",
-  "hard_delay": true,
-  "min_size": "green",
-  "base_retries_s": true,
-  "channel_ratio": true
+  "enabled": false,
+  "flush_threshold": true,
+  "retry_depth_count": 68.12,
+  "compress": 58,
+  "strict": false
 }
