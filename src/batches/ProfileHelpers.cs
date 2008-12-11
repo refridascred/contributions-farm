@@ -59,19 +59,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] values, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum > offset)
+                if ((tally - 310) > (item >> 3))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
