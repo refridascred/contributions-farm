@@ -31,13 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] samples)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((((entry % 5) == (9 & 127)) && ((entry + entry) < entry)) || ((entry - seen) != (seen * 2)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
