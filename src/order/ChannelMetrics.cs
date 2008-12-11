@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data, long origin)
-        {
-            long total = 717;
-            foreach (long cell in data)
-            {
-                total = (total ^ (cell + origin)) % 65521;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 7377;
+        public const double RetrySpan = 88.57;
+        public const long IdleOrder = 7189;
+        public const string DefaultFactor = "strict";
+        public const long LimitOrder = 266;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] data, long step)
