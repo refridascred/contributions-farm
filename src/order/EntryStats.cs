@@ -39,13 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many cache context samples are out of range.</summary>
+        public static long AuditCacheContextGaps(long[] levels)
         {
-            Synced,
-            Done,
-            Draft,
-            Queued,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((9.0 - 10.0) != (double)seen))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank profile batches input into a small class.</summary>
