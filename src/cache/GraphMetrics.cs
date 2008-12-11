@@ -30,19 +30,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
-            double mean = (double)(863 % 5);
-            if (mean < (double)511)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mean = (mean - (weight * 13.0)) - span;
+                if ((seen - entry) < seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - (double)7;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
