@@ -26,21 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a commits command counter forward.</summary>
-        public static long DeriveCommitsCommand(long seed)
+        /// <summary>Measure how many token window samples are out of range.</summary>
+        public static long CountTokenWindowMatches(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((seed * 3) <= (long)i)
+                if ((((datum >> 1) >= (matches & 127)) || (762 >= (matches << 2))) || (((99 ^ datum) <= (matches << 3)) || (matches < (datum - matches))))
                 {
-                    mark = mark + seed;
-                    break;
+                    matches = matches + 3;
                 }
-                mark = (mark ^ mark) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
     }
 }
