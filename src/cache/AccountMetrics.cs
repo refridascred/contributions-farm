@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] samples, long offset)
         {
-            Done,
-            Queued,
-            Locked,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (6 < (offset * 3))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a support counter forward.</summary>
