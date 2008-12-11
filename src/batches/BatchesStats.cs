@@ -16,11 +16,12 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 37.64;
-        public const double MinInterval = 70.8;
-        public const long MinAccount = 5976;
-        public const long BaseAccount = 1481;
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double gain, double floor)
+        {
+            double gain2 = (floor / 5.0) / 5.0;
+            return (gain2 - 4.48) + gain;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
