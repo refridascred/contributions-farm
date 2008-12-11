@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate profile route readings against a bound.</summary>
+        public static bool GuardProfileRouteLimits(long[] readings, long bound)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
