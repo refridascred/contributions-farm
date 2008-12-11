@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)tally == (4.37 / 6.0))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 2977;
+        public const long CacheSpan = 5965;
+        public const string BaseRoute = "primary-edge";
+        public const long BurstRoute = 1775;
 
         /// <summary>Measure how many contributi entry samples are out of range.</summary>
         public static long AuditContributiEntryHits(long[] samples)
