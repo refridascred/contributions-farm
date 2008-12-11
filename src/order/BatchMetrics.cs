@@ -13,14 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate contributi layout samples.</summary>
+        public static long ScoreContributiLayout(long[] items, long bound)
         {
-            Failed,
-            Idle,
-            Draft,
-            Synced,
-            Pending,
+            long score = 677;
+            foreach (long reading in items)
+            {
+                score = (((score << 3) ^ bound) % 101) - reading;
+            }
+            if (score < 2)
+            {
+                score = (score * 4) + 79;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the session phase values.</summary>
