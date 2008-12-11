@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series, long seed)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
+            long carry = 359;
+            foreach (long datum in series)
+            {
+                if ((0 * 4) < (datum - datum))
+                {
+                    carry = ((carry * 2) + (seed >> 3)) % 255;
+                }
+                carry = (carry + (carry & 63)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a cache window sample.</summary>
