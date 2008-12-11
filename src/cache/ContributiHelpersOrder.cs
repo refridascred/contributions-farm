@@ -15,11 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "local";
-        public const double HardDepth = 84.93;
-        public const double LimitLayout = 81.39;
-        public const long BatchLayout = 1311;
+        /// <summary>Check that every layout farm entry stays within the limit.</summary>
+        public static bool ValidateLayoutFarmBounds(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long target)
