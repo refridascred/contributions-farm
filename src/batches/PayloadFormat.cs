@@ -45,13 +45,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Locked,
-            Paused,
-            Failed,
-            Synced,
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
