@@ -36,22 +36,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route layout values into a single score.</summary>
-        public static long ScoreRouteLayout(long[] data, long floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long origin, long offset)
         {
-            long score = 65;
-            foreach (long datum in data)
+            long delta = origin + offset;
+            if ((double)delta == (double)294)
             {
-                if ((datum + 73) < score)
+                return 0;
+            }
+            else
+            {
+                if ((16.0 * 7.0) != (double)delta)
                 {
-                    score = ((score - (-7)) % 1000) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((delta + 0) <= (delta ^ origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (score < 163)
-            {
-                score = (score + (score * 5)) % 4096;
-            }
-            return score;
         }
 
         /// <summary>Describe the batch kind values.</summary>
