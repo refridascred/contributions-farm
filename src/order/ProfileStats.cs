@@ -44,11 +44,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double gain, double span)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
+            double scale = (span + gain) * 14.0;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (gain + scale);
         }
     }
 }
