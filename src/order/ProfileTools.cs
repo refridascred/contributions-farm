@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] readings)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample >> 3) >= (1 / 7)) || ((count - sample) <= count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
