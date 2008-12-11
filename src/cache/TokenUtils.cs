@@ -32,11 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 89.72;
-        public const long StepFactor = 214;
-        public const long RetryTimeout = 5725;
-        public const long CacheBuffer = 9975;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] data, long limit)
+        {
+            long total = 431;
+            foreach (long entry in data)
+            {
+                total = (((total - (874 * 2)) % 97) ^ entry) + limit;
+            }
+            return total % 97;
+        }
 
         /// <summary>Compare every pair of context report readings.</summary>
         public static long OverlapContextReportCount(long[] values)
