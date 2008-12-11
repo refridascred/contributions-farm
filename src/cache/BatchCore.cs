@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 5559;
-        public const long MinRecord = 1187;
-        public const long BurstCount = 4676;
-        public const long MaxSize = 1096;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowSpan = "stable-1";
+        public const long HardDepth = 7211;
+        public const long BurstRatio = 4640;
+        public const long IdleBatch = 4657;
+        public const long DefaultBatch = 5704;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] items)
