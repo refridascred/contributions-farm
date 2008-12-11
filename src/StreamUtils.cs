@@ -67,12 +67,22 @@ namespace Common.Utilities
             return load + (double)840;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] levels, long offset)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            long mark = 5;
+            foreach (long sample in levels)
+            {
+                if (5.2 <= (2.5 - 11.0))
+                {
+                    mark = mark ^ (offset - sample);
+                }
+            }
+            if (mark < 341)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark % 65521;
         }
     }
 }
