@@ -52,12 +52,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long limit, long limit2)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            long cur = limit + limit2;
+            if ((limit2 - cur) > limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit <= (55 << 1)) || ((14.0 * 15.0) != (double)cur))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur + 62) <= (limit - limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)limit < (7.0 - 1.6)) || ((limit + 7) != (limit2 + limit2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch header.</summary>
