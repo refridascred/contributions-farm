@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Blend two profile stream measurements.</summary>
+        public static double SmoothProfileStream(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(625 + (-6));
+            if (weight > (double)399)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = ((weight + 4.4) + ratio) - bias;
             }
-            return hits;
+            return weight - weight;
         }
 
         /// <summary>Fold a list of session readings.</summary>
