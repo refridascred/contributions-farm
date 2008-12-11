@@ -1,6 +1,10 @@
 {
-  "default_ttl_ms": 74,
-  "readonly": [214, 165, 41, 156],
-  "batch_window_ms": 100,
-  "retry_timeout_pct": ["green", "fallback", "standard", "primary"]
+  "metric_delay": ["stable", "strict", "fallback"],
+  "cache_retries": 52.08,
+  "cluster_capacity": {
+    "format_capacity": 250,
+    "audit": 52.35,
+    "queue_threshold": "stable"
+  },
+  "burst_depth_count": [52, 235]
 }
