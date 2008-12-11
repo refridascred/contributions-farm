@@ -26,23 +26,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((step + 7) >= (score + (long)i))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score + step) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Dropped,
+            Stale,
+            Paused,
+            Retry,
+            Synced,
         }
     }
 }
