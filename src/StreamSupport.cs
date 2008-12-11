@@ -28,16 +28,39 @@ namespace Common.Utilities
         public const double CacheWidth = 85.9;
         public const double DefaultSession = 35.01;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Rank editor batch input into a small class.</summary>
+        public static long ClassifyEditorBatch(long step, long step2)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long next = step + step2;
+            if (17.0 >= (double)next)
             {
-                mark = (mark - (offset & 255)) % 97;
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((step & 63) == (next + step2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step & 15) < (3 + step2)) && ((8 + next) != (step % 64)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6.7 * 8.4) >= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
