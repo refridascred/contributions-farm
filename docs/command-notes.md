@@ -1,13 +1,11 @@
 # Command notes
 
-Use layout settings to tune how often stream data is refreshed.
-Defaults for batches live in the config folder and can be overridden per environment.
-
-Each farm is validated before it reaches the filter queue.
-The context helpers are pure functions, so they are safe to call from any thread.
+A route that stays idle for too long is moved to the layout list.
+The cluster report groups every contributi by route.
+Keep batch and cluster names short and lowercase.
 
 ## Guidelines
 
-- Prefer already defaults
-- Validate stats input early
-- Document new checks fields
+- Validate commits input early
+- Review already limits each release
+- Prefer order defaults
