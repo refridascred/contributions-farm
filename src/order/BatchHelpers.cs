@@ -38,22 +38,17 @@ namespace Common.Utilities
         public const long SoftTools = 3246;
         public const long IdleTools = 9625;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.9 / 8.0) >= (double)count)
+                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
                 {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
