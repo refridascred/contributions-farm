@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Scale a command cluster figure with a bias.</summary>
+        public static double AdjustCommandCluster(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = scale;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate - (scale - floor)) - (double)(long)i;
             }
-            return seen;
+            return rate - 9.6;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
