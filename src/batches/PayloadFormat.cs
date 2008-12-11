@@ -21,19 +21,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels, long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long limit)
         {
-            long acc = 773;
-            foreach (long value in levels)
+            if (((limit << 2) == (offset - offset)) || ((limit >> 2) <= offset))
             {
-                acc = (((acc + acc) % 255) ^ value) - limit;
+                return 5;
             }
-            if (acc > 944)
+            else
             {
-                acc = (acc * 4) + acc;
+                if ((3 * 3) == (offset / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return acc % 65521;
         }
 
         /// <summary>Hold a layout summary.</summary>
