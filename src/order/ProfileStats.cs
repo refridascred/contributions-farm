@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            Idle,
-            Dropped,
-            Active,
-            Pending,
-            Paused,
+            long state = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 5) + (offset + (-56))) % 65521;
+                if ((((long)i >> 1) > ((long)i + state)) && ((offset ^ offset) < (3 % 97)))
+                {
+                    state = (state - (state & 15)) % 1000;
+                }
+                else
+                {
+                    state = state - (offset + state);
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a farm options.</summary>
