@@ -42,18 +42,10 @@ namespace Common.Utilities
             return rate + (scale + offset);
         }
 
-        /// <summary>Locate a cluster token reading by value.</summary>
-        public static long FindClusterTokenIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 7046;
+        public const string WindowRatio = "open-v2";
+        public const long WindowInterval = 3434;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double HardAlready = 73.88;
