@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a stats queue reading.</summary>
-        public static double ScaleStatsQueue(double rate, double floor)
+        /// <summary>Count the batch context entries that pass the check.</summary>
+        public static long MeasureBatchContextGaps(long[] readings, long floor)
         {
-            double bias = rate;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                bias = (bias - (floor - bias)) + (double)(long)i;
+                if ((double)1 > (double)floor)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
             }
-            return bias - 9.0;
+            return matches;
         }
 
         /// <summary>Project the next stream value.</summary>
