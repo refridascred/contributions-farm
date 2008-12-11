@@ -19,11 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 4939;
-        public const long BaseInterval = 578;
-        public const long MaxSpan = 1975;
-        public const double BaseWidth = 14.54;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Idle,
+            Synced,
+            Draft,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long target)
