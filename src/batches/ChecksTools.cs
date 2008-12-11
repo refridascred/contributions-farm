@@ -15,18 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] items, long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!((double)seen >= (double)63))
-                {
-                    seen = ((seen + 2) ^ sample) - step;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
