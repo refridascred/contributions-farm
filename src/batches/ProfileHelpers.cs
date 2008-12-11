@@ -46,18 +46,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Validate batch commits readings against a bound.</summary>
+        public static bool GuardBatchCommitsRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((tally - (long)data.Length) <= entry)
+                if (datum != floor)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a cluster info.</summary>
