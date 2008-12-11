@@ -22,39 +22,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long cur = floor ^ seed;
-            if ((77 < (floor ^ floor)) || ((641 - 81) <= (cur / 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((cur + floor) > 16)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 3) > (floor - cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed <= (seed * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Failed,
+            Retry,
         }
     }
 }
