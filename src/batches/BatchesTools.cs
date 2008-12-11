@@ -49,24 +49,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long bound, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            if ((bound - 8) < 368)
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (step & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Paused,
+            Draft,
+            Pending,
+            Ready,
         }
     }
 }
