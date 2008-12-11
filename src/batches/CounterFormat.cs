@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long target, long seed)
         {
-            Stale,
-            Draft,
-            Failed,
-            Idle,
+            if ((seed & 3) < target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (target <= (target + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((669 + seed) < (target + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target > (seed * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
