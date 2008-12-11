@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the entry filter entries that pass the check.</summary>
-        public static long MeasureEntryFilterMatches(long[] series)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((18.0 * 4.42) < (double)count)
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Match up entry support samples.</summary>
