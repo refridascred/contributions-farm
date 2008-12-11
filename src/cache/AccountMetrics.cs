@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            Paused,
+            Stale,
+            Draft,
+            Queued,
+            Synced,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
