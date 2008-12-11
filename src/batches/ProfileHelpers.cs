@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            long state = 36;
-            foreach (long cell in levels)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((state + cell) >= (state + state))
-                {
-                    state = (state + offset) % 101;
-                }
-                else
-                {
-                    state = (state ^ offset) % 65521;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
