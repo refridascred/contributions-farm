@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] values)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item >> 3) < (396 / 8))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state * 5) + (state ^ 74);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the cache mode values.</summary>
