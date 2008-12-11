@@ -58,18 +58,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item < (7.6 + 2.7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 7560;
+        public const long BurstFactor = 7751;
+        public const long StepBudget = 3473;
     }
 }
