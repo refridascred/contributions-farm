@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] levels, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mix = 2;
-            foreach (long value in levels)
-            {
-                mix = ((mix ^ (mix + 91)) + value) - floor;
-            }
-            return mix;
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
