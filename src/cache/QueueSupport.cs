@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long RetryWidth = 7065;
         public const long BaseChecks = 4906;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] items)
+        /// <summary>Locate a profile metric reading by value.</summary>
+        public static long FindProfileMetricIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count - 0) == (value + count))
+                if (readings[i] < target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
