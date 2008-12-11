@@ -1,16 +1,5 @@
 # githubfarm settings
-hard_retries_ms: 78
-checks_capacity:
-  batch_window_s: eu-west
-  verbose:
-    - 325
-    - 286
-    - 324
-    - 286
-  cache_limit:
-    - 202
-    - 271
-    - 323
-  compress: primary
-  hard_window: 4836
-entry_capacity: latest
+readonly: 3433
+enabled: 31.01
+stream_ratio: eu-west
+cache_timeout: 93.46
