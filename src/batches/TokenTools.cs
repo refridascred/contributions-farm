@@ -15,18 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] items)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((5 + 996) > (entry ^ 9)) && (entry > (entry - hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
