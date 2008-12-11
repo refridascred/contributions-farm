@@ -1,4 +1,6 @@
 # support settings
-sync_limit: true
-default_delay_count: 77
-session_threshold: false
+min_threshold_pct: 44.78
+idle_ratio_pct: primary
+report_ratio: true
+idle_delay_ms: 7912
+audit: edge
