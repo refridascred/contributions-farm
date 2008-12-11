@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
