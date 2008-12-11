@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            Stale,
-            Idle,
-            Paused,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell - count) >= (count + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cache level values.</summary>
