@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 5102;
+        public const long BatchWidth = 1019;
+        public const long SoftTimeout = 2379;
+        public const long MaxBatches = 1985;
+        public const long SoftCount = 9443;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
