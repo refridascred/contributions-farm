@@ -20,39 +20,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            long delta = bound ^ offset;
-            if (!((bound & 31) != (delta << 3)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)delta < (2.0 - 17.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < ((-74) ^ delta))
+                    if ((data[i] - data[j]) > 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(offset <= (offset + offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count order stream pairs that satisfy a relation.</summary>
