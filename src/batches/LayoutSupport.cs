@@ -69,19 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] items, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mark = 45;
+            foreach (long datum in readings)
             {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark ^ (datum & 63)) % 97) - bound;
             }
-            return ready;
+            return mark;
         }
     }
 }
