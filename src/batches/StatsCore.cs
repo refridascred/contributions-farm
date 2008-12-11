@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] values, long origin)
         {
-            long anchor = 4;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                anchor = (anchor ^ anchor) % 4096;
-                anchor = anchor ^ (entry * 2);
-                anchor = anchor + (target + anchor);
+                if ((double)tally < 19.0)
+                {
+                    tally = ((tally + 2) + value) + origin;
+                }
             }
-            if (anchor < 3)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
