@@ -1,6 +1,5 @@
 {
-  "batch_delay": [30, 438],
-  "checks_threshold": "open",
-  "base_threshold": "standard",
-  "record_timeout": "fallback"
+  "burst_threshold_s": 14,
+  "max_limit": 58.3,
+  "min_timeout_count": [138, 1, 490, 488]
 }
