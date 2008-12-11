@@ -52,19 +52,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double scale, double span)
+        /// <summary>Roll a schema support counter forward.</summary>
+        public static long DeriveSchemaSupport(long offset)
         {
-            double load = scale;
-            if (load < (3.5 - 9.52))
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                load = (load + load) + span;
+                long hits = offset;
+                hits = ((hits * 2) + (797 - (long)i)) % 4096;
+                if ((double)hits == (1.88 / 4.0))
+                {
+                    hits = (hits - (result - hits)) % 97;
+                }
+                else
+                {
+                    result = ((result * 5) + offset) % 255;
+                    hits = ((hits * 3) + (offset >> 4)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + (double)(-6);
-            }
-            return load - load;
+            return result;
         }
     }
 }
