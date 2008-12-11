@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long step, long origin)
         {
-            New,
-            Pending,
-            Active,
-            Retry,
-            Ready,
+            long diff = step + origin;
+            if ((step % 64) == (step + 98))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((17.0 + 6.5) > (double)origin) && ((double)origin < (1.0 / 3.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step / 3) == (71 / 4)) || ((double)diff >= (2.66 / 8.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up entry support samples.</summary>
