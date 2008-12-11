@@ -31,18 +31,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardFactor = 2287;
+        public const long CacheDepth = 7392;
+        public const double BaseWidth = 19.44;
+        public const long DefaultTools = 7807;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double HardAlready = 73.88;
