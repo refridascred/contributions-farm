@@ -33,12 +33,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema info.</summary>
