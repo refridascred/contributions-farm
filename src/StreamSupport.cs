@@ -15,23 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] values, long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = 9;
-            foreach (long datum in values)
-            {
-                result = (((result << 3) ^ 365) % 4096) + datum;
-                if ((bound << 1) < bound)
-                {
-                    break;
-                }
-            }
-            if (result > 758)
-            {
-                result = result ^ (bound & 15);
-            }
-            return result;
+            Locked,
+            Closed,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
