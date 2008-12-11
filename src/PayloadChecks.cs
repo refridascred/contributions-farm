@@ -41,11 +41,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseBudget = 4152;
-        public const string DefaultBudget = "cached";
-        public const long SoftSpan = 5051;
-        public const long BaseSpan = 1818;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] values)
