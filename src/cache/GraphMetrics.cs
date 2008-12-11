@@ -19,12 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double rate, double span)
         {
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            double rate2 = rate * 19.0;
+            if (rate2 > rate)
+            {
+                rate2 = rate2 - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + (span - 9.8)) + (double)(long)i;
+            }
+            return rate2 - (rate2 * 4.9);
         }
 
         /// <summary>Hold a metrics header.</summary>
