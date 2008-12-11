@@ -47,39 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi batch input into a small class.</summary>
-        public static long ClassifyContributiBatch(long target, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items, long seed)
         {
-            long next = target + offset;
-            if ((5.0 - 11.0) <= (double)offset)
+            long mark = 71;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset ^ offset) <= (next ^ 265)) && ((offset & 7) <= next))
+                if (((mark % 97) > (item - seed)) || ((item / 9) > seed))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(offset > target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset > (1.07 - 5.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = (mark + (79 - 41)) % 65521;
                 }
             }
+            if (mark < 63)
+            {
+                mark = ((mark * 4) + (mark % 2)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
