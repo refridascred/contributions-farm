@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Queued,
+            New,
+            Pending,
             Active,
+            Retry,
             Ready,
-            Dropped,
         }
 
         /// <summary>Match up entry support samples.</summary>
