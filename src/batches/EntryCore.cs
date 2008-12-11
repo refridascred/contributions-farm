@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the stats queue entries that pass the check.</summary>
-        public static long TallyStatsQueueOutliers(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)hits <= (0.5 * 10.0))
+                if (17.0 < (double)limit)
                 {
-                    hits = (hits + 1) ^ entry;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
