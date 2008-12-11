@@ -46,19 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long score = 85;
-            foreach (long value in data)
-            {
-                score = ((score + score) % 1000) + value;
-            }
-            if (score < 5)
-            {
-                score = (score ^ (score >> 4)) % 97;
-            }
-            return score;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
