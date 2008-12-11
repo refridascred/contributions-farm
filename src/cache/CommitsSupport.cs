@@ -27,18 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many buffer batches samples are out of range.</summary>
-        public static long TallyBufferBatchesOutliers(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long item in readings)
             {
-                if ((18.0 * 6.67) < (double)item)
+                if ((double)count >= (double)item)
                 {
-                    seen = seen + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
