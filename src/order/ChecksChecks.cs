@@ -29,14 +29,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Paused,
-            Draft,
-            Locked,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitSize = 6.42;
+        public const long RetryFarm = 6075;
+        public const long DefaultDepth = 2364;
     }
 }
