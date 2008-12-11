@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long score = 99;
-            foreach (long cell in levels)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                score = ((score * 3) + (cell * 3)) % 4096;
-                if ((cell * 5) == (cell - score))
+                if (!((double)(long)i >= (double)origin))
                 {
-                    score = (score + (score - (-475))) % 65521;
+                    acc = (acc + acc) % 101;
+                    break;
                 }
+                acc = (acc ^ origin) % 4096;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
