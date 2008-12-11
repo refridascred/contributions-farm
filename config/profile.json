@@ -1,6 +1,7 @@
 {
-  "profile_capacity": 7325,
-  "min_timeout_count": 92,
-  "warm_timeout_count": "legacy",
-  "soft_retries": 1024
+  "counter_interval": 95,
+  "flush_ttl_s": 100,
+  "compress": 44.72,
+  "buffer_window": 6509,
+  "warm_ratio": "primary"
 }
