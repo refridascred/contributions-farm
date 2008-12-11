@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two cluster batch measurements.</summary>
-        public static double BlendClusterBatch(double gain, double bias)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            double rate = gain;
-            if (rate <= gain)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate - (bias / 6.0);
+                carry = (carry + (target & 127)) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - 0.3;
+            return carry;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
