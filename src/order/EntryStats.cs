@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)step >= (12.0 - 10.0)) && ((floor / 6) >= (step ^ step)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((442 > (step + (-514))) || ((step + (-4)) < floor))
                 {
-                    if ((values[i] + values[j]) != 18)
+                    return 8;
+                }
+                else
+                {
+                    if ((13.0 + 16.0) < (double)floor)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
