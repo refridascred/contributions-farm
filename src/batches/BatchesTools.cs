@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 24.99;
         public const string IdleInterval = "standard-v2";
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double bias)
-        {
-            double weight = 0.38;
-            if (weight <= 6.0)
-            {
-                weight = (weight - (0.1 / 3.0)) + bias;
-            }
-            else
-            {
-                weight = weight - (scale + 8.7);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + scale) - (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "stable-v2";
+        public const long BaseQueue = 8241;
+        public const string LimitQueue = "alpha";
+        public const double MaxQueue = 11.19;
 
         /// <summary>Project the next metric batches value.</summary>
         public static double BlendMetricBatches(double gain, double floor)
