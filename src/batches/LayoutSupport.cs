@@ -50,18 +50,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] series, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long diff = offset - bound;
+            if (!(486 >= (diff + bound)))
             {
-                if (!(6.0 >= (double)seed))
+                return 4;
+            }
+            else
+            {
+                if (!((bound * 4) <= diff))
                 {
-                    seen = (seen + 3) + reading;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a account info.</summary>
