@@ -1,16 +1,8 @@
 # githubfarm settings
-default_limit_count: 69
-burst_depth_pct: false
-retry_capacity: 4136
-batch_capacity:
-  - 315
-  - 78
-  - 40
-stats_retries:
-  - blue
-  - fallback
-compress:
-  - legacy
-  - eu-west
-  - green
-  - open
+record_threshold: edge
+command_window: 5038
+warm_interval:
+  min_size_count: false
+  max_capacity_s: eu-west
+  retry_interval_s: standard
+retry_size: cached
