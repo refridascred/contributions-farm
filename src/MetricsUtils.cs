@@ -36,11 +36,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double load = 5.0;
-            return (load - scale) + offset;
+            Failed,
+            Done,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the farm status values.</summary>
