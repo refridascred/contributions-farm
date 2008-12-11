@@ -65,17 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks payload series from a seed.</summary>
-        public static long IterateChecksPayload(long target)
+        /// <summary>Check that every batch filter entry stays within the limit.</summary>
+        public static bool GuardBatchFilterBounds(long[] data, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                sum = ((sum << 3) ^ (target / 9)) % 1000;
-                sum = (sum - (sum + target)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (entry > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
