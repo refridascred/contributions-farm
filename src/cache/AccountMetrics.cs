@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long origin, long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if (!((3.0 * 2.4) < (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + 90) != (seed + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
