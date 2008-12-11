@@ -1,6 +1,12 @@
 {
-  "sync_window_pct": "cached",
-  "max_capacity_s": 2586,
-  "min_interval_s": "open",
-  "idle_retries": "latest"
+  "max_delay_ms": "standard",
+  "soft_threshold_ms": "fallback",
+  "command_window": false,
+  "route_size": 70.14,
+  "account_retries": "local",
+  "hard_size_ms": {
+    "readonly": "cached",
+    "cache_capacity_count": 82.89,
+    "idle_ttl": 13.27
+  }
 }
