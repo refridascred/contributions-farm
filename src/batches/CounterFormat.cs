@@ -34,21 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long CombineAlreadySchema(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 918;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (((total ^ (total >> 3)) % 65521) + datum) + step;
             }
-            return matches;
+            return total;
         }
     }
 }
