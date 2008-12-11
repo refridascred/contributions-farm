@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for item in fallback blue green; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-primary}"
+COMMAND_LIMIT=444
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    primary)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy cached primary; do
-    log "checking ${item}"
-done
