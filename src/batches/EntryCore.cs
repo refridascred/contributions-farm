@@ -34,12 +34,28 @@ namespace Common.Utilities
         public const long HardTools = 8690;
         public const long SoftTools = 100;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long origin)
         {
-            Pending,
-            Stale,
-            Idle,
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum - 423) % 101;
+                if (!!((double)origin == (7.0 * 3.9)))
+                {
+                    sum = ((sum << 3) ^ (origin % 7)) % 4096;
+                }
+                if (7.3 <= (double)sum)
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ (long)i;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
