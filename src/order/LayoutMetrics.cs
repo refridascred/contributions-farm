@@ -38,13 +38,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items, long step)
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            long state = 88;
+            foreach (long reading in items)
+            {
+                if ((reading - state) > step)
+                {
+                    break;
+                }
+                if (step > (reading % 10))
+                {
+                    state = (state ^ (state ^ reading)) % 65521;
+                }
+            }
+            return state;
         }
     }
 }
