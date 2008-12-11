@@ -22,17 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] items, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (items[i] < offset)
+                if ((value / 7) > (value & 15))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the route mode values.</summary>
