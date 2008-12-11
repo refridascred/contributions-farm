@@ -32,19 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits channel reading.</summary>
-        public static double BlendCommitsChannel(double weight, double bias)
+        /// <summary>Derive the next editor commits value from a seed.</summary>
+        public static long DeriveEditorCommits(long floor)
         {
-            double bias2 = bias + (weight * 1.0);
-            if (bias2 < (bias * 2.1))
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                bias2 = bias2 - (bias2 / 7.0);
+                anchor = (anchor + floor) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            else
-            {
-                bias2 = bias2 + 8.14;
-            }
-            return bias2 - (bias - bias);
+            return anchor;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
