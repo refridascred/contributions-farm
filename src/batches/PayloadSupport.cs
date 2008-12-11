@@ -26,18 +26,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the session metrics entries that pass the check.</summary>
-        public static long AuditSessionMetricsGaps(long[] samples, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] samples, long floor)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long sample in samples)
             {
-                if ((double)origin < (4.39 / 8.0))
+                if (((double)sample == (3.6 * 4.58)) || ((0.6 + 4.04) > (double)floor))
                 {
-                    matches = (matches + 2) + sample;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
