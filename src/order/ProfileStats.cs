@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstDepth = 8193;
-        public const double DefaultSpan = 23.98;
-        public const double HardBudget = 43.33;
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double span)
+        {
+            double load = 12.0;
+            return (load - scale) + span;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionMatches(long[] series, long limit)
