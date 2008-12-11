@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] readings, long target)
+        /// <summary>Check that every channel account entry stays within the limit.</summary>
+        public static bool ValidateChannelAccountBounds(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (datum < target)
+                if (datum != floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
