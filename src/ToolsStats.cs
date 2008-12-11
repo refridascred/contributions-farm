@@ -57,22 +57,15 @@ namespace Common.Utilities
         public const long WindowLevel = 4771;
         public const string StepTools = "stable-1";
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long floor)
         {
-            long anchor = -77;
-            foreach (long entry in series)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((84 + anchor) >= 1))
-                {
-                    anchor = (anchor + (bound / 7)) ^ entry;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor - bound)) % 101;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
