@@ -35,38 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long bound, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items, long floor)
         {
-            if ((951 + seed) != (bound - bound))
+            long acc = 7;
+            foreach (long datum in items)
             {
-                return 6;
+                acc = acc ^ (datum + datum);
             }
-            else
+            if (acc > 520)
             {
-                if (((0.45 / 2.0) > (double)bound) || ((676 + 305) <= seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed == (8.8 / 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed < (8.0 - 20.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                acc = acc - (floor + floor);
             }
+            return acc;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
