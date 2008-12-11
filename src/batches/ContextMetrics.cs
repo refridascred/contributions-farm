@@ -27,34 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] readings, long offset)
         {
-            long score = 103;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((double)cell != (double)359)
+                if (!((95 > offset) && ((value << 2) != (offset ^ offset))))
                 {
-                    continue;
-                }
-                if (((target >> 3) <= score) || ((cell - target) <= cell))
-                {
-                    score = score + target;
-                }
-                else
-                {
-                    score = score ^ (score - score);
-                }
-                if ((double)target == (9.9 + 4.5))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (score > 599)
-            {
-                score = (score * 5) + score;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
