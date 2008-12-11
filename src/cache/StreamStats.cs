@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long bound, long floor)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long delta = bound ^ floor;
+            if ((delta - delta) < (bound + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor >= bound) || ((17.0 + 4.71) >= (double)delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor + floor) > (bound + bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a window support reading by value.</summary>
