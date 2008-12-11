@@ -1,8 +1,6 @@
-id,owner,weight
-1,green,cached
-2,96.46,265
-3,staging,blue
-4,green,stable
-5,standard,edge
-6,841,standard
-7,772,fallback
+id,rank,active,score
+1,322,67.94,31.62
+2,948,97.24,cached
+3,fallback,741,edge
+4,160,6.91,572
+5,open,14.88,85
