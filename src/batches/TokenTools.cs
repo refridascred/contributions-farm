@@ -13,15 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double gain, double bias)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] items)
         {
-            double bias2 = (double)(90 & 7);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                bias2 = ((bias2 - gain) + (double)(long)i) - bias;
+                if (((5 + 996) > (entry ^ 9)) && (entry > (entry - hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return bias2 + (2.16 + 2.11);
+            return hits;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
