@@ -42,22 +42,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mark = 95;
-            foreach (long datum in items)
-            {
-                if (((datum << 2) <= datum) && ((datum + 73) != (mark >> 5)))
-                {
-                    mark = ((mark << 3) ^ (datum ^ datum)) % 1000;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = mark + (mark - 34);
-            }
-            return mark;
+            New,
+            Ready,
+            Closed,
+            Paused,
+            Done,
         }
     }
 }
