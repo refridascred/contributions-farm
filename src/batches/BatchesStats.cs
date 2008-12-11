@@ -35,18 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)hits > (20.0 * 3.0))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheLevel = 2712;
+        public const double HardMetric = 60.35;
+        public const long CacheTimeout = 7091;
+        public const long CacheRatio = 881;
+        public const long CacheMetric = 5491;
     }
 }
