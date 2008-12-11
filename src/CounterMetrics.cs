@@ -21,11 +21,24 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "open-edge";
-        public const long RetryDepth = 999;
-        public const long RetryTimeout = 2639;
-        public const long DefaultToken = 4769;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double bias, double floor)
+        {
+            double rate = floor;
+            if (rate <= (7.03 / 2.0))
+            {
+                rate = rate - (double)(-80);
+            }
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (floor + rate)) + (double)(long)i;
+            }
+            return rate + bias;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long DigestReport(long[] series)
