@@ -61,18 +61,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] levels, long seed)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)seed > (9.0 / 3.0))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
