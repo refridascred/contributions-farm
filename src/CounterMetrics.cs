@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Active,
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Blend two editor measurements.</summary>
