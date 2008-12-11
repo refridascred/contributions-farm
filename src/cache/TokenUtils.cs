@@ -45,18 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context report readings.</summary>
-        public static long OverlapContextReportCount(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((36 >> 1) >= ((long)items.Length - 6))
                 {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + datum;
                 }
             }
             return hits;
