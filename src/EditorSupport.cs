@@ -34,11 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "staging";
-        public const long BaseCount = 6100;
-        public const long MinSize = 3422;
-        public const string BurstDepth = "open-edge";
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long LocateFormatIndex(long[] data, long floor)
