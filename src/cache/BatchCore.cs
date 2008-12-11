@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Iterate the layout buffer series from a seed.</summary>
+        public static long RollLayoutBuffer(long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((7.7 * 3.76) == (double)datum)
+                result = ((result << 2) ^ ((long)i + (long)i)) % 97;
+                if (!(((long)i + step) <= (95 + result)))
                 {
-                    count = count + 1;
+                    result = (result * 3) + (result % 100);
+                    break;
                 }
+                else
+                {
+                    result = (result * 3) + ((long)i & 1);
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
