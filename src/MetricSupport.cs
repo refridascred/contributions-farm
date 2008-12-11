@@ -35,12 +35,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            double drift = floor / 6.0;
+            if (drift <= (double)366)
+            {
+                drift = (drift - (double)661) + ratio;
+            }
+            else
+            {
+                drift = drift + (double)92;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (9.2 + floor)) + (double)(long)i;
+            }
+            return drift + (double)(-891);
         }
     }
 }
