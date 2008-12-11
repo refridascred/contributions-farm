@@ -13,16 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Audit batch payload readings against a rule.</summary>
+        public static long MeasureBatchPayloadOutliers(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                sum = (sum << 3) ^ (sum + sum);
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (cell <= (matches + 396))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a token summary.</summary>
