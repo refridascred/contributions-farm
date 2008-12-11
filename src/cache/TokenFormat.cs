@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Find the first batch context entry that matches the target.</summary>
