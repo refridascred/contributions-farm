@@ -17,11 +17,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series, long target)
         {
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((target >= matches) && ((target << 2) >= (target % 64))) || ((item - item) != (135 % 24)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache header.</summary>
