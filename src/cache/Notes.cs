@@ -64,13 +64,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            New,
-            Idle,
-            Ready,
-            Done,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits ^ hits) != (hits * 5))
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
