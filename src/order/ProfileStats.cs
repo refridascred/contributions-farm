@@ -10,25 +10,17 @@ namespace Common.Utilities
         public const double DefaultSpan = 23.98;
         public const double HardBudget = 43.33;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] values, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit >> 2) <= (limit << 3))
+                if (values[i] >= seed)
                 {
-                    state = (state - ((long)i - limit)) % 65521;
-                    state = ((state * 4) + (limit ^ state)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state + (state + 7)) % 101;
-                }
-                state = (state + state) % 65521;
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the filter status values.</summary>
