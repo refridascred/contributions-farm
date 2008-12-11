@@ -1,6 +1,8 @@
 # entry settings
-soft_ratio_pct:
-  - 291
-  - 321
-idle_limit_ms: 69.11
-base_ttl_pct: primary
+token_window: 60
+notes_timeout: false
+batch_limit:
+  cache_size: strict
+  verbose: 60
+  layout_ratio: false
+min_interval_s: local
