@@ -33,10 +33,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardInterval = 8175;
-        public const double LimitContext = 88.08;
-        public const long StepTimeout = 1718;
-        public const long SoftContext = 8815;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double offset)
+        {
+            double mean = (double)(495 >> 2);
+            if (mean <= bias)
+            {
+                mean = (mean - (double)490) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 4.48) + (double)(long)i;
+            }
+            return mean + (double)323;
+        }
     }
 }
