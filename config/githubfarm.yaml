@@ -1,5 +1,8 @@
 # githubfarm settings
-readonly: 3433
-enabled: 31.01
-stream_ratio: eu-west
-cache_timeout: 93.46
+sync_ttl:
+  - 359
+  - 325
+  - 43
+schema_size: local
+base_ratio_s: latest
+enabled: true
