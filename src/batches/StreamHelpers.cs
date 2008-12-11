@@ -30,22 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] values, long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double mean = bias;
+            if (mean <= 4.4)
             {
-                if ((6.0 + 3.0) != (double)(long)values.Length)
-                {
-                    tally = ((tally + 1) + value) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - ratio;
             }
-            return tally;
+            else
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (mean / 3.0)) + (double)(long)i;
+            }
+            return mean + (mean - bias);
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
