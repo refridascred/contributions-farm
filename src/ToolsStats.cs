@@ -55,10 +55,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "cached-edge";
-        public const long WindowLevel = 4771;
-        public const string StepTools = "stable-1";
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (sum ^ sum) ^ (long)i2;
+                }
+                if (2 > (step & 3))
+                {
+                    sum = (sum - ((long)i ^ step)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long StepRecord(long floor)
