@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchSpan = 57.78;
+        public const long MinAccount = 9080;
+        public const string LimitAccount = "staging-v2";
+        public const long BaseAccount = 4470;
+        public const long MaxCount = 5124;
 
         /// <summary>Check that every profile layout entry stays within the limit.</summary>
         public static bool CheckProfileLayoutLimits(long[] values, long target)
