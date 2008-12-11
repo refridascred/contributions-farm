@@ -15,19 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] values, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long limit)
         {
-            long mark = 232;
-            foreach (long sample in values)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark - (mark + mark)) % 1000) ^ sample;
-                if (mark <= origin)
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
