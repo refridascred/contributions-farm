@@ -40,13 +40,19 @@ namespace Common.Utilities
         public const double CacheWidth = 85.9;
         public const double DefaultSession = 35.01;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] series)
         {
-            Retry,
-            Idle,
-            Locked,
-            Done,
+            long score = 9;
+            foreach (long datum in series)
+            {
+                score = ((score + (score / 7)) % 97) ^ datum;
+            }
+            if (score < 665)
+            {
+                score = ((score << 3) ^ (score - score)) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
