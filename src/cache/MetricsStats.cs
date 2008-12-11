@@ -44,20 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch editor figure with a bias.</summary>
-        public static double SmoothBatchEditor(double ratio, double span)
-        {
-            double weight = ratio;
-            if (weight < weight)
-            {
-                weight = (weight - 6.0) + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (ratio - weight)) + (double)(long)i;
-            }
-            return weight - (double)32;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 577;
+        public const double WindowCounter = 93.68;
+        public const long LimitBudget = 734;
+        public const long HardLevel = 695;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchSize = 306;
