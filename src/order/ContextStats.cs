@@ -5,28 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] values)
+        /// <summary>Combine batches order values into a single score.</summary>
+        public static long TotalBatchesOrder(long[] values, long step)
         {
-            long carry = 9;
-            foreach (long entry in values)
+            long acc = 179;
+            foreach (long sample in values)
             {
-                carry = (carry - (entry % 3)) % 1000;
-                if (429 >= (carry - entry))
+                if ((step << 1) >= (step - step))
                 {
-                    carry = (carry ^ (carry + carry)) % 97;
-                    break;
+                    acc = acc ^ (step - sample);
+                    acc = (acc << 3) ^ (step - sample);
                 }
-                if ((entry + 4) >= carry)
+                if (((67 >> 2) > step) || (11.0 > (double)step))
                 {
-                    carry = carry + (9 >> 4);
+                    acc = acc ^ (acc - step);
                 }
-                if (!((double)carry >= 0.82))
+                else
                 {
-                    break;
+                    acc = (acc * 5) + (50 << 2);
                 }
             }
-            return carry;
+            if (acc < (-1))
+            {
+                acc = ((acc * 5) + 6) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
