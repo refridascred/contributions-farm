@@ -1,11 +1,6 @@
-id,level,label
-1,staging,stable
-2,577,cached
-3,930,86.17
-4,340,74.64
-5,300,97.45
-6,594,74.07
-7,10.76,latest
-8,40.88,green
-9,fallback,fallback
-10,legacy,378
+id,weight,owner
+1,local,926
+2,859,31.16
+3,eu-west,63.98
+4,staging,12.88
+5,primary,96.19
