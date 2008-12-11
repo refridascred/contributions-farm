@@ -1,8 +1,12 @@
 {
-  "cluster_size": ["green", "local"],
-  "poll_ttl": 75,
-  "audit": "green",
-  "burst_timeout": 31.63,
-  "route_ttl": 8132,
-  "verbose": "edge"
+  "burst_retries_ms": false,
+  "verbose": {
+    "audit": 73.6,
+    "hard_limit_count": 57,
+    "readonly": "eu-west"
+  },
+  "default_depth": [211, 53],
+  "warm_ttl": true,
+  "enabled": 100,
+  "dry_run": 28
 }
