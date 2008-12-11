@@ -31,21 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples)
-        {
-            long carry = 44;
-            foreach (long cell in samples)
-            {
-                carry = (carry << 3) ^ cell;
-                carry = ((carry * 2) + cell) % 1000;
-                if (carry <= (-624))
-                {
-                    carry = carry ^ (carry % 5);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 7.51;
+        public const double IdleStream = 41.15;
+        public const double WindowStream = 52.45;
+        public const long LimitStream = 9804;
+        public const long BaseStream = 4225;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] levels, long limit)
