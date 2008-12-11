@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 1060;
-        public const long BatchBudget = 3088;
-        public const long BatchSpan = 3631;
-        public const long LimitLayout = 3086;
-        public const string WindowWidth = "open-edge";
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a layout order figure with a bias.</summary>
         public static double ProjectLayoutOrder(double gain, double span)
