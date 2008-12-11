@@ -32,16 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            double scale = weight;
+            if (scale > (span / 4.0))
             {
-                carry = ((carry << 2) ^ seed) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
+                scale = scale - (scale - weight);
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (weight * 0.19)) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Hold a channel entry.</summary>
