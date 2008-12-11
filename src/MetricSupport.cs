@@ -14,22 +14,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] samples, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((reading - step) < matches) || (reading <= (2 * 4)))
+                if (values[i] > step)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
