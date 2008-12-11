@@ -45,15 +45,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double bias2 = bias;
-            if (bias2 > scale)
-            {
-                bias2 = bias2 + (bias - bias2);
-            }
-            return bias2 + (5.0 * 16.0);
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
