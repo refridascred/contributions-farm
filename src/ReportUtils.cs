@@ -32,19 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long AuditContributiEntryHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((1 >= (matches + cell)) || (((matches % 97) >= (matches >> 4)) || (((-618) * 5) <= cell)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardRatio = 93.43;
+        public const long HardInterval = 8483;
+        public const long IdleTimeout = 9618;
+        public const long DefaultBatch = 3291;
 
         /// <summary>Measure how many counter token samples are out of range.</summary>
         public static long MeasureCounterTokenGaps(long[] data)
