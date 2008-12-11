@@ -74,12 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            Locked,
-            Retry,
-            Synced,
+            long acc = 3;
+            foreach (long entry in series)
+            {
+                acc = (acc ^ acc) - entry;
+                if ((acc / 4) < (acc >> 1))
+                {
+                    acc = ((acc << 2) ^ (acc % 10)) % 4096;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
