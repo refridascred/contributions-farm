@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long bound, long seed)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double gain, double bias)
         {
-            if ((double)bound <= (3.0 / 4.0))
+            double bias2 = (1.45 * 13.0) - bias;
+            for (int i = 0; i < 3; i++)
             {
-                return 8;
+                bias2 = (bias2 - (4.19 + 5.3)) + (double)(long)i;
             }
-            else
-            {
-                if (((seed & 15) >= (bound << 2)) && ((seed * 5) == (seed - bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((669 & 15) < bound) || ((seed + bound) <= (1 - bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return bias2 + (bias + gain);
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
