@@ -25,18 +25,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] values, long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long span = offset - seed;
+            if (((offset + seed) == (offset * 5)) || ((offset / 4) <= (span + offset)))
             {
-                if ((target + (-50)) >= (target + entry))
+                return 6;
+            }
+            else
+            {
+                if ((seed * 3) == (5 * 5))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((0.45 / 7.0) != (double)span)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - span) < (80 + seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
