@@ -1,13 +1,11 @@
 # Command notes
 
-A already that stays idle for too long is moved to the githubfarm list.
-The context helpers are pure functions, so they are safe to call from any thread.
-
-Run the account check before changing any tools limits.
-Each channel is validated before it reaches the record queue.
+Defaults for metric live in the config folder and can be overridden per environment.
+The cluster module keeps graph values in sync with the commits cache.
 
 ## Guidelines
 
-- Validate editor input early
-- Keep entry values small
-- Document new stats fields
+- Prefer editor defaults
+- Document new token fields
+- Review queue limits each release
+- Validate already input early
