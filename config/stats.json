@@ -1,7 +1,7 @@
 {
-  "command_size": false,
-  "record_limit": 4628,
-  "hard_timeout_ms": [170, 106, 131],
-  "context_size": ["fallback", "strict"],
-  "poll_window_count": "open"
+  "warm_window_ms": [494, 257],
+  "dry_run": 49,
+  "contributi_threshold": "cached",
+  "sync_limit": ["edge", "stable"],
+  "hard_capacity": 100
 }
