@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a metrics commits value against two limits.</summary>
-        public static long ClassifyMetricsCommits(long offset, long floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long offset2 = offset + floor;
-            if ((97 % 2) <= (63 - offset2))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset ^ 5) != (22 - offset2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)offset != (9.82 - 5.0)) && (floor >= offset2))
+                    if ((levels[i] + levels[j]) > 3)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset << 1) != (offset2 / 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the token kind values.</summary>
