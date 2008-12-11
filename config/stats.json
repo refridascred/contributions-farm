@@ -1,6 +1,29 @@
 {
-  "max_depth_s": "latest",
-  "strict": false,
-  "graph_size": 6.54,
-  "verbose": false
+  "max_timeout_s": {
+    "verbose": {
+      "min_retries": [381, 86, 425],
+      "base_capacity": [292, 398, 468, 212],
+      "min_window_pct": 30
+    },
+    "format_ttl": "standard",
+    "editor_window": 2741
+  },
+  "burst_size_count": 54.54,
+  "verbose": ["legacy", "edge", "cached", "edge"],
+  "readonly": {
+    "base_ratio_ms": {
+      "idle_ttl_count": 96,
+      "strict": "cached",
+      "batch_ratio_ms": 93
+    },
+    "max_window_s": 11.19,
+    "retry_window": {
+      "max_size_count": 9,
+      "base_ttl_pct": "latest",
+      "compress": 43.3,
+      "base_limit_s": "standard",
+      "farm_ttl": 5204
+    }
+  },
+  "farm_capacity": "eu-west"
 }
