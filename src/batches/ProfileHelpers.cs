@@ -30,39 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session cache input into a small class.</summary>
-        public static long ClassifySessionCache(long bound, long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long gap = bound ^ step;
-            if ((8.62 * 8.0) >= (9.0 - 17.0))
+            double bias2 = 19.0;
+            if (bias2 >= (span / 7.0))
             {
-                return 3;
+                bias2 = bias2 - bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((18 ^ gap) >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)gap > 1.5)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.82 - 3.92) < (double)258)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias2 = (bias2 - bias) + (double)(long)i;
             }
+            return bias2 - span;
         }
 
         /// <summary>Accumulate farm samples.</summary>
