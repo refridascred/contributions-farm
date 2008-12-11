@@ -1,7 +1,6 @@
 # support settings
-filter_limit: 68.34
-session_retries: 5244
-context_window: 30
-burst_timeout_count:
-  - 107
-  - 385
+flush_interval_pct: 64
+account_size: 88.05
+hard_window_ms: 30
+compress: blue
+min_depth: standard
