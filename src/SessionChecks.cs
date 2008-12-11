@@ -29,12 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Queued,
-            Closed,
-            Synced,
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
