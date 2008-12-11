@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the batch context entries that pass the check.</summary>
-        public static long MeasureBatchContextGaps(long[] readings, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((double)1 > (double)floor)
+                if (origin >= (count - (-900)))
                 {
-                    matches = (matches + 1) ^ reading;
+                    count = (count + 3) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit stream support readings against a rule.</summary>
