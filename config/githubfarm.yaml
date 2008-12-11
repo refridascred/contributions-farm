@@ -1,20 +1,12 @@
 # githubfarm settings
-burst_limit_ms: 250
-base_interval_ms: eu-west
-flush_retries_s:
+max_threshold:
+  warm_ratio_s: 3.73
+  default_retries_pct: 87.36
+  payload_limit: 500
+  hard_window: staging
+support_ttl:
+  - fallback
+  - fallback
   - strict
-  - primary
-  - primary
-cache_limit: 5664
-queue_limit:
-  batch_ttl_s: true
-  audit:
-    - 420
-    - 391
-    - 340
-    - 138
-  counter_limit: 36.99
-  idle_size: open
-  hard_retries: legacy
-  command_limit: edge
-idle_threshold_pct: false
+audit: 4348
+hard_limit: 4509
