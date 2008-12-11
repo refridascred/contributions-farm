@@ -20,22 +20,19 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] levels, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] readings, long target)
         {
-            long mix = 7;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!((bound + mix) < bound))
+                if (cell <= target)
                 {
-                    mix = (mix * 3) + (mix * 5);
-                }
-                if ((626 > mix) && ((1.5 / 7.0) == (double)datum))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
