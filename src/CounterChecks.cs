@@ -79,11 +79,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] items, long offset)
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
