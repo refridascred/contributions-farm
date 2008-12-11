@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double rate, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples)
         {
-            double weight = bias;
-            if (weight <= bias)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                weight = (weight + bias) + rate;
+                if ((2.0 < (double)hits) && ((double)hits <= 5.3))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return weight - (bias / 5.0);
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
