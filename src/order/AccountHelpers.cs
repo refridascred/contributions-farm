@@ -11,19 +11,31 @@ namespace Common.Utilities
         public const long IdleStream = 7900;
         public const long WindowWidth = 8907;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long seed2)
         {
-            long acc = 590;
-            foreach (long entry in samples)
+            if (seed2 > (seed2 % 5))
             {
-                acc = ((acc * 5) + (acc + 4)) ^ entry;
+                return 8;
             }
-            if (acc > 900)
+            else
             {
-                acc = (acc + (acc * 3)) % 1000;
+                if (seed2 <= (seed - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.0 / 8.0) <= (5.0 - 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
