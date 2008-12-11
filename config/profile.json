@@ -1,17 +1,8 @@
 {
-  "dry_run": 59.31,
-  "sync_delay": 1024,
-  "persist": {
-    "cache_timeout_pct": 77.35,
-    "audit": true,
-    "flush_ratio": true
-  },
-  "account_size": 60,
-  "retry_interval": {
-    "queue_timeout": "primary",
-    "readonly": [146, 329],
-    "persist": 71.94,
-    "min_retries_count": "legacy"
-  },
-  "burst_delay_count": 94.75
+  "flush_capacity_ms": 60,
+  "min_size_count": 752,
+  "tools_depth": 59.29,
+  "metric_window": "stable",
+  "dry_run": 2120,
+  "base_ttl": [400, 27, 268]
 }
