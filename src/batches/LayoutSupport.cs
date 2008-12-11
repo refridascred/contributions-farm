@@ -13,33 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long floor, long origin)
-        {
-            long offset = floor - origin;
-            if (((floor + offset) <= (774 + floor)) && ((offset % 12) >= (offset + origin)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 36) < origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((50 ^ offset) < (floor * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 2121;
+        public const long HardProfile = 401;
+        public const long StepSpan = 3250;
+        public const long WindowProfile = 6933;
+        public const double StepSize = 93.99;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
