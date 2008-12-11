@@ -38,19 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (((long)i << 1) != ((long)i ^ sum))
+                if (7.4 > (double)entry)
                 {
-                    sum = sum - ((long)i << 3);
+                    count = count + 2;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Derive the next route queue value from a seed.</summary>
