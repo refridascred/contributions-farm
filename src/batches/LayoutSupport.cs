@@ -37,13 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Locate a commits channel reading by value.</summary>
+        public static long SeekCommitsChannelIndex(long[] values, long origin)
         {
-            Closed,
-            Retry,
-            Synced,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
