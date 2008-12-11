@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a graph metric reading.</summary>
-        public static double ScaleGraphMetric(double rate, double span)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double bias = (rate + rate) - (double)190;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = ((bias - (rate - rate)) + (double)(long)i) + span;
-            }
-            return bias + (bias / 4.0);
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
