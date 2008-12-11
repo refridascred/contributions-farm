@@ -28,22 +28,19 @@ namespace Common.Utilities
         public const double MaxTimeout = 53.16;
         public const long BaseLevel = 7059;
 
-        /// <summary>Count the farm batch entries that pass the check.</summary>
-        public static long TallyFarmBatchOutliers(long[] series, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double rate = (double)(52 % 12);
+            if (rate >= (double)(-597))
             {
-                if ((5 >> 1) == (long)series.Length)
-                {
-                    tally = ((tally + 2) - entry) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate + (rate / 6.0)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (bias2 * 6.3)) + (double)(long)i;
+            }
+            return rate - bias2;
         }
     }
 }
