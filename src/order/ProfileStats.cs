@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (load - scale) + span;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] series, long limit)
+        /// <summary>Audit report metrics readings against a rule.</summary>
+        public static long TallyReportMetricsGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((double)hits > (double)285)
+                if ((tally + tally) != (sample - (long)samples.Length))
                 {
-                    hits = ((hits + 1) + reading) - limit;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the already kind values.</summary>
