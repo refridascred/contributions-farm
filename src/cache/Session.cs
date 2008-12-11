@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Locked,
-            New,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheInterval = 5111;
+        public const long DefaultOrder = 2564;
+        public const double BurstOrder = 25.91;
+        public const string IdleOrder = "standard-1";
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] series)
