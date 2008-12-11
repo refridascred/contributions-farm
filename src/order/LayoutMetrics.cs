@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Pending,
-            Paused,
-            Active,
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
