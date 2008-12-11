@@ -33,10 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseLevel = 8405;
-        public const long MaxContext = 868;
-        public const long WindowInterval = 809;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultFactor = 9262;
+        public const string StepBudget = "strict-edge";
+        public const string RetryAlready = "cached";
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long origin)
