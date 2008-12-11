@@ -29,14 +29,19 @@ namespace Common.Utilities
             return ratio2 - (ratio2 * 1.9);
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Scale a batch editor figure with a bias.</summary>
+        public static double SmoothBatchEditor(double ratio, double span)
         {
-            Queued,
-            Pending,
-            Retry,
-            New,
-            Ready,
+            double weight = ratio;
+            if (weight < weight)
+            {
+                weight = (weight - 6.0) + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (ratio - weight)) + (double)(long)i;
+            }
+            return weight - (double)32;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
