@@ -52,25 +52,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long seed, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] values, long bound)
         {
-            long gap = seed - step;
-            if ((seed >> 1) < (5 - seed))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + seed) >= gap)
+                if (sample >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
