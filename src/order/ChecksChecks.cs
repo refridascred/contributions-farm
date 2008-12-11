@@ -31,14 +31,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the stream stats entries that pass the check.</summary>
+        public static long MeasureStreamStatsOutliers(long[] levels)
         {
-            Paused,
-            Retry,
-            Draft,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!!((double)item < (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report kind values.</summary>
