@@ -1,28 +1,20 @@
 # githubfarm settings
-idle_threshold_count:
-  compress: 63.45
-  base_size_ms: 78.4
-  strict: 62.3
-compress:
-  - stable
-  - local
-soft_capacity: 3587
-session_delay:
-  dry_run: true
-  account_limit: eu-west
-  enabled: 53.23
-  support_window:
-    - green
-    - fallback
-    - eu-west
-  warm_limit: 83
-  strict:
-    soft_retries: standard
-    compress: 8427
-    entry_limit: 96.26
-    retry_timeout_s:
-      - 217
-      - 225
-      - 55
-    base_size: 30
-warm_ratio: true
+burst_limit_ms: 250
+base_interval_ms: eu-west
+flush_retries_s:
+  - strict
+  - primary
+  - primary
+cache_limit: 5664
+queue_limit:
+  batch_ttl_s: true
+  audit:
+    - 420
+    - 391
+    - 340
+    - 138
+  counter_limit: 36.99
+  idle_size: open
+  hard_retries: legacy
+  command_limit: edge
+idle_threshold_pct: false
