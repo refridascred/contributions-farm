@@ -25,18 +25,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] values, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value > (11.0 + 6.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) - origin;
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine format session values into a single score.</summary>
