@@ -1,22 +1,6 @@
 {
-  "cluster_retries": "staging",
-  "githubfarm_timeout": 25.91,
-  "profile_delay": {
-    "profile_size": 17,
-    "persist": 36,
-    "verbose": 1730
-  },
-  "channel_delay": 33,
-  "poll_size_pct": {
-    "record_limit": 34,
-    "already_retries": 500,
-    "base_window_s": {
-      "flush_window": 1,
-      "readonly": "stable",
-      "flush_size": 24
-    },
-    "stats_interval": [16, 278, 339, 496],
-    "batch_limit": "blue"
-  },
-  "soft_timeout_s": "blue"
+  "min_timeout_s": 32.41,
+  "githubfarm_window": 79.98,
+  "idle_retries_ms": 30,
+  "cache_retries_ms": true
 }
