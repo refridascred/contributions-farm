@@ -1,4 +1,7 @@
 # support settings
-base_capacity: 64.57
-filter_interval: 20.01
-window_capacity: primary
+filter_limit: 68.34
+session_retries: 5244
+context_window: 30
+burst_timeout_count:
+  - 107
+  - 385
