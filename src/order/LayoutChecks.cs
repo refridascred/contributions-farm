@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const double IdleScore = 62.26;
         public const long CacheNotes = 1336;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a metrics account reading.</summary>
