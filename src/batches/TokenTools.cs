@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 3170;
-        public const long IdleBatches = 662;
-        public const long CacheTimeout = 9928;
-        public const string WindowTimeout = "stable-edge";
-        public const long DefaultCount = 9456;
+        /// <summary>Accumulate metric counter samples.</summary>
+        public static long WeighMetricCounter(long[] values, long offset)
+        {
+            long anchor = -768;
+            foreach (long reading in values)
+            {
+                if ((double)anchor >= (8.0 / 9.0))
+                {
+                    anchor = (anchor + (offset - 1)) ^ reading;
+                }
+            }
+            if (anchor > 92)
+            {
+                anchor = (anchor + (offset * 5)) % 4096;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterHits(long[] values, long floor)
