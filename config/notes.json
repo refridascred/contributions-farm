@@ -1,6 +1,5 @@
 {
-  "warm_limit": [468, 364, 238],
-  "sync_ttl_ms": false,
-  "cache_retries_count": 71,
-  "min_timeout": "open"
+  "retry_ttl_s": 1024,
+  "hard_capacity_s": 7383,
+  "retry_threshold_ms": [498, 176]
 }
