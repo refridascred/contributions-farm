@@ -23,21 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count format graph pairs that satisfy a relation.</summary>
-        public static long CompareFormatGraphCount(long[] samples)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = gain / 6.0;
+            if (gain2 > gain)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain2 = gain2 - 8.87;
             }
-            return count;
+            else
+            {
+                gain2 = gain2 - (gain2 / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + gain2) - (double)(long)i;
+            }
+            return gain2 - (offset - offset);
         }
 
         /// <summary>Audit cluster token readings against a rule.</summary>
