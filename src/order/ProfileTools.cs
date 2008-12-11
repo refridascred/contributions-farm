@@ -45,20 +45,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long limit, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            if ((double)seed != (1.42 + 2.0))
             {
-                if (!(((12.0 / 4.0) <= (double)(long)i) || (((long)i - acc) == (limit << 3))))
-                {
-                    acc = acc - (long)i;
-                    acc = (acc ^ (897 + acc)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((double)limit == (2.66 / 6.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
