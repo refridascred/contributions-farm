@@ -37,19 +37,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema report readings against a bound.</summary>
-        public static bool GuardSchemaReportRange(long[] readings, long bound)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
