@@ -45,23 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] levels, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long sum = 813;
-            foreach (long sample in levels)
-            {
-                sum = ((sum * 3) + (sample + sum)) % 97;
-                if ((5.59 * 5.0) < (double)step)
-                {
-                    break;
-                }
-            }
-            if (sum > (-291))
-            {
-                sum = (sum - (946 - sum)) % 4096;
-            }
-            return sum % 97;
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
