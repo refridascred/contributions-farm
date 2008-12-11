@@ -48,20 +48,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 5531;
+        public const long LimitFactor = 6099;
+        public const string SoftTimeout = "open-v2";
+        public const long DefaultGraph = 8005;
 
         /// <summary>Project the next schema value.</summary>
         public static double ProjectSchema(double bias, double span)
