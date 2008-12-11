@@ -1,11 +1,8 @@
 # entry settings
-idle_ttl_count: 94.42
-compress: strict
-soft_timeout_s: 20
-filter_limit:
-  - fallback
-  - blue
-  - stable
-  - strict
-base_interval_s: 1024
-entry_limit: 761
+default_timeout_s:
+  - 136
+  - 170
+  - 363
+  - 48
+counter_ttl: 60
+max_threshold_ms: 2472
