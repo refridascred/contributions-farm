@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many graph checks samples are out of range.</summary>
-        public static long TallyGraphChecksMatches(long[] levels)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches << 1) <= (matches * 4))
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Combine context values into a single score.</summary>
