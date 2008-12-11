@@ -55,17 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] data, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
+                if (!!((double)cell > (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
