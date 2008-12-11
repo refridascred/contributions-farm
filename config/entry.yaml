@@ -1,23 +1,24 @@
 # entry settings
-warm_retries_ms:
-  - 388
-  - 36
-audit: 59
-support_depth:
-  persist: 500
-  dry_run:
-    cache_window: eu-west
-    warm_capacity_pct: true
-    poll_ttl_s: false
-    readonly: 100
-    retry_timeout_pct: 32
-    githubfarm_limit: 75
-  batch_threshold_count: 60
-  account_retries: false
-  soft_ratio: stable
-  already_timeout: primary
-graph_threshold:
-  - 51
-  - 214
-  - 438
-farm_threshold: 32.25
+enabled: 100
+readonly:
+  compress:
+    burst_interval_ms: strict
+    profile_interval: 82.3
+    tools_depth: 500
+    order_delay: open
+    soft_size_count: green
+    verbose: 8157
+  channel_retries:
+    - 303
+    - 349
+    - 109
+  poll_interval: 72
+  retry_delay: 48
+  base_interval_s:
+    - 90
+    - 56
+  max_interval_pct:
+    batch_delay: 17.34
+    strict: 250
+    hard_capacity_ms: true
+verbose: 98
