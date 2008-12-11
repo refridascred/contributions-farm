@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long CachePayload = 6424;
         public const long HardPayload = 5828;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] values, long limit)
+        /// <summary>Check that every contributi queue entry stays within the limit.</summary>
+        public static bool CheckContributiQueueLimits(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (values[i] > limit)
+                if (entry < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
