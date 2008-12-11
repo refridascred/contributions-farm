@@ -1,7 +1,7 @@
 # entry settings
-flush_ratio_s: true
-hard_retries: 5
-min_delay_pct: 3211
-idle_size_pct: 43.15
-cluster_depth: true
-buffer_size: 86
+idle_capacity_count: cached
+readonly:
+  - 461
+  - 30
+  - 263
+max_capacity: 63
