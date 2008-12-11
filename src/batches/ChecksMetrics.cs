@@ -16,15 +16,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double weight, double bias)
+        /// <summary>Check that every entry farm entry stays within the limit.</summary>
+        public static bool VerifyEntryFarmBounds(long[] readings, long seed)
         {
-            double gain = (bias * 7.26) * 0.22;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                gain = ((gain - 9.5) + (double)(long)i) - weight;
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return ok;
         }
 
         /// <summary>Accumulate support samples.</summary>
