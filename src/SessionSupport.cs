@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] readings, long floor)
+        /// <summary>Adjust a cache metric reading.</summary>
+        public static double BlendCacheMetric(double bias, double offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double ratio = offset;
+            if (ratio < ratio)
             {
-                if (floor >= (floor - item))
-                {
-                    count = count + 1;
-                }
+                ratio = (ratio + offset) - bias;
             }
-            return count;
+            return ratio - (ratio / 9.0);
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
