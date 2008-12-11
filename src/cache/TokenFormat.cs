@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] readings, long target)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mark = 287;
-            foreach (long entry in readings)
-            {
-                mark = (((mark - mark) % 4096) ^ entry) - target;
-            }
-            return mark;
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
