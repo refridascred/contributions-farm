@@ -34,16 +34,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long offset)
         {
-            long carry = 77;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                carry = ((carry - (long)series.Length) % 1000) ^ entry;
-                carry = (carry * 3) + carry;
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Adjust a metrics account reading.</summary>
