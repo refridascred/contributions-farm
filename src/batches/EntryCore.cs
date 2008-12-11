@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 7924;
-        public const long LimitInterval = 1770;
-        public const long HardTimeout = 4973;
-        public const long WindowSpan = 500;
-        public const string StepNotes = "cached";
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double StepTools = 13.21;
