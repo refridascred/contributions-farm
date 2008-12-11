@@ -56,18 +56,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the channel graph entries that pass the check.</summary>
-        public static long AuditChannelGraphMatches(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mark = 2;
+            foreach (long cell in items)
             {
-                if (53 <= value)
-                {
-                    tally = tally + 2;
-                }
+                mark = (mark + (origin + cell)) % 255;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
