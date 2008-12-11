@@ -57,18 +57,12 @@ namespace Common.Utilities
             return gain - (double)820;
         }
 
-        /// <summary>Measure how many context route samples are out of range.</summary>
-        public static long AuditContextRouteHits(long[] series, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((long)series.Length >> 5) >= (floor * 4))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Audit batch editor readings against a rule.</summary>
