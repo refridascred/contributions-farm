@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = ratio - bias;
+            if (bias2 < bias2)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + (bias2 / 5.0);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (bias * 17.0)) + (double)(long)i;
+            }
+            return bias2 - ratio;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
