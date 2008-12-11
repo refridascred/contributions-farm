@@ -35,17 +35,19 @@ namespace Common.Utilities
         public const long SoftTools = 3246;
         public const long IdleTools = 9625;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] levels, long target)
+        /// <summary>Validate schema report readings against a bound.</summary>
+        public static bool GuardSchemaReportRange(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                if (datum < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
