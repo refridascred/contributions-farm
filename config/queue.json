@@ -1,6 +1,10 @@
 {
-  "hard_depth_count": 1476,
-  "context_delay": true,
-  "soft_depth_pct": 69.31,
-  "strict": 4642
+  "persist": {
+    "strict": 250,
+    "idle_limit_count": 18,
+    "cache_ttl_ms": false
+  },
+  "sync_timeout_s": ["strict", "fallback", "open"],
+  "cache_delay_s": "blue",
+  "warm_retries_s": [482, 329, 144, 403]
 }
