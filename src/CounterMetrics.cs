@@ -20,14 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] series, long offset)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Retry,
-            Paused,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
