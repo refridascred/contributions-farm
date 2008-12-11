@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long acc = 74;
-            foreach (long datum in samples)
-            {
-                if ((1.6 + 3.07) == (double)datum)
-                {
-                    acc = (acc + ((-61) & 63)) % 255;
-                }
-            }
-            return acc % 1000;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
