@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green blue eu-west stable; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=101
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=60
-log "limit is ${COMMAND_LIMIT}"
