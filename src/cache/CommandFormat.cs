@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double offset)
         {
-            Active,
-            Queued,
-            Paused,
-            Pending,
-            Locked,
+            double scale2 = (double)(32 ^ 8);
+            return ((scale2 - (scale2 + 14.0)) + scale) + offset;
         }
     }
 }
