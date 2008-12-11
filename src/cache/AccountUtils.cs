@@ -41,11 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Derive the next stream route value from a seed.</summary>
+        public static long DeriveStreamRoute(long step)
         {
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total << 3) ^ (total % 24)) % 65521;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
