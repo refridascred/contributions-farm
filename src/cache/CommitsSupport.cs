@@ -40,12 +40,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Retry,
-            Closed,
-            Paused,
+            Idle,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
