@@ -15,24 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next batches order value from a seed.</summary>
-        public static long SeriesBatchesOrder(long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((state - state) > (state + state))
-                {
-                    state = ((state << 2) ^ (2 << 1)) % 97;
-                    state = state ^ floor;
-                }
-                if (((long)i - (long)i) > floor)
-                {
-                    state = ((state << 2) ^ (floor % 10)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Failed,
+            Pending,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
