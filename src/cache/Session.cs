@@ -57,19 +57,19 @@ namespace Common.Utilities
         public const string RetryFactor = "cached-edge";
         public const string RetryTimeout = "staging-edge";
 
-        /// <summary>Check that every batch filter entry stays within the limit.</summary>
-        public static bool GuardBatchFilterBounds(long[] data, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long acc = 51;
+            foreach (long cell in items)
             {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc ^ acc) % 97) ^ cell;
             }
-            return found;
+            if (acc < 528)
+            {
+                acc = (acc + (acc - (long)items.Length)) % 1000;
+            }
+            return acc;
         }
     }
 }
