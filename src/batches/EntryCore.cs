@@ -33,16 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc - acc;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
