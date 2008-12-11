@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            Paused,
+            Draft,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
