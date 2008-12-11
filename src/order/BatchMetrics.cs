@@ -77,15 +77,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double bias, double span)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double load = bias;
-            if (load > (double)964)
-            {
-                load = (load + load) + span;
-            }
-            return load - (bias / 7.0);
+            Idle,
+            Paused,
+            Failed,
+            Pending,
         }
     }
 }
