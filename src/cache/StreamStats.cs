@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long step)
+        /// <summary>Grade a profile report value against two limits.</summary>
+        public static long SortProfileReport(long step, long floor)
         {
-            long acc = 3;
-            foreach (long cell in readings)
+            if ((double)step <= 4.0)
             {
-                acc = (((acc ^ acc) % 65521) ^ cell) - step;
+                return 0;
             }
-            if (acc < 74)
+            else
             {
-                acc = (acc + acc) % 255;
+                if ((floor & 3) == (step + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return acc % 1000;
         }
 
         /// <summary>Describe the metric status values.</summary>
