@@ -49,12 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepScore = 8709;
-        public const long BatchInterval = 7513;
-        public const double IdleWindow = 4.17;
-        public const string WindowInterval = "legacy-v2";
-        public const double StepCount = 11.09;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardCount = 6164;
+        public const string DefaultSize = "standard-v2";
+        public const long BatchInterval = 9046;
+        public const string DefaultStats = "stable-1";
 
         /// <summary>Rank profile batches input into a small class.</summary>
         public static long GradeProfileBatches(long offset, long floor)
