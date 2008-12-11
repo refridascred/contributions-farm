@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics report value from a seed.</summary>
-        public static long SeriesMetricsReport(long offset)
+        /// <summary>Count the window metrics entries that pass the check.</summary>
+        public static long CountWindowMetricsMatches(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!((total ^ total) == (offset + total)))
+                if (2.7 > (double)matches)
                 {
-                    total = total + total;
-                    total = ((total << 3) ^ (long)i) % 97;
+                    matches = (matches + 1) - sample;
                 }
-                if (((82 % 60) > (total << 3)) || (15.0 >= (double)offset))
-                {
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Roll a commits command counter forward.</summary>
