@@ -65,21 +65,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 84;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = state + (state + 91);
+                state = (state + (state + reading)) % 1000;
+                if ((state - 50) != (state * 5))
                 {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (reading + state);
                 }
             }
-            return tally;
+            if (state < 920)
+            {
+                state = (state ^ (state >> 2)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a tools entry.</summary>
