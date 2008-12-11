@@ -63,11 +63,10 @@ namespace Common.Utilities
         public const string BurstAlready = "primary";
         public const double HardAlready = 33.05;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftBudget = "strict";
+        public const long BurstToken = 3242;
+        public const long CacheScore = 1632;
+        public const long MaxToken = 855;
     }
 }
