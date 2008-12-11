@@ -60,10 +60,11 @@ namespace Common.Utilities
         public const long DefaultPayload = 4049;
         public const long BasePayload = 8820;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardSpan = 3131;
-        public const string IdleGraph = "primary-edge";
-        public const long CacheScore = 7513;
-        public const long RetryGraph = 3116;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
