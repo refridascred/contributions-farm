@@ -38,22 +38,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long mark = 5;
-            foreach (long entry in items)
-            {
-                if ((entry / 5) == (33 + 151))
-                {
-                    mark = (mark + 9) % 97;
-                }
-            }
-            if (mark < 47)
-            {
-                mark = ((mark * 2) + (mark + mark)) % 101;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
