@@ -1,13 +1,17 @@
 # support settings
-cache_ttl: 96.9
-support_ttl:
-  - 482
-  - 266
-  - 466
-  - 384
-readonly: local
-hard_retries_ms:
-  - legacy
-  - fallback
-max_depth: standard
-burst_capacity_s: 8169
+batch_size_count:
+  flush_ratio:
+    - 295
+    - 40
+    - 347
+  min_interval_pct: true
+  format_limit:
+    - staging
+    - primary
+    - strict
+    - cached
+  counter_ratio: 76
+sync_size: open
+default_window_ms: stable
+cache_capacity_count: 68.25
+max_ttl: 39.37
