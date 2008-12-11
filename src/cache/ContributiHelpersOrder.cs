@@ -24,23 +24,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell == (1.62 / 6.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseBudget = 8957;
+        public const long IdleMetric = 4684;
+        public const long HardScore = 7406;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TotalReport(long[] readings, long limit)
