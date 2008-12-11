@@ -37,17 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a account order sample.</summary>
-        public static long FindAccountOrderIndex(long[] values, long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Locked,
+            Active,
         }
     }
 }
