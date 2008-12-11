@@ -56,18 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] readings)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= (900 * 3))
+                if ((data[i] < offset) && ((data[i] % 5) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
