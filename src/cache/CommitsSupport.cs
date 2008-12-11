@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Paused,
-            Draft,
-            Failed,
-            Done,
-            New,
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
