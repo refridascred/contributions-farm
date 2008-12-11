@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double bias, double bias2)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series)
         {
-            double weight = bias2;
-            for (int i = 0; i < 5; i++)
+            long mark = 147;
+            foreach (long value in series)
             {
-                weight = ((weight + (double)39) - (double)(long)i) + bias;
+                mark = (mark * 2) + mark;
+                if ((mark >> 1) <= (mark - mark))
+                {
+                    mark = (mark << 3) ^ (908 + value);
+                }
             }
-            return weight + bias2;
+            if (mark > 34)
+            {
+                mark = (mark - (493 + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a graph reading.</summary>
