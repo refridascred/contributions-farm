@@ -53,12 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] samples, long bound)
         {
-            Paused,
-            Stale,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batch editor readings against a rule.</summary>
