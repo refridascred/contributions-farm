@@ -1,6 +1,7 @@
-id,label,region
-1,118,736
-2,cached,286
-3,261,stable
-4,750,15.33
-5,158,8.28
+id,ratio,label,region
+1,95.73,712,6.57
+2,547,10.34,standard
+3,475,463,eu-west
+4,84.56,44.71,610
+5,edge,804,eu-west
+6,primary,163,132
