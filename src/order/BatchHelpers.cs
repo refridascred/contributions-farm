@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long step, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((step - target) < (79 - 5)) || ((target * 5) < (step + target)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((3.9 <= (double)step) && ((step + step) < (target - 5)))
                 {
-                    if ((series[i] + series[j]) == 15)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step != (6.5 * 7.57))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
