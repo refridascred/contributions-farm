@@ -28,29 +28,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long step)
         {
-            long step = limit - bound;
-            if ((bound >> 2) <= (bound ^ bound))
+            if (seed < (step / 8))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((step % 24) == (limit * 3))
+                if ((seed >> 4) >= (step + step))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound - bound) < (limit / 8))
+                    if ((seed & 15) == (seed & 63))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        return 0;
                     }
                 }
             }
