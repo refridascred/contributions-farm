@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate schema entry readings against a bound.</summary>
-        public static bool ValidateSchemaEntryBounds(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 49.01;
+        public const double BurstFilter = 95.56;
+        public const long SoftBudget = 1005;
 
         /// <summary>Locate a profile metric reading by value.</summary>
         public static long FindProfileMetricIndex(long[] readings, long target)
