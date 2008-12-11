@@ -47,10 +47,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 7207;
-        public const long CacheSchema = 3104;
-        public const double WindowSchema = 97.05;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double weight, double offset)
+        {
+            double drift = 9.0 / 4.0;
+            if (drift > (offset + drift))
+            {
+                drift = drift - weight;
+            }
+            return drift - (6.41 / 3.0);
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
