@@ -14,27 +14,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            long anchor = 434;
-            foreach (long entry in series)
+            long total = 713;
+            foreach (long sample in samples)
             {
-                if ((30 ^ anchor) <= anchor)
+                if ((sample / 6) < (sample ^ total))
                 {
-                    anchor = ((anchor << 3) ^ (entry + entry)) % 1000;
-                    break;
-                }
-                if (((double)505 != (double)entry) || ((15.0 + 4.27) < (double)anchor))
-                {
-                    anchor = ((anchor << 3) ^ (entry + anchor)) % 65521;
-                }
-                if ((double)entry < (0.56 / 5.0))
-                {
-                    break;
+                    total = ((total * 4) + (total + total)) % 97;
                 }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
