@@ -38,10 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 22.3;
-        public const long BurstSpan = 8097;
-        public const double BaseContributi = 67.2;
-        public const string SoftContributi = "strict";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
