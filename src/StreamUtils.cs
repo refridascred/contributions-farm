@@ -14,21 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up entry support samples.</summary>
-        public static long OverlapEntrySupportCount(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != limit)
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Accumulate window samples.</summary>
