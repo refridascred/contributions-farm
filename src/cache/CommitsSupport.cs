@@ -36,18 +36,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] readings)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((66 * 3) > (sample + (-76)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
