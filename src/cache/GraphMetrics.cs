@@ -52,32 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long seed, long seed2)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double rate, double floor)
         {
-            long cur = seed - seed2;
-            if (6.4 < (double)seed)
+            double ratio = (double)(77 ^ 65);
+            if (ratio > ratio)
             {
-                return 3;
+                ratio = ratio - floor;
             }
             else
             {
-                if ((8.15 * 19.0) <= (double)cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur + seed2) != (6 >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio - floor;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (rate + 3.0)) + (double)(long)i;
+            }
+            return ratio + (8.47 - floor);
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
