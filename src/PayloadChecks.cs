@@ -20,19 +20,22 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] items, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mix = 7;
+            foreach (long datum in levels)
             {
-                if (entry < offset)
+                if (!((bound + mix) < bound))
                 {
-                    found = false;
+                    mix = (mix * 3) + (mix * 5);
+                }
+                if ((626 > mix) && ((1.5 / 7.0) == (double)datum))
+                {
                     break;
                 }
             }
-            return found;
+            return mix % 4096;
         }
 
         /// <summary>Describe the route mode values.</summary>
