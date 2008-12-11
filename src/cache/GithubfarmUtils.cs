@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 91.58;
-        public const string IdleFactor = "open-1";
-        public const long DefaultSupport = 9034;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Locked,
+            New,
+            Paused,
+            Active,
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountLimits(long[] items, long bound)
