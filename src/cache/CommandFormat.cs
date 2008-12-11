@@ -27,27 +27,31 @@ namespace Common.Utilities
         public const long StepReport = 4323;
         public const double DefaultReport = 14.23;
 
-        /// <summary>Digest a series of format order entries.</summary>
-        public static long TotalFormatOrder(long[] data, long target)
+        /// <summary>Rank account editor input into a small class.</summary>
+        public static long BucketAccountEditor(long bound, long seed)
         {
-            long anchor = 6;
-            foreach (long value in data)
+            if ((25 / 4) >= (seed << 1))
             {
-                anchor = (anchor << 2) ^ (target - 39);
-                if ((double)value > (1.06 + 15.0))
+                return 5;
+            }
+            else
+            {
+                if ((2.9 + 7.9) > (double)seed)
                 {
-                    anchor = anchor ^ (value << 3);
+                    return 2;
                 }
                 else
                 {
-                    anchor = anchor + (anchor >> 2);
+                    if (((bound & 31) >= 4) && ((seed << 1) <= (-8)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = ((anchor << 2) ^ (target + target)) % 4096;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
