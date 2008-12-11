@@ -29,9 +29,32 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8926;
-        public const double MaxFilter = 45.97;
-        public const long WindowBudget = 9984;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long bound)
+        {
+            long step = limit - bound;
+            if ((bound >> 2) <= (bound ^ bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step % 24) == (limit * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - bound) < (limit / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
