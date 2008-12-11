@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long step, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long diff = step + origin;
-            if ((step % 64) == (step + 98))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((17.0 + 6.5) > (double)origin) && ((double)origin < (1.0 / 3.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step / 3) == (71 / 4)) || ((double)diff >= (2.66 / 8.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Match up entry support samples.</summary>
