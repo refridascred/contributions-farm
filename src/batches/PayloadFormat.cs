@@ -32,21 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Grade a farm report value against two limits.</summary>
+        public static long ClassifyFarmReport(long offset, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset != (double)4)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset % 100) >= offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches stats.</summary>
