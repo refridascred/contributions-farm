@@ -73,12 +73,14 @@ namespace Common.Utilities
             return rate2 - (rate * 16.0);
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            New,
+            Locked,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a session options.</summary>
