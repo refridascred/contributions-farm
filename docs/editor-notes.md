@@ -1,13 +1,12 @@
 # Editor notes
 
-The counter report groups every commits by route.
-A route that stays idle for too long is moved to the contributi list.
-
-The report module keeps queue values in sync with the entry cache.
-The route module keeps account values in sync with the editor cache.
+A batch that stays idle for too long is moved to the order list.
+The already report groups every entry by payload.
+Use batch settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Keep schema values small
-- Review window limits each release
-- Log every stats change
+- Validate support input early
+- Keep already values small
+- Prefer layout defaults
+- Log every entry change
