@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const long MinReport = 4371;
         public const long LimitBudget = 7134;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Compare every pair of format payload readings.</summary>
+        public static long PairFormatPayloadCount(long[] values)
         {
-            Done,
-            Stale,
-            Idle,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a account record.</summary>
