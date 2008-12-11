@@ -70,14 +70,11 @@ namespace Common.Utilities
         public const string LimitContributi = "cached-1";
         public const double DefaultSpan = 27.38;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Draft,
-            Failed,
-            Idle,
-            Synced,
-            Pending,
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
