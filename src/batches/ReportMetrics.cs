@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] values, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            if ((562 & 63) < (offset << 2))
             {
-                if (reading != floor)
+                return 2;
+            }
+            else
+            {
+                if (64 >= bound)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
