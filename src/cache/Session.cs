@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double rate, double offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double load = (double)92 * 5.22;
-            if (load > (load + load))
-            {
-                load = load - (load + 9.81);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - rate) + (double)(long)i;
-            }
-            return load - offset;
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
