@@ -15,21 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count report command pairs that satisfy a relation.</summary>
-        public static long PairReportCommandCount(long[] values)
+        /// <summary>Compare every pair of contributi report readings.</summary>
+        public static long OverlapContributiReportCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 18)
+                    if ((items[i] ^ items[j]) < 4)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
