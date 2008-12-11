@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Locked,
-            Retry,
-            Ready,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "standard-v2";
+        public const long MaxDepth = 7411;
+        public const long MaxFactor = 2916;
+        public const long StepFactor = 2378;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountRange(long[] readings, long target)
