@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowLevel = 9728;
-        public const long RetryDepth = 3109;
-        public const double HardStats = 73.77;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen ^ target) >= value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate channel filter readings against a bound.</summary>
         public static bool GuardChannelFilterRange(long[] series, long floor)
