@@ -1,8 +1,5 @@
 {
-  "hard_capacity_s": 60,
-  "layout_limit": 8236,
-  "min_threshold_pct": 90.18,
-  "enabled": 1024,
-  "min_retries_pct": "green",
-  "hard_timeout": 8371
+  "default_capacity_s": true,
+  "session_retries": "staging",
+  "sync_threshold_count": 63.41
 }
