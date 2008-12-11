@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const string StepAlready = "local-edge";
         public const long HardAlready = 6121;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long step)
         {
-            Done,
-            Stale,
-            New,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
