@@ -14,22 +14,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] levels, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample < (matches + matches)) || ((7 >> 3) != (target ^ target))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a metrics summary.</summary>
