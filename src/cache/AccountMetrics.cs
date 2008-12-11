@@ -50,10 +50,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 20.9;
-        public const long DefaultTools = 1934;
-        public const long SoftDepth = 7306;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long seed)
+        {
+            if (seed <= (0 * 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (578 < (seed * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamHits(long[] data, long offset)
