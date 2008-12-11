@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const long LimitCount = 4196;
         public const string BatchStream = "fallback-edge";
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] series, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value >= (3.72 / 9.0))
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
                 {
-                    hits = (hits + 3) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
