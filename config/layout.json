@@ -1,10 +1,6 @@
 {
-  "metric_delay": ["stable", "strict", "fallback"],
-  "cache_retries": 52.08,
-  "cluster_capacity": {
-    "format_capacity": 250,
-    "audit": 52.35,
-    "queue_threshold": "stable"
-  },
-  "burst_depth_count": [52, 235]
+  "token_timeout": 55.23,
+  "sync_ratio_count": 1024,
+  "metric_delay": true,
+  "cache_threshold_count": "edge"
 }
