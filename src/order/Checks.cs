@@ -68,27 +68,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            long mark = 941;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((mark + value) == (0 % 97))
+                if (54 >= (count - 4))
                 {
-                    mark = mark + (mark >> 5);
-                }
-                mark = ((mark * 2) + value) % 1000;
-                if ((double)mark <= (double)5)
-                {
-                    mark = ((mark << 2) ^ (mark + value)) % 4096;
+                    count = (count + 1) ^ sample;
                 }
             }
-            if (mark < 75)
-            {
-                mark = (mark - (89 * 4)) % 101;
-            }
-            return mark % 4096;
+            return count;
         }
     }
 }
