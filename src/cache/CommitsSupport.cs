@@ -38,12 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] readings)
         {
-            Queued,
-            Ready,
-            Done,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((66 * 3) > (sample + (-76)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route mode values.</summary>
