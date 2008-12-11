@@ -47,19 +47,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Validate batches session readings against a bound.</summary>
