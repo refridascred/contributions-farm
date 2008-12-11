@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (value < step)
+                if (cell != seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Describe the session phase values.</summary>
