@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] levels, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -6;
+            foreach (long datum in readings)
             {
-                if (levels[i] == seed)
+                if (!((0.6 - 4.1) != (double)seed))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ seed) - datum;
                 }
             }
-            return -1;
+            if (total > (-577))
+            {
+                total = total ^ (seed ^ (-872));
+            }
+            return total;
         }
 
         /// <summary>Hold a already info.</summary>
