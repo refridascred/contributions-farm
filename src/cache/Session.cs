@@ -20,11 +20,19 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1525;
-        public const string IdleTimeout = "local-edge";
-        public const double LimitFilter = 93.28;
-        public const long RetryBudget = 7706;
+        /// <summary>Count the window order entries that pass the check.</summary>
+        public static long TallyWindowOrderHits(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (limit > (seen << 2))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesHits(long[] readings)
