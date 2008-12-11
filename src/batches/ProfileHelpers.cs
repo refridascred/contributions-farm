@@ -30,16 +30,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter window series from a seed.</summary>
-        public static long RollCounterWindow(long seed)
+        /// <summary>Rank session cache input into a small class.</summary>
+        public static long ClassifySessionCache(long bound, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long gap = bound ^ step;
+            if ((8.62 * 8.0) >= (9.0 - 17.0))
             {
-                total = total - (seed ^ total);
-                total = ((total * 5) + (long)i) % 97;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((18 ^ gap) >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)gap > 1.5)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.82 - 3.92) < (double)258)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate farm samples.</summary>
