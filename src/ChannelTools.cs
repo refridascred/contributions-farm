@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel account entry stays within the limit.</summary>
-        public static bool ValidateChannelAccountBounds(long[] series, long floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
