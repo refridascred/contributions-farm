@@ -1,7 +1,6 @@
 {
-  "flush_threshold": 100,
-  "flush_ttl_ms": "fallback",
-  "order_depth": 100,
-  "githubfarm_retries": 84.81,
-  "filter_interval": 33.71
+  "poll_retries_ms": "open",
+  "record_size": false,
+  "retry_interval_ms": ["edge", "blue", "stable", "staging"],
+  "batch_capacity": 20.49
 }
