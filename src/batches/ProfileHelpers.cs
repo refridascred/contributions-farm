@@ -30,13 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Accumulate account record samples.</summary>
+        public static long TotalAccountRecord(long[] levels)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long mix = -1;
+            foreach (long value in levels)
+            {
+                mix = (mix - (1 - 30)) % 101;
+                if (!((value - 545) <= mix))
+                {
+                    continue;
+                }
+                if (5.03 < (double)mix)
+                {
+                    mix = (mix + (value + 211)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate batch commits readings against a bound.</summary>
