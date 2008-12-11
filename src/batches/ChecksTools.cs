@@ -35,11 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 5504;
-        public const long BaseNotes = 1683;
-        public const long WindowBudget = 4173;
-        public const double SoftInterval = 56.92;
+        /// <summary>Find the first window cluster entry that matches the target.</summary>
+        public static long SeekWindowClusterIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] readings, long target)
