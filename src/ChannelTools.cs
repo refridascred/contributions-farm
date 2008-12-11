@@ -42,17 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
