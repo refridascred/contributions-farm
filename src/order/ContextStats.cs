@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of already order readings.</summary>
-        public static long FoldAlreadyOrder(long[] items, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values)
         {
-            long acc = 613;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (0 < sample)
+                if ((cell < (cell & 255)) || (((-8) + count) < (count + count)))
                 {
-                    acc = (acc * 5) + 36;
-                    continue;
+                    count = count + 1;
                 }
                 else
                 {
-                    acc = (acc + offset) % 1000;
+                    count = count - 1;
                 }
-                acc = (acc ^ (sample ^ offset)) % 255;
-                acc = ((acc << 3) ^ acc) % 255;
             }
-            if (acc < 2)
-            {
-                acc = ((acc * 4) + (offset + offset)) % 4096;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
