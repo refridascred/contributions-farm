@@ -20,21 +20,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -78;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (77 > item)
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 3) + (anchor - item)) + bound;
+                    continue;
                 }
+                anchor = ((anchor << 3) ^ (anchor / 5)) % 97;
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a token farm reading.</summary>
