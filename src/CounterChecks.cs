@@ -27,14 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Scale a farm filter figure with a bias.</summary>
+        public static double ScaleFarmFilter(double rate, double bias)
         {
-            Locked,
-            New,
-            Pending,
-            Done,
-            Closed,
+            double ratio = (7.64 * 0.4) / 4.0;
+            if (ratio >= (7.0 * 3.9))
+            {
+                ratio = ((ratio - 19.0) + rate) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (double)790) - (double)(long)i;
+            }
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
