@@ -50,11 +50,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 5531;
-        public const long LimitFactor = 6099;
-        public const string SoftTimeout = "open-v2";
-        public const long DefaultGraph = 8005;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Active,
+            Synced,
+            Queued,
+            Failed,
+            New,
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double ProjectSchema(double bias, double span)
