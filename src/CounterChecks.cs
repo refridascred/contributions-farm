@@ -26,27 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels, long origin)
-        {
-            long total = 9;
-            foreach (long cell in levels)
-            {
-                if (total > cell)
-                {
-                    total = (total * 3) + (origin & 255);
-                }
-                if (((4.0 * 1.9) < (double)total) && ((5.63 - 17.0) == (double)origin))
-                {
-                    total = ((total * 5) + (total / 5)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (total + (-74));
-                }
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstEditor = 37.08;
+        public const long BatchEditor = 832;
+        public const string MaxScore = "open-1";
+        public const double DefaultEditor = 13.12;
+        public const long SoftBudget = 7378;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultScore = 96.56;
