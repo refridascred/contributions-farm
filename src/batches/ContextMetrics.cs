@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema buffer entries that pass the check.</summary>
-        public static long CountSchemaBufferMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((4.48 / 4.0) != (double)value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 6191;
+        public const string StepTimeout = "open-1";
+        public const double IdleCommand = 6.66;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
