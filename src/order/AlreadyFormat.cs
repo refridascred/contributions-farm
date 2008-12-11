@@ -15,20 +15,10 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 4779;
         public const long SoftDepth = 7768;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 3010;
+        public const double BatchCache = 83.2;
+        public const long DefaultCache = 4645;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double LimitMetrics = 20.1;
