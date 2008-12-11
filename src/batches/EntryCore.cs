@@ -29,14 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowCount = 65.54;
+        public const long IdleSize = 1592;
+        public const string BurstSpan = "local-1";
+        public const long MinContext = 2144;
+        public const string IdleInterval = "standard-1";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long bound, long bound2)
