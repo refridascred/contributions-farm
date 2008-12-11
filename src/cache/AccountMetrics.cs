@@ -15,17 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] values, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank metrics cluster input into a small class.</summary>
