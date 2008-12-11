@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
