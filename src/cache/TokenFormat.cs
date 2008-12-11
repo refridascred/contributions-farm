@@ -27,18 +27,9 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((7.76 * 9.0) == (double)value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepDepth = 8547;
+        public const string BaseToken = "legacy-1";
+        public const string MaxToken = "local-1";
     }
 }
