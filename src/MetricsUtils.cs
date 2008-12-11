@@ -39,10 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "open";
-        public const double LimitCommand = 87.53;
-        public const long LimitCount = 3638;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state - ((long)i ^ state)) % 97;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
