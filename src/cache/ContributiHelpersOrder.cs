@@ -24,10 +24,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseBudget = 8957;
-        public const long IdleMetric = 4684;
-        public const long HardScore = 7406;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((offset - acc) != (long)i)
+                {
+                    acc = (acc << 2) ^ (acc - offset);
+                }
+                else
+                {
+                    acc = acc - offset;
+                    acc = (acc * 3) + (offset << 2);
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TotalReport(long[] readings, long limit)
