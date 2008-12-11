@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] values)
+        /// <summary>Count metrics queue pairs that satisfy a relation.</summary>
+        public static long MatchMetricsQueueCount(long[] readings)
         {
             long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally ^ tally) != (reading + 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
