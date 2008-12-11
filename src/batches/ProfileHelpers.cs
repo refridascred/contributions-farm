@@ -44,20 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch commits readings against a bound.</summary>
-        public static bool GuardBatchCommitsRange(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxCount = 9485;
+        public const double BaseLevel = 97.09;
+        public const long DefaultFilter = 818;
+        public const long WindowFilter = 79;
+        public const double LimitFilter = 37.7;
 
         /// <summary>Combine already route values into a single score.</summary>
         public static long CombineAlreadyRoute(long[] readings)
