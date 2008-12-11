@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double BatchAlready = 12.0;
         public const long SoftAlready = 6707;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((6.0 - 2.0) <= (double)tally)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
