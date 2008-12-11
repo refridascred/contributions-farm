@@ -20,39 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long seed, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long delta = seed - step;
-            if (step > (step << 3))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (11.0 / 2.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)delta == (8.0 + 2.6))
+                    if ((levels[i] - levels[j]) < 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((delta + delta) <= (2 + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a account order sample.</summary>
