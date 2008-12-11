@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string IdleScore = "stable";
         public const long DefaultGithubfarm = 4080;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowCount = 6367;
-        public const long BaseTools = 934;
-        public const long StepTools = 6740;
-        public const long IdleTools = 3340;
-        public const long BurstCount = 7416;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series)
+        {
+            long sum = 37;
+            foreach (long cell in series)
+            {
+                sum = ((sum ^ (252 & 3)) % 97) ^ cell;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferRange(long[] series, long seed)
