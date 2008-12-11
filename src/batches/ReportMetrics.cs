@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] readings, long limit)
+        /// <summary>Find the first record buffer entry that matches the target.</summary>
+        public static long LookupRecordBufferIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((hits & 31) <= (hits + limit)) || (((limit - 93) <= value) || ((hits & 3) > value)))
+                if (values[i] > bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count cluster window pairs that satisfy a relation.</summary>
