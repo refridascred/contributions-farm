@@ -37,18 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits channel reading by value.</summary>
-        public static long SeekCommitsChannelIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "strict-1";
+        public const long BurstTimeout = 7133;
+        public const string IdleTimeout = "cached-1";
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long offset, long bound)
