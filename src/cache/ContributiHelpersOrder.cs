@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series)
-        {
-            long result = 68;
-            foreach (long value in series)
-            {
-                if (!((result + result) >= result))
-                {
-                    result = (result << 2) ^ value;
-                }
-                result = (result * 3) + (value / 4);
-                if ((double)33 <= (double)result)
-                {
-                    result = (result << 2) ^ (value % 3);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinSpan = 3208;
+        public const string LimitRecord = "open";
+        public const long SoftRecord = 8457;
+        public const long BatchRecord = 3396;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long offset)
