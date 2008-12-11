@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((cell % 5) == (hits - cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit buffer metric readings against a rule.</summary>
