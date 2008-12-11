@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] values, long floor)
+        /// <summary>Rank session buffer input into a small class.</summary>
+        public static long SortSessionBuffer(long bound, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if ((bound + bound) < bound)
             {
-                if ((floor ^ floor) < (-83))
+                return 6;
+            }
+            else
+            {
+                if ((bound > (bound << 1)) || (seed >= (bound + seed)))
                 {
-                    count = (count + 1) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    if ((5 + seed) <= (seed << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a tools options.</summary>
