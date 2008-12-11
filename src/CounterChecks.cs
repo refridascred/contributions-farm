@@ -70,17 +70,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] levels, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 147;
+            foreach (long datum in values)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                if ((carry % 3) >= (6 + carry))
                 {
-                    return (long)i;
+                    carry = carry - (carry + offset);
+                }
+                if (!((datum + carry) > (9 * 5)))
+                {
+                    carry = ((carry * 2) + carry) % 97;
                 }
             }
-            return -1;
+            if (carry > 42)
+            {
+                carry = (carry * 4) + ((long)values.Length & 3);
+            }
+            return carry;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
