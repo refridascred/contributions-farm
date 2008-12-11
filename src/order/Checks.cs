@@ -55,18 +55,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] data)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long origin, long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long diff = origin + step;
+            if ((diff + 912) == (diff ^ 5))
             {
-                if ((datum - datum) > (datum + 6))
+                return 5;
+            }
+            else
+            {
+                if ((origin - origin) >= (origin + origin))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin <= (95 & 63)) || ((double)origin <= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (6.51 <= (double)diff)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
