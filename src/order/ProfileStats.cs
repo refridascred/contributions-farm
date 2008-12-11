@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank session buffer input into a small class.</summary>
-        public static long SortSessionBuffer(long bound, long seed)
+        /// <summary>Measure how many session stream samples are out of range.</summary>
+        public static long CountSessionStreamOutliers(long[] data)
         {
-            if ((bound + bound) < bound)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound > (bound << 1)) || (seed >= (bound + seed)))
+                if ((hits >> 3) != (item + hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((5 + seed) <= (seed << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
