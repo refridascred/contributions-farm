@@ -1,9 +1,6 @@
-id,state,active,token
-1,local,standard,41.54
-2,13.03,877,220
-3,standard,913,68.45
-4,legacy,latest,72.7
-5,868,20.9,653
-6,28.87,strict,866
-7,21.09,40.66,548
-8,44.09,187,legacy
+id,score,ratio
+1,94.23,primary
+2,62.73,56.22
+3,865,edge
+4,483,884
+5,856,169
