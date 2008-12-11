@@ -26,19 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (entry > step)
+                if ((matches + bound) < matches)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Combine entry stream values into a single score.</summary>
