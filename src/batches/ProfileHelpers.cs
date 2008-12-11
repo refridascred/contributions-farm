@@ -59,12 +59,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] values, long offset)
         {
-            Active,
-            Paused,
-            Closed,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
