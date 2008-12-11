@@ -12,20 +12,19 @@ namespace Common.Utilities
         public const double StepFilter = 52.14;
         public const long IdleTimeout = 4006;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] series, long floor)
         {
-            long score = 480;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                score = ((score ^ (score << 2)) % 97) - sample;
-                score = ((score << 2) ^ offset) % 97;
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score > 5)
-            {
-                score = (score + (offset + offset)) % 4096;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a farm options.</summary>
