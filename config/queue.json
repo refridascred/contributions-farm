@@ -1,7 +1,8 @@
 {
-  "order_window": 17,
-  "idle_timeout_pct": false,
-  "stats_limit": 5.15,
-  "verbose": "green",
-  "buffer_retries": 2
+  "stream_capacity": 745,
+  "sync_delay": 97.07,
+  "idle_threshold_pct": "latest",
+  "base_size_pct": "staging",
+  "report_retries": 30,
+  "verbose": "fallback"
 }
