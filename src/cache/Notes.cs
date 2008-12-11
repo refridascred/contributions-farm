@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double gain, double offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double ratio, double floor)
         {
-            double gain2 = (double)(412 + 0);
-            return ((gain2 + 20.0) + gain) + offset;
+            double ratio2 = floor - (floor + ratio);
+            if (ratio2 > (0.8 + floor))
+            {
+                ratio2 = ratio2 + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 - floor;
         }
 
         /// <summary>Hold a notes info.</summary>
