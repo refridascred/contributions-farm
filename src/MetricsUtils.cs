@@ -50,18 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((cell + matches) <= cell)
+                if ((double)count < (6.56 / 6.0))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) + cell;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
