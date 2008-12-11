@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a profile metric reading by value.</summary>
-        public static long FindProfileMetricIndex(long[] readings, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
