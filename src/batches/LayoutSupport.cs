@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Rank githubfarm contributi input into a small class.</summary>
+        public static long GradeGithubfarmContributi(long limit, long target)
         {
-            Synced,
-            Dropped,
-            Stale,
+            if (46 < (limit >> 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((536 % 60) < limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target == (7.0 / 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
