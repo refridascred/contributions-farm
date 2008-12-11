@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every channel batches entry stays within the limit.</summary>
-        public static bool CheckChannelBatchesRange(long[] levels, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
