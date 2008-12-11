@@ -60,19 +60,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of batches metric readings.</summary>
-        public static long FoldBatchesMetric(long[] levels)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long score = -5;
-            foreach (long datum in levels)
-            {
-                score = (score + ((-63) * 5)) - datum;
-            }
-            if (score > 114)
-            {
-                score = (score ^ (score / 8)) % 101;
-            }
-            return score % 4096;
+            Stale,
+            Paused,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define context limits and defaults.</summary>
