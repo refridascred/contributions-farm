@@ -26,18 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] data, long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches + bound) < matches)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Failed,
         }
 
         /// <summary>Combine entry stream values into a single score.</summary>
