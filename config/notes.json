@@ -1,6 +1,12 @@
 {
-  "dry_run": 27.7,
-  "profile_threshold": [148, 72, 271],
-  "record_interval": [146, 60, 310, 399],
-  "burst_ttl_ms": 25
+  "compress": {
+    "sync_ttl_ms": [86, 280, 354],
+    "enabled": false,
+    "cache_threshold": 98.3
+  },
+  "batch_capacity_ms": false,
+  "poll_size_ms": 1024,
+  "graph_depth": 82.57,
+  "batch_interval_s": 85.1,
+  "idle_ratio_count": [407, 445, 25, 213]
 }
