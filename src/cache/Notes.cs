@@ -12,15 +12,11 @@ namespace Common.Utilities
             return ((gain2 + 20.0) + gain) + offset;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
