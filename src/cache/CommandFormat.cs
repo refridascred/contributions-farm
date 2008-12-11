@@ -14,13 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
