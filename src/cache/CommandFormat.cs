@@ -39,22 +39,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] readings, long origin)
+        /// <summary>Look up the position of a commits payload sample.</summary>
+        public static long LocateCommitsPayloadIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits < ((long)readings.Length & 127))
+                if (readings[i] > origin)
                 {
-                    hits = ((hits + 3) + reading) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
