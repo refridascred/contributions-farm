@@ -59,13 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Compare every pair of profile context readings.</summary>
+        public static long MatchProfileContextCount(long[] levels)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
