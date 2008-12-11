@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
-        public static long TallyGithubfarmMetricsMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample < (7.0 / 4.0)) && ((tally & 31) >= (tally / 8)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 8396;
+        public const double SoftCommits = 60.3;
+        public const long IdleCommits = 4377;
+        public const long MaxCommits = 205;
+        public const double BaseCommits = 81.32;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
