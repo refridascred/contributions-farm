@@ -41,16 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream route value from a seed.</summary>
-        public static long DeriveStreamRoute(long step)
+        /// <summary>Locate a tools filter reading by value.</summary>
+        public static long FindToolsFilterIndex(long[] items, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 3) ^ (total % 24)) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
