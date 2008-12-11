@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] values, long limit)
         {
-            if ((double)origin >= (4.0 - 20.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-755) + origin) == (origin / 6))
+                if (values[i] == limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin > (9.82 * 0.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin >> 4) < target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
