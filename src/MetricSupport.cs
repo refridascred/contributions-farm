@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Paused,
-            Failed,
-            Retry,
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
