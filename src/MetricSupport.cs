@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            New,
-            Locked,
-            Queued,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSpan = 718;
+        public const long MinDepth = 8982;
+        public const long IdleSupport = 7660;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] data, long limit)
