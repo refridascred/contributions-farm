@@ -23,13 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count format graph pairs that satisfy a relation.</summary>
+        public static long CompareFormatGraphCount(long[] samples)
         {
-            Stale,
-            Closed,
-            Synced,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
