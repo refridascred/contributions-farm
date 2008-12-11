@@ -43,18 +43,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] data)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (item <= count)
-                {
-                    count = count + 1;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
