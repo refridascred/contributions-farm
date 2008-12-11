@@ -61,22 +61,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] readings, long offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((double)offset <= (double)item)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
