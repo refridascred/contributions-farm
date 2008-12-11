@@ -28,15 +28,14 @@ namespace Common.Utilities
         public const double LimitCommand = 87.53;
         public const long LimitCount = 3638;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] values, long floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long acc = 88;
-            foreach (long entry in values)
-            {
-                acc = ((acc + (9 - floor)) % 101) - entry;
-            }
-            return acc;
+            Synced,
+            Pending,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
