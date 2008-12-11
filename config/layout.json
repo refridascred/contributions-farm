@@ -1,14 +1,5 @@
 {
-  "farm_ratio": {
-    "readonly": 1209,
-    "format_interval": {
-      "verbose": 250,
-      "max_size_pct": ["cached", "edge", "strict", "fallback"],
-      "dry_run": 95
-    },
-    "flush_capacity_s": ["blue", "open", "standard", "blue"]
-  },
-  "soft_ratio_s": false,
-  "entry_delay": [203, 495],
-  "min_retries_count": 30
+  "default_ttl": [219, 411],
+  "warm_window_pct": 24,
+  "commits_threshold": "staging"
 }
