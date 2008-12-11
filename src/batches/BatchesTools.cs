@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] levels, long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (span / 2.0) / 3.0;
+            if (scale < span)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + (double)(-7)) - rate;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)680) + (double)(long)i;
+            }
+            return scale - (scale / 6.0);
         }
 
         /// <summary>Describe the command level values.</summary>
