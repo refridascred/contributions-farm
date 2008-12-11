@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of stream stats entries.</summary>
-        public static long WeighStreamStats(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items)
         {
-            long mark = 6;
-            foreach (long sample in samples)
+            long anchor = 9;
+            foreach (long cell in items)
             {
-                if (!((mark + mark) >= 64))
+                if ((anchor - anchor) < (cell - 88))
                 {
-                    mark = mark - (mark % 10);
-                }
-                else
-                {
-                    mark = (mark * 2) + sample;
+                    anchor = (anchor - anchor) % 4096;
                 }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
