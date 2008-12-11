@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] data, long seed)
+        /// <summary>Fold a list of already order readings.</summary>
+        public static long FoldAlreadyOrder(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 613;
+            foreach (long sample in items)
             {
-                if (data[i] <= seed)
+                if (0 < sample)
                 {
-                    return (long)i;
+                    acc = (acc * 5) + 36;
+                    continue;
                 }
+                else
+                {
+                    acc = (acc + offset) % 1000;
+                }
+                acc = (acc ^ (sample ^ offset)) % 255;
+                acc = ((acc << 3) ^ acc) % 255;
             }
-            return -1;
+            if (acc < 2)
+            {
+                acc = ((acc * 4) + (offset + offset)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Combine format values into a single score.</summary>
