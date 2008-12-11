@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] readings, long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)matches < (double)9)
-                {
-                    matches = ((matches + 3) + item) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Stale,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Match up metrics samples.</summary>
