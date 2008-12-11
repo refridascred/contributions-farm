@@ -29,19 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already entry readings.</summary>
-        public static long WeighAlreadyEntry(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] levels, long seed)
         {
-            long carry = 84;
-            foreach (long entry in readings)
+            long carry = 52;
+            foreach (long entry in levels)
             {
-                carry = (((carry * 5) + carry) % 1000) + entry;
+                if ((double)entry != (1.9 - 9.58))
+                {
+                    carry = (((carry * 5) + (entry / 4)) % 101) - seed;
+                }
             }
-            if (carry < 8)
-            {
-                carry = (carry << 2) ^ (carry + 44);
-            }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
