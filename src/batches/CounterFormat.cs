@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (load + rate) + offset;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 3638;
+        public const long HardBatches = 9194;
+        public const long SoftBatches = 409;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
