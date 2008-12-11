@@ -12,31 +12,11 @@ namespace Common.Utilities
         public const long LimitLayout = 3086;
         public const string WindowWidth = "open-edge";
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long target)
+        /// <summary>Scale a layout order figure with a bias.</summary>
+        public static double ProjectLayoutOrder(double gain, double span)
         {
-            if (((19.0 * 9.23) < (double)target) && ((floor % 2) != (floor ^ target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target >> 5) <= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target) < (target - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double gain2 = span;
+            return (gain2 + span) + gain;
         }
 
         /// <summary>Define report limits and defaults.</summary>
