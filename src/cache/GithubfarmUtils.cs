@@ -29,16 +29,17 @@ namespace Common.Utilities
         public const double SoftTimeout = 8.08;
         public const long RetrySize = 1969;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Look up the position of a record session sample.</summary>
+        public static long SeekRecordSessionIndex(long[] values, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + (step / 6)) % 65521;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
