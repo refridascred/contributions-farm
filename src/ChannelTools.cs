@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 85;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = (total + (sample % 10)) % 65521;
+                if (((double)total < (6.4 + 2.79)) || ((double)total > (8.0 + 8.0)))
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 3) ^ total) % 4096;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
