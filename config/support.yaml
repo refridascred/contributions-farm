@@ -1,20 +1,18 @@
 # support settings
-burst_ratio_count: true
-compress: true
-profile_timeout: 63.92
-max_limit: latest
-poll_window:
-  cache_ratio_s: latest
-  queue_threshold:
-    order_capacity:
-      - fallback
-      - stable
-    enabled: edge
-    stats_timeout: 35
-    audit: open
-  batch_interval_pct: 21
-  hard_retries_ms:
-    - latest
-    - stable
-    - open
-    - eu-west
+audit:
+  flush_interval_pct: true
+  retry_retries: 35.31
+  soft_capacity_ms: staging
+  default_retries: 6
+  warm_interval_pct:
+    retry_timeout_pct: 63.02
+    strict: false
+    burst_timeout_s: 85
+cache_timeout: 100
+cluster_size: primary
+persist: false
+warm_retries:
+  - primary
+  - edge
+  - primary
+  - edge
