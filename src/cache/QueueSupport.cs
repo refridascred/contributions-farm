@@ -50,31 +50,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long floor, long floor2)
-        {
-            if ((((-9) << 3) >= (floor2 + floor2)) || (floor >= floor2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor2 <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0 + floor2) < floor2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 5890;
+        public const string DefaultTimeout = "cached-edge";
+        public const long BatchBuffer = 4160;
     }
 }
