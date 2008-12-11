@@ -19,22 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long gap = floor / 5;
-                mix = (mix - (mix - (long)i)) % 101;
-                if ((((long)i / 9) > floor) || ((gap * 3) >= (gap >> 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix - (long)i) % 255;
-                    gap = (gap ^ (15 & 255)) % 65521;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a tools stats.</summary>
