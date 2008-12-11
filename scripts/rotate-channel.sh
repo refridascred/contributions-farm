@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local latest legacy; do
+for item in local staging eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=261
+log "limit is ${CHANNEL_LIMIT}"
