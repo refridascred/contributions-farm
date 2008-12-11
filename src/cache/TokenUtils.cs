@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit profile counter readings against a rule.</summary>
-        public static long TallyProfileCounterOutliers(long[] values, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!(((double)cell > (4.82 - 8.6)) || ((876 - tally) < (tally >> 2))))
+                if ((double)cell > 3.0)
                 {
-                    tally = (tally + 1) - bound;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
