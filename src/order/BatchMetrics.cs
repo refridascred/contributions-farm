@@ -40,39 +40,22 @@ namespace Common.Utilities
             return (ratio2 + (ratio / 3.0)) + floor;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long seed, long bound)
+        /// <summary>Combine route layout values into a single score.</summary>
+        public static long ScoreRouteLayout(long[] data, long floor)
         {
-            long lane = seed ^ bound;
-            if ((seed & 7) < (lane - bound))
+            long score = 65;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((402 + bound) > (seed << 3))
+                if ((datum + 73) < score)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed <= (9.1 / 8.0)) || ((double)bound <= (double)5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((lane ^ bound) >= lane)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = ((score - (-7)) % 1000) + floor;
                 }
             }
+            if (score < 163)
+            {
+                score = (score + (score * 5)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
