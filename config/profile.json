@@ -1,5 +1,8 @@
 {
-  "support_window": ["latest", "staging"],
-  "batch_size_ms": 500,
-  "readonly": 59
+  "min_ttl": 17.37,
+  "strict": "latest",
+  "hard_delay": true,
+  "min_size": "green",
+  "base_retries_s": true,
+  "channel_ratio": true
 }
