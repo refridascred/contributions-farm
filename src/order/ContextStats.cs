@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit entry stats readings against a rule.</summary>
-        public static long TallyEntryStatsHits(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long carry = 9;
+            foreach (long entry in values)
             {
-                if ((double)seen < (3.12 + 5.15))
+                carry = (carry - (entry % 3)) % 1000;
+                if (429 >= (carry - entry))
                 {
-                    seen = (seen + 1) ^ entry;
+                    carry = (carry ^ (carry + carry)) % 97;
+                    break;
                 }
-                else
+                if ((entry + 4) >= carry)
                 {
-                    seen = seen - 1;
+                    carry = carry + (9 >> 4);
+                }
+                if (!((double)carry >= 0.82))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Project the next entry value.</summary>
