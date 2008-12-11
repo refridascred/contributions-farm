@@ -44,19 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes filter readings against a bound.</summary>
-        public static bool VerifyNotesFilterRange(long[] items, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading <= target)
+                if (((long)i << 1) != ((long)i ^ sum))
                 {
-                    found = false;
-                    break;
+                    sum = sum - ((long)i << 3);
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
