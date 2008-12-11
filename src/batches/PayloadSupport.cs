@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -592;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mark / 9) > mark)
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 2) + (mark >> 5)) ^ sample;
+                }
+                else
+                {
+                    mark = mark ^ (seed + (-32));
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
