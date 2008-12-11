@@ -66,11 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
