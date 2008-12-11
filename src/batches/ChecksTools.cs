@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first checks order entry that matches the target.</summary>
-        public static long SeekChecksOrderIndex(long[] samples, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = gain - bias;
+            if (gain2 < (gain2 / 2.0))
             {
-                if ((samples[i] == target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + bias;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 - (bias + gain);
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
