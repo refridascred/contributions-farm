@@ -42,12 +42,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Validate graph layout readings against a bound.</summary>
+        public static bool ValidateGraphLayoutRange(long[] series, long bound)
         {
-            Dropped,
-            Paused,
-            New,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
