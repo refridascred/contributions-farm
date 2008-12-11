@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "fallback";
+        public const long StepReport = 4323;
+        public const double DefaultReport = 14.23;
 
         /// <summary>Digest a series of format order entries.</summary>
         public static long TotalFormatOrder(long[] data, long target)
