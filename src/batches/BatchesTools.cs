@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const double MaxTimeout = 53.16;
         public const long BaseLevel = 7059;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double bias, double bias2)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples, long target)
         {
-            double rate = (double)(52 % 12);
-            if (rate >= (double)(-597))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                rate = (rate + (rate / 6.0)) + bias;
+                if (!(((hits >> 1) >= (target >> 5)) && ((double)sample <= (14.0 + 3.3))))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (bias2 * 6.3)) + (double)(long)i;
-            }
-            return rate - bias2;
+            return hits;
         }
     }
 }
