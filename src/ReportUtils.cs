@@ -54,16 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 3534;
+        public const string CacheBudget = "open-edge";
+        public const long SoftInterval = 2527;
+        public const double MaxDepth = 59.61;
     }
 }
