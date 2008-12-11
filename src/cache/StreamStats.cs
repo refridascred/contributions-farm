@@ -20,10 +20,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "open-edge";
-        public const long SoftTimeout = 952;
-        public const double LimitLayout = 34.78;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Dropped,
+            Active,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
