@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report metrics readings against a rule.</summary>
-        public static long TallyReportMetricsGaps(long[] samples)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally + tally) != (sample - (long)samples.Length))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
