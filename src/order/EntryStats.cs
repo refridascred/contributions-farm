@@ -48,22 +48,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] series)
+        /// <summary>Rank profile batches input into a small class.</summary>
+        public static long GradeProfileBatches(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (((floor + offset) == (79 / 7)) && ((floor % 64) > offset))
             {
-                if ((((hits / 8) != (2 << 3)) || ((double)sample == (double)hits)) || ((double)sample >= (1.34 / 4.0)))
+                return 0;
+            }
+            else
+            {
+                if (275 <= floor)
                 {
-                    hits = hits + 3;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
