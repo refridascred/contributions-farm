@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] samples, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long origin, long floor)
         {
-            long anchor = 9;
-            foreach (long sample in samples)
+            if ((origin + floor) > (origin + origin))
             {
-                if ((sample - 818) > seed)
+                return 0;
+            }
+            else
+            {
+                if ((16.0 / 9.0) > (double)origin)
                 {
-                    anchor = anchor ^ (sample ^ seed);
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin >= (5.29 / 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (anchor > 458)
-            {
-                anchor = anchor ^ (973 + seed);
-            }
-            return anchor % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
