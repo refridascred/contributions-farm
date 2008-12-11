@@ -43,19 +43,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] data, long bound)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (item <= bound)
+                if (!((state * 2) <= (bound << 3)))
                 {
-                    ok = false;
-                    break;
+                    state = (state - (state << 3)) % 101;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return ok;
+            return state;
         }
     }
 }
