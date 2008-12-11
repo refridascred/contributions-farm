@@ -38,12 +38,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long origin)
         {
-            Ready,
-            Failed,
-            Retry,
+            if (((3.4 * 6.0) > (double)offset) && ((offset * 5) <= (origin << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((16.0 * 1.2) > (double)origin) && ((origin + offset) >= 94))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
