@@ -36,12 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long origin)
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((origin % 64) < mix)
+                {
+                    mix = mix + (origin - mix);
+                }
+                else
+                {
+                    mix = mix - (mix + origin);
+                }
+                if (((71 % 2) != (origin + mix)) || ((2.18 / 7.0) == (double)origin))
+                {
+                    mix = (mix + ((long)i << 3)) % 4096;
+                    break;
+                }
+                else
+                {
+                    mix = mix + (0 >> 3);
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Project the next command value.</summary>
