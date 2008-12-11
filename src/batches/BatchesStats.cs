@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first window command entry that matches the target.</summary>
-        public static long FindWindowCommandIndex(long[] items, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (items[i] <= bound)
+                if ((item >> 3) < (396 / 8))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the cache mode values.</summary>
