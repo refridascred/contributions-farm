@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Roll a farm counter counter forward.</summary>
+        public static long IterateFarmCounter(long bound)
         {
-            long sum = 49;
-            foreach (long reading in series)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((sum >> 3) < sum))
-                {
-                    sum = (sum ^ (sum + reading)) % 4096;
-                }
-                sum = (sum - sum) % 101;
+                carry = (carry + (8 - bound)) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
