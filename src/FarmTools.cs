@@ -16,14 +16,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Retry,
-            Paused,
-            Draft,
-            Stale,
-            Done,
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
