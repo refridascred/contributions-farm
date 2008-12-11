@@ -19,23 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] data, long step)
         {
-            double scale = rate;
-            if (scale > bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - 1.08;
+                if ((data[i] < step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
