@@ -26,18 +26,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] levels, long limit)
+        /// <summary>Find the first format channel entry that matches the target.</summary>
+        public static long LookupFormatChannelIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit & 255) <= limit)
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
                 {
-                    matches = (matches + 3) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a format info.</summary>
