@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            long score = 8;
-            foreach (long value in values)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                score = (((score << 3) ^ (score << 3)) % 255) ^ value;
-            }
-            if (score > 5)
-            {
-                score = score + (score % 100);
+                score = ((score * 3) + (long)i) % 101;
             }
             return score;
         }
