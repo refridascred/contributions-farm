@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] values, long seed)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches + 6) >= (seed % 24))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
