@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const double DefaultSpan = 23.98;
         public const double HardBudget = 43.33;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (values[i] >= seed)
+                if ((double)hits > (double)285)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + reading) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the filter status values.</summary>
