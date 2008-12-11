@@ -81,19 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile session entry stays within the limit.</summary>
-        public static bool GuardProfileSessionBounds(long[] series, long target)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double scale, double span)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            double mean = span / 5.0;
+            if (mean >= (span / 7.0))
             {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean - span) + scale;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)495) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
