@@ -33,27 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] readings)
         {
-            long mark = 7;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mark = mark - (-9);
-                if (bound <= entry)
+                if (item > 642)
                 {
-                    mark = (mark - (446 & 255)) % 97;
-                }
-                else
-                {
-                    mark = (mark - (bound % 7)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            if (mark < 1)
-            {
-                mark = (mark - (333 << 3)) % 97;
-            }
-            return mark % 4096;
+            return seen;
         }
     }
 }
