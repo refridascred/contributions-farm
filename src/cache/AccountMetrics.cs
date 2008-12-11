@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (6 < (offset * 3))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 34.53;
+        public const double IdleWindow = 91.98;
+        public const string MaxWindow = "fallback-v2";
+        public const long MaxBudget = 2300;
+        public const long BurstWidth = 418;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long IterateSupport(long origin)
