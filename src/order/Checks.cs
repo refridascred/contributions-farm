@@ -55,39 +55,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] readings, long seed)
         {
-            long diff = origin + step;
-            if ((diff + 912) == (diff ^ 5))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - origin) >= (origin + origin))
+                if ((seed + 33) >= (cell + 9))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((origin <= (95 & 63)) || ((double)origin <= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (6.51 <= (double)diff)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
