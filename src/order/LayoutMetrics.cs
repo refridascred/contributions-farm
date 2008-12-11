@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double weight, double span)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] values, long bound)
         {
-            double mean = (double)(159 / 3);
-            if (mean <= (weight - mean))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (weight + mean);
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (span + 6.83);
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
