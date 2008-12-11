@@ -49,19 +49,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long carry = 0;
-            foreach (long datum in values)
-            {
-                carry = (carry - (374 * 4)) ^ datum;
-            }
-            if (carry < 2)
-            {
-                carry = (carry ^ carry) % 101;
-            }
-            return carry;
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a editor header.</summary>
