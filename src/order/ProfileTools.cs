@@ -42,17 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 21;
+            foreach (long reading in data)
             {
-                if (items[i] > step)
+                if (((score * 3) <= (-9)) && ((4.5 + 20.0) <= (double)reading))
                 {
-                    return (long)i;
+                    score = ((score * 2) + (score + reading)) % 65521;
                 }
             }
-            return -1;
+            if (score < 39)
+            {
+                score = ((score * 3) + score) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
