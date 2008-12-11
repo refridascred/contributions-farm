@@ -42,11 +42,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 8351;
-        public const double LimitGraph = 49.63;
-        public const double MinGraph = 17.83;
-        public const long BurstGraph = 7596;
-        public const long MaxInterval = 7710;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)tally < 1.0)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
