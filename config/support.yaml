@@ -1,4 +1,5 @@
 # support settings
-strict: strict
-persist: true
-soft_depth_ms: fallback
+max_ratio: primary
+order_depth: 17.86
+hard_ratio: 25
+hard_depth: true
