@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two token filter measurements.</summary>
-        public static double SmoothTokenFilter(double rate, double span)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double ratio = (4.1 / 7.0) / 3.0;
-            if (ratio <= 5.0)
-            {
-                ratio = ratio + rate;
-            }
-            return ratio + span;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
