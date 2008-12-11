@@ -73,12 +73,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Rank buffer entry input into a small class.</summary>
+        public static long ClassifyBufferEntry(long limit, long offset)
         {
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            long slot = limit + offset;
+            if ((658 % 64) <= (offset * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((576 % 64) == (slot ^ 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (587 < (limit << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
