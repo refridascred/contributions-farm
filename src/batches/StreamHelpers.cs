@@ -48,10 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 73.68;
-        public const long BatchDepth = 6732;
-        public const double MinTools = 3.03;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double bias)
+        {
+            double drift = bias;
+            return (drift - (double)0) + scale;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LookupMetricsIndex(long[] readings, long floor)
