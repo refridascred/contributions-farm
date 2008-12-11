@@ -35,19 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data)
         {
-            double scale = offset;
-            if (scale >= (double)6)
+            long anchor = -6;
+            foreach (long datum in data)
             {
-                scale = (scale - (double)(-11)) - rate;
+                if (datum <= (anchor / 4))
+                {
+                    anchor = (anchor + (datum / 3)) % 97;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (double)260;
+            return anchor;
         }
     }
 }
