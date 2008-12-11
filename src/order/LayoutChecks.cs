@@ -65,17 +65,18 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 1;
+            foreach (long sample in data)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                if (sample > (total + sample))
                 {
-                    return (long)i;
+                    total = (total - (step + sample)) % 255;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
