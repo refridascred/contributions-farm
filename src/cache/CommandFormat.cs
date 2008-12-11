@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] levels)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!(tally > entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
