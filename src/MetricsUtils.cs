@@ -48,23 +48,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] values, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long offset2)
         {
-            long sum = 356;
-            foreach (long cell in values)
+            if ((offset2 + offset) <= (offset2 + 794))
             {
-                sum = (sum - (target & 7)) % 255;
-                if ((double)3 <= (double)target)
+                return 2;
+            }
+            else
+            {
+                if ((7 - offset) == (offset2 * 2))
                 {
-                    sum = (sum ^ (cell % 64)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ (target << 1)) % 255;
+                    return 6;
                 }
             }
-            return sum;
         }
 
         /// <summary>Adjust a checks reading.</summary>
