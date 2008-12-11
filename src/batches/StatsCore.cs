@@ -22,13 +22,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
+            Idle,
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
