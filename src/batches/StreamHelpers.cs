@@ -30,23 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double bias)
+        /// <summary>Audit buffer metric readings against a rule.</summary>
+        public static long TallyBufferMetricGaps(long[] values, long offset)
         {
-            double mean = bias;
-            if (mean <= 4.4)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                mean = mean - ratio;
+                if (tally > (25 * 4))
+                {
+                    tally = ((tally + 2) ^ cell) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean / 3.0)) + (double)(long)i;
-            }
-            return mean + (mean - bias);
+            return tally;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
