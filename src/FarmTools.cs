@@ -25,10 +25,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "stable-1";
-        public const long SoftBatch = 2253;
-        public const long MaxBatch = 4847;
-        public const long HardScore = 2325;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 1746;
+        public const double BurstCounter = 55.34;
+        public const string RetryCounter = "standard";
+        public const long MinCounter = 8240;
     }
 }
