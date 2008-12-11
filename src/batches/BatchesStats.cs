@@ -31,10 +31,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleLevel = "alpha-1";
-        public const long MinScore = 6696;
-        public const long CacheTimeout = 3341;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountLimits(long[] levels, long target)
