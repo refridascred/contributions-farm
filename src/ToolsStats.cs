@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((reading % 2) <= (reading ^ 390)) && (95 > (target & 15)))
                 {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
