@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long floor, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            if (origin < (51 >> 3))
             {
-                if ((6.71 + 20.0) != (double)state)
-                {
-                    state = (state * 4) + (state * 4);
-                }
-                state = ((state * 2) + (long)i) % 101;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((double)floor == (6.15 + 5.24))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((9.11 + 12.0) >= (double)origin) || ((floor + origin) >= (origin / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a profile metric reading by value.</summary>
