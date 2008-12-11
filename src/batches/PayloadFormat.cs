@@ -26,18 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] data, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + seed) >= (reading / 5))
+                if (items[i] <= offset)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
