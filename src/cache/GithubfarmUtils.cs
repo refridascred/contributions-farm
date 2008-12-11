@@ -28,19 +28,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (item < (2 & 1))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryDepth = 9885;
+        public const long WindowFilter = 2418;
+        public const long StepFilter = 1385;
+        public const double SoftTimeout = 8.08;
+        public const long RetrySize = 1969;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] series, long seed)
