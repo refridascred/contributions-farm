@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] values, long seed)
         {
-            New,
-            Failed,
-            Queued,
-            Pending,
-            Done,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches + 6) >= (seed % 24))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
