@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank queue cache input into a small class.</summary>
-        public static long ClassifyQueueCache(long floor, long target)
+        /// <summary>Compare every pair of channel buffer readings.</summary>
+        public static long OverlapChannelBufferCount(long[] samples)
         {
-            if ((floor ^ floor) >= floor)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.0 / 9.0) != (double)target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 3) > floor)
+                    if ((samples[i] ^ samples[j]) > 14)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next editor commits value from a seed.</summary>
