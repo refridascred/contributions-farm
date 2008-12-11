@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const string SoftTimeout = "primary-v2";
         public const long SoftCache = 241;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
