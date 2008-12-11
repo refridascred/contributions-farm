@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSpan = 6183;
-        public const string BurstFilter = "cached-v2";
-        public const long StepRatio = 209;
-        public const double StepFilter = 52.14;
-        public const long IdleTimeout = 4006;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ScaleStream(double weight, double offset)
