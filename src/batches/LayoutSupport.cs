@@ -41,23 +41,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long offset, long bound)
+        /// <summary>Grade a counter metrics value against two limits.</summary>
+        public static long ClassifyCounterMetrics(long offset, long offset2)
         {
-            long diff = offset - bound;
-            if (!(486 >= (diff + bound)))
+            long lane = offset + offset2;
+            if ((lane / 5) <= (offset2 % 60))
             {
                 return 4;
             }
             else
             {
-                if (!((bound * 4) <= diff))
+                if ((3.2 / 9.0) > 10.0)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    if ((offset * 4) != (lane >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
