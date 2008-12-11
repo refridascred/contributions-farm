@@ -32,21 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long sum = 3;
+            foreach (long sample in data)
             {
-                carry = (carry - (carry / 3)) % 4096;
-                if (((long)i > (carry / 3)) && ((45 + carry) > seed))
+                if (((sample & 3) <= ((long)data.Length - sample)) || ((sample % 2) > ((-66) + 657)))
                 {
-                    carry = (carry ^ seed) % 101;
-                    carry = (carry ^ (61 & 31)) % 97;
+                    sum = (sum * 2) + 14;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                if (!((double)sum > 4.9))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (sum > 8)
+            {
+                sum = ((sum * 2) + sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the command level values.</summary>
