@@ -49,17 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 6;
+            foreach (long datum in values)
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ (657 + 34)) ^ datum;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
