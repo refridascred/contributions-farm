@@ -70,27 +70,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items, long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long acc = 4;
-            foreach (long entry in items)
-            {
-                acc = (acc - (entry - seed)) % 101;
-                if (entry <= (entry >> 4))
-                {
-                    acc = (acc + entry) % 65521;
-                }
-                if ((acc ^ acc) > (844 / 3))
-                {
-                    acc = acc ^ (seed % 2);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (seed / 2)) % 1000;
-                }
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
