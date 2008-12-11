@@ -29,24 +29,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            if (limit < (4 + origin))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) == (limit << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
