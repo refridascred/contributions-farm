@@ -37,11 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepLevel = 4578;
-        public const string WindowDepth = "staging-v2";
-        public const long BatchChecks = 3808;
-        public const double CacheChecks = 79.02;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] items, long step)
