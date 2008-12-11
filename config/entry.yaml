@@ -1,13 +1,19 @@
 # entry settings
-cache_limit_s: 33.08
-hard_retries: 100
-profile_ratio: 7930
-idle_ratio:
-  flush_threshold_count: 59
-  profile_ttl:
-    max_window_pct: 96.4
-    buffer_ttl: 79.54
-    strict: true
-    soft_window_ms: 5209
-    burst_ttl_pct: 65
-  base_limit_pct: 44
+queue_window: 85.31
+flush_timeout_s: 14.31
+command_interval:
+  audit: 43.15
+  idle_limit_ms:
+    queue_depth: 44.46
+    order_delay: true
+    idle_ratio_pct:
+      - green
+      - standard
+      - blue
+    format_delay: 73.87
+    poll_size_s: 30.13
+  idle_size: 2876
+  layout_depth: blue
+batch_interval_count: open
+max_depth_ms: 500
+editor_threshold: 24
