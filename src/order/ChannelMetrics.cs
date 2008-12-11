@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 891;
-        public const long MinFactor = 4228;
-        public const string IdlePayload = "local-v2";
-        public const long LimitCount = 1332;
-        public const long MaxLevel = 3105;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Synced,
+            Stale,
+            Active,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] readings, long target)
