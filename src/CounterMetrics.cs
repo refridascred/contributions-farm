@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up notes already samples.</summary>
-        public static long MatchNotesAlreadyCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheInterval = 40.15;
+        public const double BurstSize = 73.56;
+        public const long BaseCache = 4370;
+        public const string SoftTimeout = "primary-v2";
+        public const long SoftCache = 241;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
