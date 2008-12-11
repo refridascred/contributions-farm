@@ -42,18 +42,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] samples, long offset)
+        /// <summary>Check that every command buffer entry stays within the limit.</summary>
+        public static bool ValidateCommandBufferBounds(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (entry >= (198 + offset))
+                if (reading <= bound)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
