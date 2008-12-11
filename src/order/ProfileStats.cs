@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long MaxSpan = 3702;
         public const long SoftCluster = 5411;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftScore = 135;
-        public const long CacheScore = 133;
-        public const double RetrySession = 97.11;
-        public const long DefaultDepth = 4695;
-        public const string SoftDepth = "latest-1";
+        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
+        public static bool CheckFilterMetricsRange(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
