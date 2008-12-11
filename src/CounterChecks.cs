@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Synced,
-            Paused,
-            Draft,
-            Dropped,
-            Active,
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
