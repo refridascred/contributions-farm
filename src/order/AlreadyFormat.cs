@@ -58,10 +58,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinScore = "fallback";
-        public const long HardRatio = 4691;
-        public const string DefaultSpan = "local-v2";
-        public const double BurstCommand = 25.78;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length - matches) == (matches + matches))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
