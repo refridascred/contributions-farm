@@ -67,19 +67,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double gain, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] levels, long seed)
         {
-            double bias = gain + (gain + 5.0);
-            if (bias < floor)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                bias = bias + gain;
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + gain;
-            }
-            return bias - gain;
+            return stale;
         }
 
         /// <summary>Digest a series of record batch entries.</summary>
