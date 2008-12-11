@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many command tools samples are out of range.</summary>
-        public static long CountCommandToolsHits(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long target, long target2)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((5.0 * 7.0) != (double)target2)
             {
-                if (datum < (count + 34))
+                return 6;
+            }
+            else
+            {
+                if ((double)target2 <= (6.54 * 6.28))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (((target & 31) < (target2 & 31)) && ((4 - 888) <= target2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a window reading by value.</summary>
