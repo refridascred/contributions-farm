@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 3609;
-        public const long SoftEditor = 6140;
-        public const string MinEditor = "cached-v2";
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long target, long target2)
+        {
+            long gap = target ^ target2;
+            if (target2 > (gap + target2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)37 < (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheBuffer = 6505;
