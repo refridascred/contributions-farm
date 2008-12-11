@@ -54,13 +54,12 @@ namespace Common.Utilities
         public const string LimitLevel = "legacy-v2";
         public const double SoftFarm = 94.1;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
+            Synced,
+            Active,
+            Pending,
         }
     }
 }
