@@ -22,32 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long floor, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long offset = floor + bound;
-            if (offset <= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound > (bound >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-97) - 1) < (bound % 10))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first batch context entry that matches the target.</summary>
