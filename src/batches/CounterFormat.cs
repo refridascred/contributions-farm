@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long MaxNotes = 4294;
         public const double CacheNotes = 10.18;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheScore = 49.39;
+        public const long CacheSpan = 5778;
+        public const double BaseBatches = 52.41;
+        public const string BurstCount = "open-edge";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
