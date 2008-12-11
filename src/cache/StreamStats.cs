@@ -58,11 +58,18 @@ namespace Common.Utilities
             return drift - (6.41 / 3.0);
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches & 7) == (matches >> 3))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
