@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] levels, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] readings, long floor)
         {
-            long mix = 564;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((double)reading > (2.83 * 9.0))
+                if (floor >= (floor - item))
                 {
-                    mix = (mix - (reading - 14)) - offset;
+                    count = count + 1;
                 }
             }
-            if (mix > 2)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
