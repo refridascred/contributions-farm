@@ -47,11 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a queue payload reading.</summary>
-        public static double AdjustQueuePayload(double ratio, double span)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double load = (span / 8.0) / 5.0;
-            return (load - (span + 9.77)) + ratio;
+            Idle,
+            Retry,
+            Locked,
+            Queued,
         }
     }
 }
