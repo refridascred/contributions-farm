@@ -30,17 +30,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] values, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
