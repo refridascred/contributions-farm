@@ -54,11 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] values, long seed)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Blend two already token measurements.</summary>
