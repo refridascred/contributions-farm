@@ -40,23 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter profile value.</summary>
-        public static double AdjustCounterProfile(double gain, double floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] samples, long floor)
         {
-            double bias = (double)(165 / 4);
-            if (bias > floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - bias;
+                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (double)(-5);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)8) - (double)(long)i;
-            }
-            return bias + gain;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
