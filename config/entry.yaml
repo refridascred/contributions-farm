@@ -1,27 +1,6 @@
 # entry settings
-soft_ttl_count:
-  - local
-  - cached
-  - legacy
-  - staging
-base_size:
-  batch_ttl_count: open
-  max_retries_s: 4879
-  cache_window_pct: true
-  default_interval_s: false
-cluster_limit:
-  batches_timeout: 14.94
-  stream_window: primary
-  flush_ratio:
-    - edge
-    - edge
-    - legacy
-    - green
-  githubfarm_depth: 85
-  hard_threshold_count: 17
-  verbose: false
-soft_window_pct:
-  - local
-  - open
-base_limit_count: local
-metrics_retries: true
+soft_ratio_pct:
+  - 291
+  - 321
+idle_limit_ms: 69.11
+base_ttl_pct: primary
