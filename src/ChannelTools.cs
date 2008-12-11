@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the checks order series from a seed.</summary>
-        public static long SeriesChecksOrder(long target)
+        /// <summary>Audit token already readings against a rule.</summary>
+        public static long TallyTokenAlreadyMatches(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((4.0 / 3.0) < (9.25 / 6.0))
+                if (((double)7 != (double)hits) && !((double)hits == (double)8))
                 {
-                    result = (result - (long)i) % 4096;
+                    hits = (hits + 1) ^ datum;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a editor options.</summary>
