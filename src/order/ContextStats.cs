@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long TotalBatchesOrder(long[] values, long step)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] data, long seed)
         {
-            long acc = 179;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step << 1) >= (step - step))
+                if (data[i] <= seed)
                 {
-                    acc = acc ^ (step - sample);
-                    acc = (acc << 3) ^ (step - sample);
-                }
-                if (((67 >> 2) > step) || (11.0 > (double)step))
-                {
-                    acc = acc ^ (acc - step);
-                }
-                else
-                {
-                    acc = (acc * 5) + (50 << 2);
+                    return (long)i;
                 }
             }
-            if (acc < (-1))
-            {
-                acc = ((acc * 5) + 6) % 97;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
