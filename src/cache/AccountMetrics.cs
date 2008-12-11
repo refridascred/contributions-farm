@@ -52,18 +52,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] data, long offset)
+        /// <summary>Count the channel graph entries that pass the check.</summary>
+        public static long AuditChannelGraphMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((hits & 3) > hits)
+                if (53 <= value)
                 {
-                    hits = ((hits + 2) - datum) - offset;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
