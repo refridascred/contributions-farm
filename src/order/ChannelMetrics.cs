@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank payload counter input into a small class.</summary>
-        public static long RankPayloadCounter(long bound, long bound2)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] readings, long seed)
         {
-            long lane = bound - bound2;
-            if ((lane + bound) >= (bound2 - lane))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - lane) <= (lane + bound))
+                if (((sample >> 3) < (sample & 31)) && ((8.8 * 5.36) > (double)seed))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 - lane) < lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((lane ^ bound2) < (bound + lane))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many context notes samples are out of range.</summary>
