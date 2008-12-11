@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long MaxNotes = 4294;
         public const double CacheNotes = 10.18;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheScore = 49.39;
-        public const long CacheSpan = 5778;
-        public const double BaseBatches = 52.41;
-        public const string BurstCount = "open-edge";
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
