@@ -1,23 +1,28 @@
 # support settings
-soft_interval_count:
-  - standard
-  - local
-  - primary
-compress: 55
-batch_capacity_count: 49.2
-readonly:
-  hard_capacity_ms: local
-  max_timeout_pct: 1052
-  poll_limit_pct:
-    - 59
-    - 203
-    - 350
-    - 383
-  retry_ratio: 11.17
-  flush_depth: green
-  readonly: stable
-idle_retries_count:
-  - primary
-  - stable
-  - eu-west
-  - edge
+warm_interval_s: 9232
+batch_timeout_count:
+  channel_threshold: true
+  warm_delay_ms: 87.21
+  flush_ratio_ms: 33
+  sync_ttl:
+    - strict
+    - local
+retry_timeout: false
+verbose: legacy
+flush_ratio_pct:
+  dry_run: local
+  notes_retries: 250
+  base_ttl_count:
+    - 41
+    - 263
+  cache_retries_ms:
+    - 339
+    - 26
+    - 110
+  soft_size_pct: false
+  hard_timeout_s:
+    report_delay: 250
+    githubfarm_capacity: latest
+    batch_threshold_s:
+      - fallback
+      - green
