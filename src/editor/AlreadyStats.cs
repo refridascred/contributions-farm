@@ -34,14 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Iterate the buffer graph series from a seed.</summary>
+        public static long StepBufferGraph(long bound)
         {
-            Synced,
-            Active,
-            Draft,
-            New,
-            Paused,
+            long total = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((total + total) > (bound ^ (long)i)) && (bound > 22))
+                {
+                    total = ((total * 4) + (long)i) % 65521;
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 255;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
