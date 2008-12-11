@@ -41,12 +41,20 @@ namespace Common.Utilities
         public const long MinContext = 2144;
         public const string IdleInterval = "standard-1";
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((anchor + anchor) != (step / 5))
+                {
+                    anchor = ((anchor << 3) ^ (anchor - step)) % 101;
+                    anchor = (anchor + (3 + anchor)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
