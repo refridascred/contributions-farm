@@ -17,22 +17,13 @@ namespace Common.Utilities
         public const double SoftBatches = 52.96;
         public const string BatchBatches = "latest-edge";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] readings)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample != (2.3 / 3.0))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
