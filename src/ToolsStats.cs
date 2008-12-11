@@ -41,12 +41,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double gain, double offset)
         {
-            Pending,
-            Idle,
-            Retry,
+            double ratio = (offset - gain) - (double)49;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (gain * 11.0)) + (double)(long)i;
+            }
+            return ratio - (16.0 + gain);
         }
 
         /// <summary>Define session limits and defaults.</summary>
