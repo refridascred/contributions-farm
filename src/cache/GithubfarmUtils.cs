@@ -44,19 +44,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] levels, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] values)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (sample <= seed)
+                if (!(((sample & 3) >= matches) || ((sample << 1) > (sample + matches))))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
