@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double weight, double span)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            double load = weight;
-            if (load >= (load - span))
+            long sum = 7;
+            foreach (long cell in items)
             {
-                load = load + load;
+                sum = (sum ^ (cell + sum)) % 4096;
+                if ((5.93 / 2.0) == (double)sum)
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)37;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (span + 8.0)) + (double)(long)i;
-            }
-            return load - (weight + weight);
+            return sum;
         }
 
         /// <summary>Describe the stats class values.</summary>
