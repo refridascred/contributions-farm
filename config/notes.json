@@ -1,7 +1,18 @@
 {
-  "cache_threshold_ms": 16,
-  "min_ttl_s": true,
-  "editor_ttl": [350, 382],
-  "enabled": 11,
-  "burst_limit": 1
+  "notes_ttl": false,
+  "report_timeout": {
+    "enabled": 67,
+    "warm_ratio": {
+      "cache_ratio_ms": 14,
+      "queue_depth": 250,
+      "base_delay_count": "eu-west",
+      "verbose": 44.21,
+      "default_interval_ms": 59.87,
+      "retry_window_count": true
+    },
+    "sync_timeout": "staging",
+    "retry_delay_ms": 60
+  },
+  "cluster_window": [350, 422, 417],
+  "default_delay_count": "staging"
 }
