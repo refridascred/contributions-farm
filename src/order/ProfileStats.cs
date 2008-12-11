@@ -28,10 +28,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleSpan = "standard";
-        public const long MaxSpan = 3702;
-        public const long SoftCluster = 5411;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstDepth = 79.28;
+        public const string DefaultScore = "open";
+        public const double CacheCount = 46.74;
 
         /// <summary>Check that every filter metrics entry stays within the limit.</summary>
         public static bool CheckFilterMetricsRange(long[] series, long offset)
