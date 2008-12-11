@@ -43,19 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command buffer entry stays within the limit.</summary>
-        public static bool ValidateCommandBufferBounds(long[] items, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mark = 899;
+            foreach (long sample in samples)
             {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (((mark << 3) ^ sample) % 4096) - limit;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Hold a batch header.</summary>
