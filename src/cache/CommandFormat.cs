@@ -45,10 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 47.55;
-        public const double DefaultTools = 19.3;
-        public const double BaseScore = 83.25;
-        public const double MinLevel = 1.3;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Active,
+            Queued,
+            Paused,
+            Pending,
+            Locked,
+        }
     }
 }
