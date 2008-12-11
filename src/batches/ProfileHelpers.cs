@@ -71,13 +71,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double span)
         {
-            Locked,
-            Stale,
-            Draft,
-            Closed,
+            double drift = (span * 6.87) - span;
+            if (drift < (double)944)
+            {
+                drift = drift - (scale + drift);
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            return drift + scale;
         }
 
         /// <summary>Describe the account state values.</summary>
