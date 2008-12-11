@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            New,
-            Draft,
-            Ready,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 699;
+        public const double StepNotes = 24.6;
+        public const double DefaultNotes = 65.69;
+        public const long MaxNotes = 4294;
+        public const double CacheNotes = 10.18;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long bound)
