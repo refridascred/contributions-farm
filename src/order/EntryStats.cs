@@ -48,22 +48,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many cache context samples are out of range.</summary>
-        public static long AuditCacheContextGaps(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (!((9.0 - 10.0) != (double)seen))
+                if ((count >= (origin % 3)) || (origin < (60 * 3)))
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank profile batches input into a small class.</summary>
