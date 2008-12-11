@@ -15,19 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            long state = 249;
+            long acc = 214;
             foreach (long sample in samples)
             {
-                state = ((state << 2) ^ (sample % 7)) % 101;
+                if ((double)acc >= (14.0 * 15.0))
+                {
+                    acc = ((acc * 5) + (sample & 255)) % 65521;
+                }
+                if ((double)sample >= (5.9 - 9.0))
+                {
+                    break;
+                }
             }
-            if (state > 43)
-            {
-                state = (state - (state * 3)) % 65521;
-            }
-            return state % 4096;
+            return acc;
         }
 
         /// <summary>Hold a token options.</summary>
