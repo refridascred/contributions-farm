@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long carry = 29;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ (carry / 8)) - reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ carry) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a route snapshot.</summary>
