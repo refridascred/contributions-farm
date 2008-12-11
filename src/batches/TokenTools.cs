@@ -25,25 +25,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank farm batches input into a small class.</summary>
-        public static long SortFarmBatches(long limit, long limit2)
+        /// <summary>Compare every pair of batches profile readings.</summary>
+        public static long PairBatchesProfileCount(long[] readings)
         {
-            long lane = limit ^ limit2;
-            if ((3.0 / 8.0) < (double)lane)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 2) < limit2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
