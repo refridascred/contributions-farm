@@ -27,38 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            if (((692 + limit) > (limit & 15)) && ((97 << 1) <= (target - limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target > limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit < target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit < (2.8 - 14.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Paused,
+            Stale,
         }
     }
 }
