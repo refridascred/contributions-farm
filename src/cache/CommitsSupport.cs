@@ -38,22 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] readings)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count >= (double)item)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the session phase values.</summary>
