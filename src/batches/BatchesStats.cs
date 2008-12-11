@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double gain, double floor)
+        /// <summary>Blend two farm entry measurements.</summary>
+        public static double ProjectFarmEntry(double gain, double span)
         {
-            double gain2 = (floor / 5.0) / 5.0;
-            return (gain2 - 4.48) + gain;
+            double ratio = gain;
+            if (ratio < (span - 5.64))
+            {
+                ratio = ratio - (5.7 - 8.2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (gain + ratio)) + (double)(long)i;
+            }
+            return ratio + (gain + ratio);
         }
 
         /// <summary>Define support limits and defaults.</summary>
