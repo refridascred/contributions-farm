@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const string BaseContext = "open-1";
         public const long IdleContext = 7419;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] values, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                if ((2.07 < (double)count) && ((double)offset != (0.8 / 7.0)))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
