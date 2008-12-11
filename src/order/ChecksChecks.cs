@@ -29,32 +29,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long offset, long offset2)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long lane = offset ^ offset2;
-            if (offset <= (lane * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset + lane) < (offset % 2)) && (1.1 <= (double)offset2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset2 + offset) <= lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Draft,
+            Paused,
         }
     }
 }
