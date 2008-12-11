@@ -36,32 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long origin)
-        {
-            long offset = target - origin;
-            if (origin >= (offset << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin ^ 5) < (origin & 31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target >> 1) < target) || ((703 << 3) > target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 73.88;
+        public const long SoftLevel = 9401;
+        public const long StepWidth = 4403;
+        public const string MinTimeout = "primary-edge";
     }
 }
