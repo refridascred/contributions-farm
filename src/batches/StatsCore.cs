@@ -22,21 +22,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum + 914) >= (sum * 2))
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 3) ^ floor) % 97;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
