@@ -1,6 +1,12 @@
 {
-  "sync_limit_pct": "standard",
-  "max_ratio_s": true,
-  "hard_delay_pct": "eu-west",
-  "readonly": "open"
+  "entry_limit": 62.85,
+  "compress": "latest",
+  "report_ttl": "latest",
+  "format_timeout": 45.62,
+  "retry_ratio_pct": {
+    "verbose": 4866,
+    "min_timeout_ms": "strict",
+    "dry_run": 250,
+    "poll_window_ms": false
+  }
 }
