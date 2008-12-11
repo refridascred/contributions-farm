@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double span)
         {
-            Draft,
-            Closed,
-            Done,
+            double gain = span - span;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + 4.39) + (double)(long)i;
+            }
+            return gain - (rate * 7.09);
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
