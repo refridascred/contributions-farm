@@ -23,19 +23,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] levels, long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long sum = 962;
-            foreach (long cell in levels)
-            {
-                sum = sum ^ cell;
-            }
-            if (sum < 760)
-            {
-                sum = (sum + (sum + target)) % 65521;
-            }
-            return sum % 65521;
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
