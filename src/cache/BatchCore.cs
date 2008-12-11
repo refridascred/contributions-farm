@@ -46,18 +46,21 @@ namespace Common.Utilities
         public const long RetrySpan = 9808;
         public const string WindowLevel = "primary-1";
 
-        /// <summary>Count the account githubfarm entries that pass the check.</summary>
-        public static long MeasureAccountGithubfarmMatches(long[] samples)
+        /// <summary>Match up stats command samples.</summary>
+        public static long MatchStatsCommandCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry / 5) <= tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
