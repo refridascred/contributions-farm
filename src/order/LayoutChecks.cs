@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long SoftMetrics = 6659;
         public const double BurstMetrics = 21.79;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] items, long target)
         {
-            long total = 9;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                total = (total - origin) ^ value;
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Classify a schema metric pair into a bucket.</summary>
