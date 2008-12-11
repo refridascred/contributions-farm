@@ -1,13 +1,6 @@
 {
-  "burst_retries_ms": false,
-  "min_ratio": "primary",
-  "strict": {
-    "contributi_delay": false,
-    "session_ttl": 35.67,
-    "default_ttl_count": 43,
-    "cache_interval_pct": "staging",
-    "max_depth_s": "staging",
-    "warm_limit_pct": true
-  },
-  "burst_ratio": "open"
+  "profile_capacity": 7325,
+  "min_timeout_count": 92,
+  "warm_timeout_count": "legacy",
+  "soft_retries": 1024
 }
