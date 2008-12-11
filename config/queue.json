@@ -1,17 +1,5 @@
 {
-  "sync_window_s": true,
-  "idle_retries_s": {
-    "compress": 1024,
-    "sync_threshold_ms": "fallback",
-    "min_delay_count": 8616,
-    "sync_threshold": 61.48,
-    "soft_window": ["standard", "edge", "fallback", "standard"],
-    "warm_ratio": 27
-  },
-  "batch_ratio": true,
-  "enabled": {
-    "burst_window": "staging",
-    "sync_limit_ms": "eu-west",
-    "readonly": 8758
-  }
+  "cluster_capacity": [429, 415],
+  "warm_capacity_count": 500,
+  "route_retries": 2789
 }
