@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double scale, double offset)
-        {
-            double scale2 = offset;
-            if (scale2 < 19.0)
-            {
-                scale2 = (scale2 - (3.4 * 15.0)) - scale;
-            }
-            else
-            {
-                scale2 = scale2 + scale2;
-            }
-            return scale2 - (offset / 2.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySize = 33.58;
+        public const long HardSupport = 9383;
+        public const double BaseSpan = 77.36;
+        public const long BaseSupport = 1729;
+        public const string DefaultBudget = "stable-edge";
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
