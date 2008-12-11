@@ -31,13 +31,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a farm tools pair into a bucket.</summary>
+        public static long BucketFarmTools(long floor, long seed)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long lane = floor ^ seed;
+            if ((seed >> 2) <= (seed << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (double)lane)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor <= (floor + 527))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6.06 * 9.6) != (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
