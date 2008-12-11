@@ -1,7 +1,4 @@
 # support settings
-stats_retries: 30
-poll_ttl: local
-queue_capacity: true
-burst_window_s: true
-context_threshold: open
-enabled: true
+strict: strict
+persist: true
+soft_depth_ms: fallback
