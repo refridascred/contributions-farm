@@ -38,16 +38,14 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string RetryAlready = "cached";
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result ^ (origin & 31)) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Stale,
+            Dropped,
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Accumulate report samples.</summary>
