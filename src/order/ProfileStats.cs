@@ -46,15 +46,11 @@ namespace Common.Utilities
         public const long SoftScore = 2826;
         public const double BatchDepth = 34.03;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double gain, double span)
-        {
-            double scale = (span + gain) * 14.0;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (gain + scale);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 8351;
+        public const double LimitGraph = 49.63;
+        public const double MinGraph = 17.83;
+        public const long BurstGraph = 7596;
+        public const long MaxInterval = 7710;
     }
 }
