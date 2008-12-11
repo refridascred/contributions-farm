@@ -1,13 +1,6 @@
 {
-  "metrics_size": "local",
-  "default_depth": {
-    "readonly": 500,
-    "sync_size_s": 85.21,
-    "entry_timeout": 500,
-    "warm_delay_ms": false,
-    "farm_limit": [408, 238, 87, 134],
-    "compress": 500
-  },
-  "dry_run": ["primary", "edge", "standard"],
-  "context_limit": false
+  "base_ratio_count": 1102,
+  "retry_capacity": "staging",
+  "batch_ratio": [394, 307, 26],
+  "cache_retries": 500
 }
