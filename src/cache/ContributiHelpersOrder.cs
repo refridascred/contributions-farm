@@ -38,22 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            long mix = 4;
-            foreach (long datum in values)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)mix == (6.5 * 9.1)) && ((mix - 53) <= datum))
-                {
-                    mix = (mix + mix) % 255;
-                }
-                if ((mix + datum) <= (mix / 4))
-                {
-                    mix = (mix - (mix / 9)) % 255;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
     }
 }
