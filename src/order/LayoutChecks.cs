@@ -42,10 +42,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 9448;
-        public const string StepWindow = "stable-edge";
-        public const long DefaultSpan = 8517;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
