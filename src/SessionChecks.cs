@@ -32,18 +32,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stream layout samples are out of range.</summary>
-        public static long CountStreamLayoutOutliers(long[] values, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum - (-35)) < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a farm stats.</summary>
