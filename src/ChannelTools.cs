@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the graph layout entries that pass the check.</summary>
-        public static long TallyGraphLayoutOutliers(long[] series, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((double)22 == (double)floor)
+                if ((1.0 + 16.0) <= (double)count)
                 {
-                    tally = (tally + 2) - item;
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the order phase values.</summary>
