@@ -19,10 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchFactor = 203;
-        public const double SoftCount = 37.69;
-        public const double SoftContext = 51.18;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] levels)
