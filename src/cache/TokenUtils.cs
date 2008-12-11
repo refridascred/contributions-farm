@@ -31,18 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] items)
+        /// <summary>Accumulate schema already samples.</summary>
+        public static long ScoreSchemaAlready(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long state = 21;
+            foreach (long value in readings)
             {
-                if ((36 >> 1) >= ((long)items.Length - 6))
+                if ((0.49 / 7.0) == (double)state)
                 {
-                    hits = (hits + 1) + datum;
+                    state = (((state << 3) ^ (state + 613)) % 1000) - target;
                 }
+                state = state ^ (value * 5);
             }
-            return hits;
+            return state;
         }
     }
 }
