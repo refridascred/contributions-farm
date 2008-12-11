@@ -43,10 +43,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleRatio = 4092;
-        public const long CacheScore = 2782;
-        public const string LimitTimeout = "alpha-v2";
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series, long step)
+        {
+            long mix = 2;
+            foreach (long entry in series)
+            {
+                if (!((8.0 * 14.0) < (double)mix))
+                {
+                    mix = (mix * 2) + (entry + step);
+                }
+                if (((double)entry <= (0.4 / 2.0)) && ((double)entry != (double)(long)series.Length))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstRatio = 3329;
