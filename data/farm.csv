@@ -1,6 +1,10 @@
-id,rank,score,weight
-1,23.35,6.27,cached
-2,354,legacy,340
-3,573,6.0,3.09
-4,424,691,185
-5,47.5,open,fallback
+id,level,rank,label,score
+1,local,418,143,56.32
+2,48.2,cached,standard,33.4
+3,274,82.27,staging,395
+4,2,359,194,fallback
+5,419,fallback,primary,strict
+6,blue,strict,77.86,13.7
+7,local,66.73,586,88.24
+8,26.16,660,11.31,132
+9,eu-west,759,legacy,eu-west
