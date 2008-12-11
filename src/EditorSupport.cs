@@ -30,20 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a queue graph counter forward.</summary>
-        public static long IterateQueueGraph(long seed)
+        /// <summary>Audit entry window readings against a rule.</summary>
+        public static long CountEntryWindowGaps(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                total = ((total << 2) ^ seed) % 1000;
-                if (!((total >> 3) <= ((long)i ^ (long)i)))
+                if ((14.0 * 7.44) <= (double)cell)
                 {
-                    total = (total << 3) ^ ((long)i >> 3);
+                    matches = matches + 2;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
