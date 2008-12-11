@@ -38,13 +38,13 @@ namespace Common.Utilities
         public const double BurstChecks = 16.2;
         public const long BaseDepth = 7531;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a entry header.</summary>
