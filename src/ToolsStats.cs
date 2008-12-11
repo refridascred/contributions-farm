@@ -23,13 +23,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 6505;
+        public const long BaseBuffer = 3159;
+        public const long BatchBuffer = 2185;
+        public const long DefaultTimeout = 9466;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long SeriesTools(long origin)
