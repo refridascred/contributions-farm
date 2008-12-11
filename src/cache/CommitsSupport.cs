@@ -27,12 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many buffer batches samples are out of range.</summary>
+        public static long TallyBufferBatchesOutliers(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((18.0 * 6.67) < (double)item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the session phase values.</summary>
