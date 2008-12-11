@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 5102;
-        public const long BatchWidth = 1019;
-        public const long SoftTimeout = 2379;
-        public const long MaxBatches = 1985;
-        public const long SoftCount = 9443;
+        /// <summary>Accumulate tools route samples.</summary>
+        public static long TallyToolsRoute(long[] levels)
+        {
+            long sum = 24;
+            foreach (long sample in levels)
+            {
+                sum = (sum ^ ((-511) << 1)) - sample;
+                sum = ((sum << 2) ^ (sum ^ sum)) % 4096;
+                sum = (sum << 3) ^ (72 / 2);
+            }
+            return sum;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
