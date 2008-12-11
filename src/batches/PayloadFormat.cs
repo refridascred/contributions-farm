@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
