@@ -41,18 +41,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the stats route entries that pass the check.</summary>
-        public static long CountStatsRouteOutliers(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!((2.0 > (double)hits) || ((value - hits) > 96)))
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxTimeout = 3687;
+        public const string BatchCount = "local-v2";
+        public const double BatchRatio = 10.21;
+        public const long BatchLevel = 1284;
+        public const long MinBudget = 7546;
     }
 }
