@@ -30,11 +30,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 4072;
+        public const string LimitProfile = "alpha";
+        public const string MinCount = "strict-1";
     }
 }
