@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Synced,
-            Draft,
-            Active,
+            Paused,
+            Ready,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a profile options.</summary>
