@@ -34,38 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a schema metric pair into a bucket.</summary>
-        public static long ClassifySchemaMetric(long limit, long origin)
+        /// <summary>Count the stats editor entries that pass the check.</summary>
+        public static long TallyStatsEditorGaps(long[] series)
         {
-            if ((limit + limit) < limit)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + origin) < (limit + limit))
+                if ((matches - reading) < (matches + matches))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((599 + limit) < (origin % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin == (18.0 - 6.94))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
