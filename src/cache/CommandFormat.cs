@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double scale2 = (double)(32 ^ 8);
-            return ((scale2 - (scale2 + 14.0)) + scale) + offset;
+            Paused,
+            Pending,
+            Retry,
         }
     }
 }
