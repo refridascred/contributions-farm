@@ -38,12 +38,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] values, long seed)
         {
-            Stale,
-            Paused,
-            Pending,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
