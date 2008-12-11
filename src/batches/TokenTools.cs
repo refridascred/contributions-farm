@@ -13,14 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Synced,
-            Failed,
-            Idle,
             Queued,
-            Locked,
+            Closed,
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Compare every pair of batches profile readings.</summary>
