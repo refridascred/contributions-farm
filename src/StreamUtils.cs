@@ -31,21 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Look up the position of a layout contributi sample.</summary>
+        public static long LookupLayoutContributiIndex(long[] items, long step)
         {
-            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] > step)
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
