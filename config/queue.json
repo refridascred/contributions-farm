@@ -1,5 +1,7 @@
 {
-  "max_size_s": 2993,
-  "farm_retries": false,
-  "batch_interval_count": true
+  "idle_window_s": [85, 267],
+  "idle_delay": 8945,
+  "base_delay": "staging",
+  "format_size": 51,
+  "tools_threshold": true
 }
