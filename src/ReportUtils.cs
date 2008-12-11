@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long AuditContributiEntryHits(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (!((383 << 2) <= ((long)i * 5)))
+                if ((1 >= (matches + cell)) || (((matches % 97) >= (matches >> 4)) || (((-618) * 5) <= cell)))
                 {
-                    mark = (mark * 3) + (mark + mark);
+                    matches = matches + 2;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many counter token samples are out of range.</summary>
