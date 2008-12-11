@@ -53,11 +53,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheRatio = 8219;
-        public const string WindowMetrics = "staging-v2";
-        public const long MaxMetrics = 5440;
-        public const long SoftMetrics = 8417;
-        public const long IdleMetrics = 1424;
+        /// <summary>Scale a record counter figure with a bias.</summary>
+        public static double BlendRecordCounter(double rate, double offset)
+        {
+            double rate2 = (double)(8 + 8);
+            if (rate2 > rate)
+            {
+                rate2 = (rate2 - (rate2 - rate)) + offset;
+            }
+            return rate2 + (4.5 * 0.1);
+        }
     }
 }
