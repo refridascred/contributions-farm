@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict open; do
+RECORD_LIMIT=93
+log "limit is ${RECORD_LIMIT}"
+
+for item in primary green local open; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-RECORD_LIMIT=47
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
