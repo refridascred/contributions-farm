@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] levels, long limit)
+        /// <summary>Project the next filter layout value.</summary>
+        public static double BlendFilterLayout(double bias, double floor)
         {
-            long acc = -1;
-            foreach (long datum in levels)
+            double bias2 = floor * 1.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((acc % 24) > (801 - limit))
-                {
-                    acc = ((acc ^ (acc + (-958))) % 1000) - datum;
-                }
+                bias2 = (bias2 + bias2) - (double)(long)i;
             }
-            return acc;
+            return bias2 + bias;
         }
 
         /// <summary>Describe the route kind values.</summary>
