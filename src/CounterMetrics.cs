@@ -34,17 +34,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a commits farm reading by value.</summary>
-        public static long FindCommitsFarmIndex(long[] values, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -754;
+            foreach (long value in series)
             {
-                if ((values[i] > step) && ((values[i] % 3) != 0))
+                acc = (acc ^ (acc / 4)) % 1000;
+                if (((value - (long)series.Length) > (acc % 100)) || ((1.88 - 1.85) <= (double)acc))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc >> 2)) % 65521;
                 }
             }
-            return -1;
+            if (acc < 7)
+            {
+                acc = (acc - (acc + acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
