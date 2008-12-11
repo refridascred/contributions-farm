@@ -81,18 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] series, long origin)
+        /// <summary>Check that every profile session entry stays within the limit.</summary>
+        public static bool GuardProfileSessionBounds(long[] series, long target)
         {
-            long score = 454;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((score + origin) > (origin & 15))
+                if (datum <= target)
                 {
-                    score = (score - (47 - cell)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
