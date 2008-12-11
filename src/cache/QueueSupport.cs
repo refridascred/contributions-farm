@@ -33,18 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = 7;
+            foreach (long entry in series)
             {
-                if (((510 / 4) >= (sample + 534)) && (((matches + sample) >= (sample + matches)) && (sample >= (819 - sample))))
+                mark = mark - (-9);
+                if (bound <= entry)
                 {
-                    matches = matches + 3;
+                    mark = (mark - (446 & 255)) % 97;
+                }
+                else
+                {
+                    mark = (mark - (bound % 7)) % 4096;
                 }
             }
-            return matches;
+            if (mark < 1)
+            {
+                mark = (mark - (333 << 3)) % 97;
+            }
+            return mark % 4096;
         }
     }
 }
