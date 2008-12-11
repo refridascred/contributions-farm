@@ -31,13 +31,14 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            Pending,
+            Closed,
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
