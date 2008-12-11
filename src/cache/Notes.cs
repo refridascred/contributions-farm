@@ -47,21 +47,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Synced,
+            Locked,
+            Pending,
         }
     }
 }
