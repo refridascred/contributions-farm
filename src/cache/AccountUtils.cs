@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi tools readings against a rule.</summary>
-        public static long TallyContributiToolsOutliers(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((1.89 + 4.0) == (double)(long)series.Length) && ((tally + 44) >= (tally ^ 299)))
-                {
-                    tally = ((tally + 2) - cell) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowTimeout = "alpha-edge";
+        public const long BaseEntry = 6729;
+        public const double BurstEntry = 17.73;
+        public const long CacheWidth = 1274;
+        public const long DefaultEntry = 9417;
     }
 }
