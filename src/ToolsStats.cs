@@ -69,17 +69,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a route editor reading by value.</summary>
-        public static long FindRouteEditorIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstTimeout = 9351;
+        public const string WindowInterval = "staging-v2";
+        public const long StepDepth = 4997;
+        public const long SoftStats = 7517;
+        public const double CacheDepth = 51.64;
     }
 }
