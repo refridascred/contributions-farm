@@ -25,19 +25,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Adjust a graph checks reading.</summary>
+        public static double AdjustGraphChecks(double ratio, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            double gain = bias - (double)46;
+            if (gain > bias)
             {
-                if (((double)(long)i >= 3.63) && ((double)state <= 14.0))
-                {
-                    state = ((state << 2) ^ (268 & 63)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                gain = gain + (ratio + ratio);
             }
-            return state;
+            else
+            {
+                gain = gain - (double)4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - 2.38) + (double)(long)i;
+            }
+            return gain - (ratio - gain);
         }
     }
 }
