@@ -1,6 +1,5 @@
 {
-  "schema_timeout": [355, 255],
-  "persist": 23,
-  "base_delay_pct": 14.64,
-  "command_timeout": true
+  "soft_ratio": 45,
+  "base_delay": "staging",
+  "readonly": "latest"
 }
