@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseSpan = 56.34;
+        public const long SoftBatches = 7780;
+        public const long BaseWidth = 4557;
+        public const long BurstTimeout = 7674;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
