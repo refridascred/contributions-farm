@@ -1,40 +1,9 @@
 # githubfarm settings
-sync_size: strict
-burst_retries_count:
-  - latest
-  - fallback
-  - cached
-  - blue
-schema_depth: primary
-support_retries:
-  cache_delay:
-    - blue
-    - blue
-    - primary
-  batches_interval: 59.42
-  retry_interval_count: 60
-  poll_depth_s: 2.93
-  sync_timeout: latest
-  default_interval_pct: 22
-githubfarm_limit:
-  min_timeout_ms: eu-west
-  poll_retries_pct:
-    layout_interval: false
-    record_delay: 1241
-    default_depth: edge
-  counter_window:
-    - legacy
-    - edge
-  default_interval_count:
-    retry_interval_count: edge
-    order_depth: false
-    token_window: staging
-    soft_limit_pct: 1024
-    retry_capacity: false
-  audit:
-    - 318
-    - 102
-  context_limit:
-    - 202
-    - 271
-    - 282
+base_retries: latest
+burst_delay:
+  - 371
+  - 482
+payload_window: stable
+readonly: 8423
+default_retries: edge
+min_delay_ms: 22.82
