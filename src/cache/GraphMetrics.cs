@@ -27,24 +27,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long origin, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if (origin <= (origin + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin > (2.36 / 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
