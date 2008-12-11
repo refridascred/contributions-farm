@@ -22,18 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first counter metric entry that matches the target.</summary>
-        public static long SeekCounterMetricIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftRatio = "alpha-edge";
+        public const long RetryTimeout = 3660;
+        public const long MinChecks = 7499;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double bias, double offset)
