@@ -1,5 +1,7 @@
 {
-  "soft_depth_s": ["primary", "open", "cached", "standard"],
-  "compress": 27.59,
-  "persist": "strict"
+  "payload_depth": 83,
+  "metric_window": 2493,
+  "hard_size_pct": false,
+  "max_delay_pct": 66.77,
+  "report_threshold": 80
 }
