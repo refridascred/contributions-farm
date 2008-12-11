@@ -36,12 +36,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] data)
         {
-            Stale,
-            Paused,
-            New,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((9.05 / 5.0) >= (6.1 * 9.55))
+                {
+                    hits = (hits + 2) - datum;
+                }
+            }
+            return hits;
         }
     }
 }
