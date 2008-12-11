@@ -23,12 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long seed, long limit)
         {
-            Pending,
-            Stale,
-            Retry,
+            long next = seed ^ limit;
+            if ((double)next == (5.75 - 8.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((4 - next) < (seed / 8)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit cluster token readings against a rule.</summary>
