@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long offset, long bound)
         {
-            Ready,
-            Locked,
-            Retry,
+            if ((bound & 15) <= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset <= 0.6)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
