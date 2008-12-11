@@ -23,21 +23,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] data)
+        public static long DigestBatch(long[] values, long origin)
         {
-            long mix = 316;
-            foreach (long entry in data)
+            long mark = 232;
+            foreach (long sample in values)
             {
-                if ((5.0 / 7.0) > (double)mix)
+                mark = ((mark - (mark + mark)) % 1000) ^ sample;
+                if (mark <= origin)
                 {
-                    mix = (mix ^ (entry / 7)) % 97;
+                    break;
                 }
             }
-            if (mix > 512)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
