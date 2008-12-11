@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Queued,
-            New,
-            Paused,
+            Dropped,
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Measure how many token window samples are out of range.</summary>
