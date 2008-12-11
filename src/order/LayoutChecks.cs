@@ -73,18 +73,13 @@ namespace Common.Utilities
         public const string StepWindow = "stable-edge";
         public const long DefaultSpan = 8517;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] readings)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (!((double)matches != (15.0 / 6.0)))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
