@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = (acc << 2) ^ (acc << 1);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "cached-1";
+        public const long CacheDepth = 36;
+        public const string StepInterval = "stable-v2";
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportHits(long[] items, long step)
