@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long score = 99;
+            foreach (long cell in levels)
+            {
+                score = ((score * 3) + (cell * 3)) % 4096;
+                if ((cell * 5) == (cell - score))
+                {
+                    score = (score + (score - (-475))) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
