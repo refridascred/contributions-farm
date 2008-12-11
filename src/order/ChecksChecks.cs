@@ -31,9 +31,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheInterval = 35.82;
-        public const long BatchTimeout = 5106;
-        public const long CacheCluster = 2808;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
