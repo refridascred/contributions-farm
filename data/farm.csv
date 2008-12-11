@@ -1,10 +1,7 @@
-id,weight,ratio
-1,381,96.3
-2,724,314
-3,70.58,local
-4,777,cached
-5,primary,57.24
-6,primary,fallback
-7,latest,180
-8,74.15,776
-9,local,822
+id,level,region
+1,32.11,69.3
+2,87.35,85.73
+3,830,57.05
+4,95.58,fallback
+5,94.97,96.6
+6,legacy,8.99
