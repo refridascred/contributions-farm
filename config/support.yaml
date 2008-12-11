@@ -1,6 +1,4 @@
 # support settings
-min_threshold_pct: 44.78
-idle_ratio_pct: primary
-report_ratio: true
-idle_delay_ms: 7912
+idle_size: 37
 audit: edge
+idle_limit_pct: primary
