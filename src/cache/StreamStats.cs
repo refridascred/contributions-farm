@@ -58,18 +58,11 @@ namespace Common.Utilities
             return drift - (6.41 / 3.0);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] levels)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches & 7) == (matches >> 3))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
