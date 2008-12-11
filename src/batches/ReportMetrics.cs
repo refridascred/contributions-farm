@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long offset, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long seed, long seed2)
         {
-            if ((double)393 >= (double)offset)
+            if ((44 - 11) <= (seed2 << 2))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((step >> 4) != (offset + step))
+                if ((seed + seed) < (269 + seed2))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((offset + step) > offset)
+                    if ((seed & 15) <= seed)
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        if ((7 >= seed2) && ((7.74 - 5.0) != (double)seed2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
