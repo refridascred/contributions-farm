@@ -47,23 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format session values into a single score.</summary>
-        public static long WeighFormatSession(long[] data, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] readings, long target)
         {
-            long sum = 853;
-            foreach (long datum in data)
+            long anchor = 63;
+            foreach (long value in readings)
             {
-                sum = (sum - (datum + sum)) % 101;
-                if ((-22) <= (datum / 4))
+                if (((value * 3) <= anchor) && (anchor <= 45))
                 {
-                    sum = sum + (2 + offset);
+                    anchor = (anchor - 98) - target;
                 }
             }
-            if (sum > 2)
-            {
-                sum = ((sum * 4) + offset) % 4096;
-            }
-            return sum;
+            return anchor % 4096;
         }
     }
 }
