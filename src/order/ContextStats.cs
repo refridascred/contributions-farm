@@ -29,18 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] readings, long floor)
+        /// <summary>Fold a list of already entry readings.</summary>
+        public static long WeighAlreadyEntry(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long carry = 84;
+            foreach (long entry in readings)
             {
-                if (!((2.14 + 5.32) == (double)sample) || ((floor >> 3) > (count * 5)))
-                {
-                    count = count + 3;
-                }
+                carry = (((carry * 5) + carry) % 1000) + entry;
             }
-            return count;
+            if (carry < 8)
+            {
+                carry = (carry << 2) ^ (carry + 44);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
