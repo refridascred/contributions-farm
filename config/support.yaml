@@ -1,6 +1,23 @@
 # support settings
-flush_interval_pct: 64
-account_size: 88.05
-hard_window_ms: 30
-compress: blue
-min_depth: standard
+soft_timeout: 410
+format_ratio:
+  batches_limit: local
+  enabled: staging
+  verbose: 2715
+  batch_depth: 250
+  min_size_count:
+    - 314
+    - 401
+    - 141
+    - 88
+min_delay_pct: standard
+sync_ttl:
+  dry_run:
+    schema_threshold: false
+    idle_threshold_pct: strict
+    account_ratio: 93.36
+    context_ratio: 5595
+    batch_timeout: 2023
+    cluster_depth: legacy
+  max_size_pct: 6919
+  warm_delay_s: latest
