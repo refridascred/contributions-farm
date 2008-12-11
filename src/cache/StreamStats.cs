@@ -35,11 +35,22 @@ namespace Common.Utilities
         public const long MinTimeout = 5731;
         public const string HardWidth = "fallback-edge";
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] readings, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((942 > reading) || ((double)seed <= (7.0 * 4.1)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
