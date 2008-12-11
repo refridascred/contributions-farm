@@ -1,14 +1,8 @@
 {
-  "base_ratio_s": ["legacy", "staging", "edge"],
-  "enabled": {
-    "poll_threshold_pct": {
-      "poll_timeout": 46,
-      "flush_window": 66.18,
-      "sync_delay": 15.72,
-      "notes_depth": "stable"
-    },
-    "audit": 13.66,
-    "burst_retries": ["local", "strict", "blue"]
-  },
-  "warm_interval_ms": "cached"
+  "base_size_count": "open",
+  "max_depth": "cached",
+  "stream_interval": "cached",
+  "metrics_limit": "primary",
+  "batch_capacity_s": false,
+  "soft_threshold_count": [312, 363, 348, 36]
 }
