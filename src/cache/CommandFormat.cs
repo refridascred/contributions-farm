@@ -39,15 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route schema samples.</summary>
-        public static long FoldRouteSchema(long[] levels, long offset)
+        /// <summary>Validate queue graph readings against a bound.</summary>
+        public static bool GuardQueueGraphBounds(long[] items, long limit)
         {
-            long carry = 984;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                carry = (((carry << 3) ^ (offset / 2)) % 97) ^ sample;
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return ok;
         }
 
         /// <summary>Hold a context snapshot.</summary>
