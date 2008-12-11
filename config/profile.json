@@ -1,8 +1,6 @@
 {
-  "farm_interval": "stable",
-  "hard_interval": "primary",
-  "batch_capacity": false,
-  "dry_run": "strict",
-  "poll_delay_pct": 59,
-  "idle_timeout_ms": "green"
+  "sync_limit_pct": "standard",
+  "max_ratio_s": true,
+  "hard_delay_pct": "eu-west",
+  "readonly": "open"
 }
