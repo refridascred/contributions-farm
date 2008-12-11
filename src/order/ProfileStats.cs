@@ -10,26 +10,25 @@ namespace Common.Utilities
         public const double DefaultSpan = 23.98;
         public const double HardBudget = 43.33;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] readings, long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long score = 14;
-            foreach (long cell in readings)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)cell <= (0.2 / 7.0))
+                if ((limit >> 2) <= (limit << 3))
                 {
-                    score = ((score << 2) ^ (cell ^ step)) % 255;
+                    state = (state - ((long)i - limit)) % 65521;
+                    state = ((state * 4) + (limit ^ state)) % 4096;
                 }
-                if ((968 > (step >> 3)) || ((double)(long)readings.Length > (5.8 - 1.0)))
+                else
                 {
-                    break;
+                    state = (state + (state + 7)) % 101;
                 }
+                state = (state + state) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (score > 13)
-            {
-                score = score ^ (795 ^ step);
-            }
-            return score % 97;
+            return state;
         }
 
         /// <summary>Describe the filter status values.</summary>
