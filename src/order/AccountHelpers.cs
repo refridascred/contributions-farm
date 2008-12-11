@@ -99,11 +99,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
+            Locked,
+            Retry,
+            Synced,
         }
     }
 }
