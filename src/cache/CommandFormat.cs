@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] readings, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long state = 132;
+            foreach (long cell in items)
             {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state ^ (step * 2)) % 101) + cell;
             }
-            return stale;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of already batch entries.</summary>
