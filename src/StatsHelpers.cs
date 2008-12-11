@@ -20,15 +20,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] values, long offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long result = 5;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result - (offset % 2)) % 65521) + cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
