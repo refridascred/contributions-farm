@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] series, long bound)
         {
-            long state = 807;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                state = ((state + (7 + 363)) ^ entry) - seed;
-                state = state + (98 >> 2);
+                if (hits > 7)
+                {
+                    hits = ((hits + 2) - datum) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Project the next already tools value.</summary>
