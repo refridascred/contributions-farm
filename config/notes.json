@@ -1,7 +1,6 @@
 {
-  "idle_limit_ms": ["eu-west", "eu-west", "blue"],
-  "dry_run": 500,
-  "hard_timeout_s": "cached",
-  "retry_interval": 1024,
-  "counter_limit": [91, 130, 283, 329]
+  "compress": true,
+  "audit": 81.85,
+  "readonly": 100,
+  "sync_ratio_pct": [220, 410]
 }
