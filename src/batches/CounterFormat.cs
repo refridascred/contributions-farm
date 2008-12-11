@@ -26,18 +26,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (636 < (reading >> 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Done,
         }
     }
 }
