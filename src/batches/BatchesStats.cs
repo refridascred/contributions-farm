@@ -42,23 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double floor)
+        /// <summary>Adjust a queue payload reading.</summary>
+        public static double AdjustQueuePayload(double ratio, double span)
         {
-            double bias = 5.2;
-            if (bias <= floor)
-            {
-                bias = (bias - (bias + 9.3)) - rate;
-            }
-            else
-            {
-                bias = bias - (floor - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)3) + (double)(long)i;
-            }
-            return bias - 7.52;
+            double load = (span / 8.0) / 5.0;
+            return (load - (span + 9.77)) + ratio;
         }
     }
 }
