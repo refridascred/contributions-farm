@@ -31,13 +31,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long seed, long limit)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            if ((double)limit < (20.0 * 4.61))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed < (3.1 - 3.4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + seed) > (limit - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed < 79)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
