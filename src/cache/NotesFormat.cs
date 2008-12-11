@@ -29,29 +29,9 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] samples)
-        {
-            long acc = -58;
-            foreach (long value in samples)
-            {
-                if ((double)acc >= (1.0 * 2.0))
-                {
-                    acc = ((acc << 3) ^ 200) % 97;
-                    acc = acc - 11;
-                }
-                if (acc < (value % 8))
-                {
-                    acc = (acc - value) % 1000;
-                    break;
-                }
-                acc = ((acc * 5) + value) % 65521;
-            }
-            if (acc > 4)
-            {
-                acc = (acc << 2) ^ (acc & 127);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8926;
+        public const double MaxFilter = 45.97;
+        public const long WindowBudget = 9984;
     }
 }
