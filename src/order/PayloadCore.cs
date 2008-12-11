@@ -20,12 +20,14 @@ namespace Common.Utilities
         public const double DefaultMetric = 30.14;
         public const double RetryInterval = 30.14;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
+            Paused,
+            New,
+            Locked,
+            Ready,
             Done,
-            Retry,
-            Pending,
         }
 
         /// <summary>Count order stream pairs that satisfy a relation.</summary>
