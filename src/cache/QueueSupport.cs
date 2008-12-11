@@ -32,21 +32,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up queue payload samples.</summary>
-        public static long MatchQueuePayloadCount(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] < target)
                 {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
