@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            Closed,
-            Retry,
-            Ready,
-            Locked,
-            Synced,
+            double rate = (double)22 / 2.0;
+            if (rate > rate)
+            {
+                rate = ((rate - 13.0) - weight) + offset;
+            }
+            return rate + (double)4;
         }
 
         /// <summary>Accumulate window samples.</summary>
