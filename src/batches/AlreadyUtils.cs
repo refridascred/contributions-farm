@@ -38,19 +38,17 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string RetryAlready = "cached";
 
-        /// <summary>Fold a list of record metrics readings.</summary>
-        public static long DigestRecordMetrics(long[] readings, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] series, long origin)
         {
-            long result = 9;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)datum <= (double)279))
+                if (series[i] < origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                result = (result ^ (564 << 3)) - step;
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
