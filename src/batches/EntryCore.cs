@@ -34,12 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowCount = 65.54;
-        public const long IdleSize = 1592;
-        public const string BurstSpan = "local-1";
-        public const long MinContext = 2144;
-        public const string IdleInterval = "standard-1";
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank contributi batch input into a small class.</summary>
         public static long ClassifyContributiBatch(long target, long offset)
