@@ -47,22 +47,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 7571;
+        public const long BurstToken = 2353;
+        public const long HardFactor = 263;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LookupOrderIndex(long[] samples, long offset)
