@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] series, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = sum ^ (sum + 300);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Accumulate tools route samples.</summary>
