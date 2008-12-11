@@ -68,16 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long score = 15;
+            foreach (long cell in data)
             {
-                acc = (acc << 3) ^ (7 ^ acc);
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((score >= (5 - score)) || (cell < (cell >> 3)))
+                {
+                    score = score ^ score;
+                }
             }
-            return acc;
+            if (score < 13)
+            {
+                score = (score ^ (score + score)) % 101;
+            }
+            return score;
         }
     }
 }
