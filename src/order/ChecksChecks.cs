@@ -31,12 +31,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long limit)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
