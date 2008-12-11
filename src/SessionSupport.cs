@@ -19,22 +19,22 @@ namespace Common.Utilities
         public const long MaxCommits = 1359;
         public const long SoftRatio = 1992;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] readings, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (origin <= (659 - 7))
+                if ((value + value) == (matches + (-9)))
                 {
-                    seen = (seen + 3) ^ entry;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
