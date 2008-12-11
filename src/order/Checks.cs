@@ -14,19 +14,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] values, long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the context mode values.</summary>
