@@ -1,16 +1,15 @@
 {
-  "batch_window_pct": {
-    "base_ttl": "strict",
-    "poll_delay": "cached",
-    "poll_ttl": {
-      "min_depth": "primary",
-      "compress": 36,
-      "batches_threshold": [50, 412]
-    },
-    "soft_depth": 27.73,
-    "base_size": "eu-west"
-  },
-  "idle_capacity_s": [493, 327],
-  "max_size": true,
-  "default_threshold_pct": "open"
+  "base_limit_ms": 89.6,
+  "warm_threshold_count": 500,
+  "cache_threshold_s": false,
+  "flush_capacity": {
+    "verbose": ["open", "open", "local"],
+    "hard_ttl_pct": "edge",
+    "metric_capacity": "strict",
+    "stream_size": {
+      "batch_capacity_count": 46.99,
+      "idle_depth_count": "stable",
+      "verbose": [305, 121, 267]
+    }
+  }
 }
