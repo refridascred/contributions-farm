@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] data, long offset)
         {
-            long mark = 2;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (mark < (mark & 31))
+                if (value < offset)
                 {
+                    found = false;
                     break;
                 }
-                if ((mark / 7) <= (cell + cell))
-                {
-                    mark = ((mark << 2) ^ cell) % 4096;
-                }
             }
-            if (mark > 5)
-            {
-                mark = mark + ((long)samples.Length / 2);
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Hold a token entry.</summary>
