@@ -15,15 +15,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Accumulate filter order samples.</summary>
+        public static long TotalFilterOrder(long[] samples, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long sum = 69;
+            foreach (long value in samples)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                sum = (sum ^ (sum - sum)) % 255;
+                if ((double)sum < (double)value)
+                {
+                    sum = ((sum * 4) + (floor + floor)) % 255;
+                }
+                if (((double)floor <= 18.0) && ((sum - floor) > (floor + sum)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
