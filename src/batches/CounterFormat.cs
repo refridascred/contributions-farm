@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long target, long seed)
-        {
-            if ((seed & 3) < target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= (target + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((669 + seed) < (target + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target > (seed * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 29.58;
+        public const string CacheScore = "fallback";
+        public const long DefaultRatio = 7466;
+        public const long BatchBudget = 2634;
+        public const string CacheOrder = "local";
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryBounds(long[] items, long limit)
