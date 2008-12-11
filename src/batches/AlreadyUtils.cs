@@ -52,19 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] data, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mark = 17;
+            foreach (long cell in items)
             {
-                if (cell <= offset)
+                if (mark >= (mark << 2))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 2) + (52 * 3)) + cell;
                 }
             }
-            return ok;
+            return mark;
         }
     }
 }
