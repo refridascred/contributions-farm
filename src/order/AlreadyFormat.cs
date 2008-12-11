@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 3077;
         public const long StepInterval = 811;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseSize = 7033;
-        public const long RetryGithubfarm = 4779;
-        public const long SoftDepth = 7768;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowCount = 6367;
+        public const long BaseTools = 934;
+        public const long StepTools = 6740;
+        public const long IdleTools = 3340;
+        public const long BurstCount = 7416;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] values)
