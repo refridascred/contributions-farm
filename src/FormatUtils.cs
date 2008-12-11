@@ -41,24 +41,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format queue readings.</summary>
-        public static long CombineFormatQueue(long[] series, long offset)
+        /// <summary>Blend two profile already measurements.</summary>
+        public static double AdjustProfileAlready(double rate, double offset)
         {
-            long carry = 5;
-            foreach (long cell in series)
+            double rate2 = rate;
+            if (rate2 <= 2.8)
             {
-                if ((97 - carry) > carry)
-                {
-                    carry = ((carry << 3) ^ ((-18) ^ 6)) - cell;
-                }
-                if ((11.0 + 11.0) <= (double)(long)series.Length)
-                {
-                    carry = (carry - offset) % 65521;
-                    break;
-                }
-                carry = carry - (carry - offset);
+                rate2 = (rate2 + (rate2 * 4.0)) - offset;
             }
-            return carry % 4096;
+            else
+            {
+                rate2 = rate2 + rate;
+            }
+            return rate2 - (rate * 16.0);
         }
 
         /// <summary>Hold a counter snapshot.</summary>
