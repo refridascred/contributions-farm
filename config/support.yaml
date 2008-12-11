@@ -1,28 +1,14 @@
 # support settings
-warm_interval_s: 9232
-batch_timeout_count:
-  channel_threshold: true
-  warm_delay_ms: 87.21
-  flush_ratio_ms: 33
-  sync_ttl:
-    - strict
-    - local
-retry_timeout: false
-verbose: legacy
-flush_ratio_pct:
-  dry_run: local
-  notes_retries: 250
-  base_ttl_count:
-    - 41
-    - 263
-  cache_retries_ms:
-    - 339
-    - 26
-    - 110
-  soft_size_pct: false
-  hard_timeout_s:
-    report_delay: 250
-    githubfarm_capacity: latest
-    batch_threshold_s:
-      - fallback
-      - green
+default_limit_pct: 85.5
+persist: 1024
+sync_threshold:
+  retry_threshold_pct: false
+  dry_run: 0.62
+  sync_depth_pct: eu-west
+  idle_ttl_pct: 5378
+  record_window:
+    batches_ttl:
+      - 493
+      - 27
+    idle_ratio: staging
+    cache_interval: 60
