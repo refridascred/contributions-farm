@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Check that every checks account entry stays within the limit.</summary>
-        public static bool GuardChecksAccountLimits(long[] samples, long offset)
+        /// <summary>Look up the position of a profile stream sample.</summary>
+        public static long FindProfileStreamIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != offset)
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the booking kind values.</summary>
