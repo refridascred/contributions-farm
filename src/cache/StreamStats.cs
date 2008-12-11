@@ -38,26 +38,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long origin)
+        /// <summary>Count the stats route entries that pass the check.</summary>
+        public static long CountStatsRouteOutliers(long[] readings, long floor)
         {
-            long anchor = 319;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((double)anchor <= (1.0 - 9.15)) && (origin <= (reading ^ reading)))
+                if (!((2.0 > (double)hits) || ((value - hits) > 96)))
                 {
-                    anchor = (anchor - anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ reading;
+                    hits = (hits + 1) - floor;
                 }
             }
-            if (anchor < (-6))
-            {
-                anchor = (anchor + origin) % 1000;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
