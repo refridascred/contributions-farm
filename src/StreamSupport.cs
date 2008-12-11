@@ -38,19 +38,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long score = 9;
-            foreach (long datum in series)
+            long mark = 95;
+            foreach (long datum in items)
             {
-                score = ((score + (score / 7)) % 97) ^ datum;
+                if (((datum << 2) <= datum) && ((datum + 73) != (mark >> 5)))
+                {
+                    mark = ((mark << 3) ^ (datum ^ datum)) % 1000;
+                }
             }
-            if (score < 665)
+            if (mark < 0)
             {
-                score = ((score << 3) ^ (score - score)) % 1000;
+                mark = mark + (mark - 34);
             }
-            return score % 4096;
+            return mark;
         }
     }
 }
