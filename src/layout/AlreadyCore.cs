@@ -33,18 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] samples)
+        /// <summary>Look up the position of a session report sample.</summary>
+        public static long LookupSessionReportIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((sample + sample) <= (sample + tally)) && (sample < (tally ^ tally)))
+                if (levels[i] < limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
