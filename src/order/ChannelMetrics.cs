@@ -16,17 +16,13 @@ namespace Common.Utilities
             return weight - (bias / 5.0);
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state * 3) + (state & 31);
-                state = ((state * 2) + (state + state)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine format session values into a single score.</summary>
