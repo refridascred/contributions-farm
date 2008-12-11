@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] items, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (sample <= bound)
+                if (!(((362 + (long)values.Length) < ((-679) + 1)) || ((item & 3) == (matches - matches))))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
