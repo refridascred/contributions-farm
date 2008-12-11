@@ -1,18 +1,6 @@
 {
-  "dry_run": "fallback",
-  "audit": {
-    "order_ratio": ["stable", "open", "primary"],
-    "retry_depth": 71,
-    "burst_window_s": 75.37,
-    "audit": {
-      "record_retries": "standard",
-      "metrics_threshold": "stable",
-      "cache_window_pct": "local",
-      "hard_capacity_pct": true
-    },
-    "sync_delay": [10, 338]
-  },
-  "counter_limit": true,
-  "cache_timeout_ms": true,
-  "enabled": "standard"
+  "burst_threshold": 68,
+  "order_delay": true,
+  "max_limit_ms": "edge",
+  "base_ttl_pct": true
 }
