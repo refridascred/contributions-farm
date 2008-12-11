@@ -1,8 +1,4 @@
 # entry settings
-default_timeout_s:
-  - 136
-  - 170
-  - 363
-  - 48
-counter_ttl: 60
-max_threshold_ms: 2472
+flush_limit_pct: 100
+queue_limit: 30
+dry_run: 496
