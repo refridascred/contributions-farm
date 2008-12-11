@@ -27,29 +27,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long origin, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long origin, long target)
         {
-            if ((6.23 + 9.47) <= (double)origin)
+            if (origin <= (origin + target))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((double)8 < (double)step)
+                if ((double)origin > (2.36 / 5.0))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)origin >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 7;
                 }
             }
         }
