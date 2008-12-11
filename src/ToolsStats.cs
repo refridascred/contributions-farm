@@ -69,11 +69,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Locate a route editor reading by value.</summary>
+        public static long FindRouteEditorIndex(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
