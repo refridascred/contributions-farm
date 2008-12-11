@@ -26,12 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Locked,
-            Queued,
-            Failed,
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine entry stream values into a single score.</summary>
