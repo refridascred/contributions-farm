@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 63;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = state ^ (cell ^ state);
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the buffer state values.</summary>
