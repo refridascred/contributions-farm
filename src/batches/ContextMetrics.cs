@@ -57,12 +57,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double rate, double span)
-        {
-            double mean = rate;
-            return mean + span;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowFactor = 69.62;
+        public const long BatchMetrics = 5437;
+        public const string MaxMetrics = "latest-edge";
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] series)
