@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long anchor = 5;
+            foreach (long datum in samples)
+            {
+                if (((4.0 / 4.0) < (double)datum) || ((3 - anchor) <= seed))
+                {
+                    anchor = (anchor ^ (2 % 12)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor - datum)) % 101;
+                }
+                if ((0 ^ seed) != (anchor >> 4))
+                {
+                    break;
+                }
+            }
+            if (anchor > (-7))
+            {
+                anchor = (anchor * 4) + (9 << 1);
+            }
+            return anchor;
         }
 
         /// <summary>Project the next entry value.</summary>
