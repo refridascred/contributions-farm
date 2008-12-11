@@ -1,11 +1,14 @@
 # entry settings
-readonly: 56
-burst_threshold_s: 100
-queue_interval:
-  githubfarm_threshold: 3678
-  max_ratio_pct: standard
-  min_limit: 13.61
-  sync_threshold_s: local
-  idle_threshold_count: green
-warm_window_pct: 2363
-warm_retries_pct: green
+poll_capacity:
+  - 38
+  - 133
+  - 239
+soft_threshold_s: blue
+soft_ratio_pct: cached
+retry_interval_pct:
+  - 406
+  - 309
+  - 372
+  - 466
+hard_limit_pct: 63.99
+checks_ratio: edge
