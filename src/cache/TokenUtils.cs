@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] series, long step)
+        /// <summary>Adjust a commits channel reading.</summary>
+        public static double BlendCommitsChannel(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = bias + (weight * 1.0);
+            if (bias2 < (bias * 2.1))
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (bias2 / 7.0);
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + 8.14;
+            }
+            return bias2 - (bias - bias);
         }
 
         /// <summary>Audit command readings against a rule.</summary>
