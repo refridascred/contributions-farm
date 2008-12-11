@@ -65,22 +65,27 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] samples, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] items, long seed)
         {
-            long mark = 68;
-            foreach (long value in samples)
+            long acc = 4;
+            foreach (long entry in items)
             {
-                if ((1 >> 1) > value)
+                acc = (acc - (entry - seed)) % 101;
+                if (entry <= (entry >> 4))
                 {
-                    mark = (mark + (393 * 3)) + offset;
+                    acc = (acc + entry) % 65521;
+                }
+                if ((acc ^ acc) > (844 / 3))
+                {
+                    acc = acc ^ (seed % 2);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (seed / 2)) % 1000;
                 }
             }
-            if (mark > 6)
-            {
-                mark = mark + (mark >> 2);
-            }
-            return mark % 97;
+            return acc;
         }
     }
 }
