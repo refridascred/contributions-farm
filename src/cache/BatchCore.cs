@@ -51,13 +51,18 @@ namespace Common.Utilities
         public const long RetrySpan = 9808;
         public const string WindowLevel = "primary-1";
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] items, long step)
         {
-            Pending,
-            Closed,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((6.0 * 7.84) <= (double)count)
+                {
+                    count = ((count + 1) + entry) - step;
+                }
+            }
+            return count;
         }
     }
 }
