@@ -44,28 +44,16 @@ namespace Common.Utilities
             return bias2 - span;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data, long limit)
+        /// <summary>Digest a series of token cluster entries.</summary>
+        public static long TotalTokenCluster(long[] series)
         {
-            long score = 519;
-            foreach (long sample in data)
+            long score = 3;
+            foreach (long item in series)
             {
-                if (((8.56 * 2.86) > (double)sample) && ((946 - (long)data.Length) == (sample & 7)))
+                if (((-7) >> 1) >= (score - score))
                 {
-                    break;
+                    score = ((score << 3) ^ (score + score)) - item;
                 }
-                else
-                {
-                    score = ((score * 3) + (70 + score)) + limit;
-                }
-                if ((double)(long)data.Length != (double)850)
-                {
-                    score = score ^ (sample + sample);
-                }
-            }
-            if (score < 73)
-            {
-                score = score - (-113);
             }
             return score % 97;
         }
