@@ -56,21 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile context readings.</summary>
-        public static long MatchProfileContextCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 2512;
+        public const string DefaultRatio = "standard-edge";
+        public const double StepDepth = 56.62;
+        public const double StepFactor = 55.68;
     }
 }
