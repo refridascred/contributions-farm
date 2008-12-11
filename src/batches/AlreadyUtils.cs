@@ -22,10 +22,20 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSize = 2199;
-        public const long MaxInterval = 9004;
-        public const long CacheSchema = 9762;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((seed + (long)i) == (seed & 15)) && ((long)i >= seed))
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long floor, long step)
