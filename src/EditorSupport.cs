@@ -61,19 +61,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (seen <= (datum + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryFactor = 399;
+        public const string DefaultTimeout = "primary-edge";
+        public const long WindowSession = 5964;
+        public const string BurstSession = "standard";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 9915;
