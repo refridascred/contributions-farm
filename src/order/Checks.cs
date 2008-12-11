@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] series, long bound)
         {
-            Ready,
-            New,
-            Closed,
-            Dropped,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (bound <= (item + 16))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the context mode values.</summary>
