@@ -22,12 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
+            public long Token { get; set; }
             public long Score { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
