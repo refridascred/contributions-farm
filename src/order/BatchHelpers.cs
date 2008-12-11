@@ -5,31 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values, long target)
         {
-            if ((origin + floor) > (origin + origin))
+            long state = 77;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((16.0 / 9.0) > (double)origin)
+                state = state ^ (sample & 127);
+                if (target < (target << 2))
                 {
-                    return 6;
+                    state = state ^ (target - 6);
+                    break;
+                }
+                if ((double)sample == (7.1 + 6.52))
+                {
+                    state = state + (state - target);
                 }
                 else
                 {
-                    if ((double)origin >= (5.29 / 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = state - (sample << 1);
                 }
             }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
