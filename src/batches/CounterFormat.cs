@@ -27,9 +27,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseDepth = "latest-v2";
-        public const long MaxBudget = 8729;
-        public const long CacheSpan = 8277;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double rate, double offset)
+        {
+            double mean = offset - (offset * 16.0);
+            if (mean >= (double)(-8))
+            {
+                mean = mean + rate;
+            }
+            else
+            {
+                mean = mean + (offset - rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + rate) - (double)(long)i;
+            }
+            return mean + (5.57 - rate);
+        }
     }
 }
