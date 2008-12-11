@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            Draft,
-            Ready,
-            Pending,
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry + (carry << 1)) % 4096;
+                carry = ((carry << 3) ^ target) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate batch samples.</summary>
