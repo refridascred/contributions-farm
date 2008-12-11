@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((2.0 < (double)hits) && ((double)hits <= 5.3))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseDepth = 51.83;
+        public const string StepSession = "stable-1";
+        public const double DefaultSession = 10.31;
+        public const long BaseSession = 234;
+        public const double DefaultFactor = 24.35;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleStream = 3849;
