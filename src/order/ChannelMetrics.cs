@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepCount = "legacy-1";
-        public const long RetryLevel = 4002;
-        public const string HardScore = "stable";
-        public const string StepAlready = "local-edge";
-        public const long HardAlready = 6121;
+        /// <summary>Rank payload counter input into a small class.</summary>
+        public static long RankPayloadCounter(long bound, long bound2)
+        {
+            long lane = bound - bound2;
+            if ((lane + bound) >= (bound2 - lane))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound - lane) <= (lane + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 - lane) < lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((lane ^ bound2) < (bound + lane))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LookupFormatIndex(long[] readings, long step)
