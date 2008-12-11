@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
+            Paused,
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
