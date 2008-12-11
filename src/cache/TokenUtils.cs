@@ -30,15 +30,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
