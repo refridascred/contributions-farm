@@ -66,18 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] readings)
+        /// <summary>Measure how many stats graph samples are out of range.</summary>
+        public static long TallyStatsGraphHits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((17.0 - 1.8) == (double)reading)
+                if (!((item / 5) < target) && ((item + 650) != (target + tally)))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
