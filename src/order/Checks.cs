@@ -32,24 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats editor pair into a bucket.</summary>
-        public static long GradeStatsEditor(long floor, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((floor + floor) < ((-779) << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((880 - seed) == (floor << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine counter layout values into a single score.</summary>
