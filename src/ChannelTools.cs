@@ -23,12 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] levels, long bound)
         {
-            New,
-            Queued,
-            Failed,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine route values into a single score.</summary>
