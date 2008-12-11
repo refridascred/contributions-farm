@@ -24,21 +24,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 88;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor - anchor) ^ reading;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the layout status values.</summary>
