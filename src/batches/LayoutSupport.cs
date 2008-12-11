@@ -50,14 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] series, long seed)
         {
-            Synced,
-            Dropped,
-            Ready,
-            Paused,
-            New,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!(6.0 >= (double)seed))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
