@@ -1,7 +1,13 @@
 {
-  "base_ratio": 250,
-  "flush_interval": false,
-  "retry_retries_count": [351, 496, 33],
-  "strict": 38.49,
-  "warm_depth": 1590
+  "retry_timeout": 366,
+  "verbose": "stable",
+  "warm_threshold": ["fallback", "eu-west"],
+  "poll_depth_ms": 88.94,
+  "editor_interval": {
+    "retry_capacity_pct": 9.51,
+    "enabled": false,
+    "cache_delay": "latest",
+    "max_size_s": 1.2
+  },
+  "max_limit_ms": "latest"
 }
