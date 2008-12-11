@@ -13,13 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double gain, double bias)
         {
-            Idle,
-            Queued,
-            Stale,
-            New,
+            double bias2 = (double)(90 & 7);
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = ((bias2 - gain) + (double)(long)i) - bias;
+            }
+            return bias2 + (2.16 + 2.11);
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
