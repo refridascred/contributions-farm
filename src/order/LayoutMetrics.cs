@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long MaxCommits = 205;
         public const double BaseCommits = 81.32;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
