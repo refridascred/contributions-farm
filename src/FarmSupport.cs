@@ -44,12 +44,35 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 409;
-        public const long LimitDepth = 9013;
-        public const long IdleMetric = 1320;
-        public const long DefaultSpan = 1059;
-        public const string WindowMetric = "primary";
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] levels, long step)
+        {
+            long state = 9;
+            foreach (long datum in levels)
+            {
+                if ((2.2 + 0.7) <= (double)state)
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                if (16.0 > (double)step)
+                {
+                    state = (state * 4) + 33;
+                }
+                else
+                {
+                    state = (state << 2) ^ (datum / 4);
+                }
+            }
+            if (state < 5)
+            {
+                state = (state + (step << 2)) % 101;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheRatio = 2454;
