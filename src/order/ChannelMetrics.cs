@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Measure how many context notes samples are out of range.</summary>
+        public static long CountContextNotesOutliers(long[] values)
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((((hits + hits) >= (cell * 4)) || ((cell - hits) != ((-2) - cell))) || ((double)cell >= 1.9))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
