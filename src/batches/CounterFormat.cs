@@ -27,23 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double rate, double offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            double mean = offset - (offset * 16.0);
-            if (mean >= (double)(-8))
+            double ratio = rate + rate;
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean + rate;
+                ratio = (ratio - bias) + (double)(long)i;
             }
-            else
-            {
-                mean = mean + (offset - rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + rate) - (double)(long)i;
-            }
-            return mean + (5.57 - rate);
+            return ratio + ratio;
         }
     }
 }
