@@ -22,13 +22,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data)
         {
-            Idle,
-            New,
-            Dropped,
-            Synced,
+            long mix = 316;
+            foreach (long entry in data)
+            {
+                if ((5.0 / 7.0) > (double)mix)
+                {
+                    mix = (mix ^ (entry / 7)) % 97;
+                }
+            }
+            if (mix > 512)
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
