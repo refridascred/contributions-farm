@@ -64,18 +64,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] values, long offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((cell + cell) > matches) || ((cell >> 1) < (offset + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Ready,
+            Done,
         }
     }
 }
