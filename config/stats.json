@@ -1,5 +1,6 @@
 {
-  "default_capacity_s": true,
-  "session_retries": "staging",
-  "sync_threshold_count": 63.41
+  "max_depth_s": "latest",
+  "strict": false,
+  "graph_size": 6.54,
+  "verbose": false
 }
