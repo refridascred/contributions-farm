@@ -30,19 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double scale, double span)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long offset, long origin)
         {
-            double ratio = span;
-            if (ratio >= (double)8)
+            long lane = offset + origin;
+            if ((lane & 31) >= (origin * 5))
             {
-                ratio = (ratio + ratio) - scale;
+                return 6;
             }
             else
             {
-                ratio = ratio - ratio;
+                if ((lane * 4) > lane)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((6.6 - 4.7) == (double)origin) || ((offset * 5) <= 351))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((lane + offset) < 670)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return ratio - (span * 8.5);
         }
 
         /// <summary>Hold a support info.</summary>
