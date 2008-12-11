@@ -36,10 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 3.03;
-        public const long LimitSchema = 8827;
-        public const long SoftLevel = 1827;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Dropped,
+            Draft,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long limit)
