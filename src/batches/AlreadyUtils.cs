@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine stats payload values into a single score.</summary>
-        public static long CombineStatsPayload(long[] levels, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] levels, long step)
         {
-            long mix = 26;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                double load = (double)(datum / 8);
-                if (((load / 9.0) > (double)mix) && ((load + load) != (double)566))
+                if (entry >= step)
                 {
-                    load = load + load;
-                    mix = mix - (datum / 2);
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mix = (mix ^ (datum + limit)) % 1000;
             }
-            if (mix < 1)
-            {
-                mix = (mix << 2) ^ (mix * 4);
-            }
-            return mix % 97;
+            return ok;
         }
 
         /// <summary>Look up the position of a filter account sample.</summary>
