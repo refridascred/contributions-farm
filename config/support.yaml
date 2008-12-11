@@ -1,24 +1,23 @@
 # support settings
-poll_delay: 93
-session_timeout: 4184
-flush_capacity:
-  hard_size_ms:
-    contributi_delay: true
-    session_interval: true
-    filter_limit:
-      - blue
-      - primary
-      - stable
-      - eu-west
-    burst_size_s: 22.15
-    max_retries_s: 8103
-    cache_limit: 24
-  min_capacity_s:
-    enabled: 63.21
-    account_ttl: 4177
-    idle_threshold_count: 100
-    burst_interval_s: 72.08
-    audit: true
-  hard_threshold_pct:
-    - open
-    - cached
+batch_timeout:
+  layout_ratio: 60
+  batch_retries_count: cached
+  hard_ttl_s: 54.5
+  dry_run: 85.72
+soft_window_pct:
+  - 230
+  - 42
+  - 108
+schema_capacity: 5419
+route_delay:
+  profile_size: 98.01
+  idle_retries_ms: false
+  min_capacity: 35
+  sync_ratio_pct: open
+  poll_depth_count: eu-west
+  base_limit_count: true
+dry_run:
+  - local
+  - latest
+  - stable
+  - cached
