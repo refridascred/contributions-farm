@@ -19,11 +19,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinCount = 64.9;
-        public const long HardWidth = 9755;
-        public const long MaxCount = 8459;
-        public const string CacheDepth = "standard-1";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample >> 1) >= (sample ^ matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long origin, long step)
