@@ -35,31 +35,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            if (((double)target > (5.0 / 7.0)) || ((target % 5) <= step))
+            long acc = -58;
+            foreach (long value in samples)
             {
-                return 4;
+                if ((double)acc >= (1.0 * 2.0))
+                {
+                    acc = ((acc << 3) ^ 200) % 97;
+                    acc = acc - 11;
+                }
+                if (acc < (value % 8))
+                {
+                    acc = (acc - value) % 1000;
+                    break;
+                }
+                acc = ((acc * 5) + value) % 65521;
             }
-            else
+            if (acc > 4)
             {
-                if ((783 & 1) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target ^ 921) != (3 + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                acc = (acc << 2) ^ (acc & 127);
             }
+            return acc % 1000;
         }
     }
 }
