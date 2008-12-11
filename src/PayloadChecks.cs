@@ -66,10 +66,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftBudget = "strict";
-        public const long BurstToken = 3242;
-        public const long CacheScore = 1632;
-        public const long MaxToken = 855;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Ready,
+            Retry,
+            Done,
+        }
     }
 }
