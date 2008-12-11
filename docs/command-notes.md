@@ -1,10 +1,15 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-The format helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often support data is refreshed.
+The route module keeps graph values in sync with the already cache.
+Defaults for schema live in the config folder and can be overridden per environment.
+
+A channel that stays idle for too long is moved to the payload list.
+When a channel fails, the context handler retries a few times before giving up.
+When a batch fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new report fields
-- Validate batch input early
-- Keep already values small
+- Document new metrics fields
+- Validate filter input early
+- Log every metric change
