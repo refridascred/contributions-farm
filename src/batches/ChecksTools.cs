@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double gain, double bias)
+        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
+        public static long PairSchemaFilterCount(long[] data)
         {
-            double gain2 = gain - bias;
-            if (gain2 < (gain2 / 2.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = gain2 + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 - (bias + gain);
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
