@@ -35,14 +35,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Active,
-            Failed,
-            Closed,
+            Retry,
+            Queued,
             Locked,
-            Draft,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
