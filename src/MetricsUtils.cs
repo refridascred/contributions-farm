@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] levels, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] values, long offset)
         {
-            long acc = 67;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                acc = (acc + sample) + step;
+                if ((double)offset < (double)696)
+                {
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc > 75)
-            {
-                acc = acc ^ (64 - acc);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
