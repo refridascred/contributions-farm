@@ -31,22 +31,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit cluster token readings against a rule.</summary>
-        public static long CountClusterTokenOutliers(long[] items)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = 86;
+            foreach (long sample in readings)
             {
-                if ((item & 127) <= item)
+                if (!((sample - step) <= (step + total)))
                 {
-                    hits = hits + 1;
+                    total = (total ^ 22) % 65521;
                 }
-                else
+                if ((step - 746) <= (step * 5))
                 {
-                    hits = hits - 1;
+                    total = ((total * 5) + (sample ^ total)) % 65521;
                 }
             }
-            return hits;
+            if (total > 0)
+            {
+                total = (total - (step - 725)) % 1000;
+            }
+            return total;
         }
     }
 }
