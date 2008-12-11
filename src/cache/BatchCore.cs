@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 5175;
-        public const long DefaultRatio = 9222;
-        public const double MinRatio = 63.03;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((limit & 255) <= limit)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFarm = 3310;
