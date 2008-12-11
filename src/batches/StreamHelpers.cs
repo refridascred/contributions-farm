@@ -71,11 +71,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseTimeout = 5433;
+        public const string BaseCount = "fallback-1";
+        public const long MaxBudget = 3959;
+        public const string WindowBuffer = "alpha-v2";
+        public const long MinBuffer = 4642;
     }
 }
