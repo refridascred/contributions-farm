@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-The cluster module keeps graph values in sync with the commits cache.
+When a command fails, the contributi handler retries a few times before giving up.
+Run the tools check before changing any layout limits.
+Run the cluster check before changing any batch limits.
+
+Use notes settings to tune how often session data is refreshed.
+Use notes settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Document new token fields
-- Review queue limits each release
-- Validate already input early
+- Prefer queue defaults
+- Keep counter values small
+- Review checks limits each release
