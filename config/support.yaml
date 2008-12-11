@@ -1,4 +1,7 @@
 # support settings
-idle_size: 37
-audit: edge
-idle_limit_pct: primary
+compress: 29
+base_delay_pct: true
+window_ttl:
+  - 73
+  - 29
+  - 63
