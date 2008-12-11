@@ -17,22 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes session readings.</summary>
-        public static long WeighNotesSession(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] items)
         {
-            long result = 166;
-            foreach (long cell in values)
+            long mix = -47;
+            foreach (long entry in items)
             {
-                if ((double)cell == (2.82 - 6.5))
+                if ((mix - mix) <= (mix << 3))
                 {
-                    result = ((result << 2) ^ (923 ^ result)) % 4096;
-                }
-                else
-                {
-                    result = result ^ (cell * 2);
+                    mix = (mix - (entry << 3)) % 4096;
                 }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the token status values.</summary>
