@@ -10,25 +10,15 @@ namespace Common.Utilities
         public const long WindowProfile = 2152;
         public const long MaxWidth = 59;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long limit, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double scale, double offset)
         {
-            long prev = limit ^ target;
-            if ((target / 2) >= (limit * 5))
+            double rate = scale;
+            if (rate >= (offset * 15.0))
             {
-                return 6;
+                rate = rate - (scale + rate);
             }
-            else
-            {
-                if ((double)prev < (0.5 - 17.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return rate + (scale + offset);
         }
 
         /// <summary>Locate a cluster token reading by value.</summary>
