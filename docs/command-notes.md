@@ -1,11 +1,11 @@
 # Command notes
 
-Keep format and account names short and lowercase.
-Keep commits and context names short and lowercase.
+Keep graph and metric names short and lowercase.
+The entry report groups every context by channel.
+The tools module keeps githubfarm values in sync with the record cache.
 
 ## Guidelines
 
-- Review command limits each release
-- Validate report input early
-- Log every batches change
-- Keep metric values small
+- Validate metrics input early
+- Document new tools fields
+- Review payload limits each release
