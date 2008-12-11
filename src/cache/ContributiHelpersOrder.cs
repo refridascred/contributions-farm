@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 6223;
+        public const string MinWidth = "strict-1";
+        public const long WindowSupport = 6607;
+        public const long LimitSupport = 6696;
 
         /// <summary>Count the commits token entries that pass the check.</summary>
         public static long CountCommitsTokenGaps(long[] readings)
