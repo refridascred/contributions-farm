@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "cached-1";
-        public const long CacheDepth = 36;
-        public const string StepInterval = "stable-v2";
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Failed,
+            New,
+            Stale,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportHits(long[] items, long step)
