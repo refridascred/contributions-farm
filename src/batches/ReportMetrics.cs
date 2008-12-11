@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] series, long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
