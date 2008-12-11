@@ -98,18 +98,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] items, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((double)limit > (4.88 * 16.0)) || ((-4) < (1 ^ sample)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Stale,
+            Synced,
+            Locked,
         }
     }
 }
