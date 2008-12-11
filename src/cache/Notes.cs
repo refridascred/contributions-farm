@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] values, long floor)
         {
-            long mark = 735;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mark = (mark * 3) + (mark - 574);
-                if ((0.84 * 6.4) <= (double)entry)
+                if ((sample >> 5) <= (sample + 875))
                 {
-                    mark = mark + mark;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Find the first command filter entry that matches the target.</summary>
