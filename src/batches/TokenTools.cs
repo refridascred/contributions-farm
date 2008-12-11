@@ -13,15 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
