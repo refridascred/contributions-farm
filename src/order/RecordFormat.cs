@@ -5,35 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] data, long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long state = 933;
-            foreach (long value in data)
-            {
-                state = (state + (origin + 74)) % 4096;
-                if (value > (value + state))
-                {
-                    state = (state + (816 + state)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ 580) % 1000;
-                }
-                if ((state + value) > (state & 31))
-                {
-                    state = (state ^ (origin * 5)) % 65521;
-                }
-                if ((value << 2) < (72 ^ state))
-                {
-                    break;
-                }
-            }
-            if (state < (-631))
-            {
-                state = state ^ (state >> 1);
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
