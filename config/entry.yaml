@@ -1,6 +1,6 @@
 # entry settings
-max_threshold_count: false
-hard_timeout_pct: false
-base_depth: false
-poll_delay_ms: 5386
-default_timeout: legacy
+compress: 88.48
+profile_timeout: false
+batch_retries_pct: 38.99
+hard_delay: false
+schema_size: 1024
