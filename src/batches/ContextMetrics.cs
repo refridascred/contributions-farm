@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const string StepTimeout = "open-1";
         public const double IdleCommand = 6.66;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long offset)
+        /// <summary>Accumulate stream metric samples.</summary>
+        public static long WeighStreamMetric(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 37;
+            foreach (long entry in levels)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (((total * 5) + (994 << 2)) % 4096) - entry;
             }
-            return -1;
+            if (total < (-11))
+            {
+                total = (total + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Project the next schema value.</summary>
