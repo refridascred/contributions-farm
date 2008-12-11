@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = span;
+            if (bias < ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias + (double)3;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + ratio) - (double)(long)i;
+            }
+            return bias - 4.28;
         }
 
         /// <summary>Hold a channel stats.</summary>
