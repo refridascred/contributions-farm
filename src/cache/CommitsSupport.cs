@@ -27,17 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the session phase values.</summary>
