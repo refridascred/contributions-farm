@@ -1,5 +1,8 @@
 {
-  "strict": 9,
-  "readonly": "stable",
-  "compress": 30
+  "persist": 30,
+  "strict": "staging",
+  "verbose": "edge",
+  "buffer_window": false,
+  "counter_threshold": true,
+  "readonly": "standard"
 }
