@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseLevel = 8270;
-        public const double HardChecks = 1.8;
-        public const long RetryWidth = 7065;
-        public const long BaseChecks = 4906;
+        /// <summary>Validate schema entry readings against a bound.</summary>
+        public static bool ValidateSchemaEntryBounds(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a profile metric reading by value.</summary>
         public static long FindProfileMetricIndex(long[] readings, long target)
