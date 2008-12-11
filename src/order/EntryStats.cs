@@ -25,18 +25,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] levels)
+        /// <summary>Combine filter context values into a single score.</summary>
+        public static long DigestFilterContext(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long acc = 765;
+            foreach (long value in values)
             {
-                if (!(((double)tally > (9.6 * 8.5)) && ((double)tally != (9.0 + 3.86))))
+                if (((930 ^ acc) < acc) || ((double)value < (double)acc))
                 {
-                    tally = (tally + 3) ^ entry;
+                    acc = ((acc << 2) ^ (69 >> 3)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - acc) % 4096;
                 }
             }
-            return tally;
+            if (acc > 433)
+            {
+                acc = (acc * 4) + (acc + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many cache context samples are out of range.</summary>
