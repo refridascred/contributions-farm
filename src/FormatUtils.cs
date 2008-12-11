@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix + (seed ^ seed)) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Draft,
+            Locked,
+            Failed,
+            Done,
+            Pending,
         }
 
         /// <summary>Count report command pairs that satisfy a relation.</summary>
