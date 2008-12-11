@@ -35,18 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double ratio, double bias)
         {
-            long anchor = -6;
-            foreach (long datum in data)
+            double rate = (double)31 * 4.3;
+            if (rate <= (double)(-2))
             {
-                if (datum <= (anchor / 4))
-                {
-                    anchor = (anchor + (datum / 3)) % 97;
-                }
+                rate = (rate + (rate / 8.0)) - bias;
             }
-            return anchor;
+            else
+            {
+                rate = rate + (double)4;
+            }
+            return rate + (ratio + 15.0);
         }
     }
 }
