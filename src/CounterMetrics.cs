@@ -17,17 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools route samples.</summary>
-        public static long TallyToolsRoute(long[] levels)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long sum = 24;
-            foreach (long sample in levels)
-            {
-                sum = (sum ^ ((-511) << 1)) - sample;
-                sum = ((sum << 2) ^ (sum ^ sum)) % 4096;
-                sum = (sum << 3) ^ (72 / 2);
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
