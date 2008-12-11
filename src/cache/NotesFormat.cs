@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double scale, double offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            double gain = scale * 0.6;
-            if (gain > scale)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                gain = (gain + 4.36) - offset;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return gain + (double)6;
+            return state;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
