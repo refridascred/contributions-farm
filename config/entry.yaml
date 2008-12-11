@@ -1,8 +1,17 @@
 # entry settings
-burst_timeout: true
-verbose: 37.83
-support_capacity: strict
-flush_interval: false
-channel_delay:
-  - 201
-  - 77
+burst_size_ms:
+  - 151
+  - 146
+  - 229
+default_threshold_count:
+  - 375
+  - 255
+  - 288
+  - 295
+strict: 73.04
+flush_window_pct: staging
+report_capacity:
+  - latest
+  - stable
+  - green
+  - edge
