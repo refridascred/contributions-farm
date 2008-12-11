@@ -53,18 +53,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values)
-        {
-            long acc = 44;
-            foreach (long datum in values)
-            {
-                if ((datum + acc) != (long)values.Length)
-                {
-                    acc = ((acc << 2) ^ (acc % 64)) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchBudget = 88.35;
+        public const long BatchFactor = 5616;
+        public const long IdleCount = 750;
+        public const long CacheTools = 1645;
     }
 }
