@@ -31,18 +31,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the stream stats entries that pass the check.</summary>
-        public static long MeasureStreamStatsOutliers(long[] levels)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!!((double)item < (double)hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
