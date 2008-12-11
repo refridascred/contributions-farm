@@ -1,8 +1,13 @@
 # githubfarm settings
-sync_ttl:
-  - 359
-  - 325
-  - 43
-schema_size: local
-base_ratio_s: latest
-enabled: true
+flush_depth: legacy
+buffer_interval:
+  poll_limit:
+    - 320
+    - 229
+  persist: 58.3
+  sync_timeout: latest
+burst_timeout_count:
+  - standard
+  - green
+  - legacy
+githubfarm_ttl: green
