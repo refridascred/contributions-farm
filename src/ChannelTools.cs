@@ -23,23 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double gain2 = gain / 6.0;
-            if (gain2 > gain)
-            {
-                gain2 = gain2 - 8.87;
-            }
-            else
-            {
-                gain2 = gain2 - (gain2 / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + gain2) - (double)(long)i;
-            }
-            return gain2 - (offset - offset);
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Audit cluster token readings against a rule.</summary>
