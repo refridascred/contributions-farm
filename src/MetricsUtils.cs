@@ -46,13 +46,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            New,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 7787;
+        public const double CacheLevel = 50.02;
+        public const double MinCount = 51.91;
+        public const long MinWidth = 7912;
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
         public static bool GuardSchemaToolsRange(long[] items, long target)
