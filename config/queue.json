@@ -1,18 +1,7 @@
 {
-  "channel_depth": false,
-  "batch_ttl_s": 43,
-  "layout_threshold": "standard",
-  "default_ttl_pct": ["local", "latest"],
-  "audit": {
-    "compress": {
-      "sync_timeout_ms": "standard",
-      "dry_run": 1024,
-      "poll_capacity_count": 30,
-      "default_retries": 1
-    },
-    "githubfarm_ttl": "standard",
-    "idle_size_pct": "stable",
-    "min_capacity_ms": ["edge", "blue", "stable"]
-  },
-  "session_delay": false
+  "base_ratio": 250,
+  "flush_interval": false,
+  "retry_retries_count": [351, 496, 33],
+  "strict": 38.49,
+  "warm_depth": 1590
 }
