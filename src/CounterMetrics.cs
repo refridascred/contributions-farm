@@ -32,18 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph payload readings against a rule.</summary>
-        public static long AuditGraphPayloadMatches(long[] values)
+        /// <summary>Locate a commits farm reading by value.</summary>
+        public static long FindCommitsFarmIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + count) <= (count - 85))
+                if ((values[i] > step) && ((values[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
