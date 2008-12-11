@@ -52,18 +52,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 1712;
+        public const long LimitSize = 6298;
+        public const double LimitFilter = 52.75;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] values)
