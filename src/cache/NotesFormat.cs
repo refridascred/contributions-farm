@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] levels, long offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double weight = 6.88;
+            if (weight > 1.91)
             {
-                if (!!((entry ^ offset) > (hits + 6)))
-                {
-                    hits = hits + 3;
-                }
+                weight = (weight + (bias - weight)) - scale;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 6.0) + (double)(long)i;
+            }
+            return weight + (double)(-2);
         }
 
         /// <summary>Describe the contributi kind values.</summary>
