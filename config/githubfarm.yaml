@@ -1,15 +1,7 @@
 # githubfarm settings
-channel_depth:
-  window_threshold: 5.1
-  idle_ttl_count: fallback
-  readonly: false
-  compress: cached
-  warm_ratio_ms: blue
-sync_timeout_count: 75
-max_interval: 6
-soft_retries_ms:
-  base_capacity_s: legacy
-  metric_threshold: legacy
-  max_threshold_count: local
-  readonly: cached
-  poll_retries_count: staging
+max_ratio: local
+context_depth: 9433
+sync_depth: open
+idle_interval: 500
+hard_interval: 500
+audit: 7116
