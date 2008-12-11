@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long HardEditor = 8159;
         public const long BurstBudget = 7854;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long score = -8;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= (0.2 / 7.0))
-                {
-                    score = ((score * 5) + ((-87) / 6)) - target;
-                }
-                if (4.7 > (double)score)
-                {
-                    break;
-                }
-            }
-            return score;
+            Ready,
+            Active,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
