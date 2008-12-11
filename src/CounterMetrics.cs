@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Match up notes already samples.</summary>
+        public static long MatchNotesAlreadyCount(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum ^ (sum + 300);
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a layout stats.</summary>
