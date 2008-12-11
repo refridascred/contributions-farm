@@ -1,7 +1,15 @@
 {
-  "graph_capacity": 33.85,
-  "stats_retries": "primary",
-  "flush_capacity_ms": ["standard", "cached", "edge"],
-  "checks_timeout": true,
-  "poll_window_s": [450, 312, 165]
+  "base_timeout": "fallback",
+  "audit": ["cached", "open", "staging", "open"],
+  "command_limit": "latest",
+  "burst_retries_s": 4774,
+  "strict": "green",
+  "warm_limit_s": {
+    "persist": 77.89,
+    "sync_limit_count": ["strict", "stable", "eu-west"],
+    "cache_delay": "legacy",
+    "buffer_size": 64,
+    "burst_retries_ms": 70,
+    "session_depth": 82.75
+  }
 }
