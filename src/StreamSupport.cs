@@ -25,15 +25,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double weight, double offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double weight2 = offset;
-            if (weight2 > (weight2 * 3.5))
-            {
-                weight2 = weight2 + offset;
-            }
-            return weight2 + weight;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
