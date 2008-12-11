@@ -1,20 +1,6 @@
 {
-  "max_capacity": {
-    "max_timeout_s": {
-      "route_capacity": 20,
-      "readonly": 74.72,
-      "warm_delay": true,
-      "format_capacity": ["local", "green", "local", "strict"]
-    },
-    "readonly": ["green", "open", "primary"],
-    "context_threshold": false,
-    "burst_retries_count": "green"
-  },
-  "account_delay": {
-    "flush_ttl": "standard",
-    "metric_ratio": "latest",
-    "metric_delay": 40,
-    "route_timeout": 36.58
-  },
-  "schema_limit": "blue"
+  "dry_run": 27.7,
+  "profile_threshold": [148, 72, 271],
+  "record_interval": [146, 60, 310, 399],
+  "burst_ttl_ms": 25
 }
