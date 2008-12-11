@@ -45,18 +45,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] series, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((target << 2) >= (entry * 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Paused,
+            Failed,
+            Synced,
         }
     }
 }
