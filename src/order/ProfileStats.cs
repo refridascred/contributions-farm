@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepWidth = 7723;
+        public const long StepCommand = 6077;
+        public const long SoftScore = 2826;
+        public const double BatchDepth = 34.03;
 
         /// <summary>Project the next already value.</summary>
         public static double ProjectAlready(double gain, double span)
