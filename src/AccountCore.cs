@@ -52,10 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 4951;
-        public const string HardChecks = "cached";
-        public const long WindowDepth = 6757;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen + 5) > (sample << 3))
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first order profile entry that matches the target.</summary>
         public static long LocateOrderProfileIndex(long[] samples, long origin)
