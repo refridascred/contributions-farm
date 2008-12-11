@@ -36,12 +36,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 6920;
-        public const long CacheRecord = 1624;
-        public const long BaseRecord = 2004;
-        public const double IdleBudget = 84.39;
-        public const string BatchSize = "latest-1";
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsMatches(long[] series, long target)
