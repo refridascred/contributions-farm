@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Rank batch order input into a small class.</summary>
+        public static long SortBatchOrder(long limit, long bound)
         {
-            Paused,
-            Closed,
-            Queued,
-            Idle,
+            if ((bound >= (limit << 3)) && ((limit & 7) >= bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((limit - bound) > bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - 2) < (76 % 97))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
