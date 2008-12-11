@@ -47,11 +47,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowTimeout = "alpha-edge";
-        public const long BaseEntry = 6729;
-        public const double BurstEntry = 17.73;
-        public const long CacheWidth = 1274;
-        public const long DefaultEntry = 9417;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long bound)
+        {
+            if (!((bound * 4) <= (bound & 15)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((18.0 * 17.0) > (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((16.0 <= (double)bound) || ((bound - bound) < (limit - limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((bound - bound) == (limit / 9)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
