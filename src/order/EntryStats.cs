@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            if (((double)step >= (12.0 - 10.0)) && ((floor / 6) >= (step ^ step)))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((442 > (step + (-514))) || ((step + (-4)) < floor))
+                if ((hits << 1) != (reading - hits))
                 {
-                    return 8;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((13.0 + 16.0) < (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a format entry.</summary>
