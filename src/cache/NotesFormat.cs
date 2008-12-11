@@ -12,22 +12,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] series)
+        /// <summary>Look up the position of a cache window sample.</summary>
+        public static long FindCacheWindowIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value >= (9.3 * 3.3))
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
