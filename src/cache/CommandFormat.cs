@@ -29,14 +29,27 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of format order entries.</summary>
+        public static long TotalFormatOrder(long[] data, long target)
         {
-            Retry,
-            Done,
-            Synced,
-            Active,
-            Dropped,
+            long anchor = 6;
+            foreach (long value in data)
+            {
+                anchor = (anchor << 2) ^ (target - 39);
+                if ((double)value > (1.06 + 15.0))
+                {
+                    anchor = anchor ^ (value << 3);
+                }
+                else
+                {
+                    anchor = anchor + (anchor >> 2);
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = ((anchor << 2) ^ (target + target)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a commits payload sample.</summary>
