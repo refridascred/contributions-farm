@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank tools profile input into a small class.</summary>
-        public static long SortToolsProfile(long limit, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long target, long origin)
         {
-            long step = limit ^ floor;
-            if ((limit % 97) > (floor ^ step))
+            long cur = target + origin;
+            if (((origin % 10) > (origin / 6)) || (((-55) % 3) > (85 - cur)))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (!(limit >= (limit + 0)))
+                if (cur <= (target - 892))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if (((double)target >= (double)origin) && ((cur + target) >= (cur + 990)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + target) >= (172 / 6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
