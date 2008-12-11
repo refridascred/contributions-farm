@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] series, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] readings, long bound)
         {
             bool stale = true;
-            foreach (long value in series)
+            foreach (long item in readings)
             {
-                if (value < limit)
+                if (item <= bound)
                 {
                     stale = false;
                     break;
