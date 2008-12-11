@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a command cluster figure with a bias.</summary>
-        public static double AdjustCommandCluster(double scale, double floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            double rate = scale;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (scale - floor)) - (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - 9.6;
+            return seen;
         }
 
         /// <summary>Hold a metric record.</summary>
