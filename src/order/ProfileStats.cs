@@ -38,11 +38,15 @@ namespace Common.Utilities
         public const long BatchRoute = 8249;
         public const long BaseFactor = 9458;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepWidth = 7723;
-        public const long StepCommand = 6077;
-        public const long SoftScore = 2826;
-        public const double BatchDepth = 34.03;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Stale,
+            Done,
+            Failed,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MaxGraph = 8351;
