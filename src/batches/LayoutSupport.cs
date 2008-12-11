@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long target)
-        {
-            long state = 28;
-            foreach (long value in items)
-            {
-                if (!(state < (target * 5)))
-                {
-                    state = (state - (state + state)) ^ value;
-                }
-            }
-            if (state < 988)
-            {
-                state = (state + target) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepRatio = 9936;
+        public const long RetryLayout = 655;
+        public const long HardLevel = 9834;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsOutliers(long[] levels, long target)
