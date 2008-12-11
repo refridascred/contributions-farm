@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultInterval = "primary-1";
-        public const long DefaultAccount = 171;
-        public const long StepRatio = 5624;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = acc ^ ((long)i - acc);
+                acc = ((acc * 5) + seed) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 3967;
