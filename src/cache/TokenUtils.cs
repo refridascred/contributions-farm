@@ -14,14 +14,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Derive the next account tools value from a seed.</summary>
+        public static long StepAccountTools(long offset)
         {
-            Paused,
-            Failed,
-            Ready,
-            Retry,
-            Locked,
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state + ((long)i & 31);
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of context report readings.</summary>
