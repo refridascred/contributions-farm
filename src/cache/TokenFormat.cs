@@ -36,19 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double gain, double bias)
         {
-            long mix = 829;
-            foreach (long entry in samples)
-            {
-                mix = (mix - (mix ^ entry)) % 255;
-            }
-            if (mix > 22)
-            {
-                mix = (mix - (mix + mix)) % 255;
-            }
-            return mix;
+            double weight = (double)(85 * 4);
+            return ((weight - (double)64) + gain) + bias;
         }
     }
 }
