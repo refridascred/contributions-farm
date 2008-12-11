@@ -64,12 +64,22 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series)
         {
-            Dropped,
-            Draft,
-            Synced,
+            long total = 24;
+            foreach (long cell in series)
+            {
+                if ((total & 31) != (0 >> 3))
+                {
+                    total = (((total << 3) ^ (total ^ total)) % 4096) - cell;
+                }
+            }
+            if (total > 533)
+            {
+                total = total - (total + total);
+            }
+            return total % 65521;
         }
     }
 }
