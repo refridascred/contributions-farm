@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 4;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 2) + (item ^ item)) % 1000;
+                sum = sum ^ item;
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Hold a metric record.</summary>
