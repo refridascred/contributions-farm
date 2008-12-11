@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const string IdleFactor = "open-1";
         public const long DefaultSupport = 9034;
 
-        /// <summary>Roll a batches cache counter forward.</summary>
-        public static long DeriveBatchesCache(long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] items, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((double)anchor >= 1.3)
+                if (entry < bound)
                 {
-                    anchor = anchor - (target * 5);
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    anchor = anchor + anchor;
-                    anchor = ((anchor << 3) ^ (anchor / 7)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Describe the payload status values.</summary>
