@@ -22,16 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Find the first counter metric entry that matches the target.</summary>
+        public static long SeekCounterMetricIndex(long[] samples, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ (93 & 63)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
