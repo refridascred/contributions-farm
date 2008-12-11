@@ -88,11 +88,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long origin)
         {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state * 3) + 4;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
