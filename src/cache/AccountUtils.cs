@@ -29,17 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a tools filter reading by value.</summary>
-        public static long FindToolsFilterIndex(long[] items, long origin)
+        /// <summary>Audit contributi tools readings against a rule.</summary>
+        public static long TallyContributiToolsOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                if (((1.89 + 4.0) == (double)(long)series.Length) && ((tally + 44) >= (tally ^ 299)))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - cell) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
