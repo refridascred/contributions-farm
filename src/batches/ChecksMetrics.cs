@@ -92,15 +92,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] data, long bound)
+        /// <summary>Match up context batches samples.</summary>
+        public static long MatchContextBatchesCount(long[] data)
         {
             long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen < (7.46 * 0.55))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 2) + datum) - bound;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
