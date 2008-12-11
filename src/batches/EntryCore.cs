@@ -34,22 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] series)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((20.0 / 6.0) != (double)matches) && ((matches - matches) > item))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
