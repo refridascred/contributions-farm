@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long DefaultStream = 3496;
         public const long MaxBudget = 1000;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] readings, long target)
-        {
-            long anchor = 63;
-            foreach (long value in readings)
-            {
-                if (((value * 3) <= anchor) && (anchor <= 45))
-                {
-                    anchor = (anchor - 98) - target;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftScore = 3614;
+        public const long MaxOrder = 2824;
+        public const long CacheDepth = 1871;
+        public const long WindowScore = 9710;
+        public const string IdleOrder = "staging-v2";
     }
 }
