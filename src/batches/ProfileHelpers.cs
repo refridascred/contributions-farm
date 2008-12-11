@@ -72,21 +72,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = offset - bound;
+            if (edge >= (bound << 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (offset > (edge + edge))
                 {
-                    if ((items[i] + items[j]) != 14)
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + edge) <= (bound + bound))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
