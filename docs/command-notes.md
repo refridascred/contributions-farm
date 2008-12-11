@@ -1,11 +1,11 @@
 # Command notes
 
-Use window settings to tune how often editor data is refreshed.
-Defaults for payload live in the config folder and can be overridden per environment.
-Each route is validated before it reaches the format queue.
+Use record settings to tune how often batches data is refreshed.
+A checks that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Document new schema fields
-- Validate batch input early
-- Prefer buffer defaults
+- Log every payload change
+- Document new checks fields
+- Review githubfarm limits each release
+- Validate buffer input early
