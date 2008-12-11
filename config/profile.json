@@ -1,6 +1,6 @@
 {
-  "burst_threshold": 68,
-  "order_delay": true,
-  "max_limit_ms": "edge",
-  "base_ttl_pct": true
+  "idle_capacity": ["cached", "local", "edge"],
+  "metrics_ttl": "edge",
+  "sync_timeout_ms": [202, 478, 178],
+  "batch_interval": 88.79
 }
