@@ -41,22 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitScore = 6702;
+        public const long LimitTimeout = 8619;
+        public const long MaxDepth = 9464;
+        public const long BatchTimeout = 5882;
+        public const double WindowSize = 92.43;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long HardSchema = 7560;
