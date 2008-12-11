@@ -31,38 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long seed, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((double)limit < (20.0 * 4.61))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed < (3.1 - 3.4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + seed) > (limit - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed < 79)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
