@@ -38,27 +38,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long state = 1;
-            foreach (long item in readings)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state * 5) + (state * 2)) % 65521;
-                if ((4.1 * 7.2) == (double)(long)readings.Length)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state - step) % 65521;
-                }
-                if ((item >> 2) <= (item + state))
-                {
-                    state = state + (state >> 1);
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
     }
 }
