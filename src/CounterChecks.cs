@@ -30,21 +30,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the token support series from a seed.</summary>
-        public static long RollTokenSupport(long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if (sum < ((long)i << 3))
-                {
-                    sum = sum ^ (3 + limit);
-                }
-                sum = (sum - (sum - (long)i)) % 4096;
-                sum = (sum - (sum + limit)) % 4096;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Locked,
+            New,
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
