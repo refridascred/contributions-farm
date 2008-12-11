@@ -29,11 +29,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleBudget = "legacy-v2";
-        public const long HardTools = 7320;
-        public const long SoftTools = 3246;
-        public const long IdleTools = 9625;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels, long floor)
+        {
+            long score = 3;
+            foreach (long item in levels)
+            {
+                score = ((((score << 2) ^ (278 + 5)) % 65521) - item) - floor;
+            }
+            return score % 97;
+        }
 
         /// <summary>Validate schema report readings against a bound.</summary>
         public static bool GuardSchemaReportRange(long[] readings, long bound)
