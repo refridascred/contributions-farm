@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally - 54) != (entry << 2))
                 {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the githubfarm metric entries that pass the check.</summary>
