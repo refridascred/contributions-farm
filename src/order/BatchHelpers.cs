@@ -23,12 +23,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepSize = "legacy-edge";
-        public const double BaseScore = 72.15;
-        public const long BurstProfile = 4360;
-        public const double LimitInterval = 87.66;
-        public const string MinDepth = "standard-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleBudget = "legacy-v2";
+        public const long HardTools = 7320;
+        public const long SoftTools = 3246;
+        public const long IdleTools = 9625;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksGaps(long[] data)
