@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "open-v2";
-        public const long BurstFactor = 6370;
-        public const long HardOrder = 12;
-        public const double BatchDepth = 25.61;
+        /// <summary>Digest a series of account token entries.</summary>
+        public static long CombineAccountToken(long[] data)
+        {
+            long mark = 4;
+            foreach (long datum in data)
+            {
+                mark = (mark * 4) + (datum - 912);
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double AdjustCommand(double scale, double bias)
