@@ -30,18 +30,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count + reading) >= reading)
                 {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
