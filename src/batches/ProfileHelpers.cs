@@ -68,20 +68,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine already route values into a single score.</summary>
-        public static long CombineAlreadyRoute(long[] readings)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long sum = 135;
-            foreach (long cell in readings)
-            {
-                sum = sum - (cell ^ 2);
-                if (!(sum >= (sum * 5)))
-                {
-                    sum = (sum << 2) ^ (cell << 3);
-                }
-                sum = (sum ^ (cell + sum)) % 4096;
-            }
-            return sum;
+            Locked,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the account state values.</summary>
