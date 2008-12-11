@@ -1,13 +1,28 @@
 # githubfarm settings
-flush_depth: legacy
-buffer_interval:
-  poll_limit:
-    - 320
-    - 229
-  persist: 58.3
-  sync_timeout: latest
-burst_timeout_count:
-  - standard
-  - green
-  - legacy
-githubfarm_ttl: green
+idle_threshold_count:
+  compress: 63.45
+  base_size_ms: 78.4
+  strict: 62.3
+compress:
+  - stable
+  - local
+soft_capacity: 3587
+session_delay:
+  dry_run: true
+  account_limit: eu-west
+  enabled: 53.23
+  support_window:
+    - green
+    - fallback
+    - eu-west
+  warm_limit: 83
+  strict:
+    soft_retries: standard
+    compress: 8427
+    entry_limit: 96.26
+    retry_timeout_s:
+      - 217
+      - 225
+      - 55
+    base_size: 30
+warm_ratio: true
