@@ -23,12 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double scale, double span)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            double ratio = span;
+            if (ratio >= (double)8)
+            {
+                ratio = (ratio + ratio) - scale;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (span * 8.5);
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
