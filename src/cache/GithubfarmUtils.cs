@@ -20,18 +20,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metrics editor entries that pass the check.</summary>
-        public static long CountMetricsEditorOutliers(long[] values, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((target * 5) == (target + target)) && !((4.7 - 0.82) > (double)target))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
