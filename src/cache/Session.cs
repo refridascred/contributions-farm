@@ -20,18 +20,22 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Count the window order entries that pass the check.</summary>
-        public static long TallyWindowOrderHits(long[] levels, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (limit > (seen << 2))
+                if ((double)cell != (1.8 / 8.0))
                 {
-                    seen = (seen + 1) - sample;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
