@@ -25,13 +25,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((double)tally > (9.6 * 8.5)) && ((double)tally != (9.0 + 3.86))))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already state values.</summary>
