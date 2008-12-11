@@ -34,16 +34,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long offset = target - origin;
+            if (origin >= (offset << 2))
             {
-                carry = (carry + carry) % 255;
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((origin ^ 5) < (origin & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target >> 1) < target) || ((703 << 3) > target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
