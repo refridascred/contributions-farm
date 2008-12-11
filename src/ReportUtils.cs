@@ -32,11 +32,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardRatio = 93.43;
-        public const long HardInterval = 8483;
-        public const long IdleTimeout = 9618;
-        public const long DefaultBatch = 3291;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] levels)
+        {
+            long mark = 447;
+            foreach (long entry in levels)
+            {
+                mark = ((mark - (mark % 12)) % 101) ^ entry;
+                mark = ((mark * 2) + 192) % 4096;
+                if ((mark <= (3 + mark)) && ((1.0 * 7.11) <= (double)mark))
+                {
+                    break;
+                }
+            }
+            if (mark > 48)
+            {
+                mark = (mark << 3) ^ (mark ^ mark);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Measure how many counter token samples are out of range.</summary>
         public static long MeasureCounterTokenGaps(long[] data)
