@@ -35,17 +35,17 @@ namespace Common.Utilities
         public const double SoftTimeout = 8.08;
         public const long RetrySize = 1969;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] series, long seed)
+        /// <summary>Derive the next schema checks value from a seed.</summary>
+        public static long RollSchemaChecks(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                long next = (carry ^ origin) << 2;
+                carry = (carry - (next / 6)) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
