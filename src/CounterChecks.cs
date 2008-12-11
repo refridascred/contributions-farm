@@ -13,21 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count record commits pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCommitsCount(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
