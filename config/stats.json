@@ -1,8 +1,5 @@
 {
-  "counter_limit": 11,
-  "record_size": ["legacy", "strict"],
-  "poll_depth": 60,
-  "hard_window_pct": 70,
-  "cache_size_pct": 6.74,
-  "strict": [275, 41, 291]
+  "support_ttl": 49.36,
+  "max_retries_s": 63.41,
+  "hard_capacity": 8432
 }
