@@ -64,21 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor << 3) ^ (anchor * 3);
-                if (!!((anchor + bound) <= (bound + 7)))
-                {
-                    anchor = anchor + anchor;
-                    anchor = (anchor - (long)i) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
