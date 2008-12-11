@@ -67,16 +67,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = 818;
-            foreach (long item in values)
-            {
-                anchor = (anchor - item) % 97;
-                anchor = (anchor << 3) ^ ((long)values.Length - anchor);
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
