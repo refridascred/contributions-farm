@@ -47,19 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] values, long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            if (!(((-42) + limit) < (limit % 24)))
             {
-                if (datum > seed)
+                return 8;
+            }
+            else
+            {
+                if (limit2 <= (limit2 >> 1))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit2 == (18.0 / 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
