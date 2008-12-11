@@ -55,22 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] items, long seed)
         {
-            long anchor = 45;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((cell / 6) < (anchor - 493))
+                if (reading >= seed)
                 {
-                    anchor = ((anchor * 2) + (anchor - cell)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor >> 3)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
     }
 }
