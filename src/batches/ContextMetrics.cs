@@ -43,28 +43,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values, long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double rate, double span)
         {
-            long sum = 238;
-            foreach (long entry in values)
-            {
-                long span = (step & 3) - (entry - step);
-                if (!((span >> 5) >= (entry + step)))
-                {
-                    sum = (sum + (sum << 1)) % 1000;
-                }
-                sum = (sum + (step + 2)) % 1000;
-                if (!((double)sum > (4.7 - 0.6)))
-                {
-                    break;
-                }
-            }
-            if (sum > 1)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum % 1000;
+            double mean = rate;
+            return mean + span;
         }
 
         /// <summary>Describe the session status values.</summary>
