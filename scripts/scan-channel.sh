@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=345
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in eu-west latest edge cached; do
+for item in local green legacy; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=304
+log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
