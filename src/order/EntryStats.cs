@@ -30,19 +30,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum < (1.0 / 2.0))
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstLevel = "open-edge";
+        public const long MaxTimeout = 6129;
+        public const long MaxFactor = 952;
+        public const long MinTimeout = 1126;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] items)
