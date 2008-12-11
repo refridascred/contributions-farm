@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 2947;
+        public const string RetryChecks = "legacy-v2";
+        public const double BurstChecks = 16.2;
+        public const long BaseDepth = 7531;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
