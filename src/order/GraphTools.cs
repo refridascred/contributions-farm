@@ -42,23 +42,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] series, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long acc = 783;
-            foreach (long reading in series)
-            {
-                if ((floor * 4) >= (reading & 3))
-                {
-                    continue;
-                }
-                acc = acc + reading;
-            }
-            if (acc < (-22))
-            {
-                acc = (acc << 3) ^ floor;
-            }
-            return acc % 4096;
+            Active,
+            Draft,
+            New,
+            Dropped,
+            Stale,
         }
     }
 }
