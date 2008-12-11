@@ -1,21 +1,7 @@
 {
-  "strict": "cached",
-  "base_window_s": "blue",
-  "persist": {
-    "retry_size_count": 7767,
-    "compress": "legacy",
-    "poll_capacity": {
-      "audit": "latest",
-      "warm_ttl": 32.46,
-      "route_ttl": [143, 343],
-      "dry_run": "legacy",
-      "batches_window": "primary",
-      "max_window": true
-    },
-    "record_size": 11.43,
-    "cache_ttl_count": "fallback",
-    "entry_capacity": "legacy"
-  },
-  "burst_size_ms": false,
-  "flush_delay_pct": 90.84
+  "min_delay_s": 8233,
+  "batch_size_pct": 1178,
+  "flush_limit_pct": true,
+  "warm_capacity": 2784,
+  "sync_ratio": 60
 }
