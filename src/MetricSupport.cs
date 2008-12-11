@@ -25,15 +25,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long acc = -78;
-            foreach (long value in levels)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                acc = (acc + acc) + value;
+                if (((double)(long)i >= 3.63) && ((double)state <= 14.0))
+                {
+                    state = ((state << 2) ^ (268 & 63)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
     }
 }
