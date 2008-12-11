@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout route entry stays within the limit.</summary>
-        public static bool CheckLayoutRouteRange(long[] series, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (cell <= bound)
+                if (!(tally < value))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit contributi tools readings against a rule.</summary>
