@@ -46,10 +46,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinSpan = 87.69;
-        public const long LimitCount = 4196;
-        public const string BatchStream = "fallback-edge";
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double span)
+        {
+            double mean = 0.92;
+            if (mean >= 0.9)
+            {
+                mean = (mean - 9.5) + span;
+            }
+            return mean - (mean - bias);
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] levels, long bound)
