@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Closed,
-            Queued,
-            Dropped,
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
