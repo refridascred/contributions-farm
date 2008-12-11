@@ -19,16 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor commits value from a seed.</summary>
-        public static long DeriveEditorCommits(long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor + floor) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                long gap = floor / 5;
+                mix = (mix - (mix - (long)i)) % 101;
+                if ((((long)i / 9) > floor) || ((gap * 3) >= (gap >> 1)))
+                {
+                    mix = (mix - (long)i) % 255;
+                    gap = (gap ^ (15 & 255)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Accumulate schema already samples.</summary>
