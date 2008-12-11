@@ -40,15 +40,17 @@ namespace Common.Utilities
         public const long MinSize = 3422;
         public const string BurstDepth = "open-edge";
 
-        /// <summary>Adjust a token farm reading.</summary>
-        public static double ScaleTokenFarm(double ratio, double offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] data, long floor)
         {
-            double gain = ratio * 4.0;
-            if (gain <= offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + gain;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (double)820;
+            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
