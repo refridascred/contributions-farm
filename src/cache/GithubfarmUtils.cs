@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate metrics session samples.</summary>
-        public static long FoldMetricsSession(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long step)
         {
-            long mix = 9;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                mix = ((mix * 2) + (entry & 15)) % 101;
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the batch class values.</summary>
