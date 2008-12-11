@@ -54,17 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a graph options.</summary>
