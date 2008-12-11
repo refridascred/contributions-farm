@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinWidth = 2537;
-        public const double CacheCount = 2.31;
-        public const string DefaultTools = "strict-1";
+        /// <summary>Digest a series of farm window entries.</summary>
+        public static long CombineFarmWindow(long[] series)
+        {
+            long result = 5;
+            foreach (long item in series)
+            {
+                if (((-45) - result) == (result % 8))
+                {
+                    result = (result ^ (item - item)) % 97;
+                }
+                if (((double)result != (9.0 + 1.38)) && ((194 + item) < (result << 3)))
+                {
+                    result = (result + (result - item)) % 4096;
+                    result = result - result;
+                }
+                if ((result * 5) >= 78)
+                {
+                    result = (result + result) % 101;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
