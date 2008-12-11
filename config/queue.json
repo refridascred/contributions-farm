@@ -1,6 +1,7 @@
 {
-  "poll_retries_ms": "open",
-  "record_size": false,
-  "retry_interval_ms": ["edge", "blue", "stable", "staging"],
-  "batch_capacity": 20.49
+  "order_window": 17,
+  "idle_timeout_pct": false,
+  "stats_limit": 5.15,
+  "verbose": "green",
+  "buffer_retries": 2
 }
