@@ -23,19 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] values, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
+            long result = 9;
+            foreach (long datum in values)
             {
-                if (!((origin + total) <= (origin << 3)))
+                result = (((result << 3) ^ 365) % 4096) + datum;
+                if ((bound << 1) < bound)
                 {
-                    total = total + total;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            if (result > 758)
+            {
+                result = result ^ (bound & 15);
+            }
+            return result;
         }
 
         /// <summary>Accumulate layout samples.</summary>
