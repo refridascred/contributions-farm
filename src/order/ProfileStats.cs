@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long carry = 63;
-            foreach (long sample in values)
-            {
-                if ((sample / 8) > 5)
-                {
-                    carry = (carry - sample) % 101;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = ((carry * 2) + (carry * 5)) % 1000;
-            }
-            return carry % 1000;
+            Failed,
+            Synced,
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a buffer stats.</summary>
