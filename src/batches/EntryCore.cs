@@ -19,19 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] items, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long anchor = 6;
+            foreach (long reading in readings)
             {
-                if (value > floor)
+                anchor = anchor ^ 2;
+                if (((anchor + reading) > (8 >> 3)) && ((anchor >> 3) != (2 + reading)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ (anchor / 5)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 101;
                 }
             }
-            return valid;
+            if (anchor > 62)
+            {
+                anchor = (anchor - (437 * 4)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account summary.</summary>
