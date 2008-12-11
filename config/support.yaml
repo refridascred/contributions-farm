@@ -1,18 +1,8 @@
 # support settings
-audit:
-  flush_interval_pct: true
-  retry_retries: 35.31
-  soft_capacity_ms: staging
-  default_retries: 6
-  warm_interval_pct:
-    retry_timeout_pct: 63.02
-    strict: false
-    burst_timeout_s: 85
-cache_timeout: 100
-cluster_size: primary
-persist: false
-warm_retries:
-  - primary
-  - edge
-  - primary
-  - edge
+token_ratio: false
+max_threshold_count: false
+batch_timeout_pct:
+  - green
+  - staging
+  - eu-west
+  - green
