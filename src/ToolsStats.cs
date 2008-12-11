@@ -24,17 +24,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] readings, long target)
+        /// <summary>Rank notes entry input into a small class.</summary>
+        public static long GradeNotesEntry(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target ^ limit) > (650 + limit))
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((limit % 16) != (target - target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
