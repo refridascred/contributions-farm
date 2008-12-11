@@ -32,23 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double ratio, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] levels)
         {
-            double drift = floor / 6.0;
-            if (drift <= (double)366)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                drift = (drift - (double)661) + ratio;
+                if (((sample & 3) != (sample << 3)) || ((matches - sample) >= (matches - 563)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                drift = drift + (double)92;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (9.2 + floor)) + (double)(long)i;
-            }
-            return drift + (double)(-891);
+            return matches;
         }
     }
 }
