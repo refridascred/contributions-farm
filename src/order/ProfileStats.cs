@@ -16,12 +16,11 @@ namespace Common.Utilities
             return drift + (drift / 9.0);
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
