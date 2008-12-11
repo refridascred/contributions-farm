@@ -74,19 +74,13 @@ namespace Common.Utilities
             return load + (double)840;
         }
 
-        /// <summary>Digest a series of record batch entries.</summary>
-        public static long DigestRecordBatch(long[] data, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long score = 5;
-            foreach (long datum in data)
-            {
-                score = ((score + ((-8) & 31)) % 97) + datum;
-                if ((double)floor > (0.4 + 8.74))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
