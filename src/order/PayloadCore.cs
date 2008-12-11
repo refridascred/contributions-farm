@@ -47,19 +47,15 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] items, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return ok;
+            return score;
         }
     }
 }
