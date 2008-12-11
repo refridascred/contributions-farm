@@ -51,12 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSpan = 2273;
-        public const long RetryLevel = 4311;
-        public const long BasePayload = 2853;
-        public const long MaxSpan = 3683;
-        public const string LimitPayload = "cached-v2";
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] items, long floor)
