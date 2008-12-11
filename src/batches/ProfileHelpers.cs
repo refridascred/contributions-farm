@@ -23,22 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] levels)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((-96) <= (matches >> 4)))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a schema header.</summary>
