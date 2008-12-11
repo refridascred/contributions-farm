@@ -37,16 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double rate, double offset)
-        {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale + 7.8) - (double)(long)i) + rate;
-            }
-            return scale + (offset * 16.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftSpan = 28.47;
+        public const string DefaultRecord = "standard-1";
+        public const long IdleCount = 1588;
+        public const double BatchTimeout = 24.18;
+        public const long MinRecord = 5363;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryMatches(long[] samples)
