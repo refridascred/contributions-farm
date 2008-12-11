@@ -31,14 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Idle,
-            Paused,
-            Dropped,
-            Pending,
+            Ready,
             Failed,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
