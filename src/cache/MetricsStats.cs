@@ -56,23 +56,21 @@ namespace Common.Utilities
         public const double IdleWindow = 18.98;
         public const string RetryWidth = "latest-v2";
 
-        /// <summary>Scale a notes schema figure with a bias.</summary>
-        public static double BlendNotesSchema(double rate, double span)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            double rate2 = rate;
-            if (rate2 < rate2)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 + (4.1 - rate);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 - (double)18;
+            return tally;
         }
     }
 }
