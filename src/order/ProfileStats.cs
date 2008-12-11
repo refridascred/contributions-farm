@@ -41,22 +41,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)tally < 1.0)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseRatio = 56.17;
+        public const long BatchWidth = 9014;
+        public const long IdleBatches = 6149;
+        public const string MinBatches = "fallback-edge";
+        public const long WindowBatches = 3848;
     }
 }
