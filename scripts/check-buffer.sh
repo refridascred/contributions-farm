@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable; do
+for item in legacy green open staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=371
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
