@@ -31,11 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepSize = 1548;
-        public const long WindowAccount = 9375;
-        public const double HardCount = 69.74;
-        public const long StepBudget = 3460;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] levels)
+        {
+            long anchor = 66;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor * 4) + (reading & 1);
+                anchor = ((anchor * 4) + ((long)levels.Length >> 2)) % 1000;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyGaps(long[] samples)
