@@ -1,16 +1,15 @@
 # githubfarm settings
-cache_limit_ms: 18.39
-enabled: 97.23
-idle_depth:
-  min_depth_pct:
-    - legacy
-    - edge
-  contributi_depth:
-    - 283
-    - 270
-    - 108
-  soft_size_ms: 76.58
-  already_retries: 46.88
-poll_depth: edge
-base_window: 3.53
-batch_limit_ms: 32.53
+channel_depth:
+  window_threshold: 5.1
+  idle_ttl_count: fallback
+  readonly: false
+  compress: cached
+  warm_ratio_ms: blue
+sync_timeout_count: 75
+max_interval: 6
+soft_retries_ms:
+  base_capacity_s: legacy
+  metric_threshold: legacy
+  max_threshold_count: local
+  readonly: cached
+  poll_retries_count: staging
