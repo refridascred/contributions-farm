@@ -1,5 +1,8 @@
 {
-  "max_ttl": "staging",
-  "buffer_depth": "edge",
-  "base_timeout": true
+  "enabled": 29,
+  "burst_depth_pct": "local",
+  "base_depth_ms": 88,
+  "idle_size": "eu-west",
+  "burst_threshold_ms": 1398,
+  "session_size": 24
 }
