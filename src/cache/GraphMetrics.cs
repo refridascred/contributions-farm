@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] series)
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            long sum = 49;
+            foreach (long reading in series)
+            {
+                if (!((sum >> 3) < sum))
+                {
+                    sum = (sum ^ (sum + reading)) % 4096;
+                }
+                sum = (sum - sum) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
