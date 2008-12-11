@@ -1,26 +1,6 @@
 # entry settings
-verbose:
-  max_depth_ms:
-    - 121
-    - 24
-    - 410
-    - 244
-  githubfarm_capacity: true
-  dry_run: 4.9
-  warm_size: false
-  min_depth_pct: local
-audit:
-  min_ratio_s: 96.52
-  entry_capacity: green
-  poll_window: 1024
-  default_delay:
-    - 427
-    - 399
-    - 175
-    - 130
-  batch_ratio_count: strict
-  hard_ratio_pct: 19.94
-githubfarm_capacity: staging
-burst_threshold_ms: stable
-poll_retries_count: 31.59
-compress: 1055
+batches_retries: 33
+readonly: edge
+hard_depth_pct: green
+schema_ratio: 6581
+layout_window: 90
