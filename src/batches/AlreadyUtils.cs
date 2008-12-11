@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a layout entry.</summary>
