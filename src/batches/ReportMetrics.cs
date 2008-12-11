@@ -34,26 +34,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a schema support counter forward.</summary>
-        public static long DeriveSchemaSupport(long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                long hits = offset;
-                hits = ((hits * 2) + (797 - (long)i)) % 4096;
-                if ((double)hits == (1.88 / 4.0))
-                {
-                    hits = (hits - (result - hits)) % 97;
-                }
-                else
-                {
-                    result = ((result * 5) + offset) % 255;
-                    hits = ((hits * 3) + (offset >> 4)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Queued,
+            Pending,
+            New,
+            Closed,
         }
     }
 }
