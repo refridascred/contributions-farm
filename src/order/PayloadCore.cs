@@ -28,22 +28,23 @@ namespace Common.Utilities
             return load + (double)284;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] items)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double mean = offset;
+            if (mean < (bias - bias))
             {
-                if (!((item - item) < ((-219) + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean + mean;
             }
-            return tally;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean - offset)) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a route record.</summary>
