@@ -92,11 +92,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "stable-1";
-        public const long BaseTimeout = 360;
-        public const long BaseDepth = 2054;
-        public const double BurstDepth = 66.38;
-        public const string WindowSchema = "strict";
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Stale,
+            Closed,
+            Done,
+        }
     }
 }
