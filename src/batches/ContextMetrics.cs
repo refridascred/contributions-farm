@@ -24,20 +24,17 @@ namespace Common.Utilities
         public const string StepTimeout = "open-1";
         public const double IdleCommand = 6.66;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] samples, long offset)
         {
-            long acc = 1;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc * 3) + (value + 349);
-                acc = (acc << 3) ^ (value & 255);
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < (-1))
-            {
-                acc = (acc * 2) + (acc - acc);
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Project the next schema value.</summary>
