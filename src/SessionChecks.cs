@@ -46,21 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 85;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score + score) % 1000) + value;
             }
-            return matches;
+            if (score < 5)
+            {
+                score = (score ^ (score >> 4)) % 97;
+            }
+            return score;
         }
     }
 }
