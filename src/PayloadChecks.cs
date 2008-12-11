@@ -46,19 +46,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate editor window readings against a bound.</summary>
-        public static bool VerifyEditorWindowLimits(long[] series, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define already limits and defaults.</summary>
