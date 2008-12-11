@@ -45,10 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 783;
-        public const double DefaultBudget = 66.37;
-        public const string SoftFactor = "primary-edge";
-        public const double MinAccount = 22.84;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 3) + ((long)i + carry)) % 1000;
+                carry = (carry - seed) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
