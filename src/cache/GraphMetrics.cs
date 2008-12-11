@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long limit, long offset)
+        /// <summary>Blend two cluster batch measurements.</summary>
+        public static double BlendClusterBatch(double gain, double bias)
         {
-            if (((4.1 * 7.7) != (double)limit) && ((offset - limit) >= 65))
+            double rate = gain;
+            if (rate <= gain)
             {
-                return 8;
+                rate = rate - (bias / 6.0);
             }
             else
             {
-                if ((limit & 63) > limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset != (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                rate = rate + rate;
             }
+            return rate - 0.3;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
