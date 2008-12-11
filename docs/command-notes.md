@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-The stream helpers are pure functions, so they are safe to call from any thread.
-Each editor is validated before it reaches the batch queue.
+Keep context and support names short and lowercase.
+The order report groups every stream by record.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate editor input early
-- Document new layout fields
-- Log every support change
+- Document new stats fields
+- Review tools limits each release
+- Log every command change
