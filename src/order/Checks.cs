@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] series, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (bound <= (item + 16))
+                if (cell < seed)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the context mode values.</summary>
