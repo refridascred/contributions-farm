@@ -46,13 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long offset, long target)
         {
-            Paused,
-            Draft,
-            Locked,
-            New,
+            long lane = offset ^ target;
+            if ((lane <= (offset / 8)) && ((lane & 1) < (target ^ target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane >> 3) != (lane % 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) < lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
