@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] values, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if ((double)origin >= (4.0 - 20.0))
             {
-                if ((double)offset < (double)696)
+                return 4;
+            }
+            else
+            {
+                if (((-755) + origin) == (origin / 6))
                 {
-                    tally = (tally + 2) - item;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)origin > (9.82 * 0.8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin >> 4) < target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
