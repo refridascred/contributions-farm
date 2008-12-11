@@ -75,25 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((long)i + (long)i) >= (mix & 1))
+                if ((cell - count) <= (count - offset))
                 {
-                    mix = (mix - limit) % 97;
-                    break;
+                    count = count + 2;
                 }
-                else
-                {
-                    mix = mix + mix;
-                    mix = (mix << 3) ^ mix;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
     }
 }
