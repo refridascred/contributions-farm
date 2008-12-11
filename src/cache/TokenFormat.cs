@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double span)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-            public double Rank { get; set; }
+            double gain = span;
+            if (gain < gain)
+            {
+                gain = (gain + (span - gain)) - scale;
+            }
+            else
+            {
+                gain = gain - (span + gain);
+            }
+            return gain + span;
         }
 
         /// <summary>Define token limits and defaults.</summary>
