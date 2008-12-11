@@ -16,24 +16,18 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long offset, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            if (((double)target != (4.0 / 3.0)) && (offset < 635))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset << 1) >= target) || ((offset - target) > target))
+                if (!(((item ^ count) <= (237 % 100)) && (((long)items.Length & 1) <= (long)items.Length)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
