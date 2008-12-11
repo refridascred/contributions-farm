@@ -26,14 +26,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Locked,
-            New,
+            long total = 94;
+            foreach (long item in readings)
+            {
+                total = (total + total) ^ item;
+            }
+            if (total > 301)
+            {
+                total = ((total << 3) ^ (total >> 1)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
