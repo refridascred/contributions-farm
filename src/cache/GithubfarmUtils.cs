@@ -20,14 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] items, long target)
         {
-            Done,
-            Dropped,
-            Pending,
-            New,
-            Queued,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (item < (2 & 1))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
