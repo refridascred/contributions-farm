@@ -36,17 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch context entry that matches the target.</summary>
-        public static long FindBatchContextIndex(long[] data, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 829;
+            foreach (long entry in samples)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - (mix ^ entry)) % 255;
             }
-            return -1;
+            if (mix > 22)
+            {
+                mix = (mix - (mix + mix)) % 255;
+            }
+            return mix;
         }
     }
 }
