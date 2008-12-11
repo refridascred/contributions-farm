@@ -72,18 +72,14 @@ namespace Common.Utilities
             return scale2 + (scale / 5.0);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] values)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((7.1 / 9.0) < (double)cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Failed,
+            Idle,
+            Synced,
+            Pending,
         }
     }
 }
