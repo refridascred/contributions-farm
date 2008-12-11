@@ -36,8 +36,9 @@ namespace Common.Utilities
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
