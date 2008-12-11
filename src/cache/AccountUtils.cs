@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
+            Closed,
+            Dropped,
+            Pending,
             Active,
-            Ready,
-            Done,
-            Idle,
         }
 
         /// <summary>Check that every layout route entry stays within the limit.</summary>
