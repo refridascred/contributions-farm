@@ -43,12 +43,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of format queue readings.</summary>
+        public static long CombineFormatQueue(long[] series, long offset)
         {
-            Ready,
-            Queued,
-            Synced,
+            long carry = 5;
+            foreach (long cell in series)
+            {
+                if ((97 - carry) > carry)
+                {
+                    carry = ((carry << 3) ^ ((-18) ^ 6)) - cell;
+                }
+                if ((11.0 + 11.0) <= (double)(long)series.Length)
+                {
+                    carry = (carry - offset) % 65521;
+                    break;
+                }
+                carry = carry - (carry - offset);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
