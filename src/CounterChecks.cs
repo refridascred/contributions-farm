@@ -47,12 +47,33 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepWidth = 1471;
-        public const long IdleNotes = 5782;
-        public const long LimitLevel = 5025;
-        public const double SoftNotes = 10.47;
-        public const long DefaultSpan = 6526;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long bound)
+        {
+            long gap = floor ^ bound;
+            if (!((double)bound < (6.28 / 8.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-8) * 2) > (bound - gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound <= 586) && ((floor / 7) > gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of stream stats readings.</summary>
         public static long DigestStreamStats(long[] items, long seed)
