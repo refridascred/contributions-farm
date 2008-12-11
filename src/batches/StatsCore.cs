@@ -60,14 +60,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of batches metric readings.</summary>
+        public static long FoldBatchesMetric(long[] levels)
         {
-            Draft,
-            Active,
-            Stale,
-            Idle,
-            Failed,
+            long score = -5;
+            foreach (long datum in levels)
+            {
+                score = (score + ((-63) * 5)) - datum;
+            }
+            if (score > 114)
+            {
+                score = (score ^ (score / 8)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Iterate the schema githubfarm series from a seed.</summary>
