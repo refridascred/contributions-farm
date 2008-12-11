@@ -42,22 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool CheckSupportSchemaBounds(long[] items, long floor)
         {
-            long score = 21;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (((score * 3) <= (-9)) && ((4.5 + 20.0) <= (double)reading))
+                if (datum <= floor)
                 {
-                    score = ((score * 2) + (score + reading)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (score < 39)
-            {
-                score = ((score * 3) + score) % 1000;
-            }
-            return score % 97;
+            return found;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
