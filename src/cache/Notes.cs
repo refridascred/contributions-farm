@@ -21,20 +21,10 @@ namespace Common.Utilities
         public const double RetryWindow = 31.42;
         public const long CacheTimeout = 4398;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = ((carry << 3) ^ (carry & 1)) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 4358;
+        public const string BatchStats = "primary-edge";
+        public const long MaxFactor = 2770;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
