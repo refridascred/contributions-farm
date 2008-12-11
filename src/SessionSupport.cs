@@ -27,18 +27,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token window samples are out of range.</summary>
-        public static long CountTokenWindowMatches(long[] samples)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((datum >> 1) >= (matches & 127)) || (762 >= (matches << 2))) || (((99 ^ datum) <= (matches << 3)) || (matches < (datum - matches))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
