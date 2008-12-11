@@ -27,14 +27,14 @@ namespace Common.Utilities
             return scale - (scale / 6.0);
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Stale,
-            Paused,
-            Draft,
-            Pending,
+            Queued,
             Ready,
+            Pending,
+            Idle,
+            Retry,
         }
     }
 }
