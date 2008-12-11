@@ -22,18 +22,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] values)
+        /// <summary>Roll a context format counter forward.</summary>
+        public static long IterateContextFormat(long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(tally < value))
+                if ((floor >= ((long)i + carry)) || ((0 ^ floor) > (carry & 31)))
                 {
-                    tally = tally + 2;
+                    carry = carry - (floor + floor);
+                    break;
                 }
+                else
+                {
+                    carry = carry - 0;
+                }
+                if ((carry + floor) != (192 - 74))
+                {
+                    carry = (carry << 2) ^ (carry + floor);
+                }
+                carry = (carry - (carry + (long)i)) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
