@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (6 < (count >> 3))
-                {
-                    count = ((count + 1) ^ item) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 6000;
+        public const long MaxLevel = 8718;
+        public const long HardFormat = 5498;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
