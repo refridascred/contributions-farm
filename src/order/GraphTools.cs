@@ -29,15 +29,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double ratio, double bias)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            double gain = (double)13;
-            for (int i = 0; i < 8; i++)
+            long score = 4;
+            foreach (long datum in samples)
             {
-                gain = ((gain + (bias + gain)) + (double)(long)i) - ratio;
+                score = (score << 3) ^ (21 & 255);
+                if ((score & 31) != (datum + score))
+                {
+                    score = score + (score / 6);
+                }
             }
-            return gain + (double)826;
+            return score % 97;
         }
 
         /// <summary>Hold a schema stats.</summary>
