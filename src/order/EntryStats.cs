@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 6766;
         public const long WindowWidth = 2625;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] series, long bound)
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
