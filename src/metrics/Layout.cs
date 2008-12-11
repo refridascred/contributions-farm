@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] readings, long origin)
+        /// <summary>Measure how many buffer graph samples are out of range.</summary>
+        public static long TallyBufferGraphMatches(long[] values)
         {
-            long score = 970;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                score = (score << 3) ^ (score + origin);
-                if (((long)readings.Length + score) > (reading & 1))
+                if (!(reading >= (926 >> 5)))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Adjust a layout reading.</summary>
