@@ -26,26 +26,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine filter context values into a single score.</summary>
-        public static long DigestFilterContext(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] values, long limit)
         {
-            long acc = 765;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((930 ^ acc) < acc) || ((double)value < (double)acc))
+                if ((double)datum < (1.0 / 2.0))
                 {
-                    acc = ((acc << 2) ^ (69 >> 3)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - acc) % 4096;
+                    seen = (seen + 2) - limit;
                 }
             }
-            if (acc > 433)
-            {
-                acc = (acc * 4) + (acc + acc);
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
