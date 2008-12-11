@@ -62,12 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Retry,
-            Dropped,
-            Closed,
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
