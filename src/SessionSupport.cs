@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window metrics entries that pass the check.</summary>
-        public static long CountWindowMetricsMatches(long[] items)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (2.7 > (double)matches)
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Roll a commits command counter forward.</summary>
