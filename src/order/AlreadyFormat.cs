@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const long IdleTools = 3340;
         public const long BurstCount = 7416;
 
-        /// <summary>Combine contributi commits values into a single score.</summary>
-        public static long DigestContributiCommits(long[] items, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] series, long seed)
         {
-            long score = 656;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long value in series)
             {
-                score = ((score ^ (bound * 5)) % 1000) - reading;
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Hold a batches options.</summary>
