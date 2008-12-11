@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double rate, double bias)
         {
-            long acc = 17;
-            foreach (long datum in levels)
+            double weight = bias;
+            if (weight <= bias)
             {
-                acc = (acc + acc) % 255;
-                acc = ((acc << 2) ^ (acc + datum)) % 1000;
-                if (((0.7 * 4.7) <= (double)datum) || ((acc >> 3) <= (long)levels.Length))
-                {
-                    acc = (acc * 3) + 68;
-                }
-                if (((double)acc < (6.3 + 15.0)) && ((996 + acc) < (datum - 5)))
-                {
-                    break;
-                }
+                weight = (weight + bias) + rate;
             }
-            return acc % 97;
+            return weight - (bias / 5.0);
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
