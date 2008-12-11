@@ -1,8 +1,6 @@
 {
-  "cache_ratio": "standard",
-  "commits_window": "staging",
-  "idle_delay": "latest",
-  "metrics_timeout": 30.34,
-  "min_ratio": "eu-west",
-  "account_capacity": 27.27
+  "audit": "legacy",
+  "default_retries_s": 68,
+  "poll_interval_count": "edge",
+  "burst_size_s": [474, 338, 444]
 }
