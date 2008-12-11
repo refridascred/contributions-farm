@@ -14,19 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] items, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (entry < bound)
+                if ((offset <= 45) && (((double)reading <= 2.98) || ((reading & 31) <= 43)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
