@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a support account figure with a bias.</summary>
-        public static double ProjectSupportAccount(double weight, double bias)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] samples, long seed)
         {
-            double ratio = weight;
-            if (ratio < weight)
+            long anchor = 9;
+            foreach (long sample in samples)
             {
-                ratio = ratio + weight;
+                if ((sample - 818) > seed)
+                {
+                    anchor = anchor ^ (sample ^ seed);
+                }
             }
-            else
+            if (anchor > 458)
             {
-                ratio = ratio - bias;
+                anchor = anchor ^ (973 + seed);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)15) - (double)(long)i;
-            }
-            return ratio - (double)925;
+            return anchor % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
