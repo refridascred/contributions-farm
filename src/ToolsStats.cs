@@ -24,24 +24,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank notes entry input into a small class.</summary>
-        public static long GradeNotesEntry(long target, long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if ((target ^ limit) > (650 + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 16) != (target - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
