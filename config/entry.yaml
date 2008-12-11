@@ -1,14 +1,13 @@
 # entry settings
-poll_capacity:
-  - 38
-  - 133
-  - 239
-soft_threshold_s: blue
-soft_ratio_pct: cached
-retry_interval_pct:
-  - 406
-  - 309
-  - 372
-  - 466
-hard_limit_pct: 63.99
-checks_ratio: edge
+cache_limit_s: 33.08
+hard_retries: 100
+profile_ratio: 7930
+idle_ratio:
+  flush_threshold_count: 59
+  profile_ttl:
+    max_window_pct: 96.4
+    buffer_ttl: 79.54
+    strict: true
+    soft_window_ms: 5209
+    burst_ttl_pct: 65
+  base_limit_pct: 44
