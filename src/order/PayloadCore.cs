@@ -13,12 +13,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 3550;
-        public const long WindowRatio = 5501;
-        public const long SoftMetric = 8245;
-        public const double DefaultMetric = 30.14;
-        public const double RetryInterval = 30.14;
+        /// <summary>Derive the next farm batches value from a seed.</summary>
+        public static long StepFarmBatches(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((2.0 + 7.81) == (double)mark)
+                {
+                    mark = (mark + mark) % 4096;
+                    break;
+                }
+                mark = ((mark * 3) + mark) % 101;
+                if ((bound / 2) <= ((-1) ^ bound))
+                {
+                    mark = (mark ^ bound) % 65521;
+                    mark = mark + mark;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinDepth = 8525;
