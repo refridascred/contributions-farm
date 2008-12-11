@@ -72,18 +72,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series)
+        /// <summary>Combine tools batch values into a single score.</summary>
+        public static long FoldToolsBatch(long[] values)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = 8;
+            foreach (long reading in values)
             {
-                if ((10.0 / 9.0) <= (double)tally)
+                if (((7 - carry) >= reading) || ((carry * 2) >= (reading << 3)))
                 {
-                    tally = (tally + 1) - item;
+                    carry = (carry - (carry + reading)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (reading >> 2)) % 4096;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
