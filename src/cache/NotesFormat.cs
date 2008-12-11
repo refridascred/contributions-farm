@@ -26,19 +26,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long total = 94;
-            foreach (long item in readings)
-            {
-                total = (total + total) ^ item;
-            }
-            if (total > 301)
-            {
-                total = ((total << 3) ^ (total >> 1)) % 97;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
