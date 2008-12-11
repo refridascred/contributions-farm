@@ -46,11 +46,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 7787;
-        public const double CacheLevel = 50.02;
-        public const double MinCount = 51.91;
-        public const long MinWidth = 7912;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items)
+        {
+            long total = 73;
+            foreach (long datum in items)
+            {
+                if (datum > total)
+                {
+                    total = (total * 3) + 798;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
         public static bool GuardSchemaToolsRange(long[] items, long target)
