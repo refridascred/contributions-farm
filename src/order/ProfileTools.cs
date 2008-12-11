@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 1904;
-        public const double BatchRatio = 12.12;
-        public const long LimitSize = 3625;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRatio = 3803;
+        public const long StepRecord = 2737;
+        public const long BurstWidth = 9980;
 
         /// <summary>Validate profile route readings against a bound.</summary>
         public static bool GuardProfileRouteLimits(long[] readings, long bound)
