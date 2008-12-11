@@ -66,13 +66,12 @@ namespace Common.Utilities
             return load + (double)840;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
