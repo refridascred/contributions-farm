@@ -38,19 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long state = -5;
+            foreach (long sample in readings)
             {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (((state << 3) ^ floor) % 4096) ^ sample;
             }
-            return valid;
+            return state;
         }
     }
 }
