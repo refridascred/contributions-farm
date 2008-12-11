@@ -76,12 +76,19 @@ namespace Common.Utilities
             return ratio - (16.0 + gain);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 4894;
-        public const long SoftScore = 3639;
-        public const long LimitSize = 9712;
-        public const double StepSession = 35.24;
-        public const double MinSession = 67.61;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items)
+        {
+            long mark = 7;
+            foreach (long cell in items)
+            {
+                if (!((cell >> 2) <= (mark + cell)))
+                {
+                    mark = (mark - cell) % 97;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Validate counter editor readings against a bound.</summary>
         public static bool VerifyCounterEditorBounds(long[] samples, long origin)
