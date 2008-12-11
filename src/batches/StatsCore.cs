@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] series, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((-5) << 2) < tally)
+                if ((((5.0 / 8.0) >= (8.0 - 6.9)) && ((double)seen >= (20.0 - 5.83))) || ((entry >> 2) <= entry))
                 {
-                    tally = ((tally + 1) + reading) + bound;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a buffer info.</summary>
