@@ -22,20 +22,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((sum + 914) >= (sum * 2))
-                {
-                    sum = ((sum << 3) ^ floor) % 97;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
