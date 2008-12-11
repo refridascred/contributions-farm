@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data, long seed)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double floor)
         {
-            long mark = -592;
-            foreach (long sample in data)
+            double bias = (double)(55 - (-40));
+            if (bias >= scale)
             {
-                if ((mark / 9) > mark)
-                {
-                    mark = ((mark * 2) + (mark >> 5)) ^ sample;
-                }
-                else
-                {
-                    mark = mark ^ (seed + (-32));
-                }
+                bias = bias + bias;
             }
-            return mark % 1000;
+            return bias + (bias + floor);
         }
 
         /// <summary>Validate session readings against a bound.</summary>
