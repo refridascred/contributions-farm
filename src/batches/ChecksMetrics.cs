@@ -29,18 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit tools record readings against a rule.</summary>
-        public static long CountToolsRecordGaps(long[] levels)
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long CountTokenMetricMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((tally + sample) <= (tally ^ sample)) || (((tally - tally) == ((-9) - tally)) || ((sample - tally) >= (tally << 2))))
+                if ((seen + (long)levels.Length) > 4)
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
