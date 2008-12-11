@@ -41,13 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
             public long Score { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next filter metrics value from a seed.</summary>
