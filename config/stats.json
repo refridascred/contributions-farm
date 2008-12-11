@@ -1,10 +1,5 @@
 {
-  "min_timeout": 51.52,
-  "sync_capacity": "edge",
-  "readonly": {
-    "soft_retries_count": ["standard", "edge", "cached"],
-    "burst_threshold_pct": "latest",
-    "persist": true
-  },
-  "base_threshold_pct": 4845
+  "notes_depth": [455, 213],
+  "base_interval_pct": "stable",
+  "token_ttl": 1418
 }
