@@ -1,11 +1,22 @@
 # entry settings
-base_window: edge
-soft_capacity_s: false
-flush_ratio: 14
-sync_capacity_ms:
-  - 148
-  - 481
-  - 160
-  - 20
-compress: strict
-audit: 14.77
+base_size:
+  batch_ratio: 37
+  base_window_pct: true
+  route_window: 67.51
+audit:
+  burst_depth:
+    batch_window_s: local
+    strict: true
+    stream_capacity:
+      - edge
+      - latest
+  soft_capacity: 50.0
+  verbose: 9932
+  base_ratio: 39
+  layout_ratio: 44.14
+  command_depth:
+    - standard
+    - local
+    - legacy
+    - open
+stream_interval: 15.81
