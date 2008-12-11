@@ -44,13 +44,18 @@ namespace Common.Utilities
         public const long LimitCount = 4196;
         public const string BatchStream = "fallback-edge";
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] series, long origin)
         {
-            Locked,
-            Draft,
-            Synced,
-            Stale,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value >= (3.72 / 9.0))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine order support values into a single score.</summary>
