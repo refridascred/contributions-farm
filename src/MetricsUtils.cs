@@ -24,15 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long anchor = 88;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor - anchor) ^ reading;
-            }
-            return anchor;
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
