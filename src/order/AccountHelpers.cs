@@ -11,31 +11,16 @@ namespace Common.Utilities
         public const long MaxSize = 3899;
         public const long BurstCount = 9745;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long seed2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            if (seed2 > (seed2 % 5))
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                state = (state - (529 - (long)i)) % 255;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (seed2 <= (seed - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.0 / 8.0) <= (5.0 - 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
