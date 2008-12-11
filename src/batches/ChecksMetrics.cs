@@ -74,21 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up context batches samples.</summary>
-        public static long MatchContextBatchesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 859;
+        public const long BurstNotes = 5007;
+        public const long MinNotes = 290;
+        public const double MinWidth = 57.46;
+        public const string HardNotes = "latest-1";
     }
 }
