@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two profile stream measurements.</summary>
-        public static double SmoothProfileStream(double ratio, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] levels, long seed)
         {
-            double weight = (double)(625 + (-6));
-            if (weight > (double)399)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                weight = ((weight + 4.4) + ratio) - bias;
+                if (!(77 <= (seed + item)) || ((8.4 - 6.0) != (double)item))
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight - weight;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
