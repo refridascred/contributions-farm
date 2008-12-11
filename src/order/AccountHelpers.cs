@@ -69,11 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] samples)
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample == (12.0 - 1.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
