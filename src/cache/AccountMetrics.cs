@@ -69,16 +69,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two already token measurements.</summary>
-        public static double BlendAlreadyToken(double scale, double offset)
-        {
-            double scale2 = scale;
-            if (scale2 <= offset)
-            {
-                scale2 = scale2 - offset;
-            }
-            return scale2 + (scale / 5.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 2287;
+        public const long BurstCount = 1652;
+        public const string LimitContributi = "cached-1";
+        public const double DefaultSpan = 27.38;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
