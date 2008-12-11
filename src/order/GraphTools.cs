@@ -16,19 +16,22 @@ namespace Common.Utilities
             return rate - 9.6;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] values, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (item >= bound)
+                if ((seed < (5 & 31)) || (seed > (seed - count)))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
