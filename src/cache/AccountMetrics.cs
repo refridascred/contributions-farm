@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Stale,
-            Draft,
-            Idle,
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
