@@ -58,24 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order support values into a single score.</summary>
-        public static long CombineOrderSupport(long[] values, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long result = -37;
-            foreach (long value in values)
-            {
-                if (value >= 268)
-                {
-                    result = (result ^ (359 + result)) % 1000;
-                    result = (result ^ value) % 97;
-                    break;
-                }
-                if ((199 << 3) > (result - step))
-                {
-                    result = (result - (value + step)) % 4096;
-                }
-            }
-            return result;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
