@@ -32,15 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double scale, double bias)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] readings, long offset)
         {
-            double ratio = 7.85 / 8.0;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                ratio = ((ratio + bias) + (double)(long)i) - scale;
+                if (!((double)349 < (double)hits))
+                {
+                    hits = ((hits + 1) + entry) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - (double)(-805);
+            return hits;
         }
     }
 }
