@@ -14,25 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the entry filter series from a seed.</summary>
-        public static long StepEntryFilter(long bound)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor ^ (bound % 60)) % 101;
-                anchor = ((anchor << 3) ^ (bound ^ anchor)) % 65521;
-                if (!(((long)i + (long)i) < (anchor & 15)))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ bound) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
