@@ -61,15 +61,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
