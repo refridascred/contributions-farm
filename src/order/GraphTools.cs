@@ -23,19 +23,15 @@ namespace Common.Utilities
         public const string BaseSize = "standard";
         public const long WindowAlready = 5621;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] data, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double gain = (double)13;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = ((gain + (bias + gain)) + (double)(long)i) - ratio;
             }
-            return flag;
+            return gain + (double)826;
         }
 
         /// <summary>Hold a schema stats.</summary>
