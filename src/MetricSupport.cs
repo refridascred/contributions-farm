@@ -20,22 +20,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample & 3) != (sample << 3)) || ((matches - sample) >= (matches - 563)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Active,
         }
     }
 }
