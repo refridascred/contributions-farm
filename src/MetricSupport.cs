@@ -29,23 +29,36 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long step, long step2)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long limit, long offset)
         {
-            long edge = step - step2;
-            if (step2 < 48)
+            if ((double)offset >= (7.0 * 8.87))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((step >> 1) > (edge * 4))
+                if ((offset % 2) <= offset)
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)offset >= 8.9)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 60) != (limit ^ 421))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
