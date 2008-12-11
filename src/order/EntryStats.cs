@@ -48,18 +48,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] values, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((count >= (origin % 3)) || (origin < (60 * 3)))
+                if (((tally / 8) >= (cell % 12)) || (((tally & 255) <= (cell - 525)) && (tally >= (933 ^ tally))))
                 {
-                    count = (count + 1) ^ entry;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank profile batches input into a small class.</summary>
