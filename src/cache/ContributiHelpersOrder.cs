@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            Paused,
+            Done,
+            Idle,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
