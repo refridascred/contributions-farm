@@ -13,36 +13,29 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long offset, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long target, long seed)
         {
-            long prev = offset + target;
-            if (362 <= (target + offset))
+            long slot = target ^ seed;
+            if ((double)target == (4.5 / 8.0))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((double)target != (3.56 / 3.0))
+                if (((slot & 3) < seed) || ((11.0 / 7.0) <= (double)seed))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (((prev ^ prev) == (prev >> 1)) && ((prev % 60) >= (prev * 3)))
+                    if ((target ^ target) > slot)
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if ((offset % 100) > prev)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 1;
                     }
                 }
             }
