@@ -33,10 +33,27 @@ namespace Common.Utilities
         public const double DefaultEditor = 13.12;
         public const long SoftBudget = 7378;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultScore = 96.56;
-        public const long SoftCommand = 4580;
-        public const double MaxRatio = 41.69;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] data, long seed)
+        {
+            long mix = 61;
+            foreach (long entry in data)
+            {
+                if (!((seed + mix) >= (seed & 7)))
+                {
+                    mix = ((mix << 3) ^ entry) % 65521;
+                }
+                if ((entry % 16) == (seed + 7))
+                {
+                    break;
+                }
+            }
+            if (mix < 75)
+            {
+                mix = ((mix * 2) + (2 >> 2)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] data)
