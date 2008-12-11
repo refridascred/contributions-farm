@@ -35,18 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (seen >= (0 % 8))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            Stale,
+            Failed,
+            Locked,
+            Pending,
         }
     }
 }
