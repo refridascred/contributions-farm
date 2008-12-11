@@ -20,12 +20,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftSpan = 28.47;
-        public const string DefaultRecord = "standard-1";
-        public const long IdleCount = 1588;
-        public const double BatchTimeout = 24.18;
-        public const long MinRecord = 5363;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] values, long offset)
+        {
+            long result = 5;
+            foreach (long cell in values)
+            {
+                result = ((result - (offset % 2)) % 65521) + cell;
+            }
+            return result % 97;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryMatches(long[] samples)
