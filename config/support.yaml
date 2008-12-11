@@ -1,7 +1,10 @@
 # support settings
-verbose: blue
-max_depth: 66
-cache_capacity: 77.47
-already_window: blue
-base_threshold_pct: 3.36
-queue_timeout: fallback
+cluster_depth: 51.85
+contributi_capacity: cached
+poll_ttl_count: 69.11
+base_retries_ms:
+  verbose: legacy
+  min_ratio_count: 68.8
+  min_ratio_s: false
+warm_delay_ms: 1024
+flush_threshold_count: staging
