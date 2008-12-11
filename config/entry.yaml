@@ -1,19 +1,13 @@
 # entry settings
-queue_window: 85.31
-flush_timeout_s: 14.31
-command_interval:
-  audit: 43.15
-  idle_limit_ms:
-    queue_depth: 44.46
-    order_delay: true
-    idle_ratio_pct:
-      - green
-      - standard
-      - blue
-    format_delay: 73.87
-    poll_size_s: 30.13
-  idle_size: 2876
-  layout_depth: blue
-batch_interval_count: open
-max_depth_ms: 500
-editor_threshold: 24
+poll_delay:
+  burst_ttl_ms: open
+  audit: true
+  flush_threshold_ms: 21.5
+  strict: true
+  cache_size: latest
+enabled: staging
+order_timeout:
+  - 93
+  - 417
+checks_limit: legacy
+audit: 32
