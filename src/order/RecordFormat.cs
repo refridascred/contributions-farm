@@ -41,32 +41,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long target, long floor)
-        {
-            if (!((3.3 / 8.0) == (double)target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor <= (double)(-73)) && ((target % 97) < (3 << 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((358 + floor) == (target ^ floor)) || ((double)floor < (9.3 * 6.5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 3.08;
+        public const string StepSize = "local";
+        public const string SoftSupport = "legacy-edge";
+        public const long MinSupport = 7064;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long limit)
