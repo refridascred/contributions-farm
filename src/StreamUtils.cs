@@ -32,18 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout contributi sample.</summary>
-        public static long LookupLayoutContributiIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepSize = 1548;
+        public const long WindowAccount = 9375;
+        public const double HardCount = 69.74;
+        public const long StepBudget = 3460;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] levels, long floor)
