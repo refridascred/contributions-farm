@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const double DefaultMetric = 30.14;
         public const double RetryInterval = 30.14;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 9239;
-        public const long CacheBuffer = 116;
-        public const double WindowSpan = 74.41;
-        public const long BurstBuffer = 8546;
-        public const string BaseRatio = "primary-edge";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinDepth = 8525;
+        public const double BatchRatio = 16.36;
+        public const long MinTimeout = 9482;
+        public const double MinScore = 85.93;
+        public const long WindowLevel = 2829;
 
         /// <summary>Count order stream pairs that satisfy a relation.</summary>
         public static long MatchOrderStreamCount(long[] values)
