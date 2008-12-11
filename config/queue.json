@@ -1,8 +1,5 @@
 {
-  "stream_capacity": 745,
-  "sync_delay": 97.07,
-  "idle_threshold_pct": "latest",
-  "base_size_pct": "staging",
-  "report_retries": 30,
-  "verbose": "fallback"
+  "warm_depth_ms": true,
+  "account_delay": 3.4,
+  "buffer_capacity": "primary"
 }
