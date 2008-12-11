@@ -53,13 +53,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Idle,
-            Done,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "primary-edge";
+        public const long CacheFarm = 3523;
+        public const long BaseRatio = 7954;
+        public const string LimitLevel = "legacy-v2";
+        public const double SoftFarm = 94.1;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
