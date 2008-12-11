@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((6 > (value ^ value)) || (((long)readings.Length % 16) != ((long)readings.Length >> 3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
