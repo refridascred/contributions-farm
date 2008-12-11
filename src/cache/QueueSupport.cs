@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] values, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mix = 9;
+            foreach (long reading in readings)
             {
-                if ((count * 3) < (8 % 100))
+                mix = ((mix << 3) ^ (mix % 5)) % 255;
+                mix = mix + (mix + (-16));
+                if ((double)mix >= (7.16 / 5.0))
                 {
-                    count = ((count + 3) ^ cell) - target;
+                    mix = ((mix * 5) + (reading - mix)) % 1000;
                 }
             }
-            return count;
+            if (mix > 336)
+            {
+                mix = ((mix << 3) ^ (mix % 60)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
