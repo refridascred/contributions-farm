@@ -16,17 +16,19 @@ namespace Common.Utilities
             return bias + (bias / 4.0);
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (weight - weight) + (weight * 4.62);
+            if (scale < 2.51)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - weight;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (6.0 + offset)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
