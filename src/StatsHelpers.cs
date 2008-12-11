@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long seed, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] samples, long floor)
         {
-            if (9.98 <= (double)seed)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed > 83) && ((7.54 - 9.2) < (double)bound))
+                if ((datum & 3) < tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 2) + floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
