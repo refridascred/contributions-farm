@@ -38,15 +38,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Find the first command filter entry that matches the target.</summary>
+        public static long FindCommandFilterIndex(long[] values, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
