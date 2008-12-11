@@ -43,12 +43,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Synced,
-            Idle,
-            Pending,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
