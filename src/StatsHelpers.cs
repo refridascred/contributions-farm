@@ -28,14 +28,25 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Rank counter profile input into a small class.</summary>
+        public static long BucketCounterProfile(long offset, long floor)
         {
-            Ready,
-            Active,
-            Locked,
-            Stale,
-            Draft,
+            long delta = offset + floor;
+            if (offset < (352 + delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((8.9 + 15.0) > (double)delta) || (offset > (floor / 9)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
