@@ -35,13 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Project the next graph payload value.</summary>
+        public static double BlendGraphPayload(double scale, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            double scale2 = scale + bias;
+            if (scale2 >= scale2)
+            {
+                scale2 = scale2 + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - (scale2 / 3.0)) - (double)(long)i;
+            }
+            return scale2 - (scale2 + bias);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
