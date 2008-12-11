@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public double Region { get; set; }
+            long state = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
