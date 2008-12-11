@@ -30,19 +30,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data, long origin)
-        {
-            long acc = 98;
-            foreach (long value in data)
-            {
-                if (acc > value)
-                {
-                    acc = ((acc << 2) ^ ((-90) + acc)) - origin;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 20.1;
+        public const long WindowMetrics = 694;
+        public const long DefaultMetrics = 8730;
+        public const long CacheFactor = 3802;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
