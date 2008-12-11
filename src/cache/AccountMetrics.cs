@@ -64,11 +64,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 2287;
-        public const long BurstCount = 1652;
-        public const string LimitContributi = "cached-1";
-        public const double DefaultSpan = 27.38;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!(((origin + origin) >= origin) || ((origin % 8) <= (reading >> 3))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
