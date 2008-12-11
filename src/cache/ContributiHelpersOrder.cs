@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] values, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] levels, long offset)
         {
-            long sum = 167;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 2) ^ (968 + (-9))) + value) + origin;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
