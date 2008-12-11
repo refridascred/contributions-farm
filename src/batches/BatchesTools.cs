@@ -32,26 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] levels, long step)
         {
-            long sum = 3;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample & 3) <= ((long)data.Length - sample)) || ((sample % 2) > ((-66) + 657)))
+                if ((levels[i] < step) && ((levels[i] % 5) != 0))
                 {
-                    sum = (sum * 2) + 14;
-                }
-                if (!((double)sum > 4.9))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 8)
-            {
-                sum = ((sum * 2) + sum) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
