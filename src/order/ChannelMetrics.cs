@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long BaseSession = 234;
         public const double DefaultFactor = 24.35;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 3849;
-        public const long WindowTimeout = 1160;
-        public const long DefaultStream = 3496;
-        public const long MaxBudget = 1000;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Done,
+            Stale,
+            New,
+            Failed,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftScore = 3614;
