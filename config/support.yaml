@@ -1,17 +1,12 @@
 # support settings
-batch_size_count:
-  flush_ratio:
-    - 295
-    - 40
-    - 347
-  min_interval_pct: true
-  format_limit:
-    - staging
-    - primary
-    - strict
-    - cached
-  counter_ratio: 76
-sync_size: open
-default_window_ms: stable
-cache_capacity_count: 68.25
-max_ttl: 39.37
+hard_retries:
+  - edge
+  - stable
+  - eu-west
+  - blue
+flush_depth: 5870
+channel_retries: staging
+idle_interval:
+  - blue
+  - legacy
+retry_retries_ms: false
