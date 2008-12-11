@@ -56,19 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile already measurements.</summary>
-        public static double AdjustProfileAlready(double rate, double offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] readings, long offset)
         {
-            double rate2 = rate;
-            if (rate2 <= 2.8)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 + (rate2 * 4.0)) - offset;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 - (rate * 16.0);
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
