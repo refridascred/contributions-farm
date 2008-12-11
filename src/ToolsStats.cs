@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] data, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long state = -9;
+            foreach (long cell in readings)
             {
-                if (cell <= origin)
+                if ((state + state) <= (cell + state))
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 2) ^ (cell >> 1)) - origin;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a format snapshot.</summary>
