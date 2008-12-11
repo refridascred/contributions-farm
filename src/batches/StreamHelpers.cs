@@ -50,17 +50,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] levels, long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
