@@ -38,14 +38,19 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string RetryAlready = "cached";
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            Stale,
-            Dropped,
-            Failed,
-            Locked,
-            Retry,
+            double scale = bias;
+            if (scale >= (7.6 / 7.0))
+            {
+                scale = scale + (weight - weight);
+            }
+            else
+            {
+                scale = scale - weight;
+            }
+            return scale - scale;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
