@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
