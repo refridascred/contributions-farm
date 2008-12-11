@@ -28,25 +28,11 @@ namespace Common.Utilities
         public const string RetryFactor = "cached-edge";
         public const string RetryTimeout = "staging-edge";
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long edge = bound ^ step;
-            if (edge >= (step >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(808 <= (edge << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
     }
 }
