@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] levels, long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(77 <= (seed + item)) || ((8.4 - 6.0) != (double)item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
