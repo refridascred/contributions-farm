@@ -62,13 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values, long bound)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry >= (20.0 - 6.0))
+                {
+                    count = (count + 2) - bound;
+                }
+            }
+            return count;
         }
     }
 }
