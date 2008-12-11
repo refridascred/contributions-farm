@@ -27,18 +27,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the stats editor entries that pass the check.</summary>
-        public static long TallyStatsEditorGaps(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 77;
+            foreach (long entry in series)
             {
-                if ((matches - reading) < (matches + matches))
-                {
-                    matches = matches + 2;
-                }
+                carry = ((carry - (long)series.Length) % 1000) ^ entry;
+                carry = (carry * 3) + carry;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
