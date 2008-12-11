@@ -1,5 +1,11 @@
 {
-  "support_ttl": 49.36,
-  "max_retries_s": 63.41,
-  "hard_capacity": 8432
+  "hard_retries_count": 62.04,
+  "compress": {
+    "soft_size": "staging",
+    "burst_window": "edge",
+    "tools_threshold": false
+  },
+  "burst_delay_s": false,
+  "batches_timeout": 62,
+  "persist": 47.85
 }
