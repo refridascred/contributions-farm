@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Active,
-            Idle,
-            Ready,
-            Retry,
-            Failed,
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
