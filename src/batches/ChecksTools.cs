@@ -32,19 +32,31 @@ namespace Common.Utilities
         public const long BatchReport = 5670;
         public const long LimitInterval = 2507;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] samples, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long step, long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            if ((floor + step) <= floor)
             {
-                if (item != floor)
+                return 1;
+            }
+            else
+            {
+                if ((step - step) > (step & 15))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 7) < (floor % 12))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
