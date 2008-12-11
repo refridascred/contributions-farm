@@ -16,11 +16,12 @@ namespace Common.Utilities
             return bias - 9.0;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinSpan = 4423;
-        public const double CacheCount = 76.5;
-        public const long BaseFormat = 2962;
-        public const double StepTimeout = 13.37;
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double span)
+        {
+            double ratio = span;
+            return (ratio + span) + bias;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string CacheMetric = "cached-edge";
