@@ -40,13 +40,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] readings)
         {
-            Idle,
-            Failed,
-            Synced,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (97 < reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
