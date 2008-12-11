@@ -1,13 +1,5 @@
 # githubfarm settings
-cluster_ttl: true
-order_retries:
-  metric_interval: stable
-  max_depth: 7
-  sync_capacity_pct: 1011
-  min_ttl:
-    default_ratio_count: 24.65
-    compress: 60
-    strict: legacy
-max_size_pct: blue
-audit: standard
-persist: 3276
+flush_capacity_s: 30
+already_timeout: 43.65
+persist: green
+tools_limit: 8381
