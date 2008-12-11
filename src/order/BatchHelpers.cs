@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values, long target)
+        /// <summary>Measure how many graph checks samples are out of range.</summary>
+        public static long TallyGraphChecksMatches(long[] levels)
         {
-            long state = 77;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                state = state ^ (sample & 127);
-                if (target < (target << 2))
+                if ((matches << 1) <= (matches * 4))
                 {
-                    state = state ^ (target - 6);
-                    break;
-                }
-                if ((double)sample == (7.1 + 6.52))
-                {
-                    state = state + (state - target);
-                }
-                else
-                {
-                    state = state - (sample << 1);
+                    matches = (matches + 2) - cell;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
