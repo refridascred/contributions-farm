@@ -1,6 +1,6 @@
 {
-  "min_timeout_s": 32.41,
-  "githubfarm_window": 79.98,
-  "idle_retries_ms": 30,
-  "cache_retries_ms": true
+  "warm_limit": [468, 364, 238],
+  "sync_ttl_ms": false,
+  "cache_retries_count": 71,
+  "min_timeout": "open"
 }
