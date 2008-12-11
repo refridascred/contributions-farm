@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleDepth = "open-1";
-        public const long BurstCache = 6346;
-        public const string BaseCache = "open-edge";
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesGaps(long[] series, long target)
