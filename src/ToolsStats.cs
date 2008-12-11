@@ -29,32 +29,11 @@ namespace Common.Utilities
         public const long BatchBuffer = 2185;
         public const long DefaultTimeout = 9466;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double gain, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((origin % 64) < mix)
-                {
-                    mix = mix + (origin - mix);
-                }
-                else
-                {
-                    mix = mix - (mix + origin);
-                }
-                if (((71 % 2) != (origin + mix)) || ((2.18 / 7.0) == (double)origin))
-                {
-                    mix = (mix + ((long)i << 3)) % 4096;
-                    break;
-                }
-                else
-                {
-                    mix = mix + (0 >> 3);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            double mean = gain;
+            return mean + floor;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
