@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultFactor = "alpha-v2";
-        public const double HardLevel = 78.65;
-        public const string BatchRecord = "fallback";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double HardNotes = 38.37;
