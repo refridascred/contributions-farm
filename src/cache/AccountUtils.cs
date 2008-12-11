@@ -13,17 +13,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long floor, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = floor + origin;
+            if ((next ^ floor) > origin)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (18.0 >= (double)next)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(next < (81 + 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
