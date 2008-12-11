@@ -1,12 +1,12 @@
 # githubfarm settings
-max_threshold:
-  warm_ratio_s: 3.73
-  default_retries_pct: 87.36
-  payload_limit: 500
-  hard_window: staging
-support_ttl:
-  - fallback
-  - fallback
-  - strict
-audit: 4348
-hard_limit: 4509
+cache_window_ms:
+  - primary
+  - eu-west
+  - staging
+  - green
+buffer_limit:
+  notes_ttl: 48.44
+  token_capacity: 16.12
+  token_size: strict
+  compress: 30
+warm_capacity_ms: cached
