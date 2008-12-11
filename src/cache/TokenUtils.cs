@@ -30,18 +30,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double bias = (double)914 + offset;
+            if (bias > bias)
             {
-                if ((count + reading) >= reading)
-                {
-                    count = count + 2;
-                }
+                bias = bias - (bias + bias);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - weight) + (double)(long)i;
+            }
+            return bias - offset;
         }
     }
 }
