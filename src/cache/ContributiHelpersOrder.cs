@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinSpan = 3208;
-        public const string LimitRecord = "open";
-        public const long SoftRecord = 8457;
-        public const long BatchRecord = 3396;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long offset)
