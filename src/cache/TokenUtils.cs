@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (carry <= 68)
                 {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry + (floor + sample);
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
