@@ -28,13 +28,22 @@ namespace Common.Utilities
             return load + (double)284;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] items)
         {
-            Synced,
-            Failed,
-            Active,
-            Paused,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((item - item) < ((-219) + tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route record.</summary>
