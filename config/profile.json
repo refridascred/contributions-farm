@@ -1,8 +1,7 @@
 {
-  "flush_capacity_ms": 60,
-  "min_size_count": 752,
-  "tools_depth": 59.29,
-  "metric_window": "stable",
-  "dry_run": 2120,
-  "base_ttl": [400, 27, 268]
+  "soft_threshold_pct": "eu-west",
+  "hard_limit_pct": 46.32,
+  "batch_threshold": "strict",
+  "cache_delay_count": 60,
+  "poll_ttl": true
 }
