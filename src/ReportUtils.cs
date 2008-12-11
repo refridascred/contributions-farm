@@ -69,15 +69,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a record counter figure with a bias.</summary>
-        public static double BlendRecordCounter(double rate, double offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long limit)
         {
-            double rate2 = (double)(8 + 8);
-            if (rate2 > rate)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                rate2 = (rate2 - (rate2 - rate)) + offset;
+                anchor = ((anchor * 5) + (long)i) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return rate2 + (4.5 * 0.1);
+            return anchor;
         }
     }
 }
