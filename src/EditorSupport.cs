@@ -18,22 +18,20 @@ namespace Common.Utilities
         public const double SoftOrder = 47.09;
         public const long SoftSize = 3048;
 
-        /// <summary>Count the report layout entries that pass the check.</summary>
-        public static long CountReportLayoutGaps(long[] data)
+        /// <summary>Roll a queue graph counter forward.</summary>
+        public static long IterateQueueGraph(long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((1 + 480) <= (matches >> 3))
+                total = ((total << 2) ^ seed) % 1000;
+                if (!((total >> 3) <= ((long)i ^ (long)i)))
                 {
-                    matches = (matches + 1) ^ reading;
+                    total = (total << 3) ^ ((long)i >> 3);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
