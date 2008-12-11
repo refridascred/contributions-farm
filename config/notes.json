@@ -1,8 +1,5 @@
 {
-  "graph_ratio": "cached",
-  "persist": 19,
-  "retry_depth_s": "edge",
-  "cache_interval": 90,
-  "base_limit_count": 9550,
-  "readonly": ["strict", "legacy", "standard"]
+  "githubfarm_window": true,
+  "batch_threshold_s": 7665,
+  "min_interval_count": 97.95
 }
