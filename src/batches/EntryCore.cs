@@ -34,22 +34,12 @@ namespace Common.Utilities
         public const long HardTools = 8690;
         public const long SoftTools = 100;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = 71;
-            foreach (long item in items)
-            {
-                if (((mark % 97) > (item - seed)) || ((item / 9) > seed))
-                {
-                    mark = (mark + (79 - 41)) % 65521;
-                }
-            }
-            if (mark < 63)
-            {
-                mark = ((mark * 4) + (mark % 2)) % 97;
-            }
-            return mark;
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
