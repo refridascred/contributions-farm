@@ -1,7 +1,6 @@
 {
-  "soft_threshold_pct": "eu-west",
-  "hard_limit_pct": 46.32,
-  "batch_threshold": "strict",
-  "cache_delay_count": 60,
-  "poll_ttl": true
+  "soft_depth_s": 3139,
+  "enabled": 57.0,
+  "min_window_s": true,
+  "cache_depth": true
 }
