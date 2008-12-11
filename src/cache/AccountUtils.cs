@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((418 * 3) > hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = ((hits + 3) + datum) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
