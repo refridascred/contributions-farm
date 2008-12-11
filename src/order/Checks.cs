@@ -51,12 +51,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitScore = 6702;
-        public const long LimitTimeout = 8619;
-        public const long MaxDepth = 9464;
-        public const long BatchTimeout = 5882;
-        public const double WindowSize = 92.43;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "staging-1";
+        public const long RetryScore = 8413;
+        public const double WindowSize = 31.65;
 
         /// <summary>Roll a channel notes counter forward.</summary>
         public static long SeriesChannelNotes(long offset)
