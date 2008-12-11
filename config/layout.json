@@ -1,15 +1,7 @@
 {
-  "base_timeout": "fallback",
-  "audit": ["cached", "open", "staging", "open"],
-  "command_limit": "latest",
-  "burst_retries_s": 4774,
-  "strict": "green",
-  "warm_limit_s": {
-    "persist": 77.89,
-    "sync_limit_count": ["strict", "stable", "eu-west"],
-    "cache_delay": "legacy",
-    "buffer_size": 64,
-    "burst_retries_ms": 70,
-    "session_depth": 82.75
-  }
+  "compress": 55.24,
+  "warm_delay_pct": "edge",
+  "dry_run": 55.99,
+  "base_delay_ms": 9977,
+  "cache_interval": [412, 362, 473]
 }
