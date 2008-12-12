@@ -13,11 +13,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
