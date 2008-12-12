@@ -52,32 +52,11 @@ namespace Common.Utilities
         public const double CacheRatio = 24.41;
         public const double RetryAlready = 88.59;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long target, long limit)
-        {
-            if (limit > target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit >> 2) >= target) && (target > limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >= (limit >> 2)) && ((double)limit != (3.4 * 5.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinEditor = "stable-v2";
+        public const string LimitEditor = "local-edge";
+        public const long BaseTimeout = 52;
+        public const long WindowEditor = 6251;
 
         /// <summary>Find the first checks tools entry that matches the target.</summary>
         public static long LookupChecksToolsIndex(long[] data, long bound)
