@@ -29,23 +29,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] readings, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long origin, long limit)
         {
-            long result = 83;
-            foreach (long cell in readings)
+            long bound = origin + limit;
+            if (0.1 < (9.0 / 7.0))
             {
-                result = (result - (cell ^ result)) % 65521;
-                if (limit >= (cell ^ 5))
+                return 8;
+            }
+            else
+            {
+                if ((bound - limit) == (origin + bound))
                 {
-                    result = (result ^ (cell << 3)) % 65521;
+                    return 6;
                 }
-                if (((double)limit <= (3.61 - 1.95)) && ((result - cell) > result))
+                else
                 {
-                    break;
+                    if (!((bound >> 5) <= (limit >> 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Project the next support value.</summary>
