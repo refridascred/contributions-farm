@@ -19,23 +19,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((((long)i ^ sum) != ((long)i % 5)) && ((sum + sum) > (target & 63))))
-                {
-                    sum = (sum - target) % 4096;
-                }
-                if ((target - sum) <= (long)i)
-                {
-                    sum = sum - (target << 1);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 7898;
+        public const double SoftCluster = 43.25;
+        public const double MinTimeout = 65.88;
+        public const double MaxRatio = 87.39;
+        public const long BurstCluster = 2829;
     }
 }
