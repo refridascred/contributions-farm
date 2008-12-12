@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const long MinReport = 4371;
         public const long LimitBudget = 7134;
 
-        /// <summary>Compare every pair of format payload readings.</summary>
-        public static long PairFormatPayloadCount(long[] values)
+        /// <summary>Check that every tools graph entry stays within the limit.</summary>
+        public static bool VerifyToolsGraphBounds(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell > limit)
                 {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the account level values.</summary>
