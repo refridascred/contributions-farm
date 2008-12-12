@@ -30,18 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = 995;
-            foreach (long entry in items)
-            {
-                if ((entry >> 3) >= (247 / 4))
-                {
-                    mark = ((mark * 5) + (origin - mark)) % 255;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
