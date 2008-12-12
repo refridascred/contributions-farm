@@ -56,13 +56,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            Failed,
-            Idle,
-            Closed,
-            Pending,
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry << 2) ^ carry;
+                carry = carry ^ (588 % 5);
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank order input into a small class.</summary>
