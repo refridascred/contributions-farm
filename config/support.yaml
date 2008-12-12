@@ -1,11 +1,13 @@
 # support settings
-min_window_pct:
-  - eu-west
-  - open
-  - legacy
-min_retries: legacy
-retry_retries_s: 35
-default_retries_ms:
-  compress: true
-  readonly: stable
-  persist: false
+retry_ttl_count: 30
+warm_window_s:
+  schema_size: local
+  order_window: 34.5
+  strict: local
+  verbose: 5393
+  soft_interval_count: 78
+format_delay:
+  - 19
+  - 175
+  - 56
+  - 203
