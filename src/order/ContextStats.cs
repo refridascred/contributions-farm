@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)seed <= 7.0)
-                {
-                    mark = ((mark << 2) ^ (mark + seed)) % 97;
-                }
-                mark = (mark + (6 + 3)) % 255;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
