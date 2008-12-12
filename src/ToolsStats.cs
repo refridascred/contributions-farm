@@ -19,19 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double bias, double bias2)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] readings, long target)
         {
-            double ratio = 20.0 * 1.86;
-            if (ratio >= bias)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                ratio = (ratio + 4.1) + bias2;
+                if ((0 % 2) > cell)
+                {
+                    tally = (tally + 2) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (bias - 1.89);
-            }
-            return ratio - bias;
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
