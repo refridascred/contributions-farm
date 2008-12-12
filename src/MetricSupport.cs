@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] items, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                sum = ((sum * 3) + offset) % 65521;
-                sum = (sum << 3) ^ offset;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Hold a entry entry.</summary>
