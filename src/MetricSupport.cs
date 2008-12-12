@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 2234;
-        public const string IdleCount = "strict-edge";
-        public const long BatchEntry = 3934;
-        public const long CacheBudget = 3191;
-        public const string SoftCount = "primary";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 978;
+        public const long LimitRatio = 1800;
+        public const double BurstFactor = 86.98;
+        public const string RetryInterval = "staging";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheMatches(long[] series)
