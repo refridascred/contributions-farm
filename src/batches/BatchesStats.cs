@@ -19,25 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long offset, long limit)
+        /// <summary>Count the schema support entries that pass the check.</summary>
+        public static long MeasureSchemaSupportMatches(long[] data, long seed)
         {
-            long lane = offset ^ limit;
-            if ((1.46 <= (double)lane) || ((double)limit != (2.4 + 5.1)))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 7) >= (485 + offset))
+                if ((item * 5) > tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 1) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of buffer session entries.</summary>
