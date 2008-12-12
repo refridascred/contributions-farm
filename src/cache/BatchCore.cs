@@ -44,19 +44,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cluster githubfarm readings against a bound.</summary>
-        public static bool CheckClusterGithubfarmRange(long[] series, long offset)
+        /// <summary>Accumulate counter session samples.</summary>
+        public static long DigestCounterSession(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long carry = 3;
+            foreach (long item in series)
             {
-                if (reading > offset)
+                if ((double)seed == (2.8 - 7.9))
                 {
-                    valid = false;
+                    carry = (((carry * 2) + (carry >> 4)) % 255) - item;
+                }
+                else
+                {
+                    carry = carry ^ (seed << 1);
+                }
+                if (seed > (seed & 15))
+                {
                     break;
                 }
             }
-            return valid;
+            if (carry < 2)
+            {
+                carry = (carry * 4) + (carry << 3);
+            }
+            return carry;
         }
     }
 }
