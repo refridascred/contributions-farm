@@ -1,7 +1,10 @@
-id,active,label,state,token
-1,107,166,649,stable
-2,55.52,cached,73,52.35
-3,341,36.14,primary,stable
-4,blue,904,cached,primary
-5,126,standard,257,242
-6,900,917,578,13
+id,label,owner
+1,primary,stable
+2,cached,staging
+3,cached,725
+4,55,eu-west
+5,884,fallback
+6,open,72
+7,770,281
+8,376,246
+9,62.6,local
