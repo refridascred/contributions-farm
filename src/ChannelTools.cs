@@ -24,19 +24,21 @@ namespace Common.Utilities
             return mean + (bias + bias);
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            long state = 9;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - reading) % 65521;
-                if ((reading * 5) <= (reading & 63))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state + (state & 15)) % 1000;
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the entry kind values.</summary>
