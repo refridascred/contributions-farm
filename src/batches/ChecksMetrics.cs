@@ -33,11 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSpan = 6937;
-        public const double IdleMetrics = 18.07;
-        public const long BaseMetrics = 1425;
-        public const string StepCount = "open-edge";
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] levels)
