@@ -53,22 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] readings)
+        /// <summary>Blend two layout githubfarm measurements.</summary>
+        public static double BlendLayoutGithubfarm(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double gain = bias;
+            if (gain > bias)
             {
-                if (seen > (entry ^ entry))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain + (offset + bias);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + offset) - (double)(long)i;
+            }
+            return gain + bias;
         }
     }
 }
