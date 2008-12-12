@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double WindowBudget = 24.59;
         public const double CacheDepth = 91.1;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitInterval = 7288;
-        public const string WindowRatio = "latest-edge";
-        public const long StepDepth = 2093;
-        public const string MinOrder = "legacy-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 63) <= (8 << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] values)
