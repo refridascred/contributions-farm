@@ -46,25 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context cluster value from a seed.</summary>
-        public static long StepContextCluster(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((long)i - mix) < mix)
-                {
-                    mix = (mix << 2) ^ 5;
-                }
-                if ((double)mix <= (5.3 * 2.66))
-                {
-                    mix = ((mix << 2) ^ bound) % 1000;
-                    mix = mix - bound;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowSize = "cached-edge";
+        public const long RetryDepth = 5507;
+        public const long StepAccount = 8164;
+        public const string SoftAccount = "open";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowGraph = 5194;
