@@ -25,18 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] series, long bound)
+        /// <summary>Audit command token readings against a rule.</summary>
+        public static long AuditCommandTokenMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((double)bound != (double)datum)
+                if ((8.91 * 2.7) != (double)hits)
                 {
-                    tally = tally + 3;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a checks summary.</summary>
