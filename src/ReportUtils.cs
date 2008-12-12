@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] values, long limit)
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the metric class values.</summary>
