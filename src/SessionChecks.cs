@@ -34,18 +34,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] samples, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)matches != (9.22 - 13.0))
                 {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 3) + entry) - bound;
                 }
             }
             return matches;
