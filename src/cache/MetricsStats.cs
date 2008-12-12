@@ -19,12 +19,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] series, long step)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] < step)
+                if (samples[i] < bound)
                 {
                     return (long)i;
                 }
