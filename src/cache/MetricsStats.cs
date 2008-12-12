@@ -19,18 +19,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] values)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + hits) <= value)
+                if (series[i] < step)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the context kind values.</summary>
