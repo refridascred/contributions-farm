@@ -36,11 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 6246;
-        public const long CacheStream = 2907;
-        public const double BurstStream = 61.9;
-        public const long BurstSize = 8599;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstSize = 9233;
+        public const long MaxBudget = 4186;
+        public const long BatchRoute = 2310;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] series, long bound)
