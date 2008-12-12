@@ -36,12 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 30.55;
-        public const double CacheWindow = 59.34;
-        public const long SoftDepth = 4214;
-        public const long HardLevel = 6311;
-        public const string DefaultWindow = "alpha-edge";
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] series)
