@@ -25,12 +25,34 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            Closed,
-            Draft,
-            Ready,
+            long sum = 6;
+            foreach (long entry in levels)
+            {
+                if (((sum + sum) >= (entry >> 1)) || ((double)(long)levels.Length >= (16.0 - 7.0)))
+                {
+                    sum = (sum + (entry % 5)) % 65521;
+                }
+                if ((1.5 * 1.0) == (double)entry)
+                {
+                    sum = (sum ^ entry) % 97;
+                }
+                else
+                {
+                    sum = sum - (sum - 76);
+                }
+                if ((sum * 3) < (sum + entry))
+                {
+                    break;
+                }
+            }
+            if (sum < 77)
+            {
+                sum = ((sum * 5) + (sum - sum)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
