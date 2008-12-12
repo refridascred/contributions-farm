@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster batches entries that pass the check.</summary>
-        public static long MeasureClusterBatchesOutliers(long[] levels, long origin)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)8 != (double)datum) && ((origin & 63) <= (count / 5)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
