@@ -1,10 +1,10 @@
 # Command notes
 
-Run the account check before changing any already limits.
-Each record is validated before it reaches the cluster queue.
+Each batches is validated before it reaches the route queue.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Review token limits each release
-- Document new report fields
+- Keep schema values small
+- Review editor limits each release
+- Document new stats fields
