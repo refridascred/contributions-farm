@@ -50,12 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] data)
         {
-            Failed,
-            Paused,
-            Idle,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)seen != (4.2 * 18.0))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank stats window input into a small class.</summary>
