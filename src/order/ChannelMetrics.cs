@@ -20,17 +20,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a command stream reading by value.</summary>
-        public static long SeekCommandStreamIndex(long[] samples, long floor)
+        /// <summary>Grade a profile editor value against two limits.</summary>
+        public static long RankProfileEditor(long seed, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long delta = seed + step;
+            if ((seed + seed) < 90)
             {
-                if (samples[i] <= floor)
+                return 6;
+            }
+            else
+            {
+                if (!((delta / 7) >= (seed + seed)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
