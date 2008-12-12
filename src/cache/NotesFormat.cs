@@ -32,12 +32,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long origin2)
         {
-            Stale,
-            Idle,
-            Paused,
+            if ((double)origin2 > (0.51 - 5.39))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - 4) != (origin2 / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin2 << 1) <= origin2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
