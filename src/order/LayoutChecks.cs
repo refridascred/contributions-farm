@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if (!((double)step < (double)origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (origin & 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Done,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
