@@ -52,12 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            New,
-            Active,
-            Paused,
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
