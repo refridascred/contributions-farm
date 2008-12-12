@@ -46,19 +46,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((943 - sample) >= (sample ^ sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2488;
+        public const long StepSpan = 9845;
+        public const long RetrySupport = 2516;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] levels)
