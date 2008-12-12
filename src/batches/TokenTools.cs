@@ -13,22 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] levels, long origin)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long state = 731;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell & 63) <= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 2) + (state + cell)) % 255;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 897)
-            {
-                state = (state * 5) + (origin + state);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
