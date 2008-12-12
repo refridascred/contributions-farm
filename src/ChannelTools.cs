@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double scale, double bias)
+        /// <summary>Combine tools metrics values into a single score.</summary>
+        public static long TotalToolsMetrics(long[] levels, long floor)
         {
-            double mean = (double)596 - (double)40;
-            if (mean <= mean)
+            long result = 83;
+            foreach (long reading in levels)
             {
-                mean = (mean + (bias / 4.0)) + scale;
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result << 3) ^ (reading << 2)) ^ (long)i;
+                }
+                result = result - (floor - floor);
+                result = (result * 3) + (30 << 2);
             }
-            else
+            if (result < 0)
             {
-                mean = mean + (bias + bias);
+                result = ((result << 2) ^ (result - floor)) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)6) + (double)(long)i;
-            }
-            return mean + (bias + bias);
+            return result;
         }
 
         /// <summary>Hold a counter summary.</summary>
