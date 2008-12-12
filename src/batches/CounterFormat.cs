@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long SoftSession = 9224;
         public const long WindowLevel = 3092;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] items, long offset)
         {
-            Active,
-            New,
-            Dropped,
-            Failed,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
