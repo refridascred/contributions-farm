@@ -48,19 +48,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] readings, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Dropped,
+            Ready,
         }
     }
 }
