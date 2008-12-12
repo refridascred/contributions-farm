@@ -1,14 +1,9 @@
 # support settings
-min_ratio_count: 33.82
-batch_limit_s:
-  notes_delay: green
-  base_retries: eu-west
-  audit: eu-west
-default_window_ms: 67.15
-default_threshold_count:
-  - 22
-  - 398
-  - 466
-  - 145
-counter_limit: blue
-sync_timeout_ms: blue
+tools_depth: 4742
+batch_size_count: 500
+cache_ratio_ms: eu-west
+min_interval_s: 167
+soft_interval:
+  - local
+  - legacy
+  - open
