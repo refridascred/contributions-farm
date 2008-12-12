@@ -30,11 +30,18 @@ namespace Common.Utilities
         public const double BurstStream = 61.9;
         public const long BurstSize = 8599;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] series, long bound)
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            long mix = 535;
+            foreach (long sample in series)
+            {
+                if (!((sample - sample) < (sample << 2)))
+                {
+                    mix = (((mix * 2) + (sample + 2)) % 97) - bound;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a cache stats.</summary>
