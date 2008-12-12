@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long anchor = 77;
+            foreach (long value in series)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if ((1 / 8) > anchor)
+                {
+                    anchor = ((anchor - (476 - anchor)) % 4096) ^ value;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
