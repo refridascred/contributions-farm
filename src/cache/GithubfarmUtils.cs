@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already order figure with a bias.</summary>
-        public static double ProjectAlreadyOrder(double bias, double bias2)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double bias3 = 5.1;
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = ((bias3 + (bias + bias)) - (double)(long)i) - bias2;
-            }
-            return bias3 - (double)2;
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
