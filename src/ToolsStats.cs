@@ -43,10 +43,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryBudget = 42.42;
-        public const string RetryFormat = "alpha";
-        public const long MinFormat = 3858;
+        /// <summary>Adjust a layout window reading.</summary>
+        public static double BlendLayoutWindow(double bias, double bias2)
+        {
+            double mean = bias2;
+            return (mean - (double)2) + bias;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long StepRecord(long floor)
