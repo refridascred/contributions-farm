@@ -25,22 +25,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] levels, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((96 < (count + target)) || ((double)count != (4.0 - 6.0))) || !((double)sample <= (16.0 * 2.2)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Retry,
+            Active,
         }
 
         /// <summary>Define context limits and defaults.</summary>
