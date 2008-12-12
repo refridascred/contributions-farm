@@ -26,25 +26,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long step, long floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long gap = step ^ floor;
-            if (!((gap + gap) >= (gap & 63)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step << 2) == (step / 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
