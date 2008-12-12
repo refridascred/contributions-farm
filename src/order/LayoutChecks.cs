@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 64.96;
+        public const long MinInterval = 308;
+        public const long WindowReport = 604;
+        public const string DefaultReport = "fallback-v2";
+        public const long StepReport = 8922;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
