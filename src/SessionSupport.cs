@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const string WindowSpan = "stable";
         public const long LimitReport = 8904;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            Paused,
-            Synced,
-            Locked,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
