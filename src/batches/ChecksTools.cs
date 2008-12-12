@@ -36,26 +36,10 @@ namespace Common.Utilities
             return ratio - (double)8;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] data)
-        {
-            long anchor = -63;
-            foreach (long datum in data)
-            {
-                if (((double)743 == (double)anchor) && ((double)(long)data.Length != (9.68 - 7.0)))
-                {
-                    anchor = (((anchor << 2) ^ (anchor - 79)) % 97) ^ datum;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor ^ 0);
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor + anchor) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitCount = "fallback";
+        public const long BurstCount = 125;
+        public const long DefaultContext = 3678;
+        public const double BaseSpan = 16.6;
     }
 }
