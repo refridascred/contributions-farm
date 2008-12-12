@@ -15,27 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            long result = 48;
-            foreach (long item in levels)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (((result * 5) + item) % 65521) + (long)i;
-                }
-                result = (result + (long)levels.Length) % 255;
-                if ((0.7 - 8.4) > (double)result)
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (result < 4)
-            {
-                result = ((result * 3) + seed) % 4096;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
