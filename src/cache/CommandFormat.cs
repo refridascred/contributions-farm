@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double gain, double floor)
         {
-            New,
-            Done,
-            Locked,
-            Closed,
-            Active,
+            double bias = (gain / 6.0) / 4.0;
+            if (bias <= 7.27)
+            {
+                bias = bias + (floor / 7.0);
+            }
+            else
+            {
+                bias = bias - (double)55;
+            }
+            return bias - bias;
         }
 
         /// <summary>Hold a context header.</summary>
