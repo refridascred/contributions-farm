@@ -72,24 +72,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long step, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long seed)
         {
-            if ((double)step == (double)limit)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 3) > (87 << 3))
+                if ((data[i] == seed) && ((data[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
