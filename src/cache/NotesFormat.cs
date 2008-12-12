@@ -15,10 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 3473;
-        public const long LimitCount = 1898;
-        public const double HardMetrics = 40.62;
+        /// <summary>Fold a list of batch graph readings.</summary>
+        public static long CombineBatchGraph(long[] series)
+        {
+            long mark = 573;
+            foreach (long value in series)
+            {
+                if (((mark + mark) >= (value - value)) || ((9.4 - 3.0) == (double)mark))
+                {
+                    mark = (mark - (mark * 2)) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinTimeout = 4572;
