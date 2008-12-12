@@ -34,15 +34,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            long score = 165;
+            foreach (long sample in readings)
             {
-                score = ((score * 2) + (long)i) % 101;
+                score = ((score << 2) ^ (score + sample)) % 255;
             }
-            return score;
+            return score % 1000;
         }
     }
 }
