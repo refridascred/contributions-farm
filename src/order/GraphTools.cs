@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            Done,
-            Ready,
-            Queued,
-            Failed,
-            Idle,
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry - (carry & 127)) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of cache metric readings.</summary>
