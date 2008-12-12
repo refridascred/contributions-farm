@@ -50,11 +50,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstCount = 5932;
-        public const double CacheBuffer = 29.65;
-        public const double LimitDepth = 83.62;
-        public const string CacheScore = "local-1";
-        public const long RetryTimeout = 6677;
+        /// <summary>Derive the next entry graph value from a seed.</summary>
+        public static long SeriesEntryGraph(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum + sum) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
