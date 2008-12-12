@@ -40,16 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long result = floor;
+            long anchor = origin;
             for (int i = 0; i < 16; i++)
             {
-                result = (result * 5) + (9 / 5);
-                result = ((result * 4) + (long)i) % 4093;
+                anchor = ((anchor << 2) ^ (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Combine context values into a single score.</summary>
