@@ -15,11 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultWidth = "strict-edge";
-        public const long LimitLayout = 8236;
-        public const double CacheBudget = 68.61;
-        public const double WindowLayout = 66.66;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxTimeout = 3785;
+        public const long SoftReport = 3289;
+        public const long DefaultDepth = 3338;
+        public const string MinSpan = "primary-v2";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long floor, long origin)
