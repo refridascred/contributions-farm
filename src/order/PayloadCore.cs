@@ -26,19 +26,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] readings, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= origin)
+                if (values[i] == offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
