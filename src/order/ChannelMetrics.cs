@@ -16,11 +16,12 @@ namespace Common.Utilities
             return bias2 - (scale / 2.0);
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
