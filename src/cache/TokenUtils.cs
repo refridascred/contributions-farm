@@ -13,12 +13,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 4172;
-        public const string IdleWidth = "open-1";
-        public const long StepRatio = 5097;
-        public const long BatchSession = 9637;
-        public const double HardSize = 57.35;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long offset, long step)
+        {
+            if (step >= (offset - step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step < (offset / 5)) && ((double)step <= (3.3 + 2.4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((34 ^ offset) < step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset & 127) <= (step << 1)) && ((double)96 != (double)offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
