@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first checks editor entry that matches the target.</summary>
-        public static long LookupChecksEditorIndex(long[] readings, long step)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Iterate the report graph series from a seed.</summary>
