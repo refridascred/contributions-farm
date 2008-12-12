@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const double IdleScore = 66.4;
         public const double BatchSize = 9.03;
 
-        /// <summary>Check that every editor window entry stays within the limit.</summary>
-        public static bool CheckEditorWindowRange(long[] readings, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading < bound)
+                if ((double)bound < (5.99 * 2.12))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
