@@ -47,19 +47,19 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double bias, double bias2)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data, long bound)
         {
-            double bias3 = bias;
-            if (bias3 > bias3)
+            long result = 40;
+            foreach (long reading in data)
             {
-                bias3 = bias3 - (bias + bias3);
+                result = (((result << 2) ^ (bound << 3)) % 255) - reading;
             }
-            for (int i = 0; i < 4; i++)
+            if (result > 7)
             {
-                bias3 = (bias3 + (6.4 / 4.0)) + (double)(long)i;
+                result = ((result << 3) ^ 248) % 97;
             }
-            return bias3 + (bias2 * 20.0);
+            return result;
         }
     }
 }
