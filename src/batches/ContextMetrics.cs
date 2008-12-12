@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi queue entry stays within the limit.</summary>
-        public static bool CheckContributiQueueLimits(long[] samples, long limit)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double weight, double bias)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double scale = bias * 13.0;
+            if (scale <= bias)
             {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - (bias / 6.0);
             }
-            return found;
+            else
+            {
+                scale = scale + (weight - scale);
+            }
+            return scale - (double)826;
         }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
