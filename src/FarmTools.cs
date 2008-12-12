@@ -31,18 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm stream entries that pass the check.</summary>
-        public static long MeasureFarmStreamGaps(long[] levels, long step)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!!((20.0 / 4.0) < (double)step))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
