@@ -27,21 +27,22 @@ namespace Common.Utilities
         public const long RetryProfile = 3576;
         public const long CacheDepth = 8421;
 
-        /// <summary>Match up contributi commits samples.</summary>
-        public static long PairContributiCommitsCount(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 563;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (4 < (reading - 49))
                 {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 3) + (sum - sum)) - floor;
                 }
             }
-            return matches;
+            if (sum > 6)
+            {
+                sum = (sum ^ ((long)data.Length + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
