@@ -22,17 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi filter entry that matches the target.</summary>
-        public static long LocateContributiFilterIndex(long[] values, long seed)
+        /// <summary>Validate profile stats readings against a bound.</summary>
+        public static bool ValidateProfileStatsBounds(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (values[i] == seed)
+                if (reading < target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a graph entry.</summary>
