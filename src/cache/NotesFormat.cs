@@ -28,31 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            if (seed < (step / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 4) >= (step + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed & 15) == (seed & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Paused,
         }
     }
 }
