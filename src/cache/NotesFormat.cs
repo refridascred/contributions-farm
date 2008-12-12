@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of graph checks entries.</summary>
-        public static long FoldGraphChecks(long[] values, long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] series)
         {
-            long mix = 366;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-842) <= (mix << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix * 5) + floor) + entry;
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 4)
-            {
-                mix = ((mix << 2) ^ mix) % 97;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
