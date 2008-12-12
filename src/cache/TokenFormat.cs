@@ -19,12 +19,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Find the first route account entry that matches the target.</summary>
+        public static long LookupRouteAccountIndex(long[] data, long limit)
         {
-            Idle,
-            Retry,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
