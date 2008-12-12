@@ -61,15 +61,19 @@ namespace Common.Utilities
         public const long RetryScore = 8413;
         public const double WindowSize = 31.65;
 
-        /// <summary>Roll a channel notes counter forward.</summary>
-        public static long SeriesChannelNotes(long offset)
+        /// <summary>Digest a series of profile graph entries.</summary>
+        public static long DigestProfileGraph(long[] items, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long result = 489;
+            foreach (long entry in items)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                result = ((result << 3) ^ ((long)items.Length + entry)) % 101;
+                if ((result + entry) < step)
+                {
+                    result = (result + (792 - result)) % 97;
+                }
             }
-            return acc;
+            return result % 97;
         }
     }
 }
