@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            Idle,
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
