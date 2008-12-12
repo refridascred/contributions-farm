@@ -1,15 +1,19 @@
 {
-  "hard_threshold_ms": [490, 5, 361],
-  "min_ratio_count": 17,
-  "cache_ratio_s": {
-    "default_threshold_pct": ["fallback", "standard"],
-    "warm_window_count": ["staging", "staging", "primary"],
-    "soft_window_s": {
-      "format_window": true,
-      "hard_limit_s": 33,
-      "poll_size_count": false,
-      "commits_capacity": 45,
-      "metric_depth": "eu-west"
+  "record_ttl": [185, 256],
+  "warm_window_s": "local",
+  "min_ttl_ms": {
+    "idle_limit_count": ["standard", "cached", "staging"],
+    "persist": [407, 59],
+    "retry_window_count": true,
+    "verbose": 84.36,
+    "soft_depth_pct": 16,
+    "burst_ttl_pct": {
+      "verbose": 33,
+      "base_limit_ms": "primary",
+      "retry_capacity_count": ["stable", "open", "stable", "cached"],
+      "warm_ttl_s": "stable"
     }
-  }
+  },
+  "soft_size_ms": 74.09,
+  "base_limit_pct": 10.17
 }
