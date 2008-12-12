@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const string HardAccount = "standard-edge";
         public const double MinBudget = 0.92;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 58.1;
+        public const long WindowChannel = 1941;
+        public const long DefaultChannel = 8586;
+        public const double LimitChannel = 65.53;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
