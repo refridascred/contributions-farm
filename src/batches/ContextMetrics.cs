@@ -67,18 +67,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream profile entries that pass the check.</summary>
-        public static long TallyStreamProfileMatches(long[] samples)
+        /// <summary>Fold a list of cluster buffer readings.</summary>
+        public static long TallyClusterBuffer(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long anchor = 52;
+            foreach (long reading in series)
             {
-                if (!(((double)matches < (19.0 / 2.0)) || ((matches * 4) < 352)))
+                if (!((anchor * 5) == (offset + reading)))
                 {
-                    matches = (matches + 1) - value;
+                    anchor = (anchor - (offset ^ offset)) % 1000;
+                }
+                if ((double)offset <= (double)reading)
+                {
+                    anchor = (anchor ^ (987 << 1)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (offset - offset);
                 }
             }
-            return matches;
+            if (anchor > 7)
+            {
+                anchor = ((anchor * 4) + offset) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
