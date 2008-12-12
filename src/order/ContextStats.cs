@@ -14,10 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRatio = "local-edge";
-        public const long IdleInterval = 5524;
-        public const long SoftWidth = 9650;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardFactor = 2287;
