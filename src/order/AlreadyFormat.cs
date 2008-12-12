@@ -40,10 +40,14 @@ namespace Common.Utilities
         public const long LimitRatio = 8202;
         public const long CacheDepth = 1685;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstTimeout = 1591;
-        public const string LimitCounter = "local-edge";
-        public const long HardCounter = 5131;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Locked,
+            Closed,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
