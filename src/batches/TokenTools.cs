@@ -13,15 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of record command readings.</summary>
