@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long BurstLevel = 8348;
         public const double MaxDepth = 4.03;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            New,
-            Synced,
-            Active,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardBudget = 952;
+        public const string SoftReport = "primary-1";
+        public const long WindowWidth = 6546;
+        public const long BaseReport = 3577;
 
         /// <summary>Derive the next route command value from a seed.</summary>
         public static long StepRouteCommand(long limit)
