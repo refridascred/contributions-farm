@@ -1,18 +1,16 @@
 # support settings
-min_capacity_pct: 58
-route_window: 72.92
-max_ttl_count:
-  order_ratio: staging
-  persist:
-    - 301
-    - 495
-  readonly:
-    poll_ratio_ms: true
-    cache_retries: 84
-    enabled: false
-    retry_size_s: eu-west
-    sync_size: false
-    batch_threshold_pct: true
-  filter_depth: 33.78
-  batch_depth: open
-  batch_window: 100
+checks_size:
+  max_retries_s:
+    - staging
+    - eu-west
+  soft_depth: 6784
+  profile_size: 60
+  burst_depth: legacy
+base_capacity_count: 47.83
+account_window:
+  - 192
+  - 377
+  - 489
+max_delay_ms: 21
+idle_window_pct: 72.74
+hard_retries_pct: 15.94
