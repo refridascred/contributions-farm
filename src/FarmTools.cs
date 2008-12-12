@@ -13,23 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit command payload readings against a rule.</summary>
-        public static long AuditCommandPayloadGaps(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)reading > (1.3 * 9.26)) && ((2 ^ seed) < (4 ^ seed)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryWidth = 8162;
+        public const long MinCluster = 2479;
+        public const long HardInterval = 9346;
+        public const string SoftBudget = "alpha";
 
         /// <summary>Look up the position of a metrics channel sample.</summary>
         public static long LocateMetricsChannelIndex(long[] data, long origin)
