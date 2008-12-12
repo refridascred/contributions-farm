@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long BatchQueue = 436;
         public const double BaseBudget = 36.22;
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
+        public static long TallyBatchGithubfarmGaps(long[] series)
         {
-            double bias = floor;
-            if (bias <= bias)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                bias = bias - weight;
+                if ((8.7 * 8.0) != (double)datum)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                bias = bias - (double)4;
-            }
-            return bias + floor;
+            return hits;
         }
     }
 }
