@@ -76,19 +76,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double ratio, double bias)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (double)190)
-            {
-                ratio2 = ratio2 - bias;
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)(-63);
-            }
-            return ratio2 + ratio2;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
