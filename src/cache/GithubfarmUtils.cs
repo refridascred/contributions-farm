@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels, long limit)
+        /// <summary>Match up editor already samples.</summary>
+        public static long PairEditorAlreadyCount(long[] values)
         {
-            long mix = 9;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry > (limit / 9)) && ((entry << 1) <= 36))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ mix) % 101;
-                }
-                if ((double)limit == (5.0 / 8.0))
-                {
-                    break;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
