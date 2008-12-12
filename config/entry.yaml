@@ -1,16 +1,5 @@
 # entry settings
-checks_retries:
-  default_depth_s: true
-  retry_window: 995
-  batches_delay: open
-  poll_ratio: 4
-  dry_run: 6540
-  contributi_limit:
-    soft_timeout_ms: blue
-    poll_capacity_s: 39
-    window_depth: stable
-    retry_interval: 8608
-sync_capacity: staging
-default_threshold_ms: 2403
-persist: 41.5
-soft_window_ms: 6730
+warm_threshold_count: cached
+strict: 71.27
+format_size: 1024
+layout_depth: 8308
