@@ -51,18 +51,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = 497;
+            foreach (long reading in values)
             {
-                if ((limit <= (9 ^ item)) || ((6.98 - 2.5) > (double)count))
+                if (!(mark > (reading - mark)))
                 {
-                    count = count + 1;
+                    mark = (mark * 4) + (mark + reading);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
