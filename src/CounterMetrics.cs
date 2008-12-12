@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long WindowBudget = 8154;
         public const double DefaultFactor = 40.19;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] data, long offset)
         {
-            Stale,
-            Done,
-            Idle,
-            Paused,
-            Queued,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
