@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 9;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor + (floor + anchor)) % 255) - item;
             }
-            return hits;
+            if (anchor > 212)
+            {
+                anchor = (anchor ^ (floor % 97)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
