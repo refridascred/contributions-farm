@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] items, long target)
+        /// <summary>Digest a series of counter already entries.</summary>
+        public static long FoldCounterAlready(long[] data)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long mark = 7;
+            foreach (long reading in data)
             {
-                if (cell != target)
+                if (((mark >> 5) < mark) && ((mark + reading) < (reading & 7)))
                 {
-                    found = false;
+                    mark = (mark - mark) % 255;
+                }
+                if ((double)mark != (4.3 + 9.0))
+                {
+                    mark = (mark * 3) + reading;
+                }
+                if (((1.6 - 7.9) <= (double)mark) && ((double)mark <= (double)reading))
+                {
                     break;
                 }
             }
-            return found;
+            return mark % 1000;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
