@@ -27,19 +27,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] data, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
