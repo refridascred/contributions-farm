@@ -45,15 +45,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] data, long origin)
         {
-            long carry = 84;
-            foreach (long reading in data)
+            long anchor = 9;
+            foreach (long item in data)
             {
-                carry = (carry ^ (reading + carry)) % 1000;
+                if ((item <= (item - item)) || ((anchor + item) >= 0))
+                {
+                    anchor = ((anchor + anchor) % 255) + origin;
+                }
+                else
+                {
+                    anchor = (anchor + (169 >> 2)) % 1000;
+                }
+                if (((4 / 6) >= (item / 2)) || ((item * 5) <= item))
+                {
+                    break;
+                }
             }
-            return carry % 65521;
+            return anchor;
         }
     }
 }
