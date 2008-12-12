@@ -34,32 +34,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long limit, long limit2)
-        {
-            if (!(((-42) + limit) < (limit % 24)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit2 <= (limit2 >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit2 == (18.0 / 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "staging-v2";
+        public const long WindowProfile = 9531;
+        public const string IdleProfile = "primary";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowRatio = 9665;
