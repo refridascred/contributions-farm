@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] series, long bound)
+        /// <summary>Scale a notes graph figure with a bias.</summary>
+        public static double BlendNotesGraph(double scale, double offset)
         {
-            long mark = 1;
-            foreach (long cell in series)
+            double scale2 = (offset / 2.0) * 4.94;
+            if (scale2 < (scale2 - 12.0))
             {
-                mark = ((((mark << 2) ^ (mark % 100)) % 101) ^ cell) - bound;
+                scale2 = scale2 + scale;
             }
-            if (mark < 70)
+            else
             {
-                mark = ((mark * 4) + 5) % 1000;
+                scale2 = scale2 + (double)(-86);
             }
-            return mark % 65521;
+            return scale2 - scale2;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
