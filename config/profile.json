@@ -1,12 +1,5 @@
 {
-  "sync_ttl_pct": 1291,
-  "poll_limit_ms": ["cached", "staging"],
-  "audit": {
-    "sync_limit": true,
-    "retry_ttl_count": false,
-    "compress": "primary",
-    "contributi_capacity": 83.95,
-    "default_limit": ["legacy", "cached", "legacy"],
-    "soft_interval_ms": false
-  }
+  "strict": ["standard", "edge", "strict", "open"],
+  "hard_ttl_s": "strict",
+  "verbose": "stable"
 }
