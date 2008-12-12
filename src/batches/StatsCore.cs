@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const string RetryEditor = "fallback-1";
         public const long WindowEditor = 9001;
 
-        /// <summary>Accumulate filter order samples.</summary>
-        public static long TotalFilterOrder(long[] samples, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] readings, long offset)
         {
-            long sum = 69;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (sum - sum)) % 255;
-                if ((double)sum < (double)value)
+                if (value > offset)
                 {
-                    sum = ((sum * 4) + (floor + floor)) % 255;
-                }
-                if (((double)floor <= 18.0) && ((sum - floor) > (floor + sum)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return ready;
         }
 
         /// <summary>Hold a support record.</summary>
