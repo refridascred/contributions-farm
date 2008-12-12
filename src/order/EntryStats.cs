@@ -53,18 +53,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((sample - seen) < (seen + 7))
+                if (item > origin)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
