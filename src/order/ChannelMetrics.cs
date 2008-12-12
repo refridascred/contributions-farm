@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] series)
         {
-            Locked,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell > (6.8 * 4.76)) || ((13.0 * 0.7) < (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a session snapshot.</summary>
