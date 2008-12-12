@@ -21,32 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long prev = seed ^ offset;
-            if ((prev % 2) >= prev)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((662 - offset) >= offset) && ((17 + offset) <= prev))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev & 255) > (prev - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
