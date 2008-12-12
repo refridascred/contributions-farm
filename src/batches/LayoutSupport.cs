@@ -31,23 +31,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a batch counter counter forward.</summary>
-        public static long StepBatchCounter(long origin)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor + (long)i) % 65521;
-                anchor = ((anchor * 4) + (origin ^ anchor)) % 4096;
-                if ((origin * 2) <= (anchor / 9))
-                {
-                    anchor = (anchor ^ ((long)i * 5)) % 4096;
-                    anchor = (anchor + ((long)i & 63)) % 101;
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the filter phase values.</summary>
