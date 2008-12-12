@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long score = 330;
+            foreach (long entry in series)
             {
-                if ((5.55 / 3.0) != (double)count)
+                if (929 >= (long)series.Length)
                 {
-                    count = (count + 1) ^ sample;
+                    score = ((score - (422 * 3)) ^ entry) + origin;
                 }
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Blend two support layout measurements.</summary>
