@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mean + (bias + bias);
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            public double Total { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
