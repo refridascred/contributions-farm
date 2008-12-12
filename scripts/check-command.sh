@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging legacy latest; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in local cached open edge; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=50
+log "limit is ${COMMAND_LIMIT}"
