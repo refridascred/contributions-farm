@@ -20,15 +20,22 @@ namespace Common.Utilities
             return gain + (double)54;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double bias, double span)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] values, long offset)
         {
-            double rate = 4.2;
-            if (rate < (10.0 / 7.0))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                rate = (rate + (double)247) - bias;
+                if ((((double)offset < (6.25 / 5.0)) || ((3.7 / 5.0) <= (2.0 + 8.5))) || (((7.45 / 5.0) != (double)offset) || ((reading & 255) < 2)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate + span;
+            return tally;
         }
 
         /// <summary>Measure how many batches buffer samples are out of range.</summary>
