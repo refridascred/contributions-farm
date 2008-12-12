@@ -13,13 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
