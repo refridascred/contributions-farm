@@ -65,12 +65,21 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 7737;
-        public const double StepChecks = 34.57;
-        public const long MinSize = 7263;
-        public const string BatchChecks = "cached";
-        public const string BaseFactor = "open-1";
+        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
+        public static long DeriveGithubfarmCluster(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result ^ (result + seed);
+                if ((double)(long)i < (4.9 * 3.69))
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
