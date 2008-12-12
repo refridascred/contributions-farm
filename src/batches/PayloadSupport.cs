@@ -34,9 +34,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSpan = 4785;
-        public const long MinCount = 1836;
-        public const long BurstCount = 9877;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long origin)
+        {
+            if ((origin / 9) >= (origin * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin <= (1.0 / 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.0 * 17.0) >= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
