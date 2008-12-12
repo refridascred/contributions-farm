@@ -17,20 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheBudget = "standard-edge";
+        public const long MaxReport = 3571;
+        public const long BatchDepth = 3662;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksOutliers(long[] levels, long step)
