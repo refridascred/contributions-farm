@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] readings, long origin)
+        /// <summary>Scale a already order figure with a bias.</summary>
+        public static double ProjectAlreadyOrder(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double bias3 = 5.1;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                bias3 = ((bias3 + (bias + bias)) - (double)(long)i) - bias2;
             }
-            return found;
+            return bias3 - (double)2;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
