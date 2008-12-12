@@ -53,32 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            long mark = 4;
+            foreach (long cell in values)
             {
-                if (!((anchor + origin) >= 550))
+                if (!((mark & 1) <= (-40)))
                 {
-                    anchor = (anchor - (origin + anchor)) % 97;
+                    mark = ((mark * 3) + (mark + cell)) % 4096;
                 }
-                else
+                if ((61 % 3) == (cell + mark))
                 {
-                    anchor = (anchor << 2) ^ (long)i;
+                    mark = (mark << 3) ^ (6 - (long)values.Length);
                 }
-                if ((double)anchor <= (15.0 - 5.0))
+                if ((0.4 / 9.0) != (double)cell)
                 {
                     break;
                 }
-                if ((origin % 24) > ((long)i >> 5))
-                {
-                    anchor = (anchor ^ (origin + (long)i)) % 255;
-                    anchor = (anchor * 4) + (20 >> 2);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
     }
 }
