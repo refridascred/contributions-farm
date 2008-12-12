@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((6.0 - 13.0) < (double)(long)i)
-                {
-                    long slot = (total % 8) >> 3;
-                    total = (total - (slot / 6)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
