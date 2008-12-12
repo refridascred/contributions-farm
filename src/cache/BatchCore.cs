@@ -26,13 +26,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a command reading.</summary>
