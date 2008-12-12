@@ -25,16 +25,15 @@ namespace Common.Utilities
         public const double MaxAccount = 31.04;
         public const double SoftCount = 98.4;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Iterate the already support series from a seed.</summary>
+        public static long SeriesAlreadySupport(long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                total = (total ^ (total ^ limit)) % 101;
-                total = ((total * 3) + (long)i) % 4093;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
