@@ -1,10 +1,12 @@
 {
-  "soft_size_ms": [200, 495],
-  "enabled": {
-    "default_capacity_s": [424, 235, 454, 31],
-    "support_retries": "edge",
-    "account_threshold": false
-  },
-  "cache_size": true,
-  "min_window_ms": 4521
+  "enabled": "stable",
+  "strict": "edge",
+  "farm_capacity": "green",
+  "audit": "eu-west",
+  "githubfarm_ttl": {
+    "audit": 60,
+    "warm_ttl_pct": ["legacy", "edge", "standard"],
+    "base_delay_count": [149, 440],
+    "notes_capacity": true
+  }
 }
