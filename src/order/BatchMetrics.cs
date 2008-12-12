@@ -56,15 +56,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two already command measurements.</summary>
-        public static double BlendAlreadyCommand(double gain, double floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double drift = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift - (double)916) - (double)(long)i) + gain;
-            }
-            return drift + (19.0 / 5.0);
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
