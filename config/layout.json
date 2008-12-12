@@ -1,14 +1,5 @@
 {
-  "max_size_count": 60,
-  "flush_capacity": {
-    "soft_interval": "local",
-    "token_window": true,
-    "context_size": true,
-    "flush_window_count": "stable",
-    "report_ttl": 5.72,
-    "context_retries": "strict"
-  },
-  "audit": 100,
-  "batches_capacity": "blue",
-  "hard_limit": "strict"
+  "sync_window_ms": true,
+  "hard_depth_s": 54.86,
+  "session_timeout": "strict"
 }
