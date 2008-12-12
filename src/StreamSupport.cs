@@ -28,19 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double rate, double floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double scale = 0.74;
-            if (scale >= scale)
-            {
-                scale = scale + (floor + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)95;
+            Active,
+            Locked,
+            Queued,
+            Pending,
         }
     }
 }
