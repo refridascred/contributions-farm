@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string DefaultFactor = "strict";
         public const long LimitOrder = 266;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] samples, long origin)
         {
-            Retry,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((9.4 / 9.0) != (double)origin)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a profile editor value against two limits.</summary>
