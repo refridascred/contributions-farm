@@ -1,7 +1,4 @@
 # entry settings
-poll_ratio_count: 77.46
-audit: local
-base_retries: 107
-cache_retries_s: standard
-idle_interval_ms: edge
-soft_depth: open
+idle_timeout_pct: false
+enabled: true
+sync_timeout_count: legacy
