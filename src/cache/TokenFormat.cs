@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data, long target)
+        /// <summary>Roll a stream metrics counter forward.</summary>
+        public static long RollStreamMetrics(long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count > (item - item)) || (((item - item) >= (item + target)) && ((10.0 * 2.9) <= (double)target)))
+                if (!((mark + 38) <= target))
                 {
-                    count = count + 3;
+                    mark = mark + (target - target);
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count order metric pairs that satisfy a relation.</summary>
