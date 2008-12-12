@@ -1,19 +1,10 @@
 {
-  "idle_delay_pct": 500,
-  "base_timeout_pct": 60,
-  "readonly": "eu-west",
-  "tools_delay": {
-    "batch_window": {
-      "tools_depth": 5477,
-      "batch_capacity_ms": ["standard", "open", "open"],
-      "tools_ttl": [406, 438, 145],
-      "editor_retries": 83.57,
-      "min_delay": "cached",
-      "compress": "legacy"
-    },
-    "order_window": 1024,
-    "queue_interval": false
-  },
-  "batch_timeout_ms": 5657,
-  "window_depth": 90.65
+  "dry_run": "standard",
+  "min_limit": 40.21,
+  "min_capacity_count": {
+    "cache_ratio_pct": "staging",
+    "tools_size": "legacy",
+    "default_capacity_count": 1024,
+    "min_depth_ms": [27, 391, 450, 98]
+  }
 }
