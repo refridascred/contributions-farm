@@ -34,13 +34,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit metric session readings against a rule.</summary>
+        public static long CountMetricSessionHits(long[] readings)
         {
-            Stale,
-            Paused,
-            Pending,
-            Failed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (matches >= (3 >> 2))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
     }
 }
