@@ -51,18 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] data)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (((reading >> 4) >= (7 ^ reading)) || ((count & 15) < (6 + count)))
+                if (item < step)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
