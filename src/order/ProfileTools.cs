@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double scale, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            double gain = scale;
-            return (gain + (double)11) + span;
+            long state = 570;
+            foreach (long datum in samples)
+            {
+                if (!(state >= (state * 2)))
+                {
+                    state = ((state * 3) + ((-89) - state)) % 65521;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state & 255);
+                }
+                if ((datum >> 2) < (state << 2))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
