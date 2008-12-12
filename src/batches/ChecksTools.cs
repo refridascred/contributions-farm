@@ -14,39 +14,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long bound, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long span = bound ^ step;
-            if ((bound >> 4) <= (step - bound))
+            long acc = 99;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 2) != (span ^ step))
+                long step = (acc >> 2) + (reading / 7);
+                if (((step - step) >= (acc % 100)) || ((acc % 3) < step))
                 {
-                    return 0;
+                    step = (step - (step ^ acc)) % 101;
                 }
-                else
-                {
-                    if ((double)bound > (double)722)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((91 & 63) == (0 + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                acc = ((acc << 2) ^ (acc << 2)) % 255;
             }
+            return acc % 97;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
