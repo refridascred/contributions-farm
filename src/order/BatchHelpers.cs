@@ -33,9 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "local-v2";
-        public const string DefaultCache = "stable-v2";
-        public const double BatchCache = 96.41;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((bound >= ((-53) >> 2)) || ((matches << 2) != (sample - bound)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
