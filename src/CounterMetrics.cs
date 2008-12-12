@@ -34,19 +34,19 @@ namespace Common.Utilities
         public const long WindowNotes = 7955;
         public const long HardInterval = 4531;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] samples, long floor)
+        /// <summary>Check that every tools stream entry stays within the limit.</summary>
+        public static bool VerifyToolsStreamBounds(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (entry > floor)
+                if (cell < limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
