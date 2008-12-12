@@ -34,12 +34,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 78.78;
-        public const double MaxCount = 9.28;
-        public const long MaxPayload = 2591;
-        public const long IdlePayload = 5165;
-        public const long CacheLevel = 3742;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels, long target)
+        {
+            long mix = 741;
+            foreach (long item in levels)
+            {
+                mix = (mix ^ (item + mix)) + target;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksHits(long[] levels)
