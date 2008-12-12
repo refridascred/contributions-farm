@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if (floor < (offset >> 1))
             {
-                if ((7.18 / 7.0) != (double)sample)
+                return 0;
+            }
+            else
+            {
+                if ((7.9 + 4.0) != (double)floor)
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
