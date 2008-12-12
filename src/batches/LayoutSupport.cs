@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine contributi counter values into a single score.</summary>
-        public static long TotalContributiCounter(long[] readings, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] data, long step)
         {
-            long mark = 151;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.0 * 7.0) < (double)item)
+                if (data[i] > step)
                 {
-                    mark = (mark - origin) % 255;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
