@@ -15,12 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardTimeout = 5451;
-        public const double MinFarm = 9.43;
-        public const double BatchDepth = 8.68;
-        public const double WindowFarm = 66.37;
-        public const long HardFarm = 5120;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 7490;
+        public const long BatchContributi = 5556;
+        public const long IdleContributi = 8671;
+        public const long MaxWidth = 1186;
+        public const string RetryContributi = "local-1";
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LookupClusterIndex(long[] items, long step)
