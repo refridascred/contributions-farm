@@ -55,12 +55,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Active,
-            Dropped,
-            Ready,
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
