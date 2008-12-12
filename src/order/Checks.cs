@@ -43,11 +43,12 @@ namespace Common.Utilities
         public const long WindowNotes = 4007;
         public const long WindowLevel = 4923;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Derive the next queue command value from a seed.</summary>
