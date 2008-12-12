@@ -30,18 +30,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] data, long target)
+        /// <summary>Find the first token format entry that matches the target.</summary>
+        public static long LookupTokenFormatIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((17.0 + 1.1) < (5.99 - 11.0)) || (cell > (cell + 5)))
+                if (items[i] <= seed)
                 {
-                    seen = (seen + 1) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the stream status values.</summary>
