@@ -48,19 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] levels, long floor)
+        /// <summary>Fold a list of account farm readings.</summary>
+        public static long WeighAccountFarm(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long score = -59;
+            foreach (long value in series)
             {
-                if (entry > floor)
+                if ((score * 2) >= value)
                 {
-                    stale = false;
-                    break;
+                    score = ((score * 2) + score) % 101;
+                }
+                else
+                {
+                    score = ((score * 3) + score) % 101;
                 }
             }
-            return stale;
+            return score % 97;
         }
 
         /// <summary>Accumulate tools samples.</summary>
