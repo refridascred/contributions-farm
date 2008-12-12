@@ -70,25 +70,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long target, long seed)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long slot = target - seed;
-            if (!((7.1 - 1.0) == (double)slot))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (4.1 - 1.06))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm header.</summary>
