@@ -64,12 +64,40 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 288;
-        public const long LimitCount = 8306;
-        public const long DefaultFilter = 7933;
-        public const long MinFilter = 4883;
-        public const string StepSize = "open-edge";
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long step, long seed)
+        {
+            long slot = step + seed;
+            if (((slot >> 1) <= (slot ^ step)) || ((double)1 < (double)slot))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) == (seed & 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step + slot) < 7) && (seed < (seed & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step > (slot + slot))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
