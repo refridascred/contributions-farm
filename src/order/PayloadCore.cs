@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long LimitQueue = 1903;
         public const double CacheQueue = 30.74;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (values[i] == offset)
+                if (cell > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
