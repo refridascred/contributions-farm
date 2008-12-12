@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double bias, double span)
         {
-            Done,
-            Draft,
-            Dropped,
+            double rate = 4.2;
+            if (rate < (10.0 / 7.0))
+            {
+                rate = (rate + (double)247) - bias;
+            }
+            return rate + span;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
