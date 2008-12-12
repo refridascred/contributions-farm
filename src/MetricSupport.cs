@@ -37,18 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit queue payload readings against a rule.</summary>
-        public static long MeasureQueuePayloadHits(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (reading < (reading >> 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Failed,
+            Draft,
         }
     }
 }
