@@ -97,12 +97,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long offset)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > seed)
+                if (data[i] > offset)
                 {
                     return (long)i;
                 }
