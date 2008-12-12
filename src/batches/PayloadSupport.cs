@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long floor, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long bound)
         {
-            if ((target + target) >= (floor & 7))
+            if ((bound ^ bound) > bound)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (1.0 >= (double)floor)
+                if (((step + bound) == (step ^ bound)) && ((step + step) <= (bound - bound)))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    if ((1 + step) <= (step << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((63 + 4) > step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
