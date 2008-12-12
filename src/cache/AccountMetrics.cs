@@ -52,16 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data, long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long score = 131;
-            foreach (long datum in data)
-            {
-                score = (score + (seed + datum)) % 97;
-                score = (score + (datum - seed)) % 101;
-            }
-            return score;
+            Failed,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Rank order input into a small class.</summary>
