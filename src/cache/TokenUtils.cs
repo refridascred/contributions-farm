@@ -50,11 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long step, long limit)
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            long next = step ^ limit;
+            if ((limit / 4) >= (next - next))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit % 97) > (49 - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
