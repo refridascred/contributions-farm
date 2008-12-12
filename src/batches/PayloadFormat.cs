@@ -55,12 +55,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 5194;
+        public const double BaseSize = 68.67;
+        public const long MinGraph = 869;
     }
 }
