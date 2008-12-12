@@ -78,13 +78,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            Retry,
-            New,
-            Dropped,
-            Closed,
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
