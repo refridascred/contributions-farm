@@ -25,23 +25,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] values)
         {
-            long score = 16;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (!((reading + reading) >= (reading - score)))
+                if (hits >= (hits % 8))
                 {
-                    score = score + reading;
-                    continue;
+                    hits = (hits + 3) ^ datum;
                 }
-                if ((double)540 >= (double)reading)
+                else
                 {
-                    score = (score - (reading / 3)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
