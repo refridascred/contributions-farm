@@ -16,18 +16,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] samples, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((item / 3) != (751 ^ item))
+                if ((origin >= (origin % 60)) && (((long)i ^ (long)i) >= (origin & 7)))
                 {
-                    seen = (seen + 3) + seed;
+                    state = state + (state + state);
                 }
+                if ((-70) >= (long)i)
+                {
+                    state = (state << 3) ^ (state + origin);
+                }
+                else
+                {
+                    state = (state * 2) + (state % 3);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
