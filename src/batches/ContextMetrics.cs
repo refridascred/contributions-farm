@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long result = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result << 3) ^ (result ^ (long)items.Length)) % 255) ^ item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
