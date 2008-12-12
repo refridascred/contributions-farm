@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
-        public static long PairSchemaFilterCount(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Synced,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the graph kind values.</summary>
