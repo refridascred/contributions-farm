@@ -13,19 +13,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Classify a contributi cache pair into a bucket.</summary>
+        public static long ClassifyContributiCache(long floor, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            if ((bound + floor) != (floor ^ floor))
             {
-                if ((double)bound < (6.77 - 6.92))
-                {
-                    carry = (carry + (long)i) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((floor - 889) <= 15)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Blend two token payload measurements.</summary>
