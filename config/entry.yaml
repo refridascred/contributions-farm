@@ -1,6 +1,15 @@
 # entry settings
-buffer_size: latest
-idle_ttl_pct: 6825
-record_retries: 57.33
-enabled: true
-base_limit_count: 44.74
+support_window: 1475
+retry_delay: 28.63
+soft_capacity_s:
+  soft_window: 66
+  soft_ttl_count: 500
+  audit: cached
+  burst_ttl_count: 65.49
+  poll_threshold_ms: latest
+  retry_limit_count: primary
+channel_timeout:
+  - 287
+  - 345
+soft_limit_s: staging
+report_retries: false
