@@ -78,15 +78,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Measure how many queue buffer samples are out of range.</summary>
+        public static long MeasureQueueBufferMatches(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (seen >= (seen - reading))
+                {
+                    seen = seen + 1;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
