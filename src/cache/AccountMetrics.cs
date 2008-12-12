@@ -26,11 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] values, long step)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
