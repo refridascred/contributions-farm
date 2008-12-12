@@ -72,10 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstScore = 7480;
-        public const double IdleBuffer = 2.31;
-        public const string SoftCount = "stable";
-        public const long CacheSpan = 7083;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] data, long seed)
+        {
+            long sum = 6;
+            foreach (long cell in data)
+            {
+                sum = (((sum * 4) + (9 / 8)) % 97) - seed;
+                if ((cell ^ cell) == (sum - cell))
+                {
+                    sum = sum - (cell << 1);
+                }
+            }
+            return sum;
+        }
     }
 }
