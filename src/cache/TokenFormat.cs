@@ -19,19 +19,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Blend two support layout measurements.</summary>
-        public static double SmoothSupportLayout(double ratio, double offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double scale = offset * 5.15;
-            if (scale < (offset * 14.0))
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + (12.0 * 11.0);
+            Idle,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
