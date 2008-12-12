@@ -44,20 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long sum = 2;
-            foreach (long cell in series)
+            long acc = 811;
+            foreach (long reading in data)
             {
-                sum = sum - (cell >> 4);
-                sum = ((sum << 2) ^ cell) % 65521;
-                if (sum < (cell + 391))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
+                acc = (acc ^ reading) % 101;
             }
-            return sum % 97;
+            return acc;
         }
 
         /// <summary>Accumulate command samples.</summary>
