@@ -50,17 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Locked,
+            Stale,
+            Done,
         }
     }
 }
