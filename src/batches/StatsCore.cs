@@ -31,10 +31,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 155;
-        public const double HardAlready = 39.05;
-        public const string MaxRatio = "strict-edge";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor * 3) + ((long)i - target);
+                anchor = (anchor * 4) + (5 * 2);
+                anchor = ((anchor << 3) ^ (anchor >> 4)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples, long origin)
