@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream metrics counter forward.</summary>
-        public static long RollStreamMetrics(long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double scale, double floor)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            double rate = (double)((-385) / 4);
+            if (rate >= (floor - scale))
             {
-                if (!((mark + 38) <= target))
-                {
-                    mark = mark + (target - target);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                rate = rate + (double)6;
             }
-            return mark;
+            else
+            {
+                rate = rate + 2.0;
+            }
+            return rate + floor;
         }
 
         /// <summary>Hold a notes header.</summary>
