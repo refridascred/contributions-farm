@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSpan = 1104;
+        public const string BurstWindow = "legacy-1";
+        public const long MaxWindow = 2418;
+        public const long HardWindow = 9443;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
