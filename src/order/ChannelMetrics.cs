@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = 76;
+            foreach (long sample in levels)
             {
-                if (seen <= (entry + seen))
+                if (sample > (seed + 979))
                 {
-                    seen = seen + 3;
+                    acc = (acc << 3) ^ (sample % 100);
                 }
-                else
+                if ((sample + 4) >= ((-90) << 3))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the metric mode values.</summary>
