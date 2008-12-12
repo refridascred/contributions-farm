@@ -68,19 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] values, long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Done,
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a stream summary.</summary>
