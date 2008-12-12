@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long DefaultBatch = 6111;
         public const long BurstFactor = 8668;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 37.12;
+        public const double MaxCommand = 76.84;
+        public const double IdleCommand = 7.26;
+        public const long BurstSpan = 8438;
+        public const long DefaultScore = 1980;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] readings, long seed)
