@@ -20,26 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine notes checks values into a single score.</summary>
-        public static long FoldNotesChecks(long[] samples)
+        /// <summary>Compare every pair of farm report readings.</summary>
+        public static long CompareFarmReportCount(long[] series)
         {
-            long result = 35;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (5.74 > (double)1)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result + item) % 65521;
-                }
-                else
-                {
-                    result = (result - 158) % 101;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 642)
-            {
-                result = (result << 3) ^ (result >> 3);
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
