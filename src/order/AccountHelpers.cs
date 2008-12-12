@@ -49,18 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] items)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (datum < (21 + 69))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine entry order values into a single score.</summary>
