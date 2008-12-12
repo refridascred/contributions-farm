@@ -50,17 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats notes reading by value.</summary>
-        public static long LookupStatsNotesIndex(long[] items, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
+                if (cell > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
