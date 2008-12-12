@@ -32,10 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 4532;
-        public const long CacheWindow = 4686;
-        public const double BatchWindow = 86.54;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long offset, long limit)
+        {
+            if (limit <= (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset * 3) == (limit - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >> 4) > (limit - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double gain, double offset)
