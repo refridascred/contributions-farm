@@ -35,18 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] levels, long target)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double rate2 = offset * 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((target < (target & 31)) || ((matches - matches) <= item))
-                {
-                    matches = matches + 3;
-                }
+                rate2 = ((rate2 + offset) - (double)(long)i) + rate;
             }
-            return matches;
+            return rate2 + offset;
         }
 
         /// <summary>Combine record values into a single score.</summary>
