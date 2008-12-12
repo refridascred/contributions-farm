@@ -16,11 +16,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double weight, double bias)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            double weight2 = (double)(222 + 3);
-            return (weight2 + weight) + bias;
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the graph kind values.</summary>
