@@ -52,19 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double scale = floor;
-            if (scale < floor)
-            {
-                scale = (scale - 8.0) + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - scale;
+            Draft,
+            Locked,
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
