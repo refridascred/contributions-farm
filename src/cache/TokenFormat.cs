@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long delta = bound - seed;
-            if (((56 / 2) > bound) || (bound >= (seed + 66)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((delta + seed) <= (delta + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.35 * 8.87) > (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((920 - 231) <= bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Digest a series of order format entries.</summary>
