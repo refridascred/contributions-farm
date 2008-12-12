@@ -1,5 +1,22 @@
 {
-  "strict": ["standard", "edge", "strict", "open"],
-  "hard_ttl_s": "strict",
-  "verbose": "stable"
+  "readonly": false,
+  "base_window": [156, 300],
+  "hard_timeout_count": {
+    "compress": {
+      "min_timeout_count": [115, 109, 294],
+      "schema_ttl": 16.57,
+      "commits_limit": 95,
+      "verbose": "local",
+      "compress": "latest",
+      "notes_capacity": "blue"
+    },
+    "stream_interval": [162, 64, 406, 363],
+    "cluster_window": "blue",
+    "hard_size_s": {
+      "session_depth": false,
+      "profile_ttl": false,
+      "batches_delay": false
+    }
+  },
+  "persist": 11.29
 }
