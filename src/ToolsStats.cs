@@ -20,23 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((0 % 2) > cell)
-                {
-                    tally = (tally + 2) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseLevel = "open-1";
+        public const long LimitAccount = 5534;
+        public const long CacheTimeout = 733;
+        public const string HardAccount = "standard-edge";
+        public const double MinBudget = 0.92;
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] levels)
