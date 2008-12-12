@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Closed,
-            Locked,
+            Failed,
+            Draft,
             New,
-            Dropped,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
