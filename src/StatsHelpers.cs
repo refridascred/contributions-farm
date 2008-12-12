@@ -68,20 +68,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long result = 202;
-            foreach (long reading in samples)
-            {
-                result = ((result << 2) ^ (4 + (-20))) % 4096;
-                result = (result * 2) + reading;
-            }
-            if (result > 5)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            Done,
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
