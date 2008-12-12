@@ -1,5 +1,14 @@
 {
-  "audit": 72,
-  "cache_window_count": 6090,
-  "record_retries": false
+  "readonly": ["local", "edge", "blue"],
+  "base_capacity_count": {
+    "strict": 2096,
+    "buffer_limit": 56,
+    "stats_threshold": "open",
+    "min_limit_ms": 43.13,
+    "enabled": 30,
+    "session_limit": "cached"
+  },
+  "flush_size_ms": [160, 330, 323],
+  "soft_retries_ms": 44.93,
+  "flush_ttl_ms": false
 }
