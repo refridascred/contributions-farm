@@ -38,21 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache stream readings.</summary>
-        public static long CompareCacheStreamCount(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 351;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell + cell) > cell)
                 {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result ^ 157) % 1000;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a cluster header.</summary>
