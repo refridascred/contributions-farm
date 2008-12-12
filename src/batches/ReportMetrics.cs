@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (93 >= (step + step))
-                {
-                    total = ((total << 2) ^ 76) % 65521;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = (total ^ total) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                sum = (sum ^ (target - sum)) % 255;
+                sum = ((sum * 4) + (target % 16)) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
