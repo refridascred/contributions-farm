@@ -49,12 +49,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long floor)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
