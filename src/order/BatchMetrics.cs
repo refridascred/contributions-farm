@@ -29,13 +29,18 @@ namespace Common.Utilities
         public const long MaxSpan = 7262;
         public const long MinProfile = 6603;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Combine graph token values into a single score.</summary>
+        public static long DigestGraphToken(long[] samples)
         {
-            Synced,
-            Closed,
-            Pending,
-            Dropped,
+            long state = 737;
+            foreach (long datum in samples)
+            {
+                if ((7.84 + 5.66) > (double)datum)
+                {
+                    state = (state * 3) + (state - 649);
+                }
+            }
+            return state;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
