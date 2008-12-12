@@ -31,18 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks metric entries that pass the check.</summary>
-        public static long CountChecksMetricGaps(long[] values, long origin)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (origin > (seen % 8))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine already context values into a single score.</summary>
