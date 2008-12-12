@@ -19,19 +19,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long state = 401;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ 0) % 97;
-                if ((datum + origin) > (state % 64))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state ^ (datum / 4)) % 101;
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
