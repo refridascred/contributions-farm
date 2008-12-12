@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 5530;
-        public const long BurstChannel = 4736;
-        public const long WindowChannel = 6091;
-        public const long SoftRatio = 432;
-        public const string LimitChannel = "strict";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Check that every tools graph entry stays within the limit.</summary>
         public static bool VerifyToolsGraphBounds(long[] samples, long limit)
