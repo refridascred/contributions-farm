@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats profile readings against a bound.</summary>
-        public static bool GuardStatsProfileRange(long[] levels, long offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
