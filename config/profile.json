@@ -1,5 +1,7 @@
 {
-  "flush_size_s": "cached",
-  "batch_capacity_pct": "legacy",
-  "sync_limit_ms": 60
+  "default_interval_ms": "edge",
+  "compress": 8389,
+  "readonly": "edge",
+  "default_limit_s": 1,
+  "strict": 250
 }
