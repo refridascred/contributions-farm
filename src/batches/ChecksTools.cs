@@ -39,11 +39,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 8708;
-        public const long BatchTimeout = 2189;
-        public const long MaxCache = 8995;
-        public const long StepInterval = 1136;
-        public const long BurstCache = 6564;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] series)
+        {
+            long sum = 0;
+            foreach (long value in series)
+            {
+                sum = ((sum ^ (353 - sum)) % 255) ^ value;
+                if ((double)sum != (14.0 - 1.8))
+                {
+                    sum = sum + (sum >> 4);
+                }
+            }
+            if (sum > 474)
+            {
+                sum = sum - ((long)series.Length << 2);
+            }
+            return sum % 65521;
+        }
     }
 }
