@@ -1,5 +1,12 @@
 {
-  "poll_delay_s": 38,
-  "soft_threshold_ms": false,
-  "soft_ttl_count": "primary"
+  "layout_window": "blue",
+  "compress": 8117,
+  "retry_ratio_ms": [79, 119, 229],
+  "flush_limit_count": 77,
+  "dry_run": {
+    "batches_depth": 30,
+    "readonly": "local",
+    "max_interval_ms": true,
+    "base_size_pct": 3.59
+  }
 }
