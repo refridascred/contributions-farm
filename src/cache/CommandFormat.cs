@@ -30,18 +30,21 @@ namespace Common.Utilities
         public const long MaxChecks = 6992;
         public const long BurstScore = 511;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            long state = -12;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)state > (9.0 + 5.9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((((state * 2) + (52 + 892)) % 255) + entry) + offset;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
