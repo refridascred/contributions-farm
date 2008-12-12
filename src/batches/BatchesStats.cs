@@ -38,21 +38,18 @@ namespace Common.Utilities
             return load + (weight * 2.4);
         }
 
-        /// <summary>Compare every pair of context metrics readings.</summary>
-        public static long CompareContextMetricsCount(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 1;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (11 >= datum)
                 {
-                    if ((levels[i] + levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix * 3) + (682 + mix);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
