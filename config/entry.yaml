@@ -1,5 +1,8 @@
 # entry settings
-warm_threshold_count: cached
-strict: 71.27
-format_size: 1024
-layout_depth: 8308
+verbose:
+  - 19
+  - 415
+  - 132
+persist: 1862
+soft_depth_count: cached
+idle_timeout_pct: true
