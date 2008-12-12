@@ -1,8 +1,20 @@
 {
-  "retry_threshold_pct": [343, 289, 27, 122],
-  "warm_depth": "standard",
-  "retry_limit": "edge",
-  "idle_retries": "blue",
-  "poll_depth_count": 60,
-  "cache_ttl": 1024
+  "audit": {
+    "account_window": "local",
+    "buffer_size": 5842,
+    "entry_size": 7947
+  },
+  "soft_limit_ms": 9045,
+  "persist": "stable",
+  "idle_limit_ms": {
+    "base_depth_ms": "blue",
+    "default_threshold_count": "blue",
+    "burst_window_ms": [316, 320]
+  },
+  "window_timeout": {
+    "idle_ratio_pct": 92,
+    "base_threshold": false,
+    "verbose": 56.26,
+    "dry_run": "blue"
+  }
 }
