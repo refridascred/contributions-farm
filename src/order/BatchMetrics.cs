@@ -35,10 +35,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchBudget = 3402;
-        public const long SoftMetric = 8632;
-        public const long MaxBudget = 9412;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long origin, long offset)
