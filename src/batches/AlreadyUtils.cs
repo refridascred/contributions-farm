@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Failed,
-            New,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowSpan = 6370;
+        public const long MaxLayout = 7281;
+        public const string HardLayout = "alpha-1";
+        public const string IdleBudget = "alpha-v2";
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
