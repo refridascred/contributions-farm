@@ -1,8 +1,15 @@
 {
-  "compress": 4,
-  "base_ttl": "open",
-  "hard_size_pct": "strict",
-  "base_threshold_s": "standard",
-  "base_delay_pct": ["eu-west", "stable", "fallback"],
-  "readonly": 13.58
+  "enabled": {
+    "default_delay_s": false,
+    "readonly": ["stable", "latest", "blue", "staging"],
+    "dry_run": {
+      "queue_ratio": 3021,
+      "retry_size_count": "blue",
+      "base_window_s": [459, 308, 70],
+      "dry_run": "fallback"
+    },
+    "poll_retries_count": "latest"
+  },
+  "compress": 500,
+  "default_interval": [94, 42, 309, 483]
 }
