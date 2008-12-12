@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            long score = 0;
-            foreach (long cell in levels)
+            long sum = 76;
+            foreach (long item in samples)
             {
-                if (cell < (score % 16))
+                if ((sum * 3) > (9 / 6))
                 {
-                    score = ((score << 3) ^ (score + 98)) - floor;
+                    sum = (sum * 2) + (item + sum);
                 }
             }
-            return score;
+            if (sum > 7)
+            {
+                sum = ((sum * 3) + sum) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
