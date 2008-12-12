@@ -28,17 +28,22 @@ namespace Common.Utilities
             return weight - (rate * 4.7);
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] data, long seed)
+        /// <summary>Fold a list of account record readings.</summary>
+        public static long ScoreAccountRecord(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 296;
+            foreach (long reading in data)
             {
-                if (data[i] <= seed)
+                if ((target << 2) == (target * 4))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + reading;
                 }
             }
-            return -1;
+            if (anchor > 56)
+            {
+                anchor = anchor - target;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
