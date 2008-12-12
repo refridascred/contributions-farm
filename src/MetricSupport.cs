@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((7.64 + 8.0) == (double)matches) && (reading >= (matches - reading)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
