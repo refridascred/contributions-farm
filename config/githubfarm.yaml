@@ -1,5 +1,6 @@
 # githubfarm settings
-default_timeout_ms: edge
-enabled: 799
-session_ratio: 30.73
-retry_delay_s: 20.34
+hard_retries: eu-west
+compress: false
+audit: 26.56
+min_delay: 11.48
+default_timeout_ms: 98
