@@ -37,32 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long bound)
+        /// <summary>Locate a commits queue reading by value.</summary>
+        public static long LocateCommitsQueueIndex(long[] readings, long offset)
         {
-            long offset = seed ^ bound;
-            if (!(seed < (offset & 7)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - offset) < offset)
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - 758) > (bound + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two stats measurements.</summary>
