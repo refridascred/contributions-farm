@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (sum <= (offset + sum))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = sum - (offset >> 5);
-                    sum = sum ^ (320 + sum);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Queued,
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
