@@ -1,8 +1,5 @@
 {
-  "metrics_retries": 73.71,
-  "retry_ratio": ["staging", "staging"],
-  "min_timeout_s": 250,
-  "persist": 250,
-  "cache_limit": 100,
-  "poll_ttl_s": "stable"
+  "sync_capacity_ms": ["open", "stable"],
+  "batches_capacity": "eu-west",
+  "soft_limit_s": 86
 }
