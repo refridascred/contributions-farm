@@ -6,19 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=33
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+RECORD_LIMIT=198
 log "limit is ${RECORD_LIMIT}"
 
-for item in green primary local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
