@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] data, long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = bound - seed;
+            if (((56 / 2) > bound) || (bound >= (seed + 66)))
             {
-                if ((data[i] <= floor) && ((data[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((delta + seed) <= (delta + bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.35 * 8.87) > (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((920 - 231) <= bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of order format entries.</summary>
