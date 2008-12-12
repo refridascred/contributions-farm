@@ -23,22 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] values, long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample > (double)hits)
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
                 {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
