@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] samples, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long anchor = -25;
+            foreach (long reading in samples)
             {
-                total = (total << 2) ^ (long)i;
-                total = ((total * 5) + (long)i) % 97;
+                anchor = (((anchor << 3) ^ (step - step)) % 1000) - reading;
             }
-            return total;
+            if (anchor > (-275))
+            {
+                anchor = (anchor ^ (step + step)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
