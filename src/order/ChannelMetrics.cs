@@ -19,23 +19,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double bias, double floor)
+        /// <summary>Locate a command stream reading by value.</summary>
+        public static long SeekCommandStreamIndex(long[] samples, long floor)
         {
-            double gain = (floor - bias) - (double)46;
-            if (gain >= 8.6)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - floor;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (floor + 0.25);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - floor;
+            return -1;
         }
     }
 }
