@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] data, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double rate = bias;
+            if (rate <= ratio)
             {
-                if (!(tally >= (target - tally)) && ((tally - tally) != (tally + tally)))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                rate = rate + bias;
             }
-            return tally;
+            return rate - (bias - ratio);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
