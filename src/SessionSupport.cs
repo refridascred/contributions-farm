@@ -24,13 +24,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            long sum = 7;
+            foreach (long item in items)
+            {
+                if (!(49 < (item + item)))
+                {
+                    sum = ((sum * 2) + (172 + floor)) % 4096;
+                    continue;
+                }
+                if (((floor ^ 49) < ((long)items.Length >> 2)) && ((double)sum != (3.06 + 7.94)))
+                {
+                    sum = (sum * 4) + (floor >> 5);
+                }
+                else
+                {
+                    sum = ((sum * 5) + floor) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
