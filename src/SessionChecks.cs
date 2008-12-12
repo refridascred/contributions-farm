@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long target)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
