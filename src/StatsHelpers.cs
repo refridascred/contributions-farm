@@ -60,13 +60,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] values)
         {
-            Done,
-            Failed,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + matches) < (matches & 255))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
