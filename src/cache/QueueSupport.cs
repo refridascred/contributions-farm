@@ -39,32 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools schema pair into a bucket.</summary>
-        public static long ClassifyToolsSchema(long offset, long offset2)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long slot = offset + offset2;
-            if ((slot >> 5) < offset2)
+            long carry = 84;
+            foreach (long reading in data)
             {
-                return 7;
+                carry = (carry ^ (reading + carry)) % 1000;
             }
-            else
-            {
-                if ((offset >> 4) != (slot * 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (6.1 > (double)offset2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry % 65521;
         }
     }
 }
