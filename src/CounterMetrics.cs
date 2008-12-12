@@ -27,20 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseRatio = 9858;
+        public const long BurstNotes = 5707;
+        public const string HardNotes = "stable-edge";
+        public const long WindowNotes = 7955;
+        public const long HardInterval = 4531;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyRange(long[] samples, long floor)
