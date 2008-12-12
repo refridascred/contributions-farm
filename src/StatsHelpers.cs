@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first token farm entry that matches the target.</summary>
-        public static long SeekTokenFarmIndex(long[] data, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] <= step)
+                if ((offset + 3) == (seen / 5))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of account farm readings.</summary>
