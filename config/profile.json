@@ -1,17 +1,17 @@
 {
-  "warm_size": "primary",
-  "sync_limit_s": {
-    "audit": "green",
-    "farm_size": {
-      "metric_depth": "open",
-      "sync_retries_pct": "cached",
-      "readonly": true,
-      "verbose": 16,
-      "default_ttl_s": 8874
+  "tools_delay": {
+    "cache_size_pct": 66.44,
+    "default_depth_s": "fallback",
+    "readonly": "open",
+    "cache_interval": {
+      "burst_size_count": false,
+      "cache_size": ["cached", "latest"],
+      "min_depth_s": 67.96,
+      "cluster_delay": 54.22
     },
-    "cluster_limit": true
+    "burst_ratio_count": false
   },
-  "min_ratio": "cached",
-  "base_threshold_pct": "green",
-  "burst_ratio": "fallback"
+  "tools_timeout": [382, 92, 432, 428],
+  "retry_ttl_ms": "cached",
+  "retry_capacity_ms": "latest"
 }
