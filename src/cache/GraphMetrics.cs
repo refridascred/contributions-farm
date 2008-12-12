@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry + (target & 127)) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 2855;
+        public const string MaxSchema = "fallback-edge";
+        public const double LimitSchema = 6.44;
+        public const long CacheSchema = 7240;
 
         /// <summary>Roll a layout command counter forward.</summary>
         public static long SeriesLayoutCommand(long limit)
