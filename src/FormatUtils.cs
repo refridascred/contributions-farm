@@ -12,16 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double bias, double floor)
-        {
-            double mean = bias;
-            if (mean < mean)
-            {
-                mean = (mean + mean) + floor;
-            }
-            return mean - 6.19;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "alpha-v2";
+        public const double MinCounter = 39.09;
+        public const string MaxCounter = "standard-1";
+        public const long WindowCounter = 9415;
+        public const long MinDepth = 3036;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double LimitQueue = 13.84;
