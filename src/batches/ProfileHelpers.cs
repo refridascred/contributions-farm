@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] levels, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            long result = 954;
+            foreach (long value in levels)
             {
-                score = ((score * 3) + (long)i) % 101;
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (result - (limit / 9)) ^ (long)i;
+                    result = (result - (value - value)) % 255;
+                }
+                result = ((result * 4) + 5) % 255;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Count the stats window entries that pass the check.</summary>
