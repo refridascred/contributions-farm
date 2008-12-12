@@ -1,8 +1,6 @@
 {
-  "hard_threshold_ms": "cached",
-  "base_depth_count": "legacy",
-  "default_delay_ms": 47.0,
-  "enabled": false,
-  "audit": 8791,
-  "flush_window_pct": 62.75
+  "flush_threshold_s": 48,
+  "sync_ttl_pct": ["green", "local", "legacy"],
+  "session_depth": 9371,
+  "notes_size": 53.49
 }
