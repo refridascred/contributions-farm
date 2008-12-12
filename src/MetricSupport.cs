@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 2234;
+        public const string IdleCount = "strict-edge";
+        public const long BatchEntry = 3934;
+        public const long CacheBudget = 3191;
+        public const string SoftCount = "primary";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheMatches(long[] series)
