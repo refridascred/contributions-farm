@@ -61,19 +61,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] items, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long state = 80;
+            foreach (long reading in data)
             {
-                if (cell != bound)
+                if (state < (state + state))
                 {
-                    ok = false;
+                    state = (state - state) + reading;
+                }
+                if ((state - state) <= (state * 5))
+                {
                     break;
                 }
             }
-            return ok;
+            return state;
         }
     }
 }
