@@ -31,21 +31,25 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Rank metrics channel input into a small class.</summary>
+        public static long GradeMetricsChannel(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = limit + offset;
+            if ((limit >= (offset >> 1)) && ((954 ^ limit) >= (327 - delta)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (limit >= offset)
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
