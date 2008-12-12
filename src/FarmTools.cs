@@ -27,16 +27,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph record counter forward.</summary>
-        public static long StepGraphRecord(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 5) + (796 ^ target)) % 101;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 60.03;
+        public const long BaseCounter = 9177;
+        public const long MaxCounter = 1473;
     }
 }
