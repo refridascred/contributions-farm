@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the stats window entries that pass the check.</summary>
+        public static long TallyStatsWindowGaps(long[] readings, long origin)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)origin > (double)seen)
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
