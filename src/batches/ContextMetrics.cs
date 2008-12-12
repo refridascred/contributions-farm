@@ -47,12 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 20.74;
-        public const string StepWindow = "legacy-edge";
-        public const double DefaultWindow = 68.73;
-        public const long RetryTimeout = 9267;
-        public const double HardSpan = 66.73;
+        /// <summary>Look up the position of a batch stream sample.</summary>
+        public static long LocateBatchStreamIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double AdjustContext(double bias, double bias2)
