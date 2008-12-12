@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] samples, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] items, long floor)
         {
-            long anchor = -25;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (step - step)) % 1000) - reading;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > (-275))
-            {
-                anchor = (anchor ^ (step + step)) % 255;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
