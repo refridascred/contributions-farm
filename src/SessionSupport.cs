@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count metrics queue pairs that satisfy a relation.</summary>
-        public static long MatchMetricsQueueCount(long[] readings)
+        /// <summary>Measure how many cluster support samples are out of range.</summary>
+        public static long CountClusterSupportMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count << 3) >= count)
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
