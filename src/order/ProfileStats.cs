@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (((sum * 2) + (sum + sum)) % 101) ^ (long)i2;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
