@@ -64,21 +64,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long step2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (step2 > (step * 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (5.68 >= (double)step2)
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
