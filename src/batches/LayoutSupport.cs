@@ -50,18 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long score = 624;
-            foreach (long entry in readings)
-            {
-                if (((score >> 3) == (9 - score)) && ((score & 63) >= 96))
-                {
-                    score = (score ^ (score % 64)) - entry;
-                }
-            }
-            return score;
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Rank stats window input into a small class.</summary>
