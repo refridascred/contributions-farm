@@ -41,22 +41,23 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples, long origin)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double bias)
         {
-            long state = -4;
-            foreach (long sample in samples)
+            double weight = scale;
+            if (weight > 6.41)
             {
-                if ((long)samples.Length != (sample << 2))
-                {
-                    state = (state ^ (state + state)) + origin;
-                }
-                else
-                {
-                    state = (state ^ (702 >> 1)) % 4096;
-                }
+                weight = weight + weight;
             }
-            return state;
+            else
+            {
+                weight = weight - (scale / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (bias * 20.0)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the route phase values.</summary>
