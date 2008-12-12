@@ -30,15 +30,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            long score = -83;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score - (value >> 3);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
