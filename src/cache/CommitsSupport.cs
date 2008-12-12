@@ -71,16 +71,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] readings, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                mark = (mark - (40 + origin)) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
