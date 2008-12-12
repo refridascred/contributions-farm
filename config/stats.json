@@ -1,8 +1,5 @@
 {
-  "persist": false,
-  "readonly": ["primary", "blue", "strict"],
-  "soft_window": [121, 256, 258],
-  "audit": true,
-  "dry_run": 3705,
-  "idle_retries": 3742
+  "audit": 72,
+  "cache_window_count": 6090,
+  "record_retries": false
 }
