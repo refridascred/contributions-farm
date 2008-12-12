@@ -29,17 +29,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a schema account reading by value.</summary>
-        public static long FindSchemaAccountIndex(long[] items, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a githubfarm support reading.</summary>
