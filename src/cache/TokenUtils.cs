@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] data, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (sample > target)
+                if ((double)matches != (double)entry)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
