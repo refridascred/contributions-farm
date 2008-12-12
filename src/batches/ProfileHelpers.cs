@@ -79,13 +79,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Find the first checks tools entry that matches the target.</summary>
+        public static long LookupChecksToolsIndex(long[] data, long bound)
         {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
