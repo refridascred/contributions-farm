@@ -29,33 +29,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long origin, long limit)
-        {
-            long bound = origin + limit;
-            if (0.1 < (9.0 / 7.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound - limit) == (origin + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound >> 5) <= (limit >> 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftScore = 37.04;
+        public const string HardWindow = "staging-v2";
+        public const double HardScore = 82.91;
 
         /// <summary>Project the next support value.</summary>
         public static double AdjustSupport(double scale, double offset)
