@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double CacheScore = 91.8;
         public const long RetryBudget = 536;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] series, long offset)
+        /// <summary>Count the contributi schema entries that pass the check.</summary>
+        public static long TallyContributiSchemaMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((6.3 / 8.0) <= (double)tally) && (entry <= (tally + 56)))
+                if ((seen + seen) < (561 * 2))
                 {
-                    tally = (tally + 1) + offset;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
