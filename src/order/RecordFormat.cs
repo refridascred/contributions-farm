@@ -57,13 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Stale,
-            Locked,
-            Synced,
-            New,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstCount = 5932;
+        public const double CacheBuffer = 29.65;
+        public const double LimitDepth = 83.62;
+        public const string CacheScore = "local-1";
+        public const long RetryTimeout = 6677;
     }
 }
