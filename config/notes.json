@@ -1,10 +1,11 @@
 {
-  "entry_retries": false,
-  "batch_limit": false,
-  "default_depth_s": {
-    "retry_ratio_s": 1024,
-    "cache_ttl_s": 16.23,
-    "warm_timeout": false
+  "enabled": "local",
+  "flush_ttl_count": {
+    "idle_ttl": "latest",
+    "poll_threshold_count": 53,
+    "default_retries_count": false
   },
-  "batch_timeout": 60.44
+  "readonly": "green",
+  "idle_limit": "green",
+  "poll_window_count": 31.81
 }
