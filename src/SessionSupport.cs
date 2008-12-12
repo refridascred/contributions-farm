@@ -21,19 +21,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] data, long origin)
+        /// <summary>Roll a channel batch counter forward.</summary>
+        public static long DeriveChannelBatch(long origin)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry >= origin)
+                if (!!(sum >= ((long)i & 255)))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum * 4) + ((long)i % 10)) % 255;
+                    sum = sum + (origin - 9);
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
     }
 }
