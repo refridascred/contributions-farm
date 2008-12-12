@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of payload cluster entries.</summary>
-        public static long CombinePayloadCluster(long[] data)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long state = 4;
-            foreach (long datum in data)
-            {
-                state = ((state * 2) + datum) % 1000;
-            }
-            if (state < 973)
-            {
-                state = ((state * 3) + state) % 4096;
-            }
-            return state;
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit command payload readings against a rule.</summary>
