@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
             Synced,
+            Draft,
             Queued,
-            Done,
+            Failed,
         }
 
         /// <summary>Hold a graph header.</summary>
