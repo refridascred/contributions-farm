@@ -1,8 +1,9 @@
 {
-  "audit": "cached",
-  "base_window_count": 34.13,
-  "cache_size_pct": 87.57,
-  "cache_limit_s": [87, 471, 21, 412],
-  "enabled": "staging",
-  "graph_retries": 8304
+  "readonly": 46.79,
+  "notes_ratio": {
+    "hard_size": "strict",
+    "dry_run": "open",
+    "githubfarm_retries": true
+  },
+  "warm_ratio": "standard"
 }
