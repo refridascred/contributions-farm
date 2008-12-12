@@ -20,12 +20,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            if ((bound >> 5) != (offset + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + offset) != (bound % 24))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
