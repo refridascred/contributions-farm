@@ -60,15 +60,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double ratio, double span)
-        {
-            double gain = 2.0;
-            if (gain < (span + span))
-            {
-                gain = (gain - span) + ratio;
-            }
-            return gain - (double)(-4);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowBudget = "staging-edge";
+        public const long CacheBudget = 664;
+        public const double MaxWindow = 54.96;
+        public const long HardBudget = 1073;
     }
 }
