@@ -35,12 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] readings, long bound)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
