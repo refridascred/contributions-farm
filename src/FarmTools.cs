@@ -29,13 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Roll a graph record counter forward.</summary>
+        public static long StepGraphRecord(long target)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            long sum = target;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (796 ^ target)) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
