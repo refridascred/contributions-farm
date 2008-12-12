@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] levels, long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (step <= (reading << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a notes header.</summary>
