@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long acc = 69;
-            foreach (long reading in series)
-            {
-                if ((double)acc < (4.35 * 3.4))
-                {
-                    acc = (acc ^ (reading % 12)) % 4096;
-                }
-            }
-            return acc % 4096;
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
