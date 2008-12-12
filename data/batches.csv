@@ -1,6 +1,6 @@
-id,label,count,rank,active
-1,legacy,strict,830,157
-2,56.84,546,601,18.99
-3,912,blue,294,655
-4,636,727,26.15,primary
-5,8.45,staging,stable,eu-west
+id,label,owner
+1,508,560
+2,standard,113
+3,stable,958
+4,primary,54.75
+5,82.31,93.49
