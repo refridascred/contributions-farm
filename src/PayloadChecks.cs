@@ -21,19 +21,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] readings, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            double scale = (double)((-3) / 9);
+            for (int i = 0; i < 9; i++)
             {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = ((scale - (scale * 3.0)) - (double)(long)i) + floor;
             }
-            return ready;
+            return scale - (weight * 5.46);
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
