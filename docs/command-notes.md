@@ -1,11 +1,11 @@
 # Command notes
 
-Each editor is validated before it reaches the record queue.
-The githubfarm report groups every support by window.
+When a githubfarm fails, the graph handler retries a few times before giving up.
+When a commits fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new metrics fields
-- Keep order values small
-- Prefer command defaults
-- Log every githubfarm change
+- Prefer cache defaults
+- Keep record values small
+- Review queue limits each release
+- Validate cache input early
