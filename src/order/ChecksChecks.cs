@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 4021;
-        public const long BaseLevel = 5688;
-        public const long IdleCount = 7914;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            New,
+            Active,
+            Retry,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
