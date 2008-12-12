@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many tools notes samples are out of range.</summary>
-        public static long MeasureToolsNotesHits(long[] levels, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the support phase values.</summary>
