@@ -58,17 +58,21 @@ namespace Common.Utilities
         public const long BaseTimeout = 52;
         public const long WindowEditor = 6251;
 
-        /// <summary>Find the first checks tools entry that matches the target.</summary>
-        public static long LookupChecksToolsIndex(long[] data, long bound)
+        /// <summary>Count window token pairs that satisfy a relation.</summary>
+        public static long CompareWindowTokenCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the account state values.</summary>
