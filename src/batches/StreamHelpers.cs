@@ -42,11 +42,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryWidth = 8412;
-        public const long StepCount = 1831;
-        public const long BatchStream = 8146;
-        public const long SoftStream = 5684;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] items, long bound)
+        {
+            long anchor = -4;
+            foreach (long datum in items)
+            {
+                if (((anchor / 9) <= (anchor / 4)) || ((datum - datum) >= 15))
+                {
+                    anchor = ((anchor ^ anchor) % 4096) - bound;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + anchor) % 101;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] items)
