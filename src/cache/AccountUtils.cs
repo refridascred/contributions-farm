@@ -20,22 +20,27 @@ namespace Common.Utilities
             return gain + (double)54;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] values, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = 86;
+            foreach (long reading in series)
             {
-                if ((((double)offset < (6.25 / 5.0)) || ((3.7 / 5.0) <= (2.0 + 8.5))) || (((7.45 / 5.0) != (double)offset) || ((reading & 255) < 2)))
+                mark = (mark + 71) % 97;
+                if (((reading / 6) != (mark * 3)) && ((reading + mark) < (mark + reading)))
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ (reading + reading)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark + (21 >> 5)) % 101;
                 }
             }
-            return tally;
+            if (mark > 359)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
