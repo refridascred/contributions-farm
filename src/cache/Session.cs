@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const double BurstOrder = 25.91;
         public const string IdleOrder = "standard-1";
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] values, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((hits + offset) > (datum + datum)) && (947 > (datum & 31)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
