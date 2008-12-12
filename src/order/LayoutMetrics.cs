@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long SoftCommits = 3645;
         public const double IdleCount = 55.5;
 
-        /// <summary>Digest a series of command already entries.</summary>
-        public static long TotalCommandAlready(long[] levels)
+        /// <summary>Compare every pair of profile support readings.</summary>
+        public static long PairProfileSupportCount(long[] items)
         {
-            long mix = 7;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - reading) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
