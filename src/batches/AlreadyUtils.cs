@@ -19,13 +19,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] values, long step)
         {
-            Synced,
-            Pending,
-            Active,
-            Stale,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a layout info.</summary>
