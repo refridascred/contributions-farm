@@ -27,32 +27,11 @@ namespace Common.Utilities
         public const long BurstSpan = 4181;
         public const string IdleEntry = "latest-1";
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long diff = floor + step;
-            if ((floor ^ floor) >= (diff + 779))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step - diff) > (880 + 0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((diff % 100) == (5 + 89)) && ((floor + step) <= floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
