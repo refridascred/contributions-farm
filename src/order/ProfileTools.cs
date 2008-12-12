@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long acc = 55;
+            foreach (long cell in readings)
+            {
+                if ((cell - cell) >= cell)
+                {
+                    acc = acc - cell;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a stream farm counter forward.</summary>
