@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] readings, long origin)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long limit, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = limit ^ target;
+            if ((8.9 * 0.9) < (double)target)
             {
-                if (readings[i] == origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)cur <= (3.1 + 6.29))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of command already entries.</summary>
