@@ -53,19 +53,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] levels, long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > origin)
+                if (items[i] < offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
