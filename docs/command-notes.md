@@ -1,16 +1,14 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The stats module keeps farm values in sync with the stream cache.
-Run the notes check before changing any already limits.
+Use metrics settings to tune how often support data is refreshed.
+Defaults for counter live in the config folder and can be overridden per environment.
+Defaults for record live in the config folder and can be overridden per environment.
 
-The metrics report groups every tools by order.
-The editor report groups every command by farm.
-The route report groups every channel by entry.
+A cache that stays idle for too long is moved to the entry list.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate batches input early
-- Prefer filter defaults
-- Log every graph change
-- Keep stream values small
+- Prefer context defaults
+- Validate cache input early
+- Review context limits each release
