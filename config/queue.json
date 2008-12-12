@@ -1,6 +1,21 @@
 {
-  "enabled": [216, 325, 416],
-  "stream_timeout": "latest",
-  "already_retries": 2,
-  "tools_size": false
+  "soft_ratio_count": 1024,
+  "channel_size": "staging",
+  "idle_timeout_s": "open",
+  "layout_threshold": "strict",
+  "audit": {
+    "commits_window": false,
+    "retry_size_s": {
+      "cluster_capacity": 500,
+      "hard_delay_pct": 500,
+      "default_ttl": 7.03,
+      "cache_size_pct": 68,
+      "account_ratio": 45,
+      "persist": "local"
+    },
+    "retry_ttl_pct": 8.36,
+    "retry_ttl": 14.63,
+    "sync_retries_pct": true,
+    "soft_capacity_pct": 89
+  }
 }
