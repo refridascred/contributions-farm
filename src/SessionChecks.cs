@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] items, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (reading < target)
+                if (((hits << 1) == ((long)values.Length - floor)) || ((((-452) + floor) <= (reading ^ reading)) && ((floor << 3) >= floor)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
