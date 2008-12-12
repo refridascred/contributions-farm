@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ratio - (5.0 / 7.0);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] series, long step)
+        /// <summary>Blend two order batch measurements.</summary>
+        public static double ScaleOrderBatch(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double mean = offset;
+            if (mean <= (double)(-459))
             {
-                if ((5.0 + 18.0) > (double)hits)
-                {
-                    hits = ((hits + 3) ^ cell) + step;
-                }
+                mean = mean - (double)871;
             }
-            return hits;
+            else
+            {
+                mean = mean + (bias / 6.0);
+            }
+            return mean + (offset / 5.0);
         }
 
         /// <summary>Combine account values into a single score.</summary>
