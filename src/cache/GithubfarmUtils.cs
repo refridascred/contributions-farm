@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count the graph command entries that pass the check.</summary>
+        public static long CountGraphCommandMatches(long[] levels, long target)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)tally <= (6.13 - 5.28))
+                {
+                    tally = ((tally + 3) ^ reading) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
