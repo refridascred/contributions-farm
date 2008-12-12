@@ -12,17 +12,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] levels, long offset)
+        /// <summary>Grade a counter record value against two limits.</summary>
+        public static long ClassifyCounterRecord(long offset, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (offset > 535)
             {
-                if (levels[i] < offset)
+                return 2;
+            }
+            else
+            {
+                if ((2.09 / 5.0) == (double)offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((5.7 / 6.0) <= (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
