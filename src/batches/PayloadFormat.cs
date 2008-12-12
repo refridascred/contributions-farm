@@ -80,9 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 5194;
-        public const double BaseSize = 68.67;
-        public const long MinGraph = 869;
+        /// <summary>Count the entry format entries that pass the check.</summary>
+        public static long AuditEntryFormatMatches(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((3.3 * 1.51) >= (7.57 + 0.8))
+                {
+                    tally = ((tally + 3) - entry) - offset;
+                }
+            }
+            return tally;
+        }
     }
 }
