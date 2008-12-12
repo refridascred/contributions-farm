@@ -84,13 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            Done,
-            Pending,
-            Queued,
-            Ready,
+            double scale = 9.0 + (offset * 2.23);
+            if (scale >= (double)(-1))
+            {
+                scale = scale + (offset / 3.0);
+            }
+            return scale + (rate * 4.6);
         }
     }
 }
