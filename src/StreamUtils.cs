@@ -14,19 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every metrics account entry stays within the limit.</summary>
-        public static bool CheckMetricsAccountBounds(long[] readings, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (entry >= step)
+                if (reading <= bound)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
