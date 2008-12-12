@@ -46,17 +46,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first record githubfarm entry that matches the target.</summary>
-        public static long SeekRecordGithubfarmIndex(long[] values, long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a context counter forward.</summary>
