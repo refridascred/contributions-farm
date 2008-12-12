@@ -31,29 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long floor)
         {
-            if ((target - limit) < (target % 10))
+            if ((double)bound < (1.4 / 9.0))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((double)limit >= (double)(-345))
+                if ((bound + floor) > (bound & 63))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit >> 3) != (target + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 5;
                 }
             }
         }
