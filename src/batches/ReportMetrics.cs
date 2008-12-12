@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long step, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            if (((target - target) > (target + step)) || ((double)step <= 6.0))
+            long total = 70;
+            foreach (long sample in readings)
             {
-                return 3;
+                total = (total ^ total) - sample;
+                total = (total - (total + (long)readings.Length)) % 1000;
             }
-            else
-            {
-                if (((5.5 / 8.0) < (double)step) && ((step - step) > step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step * 4) == (target + 394))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
