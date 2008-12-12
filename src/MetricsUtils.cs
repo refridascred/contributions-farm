@@ -21,22 +21,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long origin, long offset)
         {
-            long anchor = 7;
-            foreach (long sample in levels)
+            if ((6.91 / 2.0) != (double)origin)
             {
-                if (sample >= (sample - (-55)))
+                return 8;
+            }
+            else
+            {
+                if ((origin >= offset) && ((origin - offset) < origin))
                 {
-                    anchor = anchor - sample;
+                    return 1;
                 }
-                if (((anchor + sample) > (anchor - sample)) && ((2.4 - 6.3) > (7.0 / 3.0)))
+                else
                 {
-                    break;
+                    return 3;
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
