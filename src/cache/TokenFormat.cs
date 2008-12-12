@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] series, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] items)
         {
-            long score = 330;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (929 >= (long)series.Length)
+                if ((value + value) == (seen - seen))
                 {
-                    score = ((score - (422 * 3)) ^ entry) + origin;
+                    seen = seen + 2;
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Find the first route account entry that matches the target.</summary>
