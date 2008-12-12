@@ -25,24 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long offset, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double bias, double bias2)
         {
-            if (((2.36 * 7.84) >= (double)offset) || ((double)offset <= (7.0 / 2.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target >= (offset / 2)) && ((target - target) <= (2 >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double weight = 10.0;
+            return (weight + bias) + bias2;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
