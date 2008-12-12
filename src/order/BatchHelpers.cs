@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double weight, double floor)
-        {
-            double drift = weight;
-            return (drift + 8.7) + floor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepBudget = "legacy-1";
+        public const long DefaultMetrics = 871;
+        public const long RetryMetrics = 3897;
+        public const long SoftSize = 9314;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
