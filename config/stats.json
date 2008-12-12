@@ -1,5 +1,5 @@
 {
-  "dry_run": 18.45,
-  "min_window_ms": false,
-  "idle_limit_pct": "blue"
+  "cache_ratio_ms": 82.92,
+  "default_delay_s": "primary",
+  "poll_threshold": "strict"
 }
