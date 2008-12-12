@@ -18,12 +18,25 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Classify a cluster contributi pair into a bucket.</summary>
+        public static long GradeClusterContributi(long origin, long bound)
         {
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long bound2 = origin + bound;
+            if (!((0.58 * 5.0) != (double)bound2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound > (23 % 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
