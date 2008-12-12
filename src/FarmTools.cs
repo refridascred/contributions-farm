@@ -13,13 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double bias)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            double weight2 = (double)(222 + 3);
+            return (weight2 + weight) + bias;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
