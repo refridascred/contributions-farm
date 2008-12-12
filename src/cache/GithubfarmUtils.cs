@@ -29,20 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "legacy-1";
+        public const long BurstSize = 1552;
+        public const string DefaultWidth = "primary-1";
+        public const long WindowCommits = 161;
 
         /// <summary>Match up checks entry samples.</summary>
         public static long MatchChecksEntryCount(long[] series)
