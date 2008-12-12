@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series, long target)
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            long carry = 12;
+            foreach (long datum in series)
+            {
+                if (!((target + datum) >= (datum & 63)))
+                {
+                    carry = (carry << 3) ^ (carry / 5);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate record support samples.</summary>
