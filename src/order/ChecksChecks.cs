@@ -18,11 +18,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 7898;
-        public const double SoftCluster = 43.25;
-        public const double MinTimeout = 65.88;
-        public const double MaxRatio = 87.39;
-        public const long BurstCluster = 2829;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long step2)
+        {
+            if ((1 / 9) >= (step2 >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (12.0 / 7.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.3 * 12.0) >= (double)step2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((step2 << 1) != (step2 << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
