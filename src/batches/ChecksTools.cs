@@ -60,22 +60,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] readings)
         {
-            long mark = 143;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((mark - mark) >= cell))
+                if (seen > (entry ^ entry))
                 {
-                    mark = (mark ^ mark) % 101;
+                    seen = seen + 1;
                 }
-                if ((381 < mark) || (mark <= (780 - cell)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
