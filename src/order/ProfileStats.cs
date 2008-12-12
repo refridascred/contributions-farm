@@ -32,13 +32,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Paused,
+            Draft,
             Idle,
-            Synced,
-            Locked,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine context values into a single score.</summary>
