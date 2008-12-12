@@ -37,14 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Compare every pair of batch support readings.</summary>
+        public static long OverlapBatchSupportCount(long[] samples)
         {
-            Draft,
-            Idle,
-            Dropped,
-            Queued,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
