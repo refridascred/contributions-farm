@@ -28,22 +28,18 @@ namespace Common.Utilities
             return weight - (rate * 4.7);
         }
 
-        /// <summary>Fold a list of account record readings.</summary>
-        public static long ScoreAccountRecord(long[] data, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] values)
         {
-            long anchor = 296;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((target << 2) == (target * 4))
+                if (777 <= seen)
                 {
-                    anchor = (anchor * 2) + reading;
+                    seen = (seen + 3) + entry;
                 }
             }
-            if (anchor > 56)
-            {
-                anchor = anchor - target;
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
