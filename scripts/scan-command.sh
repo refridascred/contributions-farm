@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging cached eu-west; do
+for item in latest local open fallback; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=261
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
