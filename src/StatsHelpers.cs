@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a already token pair into a bucket.</summary>
-        public static long GradeAlreadyToken(long bound, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if ((limit - (-553)) < limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit < (limit ^ limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.4 - 5.2) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit - bound) < (bound % 16))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first token farm entry that matches the target.</summary>
