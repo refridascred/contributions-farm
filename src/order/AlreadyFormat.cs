@@ -62,22 +62,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] readings)
+        /// <summary>Digest a series of schema contributi entries.</summary>
+        public static long FoldSchemaContributi(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long anchor = 243;
+            foreach (long sample in readings)
             {
-                if (((long)readings.Length - matches) == (matches + matches))
+                if (!((double)sample == (double)73))
                 {
-                    matches = (matches + 2) + cell;
+                    anchor = ((anchor << 2) ^ ((long)readings.Length * 4)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    anchor = anchor ^ (target * 3);
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
