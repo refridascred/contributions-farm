@@ -29,21 +29,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count format layout pairs that satisfy a relation.</summary>
-        public static long PairFormatLayoutCount(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
