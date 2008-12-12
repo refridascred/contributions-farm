@@ -16,15 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] levels, long target)
+        /// <summary>Adjust a farm notes reading.</summary>
+        public static double ProjectFarmNotes(double weight, double floor)
         {
-            long mix = 438;
-            foreach (long reading in levels)
+            double rate = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((((mix << 2) ^ (83 / 4)) % 255) ^ reading) - target;
+                rate = (rate + (weight - weight)) + (double)(long)i;
             }
-            return mix;
+            return rate - (floor / 3.0);
         }
 
         /// <summary>Hold a cluster entry.</summary>
