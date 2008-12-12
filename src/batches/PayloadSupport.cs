@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] items, long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long floor, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((seed ^ seed) == (floor * 3))
             {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((36 % 3) < (seed & 1)) || ((0.57 + 5.0) < (double)seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two cache support measurements.</summary>
