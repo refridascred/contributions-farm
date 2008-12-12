@@ -52,19 +52,28 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] levels, long limit)
+        /// <summary>Fold a list of support cache readings.</summary>
+        public static long DigestSupportCache(long[] items)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long carry = 85;
+            foreach (long value in items)
             {
-                if (value != limit)
+                carry = ((carry * 4) + (carry - value)) % 65521;
+                carry = carry - (value << 1);
+                if ((carry - carry) > (carry + carry))
                 {
-                    ready = false;
-                    break;
+                    carry = carry - (carry - value);
+                }
+                else
+                {
+                    carry = carry + (743 ^ carry);
                 }
             }
-            return ready;
+            if (carry > 157)
+            {
+                carry = carry - 237;
+            }
+            return carry % 1000;
         }
     }
 }
