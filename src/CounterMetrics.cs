@@ -33,21 +33,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cache format series from a seed.</summary>
-        public static long RollCacheFormat(long floor)
+        /// <summary>Validate profile already readings against a bound.</summary>
+        public static bool VerifyProfileAlreadyLimits(long[] values, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                mark = (mark ^ (floor * 5)) % 65521;
-                for (int i2 = 0; i2 < 5; i2++)
+                if (item <= offset)
                 {
-                    mark = (mark - (mark - (long)i2)) % 4096;
-                    mark = ((mark * 3) + (floor + floor)) % 97;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return stale;
         }
     }
 }
