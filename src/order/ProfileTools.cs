@@ -71,17 +71,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long seed)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)1 / 3.0;
+            if (mean <= (ratio + bias))
             {
-                if ((data[i] == seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)(-722);
             }
-            return -1;
+            else
+            {
+                mean = mean - (double)403;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + (ratio * 19.0);
         }
     }
 }
