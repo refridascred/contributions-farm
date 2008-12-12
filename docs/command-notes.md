@@ -1,11 +1,11 @@
 # Command notes
 
-The session module keeps format values in sync with the window cache.
-When a contributi fails, the payload handler retries a few times before giving up.
-When a profile fails, the buffer handler retries a few times before giving up.
+Use context settings to tune how often report data is refreshed.
+The cluster report groups every token by channel.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every stats change
-- Keep command values small
-- Review batches limits each release
+- Prefer metric defaults
+- Log every session change
+- Review buffer limits each release
