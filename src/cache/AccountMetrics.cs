@@ -70,19 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!(((origin + origin) >= origin) || ((origin % 8) <= (reading >> 3))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 4370;
+        public const long StepTools = 462;
+        public const long BaseTools = 9090;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] items, long floor)
