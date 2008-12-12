@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double ratio, double bias)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double mean = bias / 7.0;
-            if (mean < (bias + ratio))
-            {
-                mean = mean - 0.6;
-            }
-            return mean - (mean + mean);
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Roll a command counter forward.</summary>
