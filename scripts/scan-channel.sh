@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    cached)
+    staging)
         log "fast path"
         ;;
     *)
