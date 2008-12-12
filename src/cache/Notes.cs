@@ -41,19 +41,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine profile graph values into a single score.</summary>
-        public static long CombineProfileGraph(long[] items)
-        {
-            long anchor = 951;
-            foreach (long reading in items)
-            {
-                if (reading < (reading ^ reading))
-                {
-                    anchor = anchor + (anchor - anchor);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 7432;
+        public const string BatchSession = "stable";
+        public const double MinSession = 25.69;
+        public const double BurstLevel = 53.6;
+        public const long MaxFactor = 1271;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
