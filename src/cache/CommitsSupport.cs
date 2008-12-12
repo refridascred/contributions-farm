@@ -13,12 +13,40 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "fallback-edge";
-        public const long HardSpan = 3657;
-        public const string RetryFactor = "primary";
-        public const long IdleScore = 5821;
-        public const string RetryCount = "cached-v2";
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long limit, long bound)
+        {
+            long edge = limit + bound;
+            if (!((edge + 637) <= edge))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((edge >= 333) || (11 <= (bound - limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 12) <= edge)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((edge / 6) >= (limit - edge)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
