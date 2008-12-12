@@ -14,19 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (2.3 <= (double)count)
                 {
-                    mark = (mark ^ (step / 9)) - (long)i2;
+                    count = (count + 1) - value;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
