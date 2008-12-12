@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Count the graph command entries that pass the check.</summary>
