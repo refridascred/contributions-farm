@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long offset, long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            if (floor < (offset >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.9 + 4.0) != (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
