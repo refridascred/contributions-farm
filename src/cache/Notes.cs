@@ -30,12 +30,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 7432;
-        public const string BatchSession = "stable";
-        public const double MinSession = 25.69;
-        public const double BurstLevel = 53.6;
-        public const long MaxFactor = 1271;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
