@@ -29,20 +29,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] items, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (offset <= (offset + (long)i))
+                if ((items[i] <= seed) && ((items[i] % 3) == 0))
                 {
-                    carry = ((carry << 2) ^ (offset + carry)) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next checks value.</summary>
