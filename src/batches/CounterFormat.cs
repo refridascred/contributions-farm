@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxCount = 8965;
-        public const long SoftSession = 9224;
-        public const long WindowLevel = 3092;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long bound)
+        {
+            long next = origin ^ bound;
+            if (((double)bound == (5.9 * 2.89)) && ((origin ^ 867) <= origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (next > (617 - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 2) < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound % 10) >= origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] items, long offset)
