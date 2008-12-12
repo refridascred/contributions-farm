@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] series, long bound)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches + matches) > (bound % 12))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
