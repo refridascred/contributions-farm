@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetryRatio = 55.37;
+        public const string MinFactor = "strict-1";
+        public const string BatchScore = "local-v2";
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
