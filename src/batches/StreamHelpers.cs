@@ -32,18 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((reading < matches) && (reading <= (matches - 801)))
+                if (((count < step) && (787 < (count ^ count))) && (count < (step ^ step)))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
