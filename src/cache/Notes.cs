@@ -19,20 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter route value from a seed.</summary>
-        public static long DeriveCounterRoute(long origin)
+        /// <summary>Adjust a schema counter reading.</summary>
+        public static double ProjectSchemaCounter(double gain, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            double weight = (gain * 19.0) - offset;
+            if (weight <= weight)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score ^ (score / 2)) + (long)i2;
-                    score = (score * 5) + (score * 4);
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                weight = weight + 8.0;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (offset - offset)) + (double)(long)i;
+            }
+            return weight - (6.5 * 8.2);
         }
 
         /// <summary>Check that every tools graph entry stays within the limit.</summary>
