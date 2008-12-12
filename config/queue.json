@@ -1,8 +1,6 @@
 {
-  "warm_threshold_ms": "latest",
-  "hard_ttl": 16.26,
-  "poll_delay_pct": 70.91,
-  "flush_timeout": 4678,
-  "readonly": 60,
-  "sync_window_pct": ["local", "primary"]
+  "base_interval": 56.26,
+  "min_delay_ms": 70.56,
+  "payload_interval": 4799,
+  "min_ratio_ms": true
 }
