@@ -24,12 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 2020;
+        public const long MinScore = 6038;
+        public const double CacheSpan = 35.12;
 
         /// <summary>Derive the next filter farm value from a seed.</summary>
         public static long StepFilterFarm(long limit)
