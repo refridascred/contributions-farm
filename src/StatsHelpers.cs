@@ -23,12 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            Active,
-            Stale,
-            Idle,
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = mix ^ target;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
