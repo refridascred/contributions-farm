@@ -44,12 +44,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] readings, long floor)
         {
-            Synced,
-            Active,
-            Pending,
+            long score = 3;
+            foreach (long item in readings)
+            {
+                if (((long)readings.Length + item) < (item * 5))
+                {
+                    score = ((score << 3) ^ floor) % 101;
+                }
+                if ((floor - score) >= score)
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
     }
 }
