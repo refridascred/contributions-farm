@@ -37,11 +37,16 @@ namespace Common.Utilities
         public const long CacheWindow = 4686;
         public const double BatchWindow = 86.54;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowSize = "cached-edge";
-        public const long RetryDepth = 5507;
-        public const long StepAccount = 8164;
-        public const string SoftAccount = "open";
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double gain, double offset)
+        {
+            double drift = (double)7 - offset;
+            if (drift < (drift * 13.0))
+            {
+                drift = drift + drift;
+            }
+            return drift - (gain + offset);
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowGraph = 5194;
