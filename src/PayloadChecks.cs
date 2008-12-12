@@ -90,22 +90,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] levels)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long step, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            if ((double)limit < (double)step)
             {
-                if ((long)levels.Length > (1 - tally))
+                return 6;
+            }
+            else
+            {
+                if (((-91) + limit) <= (limit * 2))
                 {
-                    tally = (tally + 1) + cell;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit / 6) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0 >> 5) >= (step * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
