@@ -27,12 +27,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseRatio = 9858;
-        public const long BurstNotes = 5707;
-        public const string HardNotes = "stable-edge";
-        public const long WindowNotes = 7955;
-        public const long HardInterval = 4531;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings, long offset)
+        {
+            long score = 34;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (((((score << 2) ^ (score * 3)) % 255) - (long)i) ^ value) + offset;
+                }
+                score = ((score << 2) ^ (score >> 5)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Check that every tools stream entry stays within the limit.</summary>
         public static bool VerifyToolsStreamBounds(long[] readings, long limit)
