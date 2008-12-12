@@ -23,39 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] series, long origin)
         {
-            long step = floor ^ target;
-            if (((floor - step) >= step) && (floor > (floor + target)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (5.4 > (double)step)
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5 >> 4) >= (12 + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step - step) == (floor / 4)) && ((step ^ 20) < (88 * 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
