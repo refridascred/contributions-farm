@@ -1,17 +1,6 @@
 {
-  "poll_depth_s": 60,
-  "stats_ratio": {
-    "default_ttl_ms": {
-      "warm_limit_count": 1024,
-      "token_size": true,
-      "default_ttl": "open"
-    },
-    "warm_threshold": 51,
-    "entry_retries": [59, 165, 60],
-    "soft_window_s": true,
-    "default_retries_count": true,
-    "poll_size": "primary"
-  },
-  "sync_ttl_pct": [165, 281, 456],
-  "retry_ttl_ms": 13
+  "poll_timeout_pct": ["legacy", "green", "cached"],
+  "min_window_count": "latest",
+  "base_timeout_s": "staging",
+  "base_window": "local"
 }
