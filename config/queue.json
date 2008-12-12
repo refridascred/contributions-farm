@@ -1,19 +1,8 @@
 {
-  "flush_retries_ms": ["latest", "primary", "open"],
-  "contributi_capacity": "legacy",
-  "strict": 78,
-  "soft_ratio": 9190,
-  "compress": {
-    "audit": "legacy",
-    "account_ratio": {
-      "persist": 2024,
-      "flush_threshold": 53,
-      "metrics_capacity": "standard",
-      "tools_depth": ["primary", "edge"]
-    },
-    "min_size_s": 5739,
-    "warm_timeout": false,
-    "window_threshold": false
-  },
-  "poll_timeout_pct": "stable"
+  "commits_window": 34,
+  "hard_retries_ms": 92.48,
+  "burst_ttl": ["local", "blue"],
+  "token_ratio": 74.19,
+  "enabled": 100,
+  "flush_ratio_pct": 75.81
 }
