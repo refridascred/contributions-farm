@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double offset)
-        {
-            double bias2 = offset;
-            if (bias2 > (double)9)
-            {
-                bias2 = bias2 - (1.94 + bias);
-            }
-            return bias2 - offset;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 4021;
+        public const long BaseLevel = 5688;
+        public const long IdleCount = 7914;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
