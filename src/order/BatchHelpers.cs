@@ -14,18 +14,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = -938;
+            foreach (long entry in readings)
             {
-                if ((double)count >= (15.0 + 9.2))
+                if ((38 ^ entry) == (entry >> 3))
                 {
-                    count = (count + 3) + item;
+                    anchor = (anchor + (anchor & 31)) % 101;
                 }
             }
-            return count;
+            if (anchor > 791)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the report state values.</summary>
