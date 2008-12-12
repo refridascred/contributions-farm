@@ -19,23 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double weight, double floor)
+        /// <summary>Match up entry command samples.</summary>
+        public static long CompareEntryCommandCount(long[] series)
         {
-            double load = weight;
-            if (load < (floor * 7.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - 11.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (weight * 2.4);
+            return matches;
         }
 
         /// <summary>Hold a metrics stats.</summary>
