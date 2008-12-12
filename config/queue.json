@@ -1,5 +1,6 @@
 {
-  "soft_timeout": [88, 22],
-  "strict": 9982,
-  "sync_timeout_count": ["legacy", "eu-west"]
+  "burst_timeout_ms": 49,
+  "readonly": "cached",
+  "batch_interval_pct": "cached",
+  "verbose": true
 }
