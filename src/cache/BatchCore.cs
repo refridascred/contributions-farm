@@ -43,38 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long floor)
+        /// <summary>Validate cluster githubfarm readings against a bound.</summary>
+        public static bool CheckClusterGithubfarmRange(long[] series, long offset)
         {
-            if ((step + step) < (floor ^ 72))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ step) <= (step + floor))
+                if (reading > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((-506) > (floor << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)step == (2.0 - 2.9)) && ((floor ^ 6) > (step + 78)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
