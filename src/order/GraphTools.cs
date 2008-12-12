@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double offset)
         {
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            double drift = (double)(53 ^ (-545));
+            if (drift <= (double)(-20))
+            {
+                drift = drift + (bias - 5.0);
+            }
+            else
+            {
+                drift = drift + (offset * 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift - (offset - drift);
         }
 
         /// <summary>Compare every pair of cache metric readings.</summary>
