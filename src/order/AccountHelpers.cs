@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] levels, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value < seed)
+                if (cell < 7)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
