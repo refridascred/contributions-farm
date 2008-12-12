@@ -37,12 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a commits queue reading by value.</summary>
-        public static long LocateCommitsQueueIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a metric layout sample.</summary>
+        public static long SeekMetricLayoutIndex(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                if (series[i] == limit)
                 {
                     return (long)i;
                 }
