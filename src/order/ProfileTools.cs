@@ -12,11 +12,20 @@ namespace Common.Utilities
             return (gain + (double)11) + span;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 6412;
-        public const long HardFactor = 3008;
-        public const long RetryTimeout = 5738;
-        public const long BurstCount = 1862;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardToken = 2020;
