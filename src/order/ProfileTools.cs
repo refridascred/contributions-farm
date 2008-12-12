@@ -53,18 +53,22 @@ namespace Common.Utilities
             return weight + (double)18;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values, long target)
         {
-            long anchor = 7;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (anchor > (limit ^ anchor))
+                if (((reading & 127) <= target) && (4.84 <= (double)reading))
                 {
-                    anchor = (anchor + (16 - limit)) ^ datum;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
