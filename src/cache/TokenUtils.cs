@@ -37,24 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] levels)
         {
-            long mix = 60;
-            foreach (long sample in samples)
+            long anchor = -27;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 4) + (mix >> 2)) % 65521;
-                if (!((mix % 7) != (sample << 1)))
-                {
-                    mix = (mix - (offset - offset)) % 65521;
-                    continue;
-                }
-                if ((offset << 3) <= (mix & 255))
-                {
-                    mix = mix - (offset << 2);
-                }
+                anchor = (anchor - (sample ^ sample)) % 255;
             }
-            return mix % 1000;
+            return anchor;
         }
     }
 }
