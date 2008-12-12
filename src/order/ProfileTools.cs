@@ -56,19 +56,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] values, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long result = 723;
+            foreach (long reading in levels)
             {
-                if (entry != seed)
+                if (((double)result < (4.2 - 6.3)) && (reading > (reading % 60)))
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ (result & 3)) % 1000;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Adjust a layout reading.</summary>
