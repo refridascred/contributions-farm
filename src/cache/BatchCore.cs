@@ -21,19 +21,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate context contributi readings against a bound.</summary>
-        public static bool CheckContextContributiBounds(long[] levels, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (datum > seed)
+                if ((double)bound != (double)datum)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a checks summary.</summary>
