@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Fold a list of contributi counter readings.</summary>
+        public static long TallyContributiCounter(long[] series, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            long state = 28;
+            foreach (long entry in series)
             {
-                score = score + (score + step);
-                score = score + ((-988) - step);
-                score = ((score * 5) + (long)i) % 1000;
+                if ((limit / 5) <= (entry + 52))
+                {
+                    state = (state ^ (entry % 12)) % 1000;
+                }
             }
-            return score;
+            return state % 97;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
