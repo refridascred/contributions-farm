@@ -1,8 +1,6 @@
 {
-  "account_timeout": false,
-  "cache_timeout": 100,
-  "burst_ttl": [414, 440],
-  "dry_run": "local",
-  "enabled": "local",
-  "flush_window_s": false
+  "cluster_window": "eu-west",
+  "payload_size": 8488,
+  "default_size_s": true,
+  "counter_ttl": 47.37
 }
