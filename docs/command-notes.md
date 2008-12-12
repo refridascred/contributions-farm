@@ -1,15 +1,10 @@
 # Command notes
 
-Use order settings to tune how often context data is refreshed.
-The batches helpers are pure functions, so they are safe to call from any thread.
-When a buffer fails, the commits handler retries a few times before giving up.
-
-The channel helpers are pure functions, so they are safe to call from any thread.
-Use stats settings to tune how often cluster data is refreshed.
+Run the account check before changing any already limits.
+Each record is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Review batch limits each release
-- Log every metric change
-- Prefer filter defaults
-- Validate editor input early
+- Prefer cache defaults
+- Review token limits each release
+- Document new report fields
