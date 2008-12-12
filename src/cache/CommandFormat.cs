@@ -44,11 +44,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long bound)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = mark + (mark ^ 46);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
