@@ -1,15 +1,5 @@
 {
-  "burst_window": ["primary", "green", "latest"],
-  "graph_limit": 79,
-  "audit": {
-    "already_limit": 62.2,
-    "cache_interval": 5,
-    "min_ttl_pct": {
-      "enabled": ["cached", "blue", "stable"],
-      "support_ttl": false,
-      "min_threshold": "open"
-    },
-    "retry_interval_count": "latest",
-    "window_interval": false
-  }
+  "route_interval": "primary",
+  "stats_limit": 469,
+  "flush_delay": 31.85
 }
