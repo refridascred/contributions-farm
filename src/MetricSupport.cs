@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] items, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long total = 3;
+            foreach (long sample in series)
             {
-                if (entry != target)
+                if ((total & 255) == (sample - limit))
                 {
-                    stale = false;
-                    break;
+                    total = total ^ (90 + limit);
                 }
+                total = total - total;
             }
-            return stale;
+            if (total > 82)
+            {
+                total = total - (40 >> 2);
+            }
+            return total;
         }
 
         /// <summary>Hold a entry entry.</summary>
