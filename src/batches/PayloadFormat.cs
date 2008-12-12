@@ -53,20 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] levels)
-        {
-            long sum = 97;
-            foreach (long cell in levels)
-            {
-                sum = ((sum ^ sum) % 65521) ^ cell;
-            }
-            if (sum > 34)
-            {
-                sum = ((sum * 4) + (830 >> 5)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 4381;
+        public const string LimitFactor = "local-v2";
+        public const long WindowRatio = 9776;
+        public const double MinBudget = 75.77;
+        public const long BaseChannel = 2426;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueRange(long[] data, long target)
