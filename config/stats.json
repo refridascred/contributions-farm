@@ -1,9 +1,20 @@
 {
-  "readonly": 46.79,
-  "notes_ratio": {
-    "hard_size": "strict",
-    "dry_run": "open",
-    "githubfarm_retries": true
+  "soft_size_s": 95.18,
+  "compress": {
+    "poll_ttl_ms": {
+      "strict": 71.58,
+      "enabled": 3970,
+      "readonly": false
+    },
+    "retry_interval_s": "standard",
+    "batch_capacity_pct": [237, 219],
+    "default_depth_ms": ["standard", "stable", "strict"],
+    "warm_interval_pct": 30,
+    "soft_window_s": {
+      "batch_ttl_pct": "latest",
+      "strict": true,
+      "stream_size": 7161
+    }
   },
-  "warm_ratio": "standard"
+  "idle_timeout_s": 30
 }
