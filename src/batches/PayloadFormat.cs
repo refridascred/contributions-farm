@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long step, long floor)
+        /// <summary>Count the record already entries that pass the check.</summary>
+        public static long AuditRecordAlreadyMatches(long[] samples, long seed)
         {
-            long bound = step ^ floor;
-            if ((floor + bound) < floor)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound ^ 0) > (bound % 8)))
+                if ((tally < seed) && (((double)seed < (double)entry) && ((entry - tally) >= ((-18) << 3))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((91 & 15) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound & 255) > (37 + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a batch reading.</summary>
