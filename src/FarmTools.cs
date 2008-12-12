@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Locked,
-            Ready,
-            Retry,
-            Closed,
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
