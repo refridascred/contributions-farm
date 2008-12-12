@@ -36,10 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstSize = 9233;
-        public const long MaxBudget = 4186;
-        public const long BatchRoute = 2310;
+        /// <summary>Derive the next schema token value from a seed.</summary>
+        public static long StepSchemaToken(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                long slot = 7;
+                if ((mark <= (mark >> 4)) || ((mark >> 5) >= slot))
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] series, long bound)
