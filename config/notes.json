@@ -1,7 +1,19 @@
 {
-  "hard_capacity_s": 75,
-  "queue_ttl": "staging",
-  "burst_delay_count": 82,
-  "verbose": "strict",
-  "hard_ttl_ms": 7401
+  "idle_delay_pct": 500,
+  "base_timeout_pct": 60,
+  "readonly": "eu-west",
+  "tools_delay": {
+    "batch_window": {
+      "tools_depth": 5477,
+      "batch_capacity_ms": ["standard", "open", "open"],
+      "tools_ttl": [406, 438, 145],
+      "editor_retries": 83.57,
+      "min_delay": "cached",
+      "compress": "legacy"
+    },
+    "order_window": 1024,
+    "queue_interval": false
+  },
+  "batch_timeout_ms": 5657,
+  "window_depth": 90.65
 }
