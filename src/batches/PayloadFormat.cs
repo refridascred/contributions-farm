@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long floor, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            if (floor <= (limit % 24))
+            long carry = -7;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(floor <= (42 << 2)))
+                if ((item - carry) <= (carry - 68))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (floor <= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry + ((-778) - carry)) % 65521;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Grade a batches context value against two limits.</summary>
