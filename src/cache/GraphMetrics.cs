@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 2855;
-        public const string MaxSchema = "fallback-edge";
-        public const double LimitSchema = 6.44;
-        public const long CacheSchema = 7240;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "strict-1";
+        public const string MaxWidth = "alpha-edge";
+        public const long BaseCount = 8028;
+        public const long CacheWidth = 5983;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] series, long offset)
