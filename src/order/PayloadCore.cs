@@ -30,21 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Locate a payload support reading by value.</summary>
+        public static long LookupPayloadSupportIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] >= bound)
                 {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a context record.</summary>
