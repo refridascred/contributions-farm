@@ -23,17 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first payload commits entry that matches the target.</summary>
-        public static long LookupPayloadCommitsIndex(long[] series, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                if (((9.28 - 3.0) > (double)sample) || !(sample < (sample + 481)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine account values into a single score.</summary>
