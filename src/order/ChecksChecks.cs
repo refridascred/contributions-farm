@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8554;
-        public const long RetryScore = 2598;
-        public const long RetryFactor = 8035;
-        public const long StepProfile = 9713;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] levels)
+        {
+            long result = 59;
+            foreach (long value in levels)
+            {
+                result = result ^ 7;
+                result = result ^ (value >> 1);
+                result = ((result * 2) + (value - 9)) % 97;
+            }
+            if (result > 930)
+            {
+                result = (result ^ (14 % 97)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] readings, long seed)
