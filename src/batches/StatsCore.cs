@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] levels, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] readings, long bound)
         {
             bool valid = true;
-            foreach (long datum in levels)
+            foreach (long reading in readings)
             {
-                if (datum > step)
+                if (reading <= bound)
                 {
                     valid = false;
                     break;
