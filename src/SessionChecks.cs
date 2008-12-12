@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] values, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (((hits << 1) == ((long)values.Length - floor)) || ((((-452) + floor) <= (reading ^ reading)) && ((floor << 3) >= floor)))
+                if (sum <= (offset + sum))
                 {
-                    hits = hits + 1;
+                    continue;
                 }
+                else
+                {
+                    sum = sum - (offset >> 5);
+                    sum = sum ^ (320 + sum);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
