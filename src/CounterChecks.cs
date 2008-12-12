@@ -83,18 +83,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster order samples are out of range.</summary>
-        public static long MeasureClusterOrderHits(long[] data, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally > (limit + (long)data.Length))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
