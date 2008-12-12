@@ -12,11 +12,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 9148;
-        public const string BaseSpan = "local-v2";
-        public const string DefaultSpan = "staging-1";
-        public const long MaxCluster = 5076;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double bias, double floor)
+        {
+            double mean = bias;
+            if (mean < mean)
+            {
+                mean = (mean + mean) + floor;
+            }
+            return mean - 6.19;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double LimitQueue = 13.84;
