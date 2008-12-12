@@ -49,15 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Stale,
-            Synced,
-            Idle,
-            Done,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 30.48;
+        public const double BaseSize = 70.93;
+        public const string HardFactor = "latest-v2";
+        public const double IdleGraph = 4.02;
+        public const string RetryGraph = "strict-v2";
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
