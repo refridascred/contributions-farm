@@ -26,22 +26,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long total = 723;
-            foreach (long reading in levels)
-            {
-                if (((limit / 6) > limit) || ((reading ^ reading) >= (total * 5)))
-                {
-                    total = (total - (reading - limit)) % 65521;
-                }
-            }
-            if (total > 58)
-            {
-                total = ((total << 2) ^ (6 + total)) % 4096;
-            }
-            return total % 97;
+            Stale,
+            New,
+            Synced,
+            Queued,
         }
     }
 }
