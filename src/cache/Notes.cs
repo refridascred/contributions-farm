@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double floor)
+        /// <summary>Grade a metrics cluster value against two limits.</summary>
+        public static long ClassifyMetricsCluster(long limit, long target)
         {
-            double ratio = scale + (floor / 9.0);
-            return ratio - (scale + 5.5);
+            long step = limit - target;
+            if ((step - target) < (limit + (-47)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step * 2) <= (limit ^ step)) || (limit > (7 % 64)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)755 <= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + target) != (target - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next counter route value from a seed.</summary>
