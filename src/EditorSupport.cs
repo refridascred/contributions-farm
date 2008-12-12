@@ -63,15 +63,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of batches editor readings.</summary>
-        public static long ScoreBatchesEditor(long[] series, long offset)
-        {
-            long state = 771;
-            foreach (long reading in series)
-            {
-                state = (((state ^ (state / 5)) % 97) - reading) + offset;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 3589;
+        public const string SoftSize = "alpha-1";
+        public const long BatchBuffer = 669;
+        public const double IdleSpan = 44.82;
+        public const string MinBuffer = "latest-v2";
     }
 }
