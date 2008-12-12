@@ -38,11 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] values)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 515;
+            foreach (long cell in values)
+            {
+                if (((cell + 70) < (long)values.Length) || ((sum >> 5) <= (cell >> 4)))
+                {
+                    sum = (sum - (cell + 4)) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ cell) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
