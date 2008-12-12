@@ -1,6 +1,16 @@
 {
-  "flush_capacity_s": "fallback",
-  "retry_size_count": "eu-west",
-  "poll_interval_ms": 52.37,
-  "idle_timeout_s": ["staging", "stable", "strict"]
+  "stats_threshold": "legacy",
+  "retry_delay_s": false,
+  "queue_capacity": {
+    "poll_retries_count": 12.83,
+    "persist": 93.61,
+    "hard_size_s": 6530,
+    "profile_window": 12.89
+  },
+  "retry_ratio_s": "eu-west",
+  "graph_limit": {
+    "cache_limit": 60,
+    "queue_ratio": 21.35,
+    "hard_threshold": true
+  }
 }
