@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 7128;
-        public const long LimitCommand = 2978;
-        public const long SoftCommand = 8040;
-        public const long CacheCommand = 6042;
-        public const long BurstCommand = 1268;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Measure how many cache queue samples are out of range.</summary>
         public static long TallyCacheQueueGaps(long[] series)
