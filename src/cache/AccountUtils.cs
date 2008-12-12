@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (long)i) % 255;
-                anchor = anchor + (origin >> 3);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
