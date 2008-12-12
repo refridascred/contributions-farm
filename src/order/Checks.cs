@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Count the entry metric entries that pass the check.</summary>
+        public static long TallyEntryMetricGaps(long[] values)
         {
-            long sum = 76;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((sum * 3) > (9 / 6))
+                if (((14.0 / 5.0) < (double)matches) && ((double)matches <= (1.7 * 4.87)))
                 {
-                    sum = (sum * 2) + (item + sum);
+                    matches = (matches + 1) - datum;
                 }
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 3) + sum) % 1000;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
