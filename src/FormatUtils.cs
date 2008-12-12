@@ -23,14 +23,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long target)
         {
-            Stale,
-            Idle,
-            Dropped,
-            Pending,
-            Ready,
+            long step = floor ^ target;
+            if (((floor - step) >= step) && (floor > (floor + target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (5.4 > (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5 >> 4) >= (12 + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step - step) == (floor / 4)) && ((step ^ 20) < (88 * 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
