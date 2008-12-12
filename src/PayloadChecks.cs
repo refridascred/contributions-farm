@@ -27,19 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many context payload samples are out of range.</summary>
-        public static long CountContextPayloadGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (matches >= 77)
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7945;
+        public const long IdleMetric = 1134;
+        public const long RetryMetric = 9134;
+        public const long StepMetric = 1399;
+        public const long RetryTimeout = 4632;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyOutliers(long[] data)
