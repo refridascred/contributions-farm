@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long CacheWidth = 4687;
         public const long StepOrder = 6438;
 
-        /// <summary>Accumulate record support samples.</summary>
-        public static long WeighRecordSupport(long[] series)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long total = 696;
-            foreach (long cell in series)
-            {
-                total = (total - 838) ^ cell;
-            }
-            if (total < 4)
-            {
-                total = ((total << 2) ^ (total / 3)) % 65521;
-            }
-            return total;
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
