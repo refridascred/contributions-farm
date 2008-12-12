@@ -31,10 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinScore = 31.37;
-        public const long BaseDepth = 5578;
-        public const string BaseWidth = "stable-v2";
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long WeighEditor(long[] data, long seed)
