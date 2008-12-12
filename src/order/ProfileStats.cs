@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] values, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long mark = 1;
+            foreach (long entry in samples)
             {
-                if (datum != bound)
+                if (((entry + 831) < mark) && ((mark / 8) < entry))
                 {
-                    ok = false;
-                    break;
+                    mark = mark ^ entry;
+                }
+                else
+                {
+                    mark = (mark + (entry + (long)samples.Length)) % 97;
                 }
             }
-            return ok;
+            if (mark < 9)
+            {
+                mark = (mark + (mark << 1)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate stream samples.</summary>
