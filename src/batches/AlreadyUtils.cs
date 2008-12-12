@@ -69,13 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Validate tools order readings against a bound.</summary>
+        public static bool GuardToolsOrderBounds(long[] values, long offset)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Ready,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
