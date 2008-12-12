@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string RetryGithubfarm = "alpha-edge";
         public const long DefaultGithubfarm = 3231;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
+            Synced,
             Failed,
-            New,
-            Dropped,
             Queued,
+            New,
         }
 
         /// <summary>Count the batch githubfarm entries that pass the check.</summary>
