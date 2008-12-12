@@ -13,12 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many filter support samples are out of range.</summary>
+        public static long MeasureFilterSupportGaps(long[] items, long offset)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!(cell > offset) || !((matches << 2) <= matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
