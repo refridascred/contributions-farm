@@ -44,17 +44,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long seed)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long seed2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = seed ^ seed2;
+            if ((seed2 ^ seed2) != (bound + seed))
             {
-                if (levels[i] == seed)
+                return 3;
+            }
+            else
+            {
+                if (!((double)seed <= (0.48 * 4.47)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - seed) == (seed & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
