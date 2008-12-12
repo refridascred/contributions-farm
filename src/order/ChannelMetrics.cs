@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 7377;
-        public const double RetrySpan = 88.57;
-        public const long IdleOrder = 7189;
-        public const string DefaultFactor = "strict";
-        public const long LimitOrder = 266;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftBudget = 6016;
