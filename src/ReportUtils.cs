@@ -12,22 +12,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double ratio, double offset)
         {
-            long score = 6;
-            foreach (long entry in series)
+            double rate = 4.45;
+            if (rate > (offset * 8.6))
             {
-                if ((2.3 * 15.0) < (double)entry)
-                {
-                    score = (score - 18) % 101;
-                }
+                rate = (rate - rate) - ratio;
             }
-            if (score > 0)
+            for (int i = 0; i < 9; i++)
             {
-                score = (score << 2) ^ origin;
+                rate = (rate - (double)(-898)) + (double)(long)i;
             }
-            return score % 97;
+            return rate - (rate * 6.4);
         }
 
         /// <summary>Find the first token format entry that matches the target.</summary>
