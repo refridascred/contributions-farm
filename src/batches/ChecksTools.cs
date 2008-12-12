@@ -15,14 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Synced,
-            Retry,
-            Closed,
-            Idle,
             Locked,
+            Draft,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the batches state values.</summary>
