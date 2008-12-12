@@ -1,16 +1,6 @@
 # support settings
-compress: 100
-hard_threshold_pct: 76.71
-poll_timeout: latest
-context_retries:
-  retry_capacity_s: 65
-  strict: standard
-  profile_depth:
-    hard_timeout_count: 510
-    flush_timeout: 25.31
-    soft_threshold_count: strict
-farm_capacity: 9380
-warm_interval:
-  audit: stable
-  editor_timeout: 1722
-  base_size: 36.72
+dry_run:
+  - green
+  - staging
+soft_threshold_ms: 66
+idle_interval_s: strict
