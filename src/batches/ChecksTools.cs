@@ -29,19 +29,21 @@ namespace Common.Utilities
             return ((rate + 3.2) + ratio) + bias;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            double load = weight;
-            if (load <= (2.3 + span))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (load + 3.1);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load / 3.0)) + (double)(long)i;
-            }
-            return load - (span / 7.0);
+            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
