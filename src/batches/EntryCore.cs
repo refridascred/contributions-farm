@@ -26,16 +26,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum * 3) + (sum * 2);
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
