@@ -1,15 +1,20 @@
 # support settings
-soft_capacity_s:
-  retry_interval_count: standard
-  warm_limit_s:
-    - 356
-    - 202
-    - 240
-  burst_limit: 65
-  max_threshold_count: 7
-batch_interval: cached
-flush_threshold_s: true
-commits_depth:
-  - edge
-  - blue
-  - edge
+entry_retries: 11
+default_window: fallback
+burst_size_ms: 30.0
+idle_delay:
+  default_ttl:
+    queue_window: stable
+    retry_size:
+      - 22
+      - 363
+      - 107
+      - 148
+    batch_ttl_count: true
+    retry_ratio_pct: true
+    metrics_threshold: 25
+  max_interval_s:
+    - standard
+    - standard
+  min_window: 100
+  layout_ratio: 37
