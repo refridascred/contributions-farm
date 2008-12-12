@@ -25,18 +25,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] data, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double ratio = (double)(8 << 3);
+            for (int i = 0; i < 6; i++)
             {
-                if ((7.52 <= (double)seen) || ((double)limit <= (7.6 - 4.6)))
-                {
-                    seen = (seen + 1) + item;
-                }
+                ratio = ((ratio + bias) + (double)(long)i) - floor;
             }
-            return seen;
+            return ratio - (double)8;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
