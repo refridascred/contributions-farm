@@ -1,17 +1,29 @@
 # support settings
-record_delay: 500
-enabled: 1024
-max_depth_count: 40
-base_limit:
-  idle_window: 250
-  metrics_threshold: 7.84
-  poll_retries_pct: standard
-  hard_limit_ms:
-    soft_size_count:
-      - open
-      - edge
-      - staging
-    filter_capacity: primary
-    retry_window_count: false
-window_depth: 31.65
-retry_retries: 250
+poll_interval_s: staging
+channel_limit:
+  strict:
+    - standard
+    - standard
+  verbose:
+    - strict
+    - latest
+    - legacy
+    - stable
+  window_delay: legacy
+  enabled:
+    enabled:
+      - green
+      - strict
+      - latest
+      - green
+    max_ratio_pct: 73.52
+    batch_threshold: false
+    metrics_threshold: standard
+    context_size: standard
+    sync_ratio_s: 100
+  warm_interval: local
+  max_retries_ms: 500
+sync_limit_pct:
+  - 46
+  - 382
+  - 488
