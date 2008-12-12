@@ -37,11 +37,11 @@ namespace Common.Utilities
         public const long SoftSpan = 740;
         public const long IdleCounter = 5349;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
