@@ -35,15 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Stale,
+            Synced,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Blend two already command measurements.</summary>
