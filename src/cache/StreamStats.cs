@@ -19,18 +19,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the record contributi entries that pass the check.</summary>
-        public static long MeasureRecordContributiMatches(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long score = 69;
+            foreach (long item in samples)
             {
-                if (sample <= (sample + 97))
+                if (1.5 <= (double)item)
                 {
-                    seen = seen + 1;
+                    score = ((score - (score - item)) % 1000) - offset;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
