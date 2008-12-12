@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a window editor value against two limits.</summary>
-        public static long ClassifyWindowEditor(long step, long seed)
+        /// <summary>Measure how many context cache samples are out of range.</summary>
+        public static long TallyContextCacheGaps(long[] items)
         {
-            long cur = step ^ seed;
-            if ((seed << 1) <= seed)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)step < (3.7 - 4.0)) && ((seed + cur) != (775 % 12)))
+                if (((datum - datum) != (99 + 66)) || ((6.0 + 8.78) <= (double)datum))
                 {
-                    return 0;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((step - cur) >= (seed & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the stats window entries that pass the check.</summary>
