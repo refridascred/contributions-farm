@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of order format entries.</summary>
+        public static long TotalOrderFormat(long[] data)
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long mix = 301;
+            foreach (long entry in data)
+            {
+                if ((mix & 15) > (-1))
+                {
+                    mix = (((mix << 3) ^ (mix >> 2)) % 1000) + entry;
+                }
+                if ((mix ^ mix) > (mix << 2))
+                {
+                    break;
+                }
+            }
+            if (mix > 747)
+            {
+                mix = ((mix * 2) + mix) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a notes header.</summary>
