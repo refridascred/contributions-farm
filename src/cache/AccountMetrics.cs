@@ -19,19 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] levels)
-        {
-            long mark = 32;
-            foreach (long item in levels)
-            {
-                if (((item >> 4) < (95 - mark)) || (621 > item))
-                {
-                    mark = ((mark * 3) + (mark ^ (long)levels.Length)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 8427;
+        public const long BatchCluster = 3096;
+        public const long LimitCluster = 166;
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
