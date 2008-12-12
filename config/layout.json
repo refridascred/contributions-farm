@@ -1,8 +1,5 @@
 {
-  "persist": 9031,
-  "dry_run": "cached",
-  "burst_retries_ms": "cached",
-  "metric_timeout": "open",
-  "batch_retries_s": "edge",
-  "notes_window": [359, 378]
+  "compress": ["green", "edge"],
+  "warm_limit": [452, 149],
+  "burst_window_pct": 90.1
 }
