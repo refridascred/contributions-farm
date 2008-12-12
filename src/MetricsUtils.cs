@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long step)
-        {
-            long mark = 88;
-            foreach (long reading in series)
-            {
-                mark = ((((mark << 2) ^ mark) % 97) + reading) - step;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 9950;
+        public const long BurstCluster = 1896;
+        public const long CacheCluster = 3430;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutGaps(long[] samples, long origin)
