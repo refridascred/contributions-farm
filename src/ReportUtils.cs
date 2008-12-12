@@ -44,15 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter already reading.</summary>
-        public static double AdjustFilterAlready(double bias, double bias2)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double scale = (bias / 7.0) + (bias * 1.0);
-            if (scale < (bias2 / 2.0))
-            {
-                scale = scale + bias2;
-            }
-            return scale - bias;
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
