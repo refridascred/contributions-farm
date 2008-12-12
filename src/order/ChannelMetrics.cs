@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels, long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long acc = 76;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > (seed + 979))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc << 3) ^ (sample % 100);
-                }
-                if ((sample + 4) >= ((-90) << 3))
-                {
-                    break;
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
