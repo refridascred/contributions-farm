@@ -24,11 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] values, long target)
         {
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((12.0 + 2.69) < (double)hits)
+                {
+                    hits = ((hits + 1) + reading) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report mode values.</summary>
