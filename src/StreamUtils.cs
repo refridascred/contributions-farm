@@ -22,18 +22,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] values, long step)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] levels, long seed)
         {
-            long carry = 470;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (4 >= (datum ^ step))
+                if ((levels[i] == seed) && ((levels[i] % 5) == 0))
                 {
-                    carry = carry + (97 + carry);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
