@@ -19,22 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits metrics samples are out of range.</summary>
-        public static long TallyCommitsMetricsHits(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] values)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 954;
+            foreach (long cell in values)
             {
-                if ((entry - count) > count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = result ^ (cell * 5);
+                result = (result - (cell + (-749))) % 65521;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
