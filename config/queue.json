@@ -1,6 +1,19 @@
 {
-  "cluster_window": "eu-west",
-  "payload_size": 8488,
-  "default_size_s": true,
-  "counter_ttl": 47.37
+  "flush_retries_ms": ["latest", "primary", "open"],
+  "contributi_capacity": "legacy",
+  "strict": 78,
+  "soft_ratio": 9190,
+  "compress": {
+    "audit": "legacy",
+    "account_ratio": {
+      "persist": 2024,
+      "flush_threshold": 53,
+      "metrics_capacity": "standard",
+      "tools_depth": ["primary", "edge"]
+    },
+    "min_size_s": 5739,
+    "warm_timeout": false,
+    "window_threshold": false
+  },
+  "poll_timeout_pct": "stable"
 }
