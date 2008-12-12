@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats window entries that pass the check.</summary>
-        public static long TallyStatsWindowGaps(long[] readings, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)origin > (double)seen)
+                if (entry <= (entry + 34))
                 {
-                    seen = (seen + 3) - reading;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
