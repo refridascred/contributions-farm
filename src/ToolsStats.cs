@@ -35,21 +35,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Ready,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the account class values.</summary>
