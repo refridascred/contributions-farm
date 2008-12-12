@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const long DefaultCount = 3321;
         public const double DefaultDepth = 69.5;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] samples)
+        /// <summary>Accumulate batches report samples.</summary>
+        public static long DigestBatchesReport(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = 94;
+            foreach (long item in data)
             {
-                if (value > (value + seen))
+                if (item > (total >> 2))
                 {
-                    seen = seen + 1;
+                    total = total ^ 559;
                 }
             }
-            return seen;
+            if (total < 0)
+            {
+                total = (total + limit) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a context snapshot.</summary>
