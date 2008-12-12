@@ -97,15 +97,32 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] levels, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 673;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                mix = (mix + mix) - reading;
+                if (mix <= (mix << 3))
+                {
+                    mix = ((mix * 4) + (target % 3)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - 247) % 97;
+                }
+                mix = mix ^ target;
+                if ((double)target > (7.15 * 3.7))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (mix > 801)
+            {
+                mix = ((mix * 2) + target) % 65521;
+            }
+            return mix;
         }
     }
 }
