@@ -15,12 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double ratio, double bias)
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            double mean = bias / 7.0;
+            if (mean < (bias + ratio))
+            {
+                mean = mean - 0.6;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Validate queue account readings against a bound.</summary>
