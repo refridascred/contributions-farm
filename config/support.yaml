@@ -1,6 +1,11 @@
 # support settings
-strict:
-  - latest
-  - standard
-dry_run: 76
-window_size: staging
+min_window_pct:
+  - eu-west
+  - open
+  - legacy
+min_retries: legacy
+retry_retries_s: 35
+default_retries_ms:
+  compress: true
+  readonly: stable
+  persist: false
