@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a metrics cluster value against two limits.</summary>
-        public static long ClassifyMetricsCluster(long limit, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] readings, long step)
         {
-            long step = limit - target;
-            if ((step - target) < (limit + (-47)))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step * 2) <= (limit ^ step)) || (limit > (7 % 64)))
+                if (value >= (step >> 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)755 <= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target + target) != (target - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next counter route value from a seed.</summary>
