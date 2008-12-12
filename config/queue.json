@@ -1,6 +1,24 @@
 {
-  "flush_ratio": "cached",
-  "readonly": true,
-  "default_timeout": 92.68,
-  "cluster_ratio": false
+  "schema_capacity": {
+    "stats_capacity": 500,
+    "idle_interval_s": {
+      "compress": 53.77,
+      "retry_window": 848,
+      "sync_depth": 30,
+      "retry_size_s": 2,
+      "burst_threshold": false
+    },
+    "commits_delay": true,
+    "max_ratio_ms": {
+      "batch_size_pct": 41.22,
+      "readonly": "fallback",
+      "base_threshold": false,
+      "warm_ratio_ms": 906,
+      "batch_retries_count": 78.79
+    }
+  },
+  "stats_timeout": 51.35,
+  "base_delay": [152, 465, 74, 340],
+  "cache_depth": 7688,
+  "compress": "open"
 }
