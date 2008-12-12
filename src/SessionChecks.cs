@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftSize = 490;
-        public const long IdleCache = 5122;
-        public const long MaxCache = 8658;
-        public const long StepLevel = 8765;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
