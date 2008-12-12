@@ -1,7 +1,14 @@
 {
-  "cluster_limit": 2197,
-  "buffer_ttl": 1126,
-  "warm_ttl_pct": 11.67,
-  "base_timeout_count": "open",
-  "persist": 41.71
+  "base_timeout": false,
+  "batch_interval_count": true,
+  "strict": ["primary", "green"],
+  "warm_ratio_pct": ["local", "strict", "stable", "latest"],
+  "record_size": 54,
+  "base_delay_count": {
+    "cache_limit_count": 60,
+    "poll_threshold": 500,
+    "account_threshold": "primary",
+    "base_ttl": true,
+    "strict": 52.04
+  }
 }
