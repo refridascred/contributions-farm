@@ -49,39 +49,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long target)
         {
-            long next = floor + seed;
-            if (((double)floor > (6.02 * 10.0)) && ((seed + seed) != (next * 3)))
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (74 >= (next >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor >= (next % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((16.0 / 5.0) <= (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the account state values.</summary>
