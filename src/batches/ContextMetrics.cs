@@ -64,15 +64,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            long mix = 74;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix - entry) + floor;
+                if ((4 - 40) >= (hits / 3))
+                {
+                    hits = (hits + 3) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix % 4096;
+            return hits;
         }
     }
 }
