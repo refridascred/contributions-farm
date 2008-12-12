@@ -48,14 +48,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] series, long offset)
         {
-            Active,
-            New,
-            Done,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum >= 20.0)
+                {
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count command checks pairs that satisfy a relation.</summary>
