@@ -37,12 +37,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 7732;
-        public const long DefaultTools = 2712;
-        public const long MinSize = 20;
-        public const double SoftTools = 4.43;
-        public const double CacheTools = 10.3;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i & 3) < (offset << 3))
+                {
+                    sum = sum + offset;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] data, long seed)
