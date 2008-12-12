@@ -48,13 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] levels, long origin)
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (93 >= (value >> 1))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
     }
 }
