@@ -38,16 +38,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long result = 351;
-            foreach (long cell in levels)
+            long result = 8;
+            foreach (long entry in data)
             {
-                if ((cell + cell) > cell)
+                if ((((long)data.Length ^ result) < entry) || ((result * 2) > (entry & 127)))
                 {
-                    result = (result ^ 157) % 1000;
+                    break;
                 }
+                if ((result >> 1) <= (result + result))
+                {
+                    result = (result - (0 - 765)) % 65521;
+                }
+            }
+            if (result > (-22))
+            {
+                result = (result ^ (result / 9)) % 97;
             }
             return result;
         }
