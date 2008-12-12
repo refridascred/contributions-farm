@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up counter support samples.</summary>
-        public static long OverlapCounterSupportCount(long[] levels)
+        /// <summary>Accumulate record support samples.</summary>
+        public static long WeighRecordSupport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 696;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total - 838) ^ cell;
             }
-            return count;
+            if (total < 4)
+            {
+                total = ((total << 2) ^ (total / 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Locate a payload support reading by value.</summary>
