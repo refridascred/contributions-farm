@@ -1,29 +1,5 @@
 {
-  "metric_ttl": "local",
-  "graph_timeout": {
-    "min_ratio_s": {
-      "readonly": "stable",
-      "compress": false,
-      "flush_window": false,
-      "burst_size_ms": 1024,
-      "verbose": 30
-    },
-    "default_interval_s": [167, 436, 393],
-    "idle_size": false
-  },
-  "soft_timeout_s": "eu-west",
-  "audit": {
-    "strict": "primary",
-    "dry_run": {
-      "cache_retries_ms": 8201,
-      "retry_depth": "fallback",
-      "account_capacity": 1378,
-      "soft_limit_ms": true,
-      "flush_retries_s": "legacy"
-    },
-    "burst_depth_count": 2,
-    "idle_ratio_ms": "staging"
-  },
-  "verbose": 30,
-  "record_window": 78.77
+  "poll_delay_s": 38,
+  "soft_threshold_ms": false,
+  "soft_ttl_count": "primary"
 }
