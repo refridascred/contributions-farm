@@ -23,25 +23,13 @@ namespace Common.Utilities
         public const double IdleInterval = 54.67;
         public const long BaseBatch = 3349;
 
-        /// <summary>Grade a profile editor value against two limits.</summary>
-        public static long RankProfileEditor(long seed, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long delta = seed + step;
-            if ((seed + seed) < 90)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((delta / 7) >= (seed + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Ready,
+            Stale,
+            Synced,
         }
     }
 }
