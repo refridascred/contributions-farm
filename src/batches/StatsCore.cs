@@ -67,23 +67,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score ^ (score / 3)) % 65521) + (long)i2;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (((long)i * 2) >= (long)i)
-                {
-                    score = score + 3;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
     }
 }
