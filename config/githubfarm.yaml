@@ -1,21 +1,7 @@
 # githubfarm settings
-hard_ratio_ms: staging
-idle_limit_pct: 1024
-min_size_pct:
-  token_threshold: fallback
-  flush_timeout: 1879
-  base_capacity_s:
-    burst_depth: staging
-    base_limit_pct:
-      - local
-      - strict
-      - stable
-    contributi_threshold:
-      - 375
-      - 139
-    cache_ratio_s: 11
-    min_size_s: false
-    metric_interval: 53.8
-  payload_retries: 73.43
-  base_limit_count: 5
-min_ratio: local
+batch_depth_s: true
+idle_retries_pct:
+  hard_interval_s: standard
+  hard_delay_ms: 61.13
+  min_depth: latest
+base_capacity: edge
