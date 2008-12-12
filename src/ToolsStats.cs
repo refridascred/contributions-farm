@@ -84,11 +84,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSpan = 7173;
-        public const string RetryFactor = "strict-edge";
-        public const long BatchRatio = 6746;
-        public const long BatchFactor = 8479;
-        public const string MaxNotes = "local-v2";
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
