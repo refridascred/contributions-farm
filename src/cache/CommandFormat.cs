@@ -33,11 +33,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long offset, long target)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            if ((double)532 != (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-87) ^ target) < (target + 52))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) >= (offset / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a entry already pair into a bucket.</summary>
