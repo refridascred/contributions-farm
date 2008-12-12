@@ -32,15 +32,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of editor command readings.</summary>
-        public static long MatchEditorCommandCount(long[] samples)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
+                    if ((data[i] - data[j]) < 13)
                     {
                         seen = seen + 1;
                     }
