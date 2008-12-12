@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] data, long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double scale, double span)
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((floor >= (cell << 2)) && ((floor + (-871)) == (seen - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double gain = scale;
+            return (gain + (double)11) + span;
         }
 
         /// <summary>Roll a stream farm counter forward.</summary>
