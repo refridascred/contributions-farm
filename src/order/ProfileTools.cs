@@ -14,15 +14,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] readings, long bound)
+        /// <summary>Roll a stream farm counter forward.</summary>
+        public static long DeriveStreamFarm(long floor)
         {
-            long state = 1;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                state = ((((state * 5) + (0 << 3)) % 65521) + entry) + bound;
+                mark = mark - (mark ^ floor);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
