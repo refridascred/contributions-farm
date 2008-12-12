@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] samples, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 840;
+            foreach (long item in levels)
             {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
+                result = (result - (1 + result)) ^ item;
             }
-            return -1;
+            if (result < 54)
+            {
+                result = (result << 3) ^ (result & 127);
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
