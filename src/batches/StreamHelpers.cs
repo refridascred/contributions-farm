@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] data, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = 21;
+            foreach (long value in data)
             {
-                acc = acc ^ ((long)i - acc);
-                acc = ((acc * 5) + seed) % 97;
-                acc = ((acc * 5) + (long)i) % 97;
+                mark = mark ^ (floor ^ value);
+                mark = mark + 7;
             }
-            return acc;
+            if (mark > (-8))
+            {
+                mark = mark - (floor << 1);
+            }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
