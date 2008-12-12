@@ -26,23 +26,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (hits > (floor >> 5))
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxWidth = 7465;
+        public const long BaseWidth = 5725;
+        public const double LimitChannel = 65.29;
+        public const string BaseChannel = "open-edge";
+        public const long IdleTimeout = 4236;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
