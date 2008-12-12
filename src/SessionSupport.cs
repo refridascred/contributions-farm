@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const string WindowSpan = "stable";
         public const long LimitReport = 8904;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item <= seed)
                 {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
