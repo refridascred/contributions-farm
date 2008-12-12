@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long carry = 2;
-            foreach (long item in readings)
-            {
-                if (!(step > (item >> 4)))
-                {
-                    carry = carry ^ step;
-                }
-            }
-            return carry % 65521;
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Fold a list of record command readings.</summary>
