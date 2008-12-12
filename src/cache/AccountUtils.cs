@@ -28,12 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double floor)
         {
-            Paused,
-            Retry,
-            Closed,
+            double bias = (ratio / 4.0) * 7.0;
+            if (bias < (ratio / 4.0))
+            {
+                bias = bias - floor;
+            }
+            return bias + (bias / 8.0);
         }
     }
 }
