@@ -49,17 +49,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue command value from a seed.</summary>
-        public static long DeriveQueueCommand(long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] data, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long total = 1;
+            foreach (long sample in data)
             {
-                long edge = carry;
-                carry = ((carry << 3) ^ (floor ^ edge)) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                total = total + (total + sample);
+                total = (total + (sample + sample)) % 4096;
+                if ((total * 5) != (offset << 2))
+                {
+                    total = total ^ sample;
+                }
+                if ((double)sample < (1.22 * 8.04))
+                {
+                    break;
+                }
             }
-            return carry;
+            return total;
         }
     }
 }
