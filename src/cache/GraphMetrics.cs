@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double LimitSchema = 6.44;
         public const long CacheSchema = 7240;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] series, long offset)
         {
-            Done,
-            Closed,
-            Active,
-            Locked,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((6.3 / 8.0) <= (double)tally) && (entry <= (tally + 56)))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
