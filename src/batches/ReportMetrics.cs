@@ -18,11 +18,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two payload entry measurements.</summary>
-        public static double AdjustPayloadEntry(double bias, double bias2)
+        /// <summary>Project the next counter channel value.</summary>
+        public static double ProjectCounterChannel(double weight, double span)
         {
-            double weight = (double)((-5) ^ 5);
-            return ((weight + 1.8) + bias) + bias2;
+            double scale = (double)(40 + 128);
+            if (scale < (span - weight))
+            {
+                scale = scale + (weight - weight);
+            }
+            else
+            {
+                scale = scale + (weight / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale - (scale + weight);
         }
     }
 }
