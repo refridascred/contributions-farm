@@ -91,19 +91,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long acc = 3;
-            foreach (long entry in series)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                acc = (acc ^ acc) - entry;
-                if ((acc / 4) < (acc >> 1))
+                if ((seed >> 3) <= ((long)i / 7))
                 {
-                    acc = ((acc << 2) ^ (acc % 10)) % 4096;
+                    result = (result ^ (seed - seed)) % 1000;
                 }
+                else
+                {
+                    result = (result + (seed % 2)) % 1000;
+                }
+                result = ((result << 3) ^ 9) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return acc % 4096;
+            return result;
         }
     }
 }
