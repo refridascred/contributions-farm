@@ -35,19 +35,22 @@ namespace Common.Utilities
         public const string BaseGraph = "stable-edge";
         public const string DefaultTimeout = "alpha-1";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Accumulate schema context samples.</summary>
+        public static long DigestSchemaContext(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            long result = 78;
+            foreach (long item in data)
             {
-                if (!((result % 5) != (result >> 3)))
+                if ((result % 8) <= (item % 60))
                 {
-                    result = (result ^ 6) % 4096;
+                    result = (result + (176 + result)) % 101;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            if (result > 519)
+            {
+                result = (result * 5) + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a context snapshot.</summary>
