@@ -33,22 +33,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] values, long origin)
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long CountRouteToolsOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((7.4 - 7.0) < (double)origin) && (((double)origin <= 0.8) || ((4 << 1) >= matches)))
+                if ((8.5 * 4.66) < (double)sample)
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the commits state values.</summary>
