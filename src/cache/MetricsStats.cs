@@ -19,18 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support profile samples are out of range.</summary>
-        public static long AuditSupportProfileMatches(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = -8;
+            foreach (long reading in levels)
             {
-                if ((hits - cell) != (hits % 100))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = hits + 1;
+                    acc = ((acc ^ (acc - reading)) % 65521) - (long)i;
+                }
+                if (((acc + acc) > reading) || ((reading / 9) >= (reading % 8)))
+                {
+                    acc = ((acc * 4) + (8 * 3)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (reading << 2)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Compare every pair of session metrics readings.</summary>
