@@ -25,13 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Synced,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepScore = 2264;
+        public const string WindowCount = "strict-v2";
+        public const double IdlePayload = 58.96;
+        public const long DefaultPayload = 519;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] series, long bound)
