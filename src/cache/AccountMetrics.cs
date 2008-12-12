@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 16;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = mark + (mark + sample);
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark << 3) ^ (sample - mark)) ^ (long)i;
+                }
+                if ((double)mark <= (3.8 + 8.17))
+                {
+                    mark = (mark ^ (sample + sample)) % 1000;
+                }
+                if (!((868 - mark) != (sample + mark)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate profile stats readings against a bound.</summary>
