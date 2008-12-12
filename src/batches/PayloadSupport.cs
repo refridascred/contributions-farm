@@ -25,27 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] readings, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] data)
         {
-            long score = 1;
-            foreach (long cell in readings)
+            long total = 79;
+            foreach (long reading in data)
             {
-                long slot = bound;
-                if (((bound + slot) > score) || ((score / 3) <= (cell - cell)))
-                {
-                    slot = slot ^ (cell + slot);
-                }
-                if ((286 > score) && ((bound + cell) < score))
-                {
-                    score = score + (score + cell);
-                }
-                if (((bound + score) < (1 / 2)) || (bound < (bound ^ cell)))
-                {
-                    break;
-                }
+                total = (total - (4 ^ reading)) % 4096;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Count the order graph entries that pass the check.</summary>
