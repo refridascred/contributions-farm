@@ -64,23 +64,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long FoldEntryOrder(long[] items, long target)
-        {
-            long state = 362;
-            foreach (long datum in items)
-            {
-                state = (((state << 2) ^ 27) % 4096) ^ datum;
-                if ((8 + (-921)) < (target >> 2))
-                {
-                    state = state - (23 % 60);
-                }
-            }
-            if (state > 0)
-            {
-                state = state ^ (target + state);
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchSpan = 9347;
+        public const double WindowBudget = 93.15;
+        public const double MinQueue = 74.96;
+        public const long WindowTimeout = 5232;
     }
 }
