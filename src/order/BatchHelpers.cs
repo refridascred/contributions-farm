@@ -22,11 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepBudget = "legacy-1";
-        public const long DefaultMetrics = 871;
-        public const long RetryMetrics = 3897;
-        public const long SoftSize = 9314;
+        /// <summary>Iterate the githubfarm support series from a seed.</summary>
+        public static long RollGithubfarmSupport(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix + ((long)i >> 3);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double weight, double floor)
