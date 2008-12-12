@@ -76,15 +76,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] levels, long offset)
         {
-            double drift = (double)(6 - 1);
-            if (drift <= (gain - span))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                drift = drift - (drift / 6.0);
+                if ((hits & 1) <= (8 & 1))
+                {
+                    hits = ((hits + 1) ^ entry) + offset;
+                }
             }
-            return drift + drift;
+            return hits;
         }
     }
 }
