@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm support series from a seed.</summary>
-        public static long RollGithubfarmSupport(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix + ((long)i >> 3);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowQueue = 9.65;
+        public const long HardQueue = 6548;
+        public const string IdleLevel = "open-1";
+        public const long BatchQueue = 436;
+        public const double BaseBudget = 36.22;
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double weight, double floor)
