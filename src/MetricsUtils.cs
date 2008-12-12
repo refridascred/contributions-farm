@@ -33,14 +33,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Failed,
-            Done,
-            Retry,
-            New,
             Locked,
+            Failed,
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
