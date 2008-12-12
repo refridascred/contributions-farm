@@ -1,8 +1,6 @@
 {
-  "idle_ratio_pct": false,
-  "max_size_pct": [413, 33, 311],
-  "default_window": 70.28,
-  "default_timeout_s": "open",
-  "cluster_limit": "staging",
-  "dry_run": "standard"
+  "warm_capacity": "edge",
+  "enabled": ["green", "strict", "latest", "eu-west"],
+  "strict": 1376,
+  "idle_threshold_s": ["eu-west", "edge", "latest"]
 }
