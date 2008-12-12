@@ -43,12 +43,21 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a layout record.</summary>
