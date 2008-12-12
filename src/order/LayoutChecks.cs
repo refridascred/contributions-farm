@@ -69,10 +69,22 @@ namespace Common.Utilities
         public const double BurstEntry = 66.09;
         public const long RetryDepth = 7743;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 1504;
-        public const long IdleSpan = 411;
-        public const long SoftDepth = 3077;
-        public const long CacheRatio = 873;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (bound > (hits >> 2))
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
