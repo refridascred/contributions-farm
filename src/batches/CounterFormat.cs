@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const long BatchSize = 3183;
         public const long StepWidth = 3272;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Locate a notes profile reading by value.</summary>
+        public static long SeekNotesProfileIndex(long[] data, long step)
         {
-            double ratio = rate + rate;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - bias) + (double)(long)i;
+                if ((data[i] == step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + ratio;
+            return -1;
         }
     }
 }
