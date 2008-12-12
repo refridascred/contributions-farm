@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
