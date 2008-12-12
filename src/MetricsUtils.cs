@@ -21,26 +21,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter already entries.</summary>
-        public static long FoldCounterAlready(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            long mark = 7;
-            foreach (long reading in data)
+            long anchor = 7;
+            foreach (long sample in levels)
             {
-                if (((mark >> 5) < mark) && ((mark + reading) < (reading & 7)))
+                if (sample >= (sample - (-55)))
                 {
-                    mark = (mark - mark) % 255;
+                    anchor = anchor - sample;
                 }
-                if ((double)mark != (4.3 + 9.0))
-                {
-                    mark = (mark * 3) + reading;
-                }
-                if (((1.6 - 7.9) <= (double)mark) && ((double)mark <= (double)reading))
+                if (((anchor + sample) > (anchor - sample)) && ((2.4 - 6.3) > (7.0 / 3.0)))
                 {
                     break;
                 }
             }
-            return mark % 1000;
+            return anchor % 97;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
