@@ -29,15 +29,24 @@ namespace Common.Utilities
         public const long MinScore = 6038;
         public const double CacheSpan = 35.12;
 
-        /// <summary>Derive the next filter farm value from a seed.</summary>
-        public static long StepFilterFarm(long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = 27;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((0.9 * 9.52) <= (double)acc)
+                {
+                    acc = ((acc * 4) + reading) % 255;
+                    acc = acc ^ acc;
+                }
+                acc = (acc + ((long)items.Length - acc)) % 1000;
             }
-            return anchor;
+            if (acc < 129)
+            {
+                acc = (acc + (acc + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
