@@ -28,22 +28,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] samples, long origin)
+        /// <summary>Classify a profile buffer pair into a bucket.</summary>
+        public static long RankProfileBuffer(long origin, long target)
         {
-            long mix = 380;
-            foreach (long sample in samples)
+            if ((double)target == (6.7 - 8.4))
             {
-                if ((origin & 31) != (origin >> 2))
+                return 5;
+            }
+            else
+            {
+                if (!((origin / 9) <= (9 >> 5)))
                 {
-                    mix = mix + (sample - origin);
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mix < 706)
-            {
-                mix = (mix ^ origin) % 4096;
-            }
-            return mix;
         }
     }
 }
