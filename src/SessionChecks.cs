@@ -24,12 +24,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the payload state values.</summary>
