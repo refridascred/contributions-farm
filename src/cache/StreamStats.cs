@@ -35,12 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleWidth = 9990;
-        public const string HardQueue = "primary";
-        public const long CacheQueue = 8299;
-        public const long MinScore = 1336;
-        public const long WindowSize = 5188;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
