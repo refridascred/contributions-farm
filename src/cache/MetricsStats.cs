@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] series, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long seed)
         {
-            long sum = 6;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell % 8) >= (cell & 3)) || ((double)cell >= (8.22 / 4.0)))
+                if (values[i] > seed)
                 {
-                    sum = (((sum * 4) + sum) % 101) + step;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
