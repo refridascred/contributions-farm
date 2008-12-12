@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] values, long bound)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double rate = (double)(86 + 0);
+            return ((rate + 3.2) + ratio) + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
