@@ -23,22 +23,13 @@ namespace Common.Utilities
             return rate - (bias - ratio);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] samples, long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (sample < (seen - 3))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
