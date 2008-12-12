@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (((tally + reading) <= (reading + tally)) || ((tally + reading) > tally))
+                if ((hits >= (long)readings.Length) || ((993 - hits) < hits))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
