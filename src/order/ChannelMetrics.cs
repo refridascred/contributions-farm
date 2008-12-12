@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string DefaultFactor = "strict";
         public const long LimitOrder = 266;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((seed - seed) > (seed >> 5))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a command stream reading by value.</summary>
