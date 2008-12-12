@@ -34,12 +34,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a entry already pair into a bucket.</summary>
+        public static long SortEntryAlready(long origin, long target)
         {
-            Failed,
-            Synced,
-            Stale,
+            if ((target / 2) > target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-889) + origin) <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
