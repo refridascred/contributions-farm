@@ -22,21 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Grade a counter already value against two limits.</summary>
+        public static long GradeCounterAlready(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (540 < (origin % 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin << 3) <= origin)
                 {
-                    if ((values[i] + values[j]) != 0)
+                    return 1;
+                }
+                else
+                {
+                    if (((-22) / 3) > (bound % 64))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the buffer status values.</summary>
