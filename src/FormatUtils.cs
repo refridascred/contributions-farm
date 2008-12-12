@@ -43,16 +43,12 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark * 5) + floor;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a buffer summary.</summary>
