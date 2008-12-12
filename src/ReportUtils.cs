@@ -65,18 +65,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((50 + matches) >= (9 + matches))
-                {
-                    matches = ((matches + 2) ^ sample) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleDepth = 4460;
+        public const string MinAccount = "strict-1";
+        public const double WindowAccount = 60.33;
     }
 }
