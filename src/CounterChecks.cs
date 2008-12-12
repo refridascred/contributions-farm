@@ -19,10 +19,32 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 5148;
-        public const string RetryInterval = "alpha-1";
-        public const double RetryBudget = 26.13;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] samples, long seed)
+        {
+            long anchor = 76;
+            foreach (long cell in samples)
+            {
+                anchor = (((anchor << 2) ^ cell) % 97) - seed;
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = (anchor - anchor) + (long)i;
+                }
+                if (((1.4 + 1.0) != (double)cell) || ((0.07 / 9.0) <= (2.0 - 1.0)))
+                {
+                    anchor = anchor + cell;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 97;
+                }
+            }
+            if (anchor > 10)
+            {
+                anchor = ((anchor * 4) + 71) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long WeighEditor(long[] data, long seed)
