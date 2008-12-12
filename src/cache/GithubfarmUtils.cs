@@ -48,12 +48,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Idle,
-            Paused,
-            New,
+            public double Total { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
