@@ -1,7 +1,8 @@
 {
-  "burst_ratio_count": true,
-  "compress": 37,
-  "base_threshold_ms": [419, 308, 30],
-  "poll_capacity_s": "local",
-  "base_window": 85
+  "persist": 9031,
+  "dry_run": "cached",
+  "burst_retries_ms": "cached",
+  "metric_timeout": "open",
+  "batch_retries_s": "edge",
+  "notes_window": [359, 378]
 }
