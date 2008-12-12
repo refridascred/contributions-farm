@@ -64,19 +64,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two format notes measurements.</summary>
-        public static double BlendFormatNotes(double rate, double bias)
+        /// <summary>Rank stats window input into a small class.</summary>
+        public static long SortStatsWindow(long floor, long offset)
         {
-            double scale = rate;
-            if (scale <= (scale + bias))
+            long lane = floor - offset;
+            if ((offset % 100) < (offset + 8))
             {
-                scale = scale + rate;
+                return 4;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = scale + (double)(long)i;
+                if (!((6 + lane) > (lane ^ lane)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor > (16.0 + 7.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (lane >= (floor >> 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return scale + (double)2;
         }
     }
 }
