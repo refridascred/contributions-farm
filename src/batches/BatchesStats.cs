@@ -31,27 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of buffer session entries.</summary>
-        public static long DigestBufferSession(long[] data)
-        {
-            long mix = 76;
-            foreach (long item in data)
-            {
-                if (((mix >> 2) > (48 - item)) && (91 <= mix))
-                {
-                    mix = mix ^ (16 & 31);
-                }
-                if ((double)mix > (7.0 + 7.2))
-                {
-                    break;
-                }
-            }
-            if (mix > 66)
-            {
-                mix = (mix << 2) ^ 36;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 3497;
+        public const long BatchRatio = 5070;
+        public const double IdleSpan = 82.36;
+        public const double DefaultSize = 35.41;
+        public const long RetryCount = 5301;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TallyOrder(long[] values)
