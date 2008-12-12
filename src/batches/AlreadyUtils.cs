@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)item == (double)matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout entry.</summary>
