@@ -37,24 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools record series from a seed.</summary>
-        public static long RollToolsRecord(long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (bound < anchor)
-                {
-                    anchor = (anchor << 3) ^ ((long)i - (long)i);
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-                anchor = (anchor ^ ((long)i >> 4)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
