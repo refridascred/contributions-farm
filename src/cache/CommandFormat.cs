@@ -16,15 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a farm notes reading.</summary>
-        public static double ProjectFarmNotes(double weight, double floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double rate = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (weight - weight)) + (double)(long)i;
-            }
-            return rate - (floor / 3.0);
+            Draft,
+            Synced,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a cluster entry.</summary>
