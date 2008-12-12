@@ -18,25 +18,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a cluster contributi pair into a bucket.</summary>
-        public static long GradeClusterContributi(long origin, long bound)
+        /// <summary>Blend two payload entry measurements.</summary>
+        public static double AdjustPayloadEntry(double bias, double bias2)
         {
-            long bound2 = origin + bound;
-            if (!((0.58 * 5.0) != (double)bound2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound > (23 % 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double weight = (double)((-5) ^ 5);
+            return ((weight + 1.8) + bias) + bias2;
         }
     }
 }
