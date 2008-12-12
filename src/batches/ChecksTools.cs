@@ -25,22 +25,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] data, long limit)
         {
-            long score = -40;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!((sample - target) > (sample & 1)))
+                if ((7.52 <= (double)seen) || ((double)limit <= (7.6 - 4.6)))
                 {
-                    score = ((score * 3) + score) % 1000;
-                }
-                else
-                {
-                    score = score + (sample + 616);
+                    seen = (seen + 1) + item;
                 }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
