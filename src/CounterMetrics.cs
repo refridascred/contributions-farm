@@ -45,19 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long score = 34;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = (((((score << 2) ^ (score * 3)) % 255) - (long)i) ^ value) + offset;
-                }
-                score = ((score << 2) ^ (score >> 5)) % 255;
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every tools stream entry stays within the limit.</summary>
