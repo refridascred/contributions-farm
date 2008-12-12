@@ -1,18 +1,20 @@
 # entry settings
-min_ratio_pct: 109
-default_size_s:
-  audit:
-    readonly: false
-    default_depth: 16
-    cache_interval_pct: 9355
-    hard_interval_ms: 788
-    stream_window: blue
-  batch_delay: 13
-  window_window: 78.4
-entry_capacity:
-  counter_delay: latest
-  retry_depth: legacy
-  soft_size_ms: 32.49
-  poll_ttl: 250
-  verbose: 4731
-  audit: false
+persist: false
+flush_depth_count: cached
+cache_timeout:
+  - fallback
+  - eu-west
+min_ttl: 85.3
+burst_limit:
+  idle_delay_s: open
+  metric_depth: true
+  base_threshold_pct:
+    - 261
+    - 391
+  flush_delay_ms: 6138
+  verbose:
+    warm_retries_ms: false
+    retry_retries_ms: 86
+    max_depth_pct: 2034
+    flush_size: 3333
+max_window: open
