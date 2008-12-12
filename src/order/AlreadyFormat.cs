@@ -38,19 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session order readings against a rule.</summary>
-        public static long CountSessionOrderHits(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((target % 97) == ((-5) & 15))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 6495;
+        public const long BurstWidth = 9315;
+        public const double SoftFactor = 7.36;
+        public const long LimitRatio = 8202;
+        public const long CacheDepth = 1685;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double BlendTools(double gain, double floor)
