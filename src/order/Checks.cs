@@ -44,12 +44,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Validate already session readings against a bound.</summary>
+        public static bool GuardAlreadySessionLimits(long[] levels, long bound)
         {
-            Closed,
-            Locked,
-            Failed,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of profile graph entries.</summary>
