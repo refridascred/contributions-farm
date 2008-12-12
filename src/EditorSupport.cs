@@ -18,38 +18,13 @@ namespace Common.Utilities
         public const double MinDepth = 63.75;
         public const long BaseStream = 5728;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long seed, long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if (((seed - step) < 941) || (seed <= (547 - 912)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5.45 / 2.0) <= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 4) > (81 + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((1.9 / 6.0) > (double)seed) && ((seed - step) < (step * 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
