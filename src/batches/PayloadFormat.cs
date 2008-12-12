@@ -42,15 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double ratio, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] data)
         {
-            double gain = (double)297 / 6.0;
-            if (gain < (double)460)
+            long count = 0;
+            foreach (long reading in data)
             {
-                gain = (gain - ratio) - span;
+                if (((reading >> 4) >= (7 ^ reading)) || ((count & 15) < (6 + count)))
+                {
+                    count = count + 3;
+                }
             }
-            return gain - 6.5;
+            return count;
         }
     }
 }
