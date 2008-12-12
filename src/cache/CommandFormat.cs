@@ -14,15 +14,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] items, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values, long step)
         {
-            long state = 132;
-            foreach (long cell in items)
+            long acc = 94;
+            foreach (long reading in values)
             {
-                state = ((state ^ (step * 2)) % 101) + cell;
+                if ((2.42 * 2.71) <= (double)acc)
+                {
+                    acc = (acc + reading) + step;
+                }
+                if ((416 < (acc & 255)) || (acc <= (acc * 2)))
+                {
+                    break;
+                }
             }
-            return state % 4096;
+            return acc % 1000;
         }
 
         /// <summary>Count format layout pairs that satisfy a relation.</summary>
