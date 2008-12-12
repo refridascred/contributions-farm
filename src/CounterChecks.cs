@@ -90,19 +90,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] items, long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != step)
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
