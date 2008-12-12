@@ -1,19 +1,10 @@
 {
-  "max_window_ms": 93.71,
-  "compress": {
-    "idle_size_ms": 81.81,
-    "compress": 1024,
-    "hard_size_ms": {
-      "warm_delay_ms": 79.85,
-      "default_timeout_pct": 54,
-      "burst_ratio_pct": 6525,
-      "max_depth_count": "primary",
-      "editor_size": 74.87,
-      "order_window": "open"
-    }
+  "dry_run": "fallback",
+  "tools_timeout": {
+    "enabled": 53,
+    "cache_limit": 5795,
+    "cache_depth_pct": "eu-west"
   },
-  "soft_ttl_s": 30,
-  "soft_depth_ms": false,
-  "readonly": 60,
-  "enabled": true
+  "hard_size_count": "eu-west",
+  "max_capacity_pct": 1024
 }
