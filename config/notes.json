@@ -1,6 +1,12 @@
 {
-  "hard_ratio_ms": 63,
-  "retry_capacity_count": "strict",
-  "entry_threshold": 1.7,
-  "soft_threshold_ms": 63
+  "hard_timeout_ms": "staging",
+  "window_retries": "cached",
+  "sync_delay_ms": {
+    "burst_capacity_pct": 1499,
+    "soft_threshold_s": true,
+    "account_capacity": 500,
+    "readonly": 5047,
+    "support_depth": 30,
+    "idle_window_s": "strict"
+  }
 }
