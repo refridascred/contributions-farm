@@ -26,30 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = -641;
-            foreach (long reading in series)
-            {
-                if (reading <= (sum - sum))
-                {
-                    sum = sum - reading;
-                }
-                else
-                {
-                    sum = (sum ^ (sum ^ reading)) % 255;
-                }
-                if (!((sum / 4) >= sum))
-                {
-                    sum = (sum ^ (sum + sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (reading - reading)) % 101;
-                }
-            }
-            return sum;
+            Pending,
+            Queued,
+            Done,
         }
     }
 }
