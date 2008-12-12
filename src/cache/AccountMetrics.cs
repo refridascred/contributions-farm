@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 6525;
-        public const long IdleCluster = 2429;
-        public const double SoftRatio = 89.87;
-        public const long BatchCluster = 8229;
-        public const string LimitCluster = "open";
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] levels)
