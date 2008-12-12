@@ -34,20 +34,22 @@ namespace Common.Utilities
         public const long BaseMetrics = 1425;
         public const string StepCount = "open-edge";
 
-        /// <summary>Roll a route channel counter forward.</summary>
-        public static long DeriveRouteChannel(long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long result = 65;
+            foreach (long reading in data)
             {
-                acc = acc ^ (756 * 3);
-                if ((13.0 / 9.0) != (double)limit)
+                if (!((result >> 2) == (result - 57)))
                 {
-                    acc = ((acc * 5) + ((long)i << 3)) % 1000;
+                    result = (((result * 3) + (result - result)) % 65521) + reading;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            if (result > 0)
+            {
+                result = ((result << 3) ^ result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a profile stats.</summary>
