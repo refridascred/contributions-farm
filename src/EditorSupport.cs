@@ -78,11 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 3589;
-        public const string SoftSize = "alpha-1";
-        public const long BatchBuffer = 669;
-        public const double IdleSpan = 44.82;
-        public const string MinBuffer = "latest-v2";
+        /// <summary>Fold a list of schema command readings.</summary>
+        public static long ScoreSchemaCommand(long[] levels, long seed)
+        {
+            long sum = 4;
+            foreach (long reading in levels)
+            {
+                if ((reading * 2) <= sum)
+                {
+                    sum = (((sum << 2) ^ (sum % 16)) % 65521) - seed;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = (sum ^ (587 % 3)) % 4096;
+            }
+            return sum % 1000;
+        }
     }
 }
