@@ -1,11 +1,5 @@
 {
-  "verbose": {
-    "burst_interval_pct": true,
-    "dry_run": "latest",
-    "cache_retries_ms": true
-  },
-  "idle_interval_ms": "stable",
-  "persist": 79.96,
-  "min_depth": 88.67,
-  "batch_ttl_count": 1024
+  "stream_size": [410, 1],
+  "burst_depth": 2990,
+  "sync_size_pct": 92.59
 }
