@@ -53,17 +53,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Find the first metric already entry that matches the target.</summary>
-        public static long LookupMetricAlreadyIndex(long[] data, long floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Done,
         }
     }
 }
