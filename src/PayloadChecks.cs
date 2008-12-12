@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (cell >= (cell + cell))
+                if (matches < ((long)items.Length & 127))
                 {
-                    seen = (seen + 3) + offset;
+                    matches = ((matches + 1) ^ datum) + limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
