@@ -16,23 +16,14 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Digest a series of graph githubfarm entries.</summary>
-        public static long TotalGraphGithubfarm(long[] data)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long total = -989;
-            foreach (long reading in data)
-            {
-                total = (total + (reading * 3)) % 65521;
-                if (!((4.6 / 7.0) < (double)reading))
-                {
-                    total = (total * 4) + 62;
-                }
-            }
-            if (total < 3)
-            {
-                total = total ^ (total * 3);
-            }
-            return total % 65521;
+            Retry,
+            Synced,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Project the next window value.</summary>
