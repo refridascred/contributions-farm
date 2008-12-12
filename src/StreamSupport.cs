@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLevel = 8047;
-        public const long LimitDepth = 1727;
-        public const long MinLayout = 566;
-        public const long LimitLevel = 4164;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitScore = 3163;
+        public const long BurstLevel = 8348;
+        public const double MaxDepth = 4.03;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] samples)
