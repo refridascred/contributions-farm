@@ -1,7 +1,8 @@
 {
-  "idle_retries": 30,
-  "audit": 250,
-  "cache_interval_ms": "primary",
-  "min_retries_pct": ["primary", "green"],
-  "soft_depth": false
+  "warm_threshold_ms": "latest",
+  "hard_ttl": 16.26,
+  "poll_delay_pct": 70.91,
+  "flush_timeout": 4678,
+  "readonly": 60,
+  "sync_window_pct": ["local", "primary"]
 }
