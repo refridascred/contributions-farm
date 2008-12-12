@@ -30,38 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long limit, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items, long origin)
         {
-            if (((origin ^ 9) >= (42 * 3)) || ((double)origin < (1.9 / 3.0)))
+            long mark = 995;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin & 127) == (limit << 1)))
+                if ((entry >> 3) >= (247 / 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit >= (10.0 / 9.0)) || ((double)limit < (1.91 + 9.96)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < (53 + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = ((mark * 5) + (origin - mark)) % 255;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
