@@ -45,11 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            long state = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = ((state * 4) + (offset % 12)) - (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
