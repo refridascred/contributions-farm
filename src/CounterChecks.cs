@@ -97,17 +97,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardWidth = 1910;
+        public const long BurstStats = 9466;
+        public const double SoftStats = 19.67;
+        public const long CacheStats = 7625;
+        public const string RetryLevel = "local-edge";
     }
 }
