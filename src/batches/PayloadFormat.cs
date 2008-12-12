@@ -32,24 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm report value against two limits.</summary>
-        public static long ClassifyFarmReport(long offset, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            if ((double)offset != (double)4)
+            double bias = (double)(547 + (-2));
+            if (bias < (double)429)
             {
-                return 4;
+                bias = (bias + (gain - 3.95)) - floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset % 100) >= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                bias = (bias - 6.0) + (double)(long)i;
             }
+            return bias - (gain * 9.61);
         }
 
         /// <summary>Hold a batches stats.</summary>
