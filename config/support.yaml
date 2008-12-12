@@ -1,16 +1,11 @@
 # support settings
-base_ttl:
+max_capacity_s:
+  - 16
+  - 79
+poll_delay_pct:
+  - staging
+  - staging
+report_delay:
   - edge
   - blue
-base_limit: 3127
-enabled: primary
-cache_depth:
-  - 340
-  - 291
-  - 424
-cache_ratio_s: stable
-poll_retries_pct:
-  - 254
-  - 257
-  - 14
-  - 255
+  - legacy
