@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series)
-        {
-            long carry = 5;
-            foreach (long sample in series)
-            {
-                if ((0 / 9) >= carry)
-                {
-                    carry = ((carry * 2) + (carry & 127)) + sample;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitRatio = 3752;
+        public const long BurstContributi = 9899;
+        public const string HardInterval = "legacy-v2";
+        public const string SoftContributi = "open-v2";
+        public const string BatchScore = "local-v2";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 8427;
