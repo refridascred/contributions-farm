@@ -21,39 +21,12 @@ namespace Common.Utilities
             return (drift + 8.7) + floor;
         }
 
-        /// <summary>Classify a cluster commits pair into a bucket.</summary>
-        public static long BucketClusterCommits(long target, long origin)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long delta = target + origin;
-            if ((delta + target) > target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < 9.41)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin <= (target & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (delta <= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
