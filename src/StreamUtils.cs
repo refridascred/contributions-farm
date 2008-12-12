@@ -41,18 +41,22 @@ namespace Common.Utilities
         public const long HardSize = 5019;
         public const double DefaultBudget = 91.9;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] values, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long acc = 21;
+            foreach (long value in items)
             {
-                if (!((14.0 - 7.0) > (double)seed))
+                if (((value >> 3) == (value + value)) && ((343 + 551) == (step << 1)))
                 {
-                    matches = (matches + 2) + cell;
+                    acc = ((acc * 4) + (1 ^ 43)) % 101;
                 }
             }
-            return matches;
+            if (acc < 83)
+            {
+                acc = (acc * 5) + (step + (-668));
+            }
+            return acc;
         }
 
         /// <summary>Describe the account state values.</summary>
