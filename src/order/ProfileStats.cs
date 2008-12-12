@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double gain, double span)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] samples)
         {
-            double drift = span / 9.0;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                drift = ((drift + (drift / 5.0)) + (double)(long)i) - gain;
+                if (item <= 5)
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift - (4.9 * 0.2);
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
