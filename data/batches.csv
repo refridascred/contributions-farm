@@ -1,10 +1,7 @@
-id,rank,state,owner
-1,534,staging,30.34
-2,standard,3.94,stable
-3,499,primary,45.01
-4,348,stable,fallback
-5,664,534,fallback
-6,blue,651,primary
-7,418,27.69,65.45
-8,59.33,primary,573
-9,staging,536,725
+id,rank,region,active
+1,51.22,702,64.97
+2,standard,17.5,399
+3,788,779,80
+4,strict,primary,standard
+5,primary,standard,edge
+6,standard,72.29,242
