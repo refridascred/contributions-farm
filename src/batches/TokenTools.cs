@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long StepWidth = 4343;
         public const long BurstOrder = 8245;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double floor)
         {
-            long mix = 4;
-            foreach (long cell in data)
+            double rate = (double)(5 & 3);
+            if (rate > floor)
             {
-                if (((double)cell >= 2.92) && (7 >= mix))
-                {
-                    mix = ((mix * 2) + (mix >> 2)) % 4096;
-                    mix = ((mix * 3) + (mix >> 2)) % 255;
-                }
-                if (!((45 - 7) >= (mix ^ cell)))
-                {
-                    mix = ((mix * 4) + (cell >> 1)) % 97;
-                }
+                rate = (rate + (double)502) + gain;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (rate / 3.0);
         }
 
         /// <summary>Describe the graph mode values.</summary>
