@@ -29,10 +29,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSpan = 765;
-        public const long MinRatio = 6616;
-        public const double MinFactor = 19.04;
-        public const long BaseTimeout = 8274;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryScore = "staging-1";
+        public const double MaxTools = 41.53;
+        public const string SoftLevel = "legacy";
+        public const long IdleTools = 9443;
     }
 }
