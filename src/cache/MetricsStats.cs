@@ -44,38 +44,18 @@ namespace Common.Utilities
         public const long DefaultToken = 3996;
         public const long MinToken = 1577;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long offset, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] readings, long floor)
         {
-            if (((target % 24) >= (target * 2)) || ((target >> 3) < (target / 2)))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target % 2) < offset)
+                if ((22 % 12) <= (floor % 24))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((8.6 * 2.0) >= (double)target) && (offset < (target >> 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((870 + target) == (target >> 1)) || (offset >= (offset ^ 7)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 3) - reading;
                 }
             }
+            return tally;
         }
     }
 }
