@@ -1,5 +1,7 @@
 {
-  "default_ttl": 433,
-  "retry_capacity": 29,
-  "cache_window_ms": 16.77
+  "audit": 9343,
+  "verbose": ["staging", "stable", "stable"],
+  "retry_window": 56.75,
+  "default_depth": [146, 17],
+  "enabled": 30
 }
