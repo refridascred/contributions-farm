@@ -43,10 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowDepth = 1276;
-        public const double BaseTimeout = 48.6;
-        public const long SoftReport = 153;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Paused,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
