@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] levels, long limit)
+        /// <summary>Derive the next commits tools value from a seed.</summary>
+        public static long DeriveCommitsTools(long target)
         {
-            long result = 954;
-            foreach (long value in levels)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (result - (limit / 9)) ^ (long)i;
-                    result = (result - (value - value)) % 255;
-                }
-                result = ((result * 4) + 5) % 255;
+                mark = ((mark << 2) ^ (target - mark)) % 255;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Count the stats window entries that pass the check.</summary>
