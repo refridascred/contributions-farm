@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double rate, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            double weight = span;
+            if (weight >= (6.0 + span))
             {
-                total = ((total * 4) + (long)i) % 97;
+                weight = weight - rate;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (rate * 4.42)) + (double)(long)i;
+            }
+            return weight - (rate * 4.7);
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
