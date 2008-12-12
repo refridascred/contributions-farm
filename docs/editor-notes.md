@@ -1,12 +1,14 @@
 # Editor notes
 
-A batch that stays idle for too long is moved to the order list.
-The already report groups every entry by payload.
-Use batch settings to tune how often checks data is refreshed.
+Use githubfarm settings to tune how often entry data is refreshed.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The profile report groups every batch by booking.
+
+Each githubfarm is validated before it reaches the context queue.
+The context module keeps entry values in sync with the metric cache.
 
 ## Guidelines
 
-- Validate support input early
-- Keep already values small
-- Prefer layout defaults
-- Log every entry change
+- Document new context fields
+- Validate stream input early
+- Keep cluster values small
