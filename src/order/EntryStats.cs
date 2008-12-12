@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            long result = 879;
-            foreach (long reading in readings)
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((408 + result) == (offset >> 4))
-                {
-                    result = (((result << 3) ^ (result >> 3)) % 65521) - reading;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (result > (-35))
-            {
-                result = (result - (2 - result)) % 65521;
-            }
-            return result % 65521;
+            return mark;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
