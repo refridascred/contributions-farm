@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long seed)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
