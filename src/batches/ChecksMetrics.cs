@@ -34,39 +34,18 @@ namespace Common.Utilities
         public const long BaseMetrics = 1425;
         public const string StepCount = "open-edge";
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long origin, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values, long offset)
         {
-            long slot = origin - limit;
-            if (((double)origin == (0.3 * 9.4)) || ((7.37 * 12.0) >= (double)origin))
+            long anchor = 501;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)origin > (5.0 / 4.0)))
+                if ((offset + offset) != (entry - 351))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit - slot) == (500 + limit)) && ((double)limit >= 1.52))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (3.1 * 17.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = ((anchor * 4) + (entry - anchor)) % 4096;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a profile stats.</summary>
