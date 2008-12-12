@@ -48,22 +48,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long CountTokenMetricMatches(long[] levels)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long step = floor + offset;
+            if ((offset - step) <= (282 << 2))
             {
-                if ((seen + (long)levels.Length) > 4)
+                return 8;
+            }
+            else
+            {
+                if (((floor - (-130)) == (floor >> 3)) || ((double)step < (8.9 / 2.0)))
                 {
-                    seen = (seen + 2) + value;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (floor < (step + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((632 - floor) > step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up buffer samples.</summary>
