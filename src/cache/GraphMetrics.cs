@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "strict-1";
-        public const string MaxWidth = "alpha-edge";
-        public const long BaseCount = 8028;
-        public const long CacheWidth = 5983;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] series, long offset)
