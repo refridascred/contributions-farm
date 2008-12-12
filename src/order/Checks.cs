@@ -47,17 +47,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route profile reading by value.</summary>
-        public static long LocateRouteProfileIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 6952;
+        public const long CacheWidth = 2019;
+        public const long CacheEditor = 3741;
     }
 }
