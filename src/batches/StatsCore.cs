@@ -31,12 +31,12 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + 3.7);
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public bool Total { get; set; }
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
