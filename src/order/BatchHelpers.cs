@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const string RetryGithubfarm = "alpha-edge";
         public const long DefaultGithubfarm = 3231;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 9.65;
-        public const long HardQueue = 6548;
-        public const string IdleLevel = "open-1";
-        public const long BatchQueue = 436;
-        public const double BaseBudget = 36.22;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Failed,
+            New,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Count the batch githubfarm entries that pass the check.</summary>
         public static long TallyBatchGithubfarmGaps(long[] series)
