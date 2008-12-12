@@ -33,29 +33,22 @@ namespace Common.Utilities
             return ratio - (ratio / 9.0);
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long limit, long limit2)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long seed, long step)
         {
-            if ((limit2 + limit2) >= (limit / 6))
+            if (((649 * 5) < (step % 16)) || ((step - 926) <= (seed % 7)))
             {
                 return 4;
             }
             else
             {
-                if (!((limit2 & 127) <= limit))
+                if ((double)step < (8.0 * 7.5))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((limit2 >= (4 % 60)) && ((double)limit2 < (double)56))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 0;
                 }
             }
         }
