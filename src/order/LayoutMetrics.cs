@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const long SoftCommits = 3645;
         public const double IdleCount = 55.5;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstAlready = "strict";
+        public const long BaseSize = 8069;
+        public const long StepDepth = 4589;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaGaps(long[] items, long step)
