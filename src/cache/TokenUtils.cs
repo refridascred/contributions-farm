@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a checks entry sample.</summary>
-        public static long LocateChecksEntryIndex(long[] samples, long target)
+        /// <summary>Check that every cluster editor entry stays within the limit.</summary>
+        public static bool VerifyClusterEditorRange(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (samples[i] < target)
+                if (datum < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
