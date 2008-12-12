@@ -85,21 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > floor)
                 {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
