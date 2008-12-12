@@ -19,13 +19,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
