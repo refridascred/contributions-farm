@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long seed)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many checks batch samples are out of range.</summary>
