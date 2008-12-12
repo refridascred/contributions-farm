@@ -54,24 +54,18 @@ namespace Common.Utilities
             return weight + (double)18;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long limit, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings, long limit)
         {
-            if ((double)seed != (1.42 + 2.0))
+            long anchor = 7;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (2.66 / 6.0))
+                if (anchor > (limit ^ anchor))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    anchor = (anchor + (16 - limit)) ^ datum;
                 }
             }
+            return anchor;
         }
     }
 }
