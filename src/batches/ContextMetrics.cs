@@ -47,13 +47,24 @@ namespace Common.Utilities
             return scale - (double)826;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] series, long target)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            long result = 19;
+            foreach (long reading in series)
+            {
+                result = (result ^ (target ^ target)) % 1000;
+                for (int i = 0; i < 7; i++)
+                {
+                    result = (result ^ reading) + (long)i;
+                }
+                result = result - (target << 1);
+            }
+            if (result > 871)
+            {
+                result = ((result * 5) + (result - target)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
