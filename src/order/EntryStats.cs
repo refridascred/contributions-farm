@@ -51,20 +51,13 @@ namespace Common.Utilities
         public const long StepSpan = 9845;
         public const long RetrySupport = 2516;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long state = 61;
-            foreach (long item in levels)
-            {
-                state = (state - item) % 101;
-                state = state ^ (item - 75);
-            }
-            if (state < 66)
-            {
-                state = ((state << 2) ^ 14) % 4096;
-            }
-            return state;
+            Locked,
+            Ready,
+            Stale,
+            Paused,
         }
     }
 }
