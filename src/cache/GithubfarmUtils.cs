@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long limit, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] series)
         {
-            if (!((seed & 31) <= (limit % 97)))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < (limit * 4))
+                if (((5.3 - 1.4) > (double)cell) && ((seen + seen) >= cell))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed << 3) == (seed - 93))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
