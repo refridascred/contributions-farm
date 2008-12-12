@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate commits record readings against a bound.</summary>
-        public static bool ValidateCommitsRecordBounds(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLevel = 8047;
+        public const long LimitDepth = 1727;
+        public const long MinLayout = 566;
+        public const long LimitLevel = 4164;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
