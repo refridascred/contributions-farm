@@ -41,17 +41,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] items, long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = step + seed;
+            if (!(835 <= (step % 60)))
             {
-                if (items[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if ((35 + seed) < diff)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((diff - diff) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
