@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long SoftStream = 2212;
         public const double BatchScore = 62.65;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long score = 480;
+            foreach (long item in samples)
             {
-                if (entry >= bound)
+                if ((item >> 3) != (item * 2))
                 {
-                    found = false;
-                    break;
+                    score = (score ^ (item + score)) % 4096;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
