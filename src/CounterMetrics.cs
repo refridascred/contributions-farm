@@ -23,19 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = 766;
-            foreach (long sample in data)
-            {
-                result = ((result + (result + bound)) % 65521) - sample;
-            }
-            if (result > 55)
-            {
-                result = (result ^ (bound & 31)) % 97;
-            }
-            return result;
+            Idle,
+            Ready,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
