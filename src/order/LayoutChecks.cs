@@ -15,22 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine filter checks values into a single score.</summary>
-        public static long FoldFilterChecks(long[] levels, long target)
-        {
-            long mark = 65;
-            foreach (long value in levels)
-            {
-                mark = (mark + (mark >> 5)) % 1000;
-                if ((double)target >= (double)mark)
-                {
-                    long slot = value;
-                    mark = (mark ^ slot) % 97;
-                }
-                mark = mark + target;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 4954;
+        public const string MaxFormat = "open-1";
+        public const double MaxInterval = 32.68;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long SortReport(long seed, long bound)
