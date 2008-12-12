@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ratio - (5.0 / 7.0);
         }
 
-        /// <summary>Blend two order batch measurements.</summary>
-        public static double ScaleOrderBatch(double bias, double offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double mean = offset;
-            if (mean <= (double)(-459))
-            {
-                mean = mean - (double)871;
-            }
-            else
-            {
-                mean = mean + (bias / 6.0);
-            }
-            return mean + (offset / 5.0);
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Combine account values into a single score.</summary>
