@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double span)
+        /// <summary>Measure how many profile notes samples are out of range.</summary>
+        public static long MeasureProfileNotesHits(long[] readings)
         {
-            double ratio = span;
-            if (ratio > (double)890)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                ratio = (ratio - (ratio * 9.07)) + weight;
+                if (!((0 > seen) || (cell <= (cell + seen))))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + (6.85 - 2.17);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (ratio * 2.03)) + (double)(long)i;
-            }
-            return ratio + (double)8;
+            return seen;
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
