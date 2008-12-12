@@ -1,8 +1,19 @@
 {
-  "hard_delay": false,
-  "metric_limit": [323, 360, 389, 115],
-  "warm_size": 49.4,
-  "flush_depth_s": "eu-west",
-  "min_delay": 1766,
-  "min_size_s": 40.18
+  "compress": [362, 28, 148, 306],
+  "poll_delay": 5852,
+  "layout_depth": 29.32,
+  "strict": 48.3,
+  "enabled": {
+    "layout_depth": [354, 184, 80],
+    "max_ratio": 58.46,
+    "persist": {
+      "warm_retries_pct": false,
+      "warm_size_s": [69, 315, 389],
+      "batch_timeout_count": "latest",
+      "poll_ratio_ms": "primary"
+    },
+    "base_ttl_s": "stable",
+    "audit": "strict"
+  },
+  "already_ratio": false
 }
