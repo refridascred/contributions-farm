@@ -34,21 +34,20 @@ namespace Common.Utilities
         public const long BaseMetrics = 1425;
         public const string StepCount = "open-edge";
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Roll a route channel counter forward.</summary>
+        public static long DeriveRouteChannel(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = acc ^ (756 * 3);
+                if ((13.0 / 9.0) != (double)limit)
                 {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc * 5) + ((long)i << 3)) % 1000;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a profile stats.</summary>
