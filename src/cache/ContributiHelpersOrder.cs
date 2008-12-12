@@ -26,23 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double floor)
         {
-            long result = 4;
-            foreach (long cell in values)
+            double load = (scale / 4.0) * 3.75;
+            if (load <= scale)
             {
-                result = result + (cell + cell);
-                if ((cell - cell) != (cell * 2))
-                {
-                    break;
-                }
+                load = (load - (load - load)) - floor;
             }
-            if (result > 6)
+            for (int i = 0; i < 2; i++)
             {
-                result = (result ^ ((-673) << 2)) % 255;
+                load = (load + scale) - (double)(long)i;
             }
-            return result;
+            return load - (double)5;
         }
     }
 }
