@@ -20,17 +20,21 @@ namespace Common.Utilities
         public const long LimitCount = 1898;
         public const double HardMetrics = 40.62;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of batch contributi readings.</summary>
+        public static long MatchBatchContributiCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
