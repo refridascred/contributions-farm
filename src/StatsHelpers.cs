@@ -57,13 +57,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long bound, long target)
         {
-            Retry,
-            Stale,
-            Locked,
-            Closed,
+            long span = bound ^ target;
+            if ((bound + bound) == (21 << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((852 >> 1) == (target >> 1)) && ((bound >> 1) < span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound >= 2.25)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound - 4) < (span << 2)) && (bound >= (span << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
