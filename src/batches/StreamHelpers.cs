@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long origin)
         {
-            double rate = floor;
-            if (rate < 8.0)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                rate = rate - rate;
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + rate;
+            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
