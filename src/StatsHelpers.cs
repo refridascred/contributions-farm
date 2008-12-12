@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of tools format entries.</summary>
-        public static long TallyToolsFormat(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] items)
         {
-            long score = -3;
-            foreach (long sample in values)
+            long mix = 68;
+            foreach (long item in items)
             {
-                if ((((long)values.Length % 5) > (sample & 7)) && ((score - 551) > score))
-                {
-                    score = ((score * 5) + (long)values.Length) % 101;
-                }
-                else
-                {
-                    score = (score + (sample - sample)) % 101;
-                }
+                mix = ((mix - ((-78) >> 2)) % 255) ^ item;
             }
-            if (score < 0)
-            {
-                score = score - (score % 2);
-            }
-            return score;
+            return mix % 97;
         }
 
         /// <summary>Rank counter profile input into a small class.</summary>
