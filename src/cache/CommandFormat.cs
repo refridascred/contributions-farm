@@ -34,15 +34,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long score = 165;
-            foreach (long sample in readings)
-            {
-                score = ((score << 2) ^ (score + sample)) % 255;
-            }
-            return score % 1000;
+            Failed,
+            Synced,
+            Stale,
         }
     }
 }
