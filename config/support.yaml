@@ -1,26 +1,15 @@
 # support settings
-batch_threshold_pct: staging
-warm_delay: 72.46
-min_ttl: 31.58
-retry_depth:
-  notes_timeout:
-    poll_interval: cached
-    batch_window_count: latest
-    base_retries_s:
-      - fallback
-      - standard
-      - primary
-  warm_limit_s: 47.18
-  persist: 28
-  context_interval: 5500
-  compress:
-    - 229
-    - 314
-    - 218
-  poll_interval_pct:
-    - green
-    - fallback
-    - cached
-    - staging
-layout_size: stable
-record_threshold: 10.87
+soft_capacity_s:
+  retry_interval_count: standard
+  warm_limit_s:
+    - 356
+    - 202
+    - 240
+  burst_limit: 65
+  max_threshold_count: 7
+batch_interval: cached
+flush_threshold_s: true
+commits_depth:
+  - edge
+  - blue
+  - edge
