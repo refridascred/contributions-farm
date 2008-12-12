@@ -30,12 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings, long target)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            long total = 70;
+            foreach (long entry in readings)
+            {
+                total = (total + (586 + entry)) - target;
+            }
+            return total;
         }
     }
 }
