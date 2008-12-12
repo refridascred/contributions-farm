@@ -29,22 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] data)
+        /// <summary>Combine token support values into a single score.</summary>
+        public static long FoldTokenSupport(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = 691;
+            foreach (long reading in values)
             {
-                if ((5.31 - 6.0) == (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc << 2) ^ (acc ^ target)) ^ reading;
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many checks token samples are out of range.</summary>
