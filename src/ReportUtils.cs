@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            long score = 6;
+            foreach (long entry in series)
+            {
+                if ((2.3 * 15.0) < (double)entry)
+                {
+                    score = (score - 18) % 101;
+                }
+            }
+            if (score > 0)
+            {
+                score = (score << 2) ^ origin;
+            }
+            return score % 97;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
