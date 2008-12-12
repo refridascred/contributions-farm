@@ -13,12 +13,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 37.12;
-        public const double MaxCommand = 76.84;
-        public const double IdleCommand = 7.26;
-        public const long BurstSpan = 8438;
-        public const long DefaultScore = 1980;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8554;
+        public const long RetryScore = 2598;
+        public const long RetryFactor = 8035;
+        public const long StepProfile = 9713;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] readings, long seed)
