@@ -47,10 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 3398;
-        public const double CacheRatio = 24.41;
-        public const double RetryAlready = 88.59;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings)
+        {
+            long acc = 6;
+            foreach (long datum in readings)
+            {
+                if (acc < (datum + acc))
+                {
+                    acc = acc ^ datum;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
