@@ -31,11 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Look up the position of a metrics channel sample.</summary>
+        public static long LocateMetricsChannelIndex(long[] data, long origin)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
