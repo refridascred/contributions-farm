@@ -49,19 +49,17 @@ namespace Common.Utilities
         public const long SoftWindow = 7618;
         public const long BurstWidth = 9738;
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double scale, double offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series)
         {
-            double weight = offset;
-            if (weight > (offset / 8.0))
+            long total = 973;
+            foreach (long cell in series)
             {
-                weight = weight + offset;
+                total = ((total * 3) + (cell + total)) % 4096;
+                total = (total - ((-94) % 10)) % 255;
+                total = (total - total) % 4096;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (scale - scale)) + (double)(long)i;
-            }
-            return weight + (scale * 19.0);
+            return total % 97;
         }
     }
 }
