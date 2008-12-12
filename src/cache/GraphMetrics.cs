@@ -55,12 +55,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a format header.</summary>
