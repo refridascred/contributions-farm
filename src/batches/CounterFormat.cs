@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long total = 523;
-            foreach (long entry in series)
-            {
-                total = ((total ^ (158 >> 4)) % 65521) + entry;
-                total = (total - (0 % 24)) % 97;
-            }
-            return total;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
