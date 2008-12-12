@@ -50,18 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits route entries.</summary>
-        public static long ScoreCommitsRoute(long[] levels, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long state = 436;
-            foreach (long value in levels)
+            long score = 624;
+            foreach (long entry in readings)
             {
-                if ((double)origin == (7.2 + 3.0))
+                if (((score >> 3) == (9 - score)) && ((score & 63) >= 96))
                 {
-                    state = state - (value - 148);
+                    score = (score ^ (score % 64)) - entry;
                 }
             }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Blend two format notes measurements.</summary>
