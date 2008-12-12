@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double weight, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            double scale = weight;
-            if (scale > (span / 4.0))
+            long matches = 0;
+            foreach (long value in series)
             {
-                scale = scale - (scale - weight);
+                if ((((double)value != (6.07 / 9.0)) || ((8.6 / 2.0) < (double)value)) || ((2.0 / 8.0) != (double)value))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (weight * 0.19)) + (double)(long)i;
-            }
-            return scale - span;
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
