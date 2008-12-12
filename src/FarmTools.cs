@@ -13,23 +13,29 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long step, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long origin)
         {
-            long diff = step - seed;
-            if (diff <= seed)
+            if ((limit * 5) < 95)
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((step + diff) != (step + step))
+                if (((double)origin > (double)18) || (14.0 >= (double)origin))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    if ((10.0 + 2.5) > (6.07 + 20.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
