@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            Pending,
-            Done,
-            Draft,
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result - (result * 3);
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
