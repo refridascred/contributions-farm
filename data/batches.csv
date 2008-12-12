@@ -1,6 +1,6 @@
-id,count,ratio
-1,green,459
-2,staging,edge
-3,924,22.32
-4,155,green
-5,69.32,93.0
+id,score,weight,state,level
+1,91.12,427,cached,597
+2,776,eu-west,eu-west,426
+3,725,eu-west,97.23,562
+4,open,cached,514,165
+5,39,local,edge,93.83
