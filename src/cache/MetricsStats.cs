@@ -37,19 +37,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] samples, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long result = 77;
-            foreach (long value in samples)
-            {
-                result = ((result ^ result) % 4096) + value;
-            }
-            if (result < (-45))
-            {
-                result = (result ^ (limit % 2)) % 1000;
-            }
-            return result;
+            Locked,
+            Pending,
+            Failed,
+            Draft,
+            Done,
         }
     }
 }
