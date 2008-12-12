@@ -1,11 +1,8 @@
 # support settings
-max_capacity_s:
-  - 16
-  - 79
-poll_delay_pct:
-  - staging
-  - staging
-report_delay:
-  - edge
-  - blue
+batch_window_ms: 85.57
+default_capacity_count:
+  - primary
+  - open
   - legacy
+  - blue
+compress: 62.64
