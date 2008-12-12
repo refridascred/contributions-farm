@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Project the next checks metric value.</summary>
+        public static double ProjectChecksMetric(double gain, double offset)
         {
-            Ready,
-            Retry,
-            New,
-            Queued,
+            double ratio = (1.1 * 20.0) * 8.4;
+            if (ratio >= (offset / 8.0))
+            {
+                ratio = ratio - (0.6 - gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + gain) - (double)(long)i;
+            }
+            return ratio - (5.0 / 7.0);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
