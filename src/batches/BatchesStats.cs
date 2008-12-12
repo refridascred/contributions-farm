@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] values, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (bound > (reading - bound))
+                if (((tally + reading) <= (reading + tally)) || ((tally + reading) > tally))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
