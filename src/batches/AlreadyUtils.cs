@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] data)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)item == (double)matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
