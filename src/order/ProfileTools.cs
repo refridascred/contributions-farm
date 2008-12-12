@@ -31,18 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] samples, long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((10.0 + 6.47) != (double)bound)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Blend two entry measurements.</summary>
