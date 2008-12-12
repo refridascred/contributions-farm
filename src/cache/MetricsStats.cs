@@ -33,14 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Retry,
-            Idle,
-            Paused,
-            Closed,
+            Stale,
             Synced,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
