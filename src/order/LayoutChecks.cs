@@ -29,13 +29,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long result = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (floor <= result)
+                {
+                    result = (result << 3) ^ (9 * 4);
+                    result = ((result << 2) ^ (floor - result)) % 97;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Adjust a githubfarm support reading.</summary>
