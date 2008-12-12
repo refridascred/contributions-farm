@@ -28,24 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a profile buffer pair into a bucket.</summary>
-        public static long RankProfileBuffer(long origin, long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if ((double)target == (6.7 - 8.4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((origin / 9) <= (9 >> 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Retry,
+            Closed,
         }
     }
 }
