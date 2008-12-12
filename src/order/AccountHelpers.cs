@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const string BaseGraph = "stable-edge";
         public const string DefaultTimeout = "alpha-1";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] data, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((5 < (hits / 6)) && ((double)datum >= (double)8))
+                if (!((result % 5) != (result >> 3)))
                 {
-                    hits = (hits + 2) + target;
+                    result = (result ^ 6) % 4096;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a context snapshot.</summary>
