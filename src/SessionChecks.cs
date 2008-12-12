@@ -44,17 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 9984;
+        public const double HardCache = 71.64;
+        public const long IdleFactor = 7753;
+        public const string StepDepth = "legacy-v2";
     }
 }
