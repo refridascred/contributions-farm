@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double BurstFactor = 86.98;
         public const string RetryInterval = "staging";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (hits >= datum)
+                if (sample != target)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
