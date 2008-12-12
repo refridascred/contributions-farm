@@ -37,10 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchFactor = 18.67;
-        public const string MinCache = "staging";
-        public const long BatchCache = 586;
-        public const long DefaultSpan = 9348;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
