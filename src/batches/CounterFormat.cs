@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowInterval = 5814;
-        public const long BatchSize = 3183;
-        public const long StepWidth = 3272;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings)
+        {
+            long result = 189;
+            foreach (long sample in readings)
+            {
+                result = ((result + (result >> 3)) % 255) - sample;
+            }
+            return result;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
