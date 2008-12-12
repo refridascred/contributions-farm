@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm context values into a single score.</summary>
-        public static long DigestGithubfarmContext(long[] samples)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 3) ^ (963 + 23)) - item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum < 59)
-            {
-                sum = sum - (sum & 15);
-            }
-            return sum;
+            return hits;
         }
     }
 }
