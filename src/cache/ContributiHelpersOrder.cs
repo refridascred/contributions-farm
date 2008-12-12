@@ -26,19 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double scale, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] samples, long origin)
         {
-            double load = (scale / 4.0) * 3.75;
-            if (load <= scale)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                load = (load - (load - load)) - floor;
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + scale) - (double)(long)i;
-            }
-            return load - (double)5;
+            return stale;
         }
     }
 }
