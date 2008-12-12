@@ -1,19 +1,7 @@
 {
-  "record_ttl": [185, 256],
-  "warm_window_s": "local",
-  "min_ttl_ms": {
-    "idle_limit_count": ["standard", "cached", "staging"],
-    "persist": [407, 59],
-    "retry_window_count": true,
-    "verbose": 84.36,
-    "soft_depth_pct": 16,
-    "burst_ttl_pct": {
-      "verbose": 33,
-      "base_limit_ms": "primary",
-      "retry_capacity_count": ["stable", "open", "stable", "cached"],
-      "warm_ttl_s": "stable"
-    }
-  },
-  "soft_size_ms": 74.09,
-  "base_limit_pct": 10.17
+  "route_delay": "green",
+  "enabled": 8627,
+  "soft_timeout": ["fallback", "stable", "primary", "green"],
+  "readonly": "primary",
+  "warm_size": "edge"
 }
