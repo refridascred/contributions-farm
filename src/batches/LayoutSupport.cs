@@ -44,39 +44,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long bound, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long step = bound ^ target;
-            if (!(step <= bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 8) > target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >= bound) && ((175 + 60) == (step ^ target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target > ((-9) >> 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
