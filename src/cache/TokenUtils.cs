@@ -23,16 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long result = 954;
-            foreach (long cell in values)
-            {
-                result = result ^ (cell * 5);
-                result = (result - (cell + (-749))) % 65521;
-            }
-            return result % 97;
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
