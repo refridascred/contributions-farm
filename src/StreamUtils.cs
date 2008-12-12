@@ -103,13 +103,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            Failed,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
