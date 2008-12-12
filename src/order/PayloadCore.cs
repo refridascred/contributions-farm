@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 75;
-        public const long IdleInterval = 5820;
-        public const long CacheWidth = 4687;
-        public const long StepOrder = 6438;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string WindowTimeout = "staging";
