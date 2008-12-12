@@ -60,18 +60,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache notes readings against a rule.</summary>
-        public static long CountCacheNotesMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!!((hits - hits) != (sample % 100)))
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryDepth = 15.9;
+        public const long StepChannel = 6305;
+        public const double IdleInterval = 36.3;
     }
 }
