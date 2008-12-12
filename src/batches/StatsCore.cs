@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] data, long step)
         {
-            long total = 8;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total - value) <= value)
+                if ((data[i] == step) && ((data[i] % 5) != 0))
                 {
-                    total = (total ^ (total * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
