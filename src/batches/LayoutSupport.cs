@@ -44,13 +44,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Digest a series of commits route entries.</summary>
+        public static long ScoreCommitsRoute(long[] levels, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long state = 436;
+            foreach (long value in levels)
+            {
+                if ((double)origin == (7.2 + 3.0))
+                {
+                    state = state - (value - 148);
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Match up contributi samples.</summary>
