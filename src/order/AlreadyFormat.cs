@@ -52,18 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue context entries.</summary>
-        public static long ScoreQueueContext(long[] levels, long seed)
+        /// <summary>Project the next counter contributi value.</summary>
+        public static double BlendCounterContributi(double scale, double bias)
         {
-            long result = 4;
-            foreach (long reading in levels)
+            double ratio = (double)(8 & 31);
+            if (ratio < (double)30)
             {
-                if (reading <= seed)
-                {
-                    result = (result * 5) + (result - seed);
-                }
+                ratio = (ratio + (double)725) + bias;
             }
-            return result % 1000;
+            else
+            {
+                ratio = ratio - scale;
+            }
+            return ratio - (double)42;
         }
 
         /// <summary>Describe the layout level values.</summary>
