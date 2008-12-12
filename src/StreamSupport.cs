@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardLevel = 53.22;
+        public const long MaxSize = 544;
+        public const string LimitProfile = "legacy-v2";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatMatches(long[] levels, long seed)
