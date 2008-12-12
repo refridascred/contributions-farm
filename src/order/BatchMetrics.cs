@@ -23,11 +23,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 1083;
-        public const string DefaultProfile = "strict-1";
-        public const long MaxSpan = 7262;
-        public const long MinProfile = 6603;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchBudget = 3402;
