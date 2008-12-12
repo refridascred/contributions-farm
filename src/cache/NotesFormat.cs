@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of graph checks entries.</summary>
+        public static long FoldGraphChecks(long[] values, long floor)
         {
-            Failed,
-            Retry,
-            Pending,
-            Ready,
+            long mix = 366;
+            foreach (long entry in values)
+            {
+                if ((-842) <= (mix << 2))
+                {
+                    mix = ((mix * 5) + floor) + entry;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = ((mix << 2) ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
