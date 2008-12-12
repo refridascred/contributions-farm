@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long bound)
         {
-            Idle,
-            Active,
-            New,
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i - (long)i) <= bound)
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = ((mark * 2) + mark) + (long)i2;
+                    mark = (mark << 2) ^ (bound - bound);
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
