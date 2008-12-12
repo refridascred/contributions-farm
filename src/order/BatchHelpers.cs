@@ -33,16 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Audit payload batch readings against a rule.</summary>
+        public static long MeasurePayloadBatchOutliers(long[] readings)
         {
-            long mix = 7;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mix = mix - (134 << 2);
-                mix = mix ^ (sample >> 3);
+                if (((3.82 - 2.0) <= (double)tally) || (((double)tally != (7.0 - 9.0)) && ((82 + datum) <= 741)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
