@@ -1,12 +1,19 @@
 {
-  "queue_limit": "eu-west",
-  "compress": "fallback",
-  "hard_capacity": ["local", "cached", "cached"],
-  "payload_depth": {
-    "soft_interval": ["edge", "latest", "latest", "local"],
-    "retry_interval": 8739,
-    "verbose": ["stable", "cached", "edge"],
-    "base_ratio_ms": 7657,
-    "order_size": true
-  }
+  "retry_window": 34,
+  "audit": false,
+  "readonly": {
+    "hard_timeout": 14.66,
+    "persist": {
+      "base_retries_pct": "open",
+      "persist": 9991,
+      "soft_retries_pct": ["stable", "fallback"],
+      "hard_ttl_count": "fallback",
+      "flush_capacity_s": "staging",
+      "min_window_ms": 30
+    },
+    "queue_ratio": "latest"
+  },
+  "poll_timeout_count": false,
+  "cache_size_s": ["legacy", "edge"],
+  "batch_capacity": "open"
 }
