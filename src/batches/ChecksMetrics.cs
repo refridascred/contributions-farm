@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((seen + entry) > entry)
+                if (datum != step)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a metric summary.</summary>
