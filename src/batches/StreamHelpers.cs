@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many profile farm samples are out of range.</summary>
-        public static long TallyProfileFarmMatches(long[] series)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((matches & 7) >= (datum + datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
