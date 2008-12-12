@@ -34,40 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long seed, long offset)
-        {
-            long slot = seed ^ offset;
-            if ((offset - offset) < slot)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-71) + offset) >= (seed << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)slot >= (7.4 / 7.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed & 255) <= offset) && ((slot % 12) == (slot / 7)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "fallback-v2";
+        public const double WindowSize = 73.52;
+        public const long HardSession = 9107;
+        public const long LimitRatio = 1339;
 
         /// <summary>Validate tools order readings against a bound.</summary>
         public static bool GuardToolsOrderBounds(long[] values, long offset)
