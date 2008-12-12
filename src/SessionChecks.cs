@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long target)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
+            long next = bound + target;
+            if ((bound + next) <= (next ^ next))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((next - bound) >= (bound >> 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound >= (1.0 * 9.5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((3.0 * 3.69) > (double)bound) && (next < (bound & 127)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up entry samples.</summary>
