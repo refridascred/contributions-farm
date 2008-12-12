@@ -28,26 +28,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long total = 982;
-            foreach (long datum in items)
+            long acc = 75;
+            foreach (long item in data)
             {
-                if ((offset % 10) == (offset & 1))
+                if ((acc * 3) > (acc >> 1))
                 {
-                    total = (((total * 3) + ((long)items.Length + offset)) % 65521) + datum;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 4096;
+                    acc = (acc ^ (acc << 2)) ^ item;
                 }
             }
-            if (total > (-397))
-            {
-                total = total + (offset ^ offset);
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Accumulate farm samples.</summary>
