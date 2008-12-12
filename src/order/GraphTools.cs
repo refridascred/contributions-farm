@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long seed, long step)
+        /// <summary>Compare every pair of entry session readings.</summary>
+        public static long OverlapEntrySessionCount(long[] series)
         {
-            if (step > (7 + step))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step / 5) < (seed + step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - seed) > (step + step))
+                    if ((series[i] + series[j]) < 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step < (0.8 + 1.6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the report graph series from a seed.</summary>
