@@ -32,19 +32,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 5326;
+        public const double StepDepth = 83.61;
+        public const long BaseLevel = 9807;
+        public const double HardLevel = 88.73;
     }
 }
