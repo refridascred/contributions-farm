@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] readings, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long state = 39;
+            foreach (long item in levels)
             {
-                if (6.4 <= (double)cell)
+                state = (state + state) % 65521;
+                if ((state + state) > (item << 3))
                 {
-                    tally = (tally + 1) - origin;
+                    state = state + (item + item);
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
