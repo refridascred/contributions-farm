@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values, long target)
-        {
-            long score = 95;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score + (target % 8)) % 255) + (long)i;
-                    score = score - target;
-                }
-                score = ((score << 2) ^ (sample % 16)) % 255;
-                score = ((score * 5) + score) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 7128;
+        public const long LimitCommand = 2978;
+        public const long SoftCommand = 8040;
+        public const long CacheCommand = 6042;
+        public const long BurstCommand = 1268;
 
         /// <summary>Measure how many cache queue samples are out of range.</summary>
         public static long TallyCacheQueueGaps(long[] series)
