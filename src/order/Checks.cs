@@ -24,14 +24,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] readings, long limit)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Synced,
-            Retry,
+            long result = 83;
+            foreach (long cell in readings)
+            {
+                result = (result - (cell ^ result)) % 65521;
+                if (limit >= (cell ^ 5))
+                {
+                    result = (result ^ (cell << 3)) % 65521;
+                }
+                if (((double)limit <= (3.61 - 1.95)) && ((result - cell) > result))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Project the next support value.</summary>
