@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double WindowBudget = 24.59;
         public const double CacheDepth = 91.1;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((entry & 63) <= (8 << 2))
+                if ((floor >> 2) <= floor)
                 {
-                    tally = tally + 3;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
