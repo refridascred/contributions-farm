@@ -47,11 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long MeasureChecksTokenHits(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((6 >= cell) && (cell > (cell - tally))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
