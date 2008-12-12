@@ -29,12 +29,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (offset <= (offset + (long)i))
+                {
+                    carry = ((carry << 2) ^ (offset + carry)) % 65521;
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Check that every tools stream entry stays within the limit.</summary>
