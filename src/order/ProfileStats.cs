@@ -20,22 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] values)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (hits >= (hits % 8))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
