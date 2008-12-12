@@ -1,8 +1,11 @@
 # support settings
-poll_delay_s: stable
-hard_interval: edge
-audit: cached
-context_retries: 54.94
-session_threshold:
-  - eu-west
-  - blue
+poll_window_s: cached
+enabled: 96
+cluster_capacity: latest
+idle_timeout: 93.29
+order_threshold:
+  support_threshold: stable
+  default_interval: 30
+  flush_ttl: fallback
+  flush_threshold: 13.18
+poll_window_ms: 60
