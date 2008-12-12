@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Queued,
-            Locked,
-            New,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowScore = 7564;
+        public const string WindowWidth = "fallback";
+        public const double HardSpan = 35.05;
+        public const long StepChannel = 7238;
+        public const long LimitFactor = 9220;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long IterateCommand(long bound)
