@@ -103,13 +103,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Failed,
+            Done,
+            Pending,
+            Queued,
             Ready,
-            Stale,
-            Closed,
         }
     }
 }
