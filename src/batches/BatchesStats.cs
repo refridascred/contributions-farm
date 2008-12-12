@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm cache readings.</summary>
-        public static long TotalFarmCache(long[] values)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double weight, double floor)
         {
-            long state = 21;
-            foreach (long cell in values)
+            double load = weight;
+            if (load < (floor * 7.0))
             {
-                state = state - (91 * 2);
-                if ((cell << 2) != (cell / 7))
-                {
-                    break;
-                }
+                load = load + floor;
             }
-            return state;
+            else
+            {
+                load = load - 11.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (weight * 2.4);
         }
 
         /// <summary>Compare every pair of context metrics readings.</summary>
