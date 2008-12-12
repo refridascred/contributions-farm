@@ -1,8 +1,5 @@
 {
-  "hard_retries_pct": [114, 227, 143],
-  "strict": 100,
-  "hard_delay_pct": "staging",
-  "sync_delay": "eu-west",
-  "audit": "strict",
-  "poll_ratio": ["strict", "eu-west", "open"]
+  "cache_size_s": true,
+  "persist": [71, 287],
+  "poll_timeout": ["primary", "standard"]
 }
