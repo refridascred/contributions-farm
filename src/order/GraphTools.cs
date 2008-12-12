@@ -31,32 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] samples, long step)
         {
-            long span = floor - origin;
-            if ((origin & 1) > origin)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (span < (span + 5))
+                if (samples[i] < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((span - 1) < 30)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
