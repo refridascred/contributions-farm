@@ -12,20 +12,19 @@ namespace Common.Utilities
         public const string HardDepth = "cached-1";
         public const long DefaultSize = 5751;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] data, long step)
         {
-            long state = 876;
-            foreach (long datum in samples)
+            long sum = 89;
+            foreach (long value in data)
             {
-                state = state - (datum >> 4);
-                state = state ^ (datum ^ offset);
+                sum = ((sum * 4) + (-516)) + value;
+                if ((step << 1) > (step + 247))
+                {
+                    break;
+                }
             }
-            if (state > 93)
-            {
-                state = (state ^ (offset << 3)) % 4096;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
