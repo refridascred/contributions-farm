@@ -27,15 +27,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine token support values into a single score.</summary>
-        public static long FoldTokenSupport(long[] values, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            long acc = 691;
-            foreach (long reading in values)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                acc = ((acc << 2) ^ (acc ^ target)) ^ reading;
+                if ((-813) <= (667 ^ anchor))
+                {
+                    long tally = anchor + (anchor - anchor);
+                    anchor = anchor - (tally + 70);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return acc % 1000;
+            return anchor;
         }
 
         /// <summary>Blend two farm measurements.</summary>
