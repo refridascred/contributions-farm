@@ -13,22 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many filter support samples are out of range.</summary>
-        public static long MeasureFilterSupportGaps(long[] items, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long state = 731;
+            foreach (long cell in levels)
             {
-                if (!(cell > offset) || !((matches << 2) <= matches))
+                if ((cell & 63) <= origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state * 2) + (state + cell)) % 255;
                 }
             }
-            return matches;
+            if (state > 897)
+            {
+                state = (state * 5) + (origin + state);
+            }
+            return state;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
