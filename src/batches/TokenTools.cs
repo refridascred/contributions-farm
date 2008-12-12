@@ -24,24 +24,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long floor)
+        /// <summary>Fold a list of record command readings.</summary>
+        public static long WeighRecordCommand(long[] levels, long origin)
         {
-            if ((double)bound < (1.4 / 9.0))
+            long score = 28;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + floor) > (bound & 63))
+                if ((score & 31) < (614 + origin))
                 {
-                    return 6;
+                    score = score - entry;
                 }
-                else
+                if ((34 >= origin) && ((origin + score) <= (score ^ score)))
                 {
-                    return 5;
+                    score = ((score * 5) + 188) % 65521;
+                }
+                if ((score << 3) < (origin << 3))
+                {
+                    break;
                 }
             }
+            return score % 97;
         }
     }
 }
