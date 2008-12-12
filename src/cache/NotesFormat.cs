@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry context values into a single score.</summary>
-        public static long ScoreEntryContext(long[] items)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long total = 7;
-            foreach (long cell in items)
-            {
-                total = (total << 3) ^ cell;
-            }
-            if (total > 285)
-            {
-                total = (total * 2) + total;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
