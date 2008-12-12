@@ -14,22 +14,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long anchor = -938;
-            foreach (long entry in readings)
-            {
-                if ((38 ^ entry) == (entry >> 3))
-                {
-                    anchor = (anchor + (anchor & 31)) % 101;
-                }
-            }
-            if (anchor > 791)
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor;
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
