@@ -1,11 +1,12 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-Keep cache and session names short and lowercase.
+Each route is validated before it reaches the tools queue.
+Run the payload check before changing any stream limits.
+When a contributi fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Validate payload input early
-- Review token limits each release
-- Keep batches values small
+- Document new batch fields
+- Review route limits each release
+- Validate layout input early
+- Log every graph change
