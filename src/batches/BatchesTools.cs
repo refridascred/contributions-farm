@@ -17,25 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a route format value against two limits.</summary>
-        public static long GradeRouteFormat(long step, long origin)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long span = step + origin;
-            if (!((double)span > (2.4 / 3.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (span < (span - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Draft,
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
