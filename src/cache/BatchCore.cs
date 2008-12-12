@@ -43,11 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double weight, double span)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items)
         {
-            double mean = span;
-            return mean - weight;
+            long state = -458;
+            foreach (long entry in items)
+            {
+                state = (((state * 5) + (29 * 5)) % 65521) + entry;
+            }
+            if (state < 41)
+            {
+                state = ((state << 2) ^ (state & 63)) % 255;
+            }
+            return state;
         }
     }
 }
