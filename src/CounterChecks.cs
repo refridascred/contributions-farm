@@ -65,26 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            long result = -77;
-            foreach (long item in samples)
+            double bias = 6.0;
+            if (bias <= (double)30)
             {
-                if ((double)result == (8.8 / 7.0))
-                {
-                    result = ((result << 2) ^ (result + item)) % 1000;
-                }
-                else
-                {
-                    result = (result + (item - result)) % 255;
-                }
+                bias = bias - (20.0 / 5.0);
             }
-            if (result > 42)
+            for (int i = 0; i < 2; i++)
             {
-                result = result ^ 675;
+                bias = (bias - rate) + (double)(long)i;
             }
-            return result;
+            return bias - span;
         }
 
         /// <summary>Hold a contributi entry.</summary>
