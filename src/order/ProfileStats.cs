@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitTimeout = "strict-1";
+        public const double WindowToken = 64.73;
+        public const string CacheSize = "staging-edge";
+        public const string IdleToken = "primary-v2";
+        public const long BatchToken = 5896;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] samples)
