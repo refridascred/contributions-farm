@@ -26,19 +26,16 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Validate queue account readings against a bound.</summary>
-        public static bool GuardQueueAccountLimits(long[] readings, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry - (25 & 127)) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
