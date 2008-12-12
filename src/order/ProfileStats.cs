@@ -43,11 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitFactor = 8302;
-        public const double BaseWindow = 71.0;
-        public const long SoftWindow = 7618;
-        public const long BurstWidth = 9738;
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] series)
