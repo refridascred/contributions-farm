@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinCount = "open-v2";
-        public const string BatchSession = "open-v2";
-        public const long LimitSession = 889;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long floor, long target)
+        {
+            if ((target + target) >= (floor & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (1.0 >= (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long WeighSession(long[] readings, long bound)
