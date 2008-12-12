@@ -38,15 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches buffer samples are out of range.</summary>
-        public static long CountBatchesBufferMatches(long[] samples, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
             long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + (long)samples.Length) <= (floor + hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) - entry;
+                    if ((samples[i] - samples[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
