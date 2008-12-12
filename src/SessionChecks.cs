@@ -24,14 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] data, long seed)
         {
-            Pending,
-            Closed,
-            Paused,
-            Done,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
