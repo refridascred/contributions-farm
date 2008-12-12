@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] series, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((item & 255) <= (seed + 43))
+                if ((floor >= (cell << 2)) && ((floor + (-871)) == (seen - seen)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a stream farm counter forward.</summary>
