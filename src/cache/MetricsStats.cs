@@ -38,12 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 1758;
-        public const long MaxScore = 49;
-        public const long WindowToken = 7073;
-        public const long DefaultToken = 3996;
-        public const long MinToken = 1577;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long WeighFormat(long[] samples, long limit)
