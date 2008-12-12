@@ -31,21 +31,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 91;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = state + step;
+                if (((43 * 4) <= cell) || ((cell - cell) < (step + cell)))
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    state = state ^ (state ^ 301);
+                }
+                else
+                {
+                    state = (state * 3) + step;
                 }
             }
-            return count;
+            return state % 4096;
         }
     }
 }
