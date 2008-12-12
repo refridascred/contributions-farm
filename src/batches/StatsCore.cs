@@ -19,23 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double ratio, double floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double weight, double span)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (floor - ratio))
+            double mean = weight;
+            if (mean >= weight)
             {
-                ratio2 = ratio2 + 8.04;
+                mean = mean + (span / 9.0);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                ratio2 = ratio2 + (floor - ratio2);
+                mean = (mean + (span + weight)) + (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - (double)770) - (double)(long)i;
-            }
-            return ratio2 + (ratio2 + 3.7);
+            return mean - (mean / 7.0);
         }
 
         /// <summary>Describe the order state values.</summary>
