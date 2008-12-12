@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const string RetryEditor = "fallback-1";
         public const long WindowEditor = 9001;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] readings, long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double ratio2 = ratio;
+            if (ratio2 <= (floor - ratio))
             {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio2 = ratio2 + 8.04;
             }
-            return ready;
+            else
+            {
+                ratio2 = ratio2 + (floor - ratio2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - (double)770) - (double)(long)i;
+            }
+            return ratio2 + (ratio2 + 3.7);
         }
 
         /// <summary>Hold a support record.</summary>
