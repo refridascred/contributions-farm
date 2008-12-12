@@ -1,12 +1,12 @@
 # githubfarm settings
-dry_run: strict
-flush_timeout: false
-already_depth:
-  - 262
-  - 238
-  - 224
-max_ratio: 1024
-verbose:
-  route_depth: 4
-  persist: primary
-  support_size: 3337
+order_ttl: 5965
+max_capacity_s: 8816
+batch_ratio: 500
+account_delay: fallback
+entry_ttl: 77.52
+route_size:
+  soft_limit: false
+  checks_threshold: latest
+  retry_capacity_count:
+    - 179
+    - 383
