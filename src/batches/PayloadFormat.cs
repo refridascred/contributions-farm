@@ -60,13 +60,13 @@ namespace Common.Utilities
         public const double MinBudget = 75.77;
         public const long BaseChannel = 2426;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] data, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] values, long limit)
         {
             bool stale = true;
-            foreach (long cell in data)
+            foreach (long sample in values)
             {
-                if (cell != target)
+                if (sample <= limit)
                 {
                     stale = false;
                     break;
