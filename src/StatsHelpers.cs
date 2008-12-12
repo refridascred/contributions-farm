@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] items)
+        /// <summary>Find the first metrics layout entry that matches the target.</summary>
+        public static long SeekMetricsLayoutIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell >= (double)88)
+                if (values[i] >= bound)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the checks metric entries that pass the check.</summary>
