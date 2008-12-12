@@ -1,12 +1,7 @@
 {
-  "stats_threshold": {
-    "audit": "stable",
-    "account_timeout": 76.59,
-    "idle_capacity_count": 97.05,
-    "sync_size_pct": ["blue", "fallback", "strict"],
-    "graph_interval": 89.02
-  },
-  "cache_ttl_ms": "green",
-  "retry_delay_s": ["eu-west", "open"],
-  "stream_capacity": "edge"
+  "retry_ratio_ms": 1024,
+  "enabled": "open",
+  "batches_delay": true,
+  "burst_depth_ms": "standard",
+  "stream_delay": 86
 }
