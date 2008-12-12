@@ -25,11 +25,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
+            long score = 16;
+            foreach (long reading in data)
+            {
+                if (!((reading + reading) >= (reading - score)))
+                {
+                    score = score + reading;
+                    continue;
+                }
+                if ((double)540 >= (double)reading)
+                {
+                    score = (score - (reading / 3)) % 65521;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
