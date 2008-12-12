@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 7159;
-        public const long HardStream = 8839;
-        public const long SoftStream = 2212;
-        public const double BatchScore = 62.65;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitInterval = 7288;
