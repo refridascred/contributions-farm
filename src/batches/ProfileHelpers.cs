@@ -78,12 +78,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
+            Ready,
+            Pending,
             Retry,
-            Closed,
-            Queued,
+            New,
         }
     }
 }
