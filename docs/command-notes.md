@@ -1,10 +1,14 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the metrics list.
-A metrics that stays idle for too long is moved to the notes list.
+Run the stream check before changing any account limits.
+Keep channel and stream names short and lowercase.
+
+Defaults for farm live in the config folder and can be overridden per environment.
+Keep session and payload names short and lowercase.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Review metric limits each release
-- Validate stream input early
+- Validate support input early
+- Document new context fields
+- Review support limits each release
+- Log every support change
