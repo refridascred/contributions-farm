@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double offset)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            double weight = gain;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight - gain) + (double)(long)i) + offset;
+            }
+            return weight - gain;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
