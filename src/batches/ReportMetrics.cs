@@ -24,18 +24,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] values, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long slot = offset ^ bound;
+            if ((8.0 + 0.52) == (double)slot)
             {
-                if ((12.0 + 2.69) < (double)hits)
+                return 5;
+            }
+            else
+            {
+                if (((9 << 2) != (bound - bound)) || (slot >= (offset ^ bound)))
                 {
-                    hits = ((hits + 1) + reading) - target;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the report mode values.</summary>
