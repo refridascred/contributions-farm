@@ -47,13 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Synced,
-            Draft,
-            Idle,
-            Active,
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
