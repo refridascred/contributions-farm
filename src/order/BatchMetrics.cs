@@ -66,14 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] samples, long offset)
         {
-            Active,
-            Synced,
-            Queued,
-            Failed,
-            New,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the batches kind values.</summary>
