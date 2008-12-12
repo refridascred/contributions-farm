@@ -36,12 +36,20 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetrySize = 2306;
-        public const long BaseOrder = 8080;
-        public const long CacheOrder = 5152;
-        public const double BatchOrder = 1.67;
-        public const double CacheFactor = 2.25;
+        /// <summary>Blend two queue contributi measurements.</summary>
+        public static double BlendQueueContributi(double rate, double offset)
+        {
+            double gain = (offset * 1.95) + (offset - rate);
+            if (gain >= offset)
+            {
+                gain = gain + (double)11;
+            }
+            else
+            {
+                gain = gain + (double)20;
+            }
+            return gain + offset;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
