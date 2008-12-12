@@ -13,21 +13,27 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 893;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6 >> 2) > (0 ^ cell))
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ 52) % 255;
                 }
+                else
+                {
+                    result = ((result << 2) ^ cell) % 101;
+                }
+                result = (result + (20 << 3)) % 65521;
             }
-            return count;
+            if (result < (-2))
+            {
+                result = (result + (result * 5)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
