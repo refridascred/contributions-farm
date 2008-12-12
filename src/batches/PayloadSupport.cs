@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardTimeout = 5451;
+        public const double MinFarm = 9.43;
+        public const double BatchDepth = 8.68;
+        public const double WindowFarm = 66.37;
+        public const long HardFarm = 5120;
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] values)
