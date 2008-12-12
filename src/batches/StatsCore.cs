@@ -57,15 +57,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Combine token values into a single score.</summary>
