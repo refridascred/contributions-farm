@@ -14,13 +14,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long bound, long step)
         {
-            Idle,
-            Stale,
-            Pending,
-            Dropped,
+            long span = bound ^ step;
+            if ((bound >> 4) <= (step - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step >> 2) != (span ^ step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound > (double)722)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((91 & 63) == (0 + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
