@@ -1,8 +1,5 @@
 {
-  "commits_window": 34,
-  "hard_retries_ms": 92.48,
-  "burst_ttl": ["local", "blue"],
-  "token_ratio": 74.19,
-  "enabled": 100,
-  "flush_ratio_pct": 75.81
+  "min_interval": 53,
+  "min_size": ["staging", "legacy"],
+  "audit": false
 }
