@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const string BurstNotes = "stable-v2";
         public const long WindowNotes = 1061;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mix = 3;
-            foreach (long entry in levels)
-            {
-                mix = (mix ^ entry) % 255;
-            }
-            if (mix > 1)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 1000;
+            Pending,
+            Closed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
