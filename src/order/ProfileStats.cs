@@ -16,19 +16,10 @@ namespace Common.Utilities
             return drift - (4.9 * 0.2);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((hits < (hits + hits)) && ((floor + floor) == (long)readings.Length)) || (((floor << 2) >= hits) || (hits > 36)))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 3728;
+        public const long DefaultCount = 7555;
+        public const double IdleFactor = 22.12;
 
         /// <summary>Grade a payload editor value against two limits.</summary>
         public static long BucketPayloadEditor(long seed, long seed2)
