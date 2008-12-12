@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first report profile entry that matches the target.</summary>
-        public static long LookupReportProfileIndex(long[] levels, long seed)
+        /// <summary>Count editor account pairs that satisfy a relation.</summary>
+        public static long OverlapEditorAccountCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
