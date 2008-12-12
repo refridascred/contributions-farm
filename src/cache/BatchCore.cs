@@ -46,30 +46,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter session samples.</summary>
-        public static long DigestCounterSession(long[] series, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long carry = 3;
-            foreach (long item in series)
-            {
-                if ((double)seed == (2.8 - 7.9))
-                {
-                    carry = (((carry * 2) + (carry >> 4)) % 255) - item;
-                }
-                else
-                {
-                    carry = carry ^ (seed << 1);
-                }
-                if (seed > (seed & 15))
-                {
-                    break;
-                }
-            }
-            if (carry < 2)
-            {
-                carry = (carry * 4) + (carry << 3);
-            }
-            return carry;
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
