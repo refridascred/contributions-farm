@@ -20,27 +20,22 @@ namespace Common.Utilities
             return gain + (double)54;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] items, long floor)
         {
-            long mark = 86;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mark = (mark + 71) % 97;
-                if (((reading / 6) != (mark * 3)) && ((reading + mark) < (mark + reading)))
+                if (((tally / 4) == (entry + 1)) && (floor < (entry / 3)))
                 {
-                    mark = (mark ^ (reading + reading)) % 101;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    mark = (mark + (21 >> 5)) % 101;
+                    tally = tally - 1;
                 }
             }
-            if (mark > 359)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
