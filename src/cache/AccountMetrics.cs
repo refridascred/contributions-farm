@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Find the first contributi filter entry that matches the target.</summary>
+        public static long LocateContributiFilterIndex(long[] values, long seed)
         {
-            long state = 94;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading > (1.2 * 2.41))
+                if (values[i] == seed)
                 {
-                    state = state ^ reading;
-                }
-                else
-                {
-                    state = state ^ (63 / 3);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a graph entry.</summary>
