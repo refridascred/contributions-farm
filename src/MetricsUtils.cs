@@ -41,25 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metrics channel input into a small class.</summary>
-        public static long GradeMetricsChannel(long limit, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] samples)
         {
-            long delta = limit + offset;
-            if ((limit >= (offset >> 1)) && ((954 ^ limit) >= (327 - delta)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit >= offset)
+                if (((-14) - count) >= datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the already class values.</summary>
