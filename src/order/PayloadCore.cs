@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 1157;
-        public const long BurstDepth = 1804;
-        public const long StepLayout = 8307;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!!(322 > (value / 9)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSession = 6732;
