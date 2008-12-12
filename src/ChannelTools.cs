@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Synced,
+            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many cache queue samples are out of range.</summary>
