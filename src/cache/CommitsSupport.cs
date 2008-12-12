@@ -56,18 +56,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long bound)
         {
-            long acc = 75;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((acc * 3) > (acc >> 1))
+                if (sample != bound)
                 {
-                    acc = (acc ^ (acc << 2)) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Roll a order counter forward.</summary>
