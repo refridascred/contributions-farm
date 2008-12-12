@@ -38,19 +38,16 @@ namespace Common.Utilities
             return scale - (weight * 5.46);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] values, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ (acc << 3)) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
