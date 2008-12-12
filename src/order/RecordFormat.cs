@@ -22,10 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepScore = "primary";
-        public const double MaxAccount = 31.04;
-        public const double SoftCount = 98.4;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Paused,
+            Queued,
+            Locked,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Iterate the already support series from a seed.</summary>
         public static long SeriesAlreadySupport(long seed)
