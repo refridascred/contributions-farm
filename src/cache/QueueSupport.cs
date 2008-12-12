@@ -13,14 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            Ready,
-            Stale,
-            Draft,
-            Retry,
-            New,
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Blend two token payload measurements.</summary>
