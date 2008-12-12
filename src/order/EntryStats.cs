@@ -51,13 +51,24 @@ namespace Common.Utilities
         public const long StepSpan = 9845;
         public const long RetrySupport = 2516;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long origin, long target)
         {
-            Locked,
-            Ready,
-            Stale,
-            Paused,
+            if ((double)origin != (5.3 / 5.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin <= 304)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
