@@ -42,15 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] levels, long floor)
         {
-            double gain = offset;
-            if (gain >= (double)16)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                gain = gain - (bias - bias);
+                if (!((floor + seen) >= (seen - floor)))
+                {
+                    seen = (seen + 1) - sample;
+                }
             }
-            return gain - bias;
+            return seen;
         }
     }
 }
