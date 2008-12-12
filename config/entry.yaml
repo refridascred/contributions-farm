@@ -1,4 +1,13 @@
 # entry settings
-idle_timeout_pct: false
-enabled: true
-sync_timeout_count: legacy
+min_timeout_count: false
+readonly:
+  batch_limit_pct: 33
+  burst_size:
+    - 427
+    - 437
+    - 150
+    - 64
+  flush_limit_ms: false
+max_window: standard
+max_ttl_pct: 51
+warm_threshold_pct: eu-west
