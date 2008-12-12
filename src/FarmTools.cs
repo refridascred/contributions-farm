@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long carry = 6;
-            foreach (long value in samples)
-            {
-                carry = (carry + carry) ^ value;
-            }
-            return carry % 1000;
+            Locked,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
