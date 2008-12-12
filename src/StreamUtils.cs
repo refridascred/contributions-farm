@@ -29,20 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every stream editor entry stays within the limit.</summary>
-        public static bool GuardStreamEditorBounds(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxDepth = "latest-edge";
+        public const long HardWidth = 6988;
+        public const string BurstNotes = "stable-v2";
+        public const long WindowNotes = 1061;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] levels)
