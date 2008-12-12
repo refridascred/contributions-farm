@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double gain, double offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] items, long offset)
         {
-            double drift = gain - offset;
-            if (drift < gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - 17.0;
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - gain;
-            }
-            return drift - (double)178;
+            return -1;
         }
 
         /// <summary>Blend two cache support measurements.</summary>
