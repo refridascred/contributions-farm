@@ -1,7 +1,7 @@
-id,region,label,active
-1,777,blue,open
-2,60.92,cached,629
-3,45.31,106,589
-4,794,19,cached
-5,blue,217,local
-6,870,878,868
+id,score,ratio
+1,primary,413
+2,672,110
+3,78.64,staging
+4,663,538
+5,12.22,66
+6,517,eu-west
