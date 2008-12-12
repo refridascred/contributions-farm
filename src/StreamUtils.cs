@@ -39,17 +39,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!(target <= (target - seed)))
             {
-                if (items[i] > seed)
+                return 2;
+            }
+            else
+            {
+                if (!((36 + (-183)) < (seed + target)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed >= (5.0 * 5.5)) || (target >= (target / 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed - seed) >= (target - target)) && ((2.0 / 5.0) == (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
