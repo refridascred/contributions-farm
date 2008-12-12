@@ -32,27 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long floor)
         {
-            long score = -390;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (score < entry)
+                if (hits > (floor >> 5))
                 {
-                    continue;
+                    hits = (hits + 2) + reading;
                 }
                 else
                 {
-                    score = (score + (score / 6)) % 101;
+                    hits = hits - 1;
                 }
-                score = ((score << 3) ^ origin) % 97;
             }
-            if (score < (-213))
-            {
-                score = score ^ (origin - 693);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a graph info.</summary>
