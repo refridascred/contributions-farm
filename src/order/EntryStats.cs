@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 6766;
         public const long WindowWidth = 2625;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] values, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit support readings against a rule.</summary>
