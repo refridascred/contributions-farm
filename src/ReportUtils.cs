@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((17.0 + 1.1) < (5.99 - 11.0)) || (cell > (cell + 5)))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
