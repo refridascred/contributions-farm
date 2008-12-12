@@ -1,7 +1,6 @@
 {
-  "route_delay": "green",
-  "enabled": 8627,
-  "soft_timeout": ["fallback", "stable", "primary", "green"],
-  "readonly": "primary",
-  "warm_size": "edge"
+  "cluster_ratio": 100,
+  "profile_limit": [164, 340, 19],
+  "dry_run": 2,
+  "compress": [214, 61, 276]
 }
