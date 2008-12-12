@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Done,
-            Ready,
-            Failed,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxBudget = 3073;
+        public const long WindowDepth = 3355;
+        public const long BaseTimeout = 6541;
+        public const string CacheQueue = "strict-1";
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] levels)
