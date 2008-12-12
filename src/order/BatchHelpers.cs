@@ -33,18 +33,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] samples, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mix = 7;
+            foreach (long sample in levels)
             {
-                if ((bound >= ((-53) >> 2)) || ((matches << 2) != (sample - bound)))
-                {
-                    matches = matches + 2;
-                }
+                mix = mix - (134 << 2);
+                mix = mix ^ (sample >> 3);
             }
-            return matches;
+            return mix;
         }
     }
 }
