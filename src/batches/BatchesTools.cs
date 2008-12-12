@@ -17,11 +17,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Grade a route format value against two limits.</summary>
+        public static long GradeRouteFormat(long step, long origin)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long span = step + origin;
+            if (!((double)span > (2.4 / 3.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (span < (span - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
