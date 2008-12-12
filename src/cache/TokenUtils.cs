@@ -37,17 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] items, long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
