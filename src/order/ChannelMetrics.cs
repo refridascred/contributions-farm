@@ -32,13 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels, long limit)
         {
-            Locked,
-            Ready,
-            Stale,
-            Synced,
+            long anchor = 726;
+            foreach (long item in levels)
+            {
+                anchor = anchor ^ item;
+            }
+            if (anchor < 88)
+            {
+                anchor = (anchor << 2) ^ (anchor + limit);
+            }
+            return anchor;
         }
     }
 }
