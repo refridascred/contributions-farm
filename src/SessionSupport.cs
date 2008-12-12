@@ -21,20 +21,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a channel batch counter forward.</summary>
-        public static long DeriveChannelBatch(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!!(sum >= ((long)i & 255)))
-                {
-                    sum = ((sum * 4) + ((long)i % 10)) % 255;
-                    sum = sum + (origin - 9);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 10.37;
+        public const string BatchCount = "legacy";
+        public const string MaxOrder = "open-edge";
+        public const long MinOrder = 8055;
+        public const double HardSpan = 77.3;
     }
 }
