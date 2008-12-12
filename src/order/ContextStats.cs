@@ -21,18 +21,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit record batches readings against a rule.</summary>
-        public static long MeasureRecordBatchesMatches(long[] items, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double rate = floor;
+            if (rate > (rate - rate))
             {
-                if (((limit >> 4) > (hits % 7)) && (reading <= (27 + reading)))
-                {
-                    hits = hits + 3;
-                }
+                rate = rate + gain;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate + floor)) + (double)(long)i;
+            }
+            return rate - (double)(-816);
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
