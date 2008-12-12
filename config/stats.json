@@ -1,7 +1,5 @@
 {
-  "readonly": "staging",
-  "persist": false,
-  "min_window_s": 48.51,
-  "enabled": ["blue", "local"],
-  "report_limit": 60
+  "layout_limit": 8.69,
+  "max_threshold": "local",
+  "max_ratio_ms": 60
 }
