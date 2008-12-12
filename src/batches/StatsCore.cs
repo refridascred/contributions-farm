@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double weight, double span)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double mean = weight;
-            if (mean >= weight)
-            {
-                mean = mean + (span / 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (span + weight)) + (double)(long)i;
-            }
-            return mean - (mean / 7.0);
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Blend two batches support measurements.</summary>
