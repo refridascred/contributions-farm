@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate format githubfarm samples.</summary>
-        public static long FoldFormatGithubfarm(long[] values, long bound)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            long mix = -2;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + (datum >> 5)) - bound;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Accumulate cluster route samples.</summary>
