@@ -76,14 +76,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double gain, double span)
         {
-            Pending,
-            Stale,
-            Retry,
-            Queued,
-            Draft,
+            double drift = (double)(6 - 1);
+            if (drift <= (gain - span))
+            {
+                drift = drift - (drift / 6.0);
+            }
+            return drift + drift;
         }
     }
 }
