@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many contributi route samples are out of range.</summary>
+        public static long TallyContributiRouteOutliers(long[] series)
         {
-            New,
-            Active,
-            Retry,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen * 4) >= (item ^ item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up farm samples.</summary>
