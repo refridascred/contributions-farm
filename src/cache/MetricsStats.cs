@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] samples, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (((origin * 4) <= 982) || ((long)i >= (state - state)))
+                if (cell < seed)
                 {
-                    state = (state + (state >> 2)) % 65521;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    state = (state - (origin << 3)) % 97;
-                }
-                state = (state - ((long)i + state)) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Accumulate format githubfarm samples.</summary>
