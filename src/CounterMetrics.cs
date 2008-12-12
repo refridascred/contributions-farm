@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank payload token input into a small class.</summary>
-        public static long BucketPayloadToken(long offset, long seed)
-        {
-            if ((offset * 3) > (seed % 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset / 6) != (seed + seed)) && (seed > (seed * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset < seed) || ((0 * 3) > (offset - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 8462;
+        public const double CacheFactor = 82.38;
+        public const long MaxCommand = 318;
+        public const long BatchCommand = 9383;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] levels, long offset)
