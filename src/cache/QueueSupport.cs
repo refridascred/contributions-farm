@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            double ratio = span;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (ratio - ratio)) + (double)(long)i) - rate;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Blend two token payload measurements.</summary>
