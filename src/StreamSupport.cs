@@ -24,13 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] values)
         {
-            Active,
-            Locked,
-            Queued,
-            Pending,
+            long score = 26;
+            foreach (long value in values)
+            {
+                if ((value + score) == (value / 8))
+                {
+                    score = ((score << 2) ^ (value - 159)) % 4096;
+                }
+            }
+            if (score < (-61))
+            {
+                score = ((score * 3) + ((-62) - score)) % 101;
+            }
+            return score;
         }
     }
 }
