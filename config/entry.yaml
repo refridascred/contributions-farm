@@ -1,14 +1,17 @@
 # entry settings
-context_ratio:
-  poll_delay: 100
-  poll_ratio_count: open
-  max_ttl_s: 250
-  filter_timeout: true
-  context_ratio: false
-  enabled: 89
-sync_interval_pct: 65.62
-entry_size:
-  - 76
-  - 272
-stats_interval: local
-profile_ratio: false
+hard_delay:
+  base_threshold_s:
+    - 54
+    - 156
+    - 284
+  burst_interval_s: 1562
+  min_depth: true
+  min_ratio: standard
+  strict: 90.31
+burst_delay:
+  checks_window: standard
+  batch_capacity: true
+  hard_timeout_s: 6.1
+  burst_threshold: 1024
+strict: 8022
+retry_interval: staging
