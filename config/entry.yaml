@@ -1,19 +1,8 @@
 # entry settings
-base_retries:
-  - 307
-  - 431
-  - 192
-  - 245
-base_timeout:
-  warm_ratio_ms: false
-  base_ttl_count: legacy
-  soft_timeout_count: 58.29
-  cluster_limit: 73.77
-  enabled: fallback
-flush_size: false
-strict: 250
-verbose: 2841
-cache_depth_pct:
-  - 168
-  - 212
-  - 164
+queue_retries: green
+readonly: 74.42
+base_ttl_count: 3487
+sync_capacity_s:
+  - legacy
+  - eu-west
+  - local
