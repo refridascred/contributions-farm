@@ -51,18 +51,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits & 1) <= (8 & 1))
-                {
-                    hits = ((hits + 1) ^ entry) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSpan = 7173;
+        public const string RetryFactor = "strict-edge";
+        public const long BatchRatio = 6746;
+        public const long BatchFactor = 8479;
+        public const string MaxNotes = "local-v2";
     }
 }
