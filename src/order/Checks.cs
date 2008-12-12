@@ -63,19 +63,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of profile graph entries.</summary>
-        public static long DigestProfileGraph(long[] items, long step)
+        /// <summary>Derive the next queue command value from a seed.</summary>
+        public static long DeriveQueueCommand(long floor)
         {
-            long result = 489;
-            foreach (long entry in items)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                result = ((result << 3) ^ ((long)items.Length + entry)) % 101;
-                if ((result + entry) < step)
-                {
-                    result = (result + (792 - result)) % 97;
-                }
+                long edge = carry;
+                carry = ((carry << 3) ^ (floor ^ edge)) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result % 97;
+            return carry;
         }
     }
 }
