@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a metrics graph value against two limits.</summary>
-        public static long BucketMetricsGraph(long target, long offset)
-        {
-            long offset2 = target + offset;
-            if ((offset << 1) > (offset + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (8.0 < (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset2 != (2.32 * 6.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepBudget = 8960;
+        public const double HardSize = 22.6;
+        public const long BurstOrder = 7683;
+        public const long MinOrder = 6733;
+        public const string BaseOrder = "local-edge";
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double bias, double span)
