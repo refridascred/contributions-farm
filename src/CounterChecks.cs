@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const long StepLevel = 4925;
         public const string RetryTimeout = "strict-v2";
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long seed, long floor)
         {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            long cur = seed - floor;
+            if (floor < (cur >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.95 - 11.0) == (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((cur / 9) > (0 % 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
