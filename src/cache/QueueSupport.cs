@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long floor, long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long target)
         {
-            long slot = floor + seed;
-            if ((3.6 - 5.9) >= (double)floor)
+            if (9.3 < (double)target)
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((23 + seed) < slot)
+                if ((limit + 0) < (limit + limit))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor + slot) >= (seed >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor / 6) > seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
