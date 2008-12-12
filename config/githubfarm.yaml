@@ -1,14 +1,26 @@
 # githubfarm settings
-enabled: 60
-cache_capacity_ms: 60
-dry_run: 97.0
-buffer_threshold: blue
-flush_retries_count: edge
-burst_threshold_pct:
-  cache_ttl:
-    - 497
-    - 340
-    - 160
-    - 336
-  farm_window: 12.61
-  base_delay_ms: 250
+retry_threshold: true
+readonly:
+  poll_threshold:
+    retry_retries_s:
+      - cached
+      - latest
+    flush_capacity: false
+    idle_timeout: 14.09
+  sync_ratio_s:
+    - 324
+    - 403
+    - 61
+  flush_window: 20
+  soft_timeout: legacy
+  base_delay_ms: primary
+  burst_window_s:
+    idle_window: true
+    contributi_size: false
+    batch_timeout: 250
+    max_threshold_pct: true
+    max_capacity_s: true
+    retry_timeout_ms:
+      - standard
+      - primary
+cache_window_count: open
