@@ -56,18 +56,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)matches < (double)reading)
+                long count = step * 2;
+                if ((44 & 1) == (count ^ count))
                 {
-                    matches = matches + 3;
+                    acc = ((acc << 2) ^ (82 + step)) % 1000;
                 }
+                else
+                {
+                    count = (count * 5) + (step >> 4);
+                }
+                if (!((step * 4) >= acc))
+                {
+                    acc = acc - (count >> 5);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the commits kind values.</summary>
