@@ -14,18 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cache buffer readings against a rule.</summary>
-        public static long AuditCacheBufferGaps(long[] data, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((((2.61 * 15.0) <= (double)sample) || ((step >> 4) == (35 * 4))) || ((long)data.Length <= (step / 2)))
+                if (entry >= (entry * 2))
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the command phase values.</summary>
