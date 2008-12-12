@@ -26,25 +26,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long limit, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values)
         {
-            long offset = limit + origin;
-            if ((origin % 5) <= (origin << 1))
+            long result = 199;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - origin) == (limit << 3)) && ((offset - limit) >= (origin >> 1)))
+                if ((result >= (value + value)) && ((result + value) < (value % 97)))
                 {
-                    return 2;
+                    result = result - (result + result);
                 }
-                else
+                if (((value ^ result) != (value ^ value)) && ((result * 3) >= value))
                 {
-                    return 1;
+                    result = result ^ (result % 3);
                 }
             }
+            return result;
         }
 
         /// <summary>Validate cluster githubfarm readings against a bound.</summary>
