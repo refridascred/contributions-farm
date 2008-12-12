@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches + matches) > (bound % 12))
                 {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
