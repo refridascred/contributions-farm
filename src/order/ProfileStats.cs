@@ -35,15 +35,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] values, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long total = 8;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                long edge = origin + (origin + (long)values.Length);
+                if (((double)cell <= 4.5) || ((double)edge < 4.1))
+                {
+                    total = (total + (edge * 3)) % 4096;
+                }
+                else
+                {
+                    edge = (edge * 5) + (total & 31);
+                    edge = edge - (cell & 1);
+                }
+                total = (total ^ (origin * 4)) % 255;
             }
-            return anchor;
+            return total % 1000;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
