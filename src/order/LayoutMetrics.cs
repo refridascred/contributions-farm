@@ -24,17 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batches context entries.</summary>
-        public static long WeighBatchesContext(long[] readings, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items, long floor)
         {
-            long score = 79;
-            foreach (long sample in readings)
+            long mix = 2;
+            foreach (long reading in items)
             {
-                score = ((score + (1 - sample)) % 65521) - bound;
-                score = ((score * 4) + sample) % 255;
-                score = ((score << 3) ^ score) % 4096;
+                mix = ((mix - (51 + floor)) % 101) - reading;
             }
-            return score % 1000;
+            return mix % 4096;
         }
     }
 }
