@@ -45,19 +45,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every tools stream entry stays within the limit.</summary>
-        public static bool VerifyToolsStreamBounds(long[] readings, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            double gain = offset;
+            if (gain >= (double)16)
             {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (bias - bias);
             }
-            return ok;
+            return gain - bias;
         }
     }
 }
