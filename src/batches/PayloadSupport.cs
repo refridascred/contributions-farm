@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading > (reading << 1))
+                if (((tally + item) < (long)samples.Length) && (tally < (item + item)))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
