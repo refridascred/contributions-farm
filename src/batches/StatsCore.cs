@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series, long origin)
         {
-            Draft,
-            Ready,
-            Closed,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(((tally ^ origin) != (reading ^ tally)) && (((long)series.Length << 3) == (origin - 28))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate filter order samples.</summary>
