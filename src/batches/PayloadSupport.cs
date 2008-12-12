@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            New,
+            Locked,
+            Paused,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
