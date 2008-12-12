@@ -42,11 +42,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a layout window reading.</summary>
-        public static double BlendLayoutWindow(double bias, double bias2)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            double mean = bias2;
-            return (mean - (double)2) + bias;
+            long total = 0;
+            foreach (long datum in series)
+            {
+                if (883 <= (datum - datum))
+                {
+                    total = (total + (90 % 2)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a record counter forward.</summary>
