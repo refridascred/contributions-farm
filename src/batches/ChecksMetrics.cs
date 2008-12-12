@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long limit, long seed)
-        {
-            if (seed <= (seed - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit != (7.5 + 4.0)) && (seed <= (seed + limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed / 4) < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "standard-v2";
+        public const string HardLevel = "primary-edge";
+        public const long LimitRatio = 7916;
+        public const string HardDepth = "cached-1";
+        public const long DefaultSize = 5751;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] samples, long offset)
