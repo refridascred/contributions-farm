@@ -33,15 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many batches route samples are out of range.</summary>
-        public static long CountBatchesRouteGaps(long[] readings, long bound)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] readings)
         {
             long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)bound <= (17.0 * 5.28))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + item;
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
