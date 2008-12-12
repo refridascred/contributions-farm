@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseDepth = 64.27;
-        public const string LimitReport = "strict";
-        public const long DefaultWidth = 4770;
+        /// <summary>Iterate the record schema series from a seed.</summary>
+        public static long RollRecordSchema(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((((long)i - (long)i) > (seed << 2)) && ((seed % 10) <= (seed + seed)))
+                {
+                    total = (total << 3) ^ (total & 127);
+                    total = (total - (long)i) % 1000;
+                }
+                total = (total + (seed % 2)) % 65521;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] series, long offset)
