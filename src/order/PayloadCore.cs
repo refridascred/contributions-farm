@@ -40,19 +40,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long bound)
         {
-            long state = 39;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state + state) % 65521;
-                if ((state + state) > (item << 3))
+                if (samples[i] > bound)
                 {
-                    state = state + (item + item);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
