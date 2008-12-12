@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] items)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((((-22) + datum) < datum) || ((matches ^ datum) == (datum ^ 669)))
+                if (cell >= origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
