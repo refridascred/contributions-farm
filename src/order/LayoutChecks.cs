@@ -30,38 +30,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a graph counter pair into a bucket.</summary>
-        public static long SortGraphCounter(long origin, long target)
+        /// <summary>Locate a schema account reading by value.</summary>
+        public static long FindSchemaAccountIndex(long[] items, long step)
         {
-            if ((8.8 * 9.0) <= (double)target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((6 + target) > origin))
+                if (items[i] <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - origin) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.0 - 9.7) >= (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
