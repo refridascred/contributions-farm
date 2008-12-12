@@ -64,19 +64,11 @@ namespace Common.Utilities
             return bias - (bias / 2.0);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] values, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double span)
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double drift = bias;
+            return (drift + (drift * 1.14)) + span;
         }
     }
 }
