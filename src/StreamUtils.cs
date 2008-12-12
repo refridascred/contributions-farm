@@ -34,38 +34,19 @@ namespace Common.Utilities
         public const long BaseMetrics = 338;
         public const long MaxScore = 8833;
 
-        /// <summary>Classify a queue batches pair into a bucket.</summary>
-        public static long ClassifyQueueBatches(long floor, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            if ((origin ^ origin) >= (floor << 1))
+            long mix = 3;
+            foreach (long entry in levels)
             {
-                return 4;
+                mix = (mix ^ entry) % 255;
             }
-            else
+            if (mix > 1)
             {
-                if (((floor << 3) > 24) || ((double)floor < 8.24))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - 93) != (floor - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin <= (origin + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mix = mix ^ mix;
             }
+            return mix % 1000;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
