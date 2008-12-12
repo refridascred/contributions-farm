@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long bound)
+        /// <summary>Grade a metric route value against two limits.</summary>
+        public static long RankMetricRoute(long seed, long limit)
         {
-            if (((16.0 - 2.0) != (double)bound) && ((target - target) <= (755 - bound)))
+            long next = seed - limit;
+            if (((4.48 * 19.0) < (8.79 * 9.9)) && (427 >= (next >> 3)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((double)bound > (double)target)
+                if ((double)limit == (9.3 / 9.0))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if (seed <= 824)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
