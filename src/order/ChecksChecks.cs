@@ -37,17 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] readings, long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (scale / 2.0)) + (double)(long)i;
             }
-            return -1;
+            return weight - (3.1 * 0.8);
         }
     }
 }
