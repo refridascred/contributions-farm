@@ -1,5 +1,12 @@
 # githubfarm settings
-base_depth_count: 81.42
-poll_ratio_s: staging
-dry_run: eu-west
-compress: 500
+warm_retries_count: 250
+commits_delay: 6378
+flush_retries:
+  editor_timeout: 60
+  audit:
+    - 479
+    - 470
+  window_threshold: 30
+  max_delay_count: staging
+record_ratio: staging
+compress: 81.91
