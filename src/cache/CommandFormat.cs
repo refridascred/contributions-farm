@@ -57,24 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry already pair into a bucket.</summary>
-        public static long SortEntryAlready(long origin, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long floor)
         {
-            if ((target / 2) > target)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-889) + origin) <= origin)
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
