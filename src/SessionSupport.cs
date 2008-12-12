@@ -22,16 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cache metric reading.</summary>
-        public static double BlendCacheMetric(double bias, double offset)
-        {
-            double ratio = offset;
-            if (ratio < ratio)
-            {
-                ratio = (ratio + offset) - bias;
-            }
-            return ratio - (ratio / 9.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 9661;
+        public const string BurstScore = "latest-edge";
+        public const long DefaultFactor = 133;
+        public const string StepFactor = "local-edge";
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long seed, long step)
