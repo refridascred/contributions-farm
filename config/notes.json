@@ -1,6 +1,7 @@
 {
-  "poll_depth": ["open", "stable", "cached"],
-  "poll_capacity": [57, 396, 357],
-  "min_size_s": "legacy",
-  "dry_run": 60
+  "flush_ttl": false,
+  "burst_limit": ["edge", "green", "staging", "edge"],
+  "notes_ratio": 18.83,
+  "dry_run": 60,
+  "retry_window_s": "local"
 }
