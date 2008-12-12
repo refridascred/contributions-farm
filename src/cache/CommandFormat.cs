@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of window readings.</summary>
