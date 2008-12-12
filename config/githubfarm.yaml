@@ -1,17 +1,16 @@
 # githubfarm settings
-warm_window_s: true
-idle_window_pct:
-  audit: 30
-  metric_size: false
-  soft_delay_count: 65.41
-  stats_limit: fallback
-  soft_delay:
-    - primary
-    - cached
-    - open
-    - stable
-  sync_interval_count: standard
-dry_run: 3913
-burst_depth_pct: cached
-compress: staging
-base_threshold: true
+base_window_s: latest
+sync_limit_s: false
+warm_limit_s:
+  poll_interval: 712
+  sync_capacity: stable
+  sync_ratio_count:
+    sync_size: 71.32
+    flush_ratio_s: 66.03
+    warm_timeout_count:
+      - strict
+      - cached
+      - cached
+    poll_limit_count: green
+    batch_limit: false
+  dry_run: 9999
