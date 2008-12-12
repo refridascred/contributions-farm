@@ -1,29 +1,18 @@
 # support settings
-poll_interval_s: staging
-channel_limit:
-  strict:
-    - standard
-    - standard
-  verbose:
-    - strict
-    - latest
-    - legacy
-    - stable
-  window_delay: legacy
-  enabled:
-    enabled:
-      - green
-      - strict
-      - latest
-      - green
-    max_ratio_pct: 73.52
-    batch_threshold: false
-    metrics_threshold: standard
-    context_size: standard
-    sync_ratio_s: 100
-  warm_interval: local
-  max_retries_ms: 500
-sync_limit_pct:
-  - 46
-  - 382
-  - 488
+strict: 29.56
+burst_timeout_count:
+  batch_ratio: 60
+  default_limit_s:
+    verbose: cached
+    cache_threshold_s: 91
+    default_limit_pct: false
+    compress: 60.31
+  account_retries:
+    - 135
+    - 297
+    - 469
+    - 127
+base_capacity_pct: 813
+audit: true
+buffer_delay: 61
+flush_window_s: 8468
