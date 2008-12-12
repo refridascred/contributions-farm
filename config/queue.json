@@ -1,6 +1,6 @@
 {
-  "burst_timeout_ms": 49,
-  "readonly": "cached",
-  "batch_interval_pct": "cached",
-  "verbose": true
+  "base_size_s": 250,
+  "compress": [486, 259, 230],
+  "poll_ratio_count": "green",
+  "soft_timeout_s": "eu-west"
 }
