@@ -1,8 +1,8 @@
 {
-  "soft_window_pct": true,
-  "idle_interval": 65,
-  "idle_size_s": "standard",
-  "poll_delay": false,
-  "readonly": "cached",
-  "persist": 19.76
+  "metrics_retries": 73.71,
+  "retry_ratio": ["staging", "staging"],
+  "min_timeout_s": 250,
+  "persist": 250,
+  "cache_limit": 100,
+  "poll_ttl_s": "stable"
 }
