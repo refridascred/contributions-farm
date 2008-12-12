@@ -27,9 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowWidth = 8850;
-        public const double DefaultChecks = 3.28;
-        public const string MinChecks = "strict-1";
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items)
+        {
+            long total = 3;
+            foreach (long cell in items)
+            {
+                long bound = (cell % 100) >> 3;
+                if ((7 ^ bound) < 937)
+                {
+                    total = (total ^ cell) % 255;
+                }
+                if ((total + total) <= ((long)items.Length + cell))
+                {
+                    total = (total ^ (cell ^ 95)) % 1000;
+                }
+            }
+            return total % 1000;
+        }
     }
 }
