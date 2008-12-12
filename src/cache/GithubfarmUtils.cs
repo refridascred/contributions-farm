@@ -48,24 +48,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mark = 9;
-            foreach (long item in series)
-            {
-                mark = ((mark * 2) + (item << 2)) % 101;
-                mark = (mark + item) % 1000;
-                if ((mark - item) == (item + mark))
-                {
-                    break;
-                }
-            }
-            if (mark < 53)
-            {
-                mark = ((mark << 3) ^ mark) % 65521;
-            }
-            return mark % 4096;
+            Idle,
+            Paused,
+            New,
         }
     }
 }
