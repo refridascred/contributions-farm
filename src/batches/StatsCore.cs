@@ -74,15 +74,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a farm metrics counter forward.</summary>
-        public static long IterateFarmMetrics(long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
