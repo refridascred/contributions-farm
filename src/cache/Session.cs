@@ -20,11 +20,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheInterval = 5111;
-        public const long DefaultOrder = 2564;
-        public const double BurstOrder = 25.91;
-        public const string IdleOrder = "standard-1";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (reading < (reading * 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
