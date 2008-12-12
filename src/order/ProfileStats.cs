@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (((-68) - hits) < (hits / 7))
+                if (datum != bound)
                 {
-                    hits = (hits + 2) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Compare every pair of entry counter readings.</summary>
