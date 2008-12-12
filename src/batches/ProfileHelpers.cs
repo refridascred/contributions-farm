@@ -52,11 +52,15 @@ namespace Common.Utilities
         public const double CacheRatio = 24.41;
         public const double RetryAlready = 88.59;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinEditor = "stable-v2";
-        public const string LimitEditor = "local-edge";
-        public const long BaseTimeout = 52;
-        public const long WindowEditor = 6251;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Active,
+            New,
+            Done,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Count window token pairs that satisfy a relation.</summary>
         public static long CompareWindowTokenCount(long[] series)
