@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long cur = seed - step;
-            if ((cur % 24) > (step << 2))
+            long acc = 69;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 2) >= (seed >> 2))
+                if ((double)acc < (4.35 * 3.4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    acc = (acc ^ (reading % 12)) % 4096;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of token readings.</summary>
