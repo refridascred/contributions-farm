@@ -19,14 +19,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Synced,
-            Pending,
-            Dropped,
-            Paused,
-            Draft,
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Combine token support values into a single score.</summary>
