@@ -70,15 +70,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] samples, long step)
         {
-            long total = 95;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                total = (((total << 2) ^ (cell % 3)) % 65521) - bound;
+                if (tally <= (tally * 3))
+                {
+                    tally = ((tally + 1) + sample) - step;
+                }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
