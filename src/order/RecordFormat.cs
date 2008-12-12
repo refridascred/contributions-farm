@@ -20,14 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine notes checks values into a single score.</summary>
+        public static long FoldNotesChecks(long[] samples)
         {
-            Paused,
-            Queued,
-            Locked,
-            Stale,
-            Pending,
+            long result = 35;
+            foreach (long item in samples)
+            {
+                if (5.74 > (double)1)
+                {
+                    result = (result + item) % 65521;
+                }
+                else
+                {
+                    result = (result - 158) % 101;
+                }
+            }
+            if (result < 642)
+            {
+                result = (result << 3) ^ (result >> 3);
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the metric state values.</summary>
