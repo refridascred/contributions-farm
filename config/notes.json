@@ -1,11 +1,6 @@
 {
-  "hard_depth_s": "stable",
-  "base_window_pct": 23.48,
-  "warm_ttl": {
-    "cache_interval": ["cached", "fallback", "green", "blue"],
-    "poll_depth_count": "fallback",
-    "default_threshold_pct": [132, 442, 266],
-    "notes_timeout": [319, 441, 357]
-  },
-  "buffer_delay": "stable"
+  "dry_run": "stable",
+  "warm_delay_count": "fallback",
+  "persist": 26,
+  "enabled": 500
 }
