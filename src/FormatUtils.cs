@@ -51,13 +51,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
