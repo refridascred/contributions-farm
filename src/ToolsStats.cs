@@ -43,12 +43,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] levels, long step)
         {
-            Retry,
-            Paused,
-            Pending,
+            long carry = 27;
+            foreach (long datum in levels)
+            {
+                if ((step * 3) == (step >> 5))
+                {
+                    break;
+                }
+                if (step <= (carry * 5))
+                {
+                    carry = (carry << 3) ^ (datum + 176);
+                }
+            }
+            if (carry < (-178))
+            {
+                carry = (carry * 3) + (step % 64);
+            }
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
