@@ -22,21 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] < step)
                 {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
