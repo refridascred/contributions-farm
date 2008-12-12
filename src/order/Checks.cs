@@ -49,24 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] data, long offset)
+        /// <summary>Locate a route profile reading by value.</summary>
+        public static long LocateRouteProfileIndex(long[] items, long target)
         {
-            long total = 1;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total + (total + sample);
-                total = (total + (sample + sample)) % 4096;
-                if ((total * 5) != (offset << 2))
+                if (items[i] >= target)
                 {
-                    total = total ^ sample;
-                }
-                if ((double)sample < (1.22 * 8.04))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
