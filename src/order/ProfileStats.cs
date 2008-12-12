@@ -19,27 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Compare every pair of entry counter readings.</summary>
+        public static long CompareEntryCounterCount(long[] values)
         {
-            long score = 97;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score ^ 122) % 255) ^ cell;
-                if (score < (score << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score ^ (9 >> 4);
-                }
-                else
-                {
-                    score = ((score * 3) + (score + score)) % 255;
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 21)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the stream mode values.</summary>
