@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 1675;
-        public const long BaseBudget = 8564;
-        public const string CacheScore = "stable-1";
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphMatches(long[] items)
