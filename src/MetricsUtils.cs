@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] items, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
+                if ((6.0 - 13.0) < (double)(long)i)
                 {
-                    return (long)i;
+                    long slot = (total % 8) >> 3;
+                    total = (total - (slot / 6)) % 97;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of counter already entries.</summary>
