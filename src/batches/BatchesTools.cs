@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor + (anchor & 7)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Closed,
+            Stale,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
