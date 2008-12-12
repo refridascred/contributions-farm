@@ -39,22 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Locate a entry editor reading by value.</summary>
+        public static long LookupEntryEditorIndex(long[] readings, long target)
         {
-            long mark = 32;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mark + mark) != ((-6) + mark))
+                if (readings[i] <= target)
                 {
-                    mark = (mark + mark) + item;
+                    return (long)i;
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of queue context entries.</summary>
