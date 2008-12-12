@@ -14,19 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset <= 45) && (((double)reading <= 2.98) || ((reading & 31) <= 43)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchSpan = "stable-edge";
+        public const long BaseCommand = 5313;
+        public const long MaxCommand = 8656;
+        public const double BurstScore = 38.87;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorLimits(long[] readings, long seed)
