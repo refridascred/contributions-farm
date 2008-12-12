@@ -1,4 +1,17 @@
 # support settings
-cache_ratio_ms: true
-warm_depth_ms: false
-entry_size: false
+record_delay: 500
+enabled: 1024
+max_depth_count: 40
+base_limit:
+  idle_window: 250
+  metrics_threshold: 7.84
+  poll_retries_pct: standard
+  hard_limit_ms:
+    soft_size_count:
+      - open
+      - edge
+      - staging
+    filter_capacity: primary
+    retry_window_count: false
+window_depth: 31.65
+retry_retries: 250
