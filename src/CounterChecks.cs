@@ -19,12 +19,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepWidth = 2623;
-        public const long BurstSession = 7018;
-        public const long MinSession = 3075;
-        public const long RetryDepth = 4675;
-        public const string DefaultSession = "legacy-edge";
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result * 5) + (9 / 5);
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] values, long floor)
