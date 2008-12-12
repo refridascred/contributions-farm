@@ -26,21 +26,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = limit + origin;
+            if ((origin % 5) <= (origin << 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((offset - origin) == (limit << 3)) && ((offset - limit) >= (origin >> 1)))
                 {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate cluster githubfarm readings against a bound.</summary>
