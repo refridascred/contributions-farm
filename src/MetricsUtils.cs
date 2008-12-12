@@ -50,13 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Stale,
-            Queued,
-            Ready,
-            Done,
+            Pending,
+            Idle,
+            Active,
         }
     }
 }
