@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long MinLayout = 566;
         public const long LimitLevel = 4164;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = 4;
+            foreach (long datum in samples)
+            {
+                carry = carry - (datum + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
