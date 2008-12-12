@@ -42,10 +42,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 2020;
-        public const long MinScore = 6038;
-        public const double CacheSpan = 35.12;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterBounds(long[] values, long seed)
