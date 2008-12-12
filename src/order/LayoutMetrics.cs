@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a account command value against two limits.</summary>
-        public static long GradeAccountCommand(long floor, long target)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double weight, double span)
         {
-            long cur = floor ^ target;
-            if ((cur << 2) <= (target - cur))
+            double bias = (2.0 + weight) * 9.22;
+            if (bias >= weight)
             {
-                return 3;
+                bias = (bias - bias) - span;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((floor + target) < target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target != (2.6 + 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((72 + target) != (cur + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                bias = (bias - (double)61) + (double)(long)i;
             }
+            return bias - 1.0;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
