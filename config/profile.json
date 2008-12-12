@@ -1,6 +1,5 @@
 {
-  "warm_capacity": "edge",
-  "enabled": ["green", "strict", "latest", "eu-west"],
-  "strict": 1376,
-  "idle_threshold_s": ["eu-west", "edge", "latest"]
+  "max_threshold_ms": false,
+  "hard_ratio_count": false,
+  "warm_capacity_ms": 67.78
 }
