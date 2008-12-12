@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy primary; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 8); do
@@ -16,12 +22,8 @@ for i in $(seq 1 8); do
 done
 log "total ${total}"
 
-mode="${1:-blue}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
