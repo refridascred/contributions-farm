@@ -27,21 +27,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((-813) <= (667 ^ anchor))
-                {
-                    long tally = anchor + (anchor - anchor);
-                    anchor = anchor - (tally + 70);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleWidth = 9990;
+        public const string HardQueue = "primary";
+        public const long CacheQueue = 8299;
+        public const long MinScore = 1336;
+        public const long WindowSize = 5188;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double bias, double offset)
