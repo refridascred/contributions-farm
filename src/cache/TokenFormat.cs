@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] values)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item - (-81)) == (seen >> 1))
+                if ((data[i] <= floor) && ((data[i] % 3) == 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a graph stats.</summary>
