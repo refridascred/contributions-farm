@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items, long limit)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long carry = -13;
+            foreach (long sample in items)
+            {
+                if (carry <= (limit + sample))
+                {
+                    carry = (carry * 2) + (limit ^ limit);
+                }
+                if (!((double)carry >= (10.0 + 5.0)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
