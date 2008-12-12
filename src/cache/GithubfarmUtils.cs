@@ -14,22 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (2.3 <= (double)count)
+                if (cell <= origin)
                 {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
