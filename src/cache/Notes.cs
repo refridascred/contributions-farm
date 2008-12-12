@@ -79,18 +79,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches >> 1) <= matches)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
