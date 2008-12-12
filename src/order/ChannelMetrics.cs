@@ -16,21 +16,11 @@ namespace Common.Utilities
             return bias2 - (scale / 2.0);
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
