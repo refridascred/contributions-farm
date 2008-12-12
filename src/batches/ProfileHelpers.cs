@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Measure how many format githubfarm samples are out of range.</summary>
+        public static long MeasureFormatGithubfarmOutliers(long[] samples, long target)
         {
-            long acc = 6;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (acc < (datum + acc))
+                if (target > (83 % 12))
                 {
-                    acc = acc ^ datum;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
