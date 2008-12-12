@@ -43,15 +43,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] values, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (!((14.0 - 7.0) > (double)seed))
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the account state values.</summary>
