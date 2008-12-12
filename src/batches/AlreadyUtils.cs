@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const string HardLayout = "alpha-1";
         public const string IdleBudget = "alpha-v2";
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitDepth = 4208;
+        public const long HardSize = 2537;
+        public const long RetryQueue = 1769;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportHits(long[] levels)
