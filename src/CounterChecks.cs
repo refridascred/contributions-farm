@@ -90,11 +90,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] items, long step)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
