@@ -1,7 +1,5 @@
 # githubfarm settings
-profile_retries: 75.07
-session_ttl:
-  - 271
-  - 309
-  - 327
-enabled: 738
+readonly: 87.86
+base_size_ms: false
+min_depth_s: 67.25
+sync_retries: standard
