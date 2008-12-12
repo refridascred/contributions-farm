@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double gain, double span)
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            double drift = span / 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift + (drift / 5.0)) + (double)(long)i) - gain;
+            }
+            return drift - (4.9 * 0.2);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
