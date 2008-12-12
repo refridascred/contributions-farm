@@ -42,12 +42,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseInterval = 8627;
+        public const string LimitFilter = "standard-1";
+        public const long DefaultRatio = 5861;
+        public const long RetryFilter = 5805;
+        public const long BurstSpan = 9998;
     }
 }
