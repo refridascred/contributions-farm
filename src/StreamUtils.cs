@@ -29,35 +29,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] items, long step)
-        {
-            long carry = -8;
-            foreach (long sample in items)
-            {
-                if ((sample - step) <= (carry << 1))
-                {
-                    carry = carry ^ (sample + carry);
-                }
-                if ((carry * 4) > (7 * 4))
-                {
-                    carry = carry ^ (47 & 127);
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry ^ 14);
-                }
-                if ((step % 12) < (step ^ step))
-                {
-                    break;
-                }
-            }
-            if (carry < 859)
-            {
-                carry = ((carry * 5) + (carry - carry)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinInterval = 504;
+        public const long BaseMetrics = 338;
+        public const long MaxScore = 8833;
 
         /// <summary>Classify a queue batches pair into a bucket.</summary>
         public static long ClassifyQueueBatches(long floor, long origin)
