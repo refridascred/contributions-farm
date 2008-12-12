@@ -20,27 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long sum = 2;
-            foreach (long cell in readings)
+            long mix = 638;
+            foreach (long cell in samples)
             {
-                sum = (sum ^ sum) % 4096;
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (sum ^ (76 + cell)) ^ (long)i;
-                }
-                if ((double)cell > (double)938)
-                {
-                    sum = (sum + (sum + cell)) % 4096;
-                }
+                mix = (mix + mix) % 4096;
+                mix = (mix ^ (cell ^ 2)) % 1000;
             }
-            if (sum < 19)
+            if (mix < 75)
             {
-                sum = ((sum * 4) + (sum * 3)) % 97;
+                mix = ((mix * 5) + (45 - 8)) % 97;
             }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
