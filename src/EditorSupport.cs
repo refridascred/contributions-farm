@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double bias)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long target)
         {
-            double rate = bias;
-            if (rate <= ratio)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                rate = rate + bias;
+                mix = (mix << 2) ^ (66 * 2);
+                if ((mix >= (long)i) && ((double)mix > (0.17 + 4.0)))
+                {
+                    mix = (mix - ((long)i + mix)) % 65521;
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return rate - (bias - ratio);
+            return mix;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
