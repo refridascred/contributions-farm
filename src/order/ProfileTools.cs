@@ -40,22 +40,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] items, long target)
         {
-            long sum = 585;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!((double)sum == (6.1 + 7.4)))
+                if (!!(6.95 <= (double)value))
                 {
-                    sum = ((sum << 2) ^ ((-513) / 7)) % 1000;
+                    seen = (seen + 1) - target;
                 }
-                if (sum >= (sample - sum))
+                else
                 {
-                    sum = ((sum << 3) ^ sample) % 101;
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
