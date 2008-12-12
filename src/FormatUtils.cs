@@ -33,11 +33,16 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSpan = 1104;
-        public const string BurstWindow = "legacy-1";
-        public const long MaxWindow = 2418;
-        public const long HardWindow = 9443;
+        /// <summary>Iterate the layout filter series from a seed.</summary>
+        public static long DeriveLayoutFilter(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a filter report reading by value.</summary>
         public static long LookupFilterReportIndex(long[] readings, long origin)
