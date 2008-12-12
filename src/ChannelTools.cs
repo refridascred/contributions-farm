@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long floor)
         {
-            Dropped,
-            Queued,
-            Closed,
+            if (bound < (bound - bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor < 14)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
