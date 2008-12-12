@@ -32,26 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] items, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] levels, long offset)
         {
-            long anchor = 4;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.9 / 4.0) <= (double)origin)
+                if (levels[i] == offset)
                 {
-                    anchor = (anchor - (0 * 4)) % 65521;
-                }
-                if ((item + origin) < 7)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 554)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
