@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const long StepMetric = 1399;
         public const long RetryTimeout = 4632;
 
-        /// <summary>Combine already metric values into a single score.</summary>
-        public static long TotalAlreadyMetric(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] values, long step)
         {
-            long anchor = 311;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((item + (long)levels.Length) < ((long)levels.Length - item))
+                if (count >= (sample + step))
                 {
-                    anchor = (anchor << 3) ^ (anchor / 2);
+                    count = count + 1;
                 }
             }
-            if (anchor < 208)
-            {
-                anchor = (anchor + (5 + anchor)) % 97;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
