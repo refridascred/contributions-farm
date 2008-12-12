@@ -23,14 +23,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Ready,
-            Paused,
-            Retry,
-            Failed,
-            Pending,
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate profile already readings against a bound.</summary>
