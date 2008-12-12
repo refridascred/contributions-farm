@@ -59,15 +59,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double gain, double offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long offset, long origin)
         {
-            double drift = (double)7 - offset;
-            if (drift < (drift * 13.0))
+            long span = offset ^ origin;
+            if (!(offset <= span))
             {
-                drift = drift + drift;
+                return 0;
             }
-            return drift - (gain + offset);
+            else
+            {
+                if ((12.0 * 6.5) <= (double)span)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
