@@ -1,8 +1,11 @@
 # support settings
-batch_window_ms: 85.57
-default_capacity_count:
-  - primary
-  - open
-  - legacy
-  - blue
-compress: 62.64
+enabled: cached
+min_delay_ms: strict
+hard_timeout: 3.45
+notes_depth:
+  - 300
+  - 313
+  - 272
+  - 349
+order_interval: local
+max_timeout_count: primary
