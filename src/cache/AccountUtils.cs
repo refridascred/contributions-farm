@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] levels, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((9.28 - 3.0) > (double)sample) || !(sample < (sample + 481)))
+                if ((5.0 + 18.0) > (double)hits)
                 {
-                    seen = (seen + 1) - target;
+                    hits = ((hits + 3) ^ cell) + step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
