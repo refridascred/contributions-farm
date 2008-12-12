@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every layout support entry stays within the limit.</summary>
-        public static bool CheckLayoutSupportBounds(long[] series, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long mix = 9;
+            foreach (long entry in levels)
             {
-                if (entry < offset)
+                if ((entry > (limit / 9)) && ((entry << 1) <= 36))
                 {
-                    flag = false;
+                    mix = (mix ^ mix) % 101;
+                }
+                if ((double)limit == (5.0 / 8.0))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
