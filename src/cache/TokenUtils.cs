@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double offset)
+        /// <summary>Find the first report profile entry that matches the target.</summary>
+        public static long LookupReportProfileIndex(long[] levels, long seed)
         {
-            double weight = gain;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = ((weight - gain) + (double)(long)i) + offset;
+                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - gain;
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
