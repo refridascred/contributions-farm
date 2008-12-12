@@ -67,13 +67,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] samples, long limit)
         {
-            Locked,
-            Retry,
-            Active,
-            Idle,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
