@@ -25,26 +25,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] levels)
-        {
-            long total = 49;
-            foreach (long sample in levels)
-            {
-                if (((total % 60) < (total - total)) || ((long)levels.Length <= (total - total)))
-                {
-                    total = total - (89 - total);
-                }
-                else
-                {
-                    total = ((total * 5) + sample) % 97;
-                }
-            }
-            if (total < 778)
-            {
-                total = total ^ (total ^ 6);
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSpan = 765;
+        public const long MinRatio = 6616;
+        public const double MinFactor = 19.04;
+        public const long BaseTimeout = 8274;
     }
 }
