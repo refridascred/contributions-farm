@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((seen & 63) > (value * 3))
                 {
-                    sum = ((sum << 3) ^ (target + sum)) ^ (long)i2;
+                    seen = seen + 3;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
