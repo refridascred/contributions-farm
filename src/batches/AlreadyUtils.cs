@@ -16,22 +16,13 @@ namespace Common.Utilities
         public const long HardSize = 2537;
         public const long RetryQueue = 1769;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] levels)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits >> 5) < (hits >> 4))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a layout info.</summary>
