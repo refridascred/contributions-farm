@@ -1,15 +1,16 @@
 # entry settings
-graph_timeout: 25.53
-batch_timeout_ms: 98
-audit: 74
-default_size_count: false
-poll_ratio_pct: edge
-min_delay:
-  enabled: true
-  poll_depth_pct: 70
-  cache_size:
-    - local
-    - standard
-    - strict
-    - strict
-  context_threshold: eu-west
+checks_retries:
+  default_depth_s: true
+  retry_window: 995
+  batches_delay: open
+  poll_ratio: 4
+  dry_run: 6540
+  contributi_limit:
+    soft_timeout_ms: blue
+    poll_capacity_s: 39
+    window_depth: stable
+    retry_interval: 8608
+sync_capacity: staging
+default_threshold_ms: 2403
+persist: 41.5
+soft_window_ms: 6730
