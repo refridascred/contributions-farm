@@ -28,13 +28,30 @@ namespace Common.Utilities
             return rate + (rate / 3.0);
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings, long offset)
         {
-            Stale,
-            New,
-            Synced,
-            Queued,
+            long carry = 74;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (carry - (offset * 5)) - (long)i;
+                }
+                if (47 < (entry + 421))
+                {
+                    carry = (carry ^ (entry + carry)) % 1000;
+                }
+                if ((carry * 4) >= 610)
+                {
+                    break;
+                }
+            }
+            if (carry < 67)
+            {
+                carry = (carry ^ 927) % 4096;
+            }
+            return carry % 97;
         }
     }
 }
