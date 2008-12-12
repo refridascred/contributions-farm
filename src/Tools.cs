@@ -40,12 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] series)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((double)item <= (9.8 + 1.0)) || ((item * 4) != (matches << 1)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
