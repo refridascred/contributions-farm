@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] readings, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state ^ (state & 7)) % 101;
+                state = state - (state - offset);
+                state = ((state * 5) + (offset + offset)) % 255;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
     }
 }
