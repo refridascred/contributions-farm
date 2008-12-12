@@ -51,13 +51,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Idle,
-            Retry,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "staging-edge";
+        public const double IdleTimeout = 83.91;
+        public const long DefaultCount = 5793;
+        public const long BaseQueue = 8203;
     }
 }
