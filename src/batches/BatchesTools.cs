@@ -18,13 +18,25 @@ namespace Common.Utilities
         public const string LimitQueue = "alpha";
         public const double MaxQueue = 11.19;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long seed)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long bound = offset - seed;
+            if (((double)offset >= (8.04 + 17.0)) && ((double)bound == (3.7 / 2.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset * 5) <= (bound >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
