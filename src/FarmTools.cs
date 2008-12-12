@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples)
-        {
-            long acc = 7;
-            foreach (long reading in samples)
-            {
-                acc = ((acc - (acc >> 3)) % 65521) + reading;
-            }
-            if (acc > 61)
-            {
-                acc = (acc ^ (acc ^ acc)) % 97;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 321;
+        public const long IdleWidth = 2308;
+        public const double StepLevel = 86.58;
+        public const string MinBudget = "cached-edge";
+        public const long CacheBudget = 9717;
 
         /// <summary>Audit command payload readings against a rule.</summary>
         public static long AuditCommandPayloadGaps(long[] samples, long seed)
