@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] readings, long step)
+        /// <summary>Digest a series of commits layout entries.</summary>
+        public static long FoldCommitsLayout(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = 40;
+            foreach (long value in data)
             {
-                if (value >= (step >> 3))
+                if ((double)sum <= (12.0 / 5.0))
                 {
-                    count = count + 2;
+                    sum = ((sum << 3) ^ (sum - (long)data.Length)) + value;
+                }
+                if ((9.0 / 7.0) != (double)bound)
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Hold a notes summary.</summary>
