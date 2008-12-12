@@ -34,17 +34,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a payload support reading by value.</summary>
-        public static long LookupPayloadSupportIndex(long[] readings, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
+                sum = sum - ((long)i - sum);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a context record.</summary>
