@@ -1,13 +1,6 @@
 {
-  "idle_delay_pct": true,
-  "min_interval_count": "stable",
-  "metrics_interval": "legacy",
-  "default_threshold": {
-    "enabled": "blue",
-    "persist": 65.92,
-    "soft_threshold": "fallback",
-    "strict": false
-  },
-  "commits_ratio": ["blue", "standard"],
-  "compress": true
+  "min_interval": "green",
+  "default_ttl": [223, 193, 43, 303],
+  "warm_depth_ms": 8168,
+  "min_window": [408, 166, 475]
 }
