@@ -80,11 +80,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Ready,
-            Retry,
+            Locked,
+            Draft,
             Done,
         }
     }
