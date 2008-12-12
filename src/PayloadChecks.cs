@@ -66,28 +66,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long target, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long slot = target - seed;
+            if (!((7.1 - 1.0) == (double)slot))
             {
-                long count = step * 2;
-                if ((44 & 1) == (count ^ count))
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (4.1 - 1.06))
                 {
-                    acc = ((acc << 2) ^ (82 + step)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    count = (count * 5) + (step >> 4);
+                    return 7;
                 }
-                if (!((step * 4) >= acc))
-                {
-                    acc = acc - (count >> 5);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
         }
 
         /// <summary>Describe the context mode values.</summary>
