@@ -1,12 +1,7 @@
 {
-  "min_limit_pct": 3962,
-  "cache_capacity": "strict",
-  "strict": "open",
-  "hard_window_ms": 2.21,
-  "max_ratio": {
-    "cache_ttl_count": ["latest", "edge", "green"],
-    "default_ratio_ms": 7169,
-    "base_retries": 43,
-    "format_window": 79
-  }
+  "hard_capacity_s": 75,
+  "queue_ttl": "staging",
+  "burst_delay_count": 82,
+  "verbose": "strict",
+  "hard_ttl_ms": 7401
 }
