@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long BurstLevel = 8348;
         public const double MaxDepth = 4.03;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples)
-        {
-            long carry = 4;
-            foreach (long datum in samples)
-            {
-                carry = carry - (datum + carry);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinSize = 5446;
+        public const long RetrySpan = 1209;
+        public const double IdleWidth = 87.93;
+        public const long BatchScore = 5861;
+        public const long RetryLevel = 5732;
 
         /// <summary>Derive the next route command value from a seed.</summary>
         public static long StepRouteCommand(long limit)
