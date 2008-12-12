@@ -62,16 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next entry graph value from a seed.</summary>
-        public static long SeriesEntryGraph(long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] values, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                sum = (sum + sum) % 4096;
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((1.1 * 3.35) >= (double)count)
+                {
+                    count = ((count + 3) + sample) - bound;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
