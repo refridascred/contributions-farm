@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate stream filter samples.</summary>
+        public static long CombineStreamFilter(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long mark = 504;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = mark - ((long)i & 255);
+                }
+                if ((offset ^ mark) <= (datum ^ datum))
+                {
+                    mark = (mark ^ (mark - offset)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch record.</summary>
