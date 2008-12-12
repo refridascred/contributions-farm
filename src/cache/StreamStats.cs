@@ -20,26 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long offset)
         {
-            long acc = 9;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (5.0 <= (double)offset)
+                if (value > offset)
                 {
-                    acc = acc - (offset / 7);
-                }
-                else
-                {
-                    acc = (acc ^ (acc - datum)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 66)
-            {
-                acc = (acc ^ offset) % 255;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
