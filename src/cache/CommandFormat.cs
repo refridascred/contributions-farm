@@ -23,12 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Draft,
-            Active,
-            Retry,
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank profile input into a small class.</summary>
