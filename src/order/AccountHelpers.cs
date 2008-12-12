@@ -50,18 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] samples)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mark = -184;
+            foreach (long cell in items)
             {
-                if ((double)sample == (12.0 - 1.0))
+                if ((mark <= (cell + cell)) && ((5 + mark) > mark))
                 {
-                    seen = seen + 1;
+                    mark = (mark ^ (cell - mark)) % 4096;
+                }
+                else
+                {
+                    mark = mark ^ (cell ^ mark);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count commits batches pairs that satisfy a relation.</summary>
