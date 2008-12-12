@@ -40,20 +40,12 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Blend two queue contributi measurements.</summary>
-        public static double BlendQueueContributi(double rate, double offset)
-        {
-            double gain = (offset * 1.95) + (offset - rate);
-            if (gain >= offset)
-            {
-                gain = gain + (double)11;
-            }
-            else
-            {
-                gain = gain + (double)20;
-            }
-            return gain + offset;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 7737;
+        public const double StepChecks = 34.57;
+        public const long MinSize = 7263;
+        public const string BatchChecks = "cached";
+        public const string BaseFactor = "open-1";
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
