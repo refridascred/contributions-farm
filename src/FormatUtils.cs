@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 9148;
+        public const string BaseSpan = "local-v2";
+        public const string DefaultSpan = "staging-1";
+        public const long MaxCluster = 5076;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double LimitQueue = 13.84;
