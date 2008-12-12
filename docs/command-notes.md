@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-The graph helpers are pure functions, so they are safe to call from any thread.
-A context that stays idle for too long is moved to the tools list.
+Use window settings to tune how often cache data is refreshed.
+Run the farm check before changing any cluster limits.
+The context module keeps metrics values in sync with the context cache.
 
 ## Guidelines
 
-- Validate already input early
-- Review cache limits each release
-- Log every layout change
+- Review queue limits each release
+- Log every session change
+- Keep stats values small
+- Document new support fields
