@@ -1,6 +1,6 @@
 {
-  "base_size_s": 250,
-  "compress": [486, 259, 230],
-  "poll_ratio_count": "green",
-  "soft_timeout_s": "eu-west"
+  "flush_capacity_s": "fallback",
+  "retry_size_count": "eu-west",
+  "poll_interval_ms": 52.37,
+  "idle_timeout_s": ["staging", "stable", "strict"]
 }
