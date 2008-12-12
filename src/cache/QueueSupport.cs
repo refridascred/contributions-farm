@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Paused,
-            Synced,
-            Failed,
-            Locked,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
