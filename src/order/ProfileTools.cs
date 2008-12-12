@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] series, long seed)
         {
-            long acc = 55;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((cell - cell) >= cell)
+                if ((item & 255) <= (seed + 43))
                 {
-                    acc = acc - cell;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Roll a stream farm counter forward.</summary>
