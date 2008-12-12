@@ -53,19 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] samples, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (value <= bound)
+                if (carry <= 163)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 2) ^ ((-4) + carry);
+                    continue;
                 }
+                carry = ((carry << 2) ^ (long)i) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
