@@ -26,21 +26,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema cluster pairs that satisfy a relation.</summary>
-        public static long MatchSchemaClusterCount(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
