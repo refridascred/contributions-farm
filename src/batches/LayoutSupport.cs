@@ -25,13 +25,14 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Closed,
-            Paused,
-            Pending,
+            New,
+            Done,
+            Synced,
             Failed,
+            Paused,
         }
 
         /// <summary>Grade a counter metrics value against two limits.</summary>
