@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] items, long step)
         {
-            Draft,
-            Active,
-            Paused,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!(560 >= ((long)items.Length / 7)))
+                {
+                    seen = ((seen + 2) + cell) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
