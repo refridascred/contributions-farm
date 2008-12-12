@@ -57,11 +57,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Look up the position of a support buffer sample.</summary>
+        public static long FindSupportBufferIndex(long[] samples, long step)
         {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
