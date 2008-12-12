@@ -12,24 +12,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long floor, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            if ((double)origin == (1.1 * 2.0))
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin * 4) >= (origin + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the notes phase values.</summary>
