@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)596 - (double)40;
+            if (mean <= mean)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + (bias / 4.0)) + scale;
             }
-            return hits;
+            else
+            {
+                mean = mean + (bias + bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)6) + (double)(long)i;
+            }
+            return mean + (bias + bias);
         }
 
         /// <summary>Describe the support phase values.</summary>
