@@ -66,25 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long offset, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            long span = offset ^ origin;
-            if (!(offset <= span))
+            long sum = 97;
+            foreach (long cell in levels)
             {
-                return 0;
+                sum = ((sum ^ sum) % 65521) ^ cell;
             }
-            else
+            if (sum > 34)
             {
-                if ((12.0 * 6.5) <= (double)span)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                sum = ((sum * 4) + (830 >> 5)) % 255;
             }
+            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
