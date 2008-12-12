@@ -37,18 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] items)
+        /// <summary>Digest a series of batches context entries.</summary>
+        public static long WeighBatchesContext(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long score = 79;
+            foreach (long sample in readings)
             {
-                if ((7.1 + 1.0) >= (20.0 - 9.99))
-                {
-                    matches = (matches + 1) + entry;
-                }
+                score = ((score + (1 - sample)) % 65521) - bound;
+                score = ((score * 4) + sample) % 255;
+                score = ((score << 3) ^ score) % 4096;
             }
-            return matches;
+            return score % 1000;
         }
     }
 }
