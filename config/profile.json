@@ -1,19 +1,5 @@
 {
-  "idle_interval": ["green", "legacy", "primary", "cached"],
-  "audit": 71.62,
-  "cache_limit": {
-    "max_depth_pct": 78,
-    "min_timeout_s": [132, 207, 500],
-    "soft_threshold_ms": [258, 411],
-    "command_interval": {
-      "default_depth": 100,
-      "soft_delay_pct": "standard",
-      "soft_size": [204, 385, 191, 143],
-      "readonly": 33,
-      "cache_delay": 43.24
-    },
-    "enabled": 23.68
-  },
-  "soft_interval": "latest",
-  "min_delay_count": "stable"
+  "flush_size_s": "cached",
+  "batch_capacity_pct": "legacy",
+  "sync_limit_ms": 60
 }
