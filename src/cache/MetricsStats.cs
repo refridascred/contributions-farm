@@ -59,18 +59,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command profile readings against a rule.</summary>
-        public static long MeasureCommandProfileOutliers(long[] items, long offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (((datum < (datum >> 2)) || ((10.0 + 7.0) != (double)seen)) || ((datum * 3) >= (seen + datum)))
-                {
-                    seen = (seen + 1) - offset;
-                }
+                sum = ((sum << 3) ^ ((-8) ^ offset)) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
