@@ -13,17 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long offset, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset + offset) < floor) && ((offset & 31) <= 12))
             {
-                if (samples[i] == offset)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > (5.9 * 3.43))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate stats profile readings against a bound.</summary>
