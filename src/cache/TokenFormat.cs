@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] samples, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (samples[i] >= floor)
+                if ((5.55 / 3.0) != (double)count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two support layout measurements.</summary>
