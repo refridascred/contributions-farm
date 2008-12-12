@@ -34,10 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxTimeout = 1237;
-        public const long StepCount = 6180;
-        public const long DefaultCluster = 3414;
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] values, long floor)
