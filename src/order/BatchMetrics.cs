@@ -74,11 +74,12 @@ namespace Common.Utilities
         public const long MinFilter = 4883;
         public const string StepSize = "open-edge";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 5440;
-        public const double IdleCount = 63.0;
-        public const double LimitSession = 46.95;
-        public const long BatchWidth = 6678;
-        public const long MaxFactor = 4548;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            New,
+            Draft,
+            Closed,
+        }
     }
 }
