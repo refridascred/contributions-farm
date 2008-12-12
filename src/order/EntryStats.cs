@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long CountRouteToolsOutliers(long[] data)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((8.5 * 4.66) < (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
