@@ -1,7 +1,8 @@
 {
-  "min_depth_pct": 9363,
-  "order_size": "strict",
-  "batch_delay": 3090,
-  "dry_run": ["edge", "green", "strict"],
-  "persist": "latest"
+  "persist": "primary",
+  "min_capacity_count": 93,
+  "compress": "cached",
+  "base_size_s": "primary",
+  "cluster_window": 34.16,
+  "warm_timeout": 31.39
 }
