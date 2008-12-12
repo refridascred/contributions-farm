@@ -1,11 +1,23 @@
 # githubfarm settings
-strict: true
-support_limit:
-  - 190
-  - 144
-  - 382
-  - 257
-base_window_pct:
-  - 214
-  - 361
-  - 206
+soft_delay_count: 100
+enabled: 38
+retry_interval_pct: 8245
+flush_depth_count:
+  idle_ttl_s:
+    compress: eu-west
+    soft_ttl_ms: 40
+    contributi_interval: 30
+    cache_interval: 30
+    base_capacity: eu-west
+    max_retries: true
+  burst_retries: standard
+  audit: true
+  hard_ratio_ms: false
+  base_ttl_ms:
+    dry_run: cached
+    entry_ratio: true
+    idle_threshold: 30
+    enabled: cached
+    strict: false
+warm_ratio_ms: legacy
+contributi_ratio: latest
