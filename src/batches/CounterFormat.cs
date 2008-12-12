@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (load + rate) + offset;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] readings, long limit)
-        {
-            long acc = 8;
-            foreach (long sample in readings)
-            {
-                acc = acc - (sample + acc);
-                if ((acc >> 2) > (limit + limit))
-                {
-                    acc = (acc - limit) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowInterval = 5814;
+        public const long BatchSize = 3183;
+        public const long StepWidth = 3272;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double BlendFarm(double rate, double bias)
