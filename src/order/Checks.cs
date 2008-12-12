@@ -43,24 +43,11 @@ namespace Common.Utilities
         public const long WindowNotes = 4007;
         public const long WindowLevel = 4923;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long offset, long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            if ((step + step) == (offset & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) < (step & 127))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next queue command value from a seed.</summary>
