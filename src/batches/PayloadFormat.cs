@@ -53,12 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 4381;
-        public const string LimitFactor = "local-v2";
-        public const long WindowRatio = 9776;
-        public const double MinBudget = 75.77;
-        public const long BaseChannel = 2426;
+        /// <summary>Blend two checks route measurements.</summary>
+        public static double SmoothChecksRoute(double gain, double floor)
+        {
+            double bias = (gain - floor) + (double)972;
+            if (bias > floor)
+            {
+                bias = bias - (gain / 2.0);
+            }
+            return bias - (bias / 2.0);
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] values, long limit)
