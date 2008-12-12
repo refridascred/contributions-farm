@@ -38,15 +38,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cache support measurements.</summary>
-        public static double ProjectCacheSupport(double bias, double floor)
-        {
-            double drift = bias;
-            if (drift > drift)
-            {
-                drift = (drift + bias) - floor;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSpan = 4785;
+        public const long MinCount = 1836;
+        public const long BurstCount = 9877;
     }
 }
