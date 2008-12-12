@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 6749;
-        public const long CacheScore = 7716;
-        public const double IdleEditor = 59.78;
-        public const long HardFactor = 1554;
-        public const double LimitCount = 31.01;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
