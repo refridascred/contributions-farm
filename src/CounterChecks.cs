@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
+            Retry,
             Failed,
-            Closed,
-            Draft,
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Look up the position of a report context sample.</summary>
