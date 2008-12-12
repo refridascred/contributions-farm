@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] data, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((double)step == (5.55 + 1.01))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
