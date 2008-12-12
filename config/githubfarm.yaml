@@ -1,34 +1,21 @@
 # githubfarm settings
-tools_depth: true
-max_ttl: 50
-filter_size:
-  flush_interval: 7322
-  warm_size: true
-  min_interval: true
-  compress:
-    - 89
-    - 376
-    - 2
-    - 406
-  buffer_capacity:
-    tools_size: true
-    counter_delay: 60
-    layout_interval:
-      - 431
-      - 446
-    strict: 7284
-sync_interval_ms:
-  entry_size:
-    counter_capacity: 7578
-    entry_window: green
-    report_timeout: latest
-    warm_limit: open
-    sync_window_s: true
-    editor_window: legacy
-  min_size_ms: local
-  context_ttl: green
-  persist:
-    - 387
-    - 265
-sync_capacity: 40.59
-filter_capacity: 250
+hard_ratio_ms: staging
+idle_limit_pct: 1024
+min_size_pct:
+  token_threshold: fallback
+  flush_timeout: 1879
+  base_capacity_s:
+    burst_depth: staging
+    base_limit_pct:
+      - local
+      - strict
+      - stable
+    contributi_threshold:
+      - 375
+      - 139
+    cache_ratio_s: 11
+    min_size_s: false
+    metric_interval: 53.8
+  payload_retries: 73.43
+  base_limit_count: 5
+min_ratio: local
