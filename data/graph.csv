@@ -1,7 +1,7 @@
-id,region,rank
-1,latest,628
-2,286,237
-3,open,607
-4,cached,918
-5,555,fallback
-6,66.09,47.06
+id,weight,count,state,rank
+1,886,85.67,97.7,29.0
+2,standard,blue,130,72.85
+3,52.24,868,80.45,808
+4,355,latest,500,11.27
+5,76.95,green,93.96,93.24
+6,65.27,fallback,fallback,885
