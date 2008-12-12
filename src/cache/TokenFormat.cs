@@ -13,26 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of order format entries.</summary>
-        public static long TotalOrderFormat(long[] data)
+        /// <summary>Check that every report window entry stays within the limit.</summary>
+        public static bool GuardReportWindowBounds(long[] series, long limit)
         {
-            long mix = 301;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((mix & 15) > (-1))
+                if (sample != limit)
                 {
-                    mix = (((mix << 3) ^ (mix >> 2)) % 1000) + entry;
-                }
-                if ((mix ^ mix) > (mix << 2))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (mix > 747)
-            {
-                mix = ((mix * 2) + mix) % 65521;
-            }
-            return mix % 97;
+            return ready;
         }
 
         /// <summary>Hold a notes header.</summary>
