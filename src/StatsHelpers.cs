@@ -16,25 +16,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank counter profile input into a small class.</summary>
-        public static long BucketCounterProfile(long offset, long floor)
+        /// <summary>Find the first token farm entry that matches the target.</summary>
+        public static long SeekTokenFarmIndex(long[] data, long step)
         {
-            long delta = offset + floor;
-            if (offset < (352 + delta))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((8.9 + 15.0) > (double)delta) || (offset > (floor / 9)))
+                if (data[i] <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of account farm readings.</summary>
