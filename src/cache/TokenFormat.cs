@@ -32,15 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Count order metric pairs that satisfy a relation.</summary>
+        public static long CompareOrderMetricCount(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
+                    if ((levels[i] - levels[j]) != 13)
                     {
                         hits = hits + 1;
                     }
