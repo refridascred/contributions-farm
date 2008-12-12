@@ -14,11 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchSpan = "stable-edge";
-        public const long BaseCommand = 5313;
-        public const long MaxCommand = 8656;
-        public const double BurstScore = 38.87;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (mark ^ (step / 9)) - (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorLimits(long[] readings, long seed)
