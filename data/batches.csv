@@ -1,9 +1,7 @@
-id,region,count,token
-1,143,61.93,38
-2,632,8.6,25.54
-3,806,71.06,793
-4,green,201,611
-5,279,local,legacy
-6,326,625,cached
-7,67.63,2.22,local
-8,21.07,810,79.97
+id,region,label,active
+1,777,blue,open
+2,60.92,cached,629
+3,45.31,106,589
+4,794,19,cached
+5,blue,217,local
+6,870,878,868
