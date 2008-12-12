@@ -11,28 +11,35 @@ namespace Common.Utilities
         public const long CacheTimeout = 6766;
         public const long WindowWidth = 2625;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long step, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long bound, long target)
         {
-            if (seed <= (seed + step))
+            if ((282 + bound) < (bound / 6))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((double)step < (9.6 + 2.8))
+                if (((target + target) >= bound) || ((target % 10) <= (bound ^ target)))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (((seed & 15) <= (step + 30)) || ((step & 63) >= (step + 11)))
+                    if (((2.4 * 2.6) == (double)bound) || ((262 & 1) >= (bound + target)))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        return 4;
+                        if ((target < 76) && (target <= 19))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
