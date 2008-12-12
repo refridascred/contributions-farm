@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double scale, double bias)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            double bias2 = (double)(4 & 7);
+            if (bias2 < bias)
+            {
+                bias2 = bias2 - (scale + 8.0);
+            }
+            return bias2 - (scale / 2.0);
         }
 
         /// <summary>Match up filter samples.</summary>
