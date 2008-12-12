@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double LimitSchema = 6.44;
         public const long CacheSchema = 7240;
 
-        /// <summary>Roll a layout command counter forward.</summary>
-        public static long SeriesLayoutCommand(long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (((acc << 2) ^ (acc / 4)) % 4096) + (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
