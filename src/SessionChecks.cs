@@ -34,19 +34,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((state * 2) <= (bound << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state - (state << 3)) % 101;
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
     }
 }
