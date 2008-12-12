@@ -47,39 +47,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long step, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long slot = step + seed;
-            if (((slot >> 1) <= (slot ^ step)) || ((double)1 < (double)slot))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) == (seed & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step + slot) < 7) && (seed < (seed & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step > (slot + slot))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the stream kind values.</summary>
