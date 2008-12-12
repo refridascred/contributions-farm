@@ -12,18 +12,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mark = 7;
+            foreach (long entry in series)
             {
-                if (((7.64 + 8.0) == (double)matches) && (reading >= (matches - reading)))
+                if ((offset - mark) >= offset)
                 {
-                    matches = matches + 2;
+                    mark = (mark ^ (entry + entry)) % 101;
+                }
+                if ((1.1 - 1.67) >= (double)offset)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
