@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of batches token readings.</summary>
-        public static long MatchBatchesTokenCount(long[] data)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
