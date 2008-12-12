@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next checks metric value.</summary>
-        public static double ProjectChecksMetric(double gain, double offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] items, long bound)
         {
-            double ratio = (1.1 * 20.0) * 8.4;
-            if (ratio >= (offset / 8.0))
+            bool found = true;
+            foreach (long cell in items)
             {
-                ratio = ratio - (0.6 - gain);
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + gain) - (double)(long)i;
-            }
-            return ratio - (5.0 / 7.0);
+            return found;
         }
 
         /// <summary>Describe the payload class values.</summary>
