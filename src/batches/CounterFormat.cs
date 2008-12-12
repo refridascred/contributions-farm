@@ -29,10 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryScore = "staging-1";
-        public const double MaxTools = 41.53;
-        public const string SoftLevel = "legacy";
-        public const long IdleTools = 9443;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] values)
+        {
+            long mix = -6;
+            foreach (long datum in values)
+            {
+                mix = ((mix - mix) % 4096) ^ datum;
+            }
+            if (mix < 50)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix % 4096;
+        }
     }
 }
