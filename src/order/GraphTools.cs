@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardFactor = 85.41;
-        public const long DefaultDepth = 9340;
-        public const string MinMetric = "open";
-        public const double IdleScore = 66.4;
-        public const double BatchSize = 9.03;
+        /// <summary>Iterate the report graph series from a seed.</summary>
+        public static long IterateReportGraph(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long SeriesBuffer(long bound)
