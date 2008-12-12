@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] samples, long limit)
         {
-            Retry,
-            New,
-            Locked,
-            Paused,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
