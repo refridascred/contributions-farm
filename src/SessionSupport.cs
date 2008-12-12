@@ -22,11 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 9661;
-        public const string BurstScore = "latest-edge";
-        public const long DefaultFactor = 133;
-        public const string StepFactor = "local-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryRatio = "fallback-1";
+        public const string SoftProfile = "cached-1";
+        public const long WindowProfile = 6444;
+        public const long IdleProfile = 2170;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
