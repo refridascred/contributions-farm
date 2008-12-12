@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long sum = 67;
+            foreach (long datum in series)
             {
-                if (datum <= seed)
+                if ((double)(-1) < (double)datum)
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 2) + (sum - 40)) % 255;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Combine contributi counter values into a single score.</summary>
