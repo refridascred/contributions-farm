@@ -65,26 +65,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] readings)
         {
-            long sum = 3;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((150 + (-3)) > (cell << 3))
+                if ((cell >> 3) < matches)
                 {
-                    sum = ((sum << 2) ^ (9 - (long)data.Length)) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ 60) % 65521;
-                }
-                if ((9.48 * 8.0) <= (double)cell)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
