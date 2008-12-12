@@ -38,22 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            long sum = 515;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((cell + 70) < (long)values.Length) || ((sum >> 5) <= (cell >> 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - (cell + 4)) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ cell) % 101;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
