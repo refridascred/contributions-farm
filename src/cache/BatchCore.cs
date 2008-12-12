@@ -17,15 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
