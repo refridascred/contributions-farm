@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] items, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] values, long floor)
         {
-            long acc = 3;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((double)limit > (1.0 / 5.0))
+                if (datum <= floor)
                 {
-                    acc = ((acc - (acc - limit)) % 255) - item;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
