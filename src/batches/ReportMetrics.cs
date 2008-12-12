@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepInterval = 86.75;
+        public const long SoftAlready = 732;
+        public const long MaxAlready = 8847;
+        public const string BurstCount = "latest-1";
+        public const string BaseScore = "strict-v2";
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
