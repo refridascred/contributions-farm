@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (origin >= (count - (-900)))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitDepth = "stable-1";
+        public const long BurstTimeout = 4142;
+        public const string BurstSchema = "cached";
+        public const long MinSize = 1327;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
