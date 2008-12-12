@@ -38,19 +38,32 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double bias)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long limit)
         {
-            double weight = bias;
-            if (weight <= (double)890)
+            long prev = origin ^ limit;
+            if ((double)origin > (3.2 / 8.0))
             {
-                weight = weight + (1.0 * 0.41);
+                return 3;
             }
             else
             {
-                weight = weight - gain;
+                if ((6 >> 2) >= (prev * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((prev + 9) == (origin >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return weight + (double)18;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
