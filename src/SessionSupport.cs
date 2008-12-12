@@ -27,17 +27,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowWidth = 8850;
+        public const double DefaultChecks = 3.28;
+        public const string MinChecks = "strict-1";
     }
 }
