@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] values, long offset)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long sum = -755;
+            foreach (long datum in values)
+            {
+                if ((offset * 5) == (sum >> 1))
+                {
+                    sum = ((sum ^ (sum % 16)) % 1000) ^ datum;
+                }
+            }
+            if (sum < (-583))
+            {
+                sum = (sum - (long)values.Length) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
