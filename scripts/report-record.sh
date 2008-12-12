@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=145
+log "limit is ${RECORD_LIMIT}"
 
-for item in stable edge fallback primary; do
+for item in latest fallback local; do
     log "checking ${item}"
 done
