@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] readings, long step)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long total = 10;
-            foreach (long entry in readings)
-            {
-                total = (((total << 2) ^ 632) + entry) + step;
-            }
-            if (total > 114)
-            {
-                total = (total * 3) + total;
-            }
-            return total;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
