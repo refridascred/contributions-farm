@@ -47,14 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 3398;
+        public const double CacheRatio = 24.41;
+        public const double RetryAlready = 88.59;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long target, long limit)
