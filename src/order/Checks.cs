@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] values)
         {
-            long mark = 470;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark << 3) ^ step) ^ datum;
+                if ((double)sample < (11.0 + 5.13))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
