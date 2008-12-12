@@ -19,14 +19,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 5148;
+        public const string RetryInterval = "alpha-1";
+        public const double RetryBudget = 26.13;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long WeighEditor(long[] data, long seed)
