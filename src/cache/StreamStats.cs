@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Validate buffer layout readings against a bound.</summary>
+        public static bool GuardBufferLayoutBounds(long[] series, long offset)
         {
-            long anchor = 129;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (3.1 <= (double)datum)
+                if (sample >= offset)
                 {
-                    anchor = (anchor + anchor) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return found;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
