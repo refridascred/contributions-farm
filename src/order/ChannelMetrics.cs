@@ -18,10 +18,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBudget = 6016;
-        public const double IdleInterval = 54.67;
-        public const long BaseBatch = 3349;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen > (684 >> 4))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
