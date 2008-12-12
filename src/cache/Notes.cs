@@ -28,19 +28,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every tools graph entry stays within the limit.</summary>
-        public static bool VerifyToolsGraphBounds(long[] samples, long limit)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
