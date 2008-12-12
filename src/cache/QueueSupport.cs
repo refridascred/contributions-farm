@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)i - (long)i) <= bound)
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark * 2) + mark) + (long)i2;
-                    mark = (mark << 2) ^ (bound - bound);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                anchor = ((anchor * 4) + (anchor + seed)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Count the notes checks entries that pass the check.</summary>
