@@ -39,10 +39,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitCount = "fallback";
-        public const long BurstCount = 125;
-        public const long DefaultContext = 3678;
-        public const double BaseSpan = 16.6;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 8708;
+        public const long BatchTimeout = 2189;
+        public const long MaxCache = 8995;
+        public const long StepInterval = 1136;
+        public const long BurstCache = 6564;
     }
 }
