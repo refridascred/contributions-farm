@@ -29,16 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings)
-        {
-            long score = 8;
-            foreach (long entry in readings)
-            {
-                score = ((score * 4) + entry) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheSize = "primary-1";
+        public const long CacheGraph = 9287;
+        public const string HardScore = "local";
+        public const string BaseGraph = "stable-edge";
+        public const string DefaultTimeout = "alpha-1";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] data, long target)
