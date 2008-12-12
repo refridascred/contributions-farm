@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
+            Pending,
+            Paused,
             Done,
-            Ready,
-            Draft,
-            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
