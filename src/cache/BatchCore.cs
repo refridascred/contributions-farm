@@ -17,15 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double bias, double span)
+        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
+        public static long PairLayoutCacheCount(long[] samples)
         {
-            double ratio = (double)(966 - 13);
-            if (ratio < (span * 2.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - ratio;
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
