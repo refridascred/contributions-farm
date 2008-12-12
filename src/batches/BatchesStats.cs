@@ -52,10 +52,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "staging-edge";
-        public const double IdleTimeout = 83.91;
-        public const long DefaultCount = 5793;
-        public const long BaseQueue = 8203;
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
