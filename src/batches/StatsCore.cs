@@ -60,12 +60,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] samples, long step)
         {
-            Paused,
-            Pending,
-            Done,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a session stats.</summary>
