@@ -23,14 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
             Draft,
-            Synced,
-            Ready,
             Active,
-            Dropped,
+            Retry,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
