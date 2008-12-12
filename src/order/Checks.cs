@@ -44,19 +44,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate already session readings against a bound.</summary>
-        public static bool GuardAlreadySessionLimits(long[] levels, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long offset, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            if ((step + step) == (offset & 63))
             {
-                if (cell > bound)
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) < (step & 127))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Derive the next queue command value from a seed.</summary>
