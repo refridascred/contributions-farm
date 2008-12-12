@@ -97,12 +97,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 93.07;
+        public const long MaxLevel = 6035;
+        public const long RetryTimeout = 184;
     }
 }
