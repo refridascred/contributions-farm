@@ -27,27 +27,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] samples, long step)
-        {
-            long anchor = 549;
-            foreach (long cell in samples)
-            {
-                if (!((double)cell < (0.75 - 5.1)))
-                {
-                    anchor = anchor + (6 & 7);
-                }
-                else
-                {
-                    anchor = anchor + (anchor - step);
-                }
-            }
-            if (anchor < (-588))
-            {
-                anchor = (anchor + 8) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinDepth = 2352;
+        public const long WindowLevel = 8097;
+        public const long LimitFormat = 3832;
+        public const long BatchFormat = 419;
+        public const long BurstFormat = 2634;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
