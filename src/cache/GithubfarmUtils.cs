@@ -38,26 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] data, long floor)
         {
-            long result = 8;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((long)data.Length ^ result) < entry) || ((result * 2) > (entry & 127)))
+                if (data[i] <= floor)
                 {
-                    break;
-                }
-                if ((result >> 1) <= (result + result))
-                {
-                    result = (result - (0 - 765)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > (-22))
-            {
-                result = (result ^ (result / 9)) % 97;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a cluster header.</summary>
