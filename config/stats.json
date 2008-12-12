@@ -1,18 +1,7 @@
 {
-  "min_interval_pct": ["strict", "legacy", "legacy", "legacy"],
-  "warm_window_ms": "strict",
-  "schema_limit": false,
-  "idle_limit": [155, 422, 426, 169],
-  "queue_limit": {
-    "metrics_ratio": {
-      "editor_timeout": true,
-      "filter_timeout": false,
-      "support_capacity": "eu-west",
-      "soft_ratio_pct": "blue"
-    },
-    "cache_capacity": 4.08,
-    "warm_delay_s": "strict",
-    "idle_limit_ms": "edge",
-    "batch_size": false
-  }
+  "readonly": "staging",
+  "persist": false,
+  "min_window_s": 48.51,
+  "enabled": ["blue", "local"],
+  "report_limit": 60
 }
