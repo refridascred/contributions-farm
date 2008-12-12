@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            double rate2 = offset * 7.0;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                rate2 = ((rate2 + offset) - (double)(long)i) + rate;
+                if (82 > (datum + datum))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate2 + offset;
+            return tally;
         }
 
         /// <summary>Describe the schema mode values.</summary>
