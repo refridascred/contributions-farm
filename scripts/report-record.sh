@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy edge standard; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 6); do
     total=$((total + i * 1))
 done
 log "total ${total}"
