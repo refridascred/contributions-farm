@@ -1,14 +1,14 @@
 # Command notes
 
-Run the stream check before changing any account limits.
-Keep channel and stream names short and lowercase.
+The format module keeps farm values in sync with the stream cache.
+Each entry is validated before it reaches the tools queue.
+Use graph settings to tune how often route data is refreshed.
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Keep session and payload names short and lowercase.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Validate support input early
-- Document new context fields
-- Review support limits each release
-- Log every support change
+- Validate graph input early
+- Log every already change
+- Prefer schema defaults
