@@ -1,12 +1,12 @@
 # Command notes
 
-Use graph settings to tune how often profile data is refreshed.
-A report that stays idle for too long is moved to the order list.
-The stream module keeps queue values in sync with the schema cache.
+The metrics report groups every route by layout.
+Each batch is validated before it reaches the stream queue.
+When a session fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate token input early
-- Review contributi limits each release
-- Keep filter values small
-- Log every contributi change
+- Log every counter change
+- Validate schema input early
+- Review githubfarm limits each release
+- Prefer commits defaults
