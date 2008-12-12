@@ -54,10 +54,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryDepth = 0.59;
-        public const string BatchLevel = "alpha-1";
-        public const long IdleContributi = 826;
-        public const long MinDepth = 6700;
+        /// <summary>Find the first command channel entry that matches the target.</summary>
+        public static long SeekCommandChannelIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
