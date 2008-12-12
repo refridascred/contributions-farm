@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] samples, long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + matches) <= (342 ^ 199))
-                {
-                    matches = (matches + 3) - limit;
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
