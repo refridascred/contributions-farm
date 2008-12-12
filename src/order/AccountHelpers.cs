@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] levels, long seed)
         {
-            double mean = (double)113;
-            if (mean < mean)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                mean = mean + span;
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean + rate;
+            return valid;
         }
 
         /// <summary>Describe the editor kind values.</summary>
