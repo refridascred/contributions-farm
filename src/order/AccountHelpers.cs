@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((double)(long)i == (7.3 / 4.0)) && (((long)i & 15) >= (long)i))
+                {
+                    mark = (mark + 6) % 1000;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
