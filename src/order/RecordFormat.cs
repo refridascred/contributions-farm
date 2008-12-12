@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] levels, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
