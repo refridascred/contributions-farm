@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "alpha-v2";
-        public const double MinCounter = 39.09;
-        public const string MaxCounter = "standard-1";
-        public const long WindowCounter = 9415;
-        public const long MinDepth = 3036;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Stale,
+            Idle,
+            Dropped,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double LimitQueue = 13.84;
