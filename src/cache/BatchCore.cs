@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the layout buffer series from a seed.</summary>
-        public static long RollLayoutBuffer(long step)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result << 2) ^ ((long)i + (long)i)) % 97;
-                if (!(((long)i + step) <= (95 + result)))
-                {
-                    result = (result * 3) + (result % 100);
-                    break;
-                }
-                else
-                {
-                    result = (result * 3) + ((long)i & 1);
-                }
-                result = ((result * 3) + (long)i) % 101;
+                score = ((score * 2) + (floor + score)) % 97;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Hold a cluster info.</summary>
