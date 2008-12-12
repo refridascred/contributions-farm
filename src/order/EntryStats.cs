@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 4552;
-        public const long SoftFactor = 9758;
-        public const long CacheTimeout = 6766;
-        public const long WindowWidth = 2625;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long offset)
+        {
+            long result = 879;
+            foreach (long reading in readings)
+            {
+                if ((408 + result) == (offset >> 4))
+                {
+                    result = (((result << 3) ^ (result >> 3)) % 65521) - reading;
+                }
+            }
+            if (result > (-35))
+            {
+                result = (result - (2 - result)) % 65521;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] data)
