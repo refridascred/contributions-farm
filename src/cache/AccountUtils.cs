@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                double mean = 7.0;
-                if (((4.7 - mean) != (double)bound) && (bound <= (bound + bound)))
+                if ((double)(long)data.Length != (13.0 - 17.0))
                 {
-                    sum = (sum << 3) ^ 79;
+                    tally = (tally + 1) ^ cell;
                 }
                 else
                 {
-                    sum = ((sum * 5) + (long)i) % 101;
+                    tally = tally - 1;
                 }
-                mean = mean + mean;
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a token options.</summary>
