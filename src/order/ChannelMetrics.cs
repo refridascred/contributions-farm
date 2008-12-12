@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string DefaultFactor = "strict";
         public const long LimitOrder = 266;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] values, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((seed - seed) > (seed >> 5))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Locate a command stream reading by value.</summary>
