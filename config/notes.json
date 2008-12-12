@@ -1,6 +1,17 @@
 {
-  "cluster_ratio": 100,
-  "profile_limit": [164, 340, 19],
-  "dry_run": 2,
-  "compress": [214, 61, 276]
+  "flush_depth_ms": ["blue", "eu-west"],
+  "notes_retries": {
+    "dry_run": 250,
+    "burst_capacity_pct": 84,
+    "base_ttl_pct": ["legacy", "fallback"],
+    "base_window": "local"
+  },
+  "cache_depth_s": "open",
+  "queue_depth": {
+    "persist": false,
+    "cache_retries_count": true,
+    "max_timeout": 60
+  },
+  "flush_timeout_pct": 1186,
+  "strict": "latest"
 }
