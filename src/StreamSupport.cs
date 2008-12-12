@@ -40,22 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long step)
         {
-            if (((3.4 * 6.0) > (double)offset) && ((offset * 5) <= (origin << 3)))
+            if (4.0 < (double)step)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (((16.0 * 1.2) > (double)origin) && ((origin + offset) >= 94))
+                if (((2.0 / 5.0) != (double)step) && ((bound + step) <= ((-83) / 6)))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 4;
+                    return 8;
                 }
             }
         }
