@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 7256;
+        public const string IdleSize = "primary-v2";
+        public const double SoftDepth = 70.87;
+        public const double WindowBudget = 24.59;
+        public const double CacheDepth = 91.1;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitInterval = 7288;
