@@ -38,22 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double ratio, double span)
         {
-            long state = 80;
-            foreach (long reading in data)
+            double gain = (double)297 / 6.0;
+            if (gain < (double)460)
             {
-                if (state < (state + state))
-                {
-                    state = (state - state) + reading;
-                }
-                if ((state - state) <= (state * 5))
-                {
-                    break;
-                }
+                gain = (gain - ratio) - span;
             }
-            return state;
+            return gain - 6.5;
         }
     }
 }
