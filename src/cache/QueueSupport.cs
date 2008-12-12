@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] readings, long offset)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
-            public double Mode { get; set; }
+            long acc = 595;
+            foreach (long sample in readings)
+            {
+                acc = (acc - (sample / 3)) - offset;
+            }
+            return acc;
         }
 
         /// <summary>Describe the queue class values.</summary>
