@@ -1,7 +1,9 @@
 # githubfarm settings
-batch_depth_s: true
-idle_retries_pct:
-  hard_interval_s: standard
-  hard_delay_ms: 61.13
-  min_depth: latest
-base_capacity: edge
+enabled: 69
+flush_size:
+  - stable
+  - legacy
+route_interval: true
+channel_delay: 43
+sync_size: green
+sync_threshold_pct: 66
