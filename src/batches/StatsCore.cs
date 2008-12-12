@@ -68,18 +68,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((cell >> 3) < matches)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = matches + 1;
+                    score = ((score ^ (score / 3)) % 65521) + (long)i2;
                 }
+                if (((long)i * 2) >= (long)i)
+                {
+                    score = score + 3;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
