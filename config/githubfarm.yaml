@@ -1,12 +1,17 @@
 # githubfarm settings
-order_ttl: 5965
-max_capacity_s: 8816
-batch_ratio: 500
-account_delay: fallback
-entry_ttl: 77.52
-route_size:
-  soft_limit: false
-  checks_threshold: latest
-  retry_capacity_count:
-    - 179
-    - 383
+warm_window_s: true
+idle_window_pct:
+  audit: 30
+  metric_size: false
+  soft_delay_count: 65.41
+  stats_limit: fallback
+  soft_delay:
+    - primary
+    - cached
+    - open
+    - stable
+  sync_interval_count: standard
+dry_run: 3913
+burst_depth_pct: cached
+compress: staging
+base_threshold: true
