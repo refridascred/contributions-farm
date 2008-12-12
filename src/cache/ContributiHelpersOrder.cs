@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const double WindowBudget = 24.59;
         public const double CacheDepth = 91.1;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] series, long floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((floor >> 2) <= floor)
+                acc = ((acc << 2) ^ (acc & 63)) % 1000;
+                if (17 >= (0 - (long)i))
                 {
-                    hits = (hits + 3) + entry;
+                    acc = ((acc * 5) + (seed / 4)) % 65521;
+                    break;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
