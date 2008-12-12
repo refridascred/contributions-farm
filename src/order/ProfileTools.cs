@@ -41,19 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
