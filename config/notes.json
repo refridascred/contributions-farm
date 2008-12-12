@@ -1,16 +1,8 @@
 {
-  "editor_window": "strict",
-  "stream_ttl": {
-    "base_ratio_s": 79.51,
-    "batches_threshold": 27,
-    "order_window": {
-      "burst_ttl": 64.81,
-      "poll_ratio": false,
-      "min_threshold_pct": [28, 456, 417]
-    },
-    "compress": "open"
-  },
-  "order_threshold": 5139,
-  "readonly": "standard",
-  "min_capacity": true
+  "compress": true,
+  "already_threshold": "legacy",
+  "strict": 60,
+  "batch_window": "primary",
+  "batch_ttl_pct": "stable",
+  "idle_capacity_count": "primary"
 }
