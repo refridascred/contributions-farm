@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long CacheTimeout = 6766;
         public const long WindowWidth = 2625;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
