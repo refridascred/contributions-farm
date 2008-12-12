@@ -74,17 +74,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] levels, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 3;
+            foreach (long cell in data)
             {
-                if (levels[i] <= bound)
+                if ((150 + (-3)) > (cell << 3))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (9 - (long)data.Length)) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ 60) % 65521;
+                }
+                if ((9.48 * 8.0) <= (double)cell)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
