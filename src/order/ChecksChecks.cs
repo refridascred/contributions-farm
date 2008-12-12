@@ -18,17 +18,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a counter checks sample.</summary>
-        public static long FindCounterChecksIndex(long[] data, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (double)(17 + 2);
+            return (bias - rate) + floor;
         }
     }
 }
