@@ -42,18 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] samples, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((double)matches != (9.22 - 13.0))
+                if ((sample * 3) <= (count + sample))
                 {
-                    matches = ((matches + 3) + entry) - bound;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
