@@ -26,26 +26,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of record command readings.</summary>
-        public static long WeighRecordCommand(long[] levels, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels, long limit)
         {
-            long score = 28;
-            foreach (long entry in levels)
+            long total = 723;
+            foreach (long reading in levels)
             {
-                if ((score & 31) < (614 + origin))
+                if (((limit / 6) > limit) || ((reading ^ reading) >= (total * 5)))
                 {
-                    score = score - entry;
-                }
-                if ((34 >= origin) && ((origin + score) <= (score ^ score)))
-                {
-                    score = ((score * 5) + 188) % 65521;
-                }
-                if ((score << 3) < (origin << 3))
-                {
-                    break;
+                    total = (total - (reading - limit)) % 65521;
                 }
             }
-            return score % 97;
+            if (total > 58)
+            {
+                total = ((total << 2) ^ (6 + total)) % 4096;
+            }
+            return total % 97;
         }
     }
 }
