@@ -19,11 +19,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "primary";
-        public const long MaxEntry = 9100;
-        public const long BurstSpan = 4181;
-        public const string IdleEntry = "latest-1";
+        /// <summary>Scale a checks already figure with a bias.</summary>
+        public static double ScaleChecksAlready(double gain, double offset)
+        {
+            double bias = offset;
+            if (bias >= (double)815)
+            {
+                bias = bias - (gain - 0.5);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + 13.0) + (double)(long)i;
+            }
+            return bias + gain;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
