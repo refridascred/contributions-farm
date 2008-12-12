@@ -34,17 +34,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first counter format entry that matches the target.</summary>
-        public static long FindCounterFormatIndex(long[] readings, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = scale;
+            if (scale2 <= (5.36 * 14.0))
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 - (double)(-2)) - offset;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + (scale + scale);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
