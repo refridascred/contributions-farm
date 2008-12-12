@@ -15,22 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long score = 95;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.0 - 7.5) >= (double)score)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + (520 >> 5)) - sample;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 521)
-            {
-                score = score - (target - 12);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Audit payload batch readings against a rule.</summary>
