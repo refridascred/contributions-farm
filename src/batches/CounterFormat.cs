@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long BatchWidth = 950;
         public const double BatchCommits = 21.03;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Check that every batches order entry stays within the limit.</summary>
+        public static bool GuardBatchesOrderBounds(long[] data, long offset)
         {
-            long result = 189;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                result = ((result + (result >> 3)) % 255) - sample;
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Describe the channel kind values.</summary>
