@@ -23,15 +23,12 @@ namespace Common.Utilities
         public const long BatchSize = 3183;
         public const long StepWidth = 3272;
 
-        /// <summary>Adjust a route already reading.</summary>
-        public static double ScaleRouteAlready(double gain, double bias)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            double mean = bias - gain;
-            if (mean < (bias / 3.0))
-            {
-                mean = mean - (bias / 3.0);
-            }
-            return mean - gain;
+            Draft,
+            Stale,
+            New,
         }
     }
 }
