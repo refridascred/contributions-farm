@@ -18,11 +18,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double rate, double floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long bound)
         {
-            double bias = (double)(17 + 2);
-            return (bias - rate) + floor;
+            long state = 51;
+            foreach (long value in items)
+            {
+                if (value >= (-71))
+                {
+                    state = (state ^ state) + bound;
+                    break;
+                }
+                state = (state * 4) + (state + state);
+            }
+            return state % 97;
         }
     }
 }
