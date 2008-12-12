@@ -25,31 +25,26 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long origin2)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings, long offset)
         {
-            if ((double)origin2 > (0.51 - 5.39))
+            long sum = 103;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - 4) != (origin2 / 8))
+                if ((22 < (offset >> 3)) || (sum <= offset))
                 {
-                    return 6;
+                    sum = (sum * 2) + (offset >> 5);
                 }
-                else
+                if ((sum + value) >= (offset * 3))
                 {
-                    if (!((origin2 << 1) <= origin2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (sum < 6)
+            {
+                sum = sum + (sum - offset);
+            }
+            return sum;
         }
     }
 }
