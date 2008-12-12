@@ -1,13 +1,10 @@
 # Command notes
 
-Each route is validated before it reaches the contributi queue.
-The tools module keeps queue values in sync with the already cache.
-
-Keep batches and metric names short and lowercase.
-Use queue settings to tune how often layout data is refreshed.
+The profile module keeps cache values in sync with the buffer cache.
+Keep cluster and filter names short and lowercase.
 
 ## Guidelines
 
-- Log every editor change
-- Document new payload fields
-- Review batches limits each release
+- Log every metric change
+- Keep metric values small
+- Prefer channel defaults
