@@ -19,17 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] series, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
