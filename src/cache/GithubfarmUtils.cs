@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] readings, long bound)
         {
-            Idle,
-            Paused,
-            Draft,
-            Failed,
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
