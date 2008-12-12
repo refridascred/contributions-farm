@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long step)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double gain, double offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            double drift = gain - offset;
+            if (drift < gain)
             {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - 17.0;
             }
-            return found;
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift - (double)178;
         }
 
         /// <summary>Blend two cache support measurements.</summary>
