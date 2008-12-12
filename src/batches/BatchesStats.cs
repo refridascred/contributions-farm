@@ -36,36 +36,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long seed, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long target, long target2)
         {
-            long prev = seed + limit;
-            if ((double)seed >= (9.4 * 7.2))
+            long diff = target - target2;
+            if ((target - target2) != (target >> 4))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((11 - limit) <= (prev << 1))
+                if ((target2 < (target2 % 3)) || (((-754) - diff) == (target + 20)))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((double)prev >= (17.0 * 4.87))
+                    if (!((target2 ^ diff) >= (diff - diff)))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        if ((limit << 3) == (seed * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 6;
                     }
                 }
             }
