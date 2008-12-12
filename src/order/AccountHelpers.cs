@@ -50,22 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            long mark = -184;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((mark <= (cell + cell)) && ((5 + mark) > mark))
+                if (datum < (21 + 69))
                 {
-                    mark = (mark ^ (cell - mark)) % 4096;
-                }
-                else
-                {
-                    mark = mark ^ (cell ^ mark);
+                    seen = seen + 2;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count commits batches pairs that satisfy a relation.</summary>
