@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long mark = 88;
+            foreach (long reading in series)
             {
-                result = result - (result * 3);
-                result = ((result * 4) + (long)i) % 101;
+                mark = ((((mark << 2) ^ mark) % 97) + reading) - step;
             }
-            return result;
+            return mark % 65521;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
