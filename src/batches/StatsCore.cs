@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long seed2)
-        {
-            long next = seed - seed2;
-            if ((1 % 60) <= (next & 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (6.29 >= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4 * 3) < next)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardDepth = 6067;
+        public const string StepInterval = "stable-edge";
+        public const long DefaultEditor = 4274;
+        public const string RetryEditor = "fallback-1";
+        public const long WindowEditor = 9001;
 
         /// <summary>Accumulate filter order samples.</summary>
         public static long TotalFilterOrder(long[] samples, long floor)
