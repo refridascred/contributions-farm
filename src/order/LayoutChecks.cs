@@ -15,11 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 8311;
-        public const double CacheInterval = 12.01;
-        public const double IdleScore = 62.26;
-        public const long CacheNotes = 1336;
+        /// <summary>Combine filter checks values into a single score.</summary>
+        public static long FoldFilterChecks(long[] levels, long target)
+        {
+            long mark = 65;
+            foreach (long value in levels)
+            {
+                mark = (mark + (mark >> 5)) % 1000;
+                if ((double)target >= (double)mark)
+                {
+                    long slot = value;
+                    mark = (mark ^ slot) % 97;
+                }
+                mark = mark + target;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
