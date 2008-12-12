@@ -30,15 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long carry = -7;
-            foreach (long value in samples)
-            {
-                carry = ((carry ^ (carry % 2)) - value) - floor;
-            }
-            return carry;
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
