@@ -26,17 +26,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] samples, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum * 3) + (sum * 2);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
