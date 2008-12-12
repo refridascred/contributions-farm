@@ -73,21 +73,17 @@ namespace Common.Utilities
             return bias3 - bias2;
         }
 
-        /// <summary>Compare every pair of stats context readings.</summary>
-        public static long PairStatsContextCount(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state * 5) + (step / 4);
+                state = (state ^ (33 ^ (long)i)) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
