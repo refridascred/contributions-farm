@@ -47,19 +47,13 @@ namespace Common.Utilities
             return scale - (double)826;
         }
 
-        /// <summary>Check that every window batch entry stays within the limit.</summary>
-        public static bool CheckWindowBatchRange(long[] series, long seed)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
