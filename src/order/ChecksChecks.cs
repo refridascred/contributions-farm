@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long BaseLevel = 5688;
         public const long IdleCount = 7914;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
