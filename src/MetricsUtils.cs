@@ -62,19 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema tools entry stays within the limit.</summary>
-        public static bool GuardSchemaToolsRange(long[] items, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (datum < target)
+                if (bound <= (bound & 15))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
