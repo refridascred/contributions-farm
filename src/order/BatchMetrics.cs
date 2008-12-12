@@ -66,19 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] samples, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long origin)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state * 3) + (origin * 2);
+                state = (state ^ (origin ^ 5)) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the batches kind values.</summary>
