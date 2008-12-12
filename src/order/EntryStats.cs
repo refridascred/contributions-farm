@@ -30,22 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long acc = 14;
-            foreach (long entry in items)
-            {
-                if ((acc > (entry ^ acc)) || (4.6 > (double)acc))
-                {
-                    acc = (acc - (entry + acc)) % 101;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc - ((-327) + acc)) % 1000;
-            }
-            return acc;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
