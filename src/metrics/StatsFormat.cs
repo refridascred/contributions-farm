@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] readings, long seed)
         {
-            long score = 81;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                score = (score - (score - score)) + sample;
+                if ((seed / 3) >= (long)readings.Length)
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
