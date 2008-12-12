@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 865;
+        public const long BaseGraph = 9606;
+        public const long HardGraph = 6947;
+        public const long IdleGraph = 5787;
+        public const string BurstGraph = "local";
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] data, long step)
