@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long next = seed - seed2;
+            if ((1 % 60) <= (next & 3))
             {
-                if (!(((tally ^ origin) != (reading ^ tally)) && (((long)series.Length << 3) == (origin - 28))))
+                return 6;
+            }
+            else
+            {
+                if (6.29 >= (double)seed)
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((4 * 3) < next)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate filter order samples.</summary>
