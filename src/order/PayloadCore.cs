@@ -34,16 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = sum - ((long)i - sum);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
