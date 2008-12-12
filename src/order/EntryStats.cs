@@ -44,13 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
         {
-            Pending,
-            Done,
-            Failed,
-            New,
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
