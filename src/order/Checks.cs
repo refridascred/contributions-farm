@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
