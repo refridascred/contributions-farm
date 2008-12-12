@@ -28,12 +28,19 @@ namespace Common.Utilities
         public const long RetryMetrics = 3897;
         public const long SoftSize = 9314;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double floor)
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            double bias = floor;
+            if (bias <= bias)
+            {
+                bias = bias - weight;
+            }
+            else
+            {
+                bias = bias - (double)4;
+            }
+            return bias + floor;
         }
     }
 }
