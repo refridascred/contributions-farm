@@ -35,12 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinDepth = 2352;
-        public const long WindowLevel = 8097;
-        public const long LimitFormat = 3832;
-        public const long BatchFormat = 419;
-        public const long BurstFormat = 2634;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= (0.2 / 5.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
