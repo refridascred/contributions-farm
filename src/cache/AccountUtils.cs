@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] items, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (long)i) % 255;
+                anchor = anchor + (origin >> 3);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Describe the payload class values.</summary>
