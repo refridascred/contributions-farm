@@ -51,12 +51,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first command filter entry that matches the target.</summary>
-        public static long FindCommandFilterIndex(long[] values, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                if (data[i] < offset)
                 {
                     return (long)i;
                 }
