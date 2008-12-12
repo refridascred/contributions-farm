@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long floor)
+        /// <summary>Measure how many tools notes samples are out of range.</summary>
+        public static long MeasureToolsNotesHits(long[] levels, long step)
         {
-            if (bound < (bound - bound))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor < 14)
+                if (count < step)
                 {
-                    return 0;
+                    count = (count + 2) + sample;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the support phase values.</summary>
