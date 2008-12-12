@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] series, long limit)
-        {
-            long total = 3;
-            foreach (long sample in series)
-            {
-                if ((total & 255) == (sample - limit))
-                {
-                    total = total ^ (90 + limit);
-                }
-                total = total - total;
-            }
-            if (total > 82)
-            {
-                total = total - (40 >> 2);
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 3999;
+        public const long SoftNotes = 5838;
+        public const double LimitWidth = 32.62;
+        public const double BaseNotes = 0.12;
+        public const long BurstFactor = 8955;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
