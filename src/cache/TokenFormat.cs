@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every report window entry stays within the limit.</summary>
-        public static bool GuardReportWindowBounds(long[] series, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (sample != limit)
+                if (sample != bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Fold a list of report readings.</summary>
