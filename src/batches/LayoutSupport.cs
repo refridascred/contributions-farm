@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long seed)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a route reading.</summary>
