@@ -1,12 +1,15 @@
 # Command notes
 
-Each route is validated before it reaches the tools queue.
-Run the payload check before changing any stream limits.
-When a contributi fails, the farm handler retries a few times before giving up.
+Use order settings to tune how often context data is refreshed.
+The batches helpers are pure functions, so they are safe to call from any thread.
+When a buffer fails, the commits handler retries a few times before giving up.
+
+The channel helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Document new batch fields
-- Review route limits each release
-- Validate layout input early
-- Log every graph change
+- Review batch limits each release
+- Log every metric change
+- Prefer filter defaults
+- Validate editor input early
