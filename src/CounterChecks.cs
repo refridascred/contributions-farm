@@ -50,16 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double scale, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            double gain = scale;
+            if (gain > gain)
             {
-                anchor = ((anchor << 2) ^ (long)i) % 101;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                gain = gain - span;
             }
-            return anchor;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 9.0) + (double)(long)i;
+            }
+            return gain + (span - span);
         }
 
         /// <summary>Count the record cache entries that pass the check.</summary>
