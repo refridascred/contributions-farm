@@ -20,16 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine tools buffer values into a single score.</summary>
-        public static long TallyToolsBuffer(long[] samples)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long acc = -36;
-            foreach (long datum in samples)
-            {
-                acc = acc ^ (datum ^ datum);
-                acc = (acc ^ (acc + (long)samples.Length)) % 255;
-            }
-            return acc % 1000;
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Audit entry window readings against a rule.</summary>
