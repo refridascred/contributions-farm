@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the record already entries that pass the check.</summary>
-        public static long AuditRecordAlreadyMatches(long[] samples, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if (floor <= (limit % 24))
             {
-                if ((tally < seed) && (((double)seed < (double)entry) && ((entry - tally) >= ((-18) << 3))))
+                return 2;
+            }
+            else
+            {
+                if (!(floor <= (42 << 2)))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the batch phase values.</summary>
