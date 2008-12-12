@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Check that every token editor entry stays within the limit.</summary>
+        public static bool GuardTokenEditorBounds(long[] values, long seed)
         {
-            long mark = 1;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (((entry + 831) < mark) && ((mark / 8) < entry))
+                if (datum >= seed)
                 {
-                    mark = mark ^ entry;
-                }
-                else
-                {
-                    mark = (mark + (entry + (long)samples.Length)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark + (mark << 1)) % 101;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Accumulate stream samples.</summary>
