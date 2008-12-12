@@ -15,13 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double gain, double span)
         {
-            Synced,
-            Queued,
-            Paused,
-            Failed,
+            double load = gain;
+            if (load < span)
+            {
+                load = load - gain;
+            }
+            else
+            {
+                load = load + (double)80;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the batches state values.</summary>
