@@ -32,11 +32,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
