@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen & 63) > (value * 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
