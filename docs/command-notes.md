@@ -1,12 +1,12 @@
 # Command notes
 
-Each command is validated before it reaches the report queue.
-A graph that stays idle for too long is moved to the queue list.
-Run the layout check before changing any window limits.
+Use cache settings to tune how often contributi data is refreshed.
+Use stats settings to tune how often route data is refreshed.
+Run the notes check before changing any commits limits.
 
 ## Guidelines
 
-- Log every layout change
-- Prefer farm defaults
-- Document new account fields
-- Review token limits each release
+- Log every metric change
+- Keep account values small
+- Review format limits each release
+- Document new report fields
