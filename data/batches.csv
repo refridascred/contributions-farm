@@ -1,7 +1,6 @@
-id,weight,ratio,region,level
-1,472,96.33,3.59,49
-2,90.6,6.99,edge,850
-3,680,410,479,19
-4,212,529,open,157
-5,edge,stable,fallback,782
-6,244,fallback,342,legacy
+id,token,region,label
+1,407,98.57,fallback
+2,53.22,fallback,742
+3,886,83.57,25
+4,48.09,eu-west,60.03
+5,323,80.58,fallback
