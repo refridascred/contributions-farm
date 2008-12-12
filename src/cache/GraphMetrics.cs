@@ -31,19 +31,11 @@ namespace Common.Utilities
         public const double BurstStream = 61.9;
         public const long BurstSize = 8599;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] values, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
