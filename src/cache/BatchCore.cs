@@ -26,11 +26,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long step, long floor)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long gap = step ^ floor;
+            if (!((gap + gap) >= (gap & 63)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step << 2) == (step / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a command reading.</summary>
