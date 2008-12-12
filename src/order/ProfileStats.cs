@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every token editor entry stays within the limit.</summary>
-        public static bool GuardTokenEditorBounds(long[] values, long seed)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
