@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report farm readings.</summary>
-        public static long TallyReportFarm(long[] levels)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] levels, long seed)
         {
-            long score = 9;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score - (item >> 3);
-                if ((score << 3) <= (score ^ score))
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
