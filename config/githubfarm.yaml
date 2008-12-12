@@ -1,5 +1,4 @@
 # githubfarm settings
-tools_ratio: fallback
-contributi_window: 87.91
-cache_timeout_s: eu-west
-base_delay: primary
+warm_ttl_ms: primary
+cache_threshold_ms: eu-west
+session_delay: false
