@@ -34,18 +34,31 @@ namespace Common.Utilities
         public const long StepMetric = 1399;
         public const long RetryTimeout = 4632;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long target, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((6.34 - 3.51) <= (double)target)
             {
-                if (((433 >> 1) >= cell) && ((cell + seen) < seen))
+                return 4;
+            }
+            else
+            {
+                if ((2 & 3) > (limit << 3))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (53 > (target << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
