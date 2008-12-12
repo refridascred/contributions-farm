@@ -67,15 +67,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double bias2)
+        /// <summary>Count the stream profile entries that pass the check.</summary>
+        public static long TallyStreamProfileMatches(long[] samples)
         {
-            double bias3 = 2.0;
-            if (bias3 > (double)902)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                bias3 = (bias3 + bias3) - bias;
+                if (!(((double)matches < (19.0 / 2.0)) || ((matches * 4) < 352)))
+                {
+                    matches = (matches + 1) - value;
+                }
             }
-            return bias3 - bias2;
+            return matches;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
