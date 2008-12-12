@@ -32,12 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every editor window entry stays within the limit.</summary>
+        public static bool CheckEditorWindowRange(long[] readings, long bound)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a schema stats.</summary>
