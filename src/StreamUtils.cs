@@ -39,38 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            if (!(target <= (target - seed)))
+            long anchor = 90;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((36 + (-183)) < (seed + target)))
+                if ((27 + sample) < sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed >= (5.0 * 5.5)) || (target >= (target / 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed - seed) >= (target - target)) && ((2.0 / 5.0) == (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = anchor + (sample + sample);
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Combine token values into a single score.</summary>
