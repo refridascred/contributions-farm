@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] values, long floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = offset;
+            if (scale <= 8.0)
             {
-                if ((values[i] == floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (scale * 1.55);
             }
-            return -1;
+            else
+            {
+                scale = scale + gain;
+            }
+            return scale + (offset * 9.0);
         }
 
         /// <summary>Fold a list of batches readings.</summary>
