@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < limit)
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the batches state values.</summary>
