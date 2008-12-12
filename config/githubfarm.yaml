@@ -1,7 +1,6 @@
 # githubfarm settings
-warm_timeout: staging
-format_depth: blue
-retry_retries_ms: true
-record_retries: 3121
-verbose: 7
-min_retries_ms: 86
+max_retries: 47
+persist:
+  - fallback
+  - staging
+entry_window: false
