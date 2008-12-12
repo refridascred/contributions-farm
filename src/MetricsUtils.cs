@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] items, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (entry <= offset)
+                if ((entry * 4) < (origin << 3))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a farm stats.</summary>
