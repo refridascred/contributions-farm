@@ -55,9 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "stable-1";
-        public const long MinFactor = 8379;
-        public const long BatchRatio = 4507;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((sample / 5) != (sample + hits)) || ((double)sample < (11.0 + 20.0))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
