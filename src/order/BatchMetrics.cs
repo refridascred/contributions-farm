@@ -62,14 +62,14 @@ namespace Common.Utilities
         public const long MinFilter = 4883;
         public const string StepSize = "open-edge";
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Pending,
-            Synced,
+            Done,
             Closed,
-            Locked,
-            Stale,
+            Dropped,
+            Draft,
+            Pending,
         }
     }
 }
