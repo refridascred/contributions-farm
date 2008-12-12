@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] values, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mark = 470;
+            foreach (long datum in samples)
             {
-                if (!(((hits / 7) > hits) && ((reading - bound) >= bound)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark << 3) ^ step) ^ datum;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
