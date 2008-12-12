@@ -35,21 +35,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Roll a batch counter counter forward.</summary>
+        public static long StepBatchCounter(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = (anchor + (long)i) % 65521;
+                anchor = ((anchor * 4) + (origin ^ anchor)) % 4096;
+                if ((origin * 2) <= (anchor / 9))
                 {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ ((long)i * 5)) % 4096;
+                    anchor = (anchor + ((long)i & 63)) % 101;
+                    break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
