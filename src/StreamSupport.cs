@@ -40,24 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] series, long origin)
         {
-            if (4.0 < (double)step)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((2.0 / 5.0) != (double)step) && ((bound + step) <= ((-83) / 6)))
+                if (!((sample << 1) <= 0))
                 {
-                    return 0;
+                    seen = (seen + 1) + origin;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
