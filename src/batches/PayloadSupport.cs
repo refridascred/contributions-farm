@@ -34,18 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] items, long offset)
+        /// <summary>Blend two cache support measurements.</summary>
+        public static double ProjectCacheSupport(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            double drift = bias;
+            if (drift > drift)
             {
-                if ((2.07 < (double)count) && ((double)offset != (0.8 / 7.0)))
-                {
-                    count = (count + 2) ^ value;
-                }
+                drift = (drift + bias) - floor;
             }
-            return count;
+            return drift + bias;
         }
     }
 }
