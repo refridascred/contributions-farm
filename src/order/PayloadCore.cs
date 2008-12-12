@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const long LimitQueue = 1903;
         public const double CacheQueue = 30.74;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowDepth = 7441;
+        public const long MinSupport = 3305;
+        public const double BurstDepth = 11.24;
+        public const double DefaultSupport = 57.38;
 
         /// <summary>Project the next record buffer value.</summary>
         public static double SmoothRecordBuffer(double gain, double floor)
