@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] items)
         {
-            double scale = offset;
-            if (scale <= 8.0)
+            long result = 0;
+            foreach (long item in items)
             {
-                scale = scale - (scale * 1.55);
+                result = (((result << 3) ^ (result ^ (long)items.Length)) % 255) ^ item;
             }
-            else
-            {
-                scale = scale + gain;
-            }
-            return scale + (offset * 9.0);
+            return result % 1000;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
