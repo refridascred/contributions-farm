@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long bound, long bound2)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            if ((double)bound2 > 7.4)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound2 + bound2) == (bound + bound2)) || (bound2 < (bound2 + bound2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound / 7) <= bound2) || ((double)bound <= (double)bound2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
