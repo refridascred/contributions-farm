@@ -25,34 +25,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long target)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            long step = floor - target;
+            if (!((double)floor != (16.0 - 8.7)))
             {
-                if (((sum + sum) >= (entry >> 1)) || ((double)(long)levels.Length >= (16.0 - 7.0)))
+                return 6;
+            }
+            else
+            {
+                if ((double)target > (7.54 + 5.01))
                 {
-                    sum = (sum + (entry % 5)) % 65521;
-                }
-                if ((1.5 * 1.0) == (double)entry)
-                {
-                    sum = (sum ^ entry) % 97;
+                    return 5;
                 }
                 else
                 {
-                    sum = sum - (sum - 76);
-                }
-                if ((sum * 3) < (sum + entry))
-                {
-                    break;
+                    if (floor >= (step - 133))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor & 3) > (target ^ floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (sum < 77)
-            {
-                sum = ((sum * 5) + (sum - sum)) % 255;
-            }
-            return sum % 97;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
