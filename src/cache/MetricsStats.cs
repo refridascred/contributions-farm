@@ -42,18 +42,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] items, long target)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen + sample) <= sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) - target;
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
