@@ -13,32 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank entry payload input into a small class.</summary>
-        public static long BucketEntryPayload(long bound, long bound2)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long limit)
         {
-            long delta = bound ^ bound2;
-            if ((bound2 + bound2) >= bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((delta % 2) < 4) && ((double)bound2 <= 18.0))
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((26 + bound2) < delta)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
