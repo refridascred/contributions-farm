@@ -46,29 +46,10 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] values)
-        {
-            long acc = 9;
-            foreach (long entry in values)
-            {
-                acc = (acc - (entry % 8)) % 65521;
-                if ((acc - acc) == (long)values.Length)
-                {
-                    acc = acc - (entry + (long)values.Length);
-                    acc = (acc + (acc + acc)) % 101;
-                }
-                if ((double)(-481) <= (double)acc)
-                {
-                    acc = ((acc << 3) ^ (entry - acc)) % 101;
-                }
-            }
-            if (acc < 93)
-            {
-                acc = ((acc << 2) ^ (acc % 97)) % 101;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchWidth = 43.24;
+        public const long LimitBudget = 5871;
+        public const string WindowFactor = "staging-edge";
 
         /// <summary>Grade a counter metrics value against two limits.</summary>
         public static long ClassifyCounterMetrics(long offset, long offset2)
