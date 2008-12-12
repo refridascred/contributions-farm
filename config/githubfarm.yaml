@@ -1,9 +1,5 @@
 # githubfarm settings
-sync_limit_pct: 54
-burst_ratio: 37
-verbose:
-  - green
-  - open
-  - legacy
-  - legacy
-persist: 8
+tools_ratio: fallback
+contributi_window: 87.91
+cache_timeout_s: eu-west
+base_delay: primary
