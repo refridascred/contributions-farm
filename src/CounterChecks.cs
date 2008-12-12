@@ -68,27 +68,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items, long step)
         {
-            long carry = 490;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                carry = carry - (carry * 2);
-                if ((cell / 7) < carry)
+                if ((double)hits == (9.6 * 8.6))
                 {
-                    carry = (carry - (carry - carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 5) + cell;
+                    hits = ((hits + 3) + datum) + step;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
