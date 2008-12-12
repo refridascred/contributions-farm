@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
+            Ready,
             Done,
-            Active,
-            Idle,
+            Synced,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
