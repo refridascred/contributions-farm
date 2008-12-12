@@ -36,18 +36,16 @@ namespace Common.Utilities
             return gain + (offset * 8.28);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] series, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)hits == (double)limit)
-                {
-                    hits = (hits + 1) - item;
-                }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the filter level values.</summary>
