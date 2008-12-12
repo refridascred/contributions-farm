@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Stale,
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the metric class values.</summary>
