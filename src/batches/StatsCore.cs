@@ -31,28 +31,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series, long floor)
-        {
-            long anchor = 729;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = (((anchor - anchor) % 65521) ^ (long)i) + item;
-                    anchor = (anchor + (889 * 5)) % 255;
-                }
-                if ((double)floor > (9.8 * 10.0))
-                {
-                    anchor = (anchor - ((long)series.Length & 3)) % 65521;
-                }
-            }
-            if (anchor < (-29))
-            {
-                anchor = anchor ^ (floor >> 4);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftFactor = 7637;
+        public const long BatchStream = 2354;
+        public const long BaseFactor = 1448;
+        public const long LimitStream = 2406;
+        public const long StepStream = 2639;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples, long origin)
