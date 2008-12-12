@@ -84,13 +84,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((long)levels.Length > (1 - tally))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
