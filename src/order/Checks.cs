@@ -56,10 +56,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "staging-1";
-        public const long RetryScore = 8413;
-        public const double WindowSize = 31.65;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Closed,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Digest a series of profile graph entries.</summary>
         public static long DigestProfileGraph(long[] items, long step)
