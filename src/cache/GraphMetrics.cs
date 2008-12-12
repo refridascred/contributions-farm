@@ -25,13 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            public string Weight { get; set; } = "";
             public string Token { get; set; } = "";
-            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
