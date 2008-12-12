@@ -43,17 +43,13 @@ namespace Common.Utilities
         public const double BatchOrder = 1.67;
         public const double CacheFactor = 2.25;
 
-        /// <summary>Locate a filter report reading by value.</summary>
-        public static long LookupFilterReportIndex(long[] readings, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
