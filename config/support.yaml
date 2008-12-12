@@ -1,10 +1,12 @@
 # support settings
-route_delay: true
-filter_window: true
-schema_depth:
-  - 246
-  - 97
-idle_size_pct:
-  - staging
-  - open
+poll_timeout_ms: green
+metrics_delay:
+  - primary
   - fallback
+  - standard
+burst_interval_pct: strict
+cache_delay_ms:
+  - staging
+  - primary
+poll_depth_ms: open
+record_window: 75.82
