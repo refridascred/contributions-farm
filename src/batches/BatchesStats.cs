@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks channel entry that matches the target.</summary>
-        public static long LocateChecksChannelIndex(long[] samples, long bound)
+        /// <summary>Fold a list of farm cache readings.</summary>
+        public static long TotalFarmCache(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 21;
+            foreach (long cell in values)
             {
-                if (samples[i] == bound)
+                state = state - (91 * 2);
+                if ((cell << 2) != (cell / 7))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of context metrics readings.</summary>
