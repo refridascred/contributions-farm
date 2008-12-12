@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items, long limit)
-        {
-            long carry = -13;
-            foreach (long sample in items)
-            {
-                if (carry <= (limit + sample))
-                {
-                    carry = (carry * 2) + (limit ^ limit);
-                }
-                if (!((double)carry >= (10.0 + 5.0)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitWidth = 634;
+        public const double LimitDepth = 13.41;
+        public const long BurstFarm = 5736;
+        public const long WindowBudget = 8154;
+        public const double DefaultFactor = 40.19;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
