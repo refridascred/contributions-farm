@@ -1,5 +1,12 @@
 {
-  "min_interval": 53,
-  "min_size": ["staging", "legacy"],
-  "audit": false
+  "commits_retries": [272, 339],
+  "poll_threshold_pct": "primary",
+  "batch_threshold": false,
+  "sync_size_pct": {
+    "idle_ttl": "edge",
+    "hard_depth": false,
+    "hard_delay_s": 68
+  },
+  "account_threshold": "stable",
+  "burst_ttl_ms": "primary"
 }
