@@ -49,19 +49,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (item >= bound)
+                if (!((anchor + origin) >= 550))
                 {
-                    flag = false;
+                    anchor = (anchor - (origin + anchor)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (long)i;
+                }
+                if ((double)anchor <= (15.0 - 5.0))
+                {
                     break;
                 }
+                if ((origin % 24) > ((long)i >> 5))
+                {
+                    anchor = (anchor ^ (origin + (long)i)) % 255;
+                    anchor = (anchor * 4) + (20 >> 2);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return flag;
+            return anchor;
         }
     }
 }
