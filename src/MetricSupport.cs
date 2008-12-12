@@ -26,19 +26,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long limit)
+        /// <summary>Audit queue payload readings against a rule.</summary>
+        public static long MeasureQueuePayloadHits(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (sample <= limit)
+                if (reading < (reading >> 4))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
