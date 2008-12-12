@@ -57,12 +57,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long step, long limit)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            long next = step ^ limit;
+            if ((8.9 - 6.4) >= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step ^ next) >= (limit % 100)) || ((6 + limit) > limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
