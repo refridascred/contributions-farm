@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate channel cluster samples.</summary>
-        public static long TallyChannelCluster(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            long score = 471;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                score = (score - cell) % 4096;
+                if ((double)sample == (double)957)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score > 6)
-            {
-                score = (score ^ (score & 255)) % 4096;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
