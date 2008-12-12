@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double weight, double span)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double bias = (2.0 + weight) * 9.22;
-            if (bias >= weight)
-            {
-                bias = (bias - bias) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)61) + (double)(long)i;
-            }
-            return bias - 1.0;
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of command already entries.</summary>
