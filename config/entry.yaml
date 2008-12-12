@@ -1,18 +1,6 @@
 # entry settings
-soft_window_ms:
-  base_delay: 55.42
-  batch_ttl_s: false
-  retry_limit: blue
-  max_size: 1248
-counter_size:
-  window_window:
-    - 316
-    - 212
-  soft_threshold_ms: local
-  notes_delay: 91.5
-  warm_size:
-    burst_interval: true
-    idle_interval_s: fallback
-    editor_interval: false
-soft_threshold_pct: true
-compress: 2859
+buffer_size: latest
+idle_ttl_pct: 6825
+record_retries: 57.33
+enabled: true
+base_limit_count: 44.74
