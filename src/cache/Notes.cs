@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "primary-edge";
+        public const double SoftLevel = 50.9;
+        public const long HardBuffer = 3808;
+        public const string IdleBuffer = "local";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitInterval = 6785;
