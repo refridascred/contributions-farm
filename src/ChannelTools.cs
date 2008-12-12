@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] series)
         {
             long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((16 >> 4) <= count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + reading;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
