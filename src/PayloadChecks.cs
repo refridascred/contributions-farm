@@ -27,23 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Measure how many context payload samples are out of range.</summary>
+        public static long CountContextPayloadGaps(long[] items)
         {
-            long mark = -452;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mark = (mark * 3) + mark;
-                if ((item / 8) < mark)
+                if (matches >= 77)
                 {
-                    mark = ((mark << 3) ^ (539 + (long)readings.Length)) % 4096;
+                    matches = (matches + 1) + sample;
                 }
             }
-            if (mark > 450)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
