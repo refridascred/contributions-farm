@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 8462;
-        public const double CacheFactor = 82.38;
-        public const long MaxCommand = 318;
-        public const long BatchCommand = 9383;
+        /// <summary>Measure how many already metrics samples are out of range.</summary>
+        public static long CountAlreadyMetricsGaps(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (4.75 >= (double)target)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] levels, long offset)
