@@ -41,26 +41,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] data, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long step, long origin)
         {
-            long anchor = 9;
-            foreach (long item in data)
+            long bound = step ^ origin;
+            if (bound >= (277 - origin))
             {
-                if ((item <= (item - item)) || ((anchor + item) >= 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)step < (5.9 / 8.0))
                 {
-                    anchor = ((anchor + anchor) % 255) + origin;
+                    return 6;
                 }
                 else
                 {
-                    anchor = (anchor + (169 >> 2)) % 1000;
-                }
-                if (((4 / 6) >= (item / 2)) || ((item * 5) <= item))
-                {
-                    break;
+                    if (!((bound + bound) == (origin >> 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
