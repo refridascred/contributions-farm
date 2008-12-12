@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseDepth = 64.27;
+        public const string LimitReport = "strict";
+        public const long DefaultWidth = 4770;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] series, long offset)
