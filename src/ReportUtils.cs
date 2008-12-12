@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 8388;
+        public const long BaseTimeout = 8259;
+        public const double HardBatches = 92.9;
+        public const double IdleSpan = 14.56;
+        public const double MaxBatches = 72.14;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double ratio, double offset)
