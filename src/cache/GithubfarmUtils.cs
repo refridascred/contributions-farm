@@ -29,11 +29,26 @@ namespace Common.Utilities
             return bias3 - (double)2;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "legacy-1";
-        public const long BurstSize = 1552;
-        public const string DefaultWidth = "primary-1";
-        public const long WindowCommits = 161;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long bound, long seed)
+        {
+            long gap = bound - seed;
+            if ((double)gap <= (double)125)
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound > 27)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
