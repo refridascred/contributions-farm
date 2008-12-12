@@ -20,13 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
+            Retry,
+            Draft,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Match up buffer samples.</summary>
