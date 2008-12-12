@@ -20,21 +20,15 @@ namespace Common.Utilities
             return bias - 1.0;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Digest a series of command already entries.</summary>
+        public static long TotalCommandAlready(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 7;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix - reading) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of batches context entries.</summary>
