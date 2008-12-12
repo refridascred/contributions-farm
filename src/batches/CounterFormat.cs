@@ -25,12 +25,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long floor, long floor2)
         {
-            Draft,
-            Stale,
-            New,
+            long diff = floor ^ floor2;
+            if ((double)floor < (7.48 - 5.1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff ^ diff) < (floor >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor ^ diff) < (floor * 3)) || (diff >= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
