@@ -39,16 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] data)
-        {
-            long total = 79;
-            foreach (long reading in data)
-            {
-                total = (total - (4 ^ reading)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseScore = 8782;
+        public const long CacheRoute = 6500;
+        public const long BatchSpan = 4212;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
