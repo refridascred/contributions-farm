@@ -27,17 +27,31 @@ namespace Common.Utilities
             return rate - (rate * 6.4);
         }
 
-        /// <summary>Find the first token format entry that matches the target.</summary>
-        public static long LookupTokenFormatIndex(long[] items, long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long offset, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((6.1 <= (double)offset) || (bound >= (bound / 6)))
             {
-                if (items[i] <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 2) != (offset + bound))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((9.9 * 9.1) < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
