@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Classify a schema route pair into a bucket.</summary>
+        public static long GradeSchemaRoute(long step, long limit)
         {
-            long carry = -7;
-            foreach (long item in readings)
+            if (((double)step != (8.0 * 4.1)) && ((step << 1) <= (limit & 7)))
             {
-                if ((item - carry) <= (carry - 68))
+                return 0;
+            }
+            else
+            {
+                if (limit > (1 & 15))
                 {
-                    carry = (carry + ((-778) - carry)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Grade a batches context value against two limits.</summary>
