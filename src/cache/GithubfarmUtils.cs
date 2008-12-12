@@ -14,15 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the graph command entries that pass the check.</summary>
-        public static long CountGraphCommandMatches(long[] levels, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] values, long target)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            foreach (long sample in values)
             {
-                if ((double)tally <= (6.13 - 5.28))
+                if (((target + sample) != (sample << 1)) && ((tally % 8) <= (sample - tally)))
                 {
-                    tally = ((tally + 3) ^ reading) - target;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
