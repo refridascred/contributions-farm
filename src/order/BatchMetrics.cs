@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 2;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0.01 / 8.0) <= (double)limit)
                 {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 4) + (4 + limit)) ^ reading;
                 }
             }
-            return count;
+            if (total < 153)
+            {
+                total = (total * 3) + (limit & 7);
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
