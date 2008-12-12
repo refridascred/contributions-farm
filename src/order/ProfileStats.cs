@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next queue payload value from a seed.</summary>
-        public static long StepQueuePayload(long seed)
+        /// <summary>Count the context route entries that pass the check.</summary>
+        public static long MeasureContextRouteGaps(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((0.26 - 0.72) < (3.32 - 2.9))
                 {
-                    state = ((state - (state >> 3)) % 255) + (long)i2;
+                    hits = (hits + 1) ^ reading;
                 }
-                state = ((state * 2) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the counter mode values.</summary>
