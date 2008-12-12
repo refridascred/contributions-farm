@@ -60,17 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] values, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (values[i] > seed)
+                if ((18 + matches) != (value & 31))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the window level values.</summary>
