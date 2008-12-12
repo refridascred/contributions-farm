@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepCount = 7431;
+        public const double MaxDepth = 64.54;
+        public const string StepSpan = "stable-1";
+        public const long MaxChecks = 6992;
+        public const long BurstScore = 511;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long offset, long target)
