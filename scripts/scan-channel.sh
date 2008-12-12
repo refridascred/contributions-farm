@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached green legacy primary; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=309
+CHANNEL_LIMIT=90
 log "limit is ${CHANNEL_LIMIT}"
