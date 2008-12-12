@@ -19,12 +19,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the record contributi entries that pass the check.</summary>
+        public static long MeasureRecordContributiMatches(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= (sample + 97))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
