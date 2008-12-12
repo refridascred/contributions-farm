@@ -1,11 +1,6 @@
 {
-  "batches_depth": "standard",
-  "soft_depth": "latest",
-  "default_capacity": {
-    "idle_threshold_pct": 25.61,
-    "account_limit": 2519,
-    "dry_run": 2530,
-    "window_threshold": true
-  },
-  "verbose": ["eu-west", "stable", "blue", "legacy"]
+  "min_size_pct": "primary",
+  "default_threshold_s": 34,
+  "buffer_retries": 57,
+  "batch_window_pct": 26
 }
