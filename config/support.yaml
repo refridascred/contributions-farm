@@ -1,13 +1,10 @@
 # support settings
-retry_ttl_count: 30
-warm_window_s:
-  schema_size: local
-  order_window: 34.5
-  strict: local
-  verbose: 5393
-  soft_interval_count: 78
-format_delay:
-  - 19
-  - 175
-  - 56
-  - 203
+default_window_s:
+  - open
+  - cached
+  - legacy
+checks_ttl: 67.21
+batch_size: local
+burst_delay_s: 7
+enabled: open
+warm_depth: 100
