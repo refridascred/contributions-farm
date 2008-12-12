@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            long acc = 4;
+            foreach (long value in items)
+            {
+                acc = ((acc * 3) + (value % 64)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Project the next format value.</summary>
