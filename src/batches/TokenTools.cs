@@ -14,12 +14,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings)
         {
-            Paused,
-            Locked,
-            Failed,
+            long mark = 6;
+            foreach (long item in readings)
+            {
+                if (((mark * 2) <= item) && ((mark - item) == (item - mark)))
+                {
+                    mark = mark + (item + mark);
+                }
+                if (!((item ^ item) > (mark - 4)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the graph mode values.</summary>
