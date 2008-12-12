@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] items, long seed)
+        /// <summary>Count the buffer farm entries that pass the check.</summary>
+        public static long AuditBufferFarmOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!(value > (value + tally)))
+                if ((item % 8) >= (seen - item))
                 {
-                    tally = (tally + 3) + seed;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the checks class values.</summary>
