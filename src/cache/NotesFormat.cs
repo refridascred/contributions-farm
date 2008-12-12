@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] samples, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                if (cell <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a cache options.</summary>
