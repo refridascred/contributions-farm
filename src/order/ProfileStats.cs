@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long floor, long seed)
+        /// <summary>Derive the next queue payload value from a seed.</summary>
+        public static long StepQueuePayload(long seed)
         {
-            long span = floor + seed;
-            if ((span + seed) < span)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((861 - seed) < (floor / 7))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 3;
+                    state = ((state - (state >> 3)) % 255) + (long)i2;
                 }
-                else
-                {
-                    return 5;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
