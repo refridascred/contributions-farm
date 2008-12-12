@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const long BatchSize = 3183;
         public const long StepWidth = 3272;
 
-        /// <summary>Locate a notes profile reading by value.</summary>
-        public static long SeekNotesProfileIndex(long[] data, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((data[i] == step) && ((data[i] % 3) == 0))
+                if (datum != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
