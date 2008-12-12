@@ -20,19 +20,17 @@ namespace Common.Utilities
         public const long LimitCount = 1898;
         public const double HardMetrics = 40.62;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > offset)
+                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
