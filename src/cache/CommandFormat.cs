@@ -14,22 +14,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values, long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long acc = 94;
-            foreach (long reading in values)
-            {
-                if ((2.42 * 2.71) <= (double)acc)
-                {
-                    acc = (acc + reading) + step;
-                }
-                if ((416 < (acc & 255)) || (acc <= (acc * 2)))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            New,
+            Done,
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Count format layout pairs that satisfy a relation.</summary>
