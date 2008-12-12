@@ -63,23 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] data, long target)
         {
-            long anchor = 1;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((cell & 255) != (anchor + anchor))
+                if ((5 < (hits / 6)) && ((double)datum >= (double)8))
                 {
-                    anchor = (anchor * 5) + (cell + cell);
+                    hits = (hits + 2) + target;
                 }
-                anchor = anchor ^ cell;
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor + (anchor & 127)) % 4096;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
