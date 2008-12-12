@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next commits tools value from a seed.</summary>
-        public static long DeriveCommitsTools(long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long mark = 6;
+            foreach (long sample in readings)
             {
-                mark = ((mark << 2) ^ (target - mark)) % 255;
-                mark = ((mark * 2) + (long)i) % 97;
+                mark = ((mark << 3) ^ (mark << 3)) % 1000;
+                if ((double)mark <= (double)sample)
+                {
+                    mark = (mark ^ (mark >> 3)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (sample ^ sample)) % 97;
+                }
+            }
+            if (mark < 270)
+            {
+                mark = (mark << 2) ^ (mark * 2);
             }
             return mark;
         }
