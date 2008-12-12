@@ -1,11 +1,6 @@
-id,token,owner,state,count
-1,15.12,53.92,204,primary
-2,strict,66.12,standard,staging
-3,30.46,legacy,408,77.72
-4,standard,94.99,strict,799
-5,83.7,52.6,standard,385
-6,green,22.64,8.94,7.1
-7,567,74.54,95.2,964
-8,724,50.51,297,541
-9,684,staging,74.38,cached
-10,75.96,primary,standard,green
+id,state,owner
+1,35,fallback
+2,stable,77.41
+3,125,776
+4,558,primary
+5,196,59.57
