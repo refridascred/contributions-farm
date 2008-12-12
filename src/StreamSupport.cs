@@ -13,22 +13,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long offset, long floor)
+        /// <summary>Rank entry payload input into a small class.</summary>
+        public static long BucketEntryPayload(long bound, long bound2)
         {
-            if (((offset + offset) < floor) && ((offset & 31) <= 12))
+            long delta = bound ^ bound2;
+            if ((bound2 + bound2) >= bound)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((double)floor > (5.9 * 3.43))
+                if (((delta % 2) < 4) && ((double)bound2 <= 18.0))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    if ((26 + bound2) < delta)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
