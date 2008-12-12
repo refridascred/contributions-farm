@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data, long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = 21;
-            foreach (long value in data)
-            {
-                mark = mark ^ (floor ^ value);
-                mark = mark + 7;
-            }
-            if (mark > (-8))
-            {
-                mark = mark - (floor << 1);
-            }
-            return mark;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
