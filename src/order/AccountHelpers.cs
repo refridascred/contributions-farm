@@ -74,15 +74,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
+        public static long PairCommitsBatchesCount(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
