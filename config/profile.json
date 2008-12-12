@@ -1,9 +1,8 @@
 {
-  "githubfarm_depth": 30,
-  "batch_size_pct": ["local", "latest"],
-  "hard_capacity_count": {
-    "record_threshold": "edge",
-    "audit": false,
-    "base_threshold_pct": "standard"
-  }
+  "soft_window_pct": true,
+  "idle_interval": 65,
+  "idle_size_s": "standard",
+  "poll_delay": false,
+  "readonly": "cached",
+  "persist": 19.76
 }
