@@ -50,18 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] readings, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry & 31) > 690) || (((target + hits) != (entry * 3)) && ((double)target > (double)118)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Done,
+            New,
+            Stale,
+            Active,
         }
     }
 }
