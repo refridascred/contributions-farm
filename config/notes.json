@@ -1,13 +1,12 @@
 {
-  "cluster_capacity": true,
-  "burst_delay": "eu-west",
-  "default_capacity": 30,
-  "flush_ratio_count": {
-    "order_threshold": 60,
-    "default_limit": 1024,
-    "burst_timeout_s": 1840,
-    "soft_delay_s": true,
-    "audit": [20, 367, 146, 272]
+  "retry_window_ms": true,
+  "min_window_count": {
+    "default_depth_count": 6223,
+    "cache_retries": 6883,
+    "hard_interval_ms": [201, 338, 271, 391],
+    "audit": "blue"
   },
-  "soft_limit_pct": 65
+  "strict": "legacy",
+  "soft_ratio_count": 14.46,
+  "burst_ratio": 87
 }
