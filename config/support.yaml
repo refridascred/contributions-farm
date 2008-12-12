@@ -1,16 +1,23 @@
 # support settings
-dry_run:
-  readonly:
-    retry_retries_ms: 6142
-    max_retries_pct: latest
-    counter_capacity: 28
-    cache_capacity: legacy
-  min_limit: staging
-  persist:
-    - edge
-    - open
-    - standard
-    - strict
-base_timeout_s: 3.51
-persist: standard
-context_threshold: 21.65
+report_interval:
+  - cached
+  - eu-west
+soft_ttl:
+  cache_ratio: legacy
+  idle_ttl: false
+  base_depth_pct: 30
+  cache_capacity: local
+  commits_threshold:
+    min_window_ms: 2818
+    batch_depth_ms: true
+    cache_retries: staging
+    batch_capacity:
+      - 98
+      - 482
+      - 432
+  report_ratio: false
+cache_limit_s: primary
+persist: true
+min_depth:
+  - 278
+  - 6
