@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 373;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= (526 + 876))
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc + (acc ^ 30);
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Hold a profile entry.</summary>
