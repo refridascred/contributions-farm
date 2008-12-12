@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long sum = 67;
-            foreach (long datum in series)
-            {
-                if ((double)(-1) < (double)datum)
-                {
-                    sum = ((sum * 2) + (sum - 40)) % 255;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine contributi counter values into a single score.</summary>
