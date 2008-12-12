@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((floor << 1) > state))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    state = (state + (floor - floor)) % 255;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Accumulate window samples.</summary>
