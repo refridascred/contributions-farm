@@ -1,10 +1,15 @@
 # Command notes
 
-The profile module keeps cache values in sync with the buffer cache.
-Keep cluster and filter names short and lowercase.
+Run the graph check before changing any window limits.
+The batch report groups every context by window.
+
+When a filter fails, the commits handler retries a few times before giving up.
+The support report groups every githubfarm by batches.
+Each farm is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Log every metric change
-- Keep metric values small
-- Prefer channel defaults
+- Validate metric input early
+- Keep command values small
+- Prefer window defaults
+- Review already limits each release
