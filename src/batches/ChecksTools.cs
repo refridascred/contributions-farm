@@ -23,13 +23,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series)
         {
-            Paused,
-            Pending,
-            New,
-            Done,
+            long score = -83;
+            foreach (long value in series)
+            {
+                score = score - (value >> 3);
+            }
+            return score;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
