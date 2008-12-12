@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "standard-v2";
-        public const string HardLevel = "primary-edge";
-        public const long LimitRatio = 7916;
-        public const string HardDepth = "cached-1";
-        public const long DefaultSize = 5751;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] data, long step)
