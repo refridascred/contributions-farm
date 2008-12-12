@@ -28,18 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseDepth = 2851;
+        public const long RetryFactor = 1253;
+        public const long DefaultCount = 3321;
+        public const double DefaultDepth = 69.5;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyHits(long[] samples)
