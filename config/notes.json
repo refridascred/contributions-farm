@@ -1,20 +1,12 @@
 {
-  "audit": {
-    "account_window": "local",
-    "buffer_size": 5842,
-    "entry_size": 7947
+  "base_capacity": "primary",
+  "strict": {
+    "default_delay_pct": true,
+    "schema_ttl": 43,
+    "filter_ttl": [420, 318]
   },
-  "soft_limit_ms": 9045,
-  "persist": "stable",
-  "idle_limit_ms": {
-    "base_depth_ms": "blue",
-    "default_threshold_count": "blue",
-    "burst_window_ms": [316, 320]
-  },
-  "window_timeout": {
-    "idle_ratio_pct": 92,
-    "base_threshold": false,
-    "verbose": 56.26,
-    "dry_run": "blue"
-  }
+  "cluster_ratio": 19.33,
+  "cache_ratio": 30,
+  "metrics_size": 86.86,
+  "default_timeout_ms": 9052
 }
