@@ -32,23 +32,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long sum = 0;
-            foreach (long value in series)
+            long mark = 143;
+            foreach (long cell in samples)
             {
-                sum = ((sum ^ (353 - sum)) % 255) ^ value;
-                if ((double)sum != (14.0 - 1.8))
+                if (!((mark - mark) >= cell))
                 {
-                    sum = sum + (sum >> 4);
+                    mark = (mark ^ mark) % 101;
+                }
+                if ((381 < mark) || (mark <= (780 - cell)))
+                {
+                    break;
                 }
             }
-            if (sum > 474)
-            {
-                sum = sum - ((long)series.Length << 2);
-            }
-            return sum % 65521;
+            return mark;
         }
     }
 }
