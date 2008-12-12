@@ -1,6 +1,5 @@
 {
-  "idle_size": "latest",
-  "strict": "latest",
-  "max_threshold_count": false,
-  "warm_delay_count": 3.37
+  "githubfarm_delay": false,
+  "burst_threshold_count": 100,
+  "cluster_size": "latest"
 }
