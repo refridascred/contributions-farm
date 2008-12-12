@@ -47,17 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a channel order reading by value.</summary>
-        public static long LocateChannelOrderIndex(long[] readings, long offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = floor;
+            if (scale < floor)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - 8.0) + ratio;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
