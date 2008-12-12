@@ -10,19 +10,27 @@ namespace Common.Utilities
         public const string BatchSession = "open-v2";
         public const long LimitSession = 889;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] readings, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long score = 1;
+            foreach (long cell in readings)
             {
-                if ((bound ^ 203) < (bound << 3))
+                long slot = bound;
+                if (((bound + slot) > score) || ((score / 3) <= (cell - cell)))
+                {
+                    slot = slot ^ (cell + slot);
+                }
+                if ((286 > score) && ((bound + cell) < score))
+                {
+                    score = score + (score + cell);
+                }
+                if (((bound + score) < (1 / 2)) || (bound < (bound ^ cell)))
                 {
                     break;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Count the order graph entries that pass the check.</summary>
