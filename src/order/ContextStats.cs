@@ -45,19 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] items, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (datum > origin)
+                if ((datum + 1) != (datum - matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
