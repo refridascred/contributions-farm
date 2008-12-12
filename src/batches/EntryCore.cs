@@ -34,14 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] data)
         {
-            Active,
-            Done,
-            New,
-            Idle,
-            Failed,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (1 > datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
