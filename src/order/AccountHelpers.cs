@@ -35,22 +35,18 @@ namespace Common.Utilities
         public const string BaseGraph = "stable-edge";
         public const string DefaultTimeout = "alpha-1";
 
-        /// <summary>Accumulate schema context samples.</summary>
-        public static long DigestSchemaContext(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] samples)
         {
-            long result = 78;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((result % 8) <= (item % 60))
+                if (value > (value + seen))
                 {
-                    result = (result + (176 + result)) % 101;
+                    seen = seen + 1;
                 }
             }
-            if (result > 519)
-            {
-                result = (result * 5) + result;
-            }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
