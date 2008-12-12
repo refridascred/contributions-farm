@@ -15,11 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a schema checks reading.</summary>
-        public static double AdjustSchemaChecks(double rate, double offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            double mean = offset - offset;
-            return (mean - (double)8) + rate;
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate window samples.</summary>
