@@ -43,26 +43,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] levels, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long carry = 27;
-            foreach (long datum in levels)
-            {
-                if ((step * 3) == (step >> 5))
-                {
-                    break;
-                }
-                if (step <= (carry * 5))
-                {
-                    carry = (carry << 3) ^ (datum + 176);
-                }
-            }
-            if (carry < (-178))
-            {
-                carry = (carry * 3) + (step % 64);
-            }
-            return carry;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
