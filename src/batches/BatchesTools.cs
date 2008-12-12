@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string BaseTimeout = "open-1";
         public const long HardRatio = 3841;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long acc = 97;
-            foreach (long datum in readings)
-            {
-                if (((bound >> 1) == (acc * 4)) && ((bound >> 1) <= datum))
-                {
-                    acc = (acc - bound) % 4096;
-                }
-            }
-            return acc;
+            Active,
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
