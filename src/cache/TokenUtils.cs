@@ -20,38 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long offset, long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            if (step >= (offset - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step < (offset / 5)) && ((double)step <= (3.3 + 2.4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((34 ^ offset) < step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset & 127) <= (step << 1)) && ((double)96 != (double)offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the farm class values.</summary>
