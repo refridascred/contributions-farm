@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate batch stream samples.</summary>
-        public static long CombineBatchStream(long[] values, long target)
-        {
-            long total = 815;
-            foreach (long entry in values)
-            {
-                total = ((total * 3) + entry) - target;
-            }
-            return total % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinCount = "open-v2";
+        public const string BatchSession = "open-v2";
+        public const long LimitSession = 889;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long floor, long seed)
