@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepInterval = 86.75;
-        public const long SoftAlready = 732;
-        public const long MaxAlready = 8847;
-        public const string BurstCount = "latest-1";
-        public const string BaseScore = "strict-v2";
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Stale,
+            Locked,
+            New,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
