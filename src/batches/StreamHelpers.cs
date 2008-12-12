@@ -18,11 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 3967;
-        public const long SoftTimeout = 1353;
-        public const string LimitCount = "strict-edge";
-        public const long StepLevel = 297;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultBudget = 54.39;
+        public const long IdleCount = 8644;
+        public const long RetryProfile = 3576;
+        public const long CacheDepth = 8421;
 
         /// <summary>Match up contributi commits samples.</summary>
         public static long PairContributiCommitsCount(long[] samples)
