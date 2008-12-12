@@ -46,32 +46,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long origin, long offset)
+        /// <summary>Find the first record githubfarm entry that matches the target.</summary>
+        public static long SeekRecordGithubfarmIndex(long[] values, long bound)
         {
-            long delta = origin + offset;
-            if ((double)delta == (double)294)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((16.0 * 7.0) != (double)delta)
+                if (values[i] == bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta + 0) <= (delta ^ origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
