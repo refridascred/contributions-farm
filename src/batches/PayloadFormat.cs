@@ -46,13 +46,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Derive the next context cluster value from a seed.</summary>
+        public static long StepContextCluster(long bound)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i - mix) < mix)
+                {
+                    mix = (mix << 2) ^ 5;
+                }
+                if ((double)mix <= (5.3 * 2.66))
+                {
+                    mix = ((mix << 2) ^ bound) % 1000;
+                    mix = mix - bound;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
