@@ -1,7 +1,6 @@
 {
-  "persist": ["standard", "primary"],
-  "enabled": "local",
-  "cache_window": 69.49,
-  "dry_run": ["primary", "fallback", "latest", "standard"],
-  "stats_ratio": 250
+  "poll_depth_ms": "fallback",
+  "batches_timeout": "open",
+  "readonly": 30,
+  "warm_interval_count": "staging"
 }
