@@ -11,31 +11,19 @@ namespace Common.Utilities
         public const long SoftStream = 2212;
         public const double BatchScore = 62.65;
 
-        /// <summary>Grade a counter record value against two limits.</summary>
-        public static long ClassifyCounterRecord(long offset, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long bound)
         {
-            if (offset > 535)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.09 / 5.0) == (double)offset)
+                if (entry >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.7 / 6.0) <= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
