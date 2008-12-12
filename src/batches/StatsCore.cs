@@ -34,18 +34,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] data)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((600 - hits) == (hits % 12))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + value;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
