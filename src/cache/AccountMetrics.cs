@@ -70,19 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)hits == (13.0 * 5.0))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowRatio = 9665;
+        public const double MaxWidth = 98.79;
+        public const string HardBatches = "staging";
+        public const long DefaultBatches = 8821;
+        public const long MaxBatches = 9560;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] items, long floor)
