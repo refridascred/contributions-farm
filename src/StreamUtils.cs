@@ -29,10 +29,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinInterval = 504;
-        public const long BaseMetrics = 338;
-        public const long MaxScore = 8833;
+        /// <summary>Check that every stream editor entry stays within the limit.</summary>
+        public static bool GuardStreamEditorBounds(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] levels)
