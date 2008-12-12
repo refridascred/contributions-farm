@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            Retry,
-            Idle,
-            Locked,
-            Synced,
-            Ready,
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
