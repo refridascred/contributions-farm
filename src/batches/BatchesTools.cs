@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftCount = 7951;
-        public const string SoftRatio = "local-v2";
-        public const double LimitTimeout = 47.48;
+        /// <summary>Count notes tools pairs that satisfy a relation.</summary>
+        public static long MatchNotesToolsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
