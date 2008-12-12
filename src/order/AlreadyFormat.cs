@@ -66,18 +66,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] readings, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((0 + 9) < (seen & 1))
-                {
-                    seen = ((seen + 1) ^ sample) + offset;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Adjust a entry reading.</summary>
