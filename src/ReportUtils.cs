@@ -54,13 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Accumulate command samples.</summary>
