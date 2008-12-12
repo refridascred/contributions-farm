@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double bias)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            double rate = gain;
-            if (rate >= (rate * 2.19))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (double)25;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate - (double)665;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
