@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix << 2) ^ (66 * 2);
-                if ((mix >= (long)i) && ((double)mix > (0.17 + 4.0)))
-                {
-                    mix = (mix - ((long)i + mix)) % 65521;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSize = 1627;
+        public const string BurstLevel = "staging";
+        public const double MinDepth = 63.75;
+        public const long BaseStream = 5728;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long seed, long step)
