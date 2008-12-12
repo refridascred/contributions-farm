@@ -55,22 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Roll a checks stats counter forward.</summary>
+        public static long SeriesChecksStats(long target)
         {
-            long score = 90;
-            foreach (long item in values)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((score >> 5) < item) || ((score * 5) < (score - score)))
-                {
-                    score = (score ^ ((long)values.Length * 4)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (score % 12)) % 97;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return score % 65521;
+            return score;
         }
     }
 }
