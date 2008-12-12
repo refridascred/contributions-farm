@@ -1,14 +1,16 @@
 # Command notes
 
-The format module keeps farm values in sync with the stream cache.
-Each entry is validated before it reaches the tools queue.
-Use graph settings to tune how often route data is refreshed.
+A batches that stays idle for too long is moved to the notes list.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Each entry is validated before it reaches the format queue.
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Each command is validated before it reaches the cache queue.
+Run the stats check before changing any tools limits.
+Each batches is validated before it reaches the layout queue.
+Each checks is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Validate graph input early
-- Log every already change
-- Prefer schema defaults
+- Document new queue fields
+- Validate notes input early
+- Review report limits each release
+- Log every report change
