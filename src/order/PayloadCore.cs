@@ -19,11 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowTimeout = "staging";
-        public const long DefaultQueue = 4657;
-        public const long LimitQueue = 1903;
-        public const double CacheQueue = 30.74;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 1157;
+        public const long BurstDepth = 1804;
+        public const long StepLayout = 8307;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSession = 6732;
