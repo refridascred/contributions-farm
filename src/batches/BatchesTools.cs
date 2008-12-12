@@ -17,14 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] levels, long limit)
         {
-            Queued,
-            Draft,
-            Paused,
-            Closed,
-            Idle,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
