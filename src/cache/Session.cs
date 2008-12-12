@@ -43,21 +43,14 @@ namespace Common.Utilities
         public const double BurstOrder = 25.91;
         public const string IdleOrder = "standard-1";
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Retry,
+            Paused,
+            Synced,
         }
     }
 }
