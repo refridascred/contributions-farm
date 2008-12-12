@@ -12,39 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] data, long target)
         {
-            long offset = origin ^ seed;
-            if (origin <= (origin ^ seed))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((7.84 / 6.0) != (double)seed) || ((45 % 100) >= (offset - 68)))
+                if (!(tally >= (target - tally)) && ((tally - tally) != (tally + tally)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed * 4) <= ((-3) / 4)) || ((double)seed < (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)origin < (1.6 - 1.67)) && ((1.74 * 18.0) <= (double)seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 2) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
