@@ -14,19 +14,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double ratio, double offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double rate = 4.45;
-            if (rate > (offset * 8.6))
-            {
-                rate = (rate - rate) - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (double)(-898)) + (double)(long)i;
-            }
-            return rate - (rate * 6.4);
+            New,
+            Closed,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
