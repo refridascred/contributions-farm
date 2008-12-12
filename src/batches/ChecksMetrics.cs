@@ -92,22 +92,16 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] readings, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((item - hits) >= item) || ((offset << 2) >= hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = result + (target + result);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
