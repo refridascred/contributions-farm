@@ -69,12 +69,22 @@ namespace Common.Utilities
         public const long WindowProfile = 9531;
         public const string IdleProfile = "primary";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowRatio = 9665;
-        public const double MaxWidth = 98.79;
-        public const string HardBatches = "staging";
-        public const long DefaultBatches = 8821;
-        public const long MaxBatches = 9560;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((target <= (result / 6)) && ((result + result) < (324 ^ result)))
+                {
+                    result = (result << 3) ^ target;
+                    result = ((result * 3) + ((long)i / 6)) % 65521;
+                }
+                result = (result * 5) + result;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] items, long floor)
