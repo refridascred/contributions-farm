@@ -1,6 +1,5 @@
 {
-  "entry_retries": true,
-  "hard_ttl_s": true,
-  "sync_window": "legacy",
-  "soft_ttl_s": "open"
+  "default_ttl": 433,
+  "retry_capacity": 29,
+  "cache_window_ms": 16.77
 }
