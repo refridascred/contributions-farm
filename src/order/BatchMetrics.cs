@@ -46,13 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Blend two already command measurements.</summary>
+        public static double BlendAlreadyCommand(double gain, double floor)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double drift = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift - (double)916) - (double)(long)i) + gain;
+            }
+            return drift + (19.0 / 5.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
