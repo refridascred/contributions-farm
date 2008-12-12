@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] samples, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] series, long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long sum = 6;
+            foreach (long cell in series)
             {
-                if (cell < seed)
+                if (((cell % 8) >= (cell & 3)) || ((double)cell >= (8.22 / 4.0)))
                 {
-                    found = false;
-                    break;
+                    sum = (((sum * 4) + sum) % 101) + step;
                 }
             }
-            return found;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
