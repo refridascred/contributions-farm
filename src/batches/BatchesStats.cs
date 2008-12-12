@@ -19,10 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftSize = "strict-1";
-        public const long BaseFactor = 3725;
-        public const long SoftWidth = 449;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Queued,
+            Pending,
+            Draft,
+            Stale,
+            Done,
+        }
 
         /// <summary>Digest a series of buffer session entries.</summary>
         public static long DigestBufferSession(long[] data)
