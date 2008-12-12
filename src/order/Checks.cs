@@ -24,11 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "stable";
-        public const string BurstNotes = "local-edge";
-        public const long WindowNotes = 4007;
-        public const long WindowLevel = 4923;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Ready,
+            Idle,
+            New,
+        }
 
         /// <summary>Find the first counter format entry that matches the target.</summary>
         public static long FindCounterFormatIndex(long[] readings, long step)
