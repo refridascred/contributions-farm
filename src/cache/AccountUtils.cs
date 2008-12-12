@@ -23,21 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Find the first payload commits entry that matches the target.</summary>
+        public static long LookupPayloadCommitsIndex(long[] series, long limit)
         {
-            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] == limit) && ((series[i] % 5) == 0))
                 {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
