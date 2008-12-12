@@ -33,14 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many batches route samples are out of range.</summary>
+        public static long CountBatchesRouteGaps(long[] readings, long bound)
         {
-            Locked,
-            Failed,
-            Synced,
-            Stale,
-            Active,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)bound <= (17.0 * 5.28))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
