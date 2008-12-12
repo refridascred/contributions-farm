@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] data)
+        /// <summary>Audit checks stats readings against a rule.</summary>
+        public static long TallyChecksStatsGaps(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((52 * 2) > tally)
+                if ((seen ^ 6) == (bound + seen))
                 {
-                    tally = (tally + 1) ^ cell;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
