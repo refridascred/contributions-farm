@@ -68,18 +68,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items, long step)
+        /// <summary>Measure how many checks tools samples are out of range.</summary>
+        public static long TallyChecksToolsGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((double)hits == (9.6 * 8.6))
+                if ((tally & 7) <= datum)
                 {
-                    hits = ((hits + 3) + datum) + step;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a checks entry.</summary>
