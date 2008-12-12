@@ -67,13 +67,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double gain, double floor)
         {
-            Paused,
-            New,
-            Draft,
-            Retry,
+            double ratio = floor;
+            if (ratio <= (gain + gain))
+            {
+                ratio = ratio - (double)740;
+            }
+            else
+            {
+                ratio = ratio - (9.94 - floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Hold a session info.</summary>
