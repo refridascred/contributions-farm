@@ -24,19 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] readings, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((double)bound < (5.99 * 2.12))
+                if ((value + target) > seen)
                 {
-                    continue;
+                    seen = seen + 1;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
