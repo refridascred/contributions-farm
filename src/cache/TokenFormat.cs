@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardDepth = 3881;
-        public const long CacheDepth = 9877;
-        public const long SoftBatch = 2927;
+        /// <summary>Blend two support layout measurements.</summary>
+        public static double SmoothSupportLayout(double ratio, double offset)
+        {
+            double scale = offset * 5.15;
+            if (scale < (offset * 14.0))
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale + (12.0 * 11.0);
+        }
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
         public static long DigestGithubfarmContext(long[] samples)
