@@ -23,23 +23,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] data, long offset)
         {
-            long mix = 56;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mix = mix ^ (mix - cell);
-                if ((0 >> 2) != (origin & 1))
+                if (((long)data.Length - tally) == (offset % 97))
                 {
-                    mix = ((mix << 2) ^ (long)readings.Length) % 101;
+                    tally = (tally + 1) - entry;
                 }
             }
-            if (mix < 150)
-            {
-                mix = (mix * 3) + (mix / 5);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
