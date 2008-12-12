@@ -25,10 +25,14 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchWidth = 43.24;
-        public const long LimitBudget = 5871;
-        public const string WindowFactor = "staging-edge";
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Closed,
+            Paused,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Grade a counter metrics value against two limits.</summary>
         public static long ClassifyCounterMetrics(long offset, long offset2)
