@@ -41,16 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc << 3) ^ (acc << 3)) % 101;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (((433 >> 1) >= cell) && ((cell + seen) < seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
