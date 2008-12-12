@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback green open cached; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=121
+log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
