@@ -31,12 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 37.08;
-        public const long BatchEditor = 832;
-        public const string MaxScore = "open-1";
-        public const double DefaultEditor = 13.12;
-        public const long SoftBudget = 7378;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinScore = 31.37;
+        public const long BaseDepth = 5578;
+        public const string BaseWidth = "stable-v2";
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long WeighEditor(long[] data, long seed)
