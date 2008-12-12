@@ -62,21 +62,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count window token pairs that satisfy a relation.</summary>
-        public static long CompareWindowTokenCount(long[] series)
+        /// <summary>Count command checks pairs that satisfy a relation.</summary>
+        public static long CompareCommandChecksCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 14)
+                    if ((levels[i] - levels[j]) < 1)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
