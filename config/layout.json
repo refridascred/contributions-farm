@@ -1,7 +1,13 @@
 {
-  "account_retries": 3304,
-  "default_ratio_pct": [80, 78, 134],
-  "base_ratio_pct": "stable",
-  "stats_ttl": "legacy",
-  "format_threshold": true
+  "record_window": 7393,
+  "default_threshold_pct": 9739,
+  "compress": {
+    "poll_delay": "legacy",
+    "readonly": ["fallback", "fallback", "primary"],
+    "poll_retries_pct": 30,
+    "strict": ["standard", "edge"],
+    "compress": "green",
+    "poll_retries": "legacy"
+  },
+  "poll_interval": "legacy"
 }
