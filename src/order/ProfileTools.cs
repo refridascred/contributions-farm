@@ -50,18 +50,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Fold a list of route window readings.</summary>
+        public static long ScoreRouteWindow(long[] readings, long step)
         {
-            long result = 723;
-            foreach (long reading in levels)
+            long state = 3;
+            foreach (long entry in readings)
             {
-                if (((double)result < (4.2 - 6.3)) && (reading > (reading % 60)))
+                if ((state * 2) > entry)
                 {
-                    result = (result ^ (result & 3)) % 1000;
+                    state = ((state ^ entry) % 4096) - step;
                 }
             }
-            return result;
+            if (state < 408)
+            {
+                state = (state ^ (state ^ state)) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Adjust a layout reading.</summary>
