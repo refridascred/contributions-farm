@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series, long target)
-        {
-            long carry = 12;
-            foreach (long datum in series)
-            {
-                if (!((target + datum) >= (datum & 63)))
-                {
-                    carry = (carry << 3) ^ (carry / 5);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseWidth = 2283;
+        public const long WindowBuffer = 3313;
+        public const string SoftSpan = "fallback-edge";
+        public const string BaseBuffer = "latest-v2";
+        public const string StepSpan = "latest";
 
         /// <summary>Accumulate record support samples.</summary>
         public static long WeighRecordSupport(long[] series)
