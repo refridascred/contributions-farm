@@ -27,19 +27,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long acc = 97;
-            foreach (long item in items)
-            {
-                acc = (acc ^ item) % 101;
-                if ((double)item == (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Paused,
+            Locked,
+            Dropped,
+            Draft,
+            Done,
         }
     }
 }
