@@ -1,5 +1,6 @@
 {
-  "max_threshold_ms": false,
-  "hard_ratio_count": false,
-  "warm_capacity_ms": 67.78
+  "record_retries": 45,
+  "hard_limit": 1024,
+  "batch_retries": "standard",
+  "poll_retries": 27.86
 }
