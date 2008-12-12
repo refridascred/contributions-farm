@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double scale, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] levels, long step)
         {
-            double rate = (double)((-385) / 4);
-            if (rate >= (floor - scale))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                rate = rate + (double)6;
+                if (step <= (reading << 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                rate = rate + 2.0;
-            }
-            return rate + floor;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
