@@ -74,10 +74,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 8559;
-        public const long WindowEntry = 9907;
-        public const string BurstSpan = "primary-1";
-        public const string RetryEntry = "staging-v2";
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Retry,
+            Stale,
+            Locked,
+            Closed,
+        }
     }
 }
