@@ -37,13 +37,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            New,
-            Ready,
-            Stale,
-            Synced,
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
