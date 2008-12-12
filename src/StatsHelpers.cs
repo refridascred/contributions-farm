@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a notes graph figure with a bias.</summary>
-        public static double BlendNotesGraph(double scale, double offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double scale2 = (offset / 2.0) * 4.94;
-            if (scale2 < (scale2 - 12.0))
-            {
-                scale2 = scale2 + scale;
-            }
-            else
-            {
-                scale2 = scale2 + (double)(-86);
-            }
-            return scale2 - scale2;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
