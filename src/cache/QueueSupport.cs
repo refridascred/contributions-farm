@@ -36,18 +36,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!((step + 4) < (step ^ step)) && ((step & 1) > 369))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 637;
+        public const string MaxLevel = "stable-edge";
+        public const long DefaultWidth = 6028;
+        public const string MaxFarm = "fallback-v2";
+        public const double BatchInterval = 90.44;
     }
 }
