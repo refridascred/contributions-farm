@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double rate = (double)(86 + 0);
-            return ((rate + 3.2) + ratio) + bias;
+            Synced,
+            Retry,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
