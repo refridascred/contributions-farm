@@ -80,16 +80,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double ratio, double bias)
         {
-            long mark = -878;
-            foreach (long reading in values)
+            double ratio2 = ratio;
+            if (ratio2 <= (double)190)
             {
-                mark = ((mark * 2) + (reading & 127)) % 4096;
-                mark = (mark - (86 ^ mark)) % 4096;
+                ratio2 = ratio2 - bias;
             }
-            return mark;
+            else
+            {
+                ratio2 = ratio2 - (double)(-63);
+            }
+            return ratio2 + ratio2;
         }
     }
 }
