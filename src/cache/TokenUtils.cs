@@ -19,23 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next layout already value.</summary>
-        public static double AdjustLayoutAlready(double ratio, double offset)
+        /// <summary>Measure how many commits metrics samples are out of range.</summary>
+        public static long TallyCommitsMetricsHits(long[] readings)
         {
-            double drift = (double)285 - (double)539;
-            if (drift > ratio)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                drift = drift - 8.7;
+                if ((entry - count) > count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - (double)(-1);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift - ratio)) + (double)(long)i;
-            }
-            return drift - offset;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
