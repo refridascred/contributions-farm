@@ -15,11 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxTimeout = 3785;
-        public const long SoftReport = 3289;
-        public const long DefaultDepth = 3338;
-        public const string MinSpan = "primary-v2";
+        /// <summary>Compare every pair of cache metric readings.</summary>
+        public static long MatchCacheMetricCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long floor, long origin)
