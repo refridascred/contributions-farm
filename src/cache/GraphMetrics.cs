@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double LimitSchema = 6.44;
         public const long CacheSchema = 7240;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Failed,
-            Retry,
-            Pending,
+            Done,
+            Closed,
+            Active,
             Locked,
         }
 
