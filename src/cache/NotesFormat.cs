@@ -50,12 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Locate a stats notes reading by value.</summary>
+        public static long LookupStatsNotesIndex(long[] items, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
