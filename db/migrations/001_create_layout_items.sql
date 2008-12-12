@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    score REAL NOT NULL DEFAULT 0,
-    rank INTEGER
+    active INTEGER NOT NULL DEFAULT 1,
+    level INTEGER,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
 
-INSERT INTO layout_items (score, rank) VALUES (45.6, 62);
-INSERT INTO layout_items (score, rank) VALUES (58.38, 41);
-INSERT INTO layout_items (score, rank) VALUES (44.48, 88);
+INSERT INTO layout_items (active, level, token) VALUES (49, 39, 'open');
+INSERT INTO layout_items (active, level, token) VALUES (63, 34, 'latest');
+INSERT INTO layout_items (active, level, token) VALUES (2, 30, 'primary');
