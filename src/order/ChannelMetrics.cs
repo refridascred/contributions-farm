@@ -39,19 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long anchor = 726;
-            foreach (long item in levels)
-            {
-                anchor = anchor ^ item;
-            }
-            if (anchor < 88)
-            {
-                anchor = (anchor << 2) ^ (anchor + limit);
-            }
-            return anchor;
+            Dropped,
+            Done,
+            Active,
+            Pending,
+            Stale,
         }
     }
 }
