@@ -30,9 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 60.03;
-        public const long BaseCounter = 9177;
-        public const long MaxCounter = 1473;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
