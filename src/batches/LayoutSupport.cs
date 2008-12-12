@@ -69,15 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double gain, double span)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            double drift = span;
-            if (drift <= (double)46)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - (1.33 - span)) - gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return tally;
         }
     }
 }
