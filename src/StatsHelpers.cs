@@ -12,18 +12,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] levels, long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if ((double)origin == (1.1 * 2.0))
             {
-                if ((offset + 3) == (seen / 5))
+                return 0;
+            }
+            else
+            {
+                if ((origin * 4) >= (origin + floor))
                 {
-                    seen = (seen + 1) + cell;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of account farm readings.</summary>
