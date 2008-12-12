@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Done,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
