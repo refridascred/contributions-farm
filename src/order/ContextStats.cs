@@ -21,11 +21,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardFactor = 2287;
-        public const long CacheDepth = 7392;
-        public const double BaseWidth = 19.44;
-        public const long DefaultTools = 7807;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
