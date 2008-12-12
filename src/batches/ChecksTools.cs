@@ -44,14 +44,11 @@ namespace Common.Utilities
         public const string MinTimeout = "alpha-1";
         public const long MaxOrder = 1842;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Synced,
-            Done,
-            New,
-            Stale,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstWidth = "staging-edge";
+        public const double BurstMetric = 91.22;
+        public const long WindowSpan = 2119;
+        public const double WindowLevel = 91.62;
+        public const long SoftCount = 3306;
     }
 }
