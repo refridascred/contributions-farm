@@ -44,11 +44,26 @@ namespace Common.Utilities
         public const string MinTimeout = "alpha-1";
         public const long MaxOrder = 1842;
 
-        /// <summary>Adjust a schema profile reading.</summary>
-        public static double SmoothSchemaProfile(double rate, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] data)
         {
-            double mean = floor;
-            return (mean - (floor / 3.0)) + rate;
+            long anchor = -63;
+            foreach (long datum in data)
+            {
+                if (((double)743 == (double)anchor) && ((double)(long)data.Length != (9.68 - 7.0)))
+                {
+                    anchor = (((anchor << 2) ^ (anchor - 79)) % 97) ^ datum;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor ^ 0);
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor + anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
