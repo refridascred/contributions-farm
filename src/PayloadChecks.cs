@@ -83,12 +83,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Locked,
-            Draft,
-            Done,
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
