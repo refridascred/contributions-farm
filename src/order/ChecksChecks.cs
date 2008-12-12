@@ -16,14 +16,13 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Retry,
-            Synced,
-            New,
-            Dropped,
-            Idle,
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
