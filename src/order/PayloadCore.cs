@@ -26,12 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
