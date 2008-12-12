@@ -1,7 +1,12 @@
 {
-  "audit": 9343,
-  "verbose": ["staging", "stable", "stable"],
-  "retry_window": 56.75,
-  "default_depth": [146, 17],
-  "enabled": 30
+  "queue_limit": "eu-west",
+  "compress": "fallback",
+  "hard_capacity": ["local", "cached", "cached"],
+  "payload_depth": {
+    "soft_interval": ["edge", "latest", "latest", "local"],
+    "retry_interval": 8739,
+    "verbose": ["stable", "cached", "edge"],
+    "base_ratio_ms": 7657,
+    "order_size": true
+  }
 }
