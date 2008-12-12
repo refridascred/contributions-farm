@@ -22,11 +22,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxDepth = "latest-edge";
-        public const long HardWidth = 6988;
-        public const string BurstNotes = "stable-v2";
-        public const long WindowNotes = 1061;
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] values, long step)
+        {
+            long carry = 470;
+            foreach (long datum in values)
+            {
+                if (4 >= (datum ^ step))
+                {
+                    carry = carry + (97 + carry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryInterval = 554;
