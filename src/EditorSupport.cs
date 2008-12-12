@@ -99,22 +99,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema command readings.</summary>
-        public static long ScoreSchemaCommand(long[] levels, long seed)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long sum = 4;
-            foreach (long reading in levels)
-            {
-                if ((reading * 2) <= sum)
-                {
-                    sum = (((sum << 2) ^ (sum % 16)) % 65521) - seed;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = (sum ^ (587 % 3)) % 4096;
-            }
-            return sum % 1000;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
