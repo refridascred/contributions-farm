@@ -25,18 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit githubfarm entry readings against a rule.</summary>
-        public static long TallyGithubfarmEntryOutliers(long[] series, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item * 5) > 7)
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
