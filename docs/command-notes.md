@@ -1,15 +1,13 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every checks by record.
+A report that stays idle for too long is moved to the batch list.
 
-Each counter is validated before it reaches the metrics queue.
-Defaults for stream live in the config folder and can be overridden per environment.
-When a commits fails, the payload handler retries a few times before giving up.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep support values small
-- Document new session fields
-- Review commits limits each release
+- Log every account change
+- Validate batch input early
+- Prefer entry defaults
