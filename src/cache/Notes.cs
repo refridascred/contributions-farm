@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = scale + (floor / 9.0);
+            return ratio - (scale + 5.5);
         }
 
         /// <summary>Define report limits and defaults.</summary>
