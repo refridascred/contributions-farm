@@ -34,12 +34,22 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long ScoreQueueBuffer(long[] readings)
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            long score = 8;
+            foreach (long reading in readings)
+            {
+                if ((score >> 5) == (score - score))
+                {
+                    score = (((score * 3) + 3) % 4096) + reading;
+                }
+            }
+            if (score > (-23))
+            {
+                score = (score + (score << 2)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
