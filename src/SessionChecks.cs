@@ -47,19 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] values, long target)
+        /// <summary>Locate a channel order reading by value.</summary>
+        public static long LocateChannelOrderIndex(long[] readings, long offset)
         {
-            long carry = 48;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 3) + item) % 4096;
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > (-33))
-            {
-                carry = (carry ^ (target << 1)) % 255;
-            }
-            return carry % 65521;
+            return -1;
         }
     }
 }
