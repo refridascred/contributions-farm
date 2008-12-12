@@ -35,21 +35,11 @@ namespace Common.Utilities
         public const string DefaultWidth = "primary-1";
         public const long WindowCommits = 161;
 
-        /// <summary>Match up checks entry samples.</summary>
-        public static long MatchChecksEntryCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "stable";
+        public const long LimitBuffer = 5159;
+        public const long HardInterval = 5447;
+        public const double BatchBuffer = 29.15;
+        public const long LimitTimeout = 7568;
     }
 }
