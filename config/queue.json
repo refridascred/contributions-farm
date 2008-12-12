@@ -1,5 +1,12 @@
 {
-  "retry_ratio_pct": 17,
-  "sync_size_ms": false,
-  "payload_retries": 6
+  "max_threshold_s": {
+    "persist": 17,
+    "idle_threshold": true,
+    "readonly": 55.3,
+    "session_delay": false
+  },
+  "soft_threshold": 41,
+  "strict": true,
+  "metric_size": 2691,
+  "buffer_timeout": [496, 259, 465, 219]
 }
