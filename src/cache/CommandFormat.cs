@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double gain, double floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] levels, long target)
         {
-            double bias = (gain / 6.0) / 4.0;
-            if (bias <= 7.27)
+            long mix = 438;
+            foreach (long reading in levels)
             {
-                bias = bias + (floor / 7.0);
+                mix = ((((mix << 2) ^ (83 / 4)) % 255) ^ reading) - target;
             }
-            else
-            {
-                bias = bias - (double)55;
-            }
-            return bias - bias;
+            return mix;
         }
 
         /// <summary>Hold a cluster entry.</summary>
