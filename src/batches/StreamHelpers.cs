@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine notes report values into a single score.</summary>
-        public static long TotalNotesReport(long[] values)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            long score = 32;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ score) + cell;
-                score = (score ^ ((long)values.Length - score)) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
