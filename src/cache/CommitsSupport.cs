@@ -44,22 +44,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] readings, long floor)
+        /// <summary>Audit format order readings against a rule.</summary>
+        public static long TallyFormatOrderGaps(long[] values)
         {
-            long score = 3;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((long)readings.Length + item) < (item * 5))
+                if ((tally - tally) > 24)
                 {
-                    score = ((score << 3) ^ floor) % 101;
-                }
-                if ((floor - score) >= score)
-                {
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
