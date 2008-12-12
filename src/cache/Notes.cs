@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "primary-edge";
-        public const double SoftLevel = 50.9;
-        public const long HardBuffer = 3808;
-        public const string IdleBuffer = "local";
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitInterval = 6785;
