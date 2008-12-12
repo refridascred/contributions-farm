@@ -1,6 +1,12 @@
 {
-  "poll_timeout_pct": ["legacy", "green", "cached"],
-  "min_window_count": "latest",
-  "base_timeout_s": "staging",
-  "base_window": "local"
+  "default_capacity_ms": 57,
+  "batch_interval_ms": 89.66,
+  "sync_interval": false,
+  "enabled": "edge",
+  "flush_ttl_s": {
+    "burst_window_count": 1024,
+    "idle_threshold": 1,
+    "default_retries": 85.72,
+    "cache_limit_pct": [117, 214, 280, 238]
+  }
 }
