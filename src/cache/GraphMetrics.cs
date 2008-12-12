@@ -25,13 +25,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
