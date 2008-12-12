@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many profile notes samples are out of range.</summary>
-        public static long MeasureProfileNotesHits(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((0 > seen) || (cell <= (cell + seen))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
