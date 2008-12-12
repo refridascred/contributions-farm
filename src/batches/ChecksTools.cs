@@ -23,13 +23,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Dropped,
-            Draft,
-            Retry,
-            Active,
+            Paused,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
