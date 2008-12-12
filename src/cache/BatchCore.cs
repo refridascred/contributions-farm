@@ -17,13 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Paused,
-            New,
-            Dropped,
-            Locked,
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
