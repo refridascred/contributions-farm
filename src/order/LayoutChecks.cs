@@ -46,17 +46,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long offset)
+        /// <summary>Classify a graph counter pair into a bucket.</summary>
+        public static long SortGraphCounter(long origin, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((8.8 * 9.0) <= (double)target)
             {
-                if (series[i] >= offset)
+                return 4;
+            }
+            else
+            {
+                if (!((6 + target) > origin))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((target - origin) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6.0 - 9.7) >= (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
