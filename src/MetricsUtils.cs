@@ -41,11 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowRatio = "alpha-1";
-        public const string RetrySupport = "fallback";
-        public const long WindowSupport = 7316;
-        public const long SoftSupport = 2873;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 30.55;
+        public const double CacheWindow = 59.34;
+        public const long SoftDepth = 4214;
+        public const long HardLevel = 6311;
+        public const string DefaultWindow = "alpha-edge";
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] series)
