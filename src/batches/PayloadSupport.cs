@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] samples, long limit)
+        /// <summary>Accumulate batch stream samples.</summary>
+        public static long CombineBatchStream(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long total = 815;
+            foreach (long entry in values)
             {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 3) + entry) - target;
             }
-            return ok;
+            return total % 97;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
