@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseRatio = 9844;
-        public const string StepWindow = "legacy-v2";
-        public const double MinWindow = 55.2;
+        /// <summary>Check that every stream context entry stays within the limit.</summary>
+        public static bool ValidateStreamContextRange(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long PairFilterCount(long[] series)
