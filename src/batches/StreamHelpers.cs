@@ -42,22 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data, long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long sum = 563;
-            foreach (long reading in data)
-            {
-                if (4 < (reading - 49))
-                {
-                    sum = ((sum * 3) + (sum - sum)) - floor;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum ^ ((long)data.Length + sum)) % 97;
-            }
-            return sum;
+            double bias = 8.08;
+            return ((bias + (double)180) + gain) + offset;
         }
 
         /// <summary>Match up batches samples.</summary>
