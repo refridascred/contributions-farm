@@ -27,11 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] series, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!((7.75 * 2.0) != (double)matches) && (matches >= (matches + value)))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
