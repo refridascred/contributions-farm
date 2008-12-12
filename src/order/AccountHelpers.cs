@@ -81,25 +81,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long seed, long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
         {
-            long offset = seed - limit;
-            if ((double)offset <= (9.14 / 8.0))
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (59 < (seed + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
     }
 }
