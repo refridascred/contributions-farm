@@ -1,8 +1,17 @@
 {
-  "persist": "primary",
-  "min_capacity_count": 93,
-  "compress": "cached",
-  "base_size_s": "primary",
-  "cluster_window": 34.16,
-  "warm_timeout": 31.39
+  "dry_run": true,
+  "strict": {
+    "poll_interval": 9831,
+    "batch_ttl": 23.82,
+    "entry_ratio": "staging",
+    "poll_threshold": 9490,
+    "token_timeout": {
+      "cache_ratio": 15.99,
+      "enabled": "fallback",
+      "cache_threshold_ms": 250,
+      "cache_delay_pct": "fallback"
+    },
+    "dry_run": "primary"
+  },
+  "batch_size_ms": 97.51
 }
