@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
