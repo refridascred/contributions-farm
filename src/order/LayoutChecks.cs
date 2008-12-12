@@ -78,19 +78,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] items, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long score = -1;
+            foreach (long reading in values)
             {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score - (12 / 8)) % 255) + reading;
             }
-            return flag;
+            return score;
         }
     }
 }
