@@ -1,4 +1,19 @@
 # githubfarm settings
-strict: 30
-stream_delay: staging
-farm_ttl: primary
+retry_timeout_pct: eu-west
+audit:
+  batch_size:
+    - staging
+    - blue
+    - staging
+    - eu-west
+  metrics_ratio:
+    - stable
+    - strict
+    - primary
+    - legacy
+  dry_run: staging
+  audit:
+    - 153
+    - 362
+  flush_timeout_ms: 24
+stream_limit: 43.56
