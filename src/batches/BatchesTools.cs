@@ -32,10 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 5326;
-        public const double StepDepth = 83.61;
-        public const long BaseLevel = 9807;
-        public const double HardLevel = 88.73;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((3.09 * 8.8) < (double)limit)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
+        }
     }
 }
