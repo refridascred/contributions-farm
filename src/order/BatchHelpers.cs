@@ -38,18 +38,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit payload batch readings against a rule.</summary>
-        public static long MeasurePayloadBatchOutliers(long[] readings)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((3.82 - 2.0) <= (double)tally) || (((double)tally != (7.0 - 9.0)) && ((82 + datum) <= 741)))
+                if (data[i] < target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
