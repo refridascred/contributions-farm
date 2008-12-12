@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long limit)
+        /// <summary>Accumulate channel cluster samples.</summary>
+        public static long TallyChannelCluster(long[] values)
         {
-            long total = 2;
-            foreach (long reading in series)
+            long score = 471;
+            foreach (long cell in values)
             {
-                if ((0.01 / 8.0) <= (double)limit)
-                {
-                    total = ((total * 4) + (4 + limit)) ^ reading;
-                }
+                score = (score - cell) % 4096;
             }
-            if (total < 153)
+            if (score > 6)
             {
-                total = (total * 3) + (limit & 7);
+                score = (score ^ (score & 255)) % 4096;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
