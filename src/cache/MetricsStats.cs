@@ -65,10 +65,19 @@ namespace Common.Utilities
         public const long DefaultToken = 3996;
         public const long MinToken = 1577;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchCount = "standard-v2";
-        public const long DefaultNotes = 5900;
-        public const long HardNotes = 8385;
-        public const long MinInterval = 2861;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] samples, long limit)
+        {
+            long result = 77;
+            foreach (long value in samples)
+            {
+                result = ((result ^ result) % 4096) + value;
+            }
+            if (result < (-45))
+            {
+                result = (result ^ (limit % 2)) % 1000;
+            }
+            return result;
+        }
     }
 }
