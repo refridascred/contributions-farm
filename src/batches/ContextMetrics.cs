@@ -47,17 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a batch stream sample.</summary>
-        public static long LocateBatchStreamIndex(long[] items, long origin)
+        /// <summary>Check that every window batch entry stays within the limit.</summary>
+        public static bool CheckWindowBatchRange(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (items[i] < origin)
+                if (sample >= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
