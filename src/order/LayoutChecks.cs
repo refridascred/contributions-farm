@@ -80,16 +80,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
-        {
-            double mean = 8.1;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = ((mean - (ratio / 2.0)) - (double)(long)i) - bias;
-            }
-            return mean - ratio;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstLevel = 934;
+        public const double BurstEntry = 66.09;
+        public const long RetryDepth = 7743;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long FoldProfile(long[] values)
