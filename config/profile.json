@@ -1,12 +1,5 @@
 {
-  "enabled": "stable",
-  "strict": "edge",
-  "farm_capacity": "green",
-  "audit": "eu-west",
-  "githubfarm_ttl": {
-    "audit": 60,
-    "warm_ttl_pct": ["legacy", "edge", "standard"],
-    "base_delay_count": [149, 440],
-    "notes_capacity": true
-  }
+  "max_window_pct": "primary",
+  "persist": false,
+  "flush_window_s": "stable"
 }
