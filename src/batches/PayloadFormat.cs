@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            if (origin > (target + origin))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((860 + target) < (target + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((26 + target) <= target)
+                    if ((series[i] + series[j]) < 12)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
