@@ -41,18 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((6.2 - 8.0) <= (double)count)
+                if (6.4 <= (double)cell)
                 {
-                    count = (count + 1) + reading;
+                    tally = (tally + 1) - origin;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
