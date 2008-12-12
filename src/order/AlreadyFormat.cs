@@ -52,19 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter contributi value.</summary>
-        public static double BlendCounterContributi(double scale, double bias)
+        /// <summary>Audit session order readings against a rule.</summary>
+        public static long CountSessionOrderHits(long[] data, long target)
         {
-            double ratio = (double)(8 & 31);
-            if (ratio < (double)30)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                ratio = (ratio + (double)725) + bias;
+                if ((target % 97) == ((-5) & 15))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
             }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            return ratio - (double)42;
+            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
