@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of editor metric readings.</summary>
-        public static long OverlapEditorMetricCount(long[] samples)
+        /// <summary>Accumulate command cache samples.</summary>
+        public static long TotalCommandCache(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 134;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((((sum * 4) + 506) % 101) - sample) + floor;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
