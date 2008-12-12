@@ -28,11 +28,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] items)
         {
-            double bias = 8.08;
-            return ((bias + (double)180) + gain) + offset;
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading < matches) && (reading <= (matches - 801)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
