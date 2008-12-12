@@ -48,13 +48,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count metric stream pairs that satisfy a relation.</summary>
