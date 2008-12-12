@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 321;
-        public const long IdleWidth = 2308;
-        public const double StepLevel = 86.58;
-        public const string MinBudget = "cached-edge";
-        public const long CacheBudget = 9717;
+        /// <summary>Digest a series of payload cluster entries.</summary>
+        public static long CombinePayloadCluster(long[] data)
+        {
+            long state = 4;
+            foreach (long datum in data)
+            {
+                state = ((state * 2) + datum) % 1000;
+            }
+            if (state < 973)
+            {
+                state = ((state * 3) + state) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Audit command payload readings against a rule.</summary>
         public static long AuditCommandPayloadGaps(long[] samples, long seed)
