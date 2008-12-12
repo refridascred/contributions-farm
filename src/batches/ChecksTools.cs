@@ -25,15 +25,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double bias, double floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] levels, long target)
         {
-            double ratio = (double)(8 << 3);
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                ratio = ((ratio + bias) + (double)(long)i) - floor;
+                if (((96 < (count + target)) || ((double)count != (4.0 - 6.0))) || !((double)sample <= (16.0 * 2.2)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio - (double)8;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
