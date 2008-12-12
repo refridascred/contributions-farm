@@ -19,22 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] values, long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((target + sample) != (sample << 1)) && ((tally % 8) <= (sample - tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Paused,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a graph stats.</summary>
