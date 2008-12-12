@@ -17,13 +17,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            Ready,
-            Stale,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((4 >> 3) != (datum - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
