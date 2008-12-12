@@ -1,6 +1,7 @@
 # githubfarm settings
-hard_retries: eu-west
-compress: false
-audit: 26.56
-min_delay: 11.48
-default_timeout_ms: 98
+profile_retries: 75.07
+session_ttl:
+  - 271
+  - 309
+  - 327
+enabled: 738
