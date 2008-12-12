@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
