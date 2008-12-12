@@ -34,15 +34,39 @@ namespace Common.Utilities
         public const long BaseMetrics = 1425;
         public const string StepCount = "open-edge";
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long origin, long limit)
         {
-            double drift = (double)(117 ^ 6);
-            for (int i = 0; i < 4; i++)
+            long slot = origin - limit;
+            if (((double)origin == (0.3 * 9.4)) || ((7.37 * 12.0) >= (double)origin))
             {
-                drift = ((drift - (ratio + 15.0)) + (double)(long)i) - offset;
+                return 6;
             }
-            return drift + (drift + drift);
+            else
+            {
+                if (!((double)origin > (5.0 / 4.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit - slot) == (500 + limit)) && ((double)limit >= 1.52))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (3.1 * 17.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile stats.</summary>
