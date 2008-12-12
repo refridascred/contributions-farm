@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 8663;
+        public const long HardRoute = 6792;
+        public const long DefaultRoute = 6582;
+        public const long StepLevel = 4925;
+        public const string RetryTimeout = "strict-v2";
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
