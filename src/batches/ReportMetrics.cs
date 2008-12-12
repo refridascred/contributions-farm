@@ -47,15 +47,19 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double bias, double bias2)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            double bias3 = bias;
+            if (bias3 > bias3)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                bias3 = bias3 - (bias + bias3);
             }
-            return mark;
+            for (int i = 0; i < 4; i++)
+            {
+                bias3 = (bias3 + (6.4 / 4.0)) + (double)(long)i;
+            }
+            return bias3 + (bias2 * 20.0);
         }
     }
 }
