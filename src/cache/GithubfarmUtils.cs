@@ -44,32 +44,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long floor)
+        /// <summary>Match up checks entry samples.</summary>
+        public static long MatchChecksEntryCount(long[] series)
         {
-            long span = bound - floor;
-            if (((double)floor == (9.0 - 5.3)) && ((4 >> 4) > floor))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span & 63) <= (bound - 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound << 2) > span) || (span > (bound >> 1)))
+                    if ((series[i] ^ series[j]) < 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
