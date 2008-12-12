@@ -78,17 +78,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] data, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                if (entry > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
