@@ -58,21 +58,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = offset - origin;
+            if ((origin * 4) <= (origin + offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((144 >> 3) < offset)
                 {
-                    if ((readings[i] - readings[j]) < 17)
+                    return 1;
+                }
+                else
+                {
+                    if (((origin ^ 613) != (origin >> 5)) && (bound < origin))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
     }
 }
