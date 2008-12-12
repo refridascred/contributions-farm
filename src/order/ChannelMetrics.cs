@@ -23,18 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] samples)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (seen > (684 >> 4))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the commits state values.</summary>
