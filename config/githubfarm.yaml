@@ -1,55 +1,7 @@
 # githubfarm settings
-retry_window: 15.28
-sync_timeout_count:
-  poll_timeout_count: strict
-  warm_retries_count: legacy
-  filter_retries:
-    flush_capacity_pct:
-      - strict
-      - cached
-    batch_window:
-      - stable
-      - open
-      - fallback
-    hard_retries_pct:
-      - standard
-      - latest
-    filter_window: 1028
-    editor_timeout: 58.43
-    metric_depth: 10.55
-support_window:
-  account_delay:
-    - primary
-    - standard
-  stream_delay:
-    - 42
-    - 226
-    - 157
-  min_window_pct: 31.75
-  order_limit: 250
-  channel_size: 30
-  default_size_pct:
-    buffer_depth: primary
-    readonly: 6468
-    flush_window: true
-    report_interval: 49
-    route_threshold: open
-    persist: 82
-max_delay:
-  flush_interval_s:
-    batch_retries_pct: legacy
-    poll_depth_count: cached
-    min_size_ms:
-      - 189
-      - 258
-    audit:
-      - 6
-      - 327
-  burst_ratio_s: open
-  default_threshold_pct:
-    githubfarm_limit: 2940
-    flush_capacity: primary
-    hard_capacity_ms: legacy
-    batch_size_pct: edge
-    min_window_s: primary
-    account_limit: 46.49
+dry_run: 9850
+batches_ratio: 7321
+burst_capacity_count: cached
+enabled: standard
+default_delay_s: legacy
+idle_limit: 500
