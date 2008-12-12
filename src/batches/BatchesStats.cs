@@ -19,14 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long floor)
         {
-            Queued,
-            Pending,
-            Draft,
-            Stale,
-            Done,
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state ^ (866 - state)) % 97;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of buffer session entries.</summary>
