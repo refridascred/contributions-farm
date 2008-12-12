@@ -1,10 +1,6 @@
 {
-  "dry_run": "fallback",
-  "tools_timeout": {
-    "enabled": 53,
-    "cache_limit": 5795,
-    "cache_depth_pct": "eu-west"
-  },
-  "hard_size_count": "eu-west",
-  "max_capacity_pct": 1024
+  "flush_ratio": "cached",
+  "readonly": true,
+  "default_timeout": 92.68,
+  "cluster_ratio": false
 }
