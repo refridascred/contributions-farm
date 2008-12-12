@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Measure how many profile farm samples are out of range.</summary>
+        public static long TallyProfileFarmMatches(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches & 7) >= (datum + datum))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
