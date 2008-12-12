@@ -31,12 +31,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftFactor = 7637;
-        public const long BatchStream = 2354;
-        public const long BaseFactor = 1448;
-        public const long LimitStream = 2406;
-        public const long StepStream = 2639;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public bool Total { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples, long origin)
