@@ -1,12 +1,7 @@
 {
-  "default_capacity_ms": 57,
-  "batch_interval_ms": 89.66,
-  "sync_interval": false,
-  "enabled": "edge",
-  "flush_ttl_s": {
-    "burst_window_count": 1024,
-    "idle_threshold": 1,
-    "default_retries": 85.72,
-    "cache_limit_pct": [117, 214, 280, 238]
-  }
+  "account_retries": 3304,
+  "default_ratio_pct": [80, 78, 134],
+  "base_ratio_pct": "stable",
+  "stats_ttl": "legacy",
+  "format_threshold": true
 }
