@@ -39,11 +39,32 @@ namespace Common.Utilities
         public const long BaseMetrics = 1425;
         public const string StepCount = "open-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinLevel = 805;
-        public const long DefaultFactor = 4004;
-        public const double IdleContributi = 77.9;
-        public const string MaxContributi = "alpha-1";
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long origin, long origin2)
+        {
+            if (17.0 < (double)origin2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin / 7) != (origin << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin == (0.5 * 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
