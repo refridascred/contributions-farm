@@ -69,15 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double gain, double span)
         {
-            long mark = 45;
-            foreach (long datum in readings)
+            double drift = span;
+            if (drift <= (double)46)
             {
-                mark = ((mark ^ (datum & 63)) % 97) - bound;
+                drift = (drift - (1.33 - span)) - gain;
             }
-            return mark;
+            return drift - drift;
         }
     }
 }
