@@ -20,12 +20,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long seed)
         {
-            Idle,
-            Closed,
-            Synced,
+            long offset = origin ^ seed;
+            if (origin <= (origin ^ seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((7.84 / 6.0) != (double)seed) || ((45 % 100) >= (offset - 68)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed * 4) <= ((-3) / 4)) || ((double)seed < (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)origin < (1.6 - 1.67)) && ((1.74 * 18.0) <= (double)seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
