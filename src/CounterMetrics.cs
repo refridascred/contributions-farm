@@ -19,14 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            Pending,
-            Done,
-            Synced,
-            Retry,
-            Paused,
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + (465 + floor)) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Locate a support reading by value.</summary>
