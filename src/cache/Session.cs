@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const double BurstOrder = 25.91;
         public const string IdleOrder = "standard-1";
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] values, long offset)
         {
-            Pending,
-            Idle,
-            Retry,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((hits + offset) > (datum + datum)) && (947 > (datum & 31)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
