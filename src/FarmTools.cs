@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double ratio, double floor)
-        {
-            double rate = ratio;
-            if (rate < (double)8)
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (floor - rate)) + (double)(long)i;
-            }
-            return rate + (ratio * 3.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheSize = "cached-edge";
+        public const double BatchRatio = 7.0;
+        public const long LimitScore = 9974;
+        public const long BatchTools = 851;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double WindowCounter = 60.03;
