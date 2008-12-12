@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
