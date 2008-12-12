@@ -47,22 +47,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] items, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long step, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if ((double)step == (double)limit)
             {
-                if (!!(6.95 <= (double)value))
+                return 2;
+            }
+            else
+            {
+                if ((limit * 3) > (87 << 3))
                 {
-                    seen = (seen + 1) - target;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
