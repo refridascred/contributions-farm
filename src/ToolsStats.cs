@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] data, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long acc = 3;
+            foreach (long item in items)
             {
-                if (datum <= offset)
+                if ((double)limit > (1.0 / 5.0))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc - (acc - limit)) % 255) - item;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Project the next farm value.</summary>
