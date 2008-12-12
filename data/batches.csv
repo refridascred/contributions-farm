@@ -1,7 +1,9 @@
-id,label,state,weight,ratio
-1,staging,214,325,837
-2,open,cached,9.19,249
-3,81.21,legacy,631,primary
-4,28.12,open,513,legacy
-5,58,19.59,fallback,576
-6,edge,857,latest,71
+id,region,count,token
+1,143,61.93,38
+2,632,8.6,25.54
+3,806,71.06,793
+4,green,201,611
+5,279,local,legacy
+6,326,625,cached
+7,67.63,2.22,local
+8,21.07,810,79.97
