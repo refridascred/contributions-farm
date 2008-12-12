@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] items, long seed)
         {
-            long state = 389;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                state = (((state * 5) + (state << 1)) - reading) - bound;
+                if (!(value > (value + tally)))
+                {
+                    tally = (tally + 3) + seed;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
