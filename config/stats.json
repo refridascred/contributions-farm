@@ -1,6 +1,15 @@
 {
-  "editor_window": 35,
-  "audit": "fallback",
-  "window_ratio": 64.47,
-  "retry_limit_ms": "primary"
+  "dry_run": {
+    "enabled": "green",
+    "poll_threshold": "legacy",
+    "record_window": "stable"
+  },
+  "idle_size_pct": [432, 379],
+  "cache_delay_s": "open",
+  "readonly": {
+    "audit": 100,
+    "readonly": "eu-west",
+    "command_ratio": "stable",
+    "retry_timeout_s": "standard"
+  }
 }
