@@ -1,5 +1,11 @@
 {
-  "sync_window_ms": true,
-  "hard_depth_s": 54.86,
-  "session_timeout": "strict"
+  "verbose": {
+    "burst_interval_pct": true,
+    "dry_run": "latest",
+    "cache_retries_ms": true
+  },
+  "idle_interval_ms": "stable",
+  "persist": 79.96,
+  "min_depth": 88.67,
+  "batch_ttl_count": 1024
 }
