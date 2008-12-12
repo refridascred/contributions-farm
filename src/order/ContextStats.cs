@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a tools report counter forward.</summary>
-        public static long SeriesToolsReport(long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = acc - (step + step);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
