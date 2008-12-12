@@ -13,15 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two token payload measurements.</summary>
