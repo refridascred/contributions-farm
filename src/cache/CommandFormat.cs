@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const long MaxChecks = 6992;
         public const long BurstScore = 511;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] readings, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long state = -12;
+            foreach (long entry in samples)
             {
-                if (((double)cell >= (8.0 * 9.7)) || ((target * 3) < cell))
+                if ((double)state > (9.0 + 5.9))
                 {
-                    seen = seen + 3;
+                    state = ((((state * 2) + (52 + 892)) % 255) + entry) + offset;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Hold a commits header.</summary>
