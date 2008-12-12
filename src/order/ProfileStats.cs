@@ -35,22 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of batch support readings.</summary>
-        public static long OverlapBatchSupportCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowRatio = 1427;
+        public const long BatchBudget = 1587;
+        public const long BaseSupport = 8403;
+        public const double HardBudget = 28.57;
+        public const long CacheRatio = 2291;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] items)
