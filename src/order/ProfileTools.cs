@@ -53,22 +53,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] values, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = 585;
+            foreach (long sample in items)
             {
-                if (((reading & 127) <= target) && (4.84 <= (double)reading))
+                if (!((double)sum == (6.1 + 7.4)))
                 {
-                    hits = hits + 3;
+                    sum = ((sum << 2) ^ ((-513) / 7)) % 1000;
                 }
-                else
+                if (sum >= (sample - sum))
                 {
-                    hits = hits - 1;
+                    sum = ((sum << 3) ^ sample) % 101;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
