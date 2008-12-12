@@ -1,7 +1,13 @@
 {
-  "flush_ttl": false,
-  "burst_limit": ["edge", "green", "staging", "edge"],
-  "notes_ratio": 18.83,
-  "dry_run": 60,
-  "retry_window_s": "local"
+  "cache_size_count": "staging",
+  "cache_delay_ms": "staging",
+  "min_retries_count": {
+    "dry_run": 2974,
+    "githubfarm_timeout": 91.14,
+    "hard_size_pct": true,
+    "verbose": 83
+  },
+  "buffer_size": 92,
+  "audit": false,
+  "burst_ratio_ms": "green"
 }
