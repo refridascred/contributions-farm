@@ -78,13 +78,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Ready,
-            Pending,
-            Retry,
-            New,
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
