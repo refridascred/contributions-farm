@@ -42,32 +42,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long limit)
+        /// <summary>Derive the next filter farm value from a seed.</summary>
+        public static long StepFilterFarm(long limit)
         {
-            long prev = origin ^ limit;
-            if ((double)origin > (3.2 / 8.0))
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((6 >> 2) >= (prev * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev + 9) == (origin >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
