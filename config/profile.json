@@ -1,12 +1,17 @@
 {
-  "persist": "eu-west",
-  "retry_ratio": {
-    "base_timeout_ms": 500,
-    "soft_ratio_count": 9669,
-    "compress": 72.96,
-    "base_interval": 39,
-    "buffer_delay": [85, 142]
+  "warm_size": "primary",
+  "sync_limit_s": {
+    "audit": "green",
+    "farm_size": {
+      "metric_depth": "open",
+      "sync_retries_pct": "cached",
+      "readonly": true,
+      "verbose": 16,
+      "default_ttl_s": 8874
+    },
+    "cluster_limit": true
   },
-  "retry_capacity_pct": ["open", "eu-west"],
-  "dry_run": 44.89
+  "min_ratio": "cached",
+  "base_threshold_pct": "green",
+  "burst_ratio": "fallback"
 }
