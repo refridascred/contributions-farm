@@ -24,19 +24,15 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] levels)
+        /// <summary>Measure how many batches buffer samples are out of range.</summary>
+        public static long CountBatchesBufferMatches(long[] samples, long floor)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long entry in samples)
             {
-                if ((double)cell <= (8.27 / 3.0))
+                if ((hits + (long)samples.Length) <= (floor + hits))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) - entry;
                 }
             }
             return hits;
