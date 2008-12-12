@@ -79,24 +79,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long offset, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            if ((offset >> 3) <= (offset - target))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.08 - 12.0) >= (double)target)
+                if (((10.0 <= (double)seen) || (((long)data.Length - (-97)) < seen)) || (((seen & 15) > seen) && ((18.0 * 2.4) != (double)value)))
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
