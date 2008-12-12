@@ -21,14 +21,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Validate counter report readings against a bound.</summary>
+        public static bool VerifyCounterReportLimits(long[] series, long origin)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Draft,
-            Done,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
