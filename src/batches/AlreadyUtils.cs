@@ -65,19 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
