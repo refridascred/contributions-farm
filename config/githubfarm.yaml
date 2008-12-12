@@ -1,12 +1,33 @@
 # githubfarm settings
-warm_retries_count: 250
-commits_delay: 6378
-flush_retries:
-  editor_timeout: 60
-  audit:
-    - 479
-    - 470
-  window_threshold: 30
-  max_delay_count: staging
-record_ratio: staging
-compress: 81.91
+batches_limit: 35
+verbose:
+  - 293
+  - 441
+  - 373
+  - 413
+idle_interval:
+  retry_size:
+    - 286
+    - 201
+  account_limit: standard
+  schema_depth:
+    - strict
+    - strict
+    - fallback
+    - green
+  cache_interval_pct: blue
+  max_capacity:
+    warm_limit: open
+    retry_ratio: 64.6
+    already_timeout: false
+    min_threshold_count: 73.21
+    warm_limit_count: true
+burst_interval: 41.44
+idle_threshold:
+  default_retries: blue
+  flush_threshold_s: legacy
+  base_capacity:
+    hard_capacity: true
+    command_threshold: 728
+    buffer_retries: true
+hard_limit_ms: blue
