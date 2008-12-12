@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const long BatchSize = 3183;
         public const long StepWidth = 3272;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long bound)
+        /// <summary>Adjust a route already reading.</summary>
+        public static double ScaleRouteAlready(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double mean = bias - gain;
+            if (mean < (bias / 3.0))
             {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - (bias / 3.0);
             }
-            return ready;
+            return mean - gain;
         }
     }
 }
