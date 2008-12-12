@@ -56,21 +56,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
