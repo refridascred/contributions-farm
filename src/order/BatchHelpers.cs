@@ -24,39 +24,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a account filter pair into a bucket.</summary>
-        public static long RankAccountFilter(long seed, long bound)
-        {
-            long offset = seed - bound;
-            if (seed < offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed % 7) >= 49) || ((0 + bound) < bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound + offset) <= (20 ^ bound)) || ((double)offset <= (9.74 - 1.46)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < (offset << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "local-v2";
+        public const string DefaultCache = "stable-v2";
+        public const double BatchCache = 96.41;
     }
 }
