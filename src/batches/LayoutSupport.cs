@@ -24,21 +24,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support record readings.</summary>
-        public static long CompareSupportRecordCount(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 9;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc - (entry % 8)) % 65521;
+                if ((acc - acc) == (long)values.Length)
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc - (entry + (long)values.Length);
+                    acc = (acc + (acc + acc)) % 101;
+                }
+                if ((double)(-481) <= (double)acc)
+                {
+                    acc = ((acc << 3) ^ (entry - acc)) % 101;
                 }
             }
-            return matches;
+            if (acc < 93)
+            {
+                acc = ((acc << 2) ^ (acc % 97)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a counter metrics value against two limits.</summary>
