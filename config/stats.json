@@ -1,6 +1,8 @@
 {
-  "dry_run": "open",
-  "warm_limit": 46.59,
-  "cache_retries": "edge",
-  "strict": 25
+  "compress": 4,
+  "base_ttl": "open",
+  "hard_size_pct": "strict",
+  "base_threshold_s": "standard",
+  "base_delay_pct": ["eu-west", "stable", "fallback"],
+  "readonly": 13.58
 }
