@@ -1,13 +1,5 @@
 {
-  "verbose": true,
-  "retry_ttl_pct": "latest",
-  "soft_window_ms": [13, 39, 72],
-  "poll_interval": 84.05,
-  "batch_capacity_count": {
-    "batch_depth": 7.63,
-    "warm_window_count": 3770,
-    "cache_size": 2,
-    "flush_capacity": 57.3,
-    "burst_interval": "standard"
-  }
+  "cache_timeout": false,
+  "compress": 64,
+  "order_ratio": true
 }
