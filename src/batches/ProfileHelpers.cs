@@ -16,27 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((origin >= (origin % 60)) && (((long)i ^ (long)i) >= (origin & 7)))
-                {
-                    state = state + (state + state);
-                }
-                if ((-70) >= (long)i)
-                {
-                    state = (state << 3) ^ (state + origin);
-                }
-                else
-                {
-                    state = (state * 2) + (state % 3);
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Failed,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
