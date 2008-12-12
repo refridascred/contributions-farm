@@ -32,14 +32,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long bound)
         {
-            Closed,
-            Done,
-            Locked,
-            Draft,
-            Queued,
+            long slot = seed + bound;
+            if ((6.9 - 7.76) > (double)992)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((983 ^ slot) <= (slot - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed - seed) != (slot * 2)) || ((seed ^ bound) > (slot / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
