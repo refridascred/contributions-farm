@@ -68,18 +68,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many checks tools samples are out of range.</summary>
-        public static long TallyChecksToolsGaps(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally & 7) <= datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a checks entry.</summary>
