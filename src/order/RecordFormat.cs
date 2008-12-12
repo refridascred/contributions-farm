@@ -42,14 +42,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Closed,
-            Paused,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxTimeout = 1237;
+        public const long StepCount = 6180;
+        public const long DefaultCluster = 3414;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] values, long floor)
