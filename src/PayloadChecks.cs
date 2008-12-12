@@ -76,12 +76,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] series, long limit)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)limit > (20.0 / 9.0)))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
