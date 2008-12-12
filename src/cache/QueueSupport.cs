@@ -36,23 +36,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Blend two token payload measurements.</summary>
-        public static double AdjustTokenPayload(double rate, double offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] levels, long step)
         {
-            double gain = 17.0;
-            if (gain < gain)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                gain = (gain - rate) - offset;
+                if (!((step + 4) < (step ^ step)) && ((step & 1) > 369))
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (double)5;
+            return matches;
         }
     }
 }
