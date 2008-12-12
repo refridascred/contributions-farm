@@ -27,26 +27,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings, long offset)
-        {
-            long sum = 103;
-            foreach (long value in readings)
-            {
-                if ((22 < (offset >> 3)) || (sum <= offset))
-                {
-                    sum = (sum * 2) + (offset >> 5);
-                }
-                if ((sum + value) >= (offset * 3))
-                {
-                    break;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = sum + (sum - offset);
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchLevel = 69.21;
+        public const double MaxSupport = 13.12;
+        public const long LimitSupport = 5534;
     }
 }
