@@ -42,11 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Adjust a githubfarm support reading.</summary>
+        public static double ScaleGithubfarmSupport(double rate, double bias)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            double drift = (double)(1 / 6);
+            if (drift <= (rate - 0.76))
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (rate * 7.0)) + (double)(long)i;
+            }
+            return drift + (double)612;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
