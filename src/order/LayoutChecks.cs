@@ -94,12 +94,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 6080;
-        public const long SoftCount = 6527;
-        public const long LimitEntry = 433;
-        public const string StepEntry = "fallback-edge";
-        public const long LimitScore = 9643;
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
