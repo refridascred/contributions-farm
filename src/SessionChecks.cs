@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
