@@ -69,15 +69,10 @@ namespace Common.Utilities
         public const double BurstEntry = 66.09;
         public const long RetryDepth = 7743;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] values)
-        {
-            long score = -1;
-            foreach (long reading in values)
-            {
-                score = ((score - (12 / 8)) % 255) + reading;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 1504;
+        public const long IdleSpan = 411;
+        public const long SoftDepth = 3077;
+        public const long CacheRatio = 873;
     }
 }
