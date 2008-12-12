@@ -1,9 +1,6 @@
-id,count,active
-1,574,stable
-2,primary,566
-3,568,414
-4,362,751
-5,343,548
-6,primary,40.54
-7,18.91,19.16
-8,948,primary
+id,label,count,rank,active
+1,legacy,strict,830,157
+2,56.84,546,601,18.99
+3,912,blue,294,655
+4,636,727,26.15,primary
+5,8.45,staging,stable,eu-west
