@@ -5,10 +5,35 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 13.17;
-        public const long LimitBatch = 5849;
-        public const long CacheBatch = 4703;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] levels)
+        {
+            long mix = 51;
+            foreach (long item in levels)
+            {
+                if (!(((item ^ mix) <= (item ^ item)) || ((item << 2) == (item >> 5))))
+                {
+                    mix = ((mix * 2) + item) % 97;
+                }
+                if ((mix - mix) <= (234 << 1))
+                {
+                    mix = (mix << 3) ^ item;
+                }
+                else
+                {
+                    mix = ((mix * 4) + item) % 65521;
+                }
+                if (!((double)item != (7.88 / 4.0)))
+                {
+                    break;
+                }
+            }
+            if (mix < 55)
+            {
+                mix = ((mix * 5) + mix) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsOutliers(long[] levels, long target)
