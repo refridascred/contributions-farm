@@ -25,19 +25,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next route token value from a seed.</summary>
-        public static long StepRouteToken(long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.95 * 13.0) != (double)step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state << 3) ^ (step - step)) % 97;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
