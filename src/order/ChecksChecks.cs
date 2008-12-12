@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstTimeout = "open-edge";
+        public const double RetryBatch = 36.06;
+        public const double BatchRatio = 60.87;
+        public const long DefaultBatch = 6111;
+        public const long BurstFactor = 8668;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] levels, long floor)
