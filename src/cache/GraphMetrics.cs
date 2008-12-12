@@ -25,12 +25,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public double Owner { get; set; }
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Accumulate batch samples.</summary>
