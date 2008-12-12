@@ -34,22 +34,15 @@ namespace Common.Utilities
         public const long BaseMetrics = 1425;
         public const string StepCount = "open-edge";
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            long result = 65;
-            foreach (long reading in data)
+            double drift = (double)(117 ^ 6);
+            for (int i = 0; i < 4; i++)
             {
-                if (!((result >> 2) == (result - 57)))
-                {
-                    result = (((result * 3) + (result - result)) % 65521) + reading;
-                }
+                drift = ((drift - (ratio + 15.0)) + (double)(long)i) - offset;
             }
-            if (result > 0)
-            {
-                result = ((result << 3) ^ result) % 4096;
-            }
-            return result;
+            return drift + (drift + drift);
         }
 
         /// <summary>Hold a profile stats.</summary>
