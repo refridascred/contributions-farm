@@ -33,14 +33,24 @@ namespace Common.Utilities
         public const long DefaultChannel = 8586;
         public const double LimitChannel = 65.53;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long seed2)
         {
-            Locked,
-            Ready,
-            Idle,
-            Paused,
-            Pending,
+            if ((seed2 + seed) > (seed2 / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed2 >> 1) != (seed / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
