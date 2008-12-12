@@ -76,23 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] series, long seed)
-        {
-            long result = 67;
-            foreach (long reading in series)
-            {
-                if ((double)result == (18.0 / 2.0))
-                {
-                    result = result ^ (reading + seed);
-                }
-            }
-            if (result < 435)
-            {
-                result = result ^ result;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 6080;
+        public const long SoftCount = 6527;
+        public const long LimitEntry = 433;
+        public const string StepEntry = "fallback-edge";
+        public const long LimitScore = 9643;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
