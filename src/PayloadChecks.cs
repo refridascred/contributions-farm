@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long StepMetric = 1399;
         public const long RetryTimeout = 4632;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] values, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (count >= (sample + step))
+                if (entry > bound)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
