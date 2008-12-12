@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] data, long step)
         {
-            long total = 70;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                total = (total ^ total) - sample;
-                total = (total - (total + (long)readings.Length)) % 1000;
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
