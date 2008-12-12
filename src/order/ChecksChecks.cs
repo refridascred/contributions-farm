@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstTimeout = "open-edge";
-        public const double RetryBatch = 36.06;
-        public const double BatchRatio = 60.87;
-        public const long DefaultBatch = 6111;
-        public const long BurstFactor = 8668;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double HardCommand = 37.12;
