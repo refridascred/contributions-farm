@@ -47,22 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] items, long bound)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long anchor = -4;
-            foreach (long datum in items)
-            {
-                if (((anchor / 9) <= (anchor / 4)) || ((datum - datum) >= 15))
-                {
-                    anchor = ((anchor ^ anchor) % 4096) - bound;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + anchor) % 101;
-                }
-            }
-            return anchor % 97;
+            Dropped,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
