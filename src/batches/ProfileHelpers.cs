@@ -40,22 +40,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long target, long limit)
         {
-            long anchor = 8;
-            foreach (long value in items)
+            if (limit > target)
             {
-                if (value < (anchor << 2))
+                return 5;
+            }
+            else
+            {
+                if (((limit >> 2) >= target) && (target > limit))
                 {
-                    anchor = ((anchor << 3) ^ (step / 4)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    anchor = anchor ^ (anchor - step);
+                    if ((limit >= (limit >> 2)) && ((double)limit != (3.4 * 5.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Hold a filter stats.</summary>
