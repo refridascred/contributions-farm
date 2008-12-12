@@ -15,12 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Adjust a schema checks reading.</summary>
+        public static double AdjustSchemaChecks(double rate, double offset)
         {
-            Pending,
-            Locked,
-            Dropped,
+            double mean = offset - offset;
+            return (mean - (double)8) + rate;
         }
 
         /// <summary>Accumulate window samples.</summary>
