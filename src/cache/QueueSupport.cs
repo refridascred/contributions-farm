@@ -25,27 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi stats samples.</summary>
-        public static long DigestContributiStats(long[] data, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long bound, long seed)
         {
-            long score = 7;
-            foreach (long reading in data)
+            if ((seed / 9) < 25)
             {
-                score = ((score * 4) + (reading - reading)) % 255;
-                if (((double)reading == (double)target) && ((score ^ target) >= reading))
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 4) < (bound % 10))
                 {
-                    score = score - (0 ^ (-461));
-                }
-                if ((double)80 < (double)score)
-                {
-                    score = (score ^ reading) % 97;
+                    return 6;
                 }
                 else
                 {
-                    score = (score ^ ((-62) >> 3)) % 101;
+                    if ((seed > bound) && ((9 >> 2) <= (seed >> 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Classify a tools schema pair into a bucket.</summary>
