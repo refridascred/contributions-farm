@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchSize = 8972;
-        public const long StepFilter = 9670;
-        public const double RetryWidth = 47.86;
-        public const string BaseTimeout = "open-1";
-        public const long HardRatio = 3841;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftCount = 7951;
+        public const string SoftRatio = "local-v2";
+        public const double LimitTimeout = 47.48;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
