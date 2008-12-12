@@ -1,5 +1,18 @@
 # support settings
-burst_threshold_pct: 56
-farm_retries: 42.08
-idle_retries: open
-format_limit: fallback
+min_capacity_pct: 58
+route_window: 72.92
+max_ttl_count:
+  order_ratio: staging
+  persist:
+    - 301
+    - 495
+  readonly:
+    poll_ratio_ms: true
+    cache_retries: 84
+    enabled: false
+    retry_size_s: eu-west
+    sync_size: false
+    batch_threshold_pct: true
+  filter_depth: 33.78
+  batch_depth: open
+  batch_window: 100
