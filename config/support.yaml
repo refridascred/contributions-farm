@@ -1,11 +1,19 @@
 # support settings
-poll_window_s: cached
-enabled: 96
-cluster_capacity: latest
-idle_timeout: 93.29
-order_threshold:
-  support_threshold: stable
-  default_interval: 30
-  flush_ttl: fallback
-  flush_threshold: 13.18
-poll_window_ms: 60
+tools_limit: false
+token_threshold:
+  - standard
+  - edge
+  - green
+  - standard
+sync_limit_s: false
+cache_window_s: 52.02
+min_ttl:
+  hard_timeout_pct: 250
+  burst_window_ms: 2
+  order_limit:
+    verbose: true
+    order_window: staging
+    dry_run: 500
+    burst_interval: 250
+    order_ratio: 1024
+    batch_ratio_pct: stable
