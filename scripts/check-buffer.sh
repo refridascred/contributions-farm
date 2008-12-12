@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=189
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in latest staging open green; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=268
+log "limit is ${BUFFER_LIMIT}"
