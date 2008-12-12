@@ -37,17 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first window cluster entry that matches the target.</summary>
-        public static long SeekWindowClusterIndex(long[] data, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 17;
+            foreach (long reading in levels)
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + reading) - seed;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the order class values.</summary>
