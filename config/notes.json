@@ -1,6 +1,8 @@
 {
-  "dry_run": "stable",
-  "warm_delay_count": "fallback",
-  "persist": 26,
-  "enabled": 500
+  "retry_threshold_pct": [343, 289, 27, 122],
+  "warm_depth": "standard",
+  "retry_limit": "edge",
+  "idle_retries": "blue",
+  "poll_depth_count": 60,
+  "cache_ttl": 1024
 }
