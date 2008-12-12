@@ -23,30 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] levels, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mix = 99;
-            foreach (long value in levels)
-            {
-                if ((value - value) >= mix)
-                {
-                    mix = (mix ^ (value % 2)) % 101;
-                }
-                if (((origin + origin) < value) && ((value * 4) < (origin % 100)))
-                {
-                    mix = (mix - ((-1) + value)) % 255;
-                }
-                else
-                {
-                    mix = mix - origin;
-                }
-            }
-            if (mix < (-321))
-            {
-                mix = mix ^ origin;
-            }
-            return mix;
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
