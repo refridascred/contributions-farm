@@ -60,18 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] data, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((18 + matches) != (value & 31))
+                if (samples[i] > offset)
                 {
-                    matches = (matches + 2) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the window level values.</summary>
