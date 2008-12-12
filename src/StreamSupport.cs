@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitScore = 3163;
-        public const long BurstLevel = 8348;
-        public const double MaxDepth = 4.03;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftScore = 6442;
+        public const long MinEntry = 730;
+        public const double BatchTimeout = 19.43;
+        public const long HardEntry = 2723;
 
         /// <summary>Compare every pair of buffer metric readings.</summary>
         public static long PairBufferMetricCount(long[] data)
