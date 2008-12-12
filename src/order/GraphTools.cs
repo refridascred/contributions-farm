@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long seed, long step)
         {
-            Draft,
-            Done,
-            Idle,
+            if (step > (7 + step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step / 5) < (seed + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - seed) > (step + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step < (0.8 + 1.6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the report graph series from a seed.</summary>
