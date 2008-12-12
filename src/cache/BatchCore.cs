@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (floor + score)) % 97;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
