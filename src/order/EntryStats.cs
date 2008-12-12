@@ -44,32 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((state >> 1) >= ((long)i % 60))
-                {
-                    state = ((state << 3) ^ (offset >> 5)) % 1000;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (state + (state + (long)i2)) % 65521;
-                    state = (state ^ (offset ^ (long)i2)) % 4096;
-                }
-                if (offset < (5 * 2))
-                {
-                    state = state + ((long)i / 4);
-                }
-                else
-                {
-                    state = (state - state) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Pending,
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
