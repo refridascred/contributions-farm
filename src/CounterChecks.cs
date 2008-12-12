@@ -26,26 +26,15 @@ namespace Common.Utilities
         public const long RetryDepth = 4675;
         public const string DefaultSession = "legacy-edge";
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] data, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values, long floor)
         {
-            long mix = 61;
-            foreach (long entry in data)
+            long sum = 539;
+            foreach (long cell in values)
             {
-                if (!((seed + mix) >= (seed & 7)))
-                {
-                    mix = ((mix << 3) ^ entry) % 65521;
-                }
-                if ((entry % 16) == (seed + 7))
-                {
-                    break;
-                }
+                sum = (((sum - (5 - 90)) % 255) ^ cell) + floor;
             }
-            if (mix < 75)
-            {
-                mix = ((mix * 2) + (2 >> 2)) % 1000;
-            }
-            return mix;
+            return sum % 97;
         }
 
         /// <summary>Describe the tools level values.</summary>
