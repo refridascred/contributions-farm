@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate schema entry readings against a bound.</summary>
-        public static bool CheckSchemaEntryBounds(long[] items, long limit)
+        /// <summary>Count cache already pairs that satisfy a relation.</summary>
+        public static long PairCacheAlreadyCount(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
