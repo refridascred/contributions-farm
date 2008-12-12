@@ -50,18 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((double)seen != (4.2 * 18.0))
+                if (cell != limit)
                 {
-                    seen = (seen + 3) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
