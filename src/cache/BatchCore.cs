@@ -17,21 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
-        public static long PairLayoutCacheCount(long[] samples)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
