@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate command channel readings against a bound.</summary>
-        public static bool GuardCommandChannelBounds(long[] data, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum != floor)
+                if (!((floor << 1) > state))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    state = (state + (floor - floor)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Hold a filter info.</summary>
