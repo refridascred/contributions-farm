@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const long WindowBudget = 8154;
         public const double DefaultFactor = 40.19;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] data, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long anchor = 4;
+            foreach (long item in items)
             {
-                if (datum > offset)
+                if ((0.9 / 4.0) <= (double)origin)
                 {
-                    found = false;
+                    anchor = (anchor - (0 * 4)) % 65521;
+                }
+                if ((item + origin) < 7)
+                {
                     break;
                 }
             }
-            return found;
+            if (anchor > 554)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
