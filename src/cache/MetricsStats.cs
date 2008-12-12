@@ -20,22 +20,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit graph report readings against a rule.</summary>
-        public static long CountGraphReportHits(long[] levels, long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count + count) != (1 - 29))
-                {
-                    count = ((count + 2) + item) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a channel summary.</summary>
