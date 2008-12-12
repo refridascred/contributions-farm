@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long floor, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            long span = floor + seed;
+            if ((span + seed) < span)
             {
-                state = ((state * 5) + (offset + (-56))) % 65521;
-                if ((((long)i >> 1) > ((long)i + state)) && ((offset ^ offset) < (3 % 97)))
+                return 2;
+            }
+            else
+            {
+                if ((861 - seed) < (floor / 7))
                 {
-                    state = (state - (state & 15)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    state = state - (offset + state);
+                    return 5;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
