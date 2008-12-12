@@ -35,19 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] values, long floor)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double load = bias;
+            if (load <= (double)8)
             {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + 0.87) - offset;
             }
-            return found;
+            return load - load;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
