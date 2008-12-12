@@ -25,11 +25,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark << 3) ^ (mark - limit)) % 65521;
+                if ((limit > (limit - limit)) && ((limit >> 4) != (mark << 1)))
+                {
+                    mark = mark - (2 * 2);
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Rank metrics channel input into a small class.</summary>
