@@ -42,22 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryWidth = 8412;
+        public const long StepCount = 1831;
+        public const long BatchStream = 8146;
+        public const long SoftStream = 5684;
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] items)
