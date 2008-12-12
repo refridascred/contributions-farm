@@ -34,26 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster route samples.</summary>
-        public static long TallyClusterRoute(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long state = 8;
-            foreach (long entry in values)
-            {
-                if (!((entry / 4) > entry))
-                {
-                    state = state + state;
-                }
-                if ((state - entry) > (entry & 3))
-                {
-                    break;
-                }
-            }
-            if (state < (-36))
-            {
-                state = state - (state - state);
-            }
-            return state;
+            Retry,
+            Idle,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
