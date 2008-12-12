@@ -13,10 +13,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 4954;
-        public const string MaxFormat = "open-1";
-        public const double MaxInterval = 32.68;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long SortReport(long seed, long bound)
