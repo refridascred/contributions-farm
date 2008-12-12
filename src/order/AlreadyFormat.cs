@@ -64,22 +64,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of schema contributi entries.</summary>
-        public static long FoldSchemaContributi(long[] readings, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long anchor = 243;
-            foreach (long sample in readings)
+            long mark = -878;
+            foreach (long reading in values)
             {
-                if (!((double)sample == (double)73))
-                {
-                    anchor = ((anchor << 2) ^ ((long)readings.Length * 4)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ (target * 3);
-                }
+                mark = ((mark * 2) + (reading & 127)) % 4096;
+                mark = (mark - (86 ^ mark)) % 4096;
             }
-            return anchor;
+            return mark;
         }
     }
 }
