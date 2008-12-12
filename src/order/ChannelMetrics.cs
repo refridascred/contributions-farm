@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] series, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long acc = 76;
+            foreach (long item in series)
             {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                long span = (acc ^ item) - (acc ^ acc);
+                acc = (acc << 2) ^ span;
+                acc = (acc ^ (5 / 9)) % 97;
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
