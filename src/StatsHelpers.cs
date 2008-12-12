@@ -31,16 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] items, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                mix = mix ^ target;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
