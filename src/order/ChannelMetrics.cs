@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] levels, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
