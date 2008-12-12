@@ -50,30 +50,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of cluster buffer readings.</summary>
-        public static long TallyClusterBuffer(long[] series, long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = 52;
-            foreach (long reading in series)
-            {
-                if (!((anchor * 5) == (offset + reading)))
-                {
-                    anchor = (anchor - (offset ^ offset)) % 1000;
-                }
-                if ((double)offset <= (double)reading)
-                {
-                    anchor = (anchor ^ (987 << 1)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (offset - offset);
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = ((anchor * 4) + offset) % 1000;
-            }
-            return anchor;
+            Retry,
+            Locked,
+            Active,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
