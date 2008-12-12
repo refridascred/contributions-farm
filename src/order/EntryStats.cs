@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 6766;
         public const long WindowWidth = 2625;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] series, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (datum <= bound)
+                if (entry < seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
