@@ -19,11 +19,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long target)
         {
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((((long)i ^ sum) != ((long)i % 5)) && ((sum + sum) > (target & 63))))
+                {
+                    sum = (sum - target) % 4096;
+                }
+                if ((target - sum) <= (long)i)
+                {
+                    sum = sum - (target << 1);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
