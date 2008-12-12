@@ -56,18 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long total = 73;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > total)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total * 3) + 798;
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
