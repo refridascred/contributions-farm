@@ -1,17 +1,16 @@
 # payload settings
-flush_interval:
-  compress: eu-west
-  strict: eu-west
-  cache_delay_ms: false
-base_window:
-  - 379
-  - 472
-  - 372
-dry_run: true
-min_limit_ms:
-  - 193
-  - 146
-  - 385
-  - 89
-compress: legacy
-sync_limit_pct: 49.42
+layout_delay:
+  enabled: true
+  verbose: false
+  min_depth_count: 6061
+  githubfarm_delay: 250
+idle_delay_s: fallback
+batch_interval:
+  - 215
+  - 365
+  - 430
+min_threshold_ms:
+  - 489
+  - 169
+idle_size: legacy
+verbose: latest
