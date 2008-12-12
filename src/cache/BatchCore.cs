@@ -12,24 +12,17 @@ namespace Common.Utilities
             return (weight + weight) + offset;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long bound)
+        /// <summary>Iterate the entry support series from a seed.</summary>
+        public static long RollEntrySupport(long floor)
         {
-            if ((bound >> 5) != (offset + offset))
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                state = ((state * 2) + state) % 1000;
+                state = ((state << 3) ^ (floor << 2)) % 255;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound + offset) != (bound % 24))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
