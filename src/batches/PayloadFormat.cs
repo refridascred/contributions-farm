@@ -64,11 +64,21 @@ namespace Common.Utilities
             return bias - (bias / 2.0);
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double span)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            double drift = bias;
-            return (drift + (drift * 1.14)) + span;
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
