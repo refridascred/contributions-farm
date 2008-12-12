@@ -39,19 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (1 > datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 78.78;
+        public const double MaxCount = 9.28;
+        public const long MaxPayload = 2591;
+        public const long IdlePayload = 5165;
+        public const long CacheLevel = 3742;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksHits(long[] levels)
