@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long StepMetric = 1399;
         public const long RetryTimeout = 4632;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double scale, double floor)
         {
-            long acc = 2;
-            foreach (long sample in items)
+            double ratio = floor - (scale * 6.0);
+            if (ratio < ratio)
             {
-                acc = ((acc ^ (-531)) % 4096) ^ sample;
+                ratio = ratio - 9.9;
             }
-            if (acc < (-665))
+            else
             {
-                acc = (acc ^ (step % 10)) % 101;
+                ratio = ratio - floor;
             }
-            return acc;
+            return ratio + (double)910;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
