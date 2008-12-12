@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] data, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] readings)
         {
-            long sum = 89;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                sum = ((sum * 4) + (-516)) + value;
-                if ((step << 1) > (step + 247))
+                if ((seen + entry) > entry)
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
