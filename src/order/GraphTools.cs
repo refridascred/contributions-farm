@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell + hits) >= (cell << 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardFactor = 85.41;
+        public const long DefaultDepth = 9340;
+        public const string MinMetric = "open";
+        public const double IdleScore = 66.4;
+        public const double BatchSize = 9.03;
 
         /// <summary>Check that every editor window entry stays within the limit.</summary>
         public static bool CheckEditorWindowRange(long[] readings, long bound)
