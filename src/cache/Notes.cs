@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of commits layout entries.</summary>
-        public static long FoldCommitsLayout(long[] data, long bound)
-        {
-            long sum = 40;
-            foreach (long value in data)
-            {
-                if ((double)sum <= (12.0 / 5.0))
-                {
-                    sum = ((sum << 3) ^ (sum - (long)data.Length)) + value;
-                }
-                if ((9.0 / 7.0) != (double)bound)
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 6749;
+        public const long CacheScore = 7716;
+        public const double IdleEditor = 59.78;
+        public const long HardFactor = 1554;
+        public const double LimitCount = 31.01;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
