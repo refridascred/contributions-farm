@@ -30,24 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long limit)
         {
-            if (5.7 < (double)seed)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (origin << 2))
+                if (sample <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
