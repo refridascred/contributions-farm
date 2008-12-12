@@ -30,38 +30,19 @@ namespace Common.Utilities
         public const long HardTools = 8690;
         public const long SoftTools = 100;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] values, long offset)
         {
-            if ((floor - floor) != (origin - origin))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (floor >> 4))
+                if (sample < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor - floor) <= (floor - origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor >> 1) < origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the queue level values.</summary>
