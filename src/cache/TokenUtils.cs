@@ -19,22 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] readings, long bound)
+        /// <summary>Project the next layout already value.</summary>
+        public static double AdjustLayoutAlready(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double drift = (double)285 - (double)539;
+            if (drift > ratio)
             {
-                if (!(6.44 <= (double)tally) || !(8.0 <= (double)bound))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift - 8.7;
             }
-            return tally;
+            else
+            {
+                drift = drift - (double)(-1);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (drift - ratio)) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
