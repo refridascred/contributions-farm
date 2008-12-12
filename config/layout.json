@@ -1,5 +1,8 @@
 {
-  "stream_size": [410, 1],
-  "burst_depth": 2990,
-  "sync_size_pct": 92.59
+  "hard_delay": false,
+  "metric_limit": [323, 360, 389, 115],
+  "warm_size": 49.4,
+  "flush_depth_s": "eu-west",
+  "min_delay": 1766,
+  "min_size_s": 40.18
 }
