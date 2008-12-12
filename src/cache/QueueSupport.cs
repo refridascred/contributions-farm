@@ -26,23 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long state = 401;
+            foreach (long datum in levels)
             {
-                if ((double)total < 3.2)
+                state = ((state << 3) ^ 0) % 97;
+                if ((datum + origin) > (state % 64))
                 {
-                    total = (total << 3) ^ 31;
+                    state = (state ^ (datum / 4)) % 101;
                 }
-                else
-                {
-                    total = (total ^ (total - total)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Accumulate format samples.</summary>
