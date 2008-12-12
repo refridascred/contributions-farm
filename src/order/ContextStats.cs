@@ -14,11 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
