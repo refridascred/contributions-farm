@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Validate commits record readings against a bound.</summary>
+        public static bool ValidateCommitsRecordBounds(long[] levels, long step)
         {
-            Closed,
-            Retry,
-            Done,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
