@@ -16,24 +16,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long origin, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] items, long offset)
         {
-            if ((6.91 / 2.0) != (double)origin)
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin >= offset) && ((origin - offset) < origin))
+                if (entry <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a farm stats.</summary>
