@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema support entries that pass the check.</summary>
-        public static long MeasureSchemaSupportMatches(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item * 5) > tally)
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftSize = "strict-1";
+        public const long BaseFactor = 3725;
+        public const long SoftWidth = 449;
 
         /// <summary>Digest a series of buffer session entries.</summary>
         public static long DigestBufferSession(long[] data)
