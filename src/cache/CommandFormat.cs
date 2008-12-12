@@ -57,9 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryInterval = 9268;
-        public const long WindowFilter = 1790;
-        public const string SoftTimeout = "strict-edge";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Region { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
