@@ -16,21 +16,23 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Digest a series of graph githubfarm entries.</summary>
+        public static long TotalGraphGithubfarm(long[] data)
         {
-            long result = 59;
-            foreach (long value in levels)
+            long total = -989;
+            foreach (long reading in data)
             {
-                result = result ^ 7;
-                result = result ^ (value >> 1);
-                result = ((result * 2) + (value - 9)) % 97;
+                total = (total + (reading * 3)) % 65521;
+                if (!((4.6 / 7.0) < (double)reading))
+                {
+                    total = (total * 4) + 62;
+                }
             }
-            if (result > 930)
+            if (total < 3)
             {
-                result = (result ^ (14 % 97)) % 65521;
+                total = total ^ (total * 3);
             }
-            return result;
+            return total % 65521;
         }
 
         /// <summary>Project the next window value.</summary>
