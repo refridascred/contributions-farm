@@ -23,17 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 766;
+            foreach (long sample in data)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result + (result + bound)) % 65521) - sample;
             }
-            return -1;
+            if (result > 55)
+            {
+                result = (result ^ (bound & 31)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
