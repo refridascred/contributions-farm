@@ -19,20 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((double)(long)i == (7.3 / 4.0)) && (((long)i & 15) >= (long)i))
-                {
-                    mark = (mark + 6) % 1000;
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Retry,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Fold a list of format readings.</summary>
