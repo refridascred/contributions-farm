@@ -47,13 +47,19 @@ namespace Common.Utilities
             return bias - (gain * 9.61);
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Validate queue account readings against a bound.</summary>
+        public static bool GuardQueueAccountLimits(long[] readings, long limit)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
