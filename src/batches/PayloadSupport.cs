@@ -39,10 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseScore = 8782;
-        public const long CacheRoute = 6500;
-        public const long BatchSpan = 4212;
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] values)
