@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BurstCluster = 1896;
         public const long CacheCluster = 3430;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] levels)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (!(788 >= hits) && !((456 ^ hits) <= hits))
+                if (sample >= seed)
                 {
-                    hits = (hits + 3) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a farm stats.</summary>
