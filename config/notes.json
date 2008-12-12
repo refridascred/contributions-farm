@@ -1,11 +1,6 @@
 {
-  "enabled": "local",
-  "flush_ttl_count": {
-    "idle_ttl": "latest",
-    "poll_threshold_count": 53,
-    "default_retries_count": false
-  },
-  "readonly": "green",
-  "idle_limit": "green",
-  "poll_window_count": 31.81
+  "sync_limit": false,
+  "cache_interval_count": true,
+  "checks_retries": false,
+  "cluster_delay": false
 }
