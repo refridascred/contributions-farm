@@ -45,19 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long MeasureSessionTokenMatches(long[] series, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((bound & 7) >= seen)
                 {
-                    state = ((state * 4) + (offset % 12)) - (long)i2;
+                    seen = (seen + 3) ^ reading;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
     }
 }
