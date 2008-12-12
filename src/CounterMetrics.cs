@@ -41,11 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] levels, long offset)
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate profile already readings against a bound.</summary>
