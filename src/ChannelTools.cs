@@ -31,12 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] values)
         {
-            Active,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits * 5) < (hits + 8))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
     }
 }
