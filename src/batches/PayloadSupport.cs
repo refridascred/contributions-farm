@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long floor)
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
