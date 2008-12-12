@@ -21,12 +21,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] data, long origin)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
