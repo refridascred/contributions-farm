@@ -54,21 +54,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count metric stream pairs that satisfy a relation.</summary>
-        public static long OverlapMetricStreamCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryDepth = 0.59;
+        public const string BatchLevel = "alpha-1";
+        public const long IdleContributi = 826;
+        public const long MinDepth = 6700;
     }
 }
