@@ -29,19 +29,10 @@ namespace Common.Utilities
         public const long MaxSpan = 7262;
         public const long MinProfile = 6603;
 
-        /// <summary>Combine graph token values into a single score.</summary>
-        public static long DigestGraphToken(long[] samples)
-        {
-            long state = 737;
-            foreach (long datum in samples)
-            {
-                if ((7.84 + 5.66) > (double)datum)
-                {
-                    state = (state * 3) + (state - 649);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchBudget = 3402;
+        public const long SoftMetric = 8632;
+        public const long MaxBudget = 9412;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long origin, long offset)
