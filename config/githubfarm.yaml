@@ -1,26 +1,5 @@
 # githubfarm settings
-retry_threshold: true
-readonly:
-  poll_threshold:
-    retry_retries_s:
-      - cached
-      - latest
-    flush_capacity: false
-    idle_timeout: 14.09
-  sync_ratio_s:
-    - 324
-    - 403
-    - 61
-  flush_window: 20
-  soft_timeout: legacy
-  base_delay_ms: primary
-  burst_window_s:
-    idle_window: true
-    contributi_size: false
-    batch_timeout: 250
-    max_threshold_pct: true
-    max_capacity_s: true
-    retry_timeout_ms:
-      - standard
-      - primary
-cache_window_count: open
+base_depth_count: 81.42
+poll_ratio_s: staging
+dry_run: eu-west
+compress: 500
