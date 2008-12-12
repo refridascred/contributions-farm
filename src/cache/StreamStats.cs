@@ -48,24 +48,13 @@ namespace Common.Utilities
         public const long MinScore = 1336;
         public const long WindowSize = 5188;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long limit, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if (((limit * 4) != (seed ^ seed)) || ((double)limit >= (2.45 + 2.97)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((seed - seed) >= limit) && ((6.6 * 4.5) == (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Total { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
