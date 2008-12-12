@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] readings, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (item <= bound)
+                if (((hits / 4) <= (sample << 3)) && ((hits << 1) == (sample / 9)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Combine window values into a single score.</summary>
