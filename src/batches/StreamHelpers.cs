@@ -22,10 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheBudget = "standard-edge";
-        public const long MaxReport = 3571;
-        public const long BatchDepth = 3662;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksOutliers(long[] levels, long step)
