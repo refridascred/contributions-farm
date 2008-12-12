@@ -1,7 +1,6 @@
-id,region,rank,label,owner
-1,452,909,57.56,55.39
-2,301,standard,901,49.33
-3,local,48.01,edge,cached
-4,254,latest,84.55,legacy
-5,16.33,401,blue,721
-6,latest,78.13,edge,21.16
+id,count,ratio
+1,green,459
+2,staging,edge
+3,924,22.32
+4,155,green
+5,69.32,93.0
