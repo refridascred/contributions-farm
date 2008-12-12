@@ -11,38 +11,26 @@ namespace Common.Utilities
         public const long CacheTimeout = 6766;
         public const long WindowWidth = 2625;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long bound, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] data)
         {
-            if ((282 + bound) < (bound / 6))
+            long carry = 997;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target + target) >= bound) || ((target % 10) <= (bound ^ target)))
+                if ((8.0 - 5.9) == (double)sample)
                 {
-                    return 6;
+                    carry = (carry << 2) ^ (sample << 3);
                 }
                 else
                 {
-                    if (((2.4 * 2.6) == (double)bound) || ((262 & 1) >= (bound + target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target < 76) && (target <= 19))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = (carry + (carry / 2)) % 4096;
+                }
+                if ((sample + sample) < (sample >> 2))
+                {
+                    break;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
