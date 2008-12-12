@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Grade a metrics graph value against two limits.</summary>
+        public static long BucketMetricsGraph(long target, long offset)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long offset2 = target + offset;
+            if ((offset << 1) > (offset + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (8.0 < (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset2 != (2.32 * 6.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two command measurements.</summary>
