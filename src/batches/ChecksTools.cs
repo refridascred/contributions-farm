@@ -15,14 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Locked,
-            Draft,
-            Paused,
-            New,
             Synced,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the batches state values.</summary>
