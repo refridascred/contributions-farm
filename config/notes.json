@@ -1,12 +1,12 @@
 {
-  "retry_window_ms": true,
-  "min_window_count": {
-    "default_depth_count": 6223,
-    "cache_retries": 6883,
-    "hard_interval_ms": [201, 338, 271, 391],
-    "audit": "blue"
-  },
-  "strict": "legacy",
-  "soft_ratio_count": 14.46,
-  "burst_ratio": 87
+  "strict": false,
+  "dry_run": "fallback",
+  "idle_timeout_ms": "legacy",
+  "command_capacity": {
+    "record_ttl": "cached",
+    "graph_ttl": 35.47,
+    "max_size": "open",
+    "poll_timeout_s": ["staging", "blue", "stable", "green"],
+    "cache_depth": 82.25
+  }
 }
