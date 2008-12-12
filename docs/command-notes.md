@@ -1,13 +1,14 @@
 # Command notes
 
-The payload report groups every checks by record.
-A report that stays idle for too long is moved to the batch list.
+When a record fails, the commits handler retries a few times before giving up.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the graph queue.
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Use session settings to tune how often schema data is refreshed.
+The metric report groups every filter by report.
+The tools module keeps route values in sync with the cluster cache.
 
 ## Guidelines
 
-- Log every account change
-- Validate batch input early
-- Prefer entry defaults
+- Review format limits each release
+- Prefer graph defaults
+- Document new cache fields
