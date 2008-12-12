@@ -33,16 +33,12 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Iterate the layout filter series from a seed.</summary>
-        public static long DeriveLayoutFilter(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetrySize = 2306;
+        public const long BaseOrder = 8080;
+        public const long CacheOrder = 5152;
+        public const double BatchOrder = 1.67;
+        public const double CacheFactor = 2.25;
 
         /// <summary>Locate a filter report reading by value.</summary>
         public static long LookupFilterReportIndex(long[] readings, long origin)
