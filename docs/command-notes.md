@@ -1,11 +1,13 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Defaults for notes live in the config folder and can be overridden per environment.
-Keep batch and graph names short and lowercase.
+Each route is validated before it reaches the contributi queue.
+The tools module keeps queue values in sync with the already cache.
+
+Keep batches and metric names short and lowercase.
+Use queue settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Log every channel change
-- Review graph limits each release
-- Keep token values small
+- Log every editor change
+- Document new payload fields
+- Review batches limits each release
