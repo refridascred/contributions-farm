@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] readings, long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Ready,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Accumulate filter order samples.</summary>
