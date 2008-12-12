@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long limit, long target)
-        {
-            long cur = limit ^ target;
-            if ((8.9 * 0.9) < (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)cur <= (3.1 + 6.29))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 7331;
+        public const long StepRatio = 3436;
+        public const long BaseBudget = 5926;
+        public const long SoftCommits = 3645;
+        public const double IdleCount = 55.5;
 
         /// <summary>Digest a series of command already entries.</summary>
         public static long TotalCommandAlready(long[] levels)
