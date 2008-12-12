@@ -65,12 +65,19 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] data, long step)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
