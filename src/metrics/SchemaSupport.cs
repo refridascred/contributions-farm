@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Define booking limits and defaults.</summary>
-        public const long SoftBudget = 548;
-        public const long MaxScore = 2829;
-        public const long MinFactor = 5644;
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a report token sample.</summary>
         public static long FindReportTokenIndex(long[] levels, long origin)
