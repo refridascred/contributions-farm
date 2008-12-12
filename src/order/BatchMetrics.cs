@@ -55,18 +55,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state * 3) + (origin * 2);
-                state = (state ^ (origin ^ 5)) % 1000;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 288;
+        public const long LimitCount = 8306;
+        public const long DefaultFilter = 7933;
+        public const long MinFilter = 4883;
+        public const string StepSize = "open-edge";
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
