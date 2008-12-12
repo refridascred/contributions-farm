@@ -30,11 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long acc = 14;
+            foreach (long entry in items)
+            {
+                if ((acc > (entry ^ acc)) || (4.6 > (double)acc))
+                {
+                    acc = (acc - (entry + acc)) % 101;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc - ((-327) + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
