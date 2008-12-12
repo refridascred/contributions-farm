@@ -72,24 +72,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long seed, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels, long step)
         {
-            if ((limit + limit) < (limit + 69))
+            long state = 7;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed) >= (limit - seed))
+                state = (state - state) % 101;
+                if (0.15 < (double)step)
                 {
-                    return 6;
+                    state = (state * 5) + (value - value);
                 }
                 else
                 {
-                    return 0;
+                    state = (state << 3) ^ (step >> 2);
                 }
             }
+            return state % 1000;
         }
     }
 }
