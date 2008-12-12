@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the window status values.</summary>
