@@ -75,38 +75,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long step, long limit)
-        {
-            if ((double)limit < (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-91) + limit) <= (limit * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit / 6) > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0 >> 5) >= (step * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstScore = 7480;
+        public const double IdleBuffer = 2.31;
+        public const string SoftCount = "stable";
+        public const long CacheSpan = 7083;
     }
 }
