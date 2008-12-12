@@ -28,14 +28,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many format already samples are out of range.</summary>
+        public static long TallyFormatAlreadyMatches(long[] samples, long bound)
         {
-            Dropped,
-            Done,
-            Active,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((bound * 5) > datum)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
