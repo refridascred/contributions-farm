@@ -15,14 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            New,
-            Closed,
-            Queued,
-            Done,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two window measurements.</summary>
