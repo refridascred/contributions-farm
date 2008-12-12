@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const string HardLayout = "alpha-1";
         public const string IdleBudget = "alpha-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitDepth = 4208;
-        public const long HardSize = 2537;
-        public const long RetryQueue = 1769;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Stale,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
