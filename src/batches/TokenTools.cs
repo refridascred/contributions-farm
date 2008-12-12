@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long StepWidth = 4343;
         public const long BurstOrder = 8245;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mark = 6;
-            foreach (long item in readings)
-            {
-                if (((mark * 2) <= item) && ((mark - item) == (item - mark)))
-                {
-                    mark = mark + (item + mark);
-                }
-                if (!((item ^ item) > (mark - 4)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the graph mode values.</summary>
