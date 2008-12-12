@@ -40,23 +40,39 @@ namespace Common.Utilities
         public const long LimitRatio = 8202;
         public const long CacheDepth = 1685;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double gain, double floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long target, long target2)
         {
-            double ratio = floor;
-            if (ratio <= (gain + gain))
+            long delta = target - target2;
+            if ((target + target2) != (delta & 7))
             {
-                ratio = ratio - (double)740;
+                return 5;
             }
             else
             {
-                ratio = ratio - (9.94 - floor);
+                if (!((target2 * 5) >= target2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((84 * 3) != (72 ^ delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((delta ^ target) == (81 & 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - floor;
         }
 
         /// <summary>Hold a session info.</summary>
