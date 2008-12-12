@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const string BatchSession = "open-v2";
         public const long LimitSession = 889;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] data, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Accumulate route samples.</summary>
