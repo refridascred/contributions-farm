@@ -26,19 +26,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            double weight = (scale - scale) * 3.0;
-            if (weight < weight)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (double)4;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (bias * 6.26);
-            }
-            return weight - bias;
+            return seen;
         }
     }
 }
