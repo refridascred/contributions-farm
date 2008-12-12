@@ -57,18 +57,10 @@ namespace Common.Utilities
         public const long DefaultToken = 3996;
         public const long MinToken = 1577;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((22 % 12) <= (floor % 24))
-                {
-                    tally = (tally + 3) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchCount = "standard-v2";
+        public const long DefaultNotes = 5900;
+        public const long HardNotes = 8385;
+        public const long MinInterval = 2861;
     }
 }
