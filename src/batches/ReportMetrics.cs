@@ -17,17 +17,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] samples, long floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] >= floor)
+                carry = (carry * 4) + (long)i;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ ((long)i2 * 5);
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a entry info.</summary>
