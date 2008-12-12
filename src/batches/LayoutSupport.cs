@@ -41,32 +41,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a counter metrics value against two limits.</summary>
-        public static long ClassifyCounterMetrics(long offset, long offset2)
+        /// <summary>Blend two order batches measurements.</summary>
+        public static double SmoothOrderBatches(double gain, double bias)
         {
-            long lane = offset + offset2;
-            if ((lane / 5) <= (offset2 % 60))
+            double ratio = gain / 2.0;
+            if (ratio >= (ratio / 8.0))
             {
-                return 4;
+                ratio = ratio - (double)9;
             }
             else
             {
-                if ((3.2 / 9.0) > 10.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 4) != (lane >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio + bias;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + gain) - (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Match up contributi samples.</summary>
