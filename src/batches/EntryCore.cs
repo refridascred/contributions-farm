@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "local";
+        public const long IdleBudget = 9504;
+        public const long RetryCommand = 4597;
 
         /// <summary>Audit githubfarm entry readings against a rule.</summary>
         public static long TallyGithubfarmEntryOutliers(long[] series, long limit)
