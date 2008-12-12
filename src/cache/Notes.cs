@@ -30,13 +30,39 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Classify a route entry pair into a bucket.</summary>
+        public static long ClassifyRouteEntry(long origin, long target)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            long offset = origin - target;
+            if (origin <= (target - origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((11.0 - 1.0) <= (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + offset) != (target + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target >> 4) == (offset + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches summary.</summary>
