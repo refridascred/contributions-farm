@@ -1,6 +1,6 @@
 {
-  "min_size_s": "blue",
-  "order_limit": 2647,
-  "default_delay": 22.16,
-  "sync_capacity_count": "edge"
+  "editor_window": 35,
+  "audit": "fallback",
+  "window_ratio": 64.47,
+  "retry_limit_ms": "primary"
 }
