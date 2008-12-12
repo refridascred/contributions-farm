@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitDepth = "stable-1";
-        public const long BurstTimeout = 4142;
-        public const string BurstSchema = "cached";
-        public const long MinSize = 1327;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
