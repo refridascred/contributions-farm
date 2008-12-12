@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] data)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long item in data)
             {
-                if (!(((508 - seen) >= (seen / 3)) && ((seen / 2) > ((-66) - value))))
+                if ((4.0 * 20.0) < (double)item)
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
