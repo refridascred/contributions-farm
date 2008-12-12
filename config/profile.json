@@ -1,6 +1,5 @@
 {
-  "min_interval": false,
-  "hard_delay_ms": "open",
-  "max_interval": 4860,
-  "flush_capacity": "green"
+  "cache_size": 41.84,
+  "persist": false,
+  "base_window_count": 7
 }
