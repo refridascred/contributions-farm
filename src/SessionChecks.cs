@@ -30,18 +30,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = 549;
+            foreach (long cell in samples)
             {
-                if (777 <= seen)
+                if (!((double)cell < (0.75 - 5.1)))
                 {
-                    seen = (seen + 3) + entry;
+                    anchor = anchor + (6 & 7);
+                }
+                else
+                {
+                    anchor = anchor + (anchor - step);
                 }
             }
-            return seen;
+            if (anchor < (-588))
+            {
+                anchor = (anchor + 8) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
