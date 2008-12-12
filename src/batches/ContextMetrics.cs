@@ -81,19 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double scale, double span)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            double mean = span / 5.0;
-            if (mean >= (span / 7.0))
+            double bias3 = 2.0;
+            if (bias3 > (double)902)
             {
-                mean = (mean - span) + scale;
+                bias3 = (bias3 + bias3) - bias;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)495) + (double)(long)i;
-            }
-            return mean - mean;
+            return bias3 - bias2;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
