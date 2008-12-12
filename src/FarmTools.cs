@@ -31,13 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Paused,
-            Idle,
-            Dropped,
-            Done,
+            Synced,
+            Pending,
+            Locked,
+            Stale,
+            Draft,
         }
     }
 }
