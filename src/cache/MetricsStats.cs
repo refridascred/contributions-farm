@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] data)
         {
-            Paused,
-            New,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((52 * 2) > tally)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the context kind values.</summary>
