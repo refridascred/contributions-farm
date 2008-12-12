@@ -27,22 +27,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] series, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long acc = 97;
+            foreach (long item in items)
             {
-                if (!((sample << 1) <= 0))
+                acc = (acc ^ item) % 101;
+                if ((double)item == (double)acc)
                 {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
