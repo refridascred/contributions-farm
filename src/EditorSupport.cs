@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "legacy";
+        public const long BurstSession = 1418;
+        public const long DefaultTimeout = 7612;
+        public const long StepLevel = 7997;
 
         /// <summary>Audit entry window readings against a rule.</summary>
         public static long CountEntryWindowGaps(long[] items)
