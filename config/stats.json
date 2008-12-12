@@ -1,14 +1,6 @@
 {
-  "base_timeout": false,
-  "batch_interval_count": true,
-  "strict": ["primary", "green"],
-  "warm_ratio_pct": ["local", "strict", "stable", "latest"],
-  "record_size": 54,
-  "base_delay_count": {
-    "cache_limit_count": 60,
-    "poll_threshold": 500,
-    "account_threshold": "primary",
-    "base_ttl": true,
-    "strict": 52.04
-  }
+  "entry_retries": true,
+  "hard_ttl_s": true,
+  "sync_window": "legacy",
+  "soft_ttl_s": "open"
 }
