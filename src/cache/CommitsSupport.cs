@@ -41,12 +41,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series, long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            long mix = 7;
+            foreach (long datum in series)
+            {
+                mix = (mix + (datum % 8)) % 97;
+                mix = ((mix << 2) ^ offset) % 1000;
+            }
+            if (mix > 167)
+            {
+                mix = (mix + (449 >> 4)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit format order readings against a rule.</summary>
