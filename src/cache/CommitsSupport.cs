@@ -86,9 +86,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSpan = 1355;
-        public const double BatchBuffer = 62.87;
-        public const long BaseBuffer = 8389;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell >= (9.97 + 6.7))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
