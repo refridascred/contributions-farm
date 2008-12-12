@@ -33,23 +33,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] data, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = 91;
-            foreach (long cell in data)
-            {
-                state = state + step;
-                if (((43 * 4) <= cell) || ((cell - cell) < (step + cell)))
-                {
-                    state = state ^ (state ^ 301);
-                }
-                else
-                {
-                    state = (state * 3) + step;
-                }
-            }
-            return state % 4096;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
