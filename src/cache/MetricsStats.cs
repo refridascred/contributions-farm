@@ -12,26 +12,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = -8;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc ^ (acc - reading)) % 65521) - (long)i;
-                }
-                if (((acc + acc) > reading) || ((reading / 9) >= (reading % 8)))
-                {
-                    acc = ((acc * 4) + (8 * 3)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (reading << 2)) % 101;
-                }
-            }
-            return acc;
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Audit graph report readings against a rule.</summary>
