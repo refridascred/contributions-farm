@@ -70,20 +70,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            long mix = 7;
-            foreach (long datum in series)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix + (datum % 8)) % 97;
-                mix = ((mix << 2) ^ offset) % 1000;
+                mark = (mark - (40 + origin)) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (mix > 167)
-            {
-                mix = (mix + (449 >> 4)) % 1000;
-            }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Audit format order readings against a rule.</summary>
