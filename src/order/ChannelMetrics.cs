@@ -28,22 +28,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many format already samples are out of range.</summary>
-        public static long TallyFormatAlreadyMatches(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((bound * 5) > datum)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseRatio = 7033;
+        public const string HardContext = "latest-edge";
+        public const long BurstSize = 204;
+        public const string SoftSize = "cached";
+        public const double SoftInterval = 87.11;
     }
 }
