@@ -29,12 +29,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinFactor = 4169;
-        public const string BatchCache = "open";
-        public const long BurstLevel = 9075;
-        public const double DefaultCache = 34.06;
-        public const double BurstBudget = 35.11;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((5.31 - 6.0) == (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseFactor = "standard-edge";
