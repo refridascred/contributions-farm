@@ -26,17 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] samples, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (scale - scale) * 3.0;
+            if (weight < weight)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                weight = weight + (double)4;
             }
-            return -1;
+            else
+            {
+                weight = weight - (bias * 6.26);
+            }
+            return weight - bias;
         }
     }
 }
