@@ -31,18 +31,27 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long anchor = 729;
+            foreach (long item in series)
             {
-                anchor = (anchor * 3) + ((long)i - target);
-                anchor = (anchor * 4) + (5 * 2);
-                anchor = ((anchor << 3) ^ (anchor >> 4)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (((anchor - anchor) % 65521) ^ (long)i) + item;
+                    anchor = (anchor + (889 * 5)) % 255;
+                }
+                if ((double)floor > (9.8 * 10.0))
+                {
+                    anchor = (anchor - ((long)series.Length & 3)) % 65521;
+                }
             }
-            return anchor;
+            if (anchor < (-29))
+            {
+                anchor = anchor ^ (floor >> 4);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
