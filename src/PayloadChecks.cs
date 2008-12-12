@@ -72,19 +72,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] data, long seed)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long sum = 6;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum * 4) + (9 / 8)) % 97) - seed;
-                if ((cell ^ cell) == (sum - cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum - (cell << 1);
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
