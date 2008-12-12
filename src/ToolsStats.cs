@@ -69,15 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Retry,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the window kind values.</summary>
