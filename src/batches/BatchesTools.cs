@@ -18,25 +18,9 @@ namespace Common.Utilities
         public const string LimitQueue = "alpha";
         public const double MaxQueue = 11.19;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long offset, long seed)
-        {
-            long bound = offset - seed;
-            if (((double)offset >= (8.04 + 17.0)) && ((double)bound == (3.7 / 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 5) <= (bound >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftDepth = 9672;
+        public const double IdleSize = 74.75;
+        public const long HardWidth = 9206;
     }
 }
