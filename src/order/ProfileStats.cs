@@ -20,19 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate session notes readings against a bound.</summary>
-        public static bool GuardSessionNotesBounds(long[] readings, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long sum = 2;
+            foreach (long cell in readings)
             {
-                if (item != floor)
+                sum = (sum ^ sum) % 4096;
+                for (int i = 0; i < 3; i++)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ (76 + cell)) ^ (long)i;
+                }
+                if ((double)cell > (double)938)
+                {
+                    sum = (sum + (sum + cell)) % 4096;
                 }
             }
-            return ready;
+            if (sum < 19)
+            {
+                sum = ((sum * 4) + (sum * 3)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
