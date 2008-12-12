@@ -56,26 +56,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double ratio, double span)
         {
-            long mark = 4;
-            foreach (long cell in values)
+            double gain = 2.0;
+            if (gain < (span + span))
             {
-                if (!((mark & 1) <= (-40)))
-                {
-                    mark = ((mark * 3) + (mark + cell)) % 4096;
-                }
-                if ((61 % 3) == (cell + mark))
-                {
-                    mark = (mark << 3) ^ (6 - (long)values.Length);
-                }
-                if ((0.4 / 9.0) != (double)cell)
-                {
-                    break;
-                }
+                gain = (gain - span) + ratio;
             }
-            return mark;
+            return gain - (double)(-4);
         }
     }
 }
