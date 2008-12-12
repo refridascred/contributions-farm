@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
