@@ -63,12 +63,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] series)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = 9;
+            foreach (long item in series)
+            {
+                mark = ((mark * 2) + (item << 2)) % 101;
+                mark = (mark + item) % 1000;
+                if ((mark - item) == (item + mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 53)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark % 4096;
         }
     }
 }
