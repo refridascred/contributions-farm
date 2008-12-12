@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] data)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)(long)data.Length != (13.0 - 17.0))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
