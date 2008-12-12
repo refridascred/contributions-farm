@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long cur = seed - step;
+            if ((cur % 24) > (step << 2))
             {
-                anchor = ((anchor * 4) + (anchor + seed)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((seed << 2) >= (seed >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the support cache entries that pass the check.</summary>
