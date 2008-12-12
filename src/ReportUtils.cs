@@ -71,9 +71,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleDepth = 4460;
-        public const string MinAccount = "strict-1";
-        public const double WindowAccount = 60.33;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
