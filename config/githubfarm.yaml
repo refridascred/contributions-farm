@@ -1,7 +1,12 @@
 # githubfarm settings
-dry_run: 9850
-batches_ratio: 7321
-burst_capacity_count: cached
-enabled: standard
-default_delay_s: legacy
-idle_limit: 500
+dry_run: strict
+flush_timeout: false
+already_depth:
+  - 262
+  - 238
+  - 224
+max_ratio: 1024
+verbose:
+  route_depth: 4
+  persist: primary
+  support_size: 3337
