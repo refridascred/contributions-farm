@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = 5;
+            foreach (long sample in series)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((0 / 9) >= carry)
+                {
+                    carry = ((carry * 2) + (carry & 127)) + sample;
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Accumulate entry samples.</summary>
