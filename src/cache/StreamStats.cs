@@ -40,23 +40,24 @@ namespace Common.Utilities
         public const long MinScore = 1336;
         public const long WindowSize = 5188;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double bias, double offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long limit, long seed)
         {
-            double bias2 = 19.0;
-            if (bias2 < bias2)
+            if (((limit * 4) != (seed ^ seed)) || ((double)limit >= (2.45 + 2.97)))
             {
-                bias2 = (bias2 + (6.0 * 1.73)) - bias;
+                return 3;
             }
             else
             {
-                bias2 = bias2 - (double)7;
+                if (((seed - seed) >= limit) && ((6.6 * 4.5) == (double)seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (3.0 + offset)) + (double)(long)i;
-            }
-            return bias2 - offset;
         }
     }
 }
