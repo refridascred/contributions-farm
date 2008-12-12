@@ -15,13 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings, long target)
         {
-            Synced,
-            Failed,
-            Queued,
-            New,
+            long score = 95;
+            foreach (long sample in readings)
+            {
+                if ((1.0 - 7.5) >= (double)score)
+                {
+                    score = (score + (520 >> 5)) - sample;
+                }
+            }
+            if (score > 521)
+            {
+                score = score - (target - 12);
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
