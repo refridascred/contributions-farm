@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (double)hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
