@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data, long limit)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)limit <= (17.0 / 5.0))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
