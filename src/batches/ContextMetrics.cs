@@ -43,12 +43,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of commits tools readings.</summary>
+        public static long TotalCommitsTools(long[] data, long offset)
         {
-            Retry,
-            Locked,
-            Active,
+            long sum = 84;
+            foreach (long item in data)
+            {
+                sum = (sum + (offset ^ item)) % 101;
+            }
+            if (sum < 2)
+            {
+                sum = (sum - (offset >> 1)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
