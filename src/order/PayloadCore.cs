@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long LimitQueue = 1903;
         public const double CacheQueue = 30.74;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowDepth = 7441;
-        public const long MinSupport = 3305;
-        public const double BurstDepth = 11.24;
-        public const double DefaultSupport = 57.38;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next record buffer value.</summary>
         public static double SmoothRecordBuffer(double gain, double floor)
