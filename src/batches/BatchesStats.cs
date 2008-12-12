@@ -37,32 +37,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long target, long target2)
+        /// <summary>Digest a series of buffer session entries.</summary>
+        public static long DigestBufferSession(long[] data)
         {
-            long diff = target - target2;
-            if ((target - target2) != (target >> 4))
+            long mix = 76;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target2 < (target2 % 3)) || (((-754) - diff) == (target + 20)))
+                if (((mix >> 2) > (48 - item)) && (91 <= mix))
                 {
-                    return 2;
+                    mix = mix ^ (16 & 31);
                 }
-                else
+                if ((double)mix > (7.0 + 7.2))
                 {
-                    if (!((target2 ^ diff) >= (diff - diff)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (mix > 66)
+            {
+                mix = (mix << 2) ^ 36;
+            }
+            return mix % 97;
         }
 
         /// <summary>Roll a token counter forward.</summary>
