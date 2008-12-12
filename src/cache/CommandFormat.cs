@@ -41,28 +41,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of support cache readings.</summary>
-        public static long DigestSupportCache(long[] items)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            long carry = 85;
-            foreach (long value in items)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                carry = ((carry * 4) + (carry - value)) % 65521;
-                carry = carry - (value << 1);
-                if ((carry - carry) > (carry + carry))
-                {
-                    carry = carry - (carry - value);
-                }
-                else
-                {
-                    carry = carry + (743 ^ carry);
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (carry > 157)
-            {
-                carry = carry - 237;
-            }
-            return carry % 1000;
+            return score;
         }
     }
 }
