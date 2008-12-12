@@ -1,8 +1,13 @@
 {
-  "format_capacity": "standard",
-  "window_interval": 81.88,
-  "retry_timeout": 70.53,
-  "warm_ttl": "eu-west",
-  "audit": 1534,
-  "flush_capacity": 99
+  "idle_delay_pct": true,
+  "min_interval_count": "stable",
+  "metrics_interval": "legacy",
+  "default_threshold": {
+    "enabled": "blue",
+    "persist": 65.92,
+    "soft_threshold": "fallback",
+    "strict": false
+  },
+  "commits_ratio": ["blue", "standard"],
+  "compress": true
 }
