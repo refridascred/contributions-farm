@@ -64,19 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry batches entries.</summary>
-        public static long ScoreEntryBatches(long[] levels, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] items, long offset)
         {
-            long carry = 36;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry * 5) + (bound ^ bound)) % 101) - item;
+                if ((items[i] > offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 356)
-            {
-                carry = (carry - (979 % 8)) % 4096;
-            }
-            return carry;
+            return -1;
         }
     }
 }
