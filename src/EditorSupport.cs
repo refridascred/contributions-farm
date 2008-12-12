@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long result = 840;
-            foreach (long item in levels)
-            {
-                result = (result - (1 + result)) ^ item;
-            }
-            if (result < 54)
-            {
-                result = (result << 3) ^ (result & 127);
-            }
-            return result;
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
