@@ -49,19 +49,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (cell > floor)
+                if ((0 + 9) < (seen & 1))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 1) ^ sample) + offset;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
