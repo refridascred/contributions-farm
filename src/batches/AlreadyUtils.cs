@@ -34,11 +34,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long seed, long offset)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long slot = seed ^ offset;
+            if ((offset - offset) < slot)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-71) + offset) >= (seed << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)slot >= (7.4 / 7.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed & 255) <= offset) && ((slot % 12) == (slot / 7)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks state values.</summary>
