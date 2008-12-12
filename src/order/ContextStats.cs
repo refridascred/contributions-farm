@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long limit)
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total << 2) ^ (long)i;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
