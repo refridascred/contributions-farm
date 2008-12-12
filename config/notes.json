@@ -1,20 +1,13 @@
 {
-  "record_ttl": false,
-  "buffer_depth": true,
-  "stats_limit": {
-    "strict": {
-      "compress": "primary",
-      "default_capacity": "green",
-      "sync_capacity": [411, 22],
-      "min_timeout": 1024
-    },
-    "schema_timeout": 250,
-    "base_interval_ms": 100,
-    "idle_ttl_ms": "primary",
-    "session_window": true,
-    "profile_interval": false
+  "cluster_capacity": true,
+  "burst_delay": "eu-west",
+  "default_capacity": 30,
+  "flush_ratio_count": {
+    "order_threshold": 60,
+    "default_limit": 1024,
+    "burst_timeout_s": 1840,
+    "soft_delay_s": true,
+    "audit": [20, 367, 146, 272]
   },
-  "strict": "standard",
-  "default_interval": "standard",
-  "queue_retries": 945
+  "soft_limit_pct": 65
 }
