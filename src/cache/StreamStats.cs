@@ -19,18 +19,26 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] samples, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data, long offset)
         {
-            long score = 69;
-            foreach (long item in samples)
+            long acc = 9;
+            foreach (long datum in data)
             {
-                if (1.5 <= (double)item)
+                if (5.0 <= (double)offset)
                 {
-                    score = ((score - (score - item)) % 1000) - offset;
+                    acc = acc - (offset / 7);
+                }
+                else
+                {
+                    acc = (acc ^ (acc - datum)) % 1000;
                 }
             }
-            return score;
+            if (acc < 66)
+            {
+                acc = (acc ^ offset) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
