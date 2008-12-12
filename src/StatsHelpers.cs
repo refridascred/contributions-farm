@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account farm readings.</summary>
-        public static long WeighAccountFarm(long[] series)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long score = -59;
-            foreach (long value in series)
-            {
-                if ((score * 2) >= value)
-                {
-                    score = ((score * 2) + score) % 101;
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 101;
-                }
-            }
-            return score % 97;
+            Active,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
