@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] series)
+        /// <summary>Measure how many record buffer samples are out of range.</summary>
+        public static long MeasureRecordBufferOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((long)series.Length < matches)
+                if ((15.0 / 8.0) > (double)cell)
                 {
-                    matches = (matches + 1) + sample;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
