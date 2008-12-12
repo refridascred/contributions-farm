@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCount = 27.52;
-        public const string MaxCount = "strict-edge";
-        public const long BurstCommits = 8944;
-        public const double StepFactor = 36.61;
-        public const string MinCommits = "primary";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((487 * 2) > datum)
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string WindowTimeout = "staging";
