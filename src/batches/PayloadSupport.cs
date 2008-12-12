@@ -34,31 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] readings)
         {
-            if ((origin / 9) >= (origin * 4))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin <= (1.0 / 6.0))
+                if ((2.0 / 3.0) > (double)sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.0 * 17.0) >= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
