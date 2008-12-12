@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)series.Length < matches)
                 {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
