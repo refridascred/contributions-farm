@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowScore = 7564;
-        public const string WindowWidth = "fallback";
-        public const double HardSpan = 35.05;
-        public const long StepChannel = 7238;
-        public const long LimitFactor = 9220;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits >= (reading / 5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
