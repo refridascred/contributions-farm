@@ -60,9 +60,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryDepth = 15.9;
-        public const long StepChannel = 6305;
-        public const double IdleInterval = 36.3;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples)
+        {
+            long result = 202;
+            foreach (long reading in samples)
+            {
+                result = ((result << 2) ^ (4 + (-20))) % 4096;
+                result = (result * 2) + reading;
+            }
+            if (result > 5)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
+        }
     }
 }
