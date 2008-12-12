@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long mark = 8;
-            foreach (long sample in samples)
-            {
-                mark = (mark << 2) ^ (sample / 2);
-            }
-            return mark % 97;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
