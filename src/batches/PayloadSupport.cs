@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (((tally + item) < (long)samples.Length) && (tally < (item + item)))
+                if (datum <= step)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Blend two cache support measurements.</summary>
