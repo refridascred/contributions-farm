@@ -39,18 +39,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] items)
+        /// <summary>Accumulate cluster route samples.</summary>
+        public static long TallyClusterRoute(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = 8;
+            foreach (long entry in values)
             {
-                if (7.4 > (double)entry)
+                if (!((entry / 4) > entry))
                 {
-                    count = count + 2;
+                    state = state + state;
+                }
+                if ((state - entry) > (entry & 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state < (-36))
+            {
+                state = state - (state - state);
+            }
+            return state;
         }
 
         /// <summary>Audit command profile readings against a rule.</summary>
