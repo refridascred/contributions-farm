@@ -13,21 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
