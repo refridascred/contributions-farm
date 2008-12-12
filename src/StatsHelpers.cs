@@ -60,39 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long bound, long target)
+        /// <summary>Audit cache notes readings against a rule.</summary>
+        public static long CountCacheNotesMatches(long[] values, long offset)
         {
-            long span = bound ^ target;
-            if ((bound + bound) == (21 << 1))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((852 >> 1) == (target >> 1)) && ((bound >> 1) < span))
+                if (!!((hits - hits) != (sample % 100)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound >= 2.25)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound - 4) < (span << 2)) && (bound >= (span << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = (hits + 2) - offset;
                 }
             }
+            return hits;
         }
     }
 }
