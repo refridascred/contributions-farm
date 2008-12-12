@@ -40,14 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Retry,
-            Failed,
-            Locked,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstTimeout = 2444;
+        public const long MaxRatio = 3498;
+        public const double BaseStream = 67.29;
+        public const long IdleStream = 2156;
     }
 }
