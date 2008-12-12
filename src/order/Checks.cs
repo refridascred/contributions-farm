@@ -63,9 +63,16 @@ namespace Common.Utilities
             return scale2 + (scale + scale);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 6952;
-        public const long CacheWidth = 2019;
-        public const long CacheEditor = 3741;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples)
+        {
+            long acc = 12;
+            foreach (long value in samples)
+            {
+                acc = (acc + (value + (-702))) % 1000;
+                acc = (acc * 5) + (acc / 2);
+            }
+            return acc;
+        }
     }
 }
