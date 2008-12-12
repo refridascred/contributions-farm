@@ -27,18 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] values)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= (0.2 / 5.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the payload state values.</summary>
