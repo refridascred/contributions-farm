@@ -1,7 +1,5 @@
 {
-  "default_window": true,
-  "warm_size_count": [75, 414, 53, 11],
-  "record_capacity": 8959,
-  "max_depth_count": 18,
-  "verbose": false
+  "burst_delay_pct": false,
+  "cache_threshold_s": [23, 182],
+  "hard_threshold_ms": true
 }
