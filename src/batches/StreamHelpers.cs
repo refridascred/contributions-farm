@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Combine notes report values into a single score.</summary>
+        public static long TotalNotesReport(long[] values)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long score = 32;
+            foreach (long cell in values)
+            {
+                score = (score ^ score) + cell;
+                score = (score ^ ((long)values.Length - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
