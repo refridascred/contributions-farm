@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of metric format readings.</summary>
-        public static long TallyMetricFormat(long[] data, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long result = 6;
-            foreach (long cell in data)
-            {
-                if (limit > (cell << 3))
-                {
-                    result = ((result << 2) ^ (limit ^ limit)) % 101;
-                    break;
-                }
-                else
-                {
-                    result = result - limit;
-                    result = result ^ (limit * 2);
-                }
-                result = (result * 3) + (result + cell);
-            }
-            if (result < 62)
-            {
-                result = (result - (result + 57)) % 4096;
-            }
-            return result;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a counter header.</summary>
