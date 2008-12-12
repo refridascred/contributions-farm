@@ -29,14 +29,11 @@ namespace Common.Utilities
         public const string BurstNotes = "stable-v2";
         public const long WindowNotes = 1061;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Pending,
-            Closed,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryInterval = 554;
+        public const string MaxQueue = "latest-edge";
+        public const long HardSize = 5019;
+        public const double DefaultBudget = 91.9;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesGaps(long[] values, long seed)
