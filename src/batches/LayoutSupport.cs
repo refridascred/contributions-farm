@@ -50,19 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] readings, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
