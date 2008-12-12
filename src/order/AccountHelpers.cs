@@ -83,24 +83,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long seed, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long offset = seed - limit;
+            if ((double)offset <= (9.14 / 8.0))
             {
-                if ((seed >> 3) <= ((long)i / 7))
+                return 1;
+            }
+            else
+            {
+                if (59 < (seed + offset))
                 {
-                    result = (result ^ (seed - seed)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    result = (result + (seed % 2)) % 1000;
+                    return 5;
                 }
-                result = ((result << 3) ^ 9) % 4096;
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
         }
     }
 }
