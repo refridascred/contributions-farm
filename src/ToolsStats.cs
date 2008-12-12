@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine queue channel values into a single score.</summary>
-        public static long TotalQueueChannel(long[] samples, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] values, long origin)
         {
-            long score = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (seed >= (score & 127))
+                if (((cell < (cell * 5)) && ((origin & 15) > (cell & 7))) && ((7 << 3) > (origin - seen)))
                 {
-                    score = ((score - (score + seed)) % 97) ^ sample;
+                    seen = seen + 1;
                 }
             }
-            if (score < 337)
-            {
-                score = score - score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Project the next farm value.</summary>
