@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "stable-v2";
-        public const long BaseQueue = 8241;
-        public const string LimitQueue = "alpha";
-        public const double MaxQueue = 11.19;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings, long bound)
+        {
+            long acc = 97;
+            foreach (long datum in readings)
+            {
+                if (((bound >> 1) == (acc * 4)) && ((bound >> 1) <= datum))
+                {
+                    acc = (acc - bound) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftDepth = 9672;
