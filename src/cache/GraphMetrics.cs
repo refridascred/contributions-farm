@@ -36,20 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema token value from a seed.</summary>
-        public static long StepSchemaToken(long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                long slot = 7;
-                if ((mark <= (mark >> 4)) || ((mark >> 5) >= slot))
-                {
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
