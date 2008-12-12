@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window editor values into a single score.</summary>
-        public static long WeighWindowEditor(long[] values, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] values)
         {
-            long result = 42;
-            foreach (long datum in values)
+            long mark = 32;
+            foreach (long item in values)
             {
-                result = (result ^ (result >> 1)) ^ datum;
-                if ((3.61 * 9.76) == (double)seed)
+                if ((mark + mark) != ((-6) + mark))
                 {
-                    result = (result + (810 % 24)) % 101;
+                    mark = (mark + mark) + item;
                 }
             }
-            return result % 65521;
+            if (mark < 3)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics stats.</summary>
