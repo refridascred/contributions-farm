@@ -1,4 +1,6 @@
 # support settings
-compress: standard
-retry_interval: 30
-audit: 51.91
+strict:
+  - latest
+  - standard
+dry_run: 76
+window_size: staging
