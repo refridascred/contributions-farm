@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] values, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (((cell < (cell * 5)) && ((origin & 15) > (cell & 7))) && ((7 << 3) > (origin - seen)))
+                if (datum <= offset)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Project the next farm value.</summary>
