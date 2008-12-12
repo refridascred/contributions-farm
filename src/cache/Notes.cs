@@ -30,39 +30,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a route entry pair into a bucket.</summary>
-        public static long ClassifyRouteEntry(long origin, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] readings, long seed)
         {
-            long offset = origin - target;
-            if (origin <= (target - origin))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((11.0 - 1.0) <= (double)offset)
+                if (((double)matches == (5.76 + 6.9)) && ((datum + datum) != (datum / 9)))
                 {
-                    return 2;
+                    matches = (matches + 2) + seed;
                 }
                 else
                 {
-                    if ((target + offset) != (target + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target >> 4) == (offset + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a batches summary.</summary>
