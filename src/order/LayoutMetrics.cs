@@ -24,15 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mix = 2;
-            foreach (long reading in items)
-            {
-                mix = ((mix - (51 + floor)) % 101) - reading;
-            }
-            return mix % 4096;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
