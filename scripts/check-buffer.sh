@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-legacy}"
 case "${mode}" in
-    local)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable legacy green latest; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
