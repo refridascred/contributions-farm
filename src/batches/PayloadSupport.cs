@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 7490;
-        public const long BatchContributi = 5556;
-        public const long IdleContributi = 8671;
-        public const long MaxWidth = 1186;
-        public const string RetryContributi = "local-1";
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LookupClusterIndex(long[] items, long step)
