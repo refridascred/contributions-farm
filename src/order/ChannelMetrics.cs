@@ -13,12 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
