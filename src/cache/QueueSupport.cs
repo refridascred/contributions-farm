@@ -26,18 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support cache entries that pass the check.</summary>
-        public static long TallySupportCacheMatches(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((16.0 / 4.0) <= (double)(long)readings.Length)
+                if ((double)total < 3.2)
                 {
-                    matches = (matches + 2) ^ datum;
+                    total = (total << 3) ^ 31;
                 }
+                else
+                {
+                    total = (total ^ (total - total)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of route entries.</summary>
