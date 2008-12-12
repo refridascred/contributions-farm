@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches - item) == (matches / 3))
+                if (samples[i] >= floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
