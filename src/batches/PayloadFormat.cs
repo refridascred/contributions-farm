@@ -22,19 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double bias = (double)(547 + (-2));
-            if (bias < (double)429)
-            {
-                bias = (bias + (gain - 3.95)) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 6.0) + (double)(long)i;
-            }
-            return bias - (gain * 9.61);
+            Pending,
+            New,
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Validate queue account readings against a bound.</summary>
