@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] data, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] values)
         {
-            long anchor = 9;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor + (floor + anchor)) % 255) - item;
+                if ((item - (-81)) == (seen >> 1))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > 212)
-            {
-                anchor = (anchor ^ (floor % 97)) % 97;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
