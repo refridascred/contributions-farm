@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate stream filter samples.</summary>
-        public static long CombineStreamFilter(long[] data, long offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mark = 504;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = mark - ((long)i & 255);
-                }
-                if ((offset ^ mark) <= (datum ^ datum))
-                {
-                    mark = (mark ^ (mark - offset)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 65521;
-                }
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a batch record.</summary>
