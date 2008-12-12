@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the entry metric entries that pass the check.</summary>
-        public static long TallyEntryMetricGaps(long[] values)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((14.0 / 5.0) < (double)matches) && ((double)matches <= (1.7 * 4.87)))
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
