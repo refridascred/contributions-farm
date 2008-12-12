@@ -39,22 +39,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowRatio = "alpha-1";
+        public const string RetrySupport = "fallback";
+        public const long WindowSupport = 7316;
+        public const long SoftSupport = 2873;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] series)
