@@ -1,15 +1,14 @@
 # entry settings
-dry_run: 2688
-cache_retries:
-  - 118
-  - 13
-  - 497
-max_limit:
-  - strict
-  - latest
-  - fallback
-flush_ttl_ms:
-  - 164
-  - 253
-  - 12
-batch_size: true
+context_ratio:
+  poll_delay: 100
+  poll_ratio_count: open
+  max_ttl_s: 250
+  filter_timeout: true
+  context_ratio: false
+  enabled: 89
+sync_interval_pct: 65.62
+entry_size:
+  - 76
+  - 272
+stats_interval: local
+profile_ratio: false
