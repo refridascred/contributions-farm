@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "standard-v2";
-        public const long MaxDepth = 7411;
-        public const long MaxFactor = 2916;
-        public const long StepFactor = 2378;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] series, long target)
+        {
+            long score = -27;
+            foreach (long reading in series)
+            {
+                score = (score << 3) ^ (score << 3);
+                score = score - (94 * 4);
+                if ((double)reading <= (double)target)
+                {
+                    break;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountRange(long[] readings, long target)
