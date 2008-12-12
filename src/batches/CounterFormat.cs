@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 3304;
+        public const long BatchWidth = 950;
+        public const double BatchCommits = 21.03;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] readings)
