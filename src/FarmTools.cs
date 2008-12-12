@@ -31,15 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings, long target)
+        /// <summary>Count the farm stream entries that pass the check.</summary>
+        public static long MeasureFarmStreamGaps(long[] levels, long step)
         {
-            long total = 70;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                total = (total + (586 + entry)) - target;
+                if (!!((20.0 / 4.0) < (double)step))
+                {
+                    count = (count + 2) ^ cell;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
