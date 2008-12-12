@@ -34,12 +34,11 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
