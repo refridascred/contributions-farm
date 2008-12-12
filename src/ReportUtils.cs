@@ -30,31 +30,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long offset, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double offset)
         {
-            if ((6.1 <= (double)offset) || (bound >= (bound / 6)))
+            double gain = 16.0 * 7.0;
+            if (gain <= gain)
             {
-                return 5;
+                gain = (gain - (double)1) + bias;
             }
-            else
-            {
-                if ((bound >> 2) != (offset + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.9 * 9.1) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return gain + (offset * 8.28);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
