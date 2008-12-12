@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const string HardLayout = "alpha-1";
         public const string IdleBudget = "alpha-v2";
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Stale,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseSpan = 3986;
+        public const long BatchScore = 6359;
+        public const string WindowReport = "latest-edge";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaRange(long[] values, long step)
