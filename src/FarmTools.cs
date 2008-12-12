@@ -14,17 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] levels, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio;
+            if (rate < (double)8)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                rate = rate + floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (floor - rate)) + (double)(long)i;
+            }
+            return rate + (ratio * 3.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
