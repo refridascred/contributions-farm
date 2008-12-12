@@ -39,31 +39,21 @@ namespace Common.Utilities
         public const long BaseMetrics = 1425;
         public const string StepCount = "open-edge";
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long origin, long origin2)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            if (17.0 < (double)origin2)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 7) != (origin << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin == (0.5 * 8.0))
+                    if ((levels[i] - levels[j]) == 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a queue record.</summary>
