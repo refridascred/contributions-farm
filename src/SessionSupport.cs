@@ -21,11 +21,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 10.37;
-        public const string BatchCount = "legacy";
-        public const string MaxOrder = "open-edge";
-        public const long MinOrder = 8055;
-        public const double HardSpan = 77.3;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
