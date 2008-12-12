@@ -54,18 +54,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] samples, long limit)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((19.0 + 14.0) >= (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 2) + value) - limit;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
