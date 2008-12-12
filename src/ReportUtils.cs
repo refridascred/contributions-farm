@@ -15,21 +15,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Digest a series of format command entries.</summary>
+        public static long DigestFormatCommand(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 797;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item - item) > mark)
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ ((long)values.Length << 1)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 65521;
                 }
             }
-            return hits;
+            if (mark > 71)
+            {
+                mark = (mark - (mark >> 1)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Blend two window measurements.</summary>
