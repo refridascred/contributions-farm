@@ -42,17 +42,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] readings, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + entry) % 255;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
