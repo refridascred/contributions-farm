@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate account payload samples.</summary>
-        public static long FoldAccountPayload(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings, long offset)
         {
-            long total = 830;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((entry ^ entry) >= (total * 5))
+                if (cell >= (cell + cell))
                 {
-                    total = (total ^ (entry & 15)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (entry + total)) % 97;
+                    seen = (seen + 3) + offset;
                 }
             }
-            if (total > 719)
-            {
-                total = (total + total) % 255;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
