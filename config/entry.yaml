@@ -1,16 +1,7 @@
 # entry settings
-default_threshold_s:
-  soft_depth_ms: green
-  order_delay: 5643
-  persist: 500
-  compress: 87.71
-  cache_timeout: staging
-  audit: 64
-batch_window_pct:
-  - blue
-  - blue
-  - standard
-  - cached
-dry_run: latest
-burst_capacity_count: standard
-warm_limit: stable
+warm_ttl_count: 14.06
+idle_timeout_count:
+  retry_delay_s: 42.46
+  idle_interval_pct: 9
+  compress: 500
+support_retries: 67
