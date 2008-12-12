@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] samples, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] data, long origin)
         {
             long count = 0;
-            foreach (long datum in samples)
+            foreach (long entry in data)
             {
-                if ((487 * 2) > datum)
+                if (10.0 < (double)entry)
                 {
-                    count = (count + 1) + step;
+                    count = (count + 2) - origin;
                 }
             }
             return count;
