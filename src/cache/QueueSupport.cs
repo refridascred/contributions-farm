@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if (9.3 < (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + 0) < (limit + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
