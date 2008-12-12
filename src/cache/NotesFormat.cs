@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double bias)
         {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
+            double rate = gain;
+            if (rate >= (rate * 2.19))
+            {
+                rate = rate + (double)25;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate - (double)665;
         }
 
         /// <summary>Define support limits and defaults.</summary>
