@@ -14,22 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= (entry * 2))
+                if (series[i] <= floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
