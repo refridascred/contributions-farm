@@ -15,21 +15,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Combine editor commits values into a single score.</summary>
+        public static long ScoreEditorCommits(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = ((mix << 2) ^ mix) % 65521;
+                if ((((-255) & 255) != (50 + offset)) && ((double)offset > 1.0))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 4) + (offset + offset)) % 101;
+                }
+                else
+                {
+                    mix = (mix * 5) + (offset ^ sample);
+                }
+                if ((sample * 4) > (mix + offset))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Audit payload batch readings against a rule.</summary>
