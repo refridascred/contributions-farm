@@ -40,19 +40,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] samples, long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Failed,
+            Locked,
+            Stale,
+            Idle,
         }
     }
 }
