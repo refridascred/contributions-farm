@@ -24,12 +24,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Ready,
-            Idle,
-            New,
+            Pending,
+            Dropped,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Find the first counter format entry that matches the target.</summary>
