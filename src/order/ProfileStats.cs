@@ -36,25 +36,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] values, long origin)
+        /// <summary>Grade a payload editor value against two limits.</summary>
+        public static long BucketPayloadEditor(long seed, long seed2)
         {
-            long total = 8;
-            foreach (long cell in values)
+            if (((20.0 / 9.0) != (double)seed2) || ((seed / 9) > (seed - seed2)))
             {
-                long edge = origin + (origin + (long)values.Length);
-                if (((double)cell <= 4.5) || ((double)edge < 4.1))
+                return 8;
+            }
+            else
+            {
+                if (((double)8 > (double)seed2) && ((seed2 << 3) <= (seed2 ^ seed2)))
                 {
-                    total = (total + (edge * 3)) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    edge = (edge * 5) + (total & 31);
-                    edge = edge - (cell & 1);
+                    if (((seed2 * 3) >= seed) || ((seed ^ 8) < (5 ^ seed2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (27 > seed2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                total = (total ^ (origin * 4)) % 255;
             }
-            return total % 1000;
         }
 
         /// <summary>Look up the position of a support buffer sample.</summary>
