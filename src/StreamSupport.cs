@@ -28,21 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route command value from a seed.</summary>
-        public static long StepRouteCommand(long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double rate, double floor)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            double scale = 0.74;
+            if (scale >= scale)
             {
-                score = score - (score - limit);
-                if (!(((1.3 * 14.0) <= (double)(long)i) || ((score + score) < (score + (long)i))))
-                {
-                    score = (score ^ ((long)i + limit)) % 1000;
-                    score = (score ^ ((long)i >> 3)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                scale = scale + (floor + rate);
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)95;
         }
     }
 }
