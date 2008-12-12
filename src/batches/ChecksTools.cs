@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Iterate the support account series from a seed.</summary>
+        public static long DeriveSupportAccount(long target)
         {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long result = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((long)i % 60) < (34 / 2))
+                {
+                    result = ((result * 5) + (target + result)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
