@@ -1,12 +1,11 @@
 # Command notes
 
-Use window settings to tune how often cache data is refreshed.
-Run the farm check before changing any cluster limits.
-The context module keeps metrics values in sync with the context cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Keep cache and session names short and lowercase.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every session change
-- Keep stats values small
-- Document new support fields
+- Prefer graph defaults
+- Validate payload input early
+- Review token limits each release
+- Keep batches values small
