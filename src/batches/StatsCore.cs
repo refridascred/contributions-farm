@@ -80,10 +80,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstLevel = "cached-edge";
-        public const double StepLevel = 53.39;
-        public const double BaseLevel = 34.91;
-        public const long RetrySchema = 6368;
+        /// <summary>Roll a farm metrics counter forward.</summary>
+        public static long IterateFarmMetrics(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
