@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long step, long floor)
         {
-            Stale,
-            Queued,
-            Active,
-            Closed,
-            Idle,
+            long bound = step ^ floor;
+            if ((floor + bound) < floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((bound ^ 0) > (bound % 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((91 & 15) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound & 255) > (37 + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a batch reading.</summary>
