@@ -1,7 +1,6 @@
 {
-  "retry_ratio_ms": 1024,
-  "enabled": "open",
-  "batches_delay": true,
-  "burst_depth_ms": "standard",
-  "stream_delay": 86
+  "idle_size": "latest",
+  "strict": "latest",
+  "max_threshold_count": false,
+  "warm_delay_count": 3.37
 }
