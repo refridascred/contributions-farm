@@ -72,15 +72,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next graph already value.</summary>
-        public static double BlendGraphAlready(double weight, double span)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double rate = (double)(-6);
-            if (rate <= (double)20)
-            {
-                rate = (rate - span) - weight;
-            }
-            return rate - 13.0;
+            Pending,
+            Synced,
+            Closed,
+            Locked,
+            Stale,
         }
     }
 }
