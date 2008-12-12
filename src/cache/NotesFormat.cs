@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] series)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((item % 60) <= (229 + count)) && ((double)244 > (double)item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
