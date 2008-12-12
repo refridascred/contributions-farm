@@ -79,9 +79,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 9915;
-        public const long RetryFilter = 1419;
-        public const long WindowFilter = 956;
+        /// <summary>Fold a list of batches editor readings.</summary>
+        public static long ScoreBatchesEditor(long[] series, long offset)
+        {
+            long state = 771;
+            foreach (long reading in series)
+            {
+                state = (((state ^ (state / 5)) % 97) - reading) + offset;
+            }
+            return state;
+        }
     }
 }
