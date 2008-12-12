@@ -1,9 +1,19 @@
 # entry settings
-batch_limit_count:
-  default_ttl: strict
-  stats_delay: true
-  githubfarm_ratio: 82
-persist: 17.14
-compress: open
-strict: 86
-farm_timeout: 55
+base_retries:
+  - 307
+  - 431
+  - 192
+  - 245
+base_timeout:
+  warm_ratio_ms: false
+  base_ttl_count: legacy
+  soft_timeout_count: 58.29
+  cluster_limit: 73.77
+  enabled: fallback
+flush_size: false
+strict: 250
+verbose: 2841
+cache_depth_pct:
+  - 168
+  - 212
+  - 164
