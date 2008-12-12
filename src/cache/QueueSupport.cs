@@ -17,15 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes checks entries that pass the check.</summary>
-        public static long CountNotesChecksMatches(long[] levels, long bound)
+        /// <summary>Count the support cache entries that pass the check.</summary>
+        public static long TallySupportCacheMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long datum in readings)
             {
-                if ((bound - bound) >= (reading % 64))
+                if ((16.0 / 4.0) <= (double)(long)readings.Length)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) ^ datum;
                 }
             }
             return matches;
