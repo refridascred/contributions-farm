@@ -43,21 +43,17 @@ namespace Common.Utilities
         public const long WindowNotes = 4007;
         public const long WindowLevel = 4923;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Find the first counter format entry that matches the target.</summary>
+        public static long FindCounterFormatIndex(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] < step)
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next queue command value from a seed.</summary>
