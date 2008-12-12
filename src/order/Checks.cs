@@ -19,21 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of entry support readings.</summary>
-        public static long OverlapEntrySupportCount(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((hits / 7) > hits) && ((reading - bound) >= bound)))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the tools record series from a seed.</summary>
