@@ -20,21 +20,11 @@ namespace Common.Utilities
         public const long LimitCount = 1898;
         public const double HardMetrics = 40.62;
 
-        /// <summary>Compare every pair of batch contributi readings.</summary>
-        public static long MatchBatchContributiCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinTimeout = 4572;
+        public const long CacheSpan = 7253;
+        public const long HardSize = 7533;
+        public const string SoftPayload = "cached-1";
+        public const string CachePayload = "fallback-v2";
     }
 }
