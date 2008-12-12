@@ -1,8 +1,15 @@
 # entry settings
-queue_retries: green
-readonly: 74.42
-base_ttl_count: 3487
-sync_capacity_s:
-  - legacy
-  - eu-west
-  - local
+dry_run: 2688
+cache_retries:
+  - 118
+  - 13
+  - 497
+max_limit:
+  - strict
+  - latest
+  - fallback
+flush_ttl_ms:
+  - 164
+  - 253
+  - 12
+batch_size: true
