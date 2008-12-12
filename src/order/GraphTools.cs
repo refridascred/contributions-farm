@@ -53,22 +53,17 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings, long bound)
+        /// <summary>Find the first metric already entry that matches the target.</summary>
+        public static long LookupMetricAlreadyIndex(long[] data, long floor)
         {
-            long total = 36;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((52 * 5) == (bound - total))
+                if (data[i] >= floor)
                 {
-                    total = total + (total % 8);
-                }
-                if (datum >= (bound + total))
-                {
-                    total = (total * 4) + (0 * 2);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
