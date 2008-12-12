@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of batch cluster readings.</summary>
+        public static long WeighBatchCluster(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long score = -1;
+            foreach (long reading in series)
+            {
+                if (((4.0 * 9.2) == (double)score) && ((reading << 1) == (reading << 2)))
+                {
+                    score = (score ^ (score << 2)) % 97;
+                }
+                if ((double)score == (2.3 / 3.0))
+                {
+                    break;
+                }
+            }
+            if (score < 4)
+            {
+                score = ((score << 2) ^ (score + (-72))) % 255;
+            }
+            return score;
         }
 
         /// <summary>Accumulate format samples.</summary>
