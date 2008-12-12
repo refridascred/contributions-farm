@@ -22,14 +22,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long target)
         {
-            Stale,
-            Pending,
-            Active,
-            Synced,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
