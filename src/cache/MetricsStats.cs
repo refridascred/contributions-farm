@@ -43,16 +43,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] items, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                sum = ((sum << 3) ^ ((-8) ^ offset)) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((seen + sample) <= sample)
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
