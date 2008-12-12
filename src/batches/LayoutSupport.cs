@@ -64,39 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats window input into a small class.</summary>
-        public static long SortStatsWindow(long floor, long offset)
+        /// <summary>Digest a series of entry batches entries.</summary>
+        public static long ScoreEntryBatches(long[] levels, long bound)
         {
-            long lane = floor - offset;
-            if ((offset % 100) < (offset + 8))
+            long carry = 36;
+            foreach (long item in levels)
             {
-                return 4;
+                carry = (((carry * 5) + (bound ^ bound)) % 101) - item;
             }
-            else
+            if (carry < 356)
             {
-                if (!((6 + lane) > (lane ^ lane)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor > (16.0 + 7.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (lane >= (floor >> 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = (carry - (979 % 8)) % 4096;
             }
+            return carry;
         }
     }
 }
