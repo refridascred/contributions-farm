@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] series)
+        /// <summary>Check that every layout support entry stays within the limit.</summary>
+        public static bool CheckLayoutSupportBounds(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (((5.3 - 1.4) > (double)cell) && ((seen + seen) >= cell))
+                if (entry < offset)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
