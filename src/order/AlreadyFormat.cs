@@ -49,11 +49,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] items)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 48;
+            foreach (long cell in items)
+            {
+                if (((result % 2) < (result / 6)) && ((62 & 31) >= (cell + (long)items.Length)))
+                {
+                    result = (result + result) % 97;
+                }
+            }
+            if (result < 502)
+            {
+                result = (result * 2) + (result + result);
+            }
+            return result % 4096;
         }
     }
 }
