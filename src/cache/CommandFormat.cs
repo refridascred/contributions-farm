@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long limit)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)limit <= (17.0 / 5.0))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes state values.</summary>
