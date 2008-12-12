@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 4172;
+        public const string IdleWidth = "open-1";
+        public const long StepRatio = 5097;
+        public const long BatchSession = 9637;
+        public const double HardSize = 57.35;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
