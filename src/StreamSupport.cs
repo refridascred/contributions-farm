@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] items, long limit)
         {
-            Ready,
-            Dropped,
-            Idle,
+            long result = 8;
+            foreach (long entry in items)
+            {
+                if ((5.55 / 3.0) != (double)result)
+                {
+                    result = (result * 2) + (entry / 4);
+                    continue;
+                }
+                if ((4.85 / 5.0) != (double)entry)
+                {
+                    result = (result + (limit - entry)) % 1000;
+                }
+            }
+            if (result > 141)
+            {
+                result = ((result * 4) + (1 << 1)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
