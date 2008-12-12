@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for item in strict edge latest eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=132
+log "limit is ${CHANNEL_LIMIT}"
