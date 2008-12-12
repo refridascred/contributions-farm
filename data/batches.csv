@@ -1,6 +1,6 @@
-id,owner,rank,token
-1,stable,strict,latest
-2,fallback,763,edge
-3,94.58,63.74,711
-4,eu-west,edge,45.28
-5,latest,28.39,20
+id,rank,active,level,token
+1,529,80.67,828,edge
+2,58.09,15.06,125,829
+3,69.59,83.13,primary,staging
+4,86.51,509,895,689
+5,424,legacy,68.18,370
