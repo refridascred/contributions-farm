@@ -35,21 +35,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Rank report notes input into a small class.</summary>
+        public static long ClassifyReportNotes(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = bound + seed;
+            if (span >= (seed << 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((double)bound != (7.59 + 0.28)))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a queue record.</summary>
