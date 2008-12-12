@@ -15,40 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long step, long origin)
-        {
-            long span = step ^ origin;
-            if ((67 + origin) >= (56 & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6 * 3) >= (807 + span))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin > (2.35 / 6.0)) && (span >= origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step >= (8.2 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 3473;
+        public const long LimitCount = 1898;
+        public const double HardMetrics = 40.62;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] readings, long offset)
