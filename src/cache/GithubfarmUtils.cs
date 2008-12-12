@@ -38,25 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long limit, long floor)
+        /// <summary>Compare every pair of cache stream readings.</summary>
+        public static long CompareCacheStreamCount(long[] data)
         {
-            long delta = limit + floor;
-            if (floor > ((-809) - floor))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((2 & 7) <= floor) && ((2 + delta) < (45 - limit)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cluster header.</summary>
