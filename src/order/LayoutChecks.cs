@@ -91,32 +91,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] levels, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long mix = 673;
-            foreach (long reading in levels)
-            {
-                mix = (mix + mix) - reading;
-                if (mix <= (mix << 3))
-                {
-                    mix = ((mix * 4) + (target % 3)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - 247) % 97;
-                }
-                mix = mix ^ target;
-                if ((double)target > (7.15 * 3.7))
-                {
-                    break;
-                }
-            }
-            if (mix > 801)
-            {
-                mix = ((mix * 2) + target) % 65521;
-            }
-            return mix;
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
