@@ -1,12 +1,6 @@
 {
-  "min_size": 9168,
-  "order_interval": true,
-  "editor_window": {
-    "compress": 100,
-    "dry_run": "latest",
-    "verbose": true
-  },
-  "batches_interval": 26.85,
-  "compress": "green",
-  "sync_timeout": 22
+  "enabled": [216, 325, 416],
+  "stream_timeout": "latest",
+  "already_retries": 2,
+  "tools_size": false
 }
