@@ -1,5 +1,6 @@
 {
-  "layout_limit": 8.69,
-  "max_threshold": "local",
-  "max_ratio_ms": 60
+  "dry_run": "open",
+  "warm_limit": 46.59,
+  "cache_retries": "edge",
+  "strict": 25
 }
