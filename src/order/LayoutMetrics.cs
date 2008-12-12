@@ -26,10 +26,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchBudget = 88.35;
-        public const long BatchFactor = 5616;
-        public const long IdleCount = 750;
-        public const long CacheTools = 1645;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long offset)
+        {
+            long prev = seed ^ offset;
+            if ((prev % 2) >= prev)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((662 - offset) >= offset) && ((17 + offset) <= prev))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((prev & 255) > (prev - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
