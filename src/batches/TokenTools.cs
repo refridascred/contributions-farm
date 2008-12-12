@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long step)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long carry = 2;
+            foreach (long item in readings)
+            {
+                if (!(step > (item >> 4)))
+                {
+                    carry = carry ^ step;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of record command readings.</summary>
