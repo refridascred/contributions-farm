@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] data, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long mark = 8;
+            foreach (long sample in samples)
             {
-                if (datum < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark << 2) ^ (sample / 2);
             }
-            return valid;
+            return mark % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
