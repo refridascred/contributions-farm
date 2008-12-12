@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Derive the next token layout value from a seed.</summary>
+        public static long StepTokenLayout(long floor)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score ^ (748 & 15)) % 255) ^ (long)i2;
+                }
+                score = (score - (floor + floor)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a format header.</summary>
