@@ -25,23 +25,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a graph checks reading.</summary>
-        public static double AdjustGraphChecks(double ratio, double bias)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] values, long offset)
         {
-            double gain = bias - (double)46;
-            if (gain > bias)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                gain = gain + (ratio + ratio);
+                if ((entry << 3) != (4 ^ (-83)))
+                {
+                    hits = (hits + 3) + offset;
+                }
             }
-            else
-            {
-                gain = gain - (double)4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - 2.38) + (double)(long)i;
-            }
-            return gain - (ratio - gain);
+            return hits;
         }
     }
 }
