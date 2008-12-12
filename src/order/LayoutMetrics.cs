@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const long SoftCommits = 3645;
         public const double IdleCount = 55.5;
 
-        /// <summary>Compare every pair of profile support readings.</summary>
-        public static long PairProfileSupportCount(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
