@@ -10,32 +10,18 @@ namespace Common.Utilities
         public const long BaseBudget = 8564;
         public const string CacheScore = "stable-1";
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long target, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] items)
         {
-            long slot = target ^ seed;
-            if ((double)target == (4.5 / 8.0))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((slot & 3) < seed) || ((11.0 / 7.0) <= (double)seed))
+                if ((double)count >= (15.0 + 9.2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ target) > slot)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 3) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the report state values.</summary>
