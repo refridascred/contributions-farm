@@ -73,22 +73,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if ((limit + limit) < (limit + 69))
             {
-                if (((10.0 <= (double)seen) || (((long)data.Length - (-97)) < seen)) || (((seen & 15) > seen) && ((18.0 * 2.4) != (double)value)))
+                return 8;
+            }
+            else
+            {
+                if ((seed + seed) >= (limit - seed))
                 {
-                    seen = seen + 2;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
