@@ -1,8 +1,6 @@
 # githubfarm settings
-soft_ttl_s:
-  - 155
-  - 123
-  - 441
-  - 225
-poll_interval_s: false
-filter_ratio: false
+cache_capacity_s: 1236
+metrics_capacity:
+  - 331
+  - 60
+compress: true
