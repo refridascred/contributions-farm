@@ -53,18 +53,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample / 6) != (hits & 3)) || ((7.1 / 3.0) == (double)sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
