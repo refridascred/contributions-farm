@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = 81;
+            foreach (long value in readings)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (acc >= (value & 3))
+                {
+                    acc = acc - (value + value);
+                }
+            }
+            if (acc > 264)
+            {
+                acc = (acc + (acc + acc)) % 97;
             }
             return acc;
         }
