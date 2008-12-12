@@ -44,13 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series, long origin)
         {
-            Queued,
-            Dropped,
-            Draft,
-            Synced,
+            long score = 993;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (3.47 / 2.0))
+                {
+                    score = (score + (origin + cell)) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (origin + score)) % 4096;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
