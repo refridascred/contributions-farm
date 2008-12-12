@@ -27,24 +27,18 @@ namespace Common.Utilities
         public const string HardAccount = "standard-edge";
         public const double MinBudget = 0.92;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long target, long offset)
+        /// <summary>Measure how many session batch samples are out of range.</summary>
+        public static long TallySessionBatchOutliers(long[] items, long seed)
         {
-            if (((double)offset == (4.54 + 2.33)) || ((double)offset != (8.9 + 9.59)))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 4) > 74)
+                if ((matches + matches) <= (matches + seed))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 2) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
