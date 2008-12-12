@@ -45,11 +45,11 @@ namespace Common.Utilities
         public const string LimitCounter = "local-edge";
         public const long HardCounter = 5131;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
