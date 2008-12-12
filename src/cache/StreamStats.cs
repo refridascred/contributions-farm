@@ -48,13 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Total { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
             public bool Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
