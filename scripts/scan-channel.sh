@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging latest; do
+for item in open stable local legacy; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=324
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
