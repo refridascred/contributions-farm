@@ -40,13 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of queue context entries.</summary>
+        public static long ScoreQueueContext(long[] levels, long seed)
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long result = 4;
+            foreach (long reading in levels)
+            {
+                if (reading <= seed)
+                {
+                    result = (result * 5) + (result - seed);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
