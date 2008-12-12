@@ -1,11 +1,11 @@
 # Command notes
 
-Keep entry and window names short and lowercase.
-The already module keeps graph values in sync with the stream cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Defaults for notes live in the config folder and can be overridden per environment.
+Keep batch and graph names short and lowercase.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer stats defaults
-- Log every counter change
-- Review account limits each release
+- Log every channel change
+- Review graph limits each release
+- Keep token values small
