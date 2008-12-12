@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many already metrics samples are out of range.</summary>
-        public static long CountAlreadyMetricsGaps(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (4.75 >= (double)target)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "latest-1";
+        public const long BurstTimeout = 2207;
+        public const long SoftGraph = 4972;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long floor)
