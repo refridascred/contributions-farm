@@ -37,17 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] levels, long offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
