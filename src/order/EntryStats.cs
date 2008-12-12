@@ -23,26 +23,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings, long origin)
         {
-            long carry = 997;
-            foreach (long sample in data)
+            long mix = 56;
+            foreach (long cell in readings)
             {
-                if ((8.0 - 5.9) == (double)sample)
+                mix = mix ^ (mix - cell);
+                if ((0 >> 2) != (origin & 1))
                 {
-                    carry = (carry << 2) ^ (sample << 3);
-                }
-                else
-                {
-                    carry = (carry + (carry / 2)) % 4096;
-                }
-                if ((sample + sample) < (sample >> 2))
-                {
-                    break;
+                    mix = ((mix << 2) ^ (long)readings.Length) % 101;
                 }
             }
-            return carry % 97;
+            if (mix < 150)
+            {
+                mix = (mix * 3) + (mix / 5);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
