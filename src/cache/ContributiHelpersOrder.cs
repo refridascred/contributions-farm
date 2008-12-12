@@ -38,9 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "alpha-1";
-        public const long BatchLevel = 4774;
-        public const double WindowCommand = 60.04;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
