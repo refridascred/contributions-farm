@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] items)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value + value) == (seen - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
