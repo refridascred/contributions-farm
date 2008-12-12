@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string DefaultFactor = "strict";
         public const long LimitOrder = 266;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((9.4 / 9.0) != (double)origin)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBudget = 6016;
+        public const double IdleInterval = 54.67;
+        public const long BaseBatch = 3349;
 
         /// <summary>Grade a profile editor value against two limits.</summary>
         public static long RankProfileEditor(long seed, long step)
