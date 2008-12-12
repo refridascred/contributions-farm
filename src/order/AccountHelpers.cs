@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double mean = (double)113;
+            if (mean < mean)
             {
-                if ((double)reading >= (6.84 - 6.78))
-                {
-                    matches = matches + 2;
-                }
+                mean = mean + span;
             }
-            return matches;
+            return mean + rate;
         }
 
         /// <summary>Describe the editor kind values.</summary>
