@@ -43,24 +43,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] series, long target)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 19;
-            foreach (long reading in series)
-            {
-                result = (result ^ (target ^ target)) % 1000;
-                for (int i = 0; i < 7; i++)
-                {
-                    result = (result ^ reading) + (long)i;
-                }
-                result = result - (target << 1);
-            }
-            if (result > 871)
-            {
-                result = ((result * 5) + (result - target)) % 255;
-            }
-            return result;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of cluster buffer readings.</summary>
