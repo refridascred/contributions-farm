@@ -61,21 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = 8.1;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = ((mean - (ratio / 2.0)) - (double)(long)i) - bias;
             }
-            return seen;
+            return mean - ratio;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
