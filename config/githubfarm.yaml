@@ -1,14 +1,14 @@
 # githubfarm settings
-default_delay_pct: 65.56
-min_limit_s:
-  - 277
-  - 106
-buffer_interval:
-  hard_interval:
-    - cached
-    - edge
-    - green
-  retry_timeout: 46.43
-  poll_delay_ms: 81.32
-  default_window: 2098
-sync_window: false
+enabled: 60
+cache_capacity_ms: 60
+dry_run: 97.0
+buffer_threshold: blue
+flush_retries_count: edge
+burst_threshold_pct:
+  cache_ttl:
+    - 497
+    - 340
+    - 160
+    - 336
+  farm_window: 12.61
+  base_delay_ms: 250
