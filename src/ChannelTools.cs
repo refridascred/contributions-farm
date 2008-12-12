@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum < target)
                 {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
