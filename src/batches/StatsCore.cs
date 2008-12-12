@@ -31,11 +31,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxSize = 2666;
-        public const double StepScore = 68.59;
-        public const long StepWidth = 2497;
-        public const double HardQueue = 6.16;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 155;
+        public const double HardAlready = 39.05;
+        public const string MaxRatio = "strict-edge";
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples, long origin)
