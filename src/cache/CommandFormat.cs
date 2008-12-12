@@ -34,22 +34,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long ScoreQueueBuffer(long[] readings)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long score = 8;
-            foreach (long reading in readings)
-            {
-                if ((score >> 5) == (score - score))
-                {
-                    score = (((score * 3) + 3) % 4096) + reading;
-                }
-            }
-            if (score > (-23))
-            {
-                score = (score + (score << 2)) % 255;
-            }
-            return score % 65521;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of support cache readings.</summary>
