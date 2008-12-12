@@ -31,12 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 3497;
-        public const long BatchRatio = 5070;
-        public const double IdleSpan = 82.36;
-        public const double DefaultSize = 35.41;
-        public const long RetryCount = 5301;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long TallyOrder(long[] values)
