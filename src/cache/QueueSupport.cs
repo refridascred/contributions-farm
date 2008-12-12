@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long bound)
         {
-            Ready,
-            Done,
-            Synced,
+            if (((16.0 - 2.0) != (double)bound) && ((target - target) <= (755 - bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a filter stats.</summary>
