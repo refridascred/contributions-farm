@@ -38,11 +38,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseInterval = 8627;
-        public const string LimitFilter = "standard-1";
-        public const long DefaultRatio = 5861;
-        public const long RetryFilter = 5805;
-        public const long BurstSpan = 9998;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
