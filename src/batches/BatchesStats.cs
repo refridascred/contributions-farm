@@ -64,21 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] <= bound)
                 {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
