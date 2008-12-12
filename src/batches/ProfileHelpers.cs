@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many context cache samples are out of range.</summary>
-        public static long TallyContextCacheGaps(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = 3;
+            foreach (long value in readings)
             {
-                if (((datum - datum) != (99 + 66)) || ((6.0 + 8.78) <= (double)datum))
+                for (int i = 0; i < 8; i++)
                 {
-                    count = count + 2;
+                    mix = ((mix << 2) ^ (offset - value)) ^ (long)i;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = mix + value;
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
