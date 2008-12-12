@@ -37,11 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 1026;
-        public const double BaseRatio = 19.23;
-        public const long RetryCommand = 7021;
-        public const string StepCommand = "staging-v2";
-        public const string BatchDepth = "open-1";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((7.1 + 1.0) >= (20.0 - 9.99))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
     }
 }
