@@ -30,31 +30,18 @@ namespace Common.Utilities
         public const long MaxChecks = 6992;
         public const long BurstScore = 511;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long offset, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] readings, long target)
         {
-            if ((double)532 != (double)target)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-87) ^ target) < (target + 52))
+                if (((double)cell >= (8.0 * 9.7)) || ((target * 3) < cell))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + target) >= (offset / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a commits header.</summary>
