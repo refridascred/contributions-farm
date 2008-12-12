@@ -78,18 +78,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record cache entries that pass the check.</summary>
-        public static long MeasureRecordCacheGaps(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long result = -77;
+            foreach (long item in samples)
             {
-                if (!((double)0 >= (double)(long)items.Length))
+                if ((double)result == (8.8 / 7.0))
                 {
-                    matches = (matches + 2) - sample;
+                    result = ((result << 2) ^ (result + item)) % 1000;
+                }
+                else
+                {
+                    result = (result + (item - result)) % 255;
                 }
             }
-            return matches;
+            if (result > 42)
+            {
+                result = result ^ 675;
+            }
+            return result;
         }
 
         /// <summary>Hold a contributi entry.</summary>
