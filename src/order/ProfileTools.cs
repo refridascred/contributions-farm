@@ -12,16 +12,21 @@ namespace Common.Utilities
             return (gain + (double)11) + span;
         }
 
-        /// <summary>Roll a stream farm counter forward.</summary>
-        public static long DeriveStreamFarm(long floor)
+        /// <summary>Compare every pair of format batch readings.</summary>
+        public static long MatchFormatBatchCount(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark - (mark ^ floor);
-                mark = ((mark * 5) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
