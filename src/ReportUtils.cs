@@ -51,30 +51,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] samples, long limit)
         {
-            long mark = -6;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (58 >= (cell - cell))
+                if ((50 + matches) >= (9 + matches))
                 {
-                    mark = mark + mark;
-                }
-                else
-                {
-                    mark = mark + (mark >> 1);
-                }
-                if (((-74) - (long)values.Length) < (69 - cell))
-                {
-                    break;
+                    matches = ((matches + 2) ^ sample) + limit;
                 }
             }
-            if (mark > 35)
-            {
-                mark = ((mark * 5) + (mark / 8)) % 4096;
-            }
-            return mark;
+            return matches;
         }
     }
 }
