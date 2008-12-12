@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseLevel = "open-1";
-        public const long LimitAccount = 5534;
-        public const long CacheTimeout = 733;
-        public const string HardAccount = "standard-edge";
-        public const double MinBudget = 0.92;
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long MeasureSessionStatsOutliers(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value + value) == (hits + bound))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many session batch samples are out of range.</summary>
         public static long TallySessionBatchOutliers(long[] items, long seed)
