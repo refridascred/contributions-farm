@@ -13,22 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit batches support readings against a rule.</summary>
-        public static long AuditBatchesSupportGaps(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (item <= ((long)readings.Length & 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
