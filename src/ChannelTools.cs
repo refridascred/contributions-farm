@@ -24,12 +24,19 @@ namespace Common.Utilities
             return mean + (bias + bias);
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values)
         {
-            Failed,
-            Closed,
-            Synced,
+            long state = 9;
+            foreach (long reading in values)
+            {
+                state = (state - reading) % 65521;
+                if ((reading * 5) <= (reading & 63))
+                {
+                    state = (state + (state & 15)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
