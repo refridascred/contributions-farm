@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double scale, double bias)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            double bias2 = (double)(4 & 7);
-            if (bias2 < bias)
-            {
-                bias2 = bias2 - (scale + 8.0);
-            }
-            return bias2 - (scale / 2.0);
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a graph options.</summary>
