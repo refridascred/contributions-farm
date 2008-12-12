@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long CacheWidth = 4687;
         public const long StepOrder = 6438;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Pending,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowTimeout = "staging";
+        public const long DefaultQueue = 4657;
+        public const long LimitQueue = 1903;
+        public const double CacheQueue = 30.74;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LocateAlreadyIndex(long[] values, long offset)
