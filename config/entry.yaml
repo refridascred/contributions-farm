@@ -1,15 +1,8 @@
 # entry settings
-support_window: 1475
-retry_delay: 28.63
-soft_capacity_s:
-  soft_window: 66
-  soft_ttl_count: 500
-  audit: cached
-  burst_ttl_count: 65.49
-  poll_threshold_ms: latest
-  retry_limit_count: primary
-channel_timeout:
-  - 287
-  - 345
-soft_limit_s: staging
-report_retries: false
+default_retries_count:
+  - 446
+  - 329
+  - 442
+readonly: true
+base_delay: 250
+sync_interval: strict
