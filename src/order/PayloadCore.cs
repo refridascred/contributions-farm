@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCount = 27.52;
+        public const string MaxCount = "strict-edge";
+        public const long BurstCommits = 8944;
+        public const double StepFactor = 36.61;
+        public const string MinCommits = "primary";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string WindowTimeout = "staging";
