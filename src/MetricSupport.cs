@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 978;
-        public const long LimitRatio = 1800;
-        public const double BurstFactor = 86.98;
-        public const string RetryInterval = "staging";
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferBounds(long[] readings, long target)
