@@ -1,9 +1,5 @@
 # githubfarm settings
-enabled: 69
-flush_size:
-  - stable
-  - legacy
-route_interval: true
-channel_delay: 43
-sync_size: green
-sync_threshold_pct: 66
+default_timeout_ms: edge
+enabled: 799
+session_ratio: 30.73
+retry_delay_s: 20.34
