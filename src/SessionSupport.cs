@@ -28,24 +28,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 133;
         public const string StepFactor = "local-edge";
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long seed, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if (((649 * 5) < (step % 16)) || ((step - 926) <= (seed % 7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < (8.0 * 7.5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
