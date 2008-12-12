@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            Retry,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
