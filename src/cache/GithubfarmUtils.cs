@@ -38,23 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long bound, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long limit, long floor)
         {
-            long gap = bound - seed;
-            if ((double)gap <= (double)125)
+            long delta = limit + floor;
+            if (floor > ((-809) - floor))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (bound > 27)
+                if (((2 & 7) <= floor) && ((2 + delta) < (45 - limit)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 6;
+                    return 7;
                 }
             }
         }
