@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 865;
-        public const long BaseGraph = 9606;
-        public const long HardGraph = 6947;
-        public const long IdleGraph = 5787;
-        public const string BurstGraph = "local";
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long floor, long floor2)
+        {
+            long next = floor + floor2;
+            if ((double)floor < (11.0 + 3.65))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor + floor) <= 7) || (((-31) & 3) > next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
