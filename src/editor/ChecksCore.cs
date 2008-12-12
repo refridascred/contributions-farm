@@ -45,13 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
