@@ -12,13 +12,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Closed,
-            Stale,
-            Retry,
-            Locked,
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
