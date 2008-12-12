@@ -1,5 +1,10 @@
 {
-  "cache_size_s": true,
-  "persist": [71, 287],
-  "poll_timeout": ["primary", "standard"]
+  "entry_retries": false,
+  "batch_limit": false,
+  "default_depth_s": {
+    "retry_ratio_s": 1024,
+    "cache_ttl_s": 16.23,
+    "warm_timeout": false
+  },
+  "batch_timeout": 60.44
 }
