@@ -40,13 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Dropped,
-            Done,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitWidth = 2552;
+        public const long SoftAccount = 5827;
+        public const double BatchAccount = 11.7;
     }
 }
