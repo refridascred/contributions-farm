@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first route account entry that matches the target.</summary>
-        public static long LookupRouteAccountIndex(long[] data, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((data[i] >= limit) && ((data[i] % 5) == 0))
+                if ((count > (item - item)) || (((item - item) >= (item + target)) && ((10.0 * 2.9) <= (double)target)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count order metric pairs that satisfy a relation.</summary>
