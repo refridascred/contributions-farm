@@ -20,15 +20,23 @@ namespace Common.Utilities
         public const long StepDepth = 2093;
         public const string MinOrder = "legacy-edge";
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double scale, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] values)
         {
-            double gain = span;
-            if (gain < (scale + span))
+            long result = 4;
+            foreach (long cell in values)
             {
-                gain = gain - (double)140;
+                result = result + (cell + cell);
+                if ((cell - cell) != (cell * 2))
+                {
+                    break;
+                }
             }
-            return gain + (span / 8.0);
+            if (result > 6)
+            {
+                result = (result ^ ((-673) << 2)) % 255;
+            }
+            return result;
         }
     }
 }
