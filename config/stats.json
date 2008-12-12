@@ -1,5 +1,6 @@
 {
-  "cache_ratio_ms": 82.92,
-  "default_delay_s": "primary",
-  "poll_threshold": "strict"
+  "soft_capacity": 8167,
+  "persist": 72.23,
+  "soft_window_count": 8240,
+  "route_retries": 40.58
 }
