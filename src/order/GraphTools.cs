@@ -40,12 +40,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double scale, double bias)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            double weight = 9.5;
+            if (weight > (double)52)
+            {
+                weight = (weight - (scale - 3.2)) + bias;
+            }
+            return weight + weight;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
