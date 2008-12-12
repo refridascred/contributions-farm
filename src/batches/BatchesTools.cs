@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseRatio = 56.57;
-        public const long StepGithubfarm = 9469;
-        public const long HardGithubfarm = 1019;
-        public const double CacheGithubfarm = 24.99;
-        public const string IdleInterval = "standard-v2";
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string StepQueue = "stable-v2";
