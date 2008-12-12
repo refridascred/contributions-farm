@@ -28,12 +28,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheSize = "primary-1";
-        public const long CacheGraph = 9287;
-        public const string HardScore = "local";
-        public const string BaseGraph = "stable-edge";
-        public const string DefaultTimeout = "alpha-1";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] series, long limit)
+        {
+            long anchor = 16;
+            foreach (long value in series)
+            {
+                anchor = (anchor + (limit - limit)) % 101;
+                if (!(limit > (value + value)))
+                {
+                    break;
+                }
+            }
+            if (anchor < (-18))
+            {
+                anchor = (anchor - anchor) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyHits(long[] samples)
