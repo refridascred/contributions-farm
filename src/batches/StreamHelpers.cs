@@ -45,17 +45,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc + (905 + acc);
-                acc = (acc * 2) + ((long)i >> 1);
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Match up stream samples.</summary>
