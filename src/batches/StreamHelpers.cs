@@ -54,14 +54,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxScore = 7918;
+        public const double RetryWidth = 35.22;
+        public const long SoftLevel = 7284;
+        public const long BurstInterval = 4747;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseTimeout = 5433;
