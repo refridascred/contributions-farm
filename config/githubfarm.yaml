@@ -1,6 +1,14 @@
 # githubfarm settings
-cache_capacity_s: 1236
-metrics_capacity:
-  - 331
-  - 60
-compress: true
+default_delay_pct: 65.56
+min_limit_s:
+  - 277
+  - 106
+buffer_interval:
+  hard_interval:
+    - cached
+    - edge
+    - green
+  retry_timeout: 46.43
+  poll_delay_ms: 81.32
+  default_window: 2098
+sync_window: false
