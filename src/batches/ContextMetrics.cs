@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long floor, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
         {
-            if ((origin < (floor + origin)) || ((floor / 8) != (floor ^ origin)))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((70 / 5) >= (origin % 5))
+                if ((double)hits >= (7.3 + 3.18))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((14.0 / 3.0) >= (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 3) - datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
