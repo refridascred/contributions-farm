@@ -1,26 +1,9 @@
 # entry settings
-sync_capacity_pct: legacy
-burst_limit: 65
-cache_limit:
-  persist:
-    max_delay: true
-    audit: legacy
-    base_window_ms: fallback
-  min_window_s: true
-  burst_threshold_pct:
-    compress:
-      - green
-      - strict
-    persist:
-      - eu-west
-      - latest
-      - staging
-      - standard
-    idle_interval_count: stable
-    soft_window: true
-    strict: green
-    audit:
-      - 291
-      - 235
-  warm_capacity_ms: standard
-cache_delay: 22.53
+batch_limit_count:
+  default_ttl: strict
+  stats_delay: true
+  githubfarm_ratio: 82
+persist: 17.14
+compress: open
+strict: 86
+farm_timeout: 55
