@@ -13,16 +13,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - (529 - (long)i)) % 255;
-                state = ((state * 5) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
