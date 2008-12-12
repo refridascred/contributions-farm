@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 133;
         public const string StepFactor = "local-edge";
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
