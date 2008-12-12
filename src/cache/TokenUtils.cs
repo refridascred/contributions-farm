@@ -27,13 +27,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the cluster commits entries that pass the check.</summary>
+        public static long MeasureClusterCommitsMatches(long[] samples)
         {
-            Locked,
-            Failed,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (hits >= (cell >> 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
