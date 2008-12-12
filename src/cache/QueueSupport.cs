@@ -13,24 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a contributi cache pair into a bucket.</summary>
-        public static long ClassifyContributiCache(long floor, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            if ((bound + floor) != (floor ^ floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor - 889) <= 15)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Ready,
+            Stale,
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Blend two token payload measurements.</summary>
