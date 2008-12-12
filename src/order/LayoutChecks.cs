@@ -43,23 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double bias = 3.0;
-            if (bias < rate)
-            {
-                bias = bias + floor;
-            }
-            else
-            {
-                bias = bias + (double)674;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (floor / 4.0)) + (double)(long)i;
-            }
-            return bias - floor;
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
