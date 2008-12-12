@@ -13,33 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            double rate = floor;
+            if (rate < 8.0)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (((anchor * 2) + (bound + anchor)) % 97) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    anchor = (((anchor << 2) ^ (anchor + anchor)) % 97) ^ (long)i3;
-                    anchor = (anchor - (anchor + (long)i)) % 1000;
-                }
-                if (!((anchor + 571) == ((long)i >> 4)))
-                {
-                    anchor = anchor - (anchor + anchor);
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (bound % 3);
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                rate = rate - rate;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
