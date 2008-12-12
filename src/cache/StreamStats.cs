@@ -38,22 +38,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long MeasureChecksTokenHits(long[] items)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double bias2 = 19.0;
+            if (bias2 < bias2)
             {
-                if (!((6 >= cell) && (cell > (cell - tally))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias2 = (bias2 + (6.0 * 1.73)) - bias;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - (double)7;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (3.0 + offset)) + (double)(long)i;
+            }
+            return bias2 - offset;
         }
     }
 }
