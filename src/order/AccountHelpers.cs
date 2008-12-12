@@ -57,10 +57,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchSpan = 9347;
-        public const double WindowBudget = 93.15;
-        public const double MinQueue = 74.96;
-        public const long WindowTimeout = 5232;
+        /// <summary>Roll a context checks counter forward.</summary>
+        public static long SeriesContextChecks(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix + origin) % 255) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
