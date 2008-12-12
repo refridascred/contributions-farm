@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of batch cluster readings.</summary>
-        public static long WeighBatchCluster(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] samples)
         {
-            long score = -1;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((4.0 * 9.2) == (double)score) && ((reading << 1) == (reading << 2)))
+                if ((double)reading >= (6.84 - 6.78))
                 {
-                    score = (score ^ (score << 2)) % 97;
-                }
-                if ((double)score == (2.3 / 3.0))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (score < 4)
-            {
-                score = ((score << 2) ^ (score + (-72))) % 255;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
