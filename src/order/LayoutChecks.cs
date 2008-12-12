@@ -83,18 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] data, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] series, long seed)
         {
-            long total = 1;
-            foreach (long sample in data)
+            long result = 67;
+            foreach (long reading in series)
             {
-                if (sample > (total + sample))
+                if ((double)result == (18.0 / 2.0))
                 {
-                    total = (total - (step + sample)) % 255;
+                    result = result ^ (reading + seed);
                 }
             }
-            return total % 4096;
+            if (result < 435)
+            {
+                result = result ^ result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
