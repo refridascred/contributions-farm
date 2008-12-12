@@ -1,11 +1,7 @@
 # support settings
-enabled: cached
-min_delay_ms: strict
-hard_timeout: 3.45
-notes_depth:
-  - 300
-  - 313
-  - 272
-  - 349
-order_interval: local
-max_timeout_count: primary
+commits_limit: staging
+default_ratio: 65.13
+enabled: 5887
+notes_delay: local
+poll_delay: latest
+audit: latest
