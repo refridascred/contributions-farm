@@ -1,7 +1,8 @@
-id,level,weight,owner,ratio
-1,latest,806,14.65,774
-2,790,stable,791,17.65
-3,574,legacy,837,18.18
-4,90.36,41.83,323,legacy
-5,15.92,staging,788,50.46
-6,37.95,open,blue,452
+id,active,score,level,count
+1,open,172,33.22,33.27
+2,latest,63.57,648,680
+3,blue,edge,389,blue
+4,913,41.7,staging,edge
+5,staging,40,latest,89.24
+6,fallback,586,676,47.25
+7,primary,69.6,staging,76.64
