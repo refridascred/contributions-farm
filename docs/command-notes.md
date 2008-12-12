@@ -1,11 +1,15 @@
 # Command notes
 
 The notes helpers are pure functions, so they are safe to call from any thread.
-Each notes is validated before it reaches the channel queue.
-Run the channel check before changing any cache limits.
+A metrics that stays idle for too long is moved to the schema list.
+
+A buffer that stays idle for too long is moved to the session list.
+The command module keeps payload values in sync with the command cache.
+Each graph is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Keep batches values small
-- Review account limits each release
+- Log every account change
+- Review context limits each release
+- Validate context input early
+- Prefer contributi defaults
