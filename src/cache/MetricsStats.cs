@@ -25,18 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the report command entries that pass the check.</summary>
-        public static long CountReportCommandMatches(long[] samples, long offset)
+        /// <summary>Accumulate format githubfarm samples.</summary>
+        public static long FoldFormatGithubfarm(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = -2;
+            foreach (long datum in values)
             {
-                if (!(6 <= (entry - offset)))
-                {
-                    tally = tally + 1;
-                }
+                mix = (mix + (datum >> 5)) - bound;
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Accumulate cluster route samples.</summary>
