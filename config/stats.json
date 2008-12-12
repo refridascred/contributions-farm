@@ -1,15 +1,8 @@
 {
-  "dry_run": {
-    "enabled": "green",
-    "poll_threshold": "legacy",
-    "record_window": "stable"
-  },
-  "idle_size_pct": [432, 379],
-  "cache_delay_s": "open",
-  "readonly": {
-    "audit": 100,
-    "readonly": "eu-west",
-    "command_ratio": "stable",
-    "retry_timeout_s": "standard"
-  }
+  "audit": "cached",
+  "base_window_count": 34.13,
+  "cache_size_pct": 87.57,
+  "cache_limit_s": [87, 471, 21, 412],
+  "enabled": "staging",
+  "graph_retries": 8304
 }
