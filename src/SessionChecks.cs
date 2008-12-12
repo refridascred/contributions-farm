@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the schema class values.</summary>
