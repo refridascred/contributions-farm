@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings, long bound)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            long state = 389;
+            foreach (long reading in readings)
+            {
+                state = (((state * 5) + (state << 1)) - reading) - bound;
+            }
+            return state;
         }
 
         /// <summary>Describe the checks class values.</summary>
