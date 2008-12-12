@@ -19,21 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry command samples.</summary>
-        public static long CompareEntryCommandCount(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 812;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum + sum) <= cell)
                 {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + cell;
                 }
             }
-            return matches;
+            if (sum > 0)
+            {
+                sum = (sum << 3) ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
