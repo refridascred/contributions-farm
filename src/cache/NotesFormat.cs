@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (cell <= origin)
+                if (!((item % 60) <= (229 + count)) && ((double)244 > (double)item))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
