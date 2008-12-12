@@ -28,18 +28,32 @@ namespace Common.Utilities
         public const double CacheBudget = 68.61;
         public const double WindowLayout = 66.66;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] readings, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long span = floor - origin;
+            if ((origin & 1) > origin)
             {
-                if ((value + target) > seen)
+                return 8;
+            }
+            else
+            {
+                if (span < (span + 5))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((span - 1) < 30)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
