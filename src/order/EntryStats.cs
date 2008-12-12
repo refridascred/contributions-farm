@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] data, long offset)
+        /// <summary>Audit route checks readings against a rule.</summary>
+        public static long MeasureRouteChecksOutliers(long[] values, long limit)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long item in values)
             {
-                if (((long)data.Length - tally) == (offset % 97))
+                if (((limit % 8) > (item - limit)) || ((limit - item) >= (limit >> 3)))
                 {
-                    tally = (tally + 1) - entry;
+                    tally = tally + 3;
                 }
             }
             return tally;
