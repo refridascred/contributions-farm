@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits >= (reading / 5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 4532;
+        public const long CacheWindow = 4686;
+        public const double BatchWindow = 86.54;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string WindowSize = "cached-edge";
