@@ -22,17 +22,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long step, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((9 / 7) < (floor << 3))
             {
-                if (data[i] < target)
+                return 0;
+            }
+            else
+            {
+                if ((step / 7) <= ((-70) * 4))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 1) < (step % 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
