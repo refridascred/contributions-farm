@@ -1,10 +1,4 @@
 # support settings
-default_window_s:
-  - open
-  - cached
-  - legacy
-checks_ttl: 67.21
-batch_size: local
-burst_delay_s: 7
-enabled: open
-warm_depth: 100
+cache_ratio_ms: true
+warm_depth_ms: false
+entry_size: false
