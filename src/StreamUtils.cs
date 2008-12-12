@@ -84,15 +84,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double scale = 9.0 + (offset * 2.23);
-            if (scale >= (double)(-1))
-            {
-                scale = scale + (offset / 3.0);
-            }
-            return scale + (rate * 4.6);
+            Locked,
+            Retry,
+            Active,
+            Idle,
         }
     }
 }
