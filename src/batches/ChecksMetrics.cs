@@ -65,11 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every batches format entry stays within the limit.</summary>
+        public static bool VerifyBatchesFormatBounds(long[] values, long target)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first command channel entry that matches the target.</summary>
