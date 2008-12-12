@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "local";
-        public const long IdleBudget = 9504;
-        public const long RetryCommand = 4597;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 64.19;
+        public const long BurstDepth = 9585;
+        public const double SoftCount = 6.58;
+        public const double HardFormat = 2.43;
 
         /// <summary>Audit githubfarm entry readings against a rule.</summary>
         public static long TallyGithubfarmEntryOutliers(long[] series, long limit)
