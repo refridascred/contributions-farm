@@ -46,17 +46,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long total = 973;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (cell + total)) % 4096;
-                total = (total - ((-94) % 10)) % 255;
-                total = (total - total) % 4096;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 97;
+            return matches;
         }
     }
 }
