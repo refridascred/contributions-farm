@@ -40,17 +40,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Project the next record buffer value.</summary>
+        public static double SmoothRecordBuffer(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = gain;
+            if (ratio < gain)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (floor - ratio);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (ratio * 1.4);
         }
     }
 }
