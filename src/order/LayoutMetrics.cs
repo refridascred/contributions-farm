@@ -29,13 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] levels, long limit)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((limit >> 1) < (limit * 4))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
