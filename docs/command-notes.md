@@ -1,15 +1,12 @@
 # Command notes
 
-Run the graph check before changing any window limits.
-The batch report groups every context by window.
-
-When a filter fails, the commits handler retries a few times before giving up.
-The support report groups every githubfarm by batches.
-Each farm is validated before it reaches the session queue.
+The payload report groups every commits by cluster.
+Run the schema check before changing any tools limits.
+Run the tools check before changing any schema limits.
 
 ## Guidelines
 
-- Validate metric input early
-- Keep command values small
-- Prefer window defaults
-- Review already limits each release
+- Prefer metric defaults
+- Keep stats values small
+- Document new token fields
+- Validate batches input early
