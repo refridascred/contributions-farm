@@ -64,21 +64,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(3 + 3);
+            if (load < 4.83)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load - (double)62) + offset;
             }
-            return matches;
+            return load - weight;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
