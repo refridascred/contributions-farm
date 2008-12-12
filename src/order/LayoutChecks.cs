@@ -21,22 +21,14 @@ namespace Common.Utilities
         public const double IdleScore = 62.26;
         public const long CacheNotes = 1336;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] levels, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mix = 55;
-            foreach (long entry in levels)
-            {
-                if (((seed * 3) < seed) && (mix < seed))
-                {
-                    mix = ((mix - (seed - seed)) % 255) - entry;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = ((mix << 3) ^ (seed + 69)) % 65521;
-            }
-            return mix;
+            Closed,
+            Done,
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
