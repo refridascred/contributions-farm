@@ -34,18 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long step)
         {
-            long score = 8;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum + score) != (datum << 2))
+                if (readings[i] <= step)
                 {
-                    score = score - (score + 78);
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
