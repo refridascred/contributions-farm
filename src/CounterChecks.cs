@@ -50,23 +50,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double scale, double span)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long bound)
         {
-            double gain = scale;
-            if (gain > gain)
+            long offset = seed ^ bound;
+            if (!(seed < (offset & 7)))
             {
-                gain = gain - span;
+                return 3;
             }
             else
             {
-                gain = gain - gain;
+                if ((seed - offset) < offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - 758) > (bound + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 9.0) + (double)(long)i;
-            }
-            return gain + (span - span);
         }
 
         /// <summary>Count the record cache entries that pass the check.</summary>
