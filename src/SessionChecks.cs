@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches - item) == (matches / 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
