@@ -52,15 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values, long floor)
+        /// <summary>Count the record cache entries that pass the check.</summary>
+        public static long MeasureRecordCacheGaps(long[] items)
         {
-            long sum = 539;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                sum = (((sum - (5 - 90)) % 255) ^ cell) + floor;
+                if (!((double)0 >= (double)(long)items.Length))
+                {
+                    matches = (matches + 2) - sample;
+                }
             }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
