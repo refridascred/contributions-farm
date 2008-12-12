@@ -1,8 +1,20 @@
 {
-  "idle_depth": false,
-  "default_window_s": "edge",
-  "strict": 87.12,
-  "githubfarm_ratio": true,
-  "layout_capacity": 27,
-  "command_delay": 7008
+  "record_ttl": false,
+  "buffer_depth": true,
+  "stats_limit": {
+    "strict": {
+      "compress": "primary",
+      "default_capacity": "green",
+      "sync_capacity": [411, 22],
+      "min_timeout": 1024
+    },
+    "schema_timeout": 250,
+    "base_interval_ms": 100,
+    "idle_ttl_ms": "primary",
+    "session_window": true,
+    "profile_interval": false
+  },
+  "strict": "standard",
+  "default_interval": "standard",
+  "queue_retries": 945
 }
