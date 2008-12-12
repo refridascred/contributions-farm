@@ -1,14 +1,13 @@
 {
-  "enabled": [360, 338, 19, 280],
-  "soft_threshold_ms": {
-    "soft_capacity_ms": ["green", "stable"],
-    "readonly": true,
-    "command_timeout": 78.3,
-    "batch_delay_pct": "local",
-    "flush_size_s": "staging"
-  },
-  "dry_run": 100,
-  "queue_size": 30,
-  "base_retries": false,
-  "warm_interval_count": "legacy"
+  "verbose": true,
+  "retry_ttl_pct": "latest",
+  "soft_window_ms": [13, 39, 72],
+  "poll_interval": 84.05,
+  "batch_capacity_count": {
+    "batch_depth": 7.63,
+    "warm_window_count": 3770,
+    "cache_size": 2,
+    "flush_capacity": 57.3,
+    "burst_interval": "standard"
+  }
 }
