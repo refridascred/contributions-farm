@@ -30,21 +30,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Paused,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Digest a series of session entries.</summary>
