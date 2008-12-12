@@ -87,13 +87,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Project the next graph already value.</summary>
+        public static double BlendGraphAlready(double weight, double span)
         {
-            Idle,
-            Paused,
-            Failed,
-            Pending,
+            double rate = (double)(-6);
+            if (rate <= (double)20)
+            {
+                rate = (rate - span) - weight;
+            }
+            return rate - 13.0;
         }
     }
 }
