@@ -15,17 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                if (value > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
