@@ -1,17 +1,15 @@
 # entry settings
-hard_delay:
-  base_threshold_s:
-    - 54
-    - 156
-    - 284
-  burst_interval_s: 1562
-  min_depth: true
-  min_ratio: standard
-  strict: 90.31
-burst_delay:
-  checks_window: standard
-  batch_capacity: true
-  hard_timeout_s: 6.1
-  burst_threshold: 1024
-strict: 8022
-retry_interval: staging
+graph_timeout: 25.53
+batch_timeout_ms: 98
+audit: 74
+default_size_count: false
+poll_ratio_pct: edge
+min_delay:
+  enabled: true
+  poll_depth_pct: 70
+  cache_size:
+    - local
+    - standard
+    - strict
+    - strict
+  context_threshold: eu-west
