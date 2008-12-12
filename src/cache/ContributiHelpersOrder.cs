@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit payload filter readings against a rule.</summary>
-        public static long MeasurePayloadFilterMatches(long[] values, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long carry = 0;
+            foreach (long cell in readings)
             {
-                if ((double)item <= (9.9 / 5.0))
+                if (((cell + cell) != (cell + 96)) || ((double)carry >= (9.47 / 3.0)))
                 {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (carry ^ (680 + carry)) % 1000;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
