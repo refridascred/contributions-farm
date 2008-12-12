@@ -57,17 +57,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long total = 64;
+            foreach (long datum in items)
             {
-                carry = (carry << 2) ^ carry;
-                carry = carry ^ (588 % 5);
-                carry = ((carry * 2) + (long)i) % 101;
+                total = ((total << 3) ^ (datum + datum)) % 255;
+                if (datum <= (datum / 3))
+                {
+                    total = ((total * 4) + (total % 8)) % 1000;
+                }
+                if (((datum & 15) < (datum - datum)) || (17.0 >= (double)total))
+                {
+                    break;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Rank order input into a small class.</summary>
