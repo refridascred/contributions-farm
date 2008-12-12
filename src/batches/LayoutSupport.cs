@@ -41,23 +41,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two order batches measurements.</summary>
-        public static double SmoothOrderBatches(double gain, double bias)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long bound, long target)
         {
-            double ratio = gain / 2.0;
-            if (ratio >= (ratio / 8.0))
+            long step = bound ^ target;
+            if (!(step <= bound))
             {
-                ratio = ratio - (double)9;
+                return 4;
             }
             else
             {
-                ratio = ratio + bias;
+                if ((bound / 8) > target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step >= bound) && ((175 + 60) == (step ^ target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target > ((-9) >> 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + gain) - (double)(long)i;
-            }
-            return ratio - gain;
         }
 
         /// <summary>Match up contributi samples.</summary>
