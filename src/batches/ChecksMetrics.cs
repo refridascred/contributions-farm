@@ -48,40 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long offset)
-        {
-            long step = floor + offset;
-            if ((offset - step) <= (282 << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor - (-130)) == (floor >> 3)) || ((double)step < (8.9 / 2.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (step + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((632 - floor) > step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSpan = 6937;
+        public const double IdleMetrics = 18.07;
+        public const long BaseMetrics = 1425;
+        public const string StepCount = "open-edge";
 
         /// <summary>Match up buffer samples.</summary>
         public static long OverlapBufferCount(long[] values)
