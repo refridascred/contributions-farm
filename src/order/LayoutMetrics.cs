@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long SoftCommits = 3645;
         public const double IdleCount = 55.5;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "strict";
-        public const long BaseSize = 8069;
-        public const long StepDepth = 4589;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaGaps(long[] items, long step)
