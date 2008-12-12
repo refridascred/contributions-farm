@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BurstCluster = 1896;
         public const long CacheCluster = 3430;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] levels)
         {
             long hits = 0;
-            foreach (long entry in samples)
+            foreach (long datum in levels)
             {
-                if ((entry * 4) < (origin << 3))
+                if (!(788 >= hits) && !((456 ^ hits) <= hits))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) + datum;
                 }
             }
             return hits;
