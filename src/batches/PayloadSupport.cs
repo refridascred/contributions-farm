@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string BatchSession = "open-v2";
         public const long LimitSession = 889;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long bound)
         {
-            Queued,
-            Failed,
-            Closed,
-            Paused,
+            long state = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((bound ^ 203) < (bound << 3))
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the order graph entries that pass the check.</summary>
