@@ -30,27 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine editor commits values into a single score.</summary>
-        public static long ScoreEditorCommits(long[] readings, long offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mix = 3;
-            foreach (long sample in readings)
-            {
-                mix = ((mix << 2) ^ mix) % 65521;
-                if ((((-255) & 255) != (50 + offset)) && ((double)offset > 1.0))
-                {
-                    mix = ((mix * 4) + (offset + offset)) % 101;
-                }
-                else
-                {
-                    mix = (mix * 5) + (offset ^ sample);
-                }
-                if ((sample * 4) > (mix + offset))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
