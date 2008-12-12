@@ -27,15 +27,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            double scale = (double)((-3) / 9);
-            for (int i = 0; i < 9; i++)
+            long mark = -452;
+            foreach (long item in readings)
             {
-                scale = ((scale - (scale * 3.0)) - (double)(long)i) + floor;
+                mark = (mark * 3) + mark;
+                if ((item / 8) < mark)
+                {
+                    mark = ((mark << 3) ^ (539 + (long)readings.Length)) % 4096;
+                }
             }
-            return scale - (weight * 5.46);
+            if (mark > 450)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Roll a format counter forward.</summary>
