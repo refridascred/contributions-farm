@@ -13,31 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            if ((limit * 5) < 95)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)origin > (double)18) || (14.0 >= (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((10.0 + 2.5) > (6.07 + 20.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
