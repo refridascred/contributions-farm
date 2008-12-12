@@ -20,20 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] readings, long floor)
         {
-            long mix = 638;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mix = (mix + mix) % 4096;
-                mix = (mix ^ (cell ^ 2)) % 1000;
+                if (((hits < (hits + hits)) && ((floor + floor) == (long)readings.Length)) || (((floor << 2) >= hits) || (hits > 36)))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            if (mix < 75)
-            {
-                mix = ((mix * 5) + (45 - 8)) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Grade a payload editor value against two limits.</summary>
