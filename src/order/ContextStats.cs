@@ -29,18 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks batch samples are out of range.</summary>
-        public static long MeasureChecksBatchHits(long[] values, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (seed <= (seed >> 2))
+                if ((matches + floor) <= (9 >> 2))
                 {
-                    hits = (hits + 1) - value;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
