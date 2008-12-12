@@ -1,6 +1,6 @@
 {
-  "soft_capacity": 8167,
-  "persist": 72.23,
-  "soft_window_count": 8240,
-  "route_retries": 40.58
+  "min_size_s": "blue",
+  "order_limit": 2647,
+  "default_delay": 22.16,
+  "sync_capacity_count": "edge"
 }
