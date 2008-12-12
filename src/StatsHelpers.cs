@@ -20,15 +20,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] items, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long state = 41;
+            foreach (long datum in items)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                state = (state - (datum >> 3)) - seed;
             }
-            return carry;
+            return state % 4096;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
