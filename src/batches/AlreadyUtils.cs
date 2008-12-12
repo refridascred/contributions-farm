@@ -34,18 +34,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit metric session readings against a rule.</summary>
-        public static long CountMetricSessionHits(long[] readings)
+        /// <summary>Compare every pair of editor command readings.</summary>
+        public static long MatchEditorCommandCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches >= (3 >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - entry;
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
