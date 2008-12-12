@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (mix ^ (long)i2) % 1000;
-                }
-                if ((double)target < 2.0)
-                {
-                    mix = (mix * 5) + (target + 7);
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
