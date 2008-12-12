@@ -28,17 +28,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] series, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 982;
+            foreach (long datum in items)
             {
-                if (series[i] >= step)
+                if ((offset % 10) == (offset & 1))
                 {
-                    return (long)i;
+                    total = (((total * 3) + ((long)items.Length + offset)) % 65521) + datum;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 4096;
                 }
             }
-            return -1;
+            if (total > (-397))
+            {
+                total = total + (offset ^ offset);
+            }
+            return total;
         }
 
         /// <summary>Accumulate farm samples.</summary>
