@@ -22,26 +22,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] series, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long score = 71;
-            foreach (long value in series)
-            {
-                if ((9.57 / 9.0) <= (double)score)
-                {
-                    score = (((score * 3) + (85 & 1)) % 1000) ^ value;
-                }
-                if ((14 + score) <= target)
-                {
-                    break;
-                }
-            }
-            if (score > 90)
-            {
-                score = (score << 2) ^ (target & 63);
-            }
-            return score;
+            Draft,
+            Idle,
+            New,
+            Ready,
         }
     }
 }
