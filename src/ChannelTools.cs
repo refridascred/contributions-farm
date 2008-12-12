@@ -31,12 +31,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
