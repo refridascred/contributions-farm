@@ -1,18 +1,6 @@
 # support settings
-strict: 29.56
-burst_timeout_count:
-  batch_ratio: 60
-  default_limit_s:
-    verbose: cached
-    cache_threshold_s: 91
-    default_limit_pct: false
-    compress: 60.31
-  account_retries:
-    - 135
-    - 297
-    - 469
-    - 127
-base_capacity_pct: 813
-audit: true
-buffer_delay: 61
-flush_window_s: 8468
+cache_delay_ms: latest
+record_timeout: 21.3
+poll_ttl_ms: 250
+idle_limit_ms: false
+burst_depth_ms: 4116
