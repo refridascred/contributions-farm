@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] series, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long anchor = 129;
+            foreach (long datum in data)
             {
-                if ((double)reading >= (6.95 + 5.36))
+                if (3.1 <= (double)datum)
                 {
-                    hits = (hits + 3) + step;
+                    anchor = (anchor + anchor) % 97;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the order status values.</summary>
