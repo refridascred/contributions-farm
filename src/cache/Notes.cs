@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long HardFactor = 1554;
         public const double LimitCount = 31.01;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
