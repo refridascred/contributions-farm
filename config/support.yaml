@@ -1,20 +1,8 @@
 # support settings
-entry_retries: 11
-default_window: fallback
-burst_size_ms: 30.0
-idle_delay:
-  default_ttl:
-    queue_window: stable
-    retry_size:
-      - 22
-      - 363
-      - 107
-      - 148
-    batch_ttl_count: true
-    retry_ratio_pct: true
-    metrics_threshold: 25
-  max_interval_s:
-    - standard
-    - standard
-  min_window: 100
-  layout_ratio: 37
+poll_delay_s: stable
+hard_interval: edge
+audit: cached
+context_retries: 54.94
+session_threshold:
+  - eu-west
+  - blue
