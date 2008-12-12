@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every stream context entry stays within the limit.</summary>
-        public static bool ValidateStreamContextRange(long[] samples, long limit)
+        /// <summary>Grade a account command value against two limits.</summary>
+        public static long GradeAccountCommand(long floor, long target)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long cur = floor ^ target;
+            if ((cur << 2) <= (target - cur))
             {
-                if (reading > limit)
+                return 3;
+            }
+            else
+            {
+                if ((floor + target) < target)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target != (2.6 + 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((72 + target) != (cur + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
