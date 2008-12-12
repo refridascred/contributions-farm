@@ -13,11 +13,26 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryWidth = 8162;
-        public const long MinCluster = 2479;
-        public const long HardInterval = 9346;
-        public const string SoftBudget = "alpha";
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long step, long seed)
+        {
+            long diff = step - seed;
+            if (diff <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + diff) != (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a metrics channel sample.</summary>
         public static long LocateMetricsChannelIndex(long[] data, long origin)
