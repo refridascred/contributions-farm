@@ -1,11 +1,11 @@
 # Command notes
 
-When a githubfarm fails, the graph handler retries a few times before giving up.
-When a commits fails, the checks handler retries a few times before giving up.
+Keep entry and window names short and lowercase.
+The already module keeps graph values in sync with the stream cache.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep record values small
-- Review queue limits each release
-- Validate cache input early
+- Validate report input early
+- Prefer stats defaults
+- Log every counter change
+- Review account limits each release
