@@ -52,10 +52,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 9984;
-        public const double HardCache = 71.64;
-        public const long IdleFactor = 7753;
-        public const string StepDepth = "legacy-v2";
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long step)
+        {
+            if ((double)origin != (3.0 * 0.2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step < (origin / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= 7.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
