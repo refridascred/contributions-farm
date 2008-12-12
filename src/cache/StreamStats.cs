@@ -34,17 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = weight - bias;
+            return load + weight;
         }
 
         /// <summary>Hold a counter entry.</summary>
