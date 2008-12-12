@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache profile reading by value.</summary>
-        public static long LocateCacheProfileIndex(long[] levels, long offset)
+        /// <summary>Count the cluster batches entries that pass the check.</summary>
+        public static long MeasureClusterBatchesOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] <= offset)
+                if (((double)8 != (double)datum) && ((origin & 63) <= (count / 5)))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
