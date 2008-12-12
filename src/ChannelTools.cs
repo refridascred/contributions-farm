@@ -39,18 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] values)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits * 5) < (hits + 8))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Failed,
         }
     }
 }
