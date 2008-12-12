@@ -1,23 +1,31 @@
 # support settings
-report_interval:
-  - cached
-  - eu-west
-soft_ttl:
-  cache_ratio: legacy
-  idle_ttl: false
-  base_depth_pct: 30
-  cache_capacity: local
-  commits_threshold:
-    min_window_ms: 2818
-    batch_depth_ms: true
-    cache_retries: staging
-    batch_capacity:
-      - 98
-      - 482
-      - 432
-  report_ratio: false
-cache_limit_s: primary
-persist: true
-min_depth:
-  - 278
-  - 6
+base_ttl_count: 7871
+min_ttl: 93
+cache_timeout:
+  - green
+  - legacy
+enabled:
+  schema_timeout:
+    - stable
+    - staging
+    - eu-west
+  base_ttl_ms: false
+  cache_retries_s:
+    checks_size: 1164
+    order_threshold:
+      - green
+      - green
+    editor_capacity: 4877
+    readonly: 4013
+    min_capacity_count:
+      - edge
+      - stable
+      - edge
+    flush_ttl_s: true
+  tools_interval:
+    - open
+    - open
+    - edge
+  sync_size_ms: 18.3
+flush_delay_count: 250
+strict: standard
