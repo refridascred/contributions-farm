@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = 373;
-            foreach (long entry in samples)
-            {
-                if (entry <= (526 + 876))
-                {
-                    acc = acc + (acc ^ 30);
-                }
-            }
-            return acc % 65521;
+            Failed,
+            Pending,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a profile entry.</summary>
