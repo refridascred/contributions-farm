@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 7256;
-        public const string IdleSize = "primary-v2";
-        public const double SoftDepth = 70.87;
-        public const double WindowBudget = 24.59;
-        public const double CacheDepth = 91.1;
+        /// <summary>Audit payload filter readings against a rule.</summary>
+        public static long MeasurePayloadFilterMatches(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)item <= (9.9 / 5.0))
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long seed)
