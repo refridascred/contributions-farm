@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine contributi schema values into a single score.</summary>
-        public static long WeighContributiSchema(long[] data)
+        /// <summary>Measure how many checks batch samples are out of range.</summary>
+        public static long MeasureChecksBatchHits(long[] values, long seed)
         {
-            long state = 2;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                state = (state - (state >> 4)) ^ reading;
+                if (seed <= (seed >> 2))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            if (state < (-20))
-            {
-                state = (state - (state * 2)) % 4096;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
