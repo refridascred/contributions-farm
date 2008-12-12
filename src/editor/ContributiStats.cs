@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi stats helpers.</summary>
     public static class ContributiStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleCluster = 85.33;
-        public const string LimitCluster = "alpha-v2";
-        public const long HardCluster = 2518;
-        public const long BurstCluster = 6706;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorGaps(long[] items)
