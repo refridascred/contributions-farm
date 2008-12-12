@@ -15,14 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Pending,
-            New,
-            Paused,
-            Closed,
-            Retry,
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Validate queue account readings against a bound.</summary>
