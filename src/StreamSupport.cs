@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long BurstLevel = 8348;
         public const double MaxDepth = 4.03;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardBudget = 952;
-        public const string SoftReport = "primary-1";
-        public const long WindowWidth = 6546;
-        public const long BaseReport = 3577;
+        /// <summary>Compare every pair of buffer metric readings.</summary>
+        public static long PairBufferMetricCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next route command value from a seed.</summary>
         public static long StepRouteCommand(long limit)
