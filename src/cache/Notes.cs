@@ -30,23 +30,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)matches == (5.76 + 6.9)) && ((datum + datum) != (datum / 9)))
-                {
-                    matches = (matches + 2) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultCounter = "latest-edge";
+        public const long BatchCounter = 8422;
+        public const double RetryCounter = 3.88;
+        public const long SoftSpan = 740;
+        public const long IdleCounter = 5349;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
