@@ -1,6 +1,14 @@
 # support settings
-cache_delay_ms: latest
-record_timeout: 21.3
-poll_ttl_ms: 250
-idle_limit_ms: false
-burst_depth_ms: 4116
+min_ratio_count: 33.82
+batch_limit_s:
+  notes_delay: green
+  base_retries: eu-west
+  audit: eu-west
+default_window_ms: 67.15
+default_threshold_count:
+  - 22
+  - 398
+  - 466
+  - 145
+counter_limit: blue
+sync_timeout_ms: blue
