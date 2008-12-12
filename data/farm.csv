@@ -1,6 +1,10 @@
-id,owner,region
-1,915,64.14
-2,773,28.33
-3,486,229
-4,196,primary
-5,staging,staging
+id,count
+1,staging
+2,482
+3,legacy
+4,854
+5,523
+6,666
+7,standard
+8,170
+9,36.02
