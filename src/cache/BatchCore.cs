@@ -43,19 +43,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long floor)
         {
-            long state = -458;
-            foreach (long entry in items)
+            if ((step + step) < (floor ^ 72))
             {
-                state = (((state * 5) + (29 * 5)) % 65521) + entry;
+                return 5;
             }
-            if (state < 41)
+            else
             {
-                state = ((state << 2) ^ (state & 63)) % 255;
+                if ((step ^ step) <= (step + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((-506) > (floor << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)step == (2.0 - 2.9)) && ((floor ^ 6) > (step + 78)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return state;
         }
     }
 }
