@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long target)
         {
-            long next = bound + target;
-            if ((bound + next) <= (next ^ next))
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((next - bound) >= (bound >> 4)))
+                if (sample <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound >= (1.0 * 9.5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((3.0 * 3.69) > (double)bound) && (next < (bound & 127)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up entry samples.</summary>
