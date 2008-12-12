@@ -25,20 +25,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                mark = ((mark << 3) ^ (mark - limit)) % 65521;
-                if ((limit > (limit - limit)) && ((limit >> 4) != (mark << 1)))
-                {
-                    mark = mark - (2 * 2);
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
