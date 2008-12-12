@@ -64,21 +64,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
-        public static long PairCommitsBatchesCount(long[] items)
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long FoldEntryOrder(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 362;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (((state << 2) ^ 27) % 4096) ^ datum;
+                if ((8 + (-921)) < (target >> 2))
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state - (23 % 60);
                 }
             }
-            return matches;
+            if (state > 0)
+            {
+                state = state ^ (target + state);
+            }
+            return state;
         }
     }
 }
