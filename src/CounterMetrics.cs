@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitWidth = 634;
-        public const double LimitDepth = 13.41;
-        public const long BurstFarm = 5736;
-        public const long WindowBudget = 8154;
-        public const double DefaultFactor = 40.19;
+        /// <summary>Rank payload token input into a small class.</summary>
+        public static long BucketPayloadToken(long offset, long seed)
+        {
+            if ((offset * 3) > (seed % 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset / 6) != (seed + seed)) && (seed > (seed * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset < seed) || ((0 * 3) > (offset - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] items, long origin)
