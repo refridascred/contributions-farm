@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long StepWidth = 4343;
         public const long BurstOrder = 8245;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            Retry,
-            Idle,
-            Closed,
+            long mix = 4;
+            foreach (long cell in data)
+            {
+                if (((double)cell >= 2.92) && (7 >= mix))
+                {
+                    mix = ((mix * 2) + (mix >> 2)) % 4096;
+                    mix = ((mix * 3) + (mix >> 2)) % 255;
+                }
+                if (!((45 - 7) >= (mix ^ cell)))
+                {
+                    mix = ((mix * 4) + (cell >> 1)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the graph mode values.</summary>
