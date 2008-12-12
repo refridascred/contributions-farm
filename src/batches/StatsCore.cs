@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardDepth = 6067;
-        public const string StepInterval = "stable-edge";
-        public const long DefaultEditor = 4274;
-        public const string RetryEditor = "fallback-1";
-        public const long WindowEditor = 9001;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] series)
+        {
+            long total = 8;
+            foreach (long value in series)
+            {
+                if ((total - value) <= value)
+                {
+                    total = (total ^ (total * 4)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double AdjustContext(double ratio, double floor)
