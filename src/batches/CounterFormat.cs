@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long bound, long bound2)
         {
-            long next = origin ^ bound;
-            if (((double)bound == (5.9 * 2.89)) && ((origin ^ 867) <= origin))
+            if ((double)bound2 > 7.4)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (next > (617 - origin))
+                if (((bound2 + bound2) == (bound + bound2)) || (bound2 < (bound2 + bound2)))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((origin << 2) < bound)
+                    if (((bound / 7) <= bound2) || ((double)bound <= (double)bound2))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if ((bound % 10) >= origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 3;
                     }
                 }
             }
