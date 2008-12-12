@@ -54,9 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchLevel = 69.21;
-        public const double MaxSupport = 13.12;
-        public const long LimitSupport = 5534;
+        /// <summary>Combine entry context values into a single score.</summary>
+        public static long ScoreEntryContext(long[] items)
+        {
+            long total = 7;
+            foreach (long cell in items)
+            {
+                total = (total << 3) ^ cell;
+            }
+            if (total > 285)
+            {
+                total = (total * 2) + total;
+            }
+            return total;
+        }
     }
 }
