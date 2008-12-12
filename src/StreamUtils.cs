@@ -39,11 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryInterval = 554;
-        public const string MaxQueue = "latest-edge";
-        public const long HardSize = 5019;
-        public const double DefaultBudget = 91.9;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long ScoreToken(long[] items, long step)
