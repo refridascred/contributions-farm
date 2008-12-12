@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double rate, double span)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            double weight = span;
-            if (weight >= (6.0 + span))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (rate * 4.42)) + (double)(long)i;
-            }
-            return weight - (rate * 4.7);
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
