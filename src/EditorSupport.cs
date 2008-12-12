@@ -23,13 +23,38 @@ namespace Common.Utilities
             return rate - (bias - ratio);
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long seed, long step)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
+            if (((seed - step) < 941) || (seed <= (547 - 912)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5.45 / 2.0) <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 4) > (81 + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((1.9 / 6.0) > (double)seed) && ((seed - step) < (step * 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
