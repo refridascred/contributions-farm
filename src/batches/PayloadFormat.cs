@@ -32,28 +32,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long offset, long limit)
+        /// <summary>Grade a batches context value against two limits.</summary>
+        public static long BucketBatchesContext(long bound, long target)
         {
-            if (limit <= (offset + offset))
+            if ((bound & 31) != (target ^ bound))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((offset * 3) == (limit - offset))
+                if ((target * 2) < target)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((limit >> 4) > (limit - offset))
+                    if ((10.0 * 17.0) <= (double)bound)
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        if ((13.0 / 6.0) == (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
