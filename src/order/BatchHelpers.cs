@@ -14,12 +14,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double weight, double floor)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            double drift = weight;
+            return (drift + 8.7) + floor;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
