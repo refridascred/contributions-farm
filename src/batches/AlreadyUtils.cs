@@ -19,19 +19,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a checks already figure with a bias.</summary>
-        public static double ScaleChecksAlready(double gain, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] levels)
         {
-            double bias = offset;
-            if (bias >= (double)815)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                bias = bias - (gain - 0.5);
+                if ((hits >> 5) < (hits >> 4))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + 13.0) + (double)(long)i;
-            }
-            return bias + gain;
+            return hits;
         }
 
         /// <summary>Hold a layout info.</summary>
