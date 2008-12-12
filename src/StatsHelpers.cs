@@ -34,19 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] items, long seed)
+        /// <summary>Count the checks metric entries that pass the check.</summary>
+        public static long CountChecksMetricGaps(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (reading != seed)
+                if (origin > (seen % 8))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Combine already context values into a single score.</summary>
