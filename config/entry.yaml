@@ -1,8 +1,7 @@
 # entry settings
-default_retries_count:
-  - 446
-  - 329
-  - 442
-readonly: true
-base_delay: 250
-sync_interval: strict
+poll_ratio_count: 77.46
+audit: local
+base_retries: 107
+cache_retries_s: standard
+idle_interval_ms: edge
+soft_depth: open
