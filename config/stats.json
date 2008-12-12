@@ -1,5 +1,5 @@
 {
-  "burst_delay_pct": false,
-  "cache_threshold_s": [23, 182],
-  "hard_threshold_ms": true
+  "dry_run": 18.45,
+  "min_window_ms": false,
+  "idle_limit_pct": "blue"
 }
