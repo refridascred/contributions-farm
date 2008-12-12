@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] readings, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if (!((seed & 31) <= (limit % 97)))
             {
-                if (datum < bound)
+                return 4;
+            }
+            else
+            {
+                if (seed < (limit * 4))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 3) == (seed - 93))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
