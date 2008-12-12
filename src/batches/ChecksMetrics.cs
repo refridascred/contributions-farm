@@ -54,16 +54,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Count metric stream pairs that satisfy a relation.</summary>
+        public static long OverlapMetricStreamCount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result + (target + result);
-                result = ((result * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
