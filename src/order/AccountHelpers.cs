@@ -28,23 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] series, long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long seed)
         {
-            long anchor = 16;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (limit - limit)) % 101;
-                if (!(limit > (value + value)))
+                if (values[i] < seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < (-18))
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
