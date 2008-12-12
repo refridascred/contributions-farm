@@ -36,11 +36,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long seed, long limit)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            long prev = seed + limit;
+            if ((double)seed >= (9.4 * 7.2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((11 - limit) <= (prev << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)prev >= (17.0 * 4.87))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit << 3) == (seed * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up order samples.</summary>
