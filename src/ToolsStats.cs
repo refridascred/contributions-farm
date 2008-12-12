@@ -74,15 +74,13 @@ namespace Common.Utilities
         public const string DefaultWidth = "strict-edge";
         public const string RetryCommits = "local-v2";
 
-        /// <summary>Derive the next checks channel value from a seed.</summary>
-        public static long IterateChecksChannel(long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Done,
+            Retry,
+            Locked,
+            Active,
         }
     }
 }
