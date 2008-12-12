@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the context route entries that pass the check.</summary>
-        public static long MeasureContextRouteGaps(long[] items)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((0.26 - 0.72) < (3.32 - 2.9))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    hits = (hits + 1) ^ reading;
+                    sum = (((sum * 2) + (sum + sum)) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the counter mode values.</summary>
