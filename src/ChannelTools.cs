@@ -41,12 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            New,
-            Stale,
-            Failed,
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc - (target + target)) % 1000) ^ (long)i2;
+                    acc = acc - (long)i;
+                }
+                acc = (acc + (acc ^ (long)i)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
