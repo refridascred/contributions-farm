@@ -58,17 +58,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long mix = 74;
+            foreach (long entry in values)
             {
-                state = (state * 5) + (step / 4);
-                state = (state ^ (33 ^ (long)i)) % 101;
-                state = ((state * 2) + (long)i) % 97;
+                mix = (mix - entry) + floor;
             }
-            return state;
+            return mix % 4096;
         }
     }
 }
