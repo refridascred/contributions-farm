@@ -5,34 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long mix = 51;
-            foreach (long item in levels)
-            {
-                if (!(((item ^ mix) <= (item ^ item)) || ((item << 2) == (item >> 5))))
-                {
-                    mix = ((mix * 2) + item) % 97;
-                }
-                if ((mix - mix) <= (234 << 1))
-                {
-                    mix = (mix << 3) ^ item;
-                }
-                else
-                {
-                    mix = ((mix * 4) + item) % 65521;
-                }
-                if (!((double)item != (7.88 / 4.0)))
-                {
-                    break;
-                }
-            }
-            if (mix < 55)
-            {
-                mix = ((mix * 5) + mix) % 4096;
-            }
-            return mix;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
