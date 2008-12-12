@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] values)
+        /// <summary>Combine contributi counter values into a single score.</summary>
+        public static long TotalContributiCounter(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mark = 151;
+            foreach (long item in readings)
             {
-                if (82 > (datum + datum))
+                if ((4.0 * 7.0) < (double)item)
                 {
-                    tally = tally + 1;
+                    mark = (mark - origin) % 255;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Describe the schema mode values.</summary>
