@@ -50,18 +50,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order graph entries that pass the check.</summary>
-        public static long TallyOrderGraphHits(long[] items)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry + 3) < 41))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            Pending,
         }
     }
 }
