@@ -34,11 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double weight, double bias)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double load = weight - bias;
-            return load + weight;
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a counter entry.</summary>
