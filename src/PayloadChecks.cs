@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] series, long target)
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long FoldAccountPayload(long[] readings)
         {
-            long score = -27;
-            foreach (long reading in series)
+            long total = 830;
+            foreach (long entry in readings)
             {
-                score = (score << 3) ^ (score << 3);
-                score = score - (94 * 4);
-                if ((double)reading <= (double)target)
+                if ((entry ^ entry) >= (total * 5))
                 {
-                    break;
+                    total = (total ^ (entry & 15)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (entry + total)) % 97;
                 }
             }
-            return score % 1000;
+            if (total > 719)
+            {
+                total = (total + total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Adjust a cache reading.</summary>
