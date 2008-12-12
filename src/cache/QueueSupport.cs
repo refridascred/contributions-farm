@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a metric route value against two limits.</summary>
-        public static long RankMetricRoute(long seed, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long floor, long seed)
         {
-            long next = seed - limit;
-            if (((4.48 * 19.0) < (8.79 * 9.9)) && (427 >= (next >> 3)))
+            long slot = floor + seed;
+            if ((3.6 - 5.9) >= (double)floor)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((double)limit == (9.3 / 9.0))
+                if ((23 + seed) < slot)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (seed <= 824)
+                    if ((floor + slot) >= (seed >> 5))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        if ((floor / 6) > seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
