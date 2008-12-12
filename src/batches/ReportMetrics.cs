@@ -17,18 +17,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry + (356 + origin)) % 1000;
-                carry = (carry ^ (origin - carry)) % 65521;
-                carry = carry - (841 >> 2);
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Ready,
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a entry info.</summary>
