@@ -34,19 +34,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine entry stream values into a single score.</summary>
-        public static long FoldEntryStream(long[] samples, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] samples, long origin)
         {
-            long carry = 216;
-            foreach (long datum in samples)
+            long mix = 380;
+            foreach (long sample in samples)
             {
-                carry = (((carry * 2) + (347 >> 3)) + datum) - bound;
+                if ((origin & 31) != (origin >> 2))
+                {
+                    mix = mix + (sample - origin);
+                }
             }
-            if (carry > 979)
+            if (mix < 706)
             {
-                carry = ((carry << 3) ^ (carry & 127)) % 1000;
+                mix = (mix ^ origin) % 4096;
             }
-            return carry % 1000;
+            return mix;
         }
     }
 }
