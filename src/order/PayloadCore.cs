@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseWidth = 2283;
-        public const long WindowBuffer = 3313;
-        public const string SoftSpan = "fallback-edge";
-        public const string BaseBuffer = "latest-v2";
-        public const string StepSpan = "latest";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 75;
+        public const long IdleInterval = 5820;
+        public const long CacheWidth = 4687;
+        public const long StepOrder = 6438;
 
         /// <summary>Accumulate record support samples.</summary>
         public static long WeighRecordSupport(long[] series)
