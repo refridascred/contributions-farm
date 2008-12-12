@@ -36,18 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] samples)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (((-14) - count) >= datum)
+                if (reading <= target)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the queue phase values.</summary>
