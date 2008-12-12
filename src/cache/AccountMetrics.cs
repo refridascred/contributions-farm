@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long MaxBudget = 2300;
         public const long BurstWidth = 418;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long mark = 32;
+            foreach (long item in levels)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (((item >> 4) < (95 - mark)) || (621 > item))
+                {
+                    mark = ((mark * 3) + (mark ^ (long)levels.Length)) % 255;
+                }
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
