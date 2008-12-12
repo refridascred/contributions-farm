@@ -22,13 +22,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Derive the next route command value from a seed.</summary>
+        public static long StepRouteCommand(long limit)
         {
-            Draft,
-            Idle,
-            New,
-            Ready,
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score - (score - limit);
+                if (!(((1.3 * 14.0) <= (double)(long)i) || ((score + score) < (score + (long)i))))
+                {
+                    score = (score ^ ((long)i + limit)) % 1000;
+                    score = (score ^ ((long)i >> 3)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
