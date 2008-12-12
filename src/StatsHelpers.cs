@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Classify a already token pair into a bucket.</summary>
+        public static long GradeAlreadyToken(long bound, long limit)
         {
-            long mix = 68;
-            foreach (long item in items)
+            if ((limit - (-553)) < limit)
             {
-                mix = ((mix - ((-78) >> 2)) % 255) ^ item;
+                return 1;
             }
-            return mix % 97;
+            else
+            {
+                if (limit < (limit ^ limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.4 - 5.2) < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit - bound) < (bound % 16))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first token farm entry that matches the target.</summary>
