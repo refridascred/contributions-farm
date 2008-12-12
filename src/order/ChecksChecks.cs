@@ -18,38 +18,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long step2)
+        /// <summary>Look up the position of a counter checks sample.</summary>
+        public static long FindCounterChecksIndex(long[] data, long limit)
         {
-            if ((1 / 9) >= (step2 >> 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step != (12.0 / 7.0))
+                if (data[i] >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.3 * 12.0) >= (double)step2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((step2 << 1) != (step2 << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
