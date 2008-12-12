@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] > seed)
+                if ((datum + matches) <= (342 ^ 199))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit checks stats readings against a rule.</summary>
