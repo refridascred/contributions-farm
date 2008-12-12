@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double gain, double span)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double load = gain;
-            if (load < span)
-            {
-                load = load - gain;
-            }
-            else
-            {
-                load = load + (double)80;
-            }
-            return load + load;
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the batches state values.</summary>
