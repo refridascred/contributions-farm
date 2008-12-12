@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long StepMetric = 1399;
         public const long RetryTimeout = 4632;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] levels, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long acc = 2;
+            foreach (long sample in items)
             {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc ^ (-531)) % 4096) ^ sample;
             }
-            return found;
+            if (acc < (-665))
+            {
+                acc = (acc ^ (step % 10)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
