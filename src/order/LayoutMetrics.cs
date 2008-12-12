@@ -15,18 +15,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long seed)
         {
-            long total = 27;
-            foreach (long sample in values)
+            long result = 48;
+            foreach (long item in levels)
             {
-                if ((total + total) > (sample % 12))
+                for (int i = 0; i < 10; i++)
                 {
-                    total = ((total * 2) + (total << 1)) % 1000;
+                    result = (((result * 5) + item) % 65521) + (long)i;
+                }
+                result = (result + (long)levels.Length) % 255;
+                if ((0.7 - 8.4) > (double)result)
+                {
+                    break;
                 }
             }
-            return total;
+            if (result < 4)
+            {
+                result = ((result * 3) + seed) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
