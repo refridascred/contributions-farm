@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Adjust a stream counter reading.</summary>
+        public static double AdjustStreamCounter(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)925 * 7.1;
+            if (scale > (double)830)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                scale = scale + rate;
             }
-            return -1;
+            else
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 4.39) + (double)(long)i;
+            }
+            return scale - (rate - scale);
         }
 
         /// <summary>Find the first metrics layout entry that matches the target.</summary>
