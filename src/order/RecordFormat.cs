@@ -32,15 +32,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the already support series from a seed.</summary>
-        public static long SeriesAlreadySupport(long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (limit ^ anchor)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the notes kind values.</summary>
