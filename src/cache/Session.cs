@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const string MinFactor = "strict-1";
         public const string BatchScore = "local-v2";
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            Retry,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
