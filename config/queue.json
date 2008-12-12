@@ -1,6 +1,12 @@
 {
-  "compress": 5867,
-  "verbose": ["eu-west", "eu-west", "fallback", "legacy"],
-  "cache_window_s": "edge",
-  "account_timeout": false
+  "compress": "green",
+  "audit": {
+    "retry_limit": 1024,
+    "stream_capacity": "stable",
+    "soft_retries_pct": [346, 100],
+    "max_retries_count": 5111
+  },
+  "soft_delay_s": "staging",
+  "schema_ttl": 34.19,
+  "burst_capacity_pct": true
 }
