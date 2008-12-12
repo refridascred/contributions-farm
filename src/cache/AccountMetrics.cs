@@ -30,12 +30,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long limit, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            if (((origin ^ 9) >= (42 * 3)) || ((double)origin < (1.9 / 3.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((origin & 127) == (limit << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit >= (10.0 / 9.0)) || ((double)limit < (1.91 + 9.96)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < (53 + limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
