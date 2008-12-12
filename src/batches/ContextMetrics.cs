@@ -32,14 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] values, long floor)
         {
-            Retry,
-            Failed,
-            Active,
-            Idle,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
