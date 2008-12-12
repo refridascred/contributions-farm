@@ -66,21 +66,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command checks pairs that satisfy a relation.</summary>
-        public static long CompareCommandChecksCount(long[] levels)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((6 / 5) >= origin)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin * 5) < (limit << 2))
                 {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
