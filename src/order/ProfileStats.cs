@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitTimeout = "strict-1";
-        public const double WindowToken = 64.73;
-        public const string CacheSize = "staging-edge";
-        public const string IdleToken = "primary-v2";
-        public const long BatchToken = 5896;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((-68) - hits) < (hits / 7))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] samples)
