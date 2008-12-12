@@ -67,22 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 36.84;
+        public const double CacheWidth = 55.94;
+        public const double BurstCommits = 19.69;
+        public const string DefaultWidth = "strict-edge";
+        public const string RetryCommits = "local-v2";
 
         /// <summary>Derive the next checks channel value from a seed.</summary>
         public static long IterateChecksChannel(long origin)
