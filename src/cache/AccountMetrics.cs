@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 34.53;
-        public const double IdleWindow = 91.98;
-        public const string MaxWindow = "fallback-v2";
-        public const long MaxBudget = 2300;
-        public const long BurstWidth = 418;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 6525;
+        public const long IdleCluster = 2429;
+        public const double SoftRatio = 89.87;
+        public const long BatchCluster = 8229;
+        public const string LimitCluster = "open";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] levels)
