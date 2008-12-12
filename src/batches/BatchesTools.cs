@@ -26,13 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] values, long target)
         {
-            Stale,
-            Active,
-            Dropped,
-            Queued,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
