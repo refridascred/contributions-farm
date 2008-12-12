@@ -32,18 +32,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] data, long limit)
+        /// <summary>Fold a list of token route readings.</summary>
+        public static long FoldTokenRoute(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = 48;
+            foreach (long datum in levels)
             {
-                if ((3.09 * 8.8) < (double)limit)
+                acc = ((acc << 3) ^ 41) % 97;
+                if ((acc % 16) <= seed)
                 {
-                    count = (count + 2) + item;
+                    acc = (acc << 3) ^ acc;
+                }
+                if (((datum << 2) == (datum + 94)) && ((3.8 - 0.7) < (double)datum))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
