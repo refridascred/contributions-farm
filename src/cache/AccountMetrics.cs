@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitRatio = 3752;
-        public const long BurstContributi = 9899;
-        public const string HardInterval = "legacy-v2";
-        public const string SoftContributi = "open-v2";
-        public const string BatchScore = "local-v2";
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] items)
