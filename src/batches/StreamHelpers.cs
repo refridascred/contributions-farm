@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Fold a list of report farm readings.</summary>
+        public static long TallyReportFarm(long[] levels)
         {
-            long anchor = 77;
-            foreach (long value in series)
+            long score = 9;
+            foreach (long item in levels)
             {
-                if ((1 / 8) > anchor)
+                score = score - (item >> 3);
+                if ((score << 3) <= (score ^ score))
                 {
-                    anchor = ((anchor - (476 - anchor)) % 4096) ^ value;
+                    break;
                 }
             }
-            return anchor;
+            return score % 4096;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
