@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long SoftSession = 9224;
         public const long WindowLevel = 3092;
 
-        /// <summary>Check that every batches order entry stays within the limit.</summary>
-        public static bool GuardBatchesOrderBounds(long[] data, long offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
