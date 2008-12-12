@@ -1,6 +1,12 @@
 {
-  "poll_depth_ms": "fallback",
-  "batches_timeout": "open",
-  "readonly": 30,
-  "warm_interval_count": "staging"
+  "enabled": ["staging", "blue", "standard", "stable"],
+  "poll_window_s": 1024,
+  "stats_ttl": {
+    "cache_delay": 58,
+    "sync_limit": "open",
+    "format_delay": 80,
+    "cache_delay_pct": 6.42,
+    "batch_ttl_count": 72.34,
+    "strict": 36.76
+  }
 }
