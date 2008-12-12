@@ -14,11 +14,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double span)
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            double bias2 = (double)(36 + 70);
+            if (bias2 >= 6.03)
+            {
+                bias2 = (bias2 + (bias - bias)) - span;
+            }
+            else
+            {
+                bias2 = bias2 + (7.62 - 10.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Adjust a checks reading.</summary>
