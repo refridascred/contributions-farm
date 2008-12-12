@@ -31,14 +31,17 @@ namespace Common.Utilities
         public const long MaxWindow = 2418;
         public const long HardWindow = 9443;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Locate a filter report reading by value.</summary>
+        public static long LookupFilterReportIndex(long[] readings, long origin)
         {
-            New,
-            Locked,
-            Paused,
-            Closed,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
