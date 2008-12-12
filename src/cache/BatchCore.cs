@@ -17,11 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            Paused,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a window options.</summary>
