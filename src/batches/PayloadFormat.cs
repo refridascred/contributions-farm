@@ -39,16 +39,13 @@ namespace Common.Utilities
         public const long StepChannel = 7238;
         public const long LimitFactor = 9220;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry - (25 & 127)) % 1000;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
