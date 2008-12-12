@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many contributi route samples are out of range.</summary>
-        public static long TallyContributiRouteOutliers(long[] series)
+        /// <summary>Measure how many graph support samples are out of range.</summary>
+        public static long CountGraphSupportMatches(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((seen * 4) >= (item ^ item))
+                if ((floor + floor) >= tally)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
