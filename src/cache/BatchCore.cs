@@ -17,13 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double bias, double span)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            double ratio = (double)(966 - 13);
+            if (ratio < (span * 2.0))
+            {
+                ratio = ratio - bias;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Digest a series of token entries.</summary>
