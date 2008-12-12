@@ -1,19 +1,13 @@
 {
-  "compress": [362, 28, 148, 306],
-  "poll_delay": 5852,
-  "layout_depth": 29.32,
-  "strict": 48.3,
-  "enabled": {
-    "layout_depth": [354, 184, 80],
-    "max_ratio": 58.46,
-    "persist": {
-      "warm_retries_pct": false,
-      "warm_size_s": [69, 315, 389],
-      "batch_timeout_count": "latest",
-      "poll_ratio_ms": "primary"
-    },
-    "base_ttl_s": "stable",
-    "audit": "strict"
+  "base_interval_s": 6,
+  "hard_interval_pct": {
+    "sync_threshold": 70.99,
+    "enabled": true,
+    "checks_size": "edge",
+    "graph_ratio": "latest",
+    "flush_ratio_ms": "fallback"
   },
-  "already_ratio": false
+  "max_size_count": "green",
+  "readonly": "latest",
+  "enabled": "local"
 }
