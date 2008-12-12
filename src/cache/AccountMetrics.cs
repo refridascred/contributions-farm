@@ -70,10 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 4370;
-        public const long StepTools = 462;
-        public const long BaseTools = 9090;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)hits == (13.0 * 5.0))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] items, long floor)
