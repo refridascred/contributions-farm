@@ -49,12 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] values, long target)
         {
-            Active,
-            Ready,
-            Draft,
+            long carry = 48;
+            foreach (long item in values)
+            {
+                carry = ((carry * 3) + item) % 4096;
+            }
+            if (carry > (-33))
+            {
+                carry = (carry ^ (target << 1)) % 255;
+            }
+            return carry % 65521;
         }
     }
 }
