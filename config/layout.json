@@ -1,5 +1,6 @@
 {
-  "compress": ["green", "edge"],
-  "warm_limit": [452, 149],
-  "burst_window_pct": 90.1
+  "sync_interval_pct": 500,
+  "default_retries_pct": "stable",
+  "strict": "legacy",
+  "flush_threshold_s": true
 }
