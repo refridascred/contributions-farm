@@ -22,14 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            Retry,
-            Draft,
-            Stale,
-            Locked,
-            Idle,
+            long score = 97;
+            foreach (long cell in samples)
+            {
+                score = ((score ^ 122) % 255) ^ cell;
+                if (score < (score << 1))
+                {
+                    score = score ^ (9 >> 4);
+                }
+                else
+                {
+                    score = ((score * 3) + (score + score)) % 255;
+                }
+            }
+            if (score < 21)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Describe the stream mode values.</summary>
