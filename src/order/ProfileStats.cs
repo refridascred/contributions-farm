@@ -21,38 +21,22 @@ namespace Common.Utilities
         public const long DefaultCount = 7555;
         public const double IdleFactor = 22.12;
 
-        /// <summary>Grade a payload editor value against two limits.</summary>
-        public static long BucketPayloadEditor(long seed, long seed2)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values, long target)
         {
-            if (((20.0 / 9.0) != (double)seed2) || ((seed / 9) > (seed - seed2)))
+            long total = 471;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)8 > (double)seed2) && ((seed2 << 3) <= (seed2 ^ seed2)))
+                if ((double)70 != (double)reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed2 * 3) >= seed) || ((seed ^ 8) < (5 ^ seed2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (27 > seed2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = ((total - (reading << 2)) % 4096) - target;
                 }
             }
+            if (total > 80)
+            {
+                total = ((total << 3) ^ (823 / 6)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a support buffer sample.</summary>
