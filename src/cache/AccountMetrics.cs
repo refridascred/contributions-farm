@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const string SoftContributi = "open-v2";
         public const string BatchScore = "local-v2";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 8427;
-        public const long BatchCluster = 3096;
-        public const long LimitCluster = 166;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items)
+        {
+            long state = 94;
+            foreach (long reading in items)
+            {
+                if ((double)reading > (1.2 * 2.41))
+                {
+                    state = state ^ reading;
+                }
+                else
+                {
+                    state = state ^ (63 / 3);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
