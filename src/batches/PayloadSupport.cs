@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const string BatchSession = "open-v2";
         public const long LimitSession = 889;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long floor, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long offset)
         {
-            if ((seed ^ seed) == (floor * 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((36 % 3) < (seed & 1)) || ((0.57 + 5.0) < (double)seed))
+                if (data[i] == offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
