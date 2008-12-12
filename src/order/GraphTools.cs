@@ -41,17 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] samples, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
