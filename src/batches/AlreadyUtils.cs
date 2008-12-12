@@ -31,20 +31,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((seed + (long)i) == (seed & 15)) && ((long)i >= seed))
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "primary";
+        public const long MaxEntry = 9100;
+        public const long BurstSpan = 4181;
+        public const string IdleEntry = "latest-1";
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long floor, long step)
