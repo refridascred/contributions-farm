@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Scale a stream buffer figure with a bias.</summary>
+        public static double ScaleStreamBuffer(double gain, double offset)
         {
-            long carry = 61;
-            foreach (long value in data)
-            {
-                carry = ((carry - (carry << 3)) % 101) ^ value;
-            }
-            if (carry < 53)
-            {
-                carry = (carry - (carry + carry)) % 65521;
-            }
-            return carry;
+            double weight = gain;
+            return (weight + weight) + offset;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
