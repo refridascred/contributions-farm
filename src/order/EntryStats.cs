@@ -11,21 +11,31 @@ namespace Common.Utilities
         public const long CacheTimeout = 6766;
         public const long WindowWidth = 2625;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (seed <= (seed + step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)step < (9.6 + 2.8))
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
+                    return 8;
+                }
+                else
+                {
+                    if (((seed & 15) <= (step + 30)) || ((step & 63) >= (step + 11)))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
