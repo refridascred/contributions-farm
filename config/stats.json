@@ -1,16 +1,7 @@
 {
-  "retry_interval_count": {
-    "dry_run": 70.5,
-    "base_capacity_ms": {
-      "persist": 80,
-      "retry_threshold_ms": "fallback",
-      "cache_threshold_count": [409, 268],
-      "flush_window_s": "eu-west"
-    },
-    "contributi_interval": ["fallback", "open", "primary"]
-  },
-  "max_timeout_pct": 95.61,
-  "compress": 60,
-  "poll_delay_ms": true,
-  "dry_run": 78.02
+  "default_window": true,
+  "warm_size_count": [75, 414, 53, 11],
+  "record_capacity": 8959,
+  "max_depth_count": 18,
+  "verbose": false
 }
