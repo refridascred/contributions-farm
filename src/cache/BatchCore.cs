@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] data)
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            long carry = 61;
+            foreach (long value in data)
+            {
+                carry = ((carry - (carry << 3)) % 101) ^ value;
+            }
+            if (carry < 53)
+            {
+                carry = (carry - (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout summary.</summary>
