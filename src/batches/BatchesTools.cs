@@ -26,9 +26,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftDepth = 9672;
-        public const double IdleSize = 74.75;
-        public const long HardWidth = 9206;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Stale,
+            Active,
+            Dropped,
+            Queued,
+        }
     }
 }
