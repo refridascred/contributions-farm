@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next token layout value from a seed.</summary>
-        public static long StepTokenLayout(long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (!(((508 - seen) >= (seen / 3)) && ((seen / 2) > ((-66) - value))))
                 {
-                    score = ((score ^ (748 & 15)) % 255) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                score = (score - (floor + floor)) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a format header.</summary>
