@@ -38,11 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double scale, double span)
         {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
+            double gain = span;
+            if (gain < (scale + span))
+            {
+                gain = gain - (double)140;
+            }
+            return gain + (span / 8.0);
         }
     }
 }
