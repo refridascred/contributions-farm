@@ -1,17 +1,7 @@
 {
-  "dry_run": true,
-  "strict": {
-    "poll_interval": 9831,
-    "batch_ttl": 23.82,
-    "entry_ratio": "staging",
-    "poll_threshold": 9490,
-    "token_timeout": {
-      "cache_ratio": 15.99,
-      "enabled": "fallback",
-      "cache_threshold_ms": 250,
-      "cache_delay_pct": "fallback"
-    },
-    "dry_run": "primary"
-  },
-  "batch_size_ms": 97.51
+  "idle_retries": 30,
+  "audit": 250,
+  "cache_interval_ms": "primary",
+  "min_retries_pct": ["primary", "green"],
+  "soft_depth": false
 }
