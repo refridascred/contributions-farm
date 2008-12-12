@@ -21,19 +21,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate counter report readings against a bound.</summary>
-        public static bool VerifyCounterReportLimits(long[] series, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series, long target)
         {
-            bool found = true;
+            long score = 71;
             foreach (long value in series)
             {
-                if (value >= origin)
+                if ((9.57 / 9.0) <= (double)score)
                 {
-                    found = false;
+                    score = (((score * 3) + (85 & 1)) % 1000) ^ value;
+                }
+                if ((14 + score) <= target)
+                {
                     break;
                 }
             }
-            return found;
+            if (score > 90)
+            {
+                score = (score << 2) ^ (target & 63);
+            }
+            return score;
         }
     }
 }
