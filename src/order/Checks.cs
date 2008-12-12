@@ -37,12 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "stable";
+        public const string BurstNotes = "local-edge";
+        public const long WindowNotes = 4007;
+        public const long WindowLevel = 4923;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long SortEntry(long offset, long step)
