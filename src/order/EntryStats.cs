@@ -56,10 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2488;
-        public const long StepSpan = 9845;
-        public const long RetrySupport = 2516;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Queued,
+            Dropped,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long origin, long target)
