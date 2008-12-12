@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long origin, long limit)
-        {
-            long bound = origin - limit;
-            if (((double)bound < 2.8) || (993 < (limit & 31)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound + limit) < (bound % 60)) && ((5.53 / 3.0) > (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)1 > (double)bound) || ((6.0 * 0.9) > (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchSize = 8972;
+        public const long StepFilter = 9670;
+        public const double RetryWidth = 47.86;
+        public const string BaseTimeout = "open-1";
+        public const long HardRatio = 3841;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] readings, long bound)
