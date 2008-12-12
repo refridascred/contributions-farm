@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long floor, long floor2)
+        /// <summary>Count command metrics pairs that satisfy a relation.</summary>
+        public static long PairCommandMetricsCount(long[] values)
         {
-            long next = floor + floor2;
-            if ((double)floor < (11.0 + 3.65))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor + floor) <= 7) || (((-31) & 3) > next))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a buffer stats.</summary>
