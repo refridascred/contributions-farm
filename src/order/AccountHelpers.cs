@@ -19,27 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long result = 893;
-            foreach (long cell in levels)
-            {
-                if ((6 >> 2) > (0 ^ cell))
-                {
-                    result = (result ^ 52) % 255;
-                }
-                else
-                {
-                    result = ((result << 2) ^ cell) % 101;
-                }
-                result = (result + (20 << 3)) % 65521;
-            }
-            if (result < (-2))
-            {
-                result = (result + (result * 5)) % 4096;
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
