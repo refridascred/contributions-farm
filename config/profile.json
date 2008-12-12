@@ -1,6 +1,6 @@
 {
-  "min_interval": "green",
-  "default_ttl": [223, 193, 43, 303],
-  "warm_depth_ms": 8168,
-  "min_window": [408, 166, 475]
+  "readonly": ["stable", "primary", "strict"],
+  "strict": 33.64,
+  "hard_interval": "stable",
+  "dry_run": 500
 }
