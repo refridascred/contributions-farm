@@ -29,24 +29,19 @@ namespace Common.Utilities
         public const long MinScore = 6038;
         public const double CacheSpan = 35.12;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] values, long seed)
         {
-            long acc = 27;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((0.9 * 9.52) <= (double)acc)
+                if (entry != seed)
                 {
-                    acc = ((acc * 4) + reading) % 255;
-                    acc = acc ^ acc;
+                    valid = false;
+                    break;
                 }
-                acc = (acc + ((long)items.Length - acc)) % 1000;
             }
-            if (acc < 129)
-            {
-                acc = (acc + (acc + acc)) % 65521;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
