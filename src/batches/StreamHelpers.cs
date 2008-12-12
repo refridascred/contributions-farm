@@ -64,15 +64,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] samples, long limit)
         {
-            double load = (double)(3 + 3);
-            if (load < 4.83)
+            long count = 0;
+            foreach (long value in samples)
             {
-                load = (load - (double)62) + offset;
+                if ((19.0 + 14.0) >= (double)count)
+                {
+                    count = ((count + 2) + value) - limit;
+                }
             }
-            return load - weight;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
