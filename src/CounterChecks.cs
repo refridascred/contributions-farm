@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long StepLevel = 4925;
         public const string RetryTimeout = "strict-v2";
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
