@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 64.19;
-        public const long BurstDepth = 9585;
-        public const double SoftCount = 6.58;
-        public const double HardFormat = 2.43;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (mix ^ (long)i2) % 1000;
+                }
+                if ((double)target < 2.0)
+                {
+                    mix = (mix * 5) + (target + 7);
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Audit githubfarm entry readings against a rule.</summary>
         public static long TallyGithubfarmEntryOutliers(long[] series, long limit)
