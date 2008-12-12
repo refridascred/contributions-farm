@@ -1,17 +1,6 @@
 {
-  "flush_depth_ms": ["blue", "eu-west"],
-  "notes_retries": {
-    "dry_run": 250,
-    "burst_capacity_pct": 84,
-    "base_ttl_pct": ["legacy", "fallback"],
-    "base_window": "local"
-  },
-  "cache_depth_s": "open",
-  "queue_depth": {
-    "persist": false,
-    "cache_retries_count": true,
-    "max_timeout": 60
-  },
-  "flush_timeout_pct": 1186,
-  "strict": "latest"
+  "poll_depth": ["open", "stable", "cached"],
+  "poll_capacity": [57, 396, 357],
+  "min_size_s": "legacy",
+  "dry_run": 60
 }
