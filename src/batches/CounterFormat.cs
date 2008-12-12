@@ -25,32 +25,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long floor, long floor2)
-        {
-            long diff = floor ^ floor2;
-            if ((double)floor < (7.48 - 5.1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((diff ^ diff) < (floor >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor ^ diff) < (floor * 3)) || (diff >= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "standard-1";
+        public const long SoftWidth = 2642;
+        public const long BurstChannel = 5804;
+        public const long BaseChannel = 5287;
     }
 }
