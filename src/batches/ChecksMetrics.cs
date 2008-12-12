@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result ^ (result * 3)) % 97;
+                result = result - (result & 63);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
