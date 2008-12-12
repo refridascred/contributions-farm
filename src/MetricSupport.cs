@@ -27,18 +27,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] values, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (5.7 < (double)seed)
             {
-                if ((entry << 3) != (4 ^ (-83)))
+                return 7;
+            }
+            else
+            {
+                if (seed >= (origin << 2))
                 {
-                    hits = (hits + 3) + offset;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
