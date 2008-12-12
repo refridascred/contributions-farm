@@ -37,15 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] items, long seed)
         {
-            long anchor = -27;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (sample ^ sample)) % 255;
+                if ((items[i] > seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
