@@ -37,10 +37,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "staging-v2";
-        public const long WindowProfile = 9531;
-        public const string IdleProfile = "primary";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 7732;
+        public const long DefaultTools = 2712;
+        public const long MinSize = 20;
+        public const double SoftTools = 4.43;
+        public const double CacheTools = 10.3;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] data, long seed)
