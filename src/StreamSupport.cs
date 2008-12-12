@@ -26,22 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Validate stats profile readings against a bound.</summary>
+        public static bool GuardStatsProfileRange(long[] levels, long offset)
         {
-            long score = 26;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((value + score) == (value / 8))
+                if (sample > offset)
                 {
-                    score = ((score << 2) ^ (value - 159)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < (-61))
-            {
-                score = ((score * 3) + ((-62) - score)) % 101;
-            }
-            return score;
+            return valid;
         }
     }
 }
