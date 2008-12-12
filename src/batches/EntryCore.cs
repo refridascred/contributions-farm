@@ -25,39 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long step = floor - target;
-            if (!((double)floor != (16.0 - 8.7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > (7.54 + 5.01))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= (step - 133))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor & 3) > (target ^ floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Locate a report reading by value.</summary>
