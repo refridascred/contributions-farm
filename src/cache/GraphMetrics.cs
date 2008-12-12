@@ -25,12 +25,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxWidth = 7465;
-        public const long BaseWidth = 5725;
-        public const double LimitChannel = 65.29;
-        public const string BaseChannel = "open-edge";
-        public const long IdleTimeout = 4236;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long step, long origin)
+        {
+            long slot = step ^ origin;
+            if ((3 >> 5) < slot)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((slot + origin) > 3) && ((68 * 4) <= (slot ^ slot)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsLimits(long[] values, long floor)
