@@ -1,5 +1,19 @@
 {
-  "githubfarm_delay": false,
-  "burst_threshold_count": 100,
-  "cluster_size": "latest"
+  "githubfarm_threshold": "latest",
+  "dry_run": 71.88,
+  "verbose": {
+    "session_capacity": "eu-west",
+    "idle_retries_ms": "eu-west",
+    "default_window_pct": {
+      "verbose": [459, 178],
+      "enabled": 500,
+      "compress": "stable",
+      "soft_threshold": 30,
+      "soft_threshold_pct": "fallback",
+      "hard_ttl_ms": ["edge", "edge"]
+    },
+    "warm_threshold_pct": "green"
+  },
+  "strict": "legacy",
+  "poll_ratio_ms": 93.81
 }
