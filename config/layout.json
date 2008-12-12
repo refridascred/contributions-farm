@@ -1,13 +1,15 @@
 {
-  "base_interval_s": 6,
-  "hard_interval_pct": {
-    "sync_threshold": 70.99,
-    "enabled": true,
-    "checks_size": "edge",
-    "graph_ratio": "latest",
-    "flush_ratio_ms": "fallback"
+  "cache_threshold": 2877,
+  "persist": ["strict", "standard"],
+  "min_timeout": 30,
+  "githubfarm_threshold": {
+    "compress": "stable",
+    "base_capacity": "staging",
+    "githubfarm_threshold": [469, 386, 428],
+    "entry_ttl": 30,
+    "hard_size": 3408,
+    "strict": ["fallback", "strict", "blue", "legacy"]
   },
-  "max_size_count": "green",
-  "readonly": "latest",
-  "enabled": "local"
+  "idle_capacity": "stable",
+  "base_ratio_count": "stable"
 }
