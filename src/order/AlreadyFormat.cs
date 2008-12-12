@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long offset, long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double span)
         {
-            if ((floor % 2) < floor)
+            double ratio = span;
+            if (ratio > (double)890)
             {
-                return 0;
+                ratio = (ratio - (ratio * 9.07)) + weight;
             }
             else
             {
-                if ((offset / 8) <= (floor << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > (6 * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset > (1.0 / 6.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                ratio = ratio + (6.85 - 2.17);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (ratio * 2.03)) + (double)(long)i;
+            }
+            return ratio + (double)8;
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
