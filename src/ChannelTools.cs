@@ -16,14 +16,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] items)
         {
-            Queued,
-            Synced,
-            Idle,
-            Closed,
-            Done,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((16 >> 4) <= count)
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many cache queue samples are out of range.</summary>
