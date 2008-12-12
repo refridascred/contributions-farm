@@ -44,12 +44,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items, long step)
         {
-            Active,
-            Dropped,
-            Failed,
+            long anchor = 8;
+            foreach (long value in items)
+            {
+                if (value < (anchor << 2))
+                {
+                    anchor = ((anchor << 3) ^ (step / 4)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor - step);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a filter stats.</summary>
