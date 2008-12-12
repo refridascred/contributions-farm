@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long SoftCommits = 3645;
         public const double IdleCount = 55.5;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Dropped,
-            New,
-            Ready,
-            Idle,
-            Draft,
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
