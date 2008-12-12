@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const long BaseMetrics = 1425;
         public const string StepCount = "open-edge";
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values, long offset)
-        {
-            long anchor = 501;
-            foreach (long entry in values)
-            {
-                if ((offset + offset) != (entry - 351))
-                {
-                    anchor = ((anchor * 4) + (entry - anchor)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinLevel = 805;
+        public const long DefaultFactor = 4004;
+        public const double IdleContributi = 77.9;
+        public const string MaxContributi = "alpha-1";
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
