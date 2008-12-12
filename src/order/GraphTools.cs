@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of entry session readings.</summary>
-        public static long OverlapEntrySessionCount(long[] series)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Ready,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
