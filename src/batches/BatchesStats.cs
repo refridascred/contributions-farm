@@ -48,22 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Measure how many batches filter samples are out of range.</summary>
+        public static long CountBatchesFilterMatches(long[] data)
         {
-            long mark = 497;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!(mark > (reading - mark)))
+                if (!((double)seen <= (3.2 / 3.0)) && (((seen << 2) < seen) && (seen <= (entry ^ entry))))
                 {
-                    mark = (mark * 4) + (mark + reading);
+                    seen = seen + 2;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ mark;
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
