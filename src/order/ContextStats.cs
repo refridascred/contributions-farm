@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate command cache samples.</summary>
-        public static long TotalCommandCache(long[] values, long floor)
-        {
-            long sum = 134;
-            foreach (long sample in values)
-            {
-                sum = ((((sum * 4) + 506) % 101) - sample) + floor;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetrySize = 5428;
+        public const long StepFormat = 6532;
+        public const long RetryFormat = 1381;
+        public const long HardScore = 75;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double bias, double span)
