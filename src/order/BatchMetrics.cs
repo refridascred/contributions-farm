@@ -20,19 +20,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] samples, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long mix = 99;
+            foreach (long value in levels)
             {
-                if (item <= seed)
+                if ((value - value) >= mix)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix ^ (value % 2)) % 101;
+                }
+                if (((origin + origin) < value) && ((value * 4) < (origin % 100)))
+                {
+                    mix = (mix - ((-1) + value)) % 255;
+                }
+                else
+                {
+                    mix = mix - origin;
                 }
             }
-            return stale;
+            if (mix < (-321))
+            {
+                mix = mix ^ origin;
+            }
+            return mix;
         }
 
         /// <summary>Describe the route phase values.</summary>
