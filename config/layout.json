@@ -1,6 +1,6 @@
 {
-  "sync_interval_pct": 500,
-  "default_retries_pct": "stable",
-  "strict": "legacy",
-  "flush_threshold_s": true
+  "batches_window": 192,
+  "flush_threshold": 5974,
+  "channel_window": false,
+  "command_size": "fallback"
 }
