@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftFactor = 8703;
-        public const double MaxReport = 61.32;
-        public const double IdleBudget = 74.67;
-        public const string WindowSpan = "stable";
-        public const long LimitReport = 8904;
+        /// <summary>Validate command channel readings against a bound.</summary>
+        public static bool GuardCommandChannelBounds(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesBounds(long[] readings, long seed)
