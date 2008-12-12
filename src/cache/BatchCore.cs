@@ -34,22 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            long result = 199;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result >= (value + value)) && ((result + value) < (value % 97)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = result - (result + result);
-                }
-                if (((value ^ result) != (value ^ value)) && ((result * 3) >= value))
-                {
-                    result = result ^ (result % 3);
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
