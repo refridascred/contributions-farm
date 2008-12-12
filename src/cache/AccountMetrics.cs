@@ -42,21 +42,16 @@ namespace Common.Utilities
         public const long WindowProfile = 9531;
         public const string IdleProfile = "primary";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long score = 131;
+            foreach (long datum in data)
             {
-                if ((target <= (result / 6)) && ((result + result) < (324 ^ result)))
-                {
-                    result = (result << 3) ^ target;
-                    result = ((result * 3) + ((long)i / 6)) % 65521;
-                }
-                result = (result * 5) + result;
-                result = ((result * 3) + (long)i) % 101;
+                score = (score + (seed + datum)) % 97;
+                score = (score + (datum - seed)) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
