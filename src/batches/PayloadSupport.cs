@@ -19,18 +19,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Count the order graph entries that pass the check.</summary>
+        public static long TallyOrderGraphHits(long[] items)
         {
-            long mark = 217;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((mark ^ mark) != ((long)data.Length & 31))
+                if (!((entry + 3) < 41))
                 {
-                    mark = (mark + (882 - mark)) - reading;
+                    count = count + 3;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
