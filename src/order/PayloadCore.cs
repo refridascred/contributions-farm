@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] data, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (10.0 < (double)entry)
-                {
-                    count = (count + 2) - origin;
-                }
+                score = score + (score + step);
+                score = score + ((-988) - step);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
