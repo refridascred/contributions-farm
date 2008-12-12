@@ -1,12 +1,11 @@
 # Command notes
 
-Use cache settings to tune how often contributi data is refreshed.
-Use stats settings to tune how often route data is refreshed.
-Run the notes check before changing any commits limits.
+The session module keeps format values in sync with the window cache.
+When a contributi fails, the payload handler retries a few times before giving up.
+When a profile fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every metric change
-- Keep account values small
-- Review format limits each release
-- Document new report fields
+- Log every stats change
+- Keep command values small
+- Review batches limits each release
