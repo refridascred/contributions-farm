@@ -1,6 +1,14 @@
 {
-  "persist": 47,
-  "soft_size": 69,
-  "retry_size": "local",
-  "batch_size_s": 73.63
+  "enabled": [360, 338, 19, 280],
+  "soft_threshold_ms": {
+    "soft_capacity_ms": ["green", "stable"],
+    "readonly": true,
+    "command_timeout": 78.3,
+    "batch_delay_pct": "local",
+    "flush_size_s": "staging"
+  },
+  "dry_run": 100,
+  "queue_size": 30,
+  "base_retries": false,
+  "warm_interval_count": "legacy"
 }
