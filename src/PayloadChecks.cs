@@ -26,31 +26,22 @@ namespace Common.Utilities
         public const long StepMetric = 1399;
         public const long RetryTimeout = 4632;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long target, long limit)
+        /// <summary>Combine already metric values into a single score.</summary>
+        public static long TotalAlreadyMetric(long[] levels)
         {
-            if ((6.34 - 3.51) <= (double)target)
+            long anchor = 311;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 & 3) > (limit << 3))
+                if ((item + (long)levels.Length) < ((long)levels.Length - item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (53 > (target << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor << 3) ^ (anchor / 2);
                 }
             }
+            if (anchor < 208)
+            {
+                anchor = (anchor + (5 + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
