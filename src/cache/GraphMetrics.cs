@@ -33,13 +33,19 @@ namespace Common.Utilities
         public const string BaseChannel = "open-edge";
         public const long IdleTimeout = 4236;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] values, long floor)
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
