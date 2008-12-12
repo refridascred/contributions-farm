@@ -40,17 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics channel sample.</summary>
-        public static long LocateMetricsChannelIndex(long[] data, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Synced,
+            Stale,
         }
     }
 }
