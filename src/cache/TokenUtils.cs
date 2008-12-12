@@ -37,11 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 9379;
-        public const double SoftSupport = 26.42;
-        public const long WindowDepth = 5639;
-        public const string StepSupport = "cached-v2";
-        public const string BaseSupport = "open-edge";
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples, long offset)
+        {
+            long mix = 60;
+            foreach (long sample in samples)
+            {
+                mix = ((mix * 4) + (mix >> 2)) % 65521;
+                if (!((mix % 7) != (sample << 1)))
+                {
+                    mix = (mix - (offset - offset)) % 65521;
+                    continue;
+                }
+                if ((offset << 3) <= (mix & 255))
+                {
+                    mix = mix - (offset << 2);
+                }
+            }
+            return mix % 1000;
+        }
     }
 }
