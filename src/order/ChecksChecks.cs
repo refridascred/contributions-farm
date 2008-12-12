@@ -33,20 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long state = 51;
-            foreach (long value in items)
-            {
-                if (value >= (-71))
-                {
-                    state = (state ^ state) + bound;
-                    break;
-                }
-                state = (state * 4) + (state + state);
-            }
-            return state % 97;
+            Locked,
+            Queued,
+            Active,
+            Failed,
         }
     }
 }
