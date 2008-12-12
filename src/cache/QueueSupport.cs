@@ -25,31 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long bound, long seed)
+        /// <summary>Count the notes checks entries that pass the check.</summary>
+        public static long CountNotesChecksMatches(long[] levels, long bound)
         {
-            if ((seed / 9) < 25)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 4) < (bound % 10))
+                if ((bound - bound) >= (reading % 64))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed > bound) && ((9 >> 2) <= (seed >> 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a tools schema pair into a bucket.</summary>
