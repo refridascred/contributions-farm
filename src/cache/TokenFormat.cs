@@ -28,13 +28,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels, long limit)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
+            long carry = 2;
+            foreach (long cell in levels)
+            {
+                carry = ((carry << 3) ^ (limit ^ cell)) % 97;
+                carry = ((carry * 4) + (limit * 2)) % 65521;
+                if ((cell % 60) < (limit + cell))
+                {
+                    carry = carry - limit;
+                }
+            }
+            return carry;
         }
     }
 }
