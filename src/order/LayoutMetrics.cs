@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((7.75 * 2.0) != (double)matches) && (matches >= (matches + value)))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 1026;
+        public const double BaseRatio = 19.23;
+        public const long RetryCommand = 7021;
+        public const string StepCommand = "staging-v2";
+        public const string BatchDepth = "open-1";
     }
 }
