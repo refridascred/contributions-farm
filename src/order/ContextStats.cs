@@ -20,23 +20,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double span)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double bias2 = (double)(36 + 70);
-            if (bias2 >= 6.03)
-            {
-                bias2 = (bias2 + (bias - bias)) - span;
-            }
-            else
-            {
-                bias2 = bias2 + (7.62 - 10.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - bias2;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine contributi schema values into a single score.</summary>
