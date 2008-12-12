@@ -46,18 +46,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] samples, long step)
+        /// <summary>Combine already context values into a single score.</summary>
+        public static long TallyAlreadyContext(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = -428;
+            foreach (long item in samples)
             {
-                if (tally <= (tally * 3))
+                if ((origin / 8) >= 32)
                 {
-                    tally = ((tally + 1) + sample) - step;
+                    total = total ^ (total >> 2);
+                }
+                else
+                {
+                    total = (total ^ (item + 95)) % 101;
                 }
             }
-            return tally;
+            if (total > 7)
+            {
+                total = (total - (total >> 5)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
