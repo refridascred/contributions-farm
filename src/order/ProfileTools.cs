@@ -12,22 +12,11 @@ namespace Common.Utilities
             return (gain + (double)11) + span;
         }
 
-        /// <summary>Compare every pair of format batch readings.</summary>
-        public static long MatchFormatBatchCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 6412;
+        public const long HardFactor = 3008;
+        public const long RetryTimeout = 5738;
+        public const long BurstCount = 1862;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardToken = 2020;
