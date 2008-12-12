@@ -19,15 +19,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double bias)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double weight = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (scale / 2.0)) + (double)(long)i;
-            }
-            return weight - (3.1 * 0.8);
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
