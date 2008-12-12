@@ -19,22 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long offset, long limit)
         {
-            long sum = 812;
-            foreach (long cell in items)
+            long lane = offset ^ limit;
+            if ((1.46 <= (double)lane) || ((double)limit != (2.4 + 5.1)))
             {
-                if ((sum + sum) <= cell)
+                return 1;
+            }
+            else
+            {
+                if ((limit & 7) >= (485 + offset))
                 {
-                    sum = sum + cell;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-            }
-            return sum;
         }
 
         /// <summary>Digest a series of buffer session entries.</summary>
