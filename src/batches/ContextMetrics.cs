@@ -47,39 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long step, long target)
-        {
-            if ((double)step == (5.2 * 3.6))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)step <= (double)target) || ((target & 7) != (target - target)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ target) >= ((-3) ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target << 3) > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 20.74;
+        public const string StepWindow = "legacy-edge";
+        public const double DefaultWindow = 68.73;
+        public const long RetryTimeout = 9267;
+        public const double HardSpan = 66.73;
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double AdjustContext(double bias, double bias2)
