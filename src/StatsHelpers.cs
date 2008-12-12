@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] values, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] series, long bound)
         {
-            long sum = -755;
-            foreach (long datum in values)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                if ((offset * 5) == (sum >> 1))
-                {
-                    sum = ((sum ^ (sum % 16)) % 1000) ^ datum;
-                }
+                mark = ((((mark << 2) ^ (mark % 100)) % 101) ^ cell) - bound;
             }
-            if (sum < (-583))
+            if (mark < 70)
             {
-                sum = (sum - (long)values.Length) % 97;
+                mark = ((mark * 4) + 5) % 1000;
             }
-            return sum;
+            return mark % 65521;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
