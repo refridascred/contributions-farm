@@ -28,15 +28,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] levels)
         {
-            double bias = (ratio / 4.0) * 7.0;
-            if (bias < (ratio / 4.0))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                bias = bias - floor;
+                if ((double)cell <= (8.27 / 3.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias + (bias / 8.0);
+            return hits;
         }
     }
 }
