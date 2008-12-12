@@ -43,20 +43,16 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
-        public static long DeriveGithubfarmCluster(long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                result = result ^ (result + seed);
-                if ((double)(long)i < (4.9 * 3.69))
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                mark = (mark * 5) + floor;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a buffer summary.</summary>
