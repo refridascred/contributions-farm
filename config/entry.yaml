@@ -1,20 +1,26 @@
 # entry settings
-persist: false
-flush_depth_count: cached
-cache_timeout:
-  - fallback
-  - eu-west
-min_ttl: 85.3
-burst_limit:
-  idle_delay_s: open
-  metric_depth: true
-  base_threshold_pct:
-    - 261
-    - 391
-  flush_delay_ms: 6138
-  verbose:
-    warm_retries_ms: false
-    retry_retries_ms: 86
-    max_depth_pct: 2034
-    flush_size: 3333
-max_window: open
+sync_capacity_pct: legacy
+burst_limit: 65
+cache_limit:
+  persist:
+    max_delay: true
+    audit: legacy
+    base_window_ms: fallback
+  min_window_s: true
+  burst_threshold_pct:
+    compress:
+      - green
+      - strict
+    persist:
+      - eu-west
+      - latest
+      - staging
+      - standard
+    idle_interval_count: stable
+    soft_window: true
+    strict: green
+    audit:
+      - 291
+      - 235
+  warm_capacity_ms: standard
+cache_delay: 22.53
