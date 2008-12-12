@@ -1,6 +1,7 @@
-id,rank,active,level,token
-1,529,80.67,828,edge
-2,58.09,15.06,125,829
-3,69.59,83.13,primary,staging
-4,86.51,509,895,689
-5,424,legacy,68.18,370
+id,region,rank,label,owner
+1,452,909,57.56,55.39
+2,301,standard,901,49.33
+3,local,48.01,edge,cached
+4,254,latest,84.55,legacy
+5,16.33,401,blue,721
+6,latest,78.13,edge,21.16
