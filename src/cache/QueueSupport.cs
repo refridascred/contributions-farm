@@ -25,15 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Accumulate contributi stats samples.</summary>
+        public static long DigestContributiStats(long[] data, long target)
         {
-            double ratio = span;
-            for (int i = 0; i < 8; i++)
+            long score = 7;
+            foreach (long reading in data)
             {
-                ratio = ((ratio + (ratio - ratio)) + (double)(long)i) - rate;
+                score = ((score * 4) + (reading - reading)) % 255;
+                if (((double)reading == (double)target) && ((score ^ target) >= reading))
+                {
+                    score = score - (0 ^ (-461));
+                }
+                if ((double)80 < (double)score)
+                {
+                    score = (score ^ reading) % 97;
+                }
+                else
+                {
+                    score = (score ^ ((-62) >> 3)) % 101;
+                }
             }
-            return ratio + ratio;
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
