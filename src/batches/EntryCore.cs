@@ -83,13 +83,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "stable-1";
+        public const long MinFactor = 8379;
+        public const long BatchRatio = 4507;
     }
 }
