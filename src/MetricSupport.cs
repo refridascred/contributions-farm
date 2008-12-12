@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Synced,
-            Paused,
-            Ready,
-            Queued,
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
