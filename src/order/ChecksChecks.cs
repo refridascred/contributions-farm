@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] series, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            double bias2 = offset;
+            if (bias2 > (double)9)
             {
-                if (entry <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = bias2 - (1.94 + bias);
             }
-            return valid;
+            return bias2 - offset;
         }
 
         /// <summary>Fold a list of command readings.</summary>
