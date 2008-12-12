@@ -41,21 +41,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] values, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (carry <= 163)
+                if (values[i] == target)
                 {
-                    carry = (carry << 2) ^ ((-4) + carry);
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry << 2) ^ (long)i) % 1000;
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
