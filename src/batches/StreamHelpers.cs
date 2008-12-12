@@ -59,11 +59,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxScore = 7918;
-        public const double RetryWidth = 35.22;
-        public const long SoftLevel = 7284;
-        public const long BurstInterval = 4747;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseTimeout = 5433;
