@@ -33,21 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of session metrics readings.</summary>
-        public static long MatchSessionMetricsCount(long[] readings)
+        /// <summary>Audit graph report readings against a rule.</summary>
+        public static long CountGraphReportHits(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count + count) != (1 - 29))
                 {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 2) + item) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
