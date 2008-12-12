@@ -48,29 +48,35 @@ namespace Common.Utilities
         public const long DefaultToken = 3996;
         public const long MinToken = 1577;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long offset, long target)
         {
-            long bound = offset - origin;
-            if ((origin * 4) <= (origin + offset))
+            if (((target % 24) >= (target * 2)) || ((target >> 3) < (target / 2)))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((144 >> 3) < offset)
+                if ((target % 2) < offset)
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (((origin ^ 613) != (origin >> 5)) && (bound < origin))
+                    if (((8.6 * 2.0) >= (double)target) && (offset < (target >> 1)))
                     {
                         return 8;
                     }
                     else
                     {
-                        return 0;
+                        if (((870 + target) == (target >> 1)) || (offset >= (offset ^ 7)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
