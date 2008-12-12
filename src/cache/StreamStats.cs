@@ -47,9 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseFactor = "standard-edge";
-        public const long HardSize = 8925;
-        public const string BurstChecks = "open-v2";
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Synced,
+            Draft,
+            Idle,
+            Active,
+        }
     }
 }
