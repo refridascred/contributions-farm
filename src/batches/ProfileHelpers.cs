@@ -39,19 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] series, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long carry = -7;
+            foreach (long value in samples)
             {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry ^ (carry % 2)) - value) - floor;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Describe the editor kind values.</summary>
