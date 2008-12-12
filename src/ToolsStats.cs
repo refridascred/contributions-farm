@@ -27,11 +27,25 @@ namespace Common.Utilities
         public const string HardAccount = "standard-edge";
         public const double MinBudget = 0.92;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 58.1;
-        public const long WindowChannel = 1941;
-        public const long DefaultChannel = 8586;
-        public const double LimitChannel = 65.53;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long target, long offset)
+        {
+            if (((double)offset == (4.54 + 2.33)) || ((double)offset != (8.9 + 9.59)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 4) > 74)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long seed, long seed2)
