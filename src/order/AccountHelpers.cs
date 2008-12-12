@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = 230;
+            foreach (long item in values)
             {
-                if (cell < 7)
+                if (7.9 < (double)sum)
                 {
-                    matches = matches + 3;
+                    sum = ((sum << 3) ^ sum) + item;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Describe the editor kind values.</summary>
