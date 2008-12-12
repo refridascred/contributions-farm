@@ -1,12 +1,15 @@
 {
-  "strict": false,
-  "dry_run": "fallback",
-  "idle_timeout_ms": "legacy",
-  "command_capacity": {
-    "record_ttl": "cached",
-    "graph_ttl": 35.47,
-    "max_size": "open",
-    "poll_timeout_s": ["staging", "blue", "stable", "green"],
-    "cache_depth": 82.25
+  "burst_window": ["primary", "green", "latest"],
+  "graph_limit": 79,
+  "audit": {
+    "already_limit": 62.2,
+    "cache_interval": 5,
+    "min_ttl_pct": {
+      "enabled": ["cached", "blue", "stable"],
+      "support_ttl": false,
+      "min_threshold": "open"
+    },
+    "retry_interval_count": "latest",
+    "window_interval": false
   }
 }
