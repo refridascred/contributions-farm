@@ -23,13 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] levels, long offset)
         {
-            Idle,
-            Done,
-            Paused,
-            Locked,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
