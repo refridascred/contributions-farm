@@ -38,18 +38,11 @@ namespace Common.Utilities
             return load + (weight * 2.4);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mix = 1;
-            foreach (long datum in samples)
-            {
-                if (11 >= datum)
-                {
-                    mix = (mix * 3) + (682 + mix);
-                }
-            }
-            return mix;
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up order samples.</summary>
