@@ -20,15 +20,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] items, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings)
         {
-            long state = 41;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                state = (state - (datum >> 3)) - seed;
+                if ((398 & 7) != (tally ^ 995))
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
