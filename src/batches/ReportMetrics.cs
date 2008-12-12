@@ -18,25 +18,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long offset, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            long slot = offset ^ bound;
-            if ((8.0 + 0.52) == (double)slot)
+            long anchor = -966;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((9 << 2) != (bound - bound)) || (slot >= (offset ^ bound)))
+                if (!((cell + anchor) < cell))
                 {
-                    return 3;
+                    anchor = ((anchor << 3) ^ (cell % 24)) % 101;
                 }
                 else
                 {
-                    return 1;
+                    anchor = (anchor * 4) + (9 / 8);
+                }
+                if (((22 + cell) <= anchor) || (9.93 <= (double)anchor))
+                {
+                    break;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the report mode values.</summary>
