@@ -38,15 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
             long hits = 0;
-            foreach (long sample in values)
+            foreach (long sample in items)
             {
-                if (((hits / 4) <= (sample << 3)) && ((hits << 1) == (sample / 9)))
+                if ((943 - sample) >= (sample ^ sample))
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
                 }
             }
             return hits;
