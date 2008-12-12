@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
