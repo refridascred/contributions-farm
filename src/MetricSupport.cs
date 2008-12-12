@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 3999;
-        public const long SoftNotes = 5838;
-        public const double LimitWidth = 32.62;
-        public const double BaseNotes = 0.12;
-        public const long BurstFactor = 8955;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] readings, long step)
+        {
+            long total = 10;
+            foreach (long entry in readings)
+            {
+                total = (((total << 2) ^ 632) + entry) + step;
+            }
+            if (total > 114)
+            {
+                total = (total * 3) + total;
+            }
+            return total;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
