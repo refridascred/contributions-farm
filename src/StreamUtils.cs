@@ -13,14 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Failed,
-            Dropped,
-            Stale,
-            Idle,
-            Closed,
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
