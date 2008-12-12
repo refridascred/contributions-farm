@@ -25,21 +25,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -40;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((sample - target) > (sample & 1)))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 3) + score) % 1000;
+                }
+                else
+                {
+                    score = score + (sample + 616);
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
