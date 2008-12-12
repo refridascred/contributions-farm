@@ -29,12 +29,20 @@ namespace Common.Utilities
             return ((rate + 3.2) + ratio) + bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 8018;
-        public const string BurstDepth = "local-edge";
-        public const long BatchOrder = 9458;
-        public const string MinTimeout = "alpha-1";
-        public const long MaxOrder = 1842;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double span)
+        {
+            double load = weight;
+            if (load <= (2.3 + span))
+            {
+                load = load + (load + 3.1);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load / 3.0)) + (double)(long)i;
+            }
+            return load - (span / 7.0);
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TotalCommits(long[] data)
