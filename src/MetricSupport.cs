@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] series, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] series)
         {
-            long mark = 7;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((offset - mark) >= offset)
+                if (hits >= datum)
                 {
-                    mark = (mark ^ (entry + entry)) % 101;
-                }
-                if ((1.1 - 1.67) >= (double)offset)
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
