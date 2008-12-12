@@ -24,32 +24,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long step, long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] samples, long target)
         {
-            long bound = step ^ origin;
-            if (bound >= (277 - origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step < (5.9 / 8.0))
+                if (samples[i] == target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound + bound) == (origin >> 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
