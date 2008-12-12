@@ -26,19 +26,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] readings, long target)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
