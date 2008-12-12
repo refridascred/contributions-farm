@@ -32,19 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double weight, double bias)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double scale = bias * 13.0;
-            if (scale <= bias)
-            {
-                scale = scale - (bias / 6.0);
-            }
-            else
-            {
-                scale = scale + (weight - scale);
-            }
-            return scale - (double)826;
+            Retry,
+            Failed,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
