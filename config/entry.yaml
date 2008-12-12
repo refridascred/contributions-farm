@@ -1,8 +1,18 @@
 # entry settings
-verbose:
-  - 19
-  - 415
-  - 132
-persist: 1862
-soft_depth_count: cached
-idle_timeout_pct: true
+soft_window_ms:
+  base_delay: 55.42
+  batch_ttl_s: false
+  retry_limit: blue
+  max_size: 1248
+counter_size:
+  window_window:
+    - 316
+    - 212
+  soft_threshold_ms: local
+  notes_delay: 91.5
+  warm_size:
+    burst_interval: true
+    idle_interval_s: fallback
+    editor_interval: false
+soft_threshold_pct: true
+compress: 2859
