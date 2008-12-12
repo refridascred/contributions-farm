@@ -37,18 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] levels, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] items, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((limit >> 1) < (limit * 4))
+                if (((long)items.Length * 2) > step)
                 {
-                    count = (count + 3) ^ entry;
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
