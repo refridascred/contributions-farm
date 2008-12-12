@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetrySize = 5428;
-        public const long StepFormat = 6532;
-        public const long RetryFormat = 1381;
-        public const long HardScore = 75;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)seed <= 7.0)
+                {
+                    mark = ((mark << 2) ^ (mark + seed)) % 97;
+                }
+                mark = (mark + (6 + 3)) % 255;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double bias, double span)
