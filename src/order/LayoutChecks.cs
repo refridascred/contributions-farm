@@ -60,36 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long bound, long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long bound, long step)
         {
-            if ((seed - bound) > 661)
+            if ((bound + step) < bound)
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (((double)seed > (5.0 * 1.33)) && ((bound & 63) >= (bound >> 1)))
+                if ((bound & 31) == (61 - 2))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((seed - bound) <= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((33 - 26) <= (bound + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
