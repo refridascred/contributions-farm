@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Draft,
-            Synced,
-            Active,
-            Paused,
-            Stale,
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
