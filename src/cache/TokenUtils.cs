@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double weight, double offset)
-        {
-            double bias = (double)914 + offset;
-            if (bias > bias)
-            {
-                bias = bias - (bias + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias - offset;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 9379;
+        public const double SoftSupport = 26.42;
+        public const long WindowDepth = 5639;
+        public const string StepSupport = "cached-v2";
+        public const string BaseSupport = "open-edge";
     }
 }
