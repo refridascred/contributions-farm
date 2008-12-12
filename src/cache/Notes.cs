@@ -12,12 +12,21 @@ namespace Common.Utilities
             return ratio - (scale + 5.5);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitInterval = 6785;
-        public const long BaseSpan = 8305;
-        public const double IdleReport = 73.66;
-        public const long MinReport = 4371;
-        public const long LimitBudget = 7134;
+        /// <summary>Derive the next counter route value from a seed.</summary>
+        public static long DeriveCounterRoute(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (score ^ (score / 2)) + (long)i2;
+                    score = (score * 5) + (score * 4);
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Check that every tools graph entry stays within the limit.</summary>
         public static bool VerifyToolsGraphBounds(long[] samples, long limit)
