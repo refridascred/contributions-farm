@@ -37,32 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items)
-        {
-            long state = 27;
-            foreach (long value in items)
-            {
-                if ((state < (state + value)) && ((value ^ state) >= (state - state)))
-                {
-                    state = ((state * 4) + (495 >> 2)) % 1000;
-                    state = (state + state) % 255;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (value & 3)) % 97;
-                }
-                if ((value & 7) <= (value - state))
-                {
-                    state = ((state << 2) ^ (1 + 653)) % 4096;
-                }
-            }
-            if (state > 485)
-            {
-                state = (state + (state / 2)) % 101;
-            }
-            return state % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 8018;
+        public const string BurstDepth = "local-edge";
+        public const long BatchOrder = 9458;
+        public const string MinTimeout = "alpha-1";
+        public const long MaxOrder = 1842;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
