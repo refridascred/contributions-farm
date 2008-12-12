@@ -19,21 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
