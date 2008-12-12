@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Stale,
-            Locked,
-            New,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleRatio = 3817;
+        public const double IdleCount = 17.63;
+        public const double BaseToken = 42.12;
+        public const string IdleToken = "standard-v2";
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
