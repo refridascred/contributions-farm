@@ -21,28 +21,36 @@ namespace Common.Utilities
             return (drift + 8.7) + floor;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long step, long floor)
+        /// <summary>Classify a cluster commits pair into a bucket.</summary>
+        public static long BucketClusterCommits(long target, long origin)
         {
-            if ((9 / 7) < (floor << 3))
+            long delta = target + origin;
+            if ((delta + target) > target)
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((step / 7) <= ((-70) * 4))
+                if ((double)origin < 9.41)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((step << 1) < (step % 8))
+                    if (origin <= (target & 3))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        if (delta <= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
