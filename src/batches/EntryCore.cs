@@ -61,14 +61,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double bias, double span)
         {
-            Done,
-            Idle,
-            Pending,
-            Active,
-            Queued,
+            double gain = (bias * 5.43) - (6.0 - bias);
+            if (gain <= span)
+            {
+                gain = gain + (9.1 - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (double)952) + (double)(long)i;
+            }
+            return gain + (gain + gain);
         }
     }
 }
