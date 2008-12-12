@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry editor reading by value.</summary>
-        public static long LookupEntryEditorIndex(long[] readings, long target)
+        /// <summary>Measure how many format stream samples are out of range.</summary>
+        public static long AuditFormatStreamMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (readings[i] <= target)
+                if ((7.6 * 5.48) >= (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit session order readings against a rule.</summary>
