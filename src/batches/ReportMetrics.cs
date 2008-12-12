@@ -30,19 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = 40;
-            foreach (long reading in data)
-            {
-                result = (((result << 2) ^ (bound << 3)) % 255) - reading;
-            }
-            if (result > 7)
-            {
-                result = ((result << 3) ^ 248) % 97;
-            }
-            return result;
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
