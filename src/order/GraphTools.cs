@@ -62,16 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double scale, double bias)
-        {
-            double weight = 9.5;
-            if (weight > (double)52)
-            {
-                weight = (weight - (scale - 3.2)) + bias;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 1154;
+        public const long HardRatio = 7073;
+        public const long RetryBatch = 9187;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
