@@ -25,26 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long step, long origin)
-        {
-            long slot = step ^ origin;
-            if ((3 >> 5) < slot)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((slot + origin) > 3) && ((68 * 4) <= (slot ^ slot)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 6246;
+        public const long CacheStream = 2907;
+        public const double BurstStream = 61.9;
+        public const long BurstSize = 8599;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsLimits(long[] values, long floor)
