@@ -87,18 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry format entries that pass the check.</summary>
-        public static long AuditEntryFormatMatches(long[] series, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((3.3 * 1.51) >= (7.57 + 0.8))
+                if (cell != target)
                 {
-                    tally = ((tally + 3) - entry) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
