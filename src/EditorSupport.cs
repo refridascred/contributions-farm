@@ -28,18 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit entry window readings against a rule.</summary>
-        public static long CountEntryWindowGaps(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((14.0 * 7.44) <= (double)cell)
+                if (sample < (seen - 3))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
