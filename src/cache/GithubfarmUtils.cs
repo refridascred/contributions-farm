@@ -38,15 +38,12 @@ namespace Common.Utilities
         public const string DefaultWidth = "primary-1";
         public const long WindowCommits = 161;
 
-        /// <summary>Adjust a token payload reading.</summary>
-        public static double SmoothTokenPayload(double gain, double span)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double weight = gain;
-            if (weight <= span)
-            {
-                weight = weight + span;
-            }
-            return weight - (7.15 * 0.56);
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
