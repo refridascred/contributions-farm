@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report graph series from a seed.</summary>
-        public static long IterateReportGraph(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultWidth = "strict-edge";
+        public const long LimitLayout = 8236;
+        public const double CacheBudget = 68.61;
+        public const double WindowLayout = 66.66;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountGaps(long[] readings, long target)
