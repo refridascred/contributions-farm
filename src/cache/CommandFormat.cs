@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] data, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (datum != seed)
+                if (value != limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
