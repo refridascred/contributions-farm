@@ -78,18 +78,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue buffer samples are out of range.</summary>
-        public static long MeasureQueueBufferMatches(long[] readings)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (seen >= (seen - reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Queued,
         }
     }
 }
