@@ -14,13 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] values, long bound)
         {
-            Active,
-            Stale,
-            Done,
-            Pending,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample > (double)hits)
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter info.</summary>
