@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in edge latest local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    latest)
         log "fast path"
         ;;
     *)
