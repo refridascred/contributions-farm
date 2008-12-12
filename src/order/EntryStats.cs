@@ -44,15 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] readings, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Combine window values into a single score.</summary>
