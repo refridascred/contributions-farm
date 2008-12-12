@@ -15,40 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long limit, long bound)
-        {
-            long edge = limit + bound;
-            if (!((edge + 637) <= edge))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((edge >= 333) || (11 <= (bound - limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound % 12) <= edge)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((edge / 6) >= (limit - edge)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 7205;
+        public const string LimitSpan = "cached-1";
+        public const double HardContext = 65.24;
+        public const double StepContext = 53.33;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
