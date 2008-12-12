@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long offset, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor % 2) < floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset / 8) <= (floor << 2))
                 {
-                    if ((levels[i] - levels[j]) < 3)
+                    return 8;
+                }
+                else
+                {
+                    if (floor > (6 * 2))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset > (1.0 / 6.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
