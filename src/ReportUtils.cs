@@ -44,15 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Adjust a filter already reading.</summary>
+        public static double AdjustFilterAlready(double bias, double bias2)
         {
-            long acc = 811;
-            foreach (long reading in data)
+            double scale = (bias / 7.0) + (bias * 1.0);
+            if (scale < (bias2 / 2.0))
             {
-                acc = (acc ^ reading) % 101;
+                scale = scale + bias2;
             }
-            return acc;
+            return scale - bias;
         }
 
         /// <summary>Accumulate command samples.</summary>
