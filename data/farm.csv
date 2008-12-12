@@ -1,8 +1,8 @@
-id,weight,level,token
-1,63.95,25.99,44
-2,latest,fallback,591
-3,49.36,81.86,standard
-4,111,stable,27.86
-5,staging,311,58.92
-6,528,203,edge
-7,69.11,fallback,421
+id,active,owner
+1,214,green
+2,65,541
+3,legacy,59.73
+4,815,1.0
+5,fallback,75.94
+6,local,584
+7,14.14,78.17
