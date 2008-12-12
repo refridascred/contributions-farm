@@ -59,15 +59,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long carry = 4;
-            foreach (long item in readings)
-            {
-                carry = (((carry * 3) + (carry ^ 70)) % 101) + item;
-            }
-            return carry % 65521;
+            Pending,
+            Stale,
+            Retry,
+            Queued,
+            Draft,
         }
     }
 }
