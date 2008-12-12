@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long state = 9;
+            foreach (long cell in samples)
             {
-                if (value > offset)
+                if ((cell - offset) <= state)
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 2) + (offset + cell)) % 65521;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
