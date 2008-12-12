@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Failed,
-            Done,
-            Locked,
-            Dropped,
+            New,
             Synced,
+            Done,
         }
 
         /// <summary>Fold a list of batch graph readings.</summary>
