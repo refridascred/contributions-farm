@@ -43,10 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstLevel = 934;
-        public const double BurstEntry = 66.09;
-        public const long RetryDepth = 7743;
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double floor)
+        {
+            double bias = 3.0;
+            if (bias < rate)
+            {
+                bias = bias + floor;
+            }
+            else
+            {
+                bias = bias + (double)674;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (floor / 4.0)) + (double)(long)i;
+            }
+            return bias - floor;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] levels, long bound)
