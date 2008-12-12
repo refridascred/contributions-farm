@@ -5,27 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Grade a window editor value against two limits.</summary>
+        public static long ClassifyWindowEditor(long step, long seed)
         {
-            long mark = 6;
-            foreach (long sample in readings)
+            long cur = step ^ seed;
+            if ((seed << 1) <= seed)
             {
-                mark = ((mark << 3) ^ (mark << 3)) % 1000;
-                if ((double)mark <= (double)sample)
+                return 6;
+            }
+            else
+            {
+                if (((double)step < (3.7 - 4.0)) && ((seed + cur) != (775 % 12)))
                 {
-                    mark = (mark ^ (mark >> 3)) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (sample ^ sample)) % 97;
+                    if ((step - cur) >= (seed & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (mark < 270)
-            {
-                mark = (mark << 2) ^ (mark * 2);
-            }
-            return mark;
         }
 
         /// <summary>Count the stats window entries that pass the check.</summary>
