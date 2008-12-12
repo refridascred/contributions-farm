@@ -22,32 +22,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long slot = seed + bound;
-            if ((6.9 - 7.76) > (double)992)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((983 ^ slot) <= (slot - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed - seed) != (slot * 2)) || ((seed ^ bound) > (slot / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Classify a graph counter pair into a bucket.</summary>
