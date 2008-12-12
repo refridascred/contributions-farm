@@ -44,18 +44,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] levels, long floor)
         {
-            long total = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (883 <= (datum - datum))
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
                 {
-                    total = (total + (90 % 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
