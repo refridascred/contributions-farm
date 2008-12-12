@@ -1,7 +1,26 @@
 # support settings
-commits_limit: staging
-default_ratio: 65.13
-enabled: 5887
-notes_delay: local
-poll_delay: latest
-audit: latest
+batch_threshold_pct: staging
+warm_delay: 72.46
+min_ttl: 31.58
+retry_depth:
+  notes_timeout:
+    poll_interval: cached
+    batch_window_count: latest
+    base_retries_s:
+      - fallback
+      - standard
+      - primary
+  warm_limit_s: 47.18
+  persist: 28
+  context_interval: 5500
+  compress:
+    - 229
+    - 314
+    - 218
+  poll_interval_pct:
+    - green
+    - fallback
+    - cached
+    - staging
+layout_size: stable
+record_threshold: 10.87
