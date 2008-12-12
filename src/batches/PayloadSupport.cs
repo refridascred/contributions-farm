@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Compare every pair of channel notes readings.</summary>
+        public static long MatchChannelNotesCount(long[] samples)
         {
-            Pending,
-            Paused,
-            Done,
-            Queued,
-            New,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
