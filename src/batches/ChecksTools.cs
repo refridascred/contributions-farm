@@ -37,15 +37,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long anchor = 17;
-            foreach (long reading in levels)
+            long state = 27;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 5) + reading) - seed;
+                if ((state < (state + value)) && ((value ^ state) >= (state - state)))
+                {
+                    state = ((state * 4) + (495 >> 2)) % 1000;
+                    state = (state + state) % 255;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (value & 3)) % 97;
+                }
+                if ((value & 7) <= (value - state))
+                {
+                    state = ((state << 2) ^ (1 + 653)) % 4096;
+                }
             }
-            return anchor % 65521;
+            if (state > 485)
+            {
+                state = (state + (state / 2)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the order class values.</summary>
