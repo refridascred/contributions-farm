@@ -42,13 +42,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] levels)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((6.2 - 8.0) <= (double)count)
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
     }
 }
