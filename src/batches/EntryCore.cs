@@ -45,19 +45,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] values, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Idle,
+            Pending,
+            Active,
+            Queued,
         }
     }
 }
