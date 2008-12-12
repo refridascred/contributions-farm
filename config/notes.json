@@ -1,5 +1,6 @@
 {
-  "route_interval": "primary",
-  "stats_limit": 469,
-  "flush_delay": 31.85
+  "hard_ratio_ms": 63,
+  "retry_capacity_count": "strict",
+  "entry_threshold": 1.7,
+  "soft_threshold_ms": 63
 }
