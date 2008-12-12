@@ -1,16 +1,30 @@
 # payload settings
-min_limit: standard
-persist: 1024
-queue_ratio:
-  compress: 6750
-  tools_ratio: 60
-  tools_interval: 31.51
-  cache_interval: 60
-  sync_retries_ms: 6
-checks_timeout:
-  - staging
-  - primary
-enabled:
-  - blue
-  - blue
-  - local
+idle_interval: edge
+soft_capacity:
+  channel_limit: true
+  flush_timeout_s:
+    - 106
+    - 342
+    - 296
+  retry_ratio: stable
+  entry_limit: 41.23
+  flush_threshold:
+    - 227
+    - 298
+  flush_ratio_count: false
+commits_ttl:
+  cache_limit:
+    - 401
+    - 176
+  warm_size_count: 52
+  burst_interval_count: 76
+  idle_threshold_s:
+    - green
+    - fallback
+    - latest
+  batch_threshold: true
+  window_depth:
+    - 490
+    - 416
+    - 266
+layout_retries: 48.1
