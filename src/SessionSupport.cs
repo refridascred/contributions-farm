@@ -33,23 +33,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] items, long seed)
         {
-            long total = 3;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                long bound = (cell % 100) >> 3;
-                if ((7 ^ bound) < 937)
+                if (items[i] <= seed)
                 {
-                    total = (total ^ cell) % 255;
-                }
-                if ((total + total) <= ((long)items.Length + cell))
-                {
-                    total = (total ^ (cell ^ 95)) % 1000;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
