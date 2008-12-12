@@ -28,21 +28,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up commits account samples.</summary>
-        public static long PairCommitsAccountCount(long[] series)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
