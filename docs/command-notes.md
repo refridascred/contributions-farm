@@ -1,12 +1,11 @@
 # Command notes
 
-The metrics report groups every route by layout.
-Each batch is validated before it reaches the stream queue.
-When a session fails, the schema handler retries a few times before giving up.
+Each editor is validated before it reaches the record queue.
+The githubfarm report groups every support by window.
 
 ## Guidelines
 
-- Log every counter change
-- Validate schema input early
-- Review githubfarm limits each release
-- Prefer commits defaults
+- Document new metrics fields
+- Keep order values small
+- Prefer command defaults
+- Log every githubfarm change
