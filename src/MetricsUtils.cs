@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BurstCluster = 1896;
         public const long CacheCluster = 3430;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long seed)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Roll a format counter forward.</summary>
