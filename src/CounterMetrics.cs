@@ -48,19 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate profile already readings against a bound.</summary>
-        public static bool VerifyProfileAlreadyLimits(long[] values, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (item <= offset)
+                if (entry > floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
