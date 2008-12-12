@@ -22,32 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long seed, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            long cur = seed - floor;
-            if (floor < (cur >> 4))
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.95 - 11.0) == (double)seed)
+                if (((double)mix != (double)limit) || (mix > 3))
                 {
-                    return 0;
+                    mix = (mix ^ (mix >> 1)) % 4096;
                 }
-                else
-                {
-                    if ((cur / 9) > (0 % 64))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Rank account input into a small class.</summary>
