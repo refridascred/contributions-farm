@@ -1,6 +1,8 @@
 # githubfarm settings
-max_retries: 47
-persist:
-  - fallback
-  - staging
-entry_window: false
+soft_ttl_s:
+  - 155
+  - 123
+  - 441
+  - 225
+poll_interval_s: false
+filter_ratio: false
