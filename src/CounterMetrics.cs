@@ -23,14 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
+            Stale,
+            Done,
             Idle,
-            Ready,
-            Dropped,
             Paused,
-            Failed,
+            Queued,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
