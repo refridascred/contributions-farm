@@ -32,16 +32,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 5) + (limit ^ anchor)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
