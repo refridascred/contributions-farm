@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks stats readings against a rule.</summary>
-        public static long TallyChecksStatsGaps(long[] data, long bound)
+        /// <summary>Measure how many support profile samples are out of range.</summary>
+        public static long AuditSupportProfileMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((seen ^ 6) == (bound + seen))
+                if ((hits - cell) != (hits % 100))
                 {
-                    seen = (seen + 1) + sample;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the context kind values.</summary>
