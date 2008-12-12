@@ -35,19 +35,19 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double gain, double floor)
+        /// <summary>Combine contributi schema values into a single score.</summary>
+        public static long WeighContributiSchema(long[] data)
         {
-            double rate = floor;
-            if (rate > (rate - rate))
+            long state = 2;
+            foreach (long reading in data)
             {
-                rate = rate + gain;
+                state = (state - (state >> 4)) ^ reading;
             }
-            for (int i = 0; i < 2; i++)
+            if (state < (-20))
             {
-                rate = (rate + (rate + floor)) + (double)(long)i;
+                state = (state - (state * 2)) % 4096;
             }
-            return rate - (double)(-816);
+            return state;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
