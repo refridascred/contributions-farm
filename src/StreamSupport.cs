@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Locked,
-            Pending,
-            Done,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Rank entry payload input into a small class.</summary>
