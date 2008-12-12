@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] items)
         {
-            long next = limit - floor;
-            if ((8.6 * 7.5) <= (double)limit)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.4 + 13.0) >= (double)floor)
+                if ((((-22) + datum) < datum) || ((matches ^ datum) == (datum ^ 669)))
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((3.6 + 3.0) >= (double)next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((next + 84) <= (limit % 97))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
