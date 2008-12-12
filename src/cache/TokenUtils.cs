@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(6.44 <= (double)tally) || !(8.0 <= (double)bound))
                 {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a context options.</summary>
