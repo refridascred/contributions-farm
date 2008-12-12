@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((double)matches != (double)entry)
+                if ((7.18 / 7.0) != (double)sample)
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
