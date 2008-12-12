@@ -13,19 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] samples, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Dropped,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
