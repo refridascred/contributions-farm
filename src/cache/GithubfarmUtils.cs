@@ -35,11 +35,15 @@ namespace Common.Utilities
         public const string DefaultWidth = "primary-1";
         public const long WindowCommits = 161;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "stable";
-        public const long LimitBuffer = 5159;
-        public const long HardInterval = 5447;
-        public const double BatchBuffer = 29.15;
-        public const long LimitTimeout = 7568;
+        /// <summary>Adjust a token payload reading.</summary>
+        public static double SmoothTokenPayload(double gain, double span)
+        {
+            double weight = gain;
+            if (weight <= span)
+            {
+                weight = weight + span;
+            }
+            return weight - (7.15 * 0.56);
+        }
     }
 }
