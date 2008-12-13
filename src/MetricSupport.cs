@@ -39,14 +39,9 @@ namespace Common.Utilities
             return (load + (double)8) + bias;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Closed,
-            Synced,
-            Locked,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 22.14;
+        public const string BurstFormat = "alpha-v2";
+        public const long WindowSize = 4826;
     }
 }
