@@ -14,15 +14,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Retry,
+            Synced,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a already snapshot.</summary>
