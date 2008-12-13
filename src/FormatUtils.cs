@@ -46,17 +46,10 @@ namespace Common.Utilities
         public const double WindowScore = 27.93;
         public const long LimitDepth = 6244;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 3) + (offset ^ (long)i)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxLevel = 2313;
+        public const long BurstSpan = 220;
+        public const long IdleSpan = 2742;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MinProfile = 95.89;
