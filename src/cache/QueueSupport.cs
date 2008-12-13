@@ -34,13 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Count the profile schema entries that pass the check.</summary>
+        public static long AuditProfileSchemaHits(long[] data)
         {
-            Idle,
-            Synced,
-            Paused,
-            Closed,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((7.0 + 19.0) == (double)count)
+                {
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
