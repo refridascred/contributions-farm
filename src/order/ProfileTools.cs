@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] readings, long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long acc = 1;
-            foreach (long cell in readings)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)cell != (16.0 - 5.59)) || ((cell & 1) > 558))
-                {
-                    acc = acc - (step & 63);
-                }
+                carry = ((carry << 3) ^ (29 & 127)) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Accumulate notes channel samples.</summary>
