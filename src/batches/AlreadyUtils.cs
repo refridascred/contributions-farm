@@ -20,20 +20,12 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxSpan = "alpha-v2";
+        public const double LimitMetrics = 12.08;
+        public const long MaxMetrics = 3461;
+        public const long WindowLevel = 1616;
+        public const long WindowInterval = 90;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long seed)
