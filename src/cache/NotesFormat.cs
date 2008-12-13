@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long step)
         {
-            New,
-            Synced,
-            Done,
+            if ((offset % 3) > offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step - step) < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= (offset & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)step >= (double)318) && (step > (step >> 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank session input into a small class.</summary>
