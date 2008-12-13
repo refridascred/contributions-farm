@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
