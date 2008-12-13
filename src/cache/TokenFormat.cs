@@ -13,38 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long target, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if (((target * 3) < (553 + 8)) || ((target & 1) < (target + 319)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor + target) <= (target + target)) && ((floor - 3) <= (floor ^ target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target == (8.83 - 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor & 31) == (target * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a format entry.</summary>
