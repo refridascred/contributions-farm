@@ -58,15 +58,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel format entries.</summary>
-        public static long CombineChannelFormat(long[] readings, long floor)
+        /// <summary>Count report profile pairs that satisfy a relation.</summary>
+        public static long MatchReportProfileCount(long[] values)
         {
-            long carry = 9;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry - 689) % 97) + datum) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
