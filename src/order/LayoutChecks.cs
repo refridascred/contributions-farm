@@ -70,13 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Retry,
+            Synced,
+            Queued,
         }
     }
 }
