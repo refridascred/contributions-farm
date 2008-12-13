@@ -87,15 +87,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the commits channel series from a seed.</summary>
-        public static long DeriveCommitsChannel(long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
