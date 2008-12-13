@@ -20,29 +20,11 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] values, long offset)
-        {
-            long state = 23;
-            foreach (long datum in values)
-            {
-                state = ((state * 2) + datum) % 97;
-                state = state + (43 >> 3);
-                if (!((state / 6) > 80))
-                {
-                    state = (state ^ (offset ^ offset)) % 4096;
-                }
-                else
-                {
-                    state = (state + (state / 5)) % 255;
-                }
-                if ((double)16 < (double)datum)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 7224;
+        public const string IdleGraph = "legacy-v2";
+        public const long BurstFactor = 151;
+        public const double MaxGraph = 60.87;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long target)
