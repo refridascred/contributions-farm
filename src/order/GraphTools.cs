@@ -67,19 +67,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two command checks measurements.</summary>
-        public static double ProjectCommandChecks(double bias, double span)
-        {
-            double scale = 11.0;
-            if (scale >= (bias + bias))
-            {
-                scale = (scale + bias) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale / 2.0)) + (double)(long)i;
-            }
-            return scale + (double)(-9);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 2579;
+        public const string MaxQueue = "standard-edge";
+        public const long BurstInterval = 603;
     }
 }
