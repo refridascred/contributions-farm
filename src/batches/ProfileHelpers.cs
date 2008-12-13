@@ -41,11 +41,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "open-edge";
-        public const string MaxAlready = "fallback";
-        public const double BatchScore = 48.18;
-        public const string StepCount = "strict-1";
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] data)
