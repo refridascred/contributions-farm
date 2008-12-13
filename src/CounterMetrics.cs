@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 2207;
         public const long SoftGraph = 4972;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally ^ step) <= (93 * 3))
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
