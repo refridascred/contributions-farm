@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long origin, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            if ((origin ^ origin) >= ((-903) + origin))
+            long anchor = 6;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((30 > limit) && ((83 + limit) > (8 << 2)))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 4;
+                    anchor = ((anchor ^ anchor) % 97) - (long)i;
+                }
+                if ((double)anchor < (1.93 / 2.0))
+                {
+                    anchor = anchor - (179 % 5);
                 }
                 else
                 {
-                    if ((origin <= (origin - 189)) && ((origin * 2) > limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((origin * 3) > (67 + limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = (anchor ^ (entry & 63)) % 101;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
