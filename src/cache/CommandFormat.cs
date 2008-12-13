@@ -44,16 +44,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark + (mark ^ 46);
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
