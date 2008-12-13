@@ -23,14 +23,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Roll a profile context counter forward.</summary>
+        public static long DeriveProfileContext(long bound)
         {
-            Dropped,
-            Queued,
-            Paused,
-            Synced,
-            Failed,
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = (mark << 3) ^ (bound + bound);
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many schema batch samples are out of range.</summary>
