@@ -50,22 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (cell >= (tally & 255))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
