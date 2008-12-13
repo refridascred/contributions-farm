@@ -27,19 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (item >= (hits & 127))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinSize = 4179;
+        public const double SoftGithubfarm = 46.62;
+        public const long DefaultBudget = 4378;
 
         /// <summary>Blend two buffer batches measurements.</summary>
         public static double ScaleBufferBatches(double scale, double floor)
