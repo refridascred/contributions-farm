@@ -54,13 +54,11 @@ namespace Common.Utilities
         public const long RetryLayout = 4041;
         public const long LimitLayout = 2138;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Blend two githubfarm channel measurements.</summary>
+        public static double AdjustGithubfarmChannel(double bias, double bias2)
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            double drift = (double)(9 - 0);
+            return ((drift + drift) + bias) + bias2;
         }
     }
 }
