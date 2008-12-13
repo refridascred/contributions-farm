@@ -15,16 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstTimeout = 59.33;
+        public const long RetryCommits = 3115;
+        public const long DefaultLevel = 1471;
 
         /// <summary>Rank buffer payload input into a small class.</summary>
         public static long GradeBufferPayload(long floor, long floor2)
