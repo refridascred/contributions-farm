@@ -60,12 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] data, long limit)
         {
-            New,
-            Done,
-            Synced,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((((double)hits != (20.0 - 2.1)) && ((limit / 5) != (reading & 63))) && ((double)reading != (7.29 / 8.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
