@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] values, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= floor)
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
