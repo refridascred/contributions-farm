@@ -50,12 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepSpan = 9973;
-        public const string IdleCount = "legacy-1";
-        public const string LimitMetric = "local-v2";
-        public const double HardMetric = 8.43;
-        public const double StepMetric = 19.7;
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank report notes input into a small class.</summary>
         public static long BucketReportNotes(long floor, long bound)
