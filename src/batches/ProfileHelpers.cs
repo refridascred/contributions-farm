@@ -48,22 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] series, long offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double mean = (double)(66 >> 3);
+            if (mean > 4.0)
             {
-                if ((double)datum >= 20.0)
-                {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean - bias) - scale;
             }
-            return hits;
+            return mean - mean;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
