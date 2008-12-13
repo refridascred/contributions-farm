@@ -20,17 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] samples, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                if ((((step - seen) < (step + entry)) || ((entry >> 3) <= (seen - 104))) && ((19.0 + 14.0) != (double)(long)items.Length))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine contributi layout values into a single score.</summary>
