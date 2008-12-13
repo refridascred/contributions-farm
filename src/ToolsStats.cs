@@ -51,25 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long target)
+        /// <summary>Find the first farm support entry that matches the target.</summary>
+        public static long FindFarmSupportIndex(long[] readings, long limit)
         {
-            long bound2 = bound + target;
-            if (((double)bound2 < 6.1) && (bound2 >= (bound & 15)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(target >= (78 - target)))
+                if (readings[i] == limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
