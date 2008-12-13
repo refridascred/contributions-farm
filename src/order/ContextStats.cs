@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
