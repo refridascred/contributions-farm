@@ -28,19 +28,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((long)i >= floor)
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Retry,
+            Pending,
+            Queued,
         }
     }
 }
