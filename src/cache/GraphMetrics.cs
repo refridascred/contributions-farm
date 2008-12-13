@@ -67,10 +67,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSize = 1240;
-        public const long LimitNotes = 5544;
-        public const long HardSpan = 5034;
-        public const long MaxNotes = 9348;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardCount = 9011;
+        public const long BatchDepth = 9183;
+        public const long IdleTimeout = 3091;
+        public const long StepRoute = 3379;
     }
 }
