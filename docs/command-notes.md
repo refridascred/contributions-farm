@@ -1,15 +1,11 @@
 # Command notes
 
-Each cache is validated before it reaches the farm queue.
-Use tools settings to tune how often schema data is refreshed.
-The batch report groups every window by token.
-
-Keep context and checks names short and lowercase.
-Keep window and notes names short and lowercase.
-A schema that stays idle for too long is moved to the context list.
+The batches report groups every metrics by counter.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Document new layout fields
-- Keep command values small
+- Review format limits each release
+- Document new buffer fields
+- Validate layout input early
+- Log every channel change
