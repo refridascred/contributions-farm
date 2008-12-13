@@ -34,25 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] series)
         {
-            long total = 187;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((double)datum <= 0.9))
+                if ((count / 6) != (5 + entry))
                 {
-                    total = (total + (datum >> 5)) % 4096;
-                    total = (total << 2) ^ (datum - datum);
+                    count = count + 2;
                 }
                 else
                 {
-                    total = ((total * 2) + datum) % 97;
+                    count = count - 1;
                 }
-                total = total ^ (143 * 4);
-                total = ((total * 5) + (total - total)) % 1000;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
