@@ -18,28 +18,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stream metrics values into a single score.</summary>
-        public static long FoldStreamMetrics(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] levels, long origin)
         {
-            long mark = 703;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (datum < (datum & 1))
+                if (entry < origin)
                 {
-                    mark = ((mark * 2) + (datum * 4)) % 97;
-                    mark = (mark ^ (datum + 5)) % 97;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark ^ datum)) % 97;
-                }
-                mark = ((mark * 3) + mark) % 4096;
             }
-            if (mark < 634)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark % 4096;
+            return valid;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
