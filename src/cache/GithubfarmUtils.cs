@@ -37,10 +37,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleSpan = 84.18;
-        public const long LimitTimeout = 8298;
-        public const double MaxRatio = 55.23;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long floor, long target)
+        {
+            long span = floor - target;
+            if ((double)span <= (0.44 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor % 24) <= span) || (floor < 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 2) != (32 + 554))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)span == (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long RankSupport(long bound, long limit)
