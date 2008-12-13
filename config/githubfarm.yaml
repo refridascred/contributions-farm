@@ -1,8 +1,21 @@
 # githubfarm settings
-readonly: latest
-burst_delay_pct: 30
-sync_retries_ms: legacy
-idle_ratio_ms:
-  - legacy
+warm_timeout:
+  - 420
+  - 320
+verbose: false
+poll_capacity_ms: edge
+min_delay_pct:
+  - latest
+  - blue
+  - open
   - staging
-  - strict
+cache_size_pct:
+  farm_delay:
+    - 71
+    - 476
+    - 442
+    - 283
+  base_size: strict
+  batch_threshold: 8
+  notes_interval: 35.08
+  flush_size_s: 6
