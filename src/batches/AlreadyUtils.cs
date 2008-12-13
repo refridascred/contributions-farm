@@ -53,21 +53,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)i << 1) >= (seed - anchor))
                 {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - ((long)i % 12);
+                    anchor = ((anchor * 2) + (anchor % 100)) % 65521;
                 }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
+                if ((7.0 + 2.0) < (double)anchor)
+                {
+                    anchor = ((anchor * 5) + (1 - anchor)) % 1000;
+                    anchor = (anchor << 2) ^ (anchor + anchor);
+                }
+                anchor = ((anchor * 2) + (-37)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
