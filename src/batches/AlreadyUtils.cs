@@ -26,19 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double bias)
+        /// <summary>Count the entry stats entries that pass the check.</summary>
+        public static long MeasureEntryStatsMatches(long[] levels)
         {
-            double rate = bias;
-            if (rate < scale)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                rate = rate - scale;
+                if ((matches + 0) > (entry & 1))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - (rate - bias);
+            return matches;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
