@@ -14,17 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] readings, long target)
+        /// <summary>Digest a series of contributi report entries.</summary>
+        public static long TallyContributiReport(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 36;
+            foreach (long item in data)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                if ((item + mark) <= ((long)data.Length + item))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (item >> 5)) % 101;
                 }
+                else
+                {
+                    mark = (mark + (mark - item)) % 4096;
+                }
+                mark = ((mark * 3) + (mark & 63)) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
