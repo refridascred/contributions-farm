@@ -41,18 +41,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long offset)
+        /// <summary>Blend two buffer batches measurements.</summary>
+        public static double ScaleBufferBatches(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double scale2 = floor + (scale / 2.0);
+            if (scale2 >= scale)
             {
-                if ((((cell ^ cell) > (26 + offset)) && ((cell / 8) < (offset + offset))) || ((cell - tally) >= (tally % 60)))
-                {
-                    tally = tally + 2;
-                }
+                scale2 = scale2 + scale2;
             }
-            return tally;
+            else
+            {
+                scale2 = scale2 + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (scale2 * 14.0)) + (double)(long)i;
+            }
+            return scale2 - 5.0;
         }
     }
 }
