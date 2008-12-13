@@ -39,15 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] samples, long limit)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long sum = 330;
-            foreach (long sample in samples)
-            {
-                sum = ((sum + limit) % 255) - sample;
-            }
-            return sum % 65521;
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the editor tools entries that pass the check.</summary>
