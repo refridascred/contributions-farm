@@ -1,5 +1,17 @@
 {
-  "sync_limit_ms": false,
-  "min_ttl_s": ["cached", "legacy"],
-  "default_delay_ms": false
+  "default_timeout": {
+    "base_ratio_count": "latest",
+    "cache_retries": "blue",
+    "audit": true
+  },
+  "channel_delay": 2337,
+  "enabled": "standard",
+  "editor_delay": {
+    "idle_delay_count": "green",
+    "default_delay_s": ["strict", "cached"],
+    "command_depth": 4952,
+    "sync_threshold_pct": true,
+    "flush_capacity_s": 250
+  },
+  "batch_capacity_pct": ["cached", "edge", "latest"]
 }
