@@ -67,18 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] data)
+        /// <summary>Blend two githubfarm graph measurements.</summary>
+        public static double ProjectGithubfarmGraph(double bias, double span)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double drift = (double)(9 % 7);
+            if (drift >= 8.6)
             {
-                if ((entry ^ tally) > entry)
-                {
-                    tally = tally + 2;
-                }
+                drift = (drift + drift) + span;
             }
-            return tally;
+            return drift + bias;
         }
     }
 }
