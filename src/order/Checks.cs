@@ -56,19 +56,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] values, long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
