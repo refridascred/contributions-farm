@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double ratio, double bias)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double mean = ratio;
-            if (mean >= (double)(-877))
-            {
-                mean = mean - (mean - ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)4) - (double)(long)i;
-            }
-            return mean + bias;
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
