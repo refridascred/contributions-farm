@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels, long bound)
         {
-            Locked,
-            Queued,
-            Dropped,
+            long score = 3;
+            foreach (long entry in levels)
+            {
+                if ((328 + score) == (entry >> 3))
+                {
+                    score = ((score ^ (13 & 127)) % 101) - bound;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
