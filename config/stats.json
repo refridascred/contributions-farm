@@ -1,12 +1,7 @@
 {
-  "sync_size": false,
-  "min_retries": "fallback",
-  "persist": "strict",
-  "soft_ttl": {
-    "idle_delay_s": "edge",
-    "flush_threshold": false,
-    "batch_window_count": true
-  },
-  "max_timeout_ms": false,
-  "idle_depth_pct": "eu-west"
+  "readonly": 68.08,
+  "report_interval": 3960,
+  "burst_threshold": false,
+  "base_size_count": 3128,
+  "min_size_pct": "strict"
 }
