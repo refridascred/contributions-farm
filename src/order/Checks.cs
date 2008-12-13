@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 80;
-        public const long LimitRatio = 8614;
-        public const long LimitWidth = 4785;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((long)values.Length >= value)
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double ProjectReport(double gain, double offset)
