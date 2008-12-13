@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes already entries.</summary>
-        public static long DigestNotesAlready(long[] levels)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long score = 3;
-            foreach (long cell in levels)
-            {
-                score = ((score - score) % 65521) - cell;
-                if ((13.0 * 9.2) >= (double)score)
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
