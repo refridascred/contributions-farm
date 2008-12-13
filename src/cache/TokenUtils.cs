@@ -31,9 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryScore = 6780;
-        public const double BatchSession = 94.55;
-        public const long BaseScore = 8651;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 5305;
+        public const string BaseCount = "open";
+        public const long MinTools = 6669;
+        public const long RetryRatio = 7442;
+        public const double CacheTools = 9.03;
     }
 }
