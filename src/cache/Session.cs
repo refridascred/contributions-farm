@@ -58,21 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count report profile pairs that satisfy a relation.</summary>
-        public static long MatchReportProfileCount(long[] values)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Closed,
+            Queued,
         }
     }
 }
