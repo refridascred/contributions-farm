@@ -1,10 +1,11 @@
 # Command notes
 
-A command that stays idle for too long is moved to the filter list.
-Run the commits check before changing any contributi limits.
+Run the farm check before changing any route limits.
+Use commits settings to tune how often filter data is refreshed.
+Use context settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Log every channel change
-- Keep record values small
+- Document new batches fields
+- Review payload limits each release
+- Keep order values small
