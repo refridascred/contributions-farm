@@ -44,22 +44,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((4 - 40) >= (hits / 3))
+                if (((double)(long)readings.Length != (9.0 - 4.94)) && !((6.4 - 8.6) < (double)seen))
                 {
-                    hits = (hits + 3) - entry;
+                    seen = (seen + 2) ^ value;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
