@@ -41,11 +41,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 16.84;
-        public const string MinSchema = "standard-edge";
-        public const string MaxDepth = "strict-edge";
-        public const long CacheSpan = 6460;
-        public const long BurstSchema = 5597;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] values, long bound)
+        {
+            long anchor = 14;
+            foreach (long cell in values)
+            {
+                if (bound <= (bound + bound))
+                {
+                    anchor = (anchor + (bound / 5)) + cell;
+                }
+            }
+            if (anchor > 77)
+            {
+                anchor = ((anchor * 3) + (anchor ^ bound)) % 97;
+            }
+            return anchor;
+        }
     }
 }
