@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long seed, long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            if ((seed << 3) > (bound & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (37 > (seed + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.1 / 4.0) == (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound > seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
