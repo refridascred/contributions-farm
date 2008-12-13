@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long seed)
         {
-            Synced,
-            Paused,
-            Done,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((7.6 / 5.0) >= (double)entry)
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate batches contributi samples.</summary>
