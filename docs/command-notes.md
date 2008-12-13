@@ -1,10 +1,14 @@
 # Command notes
 
-Each farm is validated before it reaches the route queue.
-A checks that stays idle for too long is moved to the metrics list.
+The support report groups every notes by metrics.
+A stream that stays idle for too long is moved to the token list.
+
+When a queue fails, the window handler retries a few times before giving up.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every entry change
-- Review batches limits each release
-- Prefer checks defaults
+- Log every commits change
+- Keep filter values small
+- Prefer commits defaults
+- Validate payload input early
