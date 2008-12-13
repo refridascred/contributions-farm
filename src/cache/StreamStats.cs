@@ -40,12 +40,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
