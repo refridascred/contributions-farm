@@ -24,13 +24,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Look up the position of a editor notes sample.</summary>
+        public static long FindEditorNotesIndex(long[] series, long target)
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
