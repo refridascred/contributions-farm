@@ -66,22 +66,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] levels, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double mean = (floor / 3.0) * 5.04;
+            if (mean < (3.0 / 2.0))
             {
-                if ((double)step >= 3.3)
-                {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + floor) + ratio;
             }
-            return matches;
+            else
+            {
+                mean = mean - (6.2 + floor);
+            }
+            return mean + (floor - 8.2);
         }
 
         /// <summary>Describe the support status values.</summary>
