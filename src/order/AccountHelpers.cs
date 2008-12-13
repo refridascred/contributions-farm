@@ -47,10 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleDepth = 5544;
-        public const string SoftSpan = "fallback-v2";
-        public const string IdleMetric = "legacy";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((double)tally != (9.36 * 6.54)) || (((entry % 12) < (tally ^ 67)) || (tally <= (tally - tally))))
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
