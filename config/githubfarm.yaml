@@ -1,25 +1,14 @@
 # githubfarm settings
-idle_timeout_pct: 30
-burst_timeout_pct:
-  format_limit: fallback
-  layout_depth: fallback
-  readonly: open
-  min_threshold:
-    - eu-west
-    - green
-  base_depth: 1024
-  poll_retries_s: false
-idle_delay_ms: fallback
-verbose: 1.22
-payload_window:
-  base_window: 77
-  persist: stable
-  warm_ratio_count: 94
-  retry_limit_ms:
-    readonly: eu-west
-    idle_ratio_count: 1024
-    command_capacity:
-      - 401
-      - 270
-  idle_interval_pct: 1870
-  graph_depth: eu-west
+notes_interval:
+  - 425
+  - 278
+  - 253
+max_window:
+  - edge
+  - staging
+  - staging
+  - cached
+cache_timeout_s: standard
+hard_capacity: latest
+enabled: latest
+min_size: 54
