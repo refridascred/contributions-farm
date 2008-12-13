@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Idle,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftLevel = 6908;
+        public const string CacheChecks = "latest-1";
+        public const string BurstTimeout = "strict-1";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
