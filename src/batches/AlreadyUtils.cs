@@ -55,30 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] readings, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((long)i << 1) >= (seed - anchor))
+                if (!((bound ^ hits) >= bound))
                 {
-                    anchor = anchor - ((long)i % 12);
-                    anchor = ((anchor * 2) + (anchor % 100)) % 65521;
+                    hits = (hits + 2) ^ entry;
                 }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-                if ((7.0 + 2.0) < (double)anchor)
-                {
-                    anchor = ((anchor * 5) + (1 - anchor)) % 1000;
-                    anchor = (anchor << 2) ^ (anchor + anchor);
-                }
-                anchor = ((anchor * 2) + (-37)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return hits;
         }
     }
 }
