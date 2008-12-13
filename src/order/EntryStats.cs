@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits schema readings against a rule.</summary>
-        public static long MeasureCommitsSchemaGaps(long[] values)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length + (-487)) == (seen % 16))
-                {
-                    seen = (seen + 3) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a contributi info.</summary>
