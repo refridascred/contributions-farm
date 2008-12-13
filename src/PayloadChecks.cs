@@ -65,24 +65,32 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Rank editor command input into a small class.</summary>
+        public static long RankEditorCommand(long origin, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long gap = origin ^ step;
+            if (step < (step - (-23)))
             {
-                acc = (acc * 5) + (long)i;
-                if ((double)origin >= 10.0)
+                return 1;
+            }
+            else
+            {
+                if (step < gap)
                 {
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    acc = (acc - (660 ^ acc)) % 255;
+                    if (((5.0 + 10.0) < (double)origin) && (43 > (gap + gap)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
         }
     }
 }
