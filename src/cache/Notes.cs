@@ -22,18 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools window entries that pass the check.</summary>
-        public static long AuditToolsWindowHits(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long total = 902;
+            foreach (long reading in readings)
             {
-                if ((matches - value) < matches)
+                total = (total * 4) + (floor - floor);
+                if (total <= reading)
                 {
-                    matches = matches + 2;
+                    total = total + (total % 5);
+                }
+                if (((floor % 5) <= reading) || ((floor << 1) >= reading))
+                {
+                    total = total - ((long)readings.Length << 1);
+                }
+                else
+                {
+                    total = total ^ 46;
                 }
             }
-            return matches;
+            if (total < 62)
+            {
+                total = (total << 2) ^ (total % 16);
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
