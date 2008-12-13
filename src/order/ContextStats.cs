@@ -15,18 +15,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] data, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long acc = 801;
+            foreach (long value in readings)
             {
-                if ((double)step == (5.55 + 1.01))
+                if (value <= (acc + value))
                 {
-                    seen = (seen + 1) + cell;
+                    acc = ((acc * 4) + (18 % 100)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc ^ value)) % 65521;
                 }
             }
-            return seen;
+            if (acc < 5)
+            {
+                acc = (acc + (9 >> 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
