@@ -24,39 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long origin)
-        {
-            long slot = bound - origin;
-            if ((double)bound < (9.0 - 1.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (slot < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((927 & 15) < (origin - 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)(-272) <= (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSpan = 7980;
+        public const string StepDepth = "stable-edge";
+        public const string LimitSchema = "staging-1";
+        public const string SoftSchema = "open";
+        public const long BurstTimeout = 2645;
     }
 }
