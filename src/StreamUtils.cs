@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long slot = floor + target;
-            if (!((142 + target) > (target >> 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target >= (floor & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((798 % 8) >= (floor + target)) || ((floor - floor) <= (slot / 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
