@@ -1,4 +1,9 @@
 # githubfarm settings
-idle_retries_ms: 5.53
-strict: green
-cache_delay: 86
+flush_interval_ms: primary
+warm_limit: blue
+cluster_capacity: blue
+compress:
+  min_limit_pct: strict
+  warm_ratio_ms: green
+  burst_delay_count: 39.05
+base_capacity: 66.3
