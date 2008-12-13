@@ -30,21 +30,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
+        public static long MeasureGithubfarmFilterHits(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((55 & 63) <= limit)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
