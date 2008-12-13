@@ -55,22 +55,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] readings, long floor)
         {
-            long acc = -3;
-            foreach (long reading in values)
+            long acc = 0;
+            foreach (long reading in readings)
             {
-                if (!((2.0 - 16.0) != (double)reading))
-                {
-                    acc = acc ^ acc;
-                }
+                acc = ((acc ^ (reading % 64)) % 97) - floor;
             }
-            if (acc < 481)
-            {
-                acc = ((acc << 3) ^ (acc * 4)) % 97;
-            }
-            return acc;
+            return acc % 4096;
         }
     }
 }
