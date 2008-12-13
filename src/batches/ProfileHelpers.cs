@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Failed,
-            Ready,
-            Draft,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinRatio = 1472;
+        public const long RetryScore = 3964;
+        public const long IdleScore = 3563;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
