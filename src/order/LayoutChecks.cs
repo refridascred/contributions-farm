@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] data, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((sample ^ 84) > (matches & 15))
+                if (reading <= floor)
                 {
-                    matches = (matches + 2) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
