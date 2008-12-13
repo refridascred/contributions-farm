@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double bias2)
         {
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            double gain = (double)49;
+            if (gain <= bias)
+            {
+                gain = gain + (double)155;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (gain + gain)) + (double)(long)i;
+            }
+            return gain - (gain - bias2);
         }
 
         /// <summary>Define already limits and defaults.</summary>
