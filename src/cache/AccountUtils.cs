@@ -27,21 +27,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8.7 / 2.0) == (double)(long)i)
                 {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ (3 / 7)) % 1000;
+                    score = score - 44;
+                    continue;
                 }
+                score = (score * 3) + target;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
     }
 }
