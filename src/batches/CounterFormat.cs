@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] items, long offset)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((2.2 / 9.0) == (double)offset)
+                {
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
