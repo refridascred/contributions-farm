@@ -26,18 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats order samples.</summary>
-        public static long TallyStatsOrder(long[] readings)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long carry = 1;
-            foreach (long cell in readings)
-            {
-                if ((carry / 7) == (cell + cell))
-                {
-                    carry = ((carry << 3) ^ (cell ^ cell)) % 1000;
-                }
-            }
-            return carry % 65521;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
