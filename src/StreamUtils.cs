@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of cluster commits readings.</summary>
-        public static long MatchClusterCommitsCount(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 5;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)value <= (2.1 / 5.0)) && ((double)offset <= (9.2 - 3.9)))
                 {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
+                }
+                if ((double)offset > 2.0)
+                {
+                    carry = ((carry * 3) + (carry >> 3)) % 97;
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Describe the counter state values.</summary>
