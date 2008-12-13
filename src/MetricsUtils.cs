@@ -42,21 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowDepth = 1320;
+        public const long IdleCount = 9300;
+        public const long BaseCount = 9572;
+        public const long WindowLayout = 645;
+        public const double BatchLayout = 72.19;
     }
 }
