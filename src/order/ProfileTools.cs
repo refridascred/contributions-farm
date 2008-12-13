@@ -46,14 +46,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream schema series from a seed.</summary>
-        public static long RollStreamSchema(long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long sum = 851;
+            foreach (long reading in data)
             {
-                sum = (sum * 4) + sum;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (0.26 <= (double)sum)
+                {
+                    sum = (sum - (sum + sum)) - reading;
+                }
             }
             return sum;
         }
