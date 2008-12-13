@@ -13,12 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] values)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)tally > 3.3)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph mode values.</summary>
