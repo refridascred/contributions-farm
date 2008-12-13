@@ -27,22 +27,10 @@ namespace Common.Utilities
         public const long RetryDepth = 9141;
         public const double BatchBudget = 69.97;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseTimeout = 8398;
+        public const double DefaultSpan = 41.48;
+        public const long BaseWidth = 9975;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiMatches(long[] series, long floor)
