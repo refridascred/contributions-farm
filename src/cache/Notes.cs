@@ -90,11 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleCount = 4723;
+        public const long WindowFactor = 813;
+        public const string CacheStats = "standard-v2";
+        public const long DefaultBudget = 7704;
+        public const string RetryScore = "staging-v2";
     }
 }
