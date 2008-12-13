@@ -41,14 +41,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            New,
-            Failed,
-            Locked,
-            Dropped,
-            Done,
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
