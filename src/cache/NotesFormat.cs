@@ -21,11 +21,39 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Grade a farm notes value against two limits.</summary>
+        public static long ClassifyFarmNotes(long step, long seed)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            long span = step + seed;
+            if ((14.0 / 6.0) >= (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step * 3) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(span >= (span & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)seed <= (6.77 - 4.0)) && ((step >> 1) > seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
