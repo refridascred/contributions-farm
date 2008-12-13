@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            New,
+            Retry,
+            Ready,
+            Locked,
             Closed,
-            Dropped,
         }
 
         /// <summary>Describe the profile kind values.</summary>
