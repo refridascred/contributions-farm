@@ -1,7 +1,7 @@
 # support settings
-readonly: 17
-compress: 785
-warm_interval:
-  poll_capacity: open
-  persist: true
-  default_limit: true
+default_size: true
+batch_window_pct: 14
+hard_threshold_count: 48.25
+verbose: 1615
+readonly: 29
+min_interval_count: 3617
