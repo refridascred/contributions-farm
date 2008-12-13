@@ -1,8 +1,6 @@
-id,level,score,count,state
-1,54.05,433,edge,44.84
-2,50.02,806,542,11.13
-3,89.48,940,eu-west,blue
-4,38.31,cached,10.55,888
-5,52.46,419,629,48.14
-6,legacy,latest,69.36,65.03
-7,627,strict,46.46,latest
+id,weight,region,label,rank
+1,522,fallback,latest,619
+2,legacy,596,736,standard
+3,strict,12.17,50.86,318
+4,45.69,80.97,primary,656
+5,fallback,fallback,local,255
