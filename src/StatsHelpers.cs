@@ -44,11 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] series, long floor)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((3.9 - 2.61) > (double)sample)
+                {
+                    hits = (hits + 3) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next queue record value.</summary>
