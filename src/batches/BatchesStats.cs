@@ -37,15 +37,15 @@ namespace Common.Utilities
             return rate + 1.0;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] series, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] items, long bound)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long entry in items)
             {
-                if (reading >= (reading / 7))
+                if (82 <= (seen + seen))
                 {
-                    seen = (seen + 2) - seed;
+                    seen = ((seen + 3) ^ entry) + bound;
                 }
             }
             return seen;
