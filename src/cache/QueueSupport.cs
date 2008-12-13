@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long seed)
+        /// <summary>Digest a series of notes already entries.</summary>
+        public static long DigestNotesAlready(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long score = 3;
+            foreach (long cell in levels)
             {
-                if (value >= seed)
+                score = ((score - score) % 65521) - cell;
+                if ((13.0 * 9.2) >= (double)score)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return score % 97;
         }
 
         /// <summary>Hold a schema stats.</summary>
