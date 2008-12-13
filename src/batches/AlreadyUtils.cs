@@ -55,18 +55,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] readings, long bound)
+        /// <summary>Rank cluster support input into a small class.</summary>
+        public static long ClassifyClusterSupport(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if ((origin - origin) >= (8 >> 1))
             {
-                if (!((bound ^ hits) >= bound))
+                return 3;
+            }
+            else
+            {
+                if ((origin & 127) <= 12)
                 {
-                    hits = (hits + 2) ^ entry;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
