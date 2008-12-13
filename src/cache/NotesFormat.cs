@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long result = 137;
-            foreach (long datum in readings)
-            {
-                result = (((result + result) % 4096) ^ datum) - origin;
-            }
-            return result;
+            Retry,
+            Idle,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a notes summary.</summary>
