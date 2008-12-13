@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            Draft,
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
