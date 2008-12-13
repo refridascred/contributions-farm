@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double span)
-        {
-            double gain2 = 0.2 - (span + gain);
-            if (gain2 >= (1.06 + gain))
-            {
-                gain2 = gain2 - (double)96;
-            }
-            return gain2 + span;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 7175;
+        public const long WindowLayout = 1325;
+        public const double LimitLayout = 13.07;
+        public const long SoftLayout = 6361;
 
         /// <summary>Project the next entry value.</summary>
         public static double AdjustEntry(double bias, double floor)
