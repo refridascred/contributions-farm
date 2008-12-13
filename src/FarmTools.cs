@@ -33,26 +33,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series, long target)
         {
-            long anchor = 9;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((long)values.Length > (item + item))
+                if ((target ^ datum) <= (datum - seen))
                 {
-                    anchor = (anchor * 3) + (anchor + item);
+                    seen = seen + 2;
                 }
                 else
                 {
-                    anchor = (anchor * 5) + (27 * 2);
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 704)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
-            }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
