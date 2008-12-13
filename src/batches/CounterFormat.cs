@@ -33,22 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks context samples.</summary>
-        public static long DigestChecksContext(long[] values)
+        /// <summary>Combine contributi layout values into a single score.</summary>
+        public static long DigestContributiLayout(long[] items, long target)
         {
-            long score = 68;
-            foreach (long cell in values)
+            long anchor = 56;
+            foreach (long reading in items)
             {
-                if (((score - score) >= (0 + 761)) && ((cell << 2) <= (cell % 5)))
-                {
-                    score = ((score * 2) + 873) % 101;
-                }
+                anchor = anchor ^ (reading - target);
             }
-            if (score > 59)
-            {
-                score = (score - (score + score)) % 1000;
-            }
-            return score;
+            return anchor % 97;
         }
     }
 }
