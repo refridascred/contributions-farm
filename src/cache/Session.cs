@@ -35,18 +35,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = 510;
+            foreach (long datum in readings)
             {
-                state = (state ^ (state & 7)) % 101;
-                state = state - (state - offset);
-                state = ((state * 5) + (offset + offset)) % 255;
-                state = ((state * 2) + (long)i) % 4093;
+                if (((datum + sum) < (sum * 4)) && (datum < (sum * 2)))
+                {
+                    sum = sum + sum;
+                }
             }
-            return state;
+            return sum;
         }
     }
 }
