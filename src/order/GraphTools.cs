@@ -56,18 +56,38 @@ namespace Common.Utilities
             return scale + (span / 8.0);
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long floor, long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            if ((floor ^ step) > (8 % 16))
             {
-                if ((56 + datum) == (831 - matches))
+                return 5;
+            }
+            else
+            {
+                if ((step << 3) > (floor - 290))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((1.4 * 14.0) == (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step == (6.76 * 0.79))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
