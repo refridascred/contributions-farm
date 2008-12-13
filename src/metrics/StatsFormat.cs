@@ -31,19 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] items, long limit)
+        /// <summary>Count the order window entries that pass the check.</summary>
+        public static long MeasureOrderWindowHits(long[] items)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long entry in items)
             {
-                if (entry >= limit)
+                if ((entry - entry) != (tally * 3))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
