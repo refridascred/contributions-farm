@@ -24,11 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSpan = 7980;
-        public const string StepDepth = "stable-edge";
-        public const string LimitSchema = "staging-1";
-        public const string SoftSchema = "open";
-        public const long BurstTimeout = 2645;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
