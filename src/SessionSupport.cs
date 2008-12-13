@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long offset, long origin)
-        {
-            if ((double)origin < (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((2.0 * 5.79) < (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)origin == (0.2 / 6.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin << 2) < (offset + 167)) && ((6.8 - 2.7) >= (double)offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 4003;
+        public const string LimitBudget = "open-v2";
+        public const long BaseSession = 7113;
+        public const long DefaultFactor = 4842;
+        public const long LimitSession = 4590;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
