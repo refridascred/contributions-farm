@@ -1,13 +1,9 @@
 # entry settings
-metric_size: true
-poll_size_count:
-  session_delay: 30
-  max_timeout_count: standard
-  channel_depth: primary
-  enabled: staging
-  readonly: cached
-  strict: false
-persist: blue
-readonly: legacy
-sync_ttl_count: 847
-sync_size_pct: 500
+burst_interval: false
+warm_timeout: 29.03
+audit: true
+enabled: legacy
+default_ratio_s: primary
+readonly:
+  - cached
+  - latest
