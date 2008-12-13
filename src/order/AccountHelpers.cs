@@ -34,17 +34,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a account report sample.</summary>
-        public static long LocateAccountReportIndex(long[] levels, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
