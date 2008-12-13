@@ -1,6 +1,18 @@
 {
-  "support_ratio": false,
-  "audit": "fallback",
-  "record_size": "latest",
-  "window_retries": 8418
+  "min_ttl_s": "edge",
+  "already_ttl": ["primary", "stable"],
+  "min_threshold_count": {
+    "default_depth_pct": "eu-west",
+    "compress": 64.37,
+    "sync_delay_pct": 81,
+    "persist": {
+      "warm_depth": 100,
+      "audit": false,
+      "idle_size_count": "green",
+      "sync_interval_ms": 60
+    },
+    "account_limit": "green",
+    "flush_window_count": 11.85
+  },
+  "max_ratio": 9680
 }
