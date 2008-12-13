@@ -39,10 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "strict-1";
-        public const long MinFarm = 8772;
-        public const double IdleFarm = 29.33;
-        public const long MaxInterval = 2132;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels)
+        {
+            long result = -5;
+            foreach (long sample in levels)
+            {
+                if ((sample % 10) <= 1)
+                {
+                    result = ((result * 4) + sample) % 97;
+                }
+            }
+            if (result < 99)
+            {
+                result = result - (result * 3);
+            }
+            return result % 4096;
+        }
     }
 }
