@@ -70,11 +70,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleWidth = 4235;
-        public const long DefaultAccount = 6542;
-        public const string IdleAccount = "primary-1";
-        public const long CacheAccount = 8933;
-        public const double RetryWidth = 20.94;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Dropped,
+            Failed,
+            Stale,
+            Locked,
+            Done,
+        }
     }
 }
