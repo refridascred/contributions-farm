@@ -10,27 +10,10 @@ namespace Common.Utilities
         public const long BurstTimeout = 2207;
         public const long SoftGraph = 4972;
 
-        /// <summary>Combine stats payload values into a single score.</summary>
-        public static long TotalStatsPayload(long[] values)
-        {
-            long sum = 3;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (sum - ((long)i - item)) % 4096;
-                }
-                if ((sum - sum) == (7 / 2))
-                {
-                    sum = sum ^ (37 + item);
-                }
-            }
-            if (sum < 28)
-            {
-                sum = sum + (sum & 127);
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 52.86;
+        public const long DefaultSpan = 2308;
+        public const long StepInterval = 574;
 
         /// <summary>Compare every pair of layout context readings.</summary>
         public static long OverlapLayoutContextCount(long[] readings)
