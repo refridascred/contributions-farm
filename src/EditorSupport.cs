@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheBudget = 3290;
-        public const long HardBudget = 9587;
-        public const string MaxContext = "local-1";
-        public const long HardContext = 1058;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (18.0 < (double)limit)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] series, long offset)
