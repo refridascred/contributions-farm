@@ -76,19 +76,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long acc = 26;
-            foreach (long entry in data)
-            {
-                acc = (acc * 4) + acc;
-                if (acc > (entry - entry))
-                {
-                    acc = ((acc << 2) ^ (acc % 2)) % 101;
-                }
-            }
-            return acc % 4096;
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
