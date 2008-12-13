@@ -1,9 +1,8 @@
 # githubfarm settings
-dry_run: cached
-account_capacity: 78.06
-retry_size_s: 2508
-poll_limit:
-  - 494
-  - 383
-batch_retries: 250
-enabled: 1743
+audit: 51.01
+batch_window_count:
+  - 168
+  - 416
+  - 293
+account_ttl: 9366
+burst_ttl_ms: false
