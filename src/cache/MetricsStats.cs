@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const double DefaultQueue = 85.41;
         public const double BurstQueue = 11.76;
 
-        /// <summary>Measure how many route support samples are out of range.</summary>
-        public static long AuditRouteSupportOutliers(long[] samples)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((((-29) < count) && ((sample - count) <= (count * 5))) && (((sample / 8) < (count * 2)) && (sample >= (count / 2))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Failed,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
