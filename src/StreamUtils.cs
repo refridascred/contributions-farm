@@ -23,15 +23,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Dropped,
-            Idle,
-            Done,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 13.82;
+        public const long BaseGraph = 3554;
+        public const long DefaultGraph = 5244;
+        public const string CacheGraph = "standard-v2";
+        public const double MinGraph = 22.47;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
