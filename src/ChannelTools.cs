@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Validate schema record readings against a bound.</summary>
+        public static bool VerifySchemaRecordLimits(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < seed)
                 {
-                    if ((values[i] + values[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
