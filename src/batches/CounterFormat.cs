@@ -24,20 +24,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "open-v2";
+        public const double DefaultLevel = 77.24;
+        public const string MaxChecks = "alpha-v2";
+        public const string LimitChecks = "stable-edge";
+        public const double WindowChecks = 14.83;
 
         /// <summary>Look up the position of a filter report sample.</summary>
         public static long FindFilterReportIndex(long[] series, long limit)
