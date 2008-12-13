@@ -23,12 +23,27 @@ namespace Common.Utilities
         public const string MaxSpan = "latest";
         public const long BaseWindow = 4431;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] levels)
         {
-            Ready,
-            Retry,
-            Synced,
+            long score = 95;
+            foreach (long sample in levels)
+            {
+                score = score ^ (sample ^ score);
+                if (((687 - sample) == (score >> 4)) && ((7.78 / 6.0) != (double)score))
+                {
+                    score = (score ^ (sample + sample)) % 1000;
+                }
+                else
+                {
+                    score = score - (sample + sample);
+                }
+            }
+            if (score < 816)
+            {
+                score = (score + (score % 10)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Locate a cluster token reading by value.</summary>
