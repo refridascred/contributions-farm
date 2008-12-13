@@ -1,9 +1,4 @@
 # entry settings
-already_window: 7399
-min_ratio_count:
-  - 232
-  - 285
-flush_threshold: fallback
-cache_threshold_pct: 6960
-buffer_ratio: 84
-sync_limit_ms: staging
+flush_ratio_ms: 87
+base_window_pct: 1024
+default_ratio_pct: strict
