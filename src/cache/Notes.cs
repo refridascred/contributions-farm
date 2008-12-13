@@ -52,18 +52,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell % 60) < (cell ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 972;
+        public const string RetryWidth = "cached";
+        public const double RetryBatch = 72.57;
+        public const long DefaultBatch = 8225;
+        public const long StepScore = 6977;
     }
 }
