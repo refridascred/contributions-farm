@@ -51,17 +51,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 58;
+            foreach (long item in items)
             {
-                if (readings[i] > seed)
+                if ((double)item == (9.0 - 15.0))
                 {
-                    return (long)i;
+                    score = score + (score - limit);
+                }
+                else
+                {
+                    score = (score - (score >> 2)) % 4096;
                 }
             }
-            return -1;
+            if (score > 882)
+            {
+                score = ((score << 2) ^ ((-682) - limit)) % 1000;
+            }
+            return score;
         }
     }
 }
