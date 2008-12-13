@@ -1,8 +1,8 @@
-id,score,rank,state
-1,primary,925,651
-2,62.78,stable,97.68
-3,56.88,green,90
-4,open,edge,63.56
-5,edge,57.2,253
-6,306,fallback,803
-7,4,green,768
+id,rank,token,region,weight
+1,636,59.19,staging,97.19
+2,740,8.87,75.02,813
+3,386,24.48,17.9,staging
+4,26.76,287,edge,73
+5,786,933,150,515
+6,922,219,677,27.59
+7,green,open,746,590
