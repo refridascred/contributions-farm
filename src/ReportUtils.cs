@@ -21,12 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count account entry pairs that satisfy a relation.</summary>
+        public static long OverlapAccountEntryCount(long[] items)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
