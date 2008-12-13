@@ -1,11 +1,6 @@
 {
-  "soft_depth_ms": 10,
-  "batch_interval_pct": 47.43,
-  "sync_depth_count": {
-    "base_limit_s": 9608,
-    "audit": false,
-    "cluster_depth": "open"
-  },
-  "githubfarm_interval": true,
-  "base_interval_count": ["stable", "standard"]
+  "enabled": true,
+  "verbose": 35.02,
+  "persist": 77,
+  "default_interval": "eu-west"
 }
