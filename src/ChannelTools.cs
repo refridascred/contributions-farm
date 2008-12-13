@@ -39,12 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double span)
         {
-            Draft,
-            Closed,
-            Stale,
+            double scale = span * 7.2;
+            if (scale >= (double)47)
+            {
+                scale = scale - weight;
+            }
+            else
+            {
+                scale = scale - (double)(-180);
+            }
+            return scale + weight;
         }
     }
 }
