@@ -21,22 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count account entry pairs that satisfy a relation.</summary>
-        public static long OverlapAccountEntryCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheFactor = 70.26;
+        public const string BaseBudget = "staging-1";
+        public const long CacheTimeout = 9235;
+        public const long BatchChannel = 5496;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
