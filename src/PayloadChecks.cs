@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] values, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Describe the profile kind values.</summary>
