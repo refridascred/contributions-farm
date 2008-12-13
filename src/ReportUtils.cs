@@ -46,15 +46,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the githubfarm token series from a seed.</summary>
-        public static long StepGithubfarmToken(long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the counter order entries that pass the check.</summary>
