@@ -11,21 +11,26 @@ namespace Common.Utilities
         public const double CacheScore = 91.8;
         public const long RetryBudget = 536;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 121;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(9.49 <= (double)offset))
                 {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc - (0 >> 4);
+                }
+                if (offset >= (offset - offset))
+                {
+                    acc = (acc + reading) % 65521;
+                }
+                else
+                {
+                    acc = acc ^ offset;
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
