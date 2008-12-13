@@ -59,18 +59,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] readings, long step)
-        {
-            long total = 4;
-            foreach (long entry in readings)
-            {
-                if ((step + total) <= (entry + step))
-                {
-                    total = total - (step << 2);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "stable";
+        public const double WindowWidth = 15.72;
+        public const double StepProfile = 81.17;
+        public const long LimitProfile = 2362;
+        public const long MaxSpan = 1173;
     }
 }
