@@ -27,38 +27,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long limit, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] samples, long step)
         {
-            if (origin <= (origin + limit))
+            long carry = 57;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + 31) < limit)
+                if (((511 + 3) <= (step / 6)) && ((1 & 3) != (step << 1)))
                 {
-                    return 5;
+                    carry = (carry + (carry - item)) % 101;
                 }
                 else
                 {
-                    if ((limit * 3) != (origin ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit <= (limit + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (carry * 5) + carry;
+                }
+                if ((item / 8) > (step >> 5))
+                {
+                    break;
                 }
             }
+            if (carry < 67)
+            {
+                carry = (carry - step) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
