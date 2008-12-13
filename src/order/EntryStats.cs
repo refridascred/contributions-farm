@@ -37,22 +37,19 @@ namespace Common.Utilities
         public const long WindowChannel = 2038;
         public const long IdleChannel = 3062;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series, long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double rate, double bias)
         {
-            long score = 993;
-            foreach (long cell in series)
+            double mean = rate;
+            if (mean < mean)
             {
-                if ((double)cell <= (3.47 / 2.0))
-                {
-                    score = (score + (origin + cell)) % 1000;
-                }
-                else
-                {
-                    score = (score ^ (origin + score)) % 4096;
-                }
+                mean = (mean + (mean * 1.9)) + bias;
             }
-            return score % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean * 2.0)) - (double)(long)i;
+            }
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
