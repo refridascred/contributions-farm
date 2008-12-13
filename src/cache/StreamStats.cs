@@ -28,12 +28,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] items, long limit)
         {
-            Done,
-            Ready,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter entry.</summary>
