@@ -37,11 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
