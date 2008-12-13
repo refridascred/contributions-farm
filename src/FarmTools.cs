@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] values, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((value / 5) < (count >> 3)))
+                if (series[i] >= offset)
                 {
-                    count = (count + 3) + floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a commits record.</summary>
