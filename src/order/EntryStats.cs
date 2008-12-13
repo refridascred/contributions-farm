@@ -53,19 +53,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit editor already readings against a rule.</summary>
-        public static long TallyEditorAlreadyHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)hits == (double)datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8990;
+        public const long DefaultBatches = 6998;
+        public const string RetryBatches = "standard-v2";
+        public const string MaxBatches = "alpha-v2";
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long BucketFilter(long target, long seed)
