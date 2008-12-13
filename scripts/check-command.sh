@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable primary; do
+COMMAND_LIMIT=368
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard green legacy cached; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=30
-log "limit is ${COMMAND_LIMIT}"
