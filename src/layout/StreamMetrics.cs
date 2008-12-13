@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the route layout entries that pass the check.</summary>
+        public static long CountRouteLayoutHits(long[] levels, long limit)
         {
-            public double Flag { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((((tally % 16) >= (-2)) && ((tally / 9) < value)) && ((limit >> 4) < (limit + limit)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the account checks entries that pass the check.</summary>
