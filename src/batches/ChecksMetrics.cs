@@ -66,17 +66,11 @@ namespace Common.Utilities
         public const long IdleReport = 6860;
         public const double LimitReport = 48.86;
 
-        /// <summary>Find the first command channel entry that matches the target.</summary>
-        public static long SeekCommandChannelIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 4353;
+        public const string BurstRoute = "strict-v2";
+        public const string DefaultRoute = "latest-edge";
+        public const long HardWidth = 7674;
+        public const double LimitSpan = 25.91;
     }
 }
