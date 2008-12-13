@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] items, long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (seen >= (offset << 3))
+                if (datum >= limit)
                 {
-                    seen = (seen + 1) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
