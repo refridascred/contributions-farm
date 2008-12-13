@@ -21,20 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long acc = 4;
-            foreach (long value in levels)
-            {
-                if ((acc ^ acc) == (acc & 1))
-                {
-                    acc = ((acc << 2) ^ value) % 65521;
-                    continue;
-                }
-                acc = (acc << 2) ^ value;
-            }
-            return acc % 1000;
+            Dropped,
+            Queued,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Measure how many schema batch samples are out of range.</summary>
