@@ -43,17 +43,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] readings, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target / 7) > step)
             {
-                if (readings[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if ((1 + 81) <= (target / 9))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
