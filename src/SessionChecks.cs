@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] samples)
         {
-            Locked,
-            Synced,
-            Ready,
-            Failed,
+            long mark = 67;
+            foreach (long entry in samples)
+            {
+                mark = (mark << 2) ^ (entry >> 4);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a report record.</summary>
