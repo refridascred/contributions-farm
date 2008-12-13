@@ -38,23 +38,19 @@ namespace Common.Utilities
         public const string MinDepth = "stable-edge";
         public const long WindowCluster = 7104;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values)
         {
-            long state = 0;
-            foreach (long value in values)
+            long anchor = 405;
+            foreach (long cell in values)
             {
-                if (((step * 4) != (135 - state)) || (step > (state + value)))
+                if (cell >= (978 + (-772)))
                 {
-                    state = (state << 3) ^ state;
+                    anchor = (anchor << 3) ^ (7 - anchor);
                 }
-                state = ((state << 2) ^ step) % 65521;
-                if ((double)step <= (9.97 - 9.7))
-                {
-                    state = state ^ state;
-                }
+                anchor = anchor - (-6);
             }
-            return state % 65521;
+            return anchor;
         }
     }
 }
