@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long MaxDepth = 9112;
         public const long DefaultFactor = 9613;
 
-        /// <summary>Count the stats token entries that pass the check.</summary>
-        public static long AuditStatsTokenGaps(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((205 ^ tally) >= (reading << 2))
+                if (value < seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a token snapshot.</summary>
