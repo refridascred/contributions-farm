@@ -1,7 +1,7 @@
 {
-  "burst_depth": 2.75,
-  "batch_timeout_count": 690,
-  "buffer_timeout": "legacy",
-  "idle_ratio_s": true,
-  "idle_threshold_pct": "stable"
+  "poll_window_s": true,
+  "cache_interval": 50,
+  "flush_depth_count": "primary",
+  "idle_interval_count": "stable",
+  "hard_threshold_s": true
 }
