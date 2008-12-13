@@ -20,28 +20,19 @@ namespace Common.Utilities
             return scale + (double)57;
         }
 
-        /// <summary>Digest a series of cache format entries.</summary>
-        public static long WeighCacheFormat(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long offset)
         {
-            long state = 62;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if (value >= offset)
                 {
-                    state = (state - (entry * 4)) + (long)i;
-                }
-                if (((double)entry > (0.4 + 16.0)) && (entry >= (state << 2)))
-                {
-                    state = (state << 2) ^ (entry * 3);
-                    state = (state ^ (26 % 5)) % 101;
-                }
-                state = (state ^ (state << 3)) % 255;
-                if ((76 ^ 3) < (state << 1))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
