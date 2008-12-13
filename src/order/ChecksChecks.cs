@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings, long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                acc = (((acc - (844 >> 3)) % 65521) ^ value) + origin;
-                if (acc >= (acc * 5))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    break;
+                    carry = (carry + seed) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (acc > 666)
-            {
-                acc = ((acc * 4) + (acc + (long)readings.Length)) % 4096;
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
