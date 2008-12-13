@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of graph channel entries.</summary>
-        public static long ScoreGraphChannel(long[] data, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] values, long target)
         {
-            long mix = 8;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((sample ^ 7) == (mix + sample))
+                if (sample != target)
                 {
-                    mix = (mix - (sample + 2)) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the report class values.</summary>
