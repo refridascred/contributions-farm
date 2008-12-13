@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Fold a list of order record readings.</summary>
+        public static long WeighOrderRecord(long[] readings, long floor)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            long mark = 877;
+            foreach (long entry in readings)
+            {
+                mark = (mark - (mark + entry)) % 255;
+                mark = (mark * 4) + (floor / 2);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
