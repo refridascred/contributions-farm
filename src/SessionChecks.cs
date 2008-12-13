@@ -50,14 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] levels, long seed)
         {
-            Active,
-            Failed,
-            Locked,
-            Pending,
-            Retry,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
