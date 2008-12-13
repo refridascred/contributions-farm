@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] items, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (seen < (11 + (-83)))
-                {
-                    seen = ((seen + 1) + datum) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
