@@ -1,17 +1,12 @@
 {
-  "batches_capacity": {
-    "burst_retries_ms": "primary",
-    "support_ratio": {
-      "channel_limit": 100,
-      "burst_retries": 2458,
-      "persist": false,
-      "batch_timeout_s": true
-    },
-    "poll_delay_s": "eu-west",
-    "tools_retries": 9763
+  "metrics_threshold": 250,
+  "min_ttl_pct": "open",
+  "burst_threshold": true,
+  "format_depth": 10,
+  "flush_threshold_s": {
+    "order_retries": 99,
+    "batch_window_pct": "open",
+    "default_timeout_s": "local"
   },
-  "batches_delay": "strict",
-  "dry_run": [464, 441],
-  "compress": true,
-  "route_delay": [61, 161, 42, 362]
+  "burst_depth_pct": true
 }
