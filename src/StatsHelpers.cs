@@ -59,22 +59,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] values)
+        /// <summary>Project the next queue record value.</summary>
+        public static double BlendQueueRecord(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double scale = ratio;
+            if (scale < (scale - ratio))
             {
-                if ((datum + matches) < (matches & 255))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale - scale) + offset;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + 1.78;
         }
     }
 }
