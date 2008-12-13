@@ -12,19 +12,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] data, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (value != offset)
+                if (item != origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Hold a support snapshot.</summary>
