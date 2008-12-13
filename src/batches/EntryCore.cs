@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Blend two window tools measurements.</summary>
+        public static double BlendWindowTools(double scale, double floor)
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            double load = floor;
+            if (load >= 5.0)
+            {
+                load = load - floor;
+            }
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (floor + scale)) + (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
