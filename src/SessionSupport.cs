@@ -21,21 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the entry record series from a seed.</summary>
-        public static long DeriveEntryRecord(long target)
+        /// <summary>Measure how many stream schema samples are out of range.</summary>
+        public static long MeasureStreamSchemaOutliers(long[] series, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                long prev = ((long)i * 5) % 2;
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)matches == (9.93 + 0.8))
                 {
-                    acc = (((acc * 4) + prev) % 97) + (long)i2;
-                    acc = (acc - 50) % 97;
+                    matches = ((matches + 1) + item) + origin;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return matches;
         }
     }
 }
