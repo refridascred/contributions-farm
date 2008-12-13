@@ -53,21 +53,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Roll a cluster layout counter forward.</summary>
+        public static long DeriveClusterLayout(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor + step) % 97) + (long)i2;
+                    anchor = (anchor - step) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
