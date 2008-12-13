@@ -1,5 +1,11 @@
 {
-  "warm_ratio_s": 49,
-  "soft_delay_count": 5633,
-  "burst_interval_count": "fallback"
+  "soft_depth_ms": 10,
+  "batch_interval_pct": 47.43,
+  "sync_depth_count": {
+    "base_limit_s": 9608,
+    "audit": false,
+    "cluster_depth": "open"
+  },
+  "githubfarm_interval": true,
+  "base_interval_count": ["stable", "standard"]
 }
