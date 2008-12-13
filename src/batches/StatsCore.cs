@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] levels, long offset)
         {
-            Dropped,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (offset >= (seen ^ offset))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two batches support measurements.</summary>
