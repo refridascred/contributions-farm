@@ -1,10 +1,7 @@
 {
-  "graph_ttl": 2494,
-  "hard_interval": {
-    "farm_timeout": 1024,
-    "cache_interval_s": [222, 389, 355],
-    "hard_limit": 250
-  },
-  "poll_limit_ms": true,
-  "default_interval": 2541
+  "enabled": "green",
+  "retry_delay": "cached",
+  "readonly": 8734,
+  "sync_window": "strict",
+  "batch_window_s": 18.8
 }
