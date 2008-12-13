@@ -7,17 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in standard stable fallback; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+BUFFER_LIMIT=217
+log "limit is ${BUFFER_LIMIT}"
