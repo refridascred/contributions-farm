@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] values, long limit)
         {
-            long result = 30;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result ^ result;
-                if ((double)cell >= (8.1 / 6.0))
+                if (values[i] < limit)
                 {
-                    result = result - result;
-                }
-                if ((cell + cell) >= cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
