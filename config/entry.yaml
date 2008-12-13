@@ -1,13 +1,6 @@
 # entry settings
-enabled: green
-retry_threshold_count:
-  readonly: latest
-  dry_run: 250
-  verbose: 6354
-  stream_threshold: eu-west
-  retry_depth: primary
-counter_limit:
-  - latest
-  - staging
-  - open
-  - fallback
+context_size: 88.78
+soft_delay_ms: false
+burst_window: 58.86
+window_ttl: 3947
+persist: false
