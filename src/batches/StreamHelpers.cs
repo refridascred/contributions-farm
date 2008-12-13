@@ -67,17 +67,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a notes command sample.</summary>
-        public static long LocateNotesCommandIndex(long[] series, long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Dropped,
         }
     }
 }
