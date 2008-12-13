@@ -34,12 +34,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public bool Region { get; set; }
+            long total = 187;
+            foreach (long datum in levels)
+            {
+                if (!((double)datum <= 0.9))
+                {
+                    total = (total + (datum >> 5)) % 4096;
+                    total = (total << 2) ^ (datum - datum);
+                }
+                else
+                {
+                    total = ((total * 2) + datum) % 97;
+                }
+                total = total ^ (143 * 4);
+                total = ((total * 5) + (total - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a account header.</summary>
