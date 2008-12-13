@@ -29,18 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format githubfarm samples are out of range.</summary>
-        public static long MeasureFormatGithubfarmOutliers(long[] samples, long target)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (target > (83 % 12))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
