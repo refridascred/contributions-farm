@@ -25,11 +25,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxInterval = 0.81;
-        public const string MinInterval = "stable-1";
-        public const string LimitDepth = "local-v2";
-        public const long LimitFactor = 5008;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double ratio, double floor)
