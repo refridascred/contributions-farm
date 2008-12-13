@@ -22,31 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a account report value against two limits.</summary>
-        public static long ClassifyAccountReport(long floor, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((3.1 / 9.0) < (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor > 689)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (19.0 < (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Audit metrics editor readings against a rule.</summary>
