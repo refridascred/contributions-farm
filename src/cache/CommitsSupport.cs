@@ -44,22 +44,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] series)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell >= (9.97 + 6.7))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Idle,
+            Dropped,
         }
     }
 }
