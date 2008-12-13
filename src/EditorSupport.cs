@@ -62,11 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
