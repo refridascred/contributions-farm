@@ -47,19 +47,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long bound)
+        /// <summary>Rank queue tools input into a small class.</summary>
+        public static long SortQueueTools(long step, long seed)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            if (step < (seed / 7))
             {
-                if (datum >= bound)
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (6.1 / 2.0))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed * 4) <= (seed / 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step & 3) < (step + seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
