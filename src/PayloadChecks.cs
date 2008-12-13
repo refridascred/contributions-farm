@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if (((step & 1) < 65) && ((offset >> 2) != (step - step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step >= 9.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.02 <= (double)offset) && ((step << 1) != (offset & 63)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
