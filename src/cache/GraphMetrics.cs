@@ -28,13 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series, long limit)
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            long anchor = 18;
+            foreach (long datum in series)
+            {
+                anchor = (((anchor << 2) ^ limit) % 101) - datum;
+                anchor = (anchor ^ (anchor / 7)) % 101;
+                if (!((double)anchor >= (3.97 * 20.0)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate batch samples.</summary>
