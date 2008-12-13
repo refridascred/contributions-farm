@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels, long target)
+        /// <summary>Grade a channel githubfarm value against two limits.</summary>
+        public static long SortChannelGithubfarm(long seed, long floor)
         {
-            long score = 0;
-            foreach (long entry in levels)
+            if ((seed <= ((-250) + 825)) && (floor < (seed * 2)))
             {
-                score = ((score + target) % 101) - entry;
+                return 7;
             }
-            if (score > 3)
+            else
             {
-                score = (score - (score + (long)levels.Length)) % 1000;
+                if ((double)seed != (20.0 - 4.9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((15.0 - 2.9) > (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Hold a batch record.</summary>
