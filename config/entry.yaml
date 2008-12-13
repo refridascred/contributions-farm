@@ -1,39 +1,19 @@
 # entry settings
-hard_ttl_count: strict
-verbose:
-  dry_run: local
-  max_interval_s: 22.55
-  compress: local
-  checks_interval: legacy
-account_ratio:
-  idle_capacity_s: blue
-  base_ttl:
-    entry_depth: 540
-    entry_window: primary
-    max_limit:
-      - 39
-      - 462
-    idle_capacity_count: 30
-    max_window_count: false
-    entry_capacity: 60
-  warm_ttl_ms:
-    - 253
-    - 67
-    - 311
-  hard_threshold:
-    burst_depth:
-      - local
-      - edge
-    schema_delay: 32
-    verbose:
-      - blue
-      - standard
-      - standard
-      - latest
-    default_capacity_count: local
-batch_depth_ms:
-  readonly: 15.58
-  strict: true
-  cache_limit: 65
-  hard_retries: local
-sync_ttl_pct: 6879
+poll_size_ms: 54
+session_limit:
+  enabled: 1488
+  dry_run:
+    - 306
+    - 163
+    - 470
+  max_window: 100
+  burst_size: staging
+  githubfarm_delay:
+    - 125
+    - 14
+    - 380
+  readonly:
+    report_threshold: primary
+    persist: 1024
+    poll_ttl: 30
+poll_delay: true
