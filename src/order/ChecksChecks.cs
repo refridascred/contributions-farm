@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
