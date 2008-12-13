@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate cache token samples.</summary>
-        public static long DigestCacheToken(long[] series)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long state = -341;
-            foreach (long reading in series)
-            {
-                state = (state - reading) % 255;
-            }
-            return state % 97;
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
