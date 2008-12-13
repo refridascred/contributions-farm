@@ -44,22 +44,17 @@ namespace Common.Utilities
         public const double HardContext = 76.96;
         public const string StepContext = "stable-edge";
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long limit)
         {
-            long score = 272;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor % 60) == (reading - reading))
+                if (series[i] <= limit)
                 {
-                    score = score ^ score;
-                }
-                if ((floor - reading) <= (score & 7))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first queue entry entry that matches the target.</summary>
