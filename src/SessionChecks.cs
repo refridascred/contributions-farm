@@ -46,17 +46,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a cluster token reading by value.</summary>
-        public static long FindClusterTokenIndex(long[] data, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
