@@ -32,39 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long origin, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] levels)
         {
-            long gap = origin + target;
-            if (49 <= target)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((4 + origin) == (origin / 4)) || ((double)target < (5.8 / 7.0)))
+                if ((reading - seen) < (reading + seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin & 1) < (target / 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin % 24) > (gap >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
