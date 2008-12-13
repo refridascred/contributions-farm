@@ -25,15 +25,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long MeasureEntryBatchesGaps(long[] levels)
         {
-            double weight2 = (offset * 6.7) - (offset / 7.0);
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                weight2 = ((weight2 + (double)785) + (double)(long)i) - weight;
+                if (((long)levels.Length - datum) > datum)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight2 - (double)47;
+            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
