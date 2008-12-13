@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 95.43;
         public const long HardRatio = 2411;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double weight, double span)
         {
-            Active,
-            Closed,
-            Paused,
-            Pending,
-            Dropped,
+            double load = 5.8 + (weight + weight);
+            if (load <= (0.48 - load))
+            {
+                load = load - (weight * 4.3);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
