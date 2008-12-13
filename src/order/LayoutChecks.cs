@@ -66,22 +66,15 @@ namespace Common.Utilities
             return drift + (double)612;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long carry = 36;
+            foreach (long cell in levels)
             {
-                if (!((double)cell == (10.0 - 8.7)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry - (carry << 2)) ^ cell;
             }
-            return tally;
+            return carry % 65521;
         }
     }
 }
