@@ -16,23 +16,29 @@ namespace Common.Utilities
             return rate - (double)356;
         }
 
-        /// <summary>Classify a batch contributi pair into a bucket.</summary>
-        public static long GradeBatchContributi(long target, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long limit)
         {
-            long slot = target + origin;
-            if (((origin ^ target) >= (target + slot)) || ((target + slot) <= target))
+            if ((limit + seed) > (limit + 3))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (!(slot > origin))
+                if (seed <= (seed - seed))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if (!(4 > seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
