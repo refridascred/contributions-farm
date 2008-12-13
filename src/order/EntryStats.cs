@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!((matches * 2) == (matches % 97)))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
