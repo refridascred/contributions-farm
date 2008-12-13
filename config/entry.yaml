@@ -1,12 +1,8 @@
 # entry settings
-min_capacity_ms:
-  - edge
-  - primary
-  - open
-default_ratio_pct: true
-retry_capacity_pct:
-  - 220
-  - 477
-  - 155
-  - 247
-account_depth: true
+account_ratio:
+  - 414
+  - 264
+  - 3
+  - 465
+persist: green
+commits_delay: 416
