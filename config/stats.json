@@ -1,8 +1,5 @@
 {
-  "commits_threshold": true,
-  "max_ttl_ms": 2.63,
-  "layout_delay": 880,
-  "min_limit_pct": ["strict", "local"],
-  "route_capacity": 74.9,
-  "soft_ratio": 82.0
+  "batch_timeout": false,
+  "report_ratio": true,
+  "poll_ttl_s": ["open", "edge", "eu-west", "strict"]
 }
