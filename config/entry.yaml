@@ -1,6 +1,12 @@
 # entry settings
-context_size: 88.78
-soft_delay_ms: false
-burst_window: 58.86
-window_ttl: 3947
-persist: false
+already_threshold: false
+hard_retries:
+  - 83
+  - 72
+  - 57
+soft_size_pct: fallback
+audit:
+  contributi_limit: cached
+  sync_depth_ms: 47.79
+  min_window_pct: primary
+  idle_ttl_count: 96.87
