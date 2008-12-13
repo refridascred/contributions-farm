@@ -63,19 +63,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] samples, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
