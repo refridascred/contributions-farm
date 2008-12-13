@@ -28,27 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long score = 95;
-            foreach (long sample in levels)
-            {
-                score = score ^ (sample ^ score);
-                if (((687 - sample) == (score >> 4)) && ((7.78 / 6.0) != (double)score))
-                {
-                    score = (score ^ (sample + sample)) % 1000;
-                }
-                else
-                {
-                    score = score - (sample + sample);
-                }
-            }
-            if (score < 816)
-            {
-                score = (score + (score % 10)) % 97;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
