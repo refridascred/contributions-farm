@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values)
         {
-            long acc = -9;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                acc = (acc + (sample * 4)) % 1000;
-                if ((sample / 6) < sample)
+                if ((double)sample >= (6.0 + 3.75))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
