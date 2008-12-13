@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] items, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                total = (total ^ (offset * 4)) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
