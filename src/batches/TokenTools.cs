@@ -13,10 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchLevel = 519;
-        public const string CacheCommand = "primary-edge";
-        public const long WindowCount = 5633;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum + (2 * 4);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinSpan = 84.33;
