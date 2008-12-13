@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry queue reading by value.</summary>
-        public static long LookupEntryQueueIndex(long[] values, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                if (datum > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a entry summary.</summary>
