@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long limit)
         {
-            long state = 25;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample * 5) <= sample)
+                if ((series[i] < limit) && ((series[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                state = ((state << 2) ^ (0 % 97)) % 255;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the contributi state values.</summary>
