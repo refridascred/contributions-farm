@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long origin, long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long floor)
         {
-            long delta = origin + seed;
-            if (!((origin + seed) < seed))
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((delta < (origin + 769)) || ((delta * 2) < (delta / 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed == (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (delta <= seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the profile kind values.</summary>
