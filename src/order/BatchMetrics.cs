@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate command order samples.</summary>
-        public static long DigestCommandOrder(long[] samples, long seed)
-        {
-            long mix = 35;
-            foreach (long sample in samples)
-            {
-                if (2.5 >= (double)sample)
-                {
-                    mix = (((mix * 2) + (sample - mix)) % 1000) + seed;
-                }
-                if ((mix % 7) >= 495)
-                {
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
-                if (!(sample < (mix & 3)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "stable-edge";
+        public const long IdleLevel = 4;
+        public const long DefaultInterval = 719;
+        public const long BatchSize = 9602;
+        public const double SoftSession = 53.21;
 
         /// <summary>Combine commits checks values into a single score.</summary>
         public static long CombineCommitsChecks(long[] values, long bound)
