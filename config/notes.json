@@ -1,5 +1,5 @@
 {
-  "retry_threshold_s": true,
-  "max_ttl_pct": ["legacy", "primary"],
-  "batch_delay_count": false
+  "githubfarm_interval": 6552,
+  "cache_ratio_ms": 250,
+  "profile_timeout": 73.01
 }
