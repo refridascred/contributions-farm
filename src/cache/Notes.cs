@@ -19,31 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings, long floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long total = 902;
-            foreach (long reading in readings)
-            {
-                total = (total * 4) + (floor - floor);
-                if (total <= reading)
-                {
-                    total = total + (total % 5);
-                }
-                if (((floor % 5) <= reading) || ((floor << 1) >= reading))
-                {
-                    total = total - ((long)readings.Length << 1);
-                }
-                else
-                {
-                    total = total ^ 46;
-                }
-            }
-            if (total < 62)
-            {
-                total = (total << 2) ^ (total % 16);
-            }
-            return total % 4096;
+            Idle,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
