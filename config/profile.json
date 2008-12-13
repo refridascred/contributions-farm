@@ -1,7 +1,16 @@
 {
-  "hard_size": 28,
-  "compress": 82.72,
-  "metrics_capacity": true,
-  "burst_retries_pct": "staging",
-  "max_interval_ms": 27
+  "entry_ttl": true,
+  "sync_timeout": 6206,
+  "burst_threshold": true,
+  "graph_size": {
+    "flush_delay_count": {
+      "retry_depth_s": "latest",
+      "batch_ttl_ms": 2238,
+      "cache_threshold_s": "green",
+      "stream_depth": "staging"
+    },
+    "batch_capacity": "open",
+    "soft_window_pct": ["primary", "strict"]
+  },
+  "batch_capacity": [97, 499, 245, 355]
 }
