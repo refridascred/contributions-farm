@@ -26,21 +26,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 406;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((18.0 - 2.4) <= 9.4)
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state + state) % 255) - value;
                 }
             }
-            return seen;
+            return state % 97;
         }
     }
 }
