@@ -1,34 +1,4 @@
 # support settings
-burst_ttl_s:
-  - 314
-  - 81
-  - 135
-  - 245
-hard_ratio_count: strict
-default_size_s:
-  readonly: 1024
-  audit: false
-  entry_threshold:
-    persist: 4501
-    min_ratio_s: 27
-    batches_threshold:
-      - 44
-      - 107
-      - 29
-    token_interval:
-      - green
-      - staging
-      - fallback
-  min_window_ms:
-    schema_retries: false
-    checks_timeout: stable
-    cache_capacity: 8894
-base_interval_pct: 88.19
-compress:
-  cache_delay: 38.95
-  filter_timeout:
-    - 25
-    - 121
-    - 290
-  audit: 250
-max_ratio_ms: staging
+max_interval_pct: true
+retry_ratio_ms: 48.26
+soft_depth: 83.52
