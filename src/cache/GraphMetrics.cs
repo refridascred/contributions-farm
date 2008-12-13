@@ -50,19 +50,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double weight, double span)
-        {
-            double weight2 = (weight * 2.7) / 2.0;
-            if (weight2 > (span - span))
-            {
-                weight2 = weight2 - (double)298;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - span) + (double)(long)i;
-            }
-            return weight2 - (weight2 / 6.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSize = 1240;
+        public const long LimitNotes = 5544;
+        public const long HardSpan = 5034;
+        public const long MaxNotes = 9348;
     }
 }
