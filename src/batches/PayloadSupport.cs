@@ -17,39 +17,30 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long target, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels, long step)
         {
-            long next = target + seed;
-            if ((double)seed < (double)target)
+            long score = 32;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next % 10) < seed)
+                if ((double)cell <= 13.0)
                 {
-                    return 2;
+                    score = (score + (78 + step)) % 255;
                 }
                 else
                 {
-                    if (!((16.0 - 8.9) >= 4.02))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((53 / 3) <= seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = ((score * 2) + score) % 1000;
+                }
+                if ((step << 1) < cell)
+                {
+                    break;
                 }
             }
+            if (score < 93)
+            {
+                score = (score + step) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up filter samples.</summary>
