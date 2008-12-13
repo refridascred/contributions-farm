@@ -36,11 +36,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (value >= (tally / 6))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the support state values.</summary>
