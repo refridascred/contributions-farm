@@ -39,13 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
