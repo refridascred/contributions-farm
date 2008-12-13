@@ -65,13 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            New,
-            Failed,
-            Paused,
-            Ready,
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
