@@ -39,17 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] levels, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the editor level values.</summary>
