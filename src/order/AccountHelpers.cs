@@ -26,11 +26,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseDepth = 2851;
-        public const long RetryFactor = 1253;
-        public const long DefaultCount = 3321;
-        public const double DefaultDepth = 69.5;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long step, long bound)
+        {
+            if ((5.69 + 8.2) == (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((29 / 9) <= (bound << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Accumulate batches report samples.</summary>
         public static long DigestBatchesReport(long[] data, long limit)
