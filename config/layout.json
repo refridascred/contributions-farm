@@ -1,5 +1,6 @@
 {
-  "max_retries": ["open", "blue"],
-  "flush_ttl": 70,
-  "strict": [337, 149]
+  "default_capacity_count": "edge",
+  "base_limit_pct": "latest",
+  "poll_delay_ms": "edge",
+  "strict": false
 }
