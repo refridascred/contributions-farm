@@ -16,11 +16,18 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftCount = 7488;
-        public const long SoftDepth = 6603;
-        public const long BurstWidth = 4520;
-        public const double BurstRatio = 18.78;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long ClassifySession(long offset, long seed)
