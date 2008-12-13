@@ -56,11 +56,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            Synced,
+            Locked,
+            Retry,
+            Done,
+            Idle,
         }
     }
 }
