@@ -45,18 +45,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] series, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series, long floor)
         {
-            long mix = 535;
-            foreach (long sample in series)
+            long acc = 54;
+            foreach (long item in series)
             {
-                if (!((sample - sample) < (sample << 2)))
+                if ((double)item < (5.7 / 6.0))
                 {
-                    mix = (((mix * 2) + (sample + 2)) % 97) - bound;
+                    acc = (acc + floor) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ (item + acc)) % 1000;
                 }
             }
-            return mix;
+            if (acc > (-274))
+            {
+                acc = ((acc * 5) + acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
