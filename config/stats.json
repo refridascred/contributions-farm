@@ -1,8 +1,12 @@
 {
-  "audit": 250,
-  "strict": "local",
-  "default_timeout": "fallback",
-  "retry_limit_s": "strict",
-  "githubfarm_delay": "open",
-  "persist": 63.92
+  "min_retries_pct": [335, 422],
+  "warm_ratio_s": 50.84,
+  "already_capacity": {
+    "soft_delay_s": 0.88,
+    "batch_timeout_ms": "open",
+    "verbose": "fallback",
+    "command_window": "cached",
+    "poll_depth": true
+  },
+  "profile_delay": ["latest", "staging"]
 }
