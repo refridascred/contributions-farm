@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long anchor = 2;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor - anchor) % 101) ^ datum;
-            }
-            return anchor;
+            Synced,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine commits checks values into a single score.</summary>
