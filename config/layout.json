@@ -1,6 +1,6 @@
 {
-  "max_ttl_pct": 83.34,
-  "already_delay": 1024,
-  "idle_retries_ms": 58.12,
-  "strict": "staging"
+  "idle_ratio": true,
+  "idle_interval_pct": 84,
+  "flush_capacity_pct": "latest",
+  "dry_run": 4109
 }
