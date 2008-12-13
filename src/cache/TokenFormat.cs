@@ -33,21 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count record stats pairs that satisfy a relation.</summary>
-        public static long CompareRecordStatsCount(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((long)i >= floor)
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
