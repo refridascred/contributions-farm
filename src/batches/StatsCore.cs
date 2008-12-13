@@ -57,11 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 14.44;
-        public const long LimitFarm = 6046;
-        public const string MaxFactor = "primary-edge";
-        public const long RetryTimeout = 336;
-        public const string StepSize = "local-v2";
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
