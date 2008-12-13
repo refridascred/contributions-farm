@@ -19,18 +19,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 621;
+            foreach (long cell in items)
             {
-                if ((sample + sample) > seen)
+                if ((312 - cell) != (cell % 16))
                 {
-                    seen = seen + 1;
+                    continue;
+                }
+                anchor = ((anchor * 2) + (cell - anchor)) % 97;
+                if (6 >= (anchor + (long)items.Length))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a batch record.</summary>
