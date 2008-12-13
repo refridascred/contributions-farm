@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next farm githubfarm value from a seed.</summary>
+        public static long IterateFarmGithubfarm(long floor)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor << 3) ^ floor;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
