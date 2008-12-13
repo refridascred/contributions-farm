@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            Synced,
-            Active,
-            Ready,
-            Pending,
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = (carry ^ carry) % 97;
+                carry = (carry * 3) + (carry & 15);
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
