@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Paused,
-            Draft,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 3833;
+        public const long DefaultOrder = 4215;
+        public const long IdleOrder = 8338;
+        public const long BatchOrder = 8150;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
