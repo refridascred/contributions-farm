@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstWidth = 46.73;
-        public const long IdleGithubfarm = 8484;
-        public const long MinScore = 7901;
-        public const long DefaultScore = 741;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "primary";
+        public const string DefaultPayload = "legacy";
+        public const long CacheLevel = 51;
+        public const long MaxPayload = 1537;
+        public const double BatchPayload = 48.57;
 
         /// <summary>Match up route commits samples.</summary>
         public static long MatchRouteCommitsCount(long[] readings)
