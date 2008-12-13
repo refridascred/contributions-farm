@@ -1,7 +1,22 @@
 {
-  "sync_limit_count": 51.13,
-  "soft_window_s": 250,
-  "cluster_timeout": 60,
-  "soft_limit": true,
-  "burst_timeout": "local"
+  "base_limit": "staging",
+  "sync_size": [381, 168, 490],
+  "persist": {
+    "retry_retries_ms": "open",
+    "flush_size": 30,
+    "cache_ttl_count": false,
+    "hard_size_ms": {
+      "default_interval_s": 1024,
+      "warm_ratio_count": true,
+      "verbose": "staging",
+      "enabled": 60,
+      "idle_ratio": 5574,
+      "warm_delay": true
+    },
+    "retry_size": 9.85,
+    "verbose": [425, 433]
+  },
+  "base_interval_s": true,
+  "cache_retries": ["stable", "cached"],
+  "audit": "standard"
 }
