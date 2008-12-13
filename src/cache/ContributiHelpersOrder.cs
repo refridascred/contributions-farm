@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const long HardBuffer = 1561;
         public const string BaseBuffer = "primary-1";
 
-        /// <summary>Accumulate command filter samples.</summary>
-        public static long TotalCommandFilter(long[] levels, long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long score = -89;
-            foreach (long cell in levels)
-            {
-                score = ((score + (33 >> 2)) % 1000) ^ cell;
-                if (score >= (seed - seed))
-                {
-                    score = ((score << 2) ^ (seed + 0)) % 97;
-                }
-            }
-            return score % 65521;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
