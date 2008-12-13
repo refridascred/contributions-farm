@@ -19,17 +19,13 @@ namespace Common.Utilities
         public const long MaxFilter = 4814;
         public const long WindowFilter = 4704;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] values, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
