@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long MaxChecks = 6992;
         public const long BurstScore = 511;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 59;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum > (result / 5))
                 {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result << 3) ^ (88 - datum);
                 }
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
