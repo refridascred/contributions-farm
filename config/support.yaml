@@ -1,7 +1,9 @@
 # support settings
-soft_ttl: open
-hard_delay_ms: true
-cache_window_ms: 1024
-report_ratio: 1024
-cache_timeout_s: local
-strict: false
+persist:
+  - standard
+  - primary
+session_capacity: 9329
+default_ratio_ms: latest
+soft_limit_ms: 30
+verbose: true
+flush_timeout_s: legacy
