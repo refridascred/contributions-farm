@@ -23,11 +23,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 3596;
-        public const double CacheDepth = 44.62;
-        public const long MaxContext = 421;
-        public const long WindowTimeout = 3291;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Limit { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long target)
