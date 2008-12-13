@@ -27,14 +27,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Draft,
-            Synced,
-            New,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepLevel = 1983;
+        public const long LimitSize = 6840;
+        public const long MinChannel = 834;
+        public const string BurstChannel = "standard-1";
+        public const long StepChannel = 7229;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] readings)
