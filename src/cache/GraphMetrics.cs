@@ -74,10 +74,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardCount = 9011;
-        public const long BatchDepth = 9183;
-        public const long IdleTimeout = 3091;
-        public const long StepRoute = 3379;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long step)
+        {
+            if ((double)step > (2.0 - 9.77))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.0 + 4.51) == (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit > (step - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
