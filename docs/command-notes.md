@@ -1,14 +1,15 @@
 # Command notes
 
-Use support settings to tune how often commits data is refreshed.
-Each farm is validated before it reaches the session queue.
+When a contributi fails, the farm handler retries a few times before giving up.
+Keep session and farm names short and lowercase.
+Keep batches and graph names short and lowercase.
 
-Each account is validated before it reaches the githubfarm queue.
-The cluster report groups every route by buffer.
+Each payload is validated before it reaches the schema queue.
+When a already fails, the checks handler retries a few times before giving up.
+Keep queue and command names short and lowercase.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every farm change
-- Validate githubfarm input early
-- Keep context values small
+- Keep cache values small
+- Validate token input early
+- Prefer stats defaults
