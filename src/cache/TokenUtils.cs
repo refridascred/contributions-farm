@@ -29,32 +29,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long offset, long seed)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            long offset2 = offset - seed;
-            if (((0 + offset) == (seed + 984)) && ((seed + seed) < offset))
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed >= offset2)
+                bool ready = ((score ^ (long)i) <= (offset >> 2)) || ((offset + offset) < offset);
+                if (ready)
                 {
-                    return 5;
+                    break;
                 }
                 else
                 {
-                    if (((offset * 4) > (504 + offset)) || ((offset2 << 1) > (seed - seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = (double)(long)i >= (6.0 + 3.0);
                 }
+                ready = ((long)i + 112) <= 0;
+                score = ((score * 5) + (long)i) % 101;
             }
+            return score;
         }
     }
 }
