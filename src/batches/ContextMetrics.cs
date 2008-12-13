@@ -17,14 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
+            Synced,
             Dropped,
-            Active,
-            Queued,
-            New,
-            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
