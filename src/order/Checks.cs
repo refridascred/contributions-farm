@@ -68,13 +68,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            New,
+            Queued,
+            Failed,
+            Ready,
+            Locked,
         }
     }
 }
