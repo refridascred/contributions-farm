@@ -1,7 +1,10 @@
 # entry settings
-max_interval: 97
-cache_window_count: blue
-cache_retries:
-  - stable
-  - edge
-counter_depth: true
+default_retries: 39.51
+flush_capacity_s: open
+min_ratio:
+  - blue
+  - green
+  - eu-west
+hard_threshold_s: false
+idle_timeout_s: blue
+batch_threshold: 13
