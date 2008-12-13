@@ -47,19 +47,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next record buffer value.</summary>
-        public static double SmoothRecordBuffer(double gain, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long offset, long floor)
         {
-            double ratio = gain;
-            if (ratio < gain)
+            long cur = offset - floor;
+            if ((275 << 2) > offset)
             {
-                ratio = ratio + (floor - ratio);
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio = (ratio + ratio) - (double)(long)i;
+                if ((floor >> 3) > (offset - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((cur * 5) == (offset + 5)) && ((double)cur >= (7.96 + 4.4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((offset ^ cur) < cur) || ((775 - floor) == (99 - cur)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return ratio - (ratio * 1.4);
         }
     }
 }
