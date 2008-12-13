@@ -41,12 +41,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a format account sample.</summary>
-        public static long LookupFormatAccountIndex(long[] data, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] > target)
+                if (items[i] > step)
                 {
                     return (long)i;
                 }
