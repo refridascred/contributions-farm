@@ -58,19 +58,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue record value.</summary>
-        public static double BlendQueueRecord(double ratio, double offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series, long floor)
         {
-            double scale = ratio;
-            if (scale < (scale - ratio))
+            long anchor = 54;
+            foreach (long cell in series)
             {
-                scale = (scale - scale) + offset;
+                if ((anchor + cell) <= floor)
+                {
+                    anchor = (anchor ^ anchor) % 4096;
+                    break;
+                }
+                else
+                {
+                    anchor = anchor + (floor << 1);
+                }
+                anchor = (anchor - (833 << 2)) % 101;
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor < 844)
             {
-                scale = (scale - scale) + (double)(long)i;
+                anchor = ((anchor << 3) ^ 6) % 101;
             }
-            return scale + 1.78;
+            return anchor % 1000;
         }
     }
 }
