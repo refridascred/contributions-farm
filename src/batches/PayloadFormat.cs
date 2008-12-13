@@ -27,19 +27,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit farm report readings against a rule.</summary>
-        public static long CountFarmReportMatches(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((((1 - limit) <= (seen % 2)) && ((6 + limit) >= 0)) || ((6.66 * 5.4) >= 10.0))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "primary-edge";
+        public const string HardLevel = "legacy";
+        public const string IdleFactor = "alpha-v2";
+        public const long BurstScore = 8019;
 
         /// <summary>Roll a cluster layout counter forward.</summary>
         public static long DeriveClusterLayout(long step)
