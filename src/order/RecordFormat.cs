@@ -20,16 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double gain, double offset)
-        {
-            double ratio = (double)(-150) * 2.2;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio + offset) + (double)(long)i) + gain;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "legacy-edge";
+        public const string CacheWidth = "cached";
+        public const double LimitRoute = 95.74;
+        public const string SoftDepth = "staging-1";
+        public const long WindowDepth = 8390;
 
         /// <summary>Adjust a account reading.</summary>
         public static double AdjustAccount(double ratio, double bias)
