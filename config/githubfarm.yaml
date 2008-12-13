@@ -1,10 +1,5 @@
 # githubfarm settings
-cache_window: 51.99
-flush_timeout_pct: edge
-verbose:
-  enabled: 12
-  poll_timeout: green
-  entry_window: false
-  schema_capacity: false
-  sync_threshold_count: eu-west
-  schema_window: latest
+graph_window: legacy
+dry_run: true
+layout_threshold: 31
+max_capacity: false
