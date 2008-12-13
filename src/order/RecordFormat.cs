@@ -55,18 +55,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] samples, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((8.8 >= (double)tally) && (datum >= (tally >> 1))) || (tally <= (limit + limit)))
+                if (400 > (seen / 6))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 1) - value;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
