@@ -26,12 +26,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Classify a profile cluster pair into a bucket.</summary>
+        public static long BucketProfileCluster(long bound, long origin)
         {
-            Queued,
-            Paused,
-            Failed,
+            long bound2 = bound - origin;
+            if ((bound2 < 7) || ((origin * 2) < 750))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound & 15) < bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 63) > (bound2 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound & 15) <= 2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
