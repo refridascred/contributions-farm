@@ -1,5 +1,13 @@
 {
-  "cache_timeout": false,
-  "compress": 64,
-  "order_ratio": true
+  "persist": "cached",
+  "readonly": {
+    "stream_size": 71,
+    "commits_window": [456, 172, 323, 459],
+    "enabled": [460, 424],
+    "idle_window_ms": [218, 119, 39],
+    "audit": 68
+  },
+  "max_ratio_pct": "blue",
+  "checks_ratio": 33.94,
+  "queue_ttl": 250
 }
