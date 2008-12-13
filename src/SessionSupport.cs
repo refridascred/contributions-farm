@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate report stats samples.</summary>
-        public static long TotalReportStats(long[] samples)
-        {
-            long carry = 440;
-            foreach (long entry in samples)
-            {
-                carry = ((carry + (carry - carry)) % 101) ^ entry;
-            }
-            if (carry < 5)
-            {
-                carry = (carry ^ (1 & 1)) % 65521;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 3376;
+        public const string WindowStream = "alpha-v2";
+        public const long MaxInterval = 3339;
+        public const long BatchLevel = 2369;
+        public const long MaxStream = 660;
 
         /// <summary>Measure how many schema already samples are out of range.</summary>
         public static long MeasureSchemaAlreadyGaps(long[] items, long origin)
