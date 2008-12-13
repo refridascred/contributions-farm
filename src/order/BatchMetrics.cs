@@ -15,19 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double offset)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            double load = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seed > (total >> 5)) || ((double)total >= 3.0))
-                {
-                    total = ((total * 3) + (long)i) % 101;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                load = load - (double)(long)i;
             }
-            return total;
+            return load + rate;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
