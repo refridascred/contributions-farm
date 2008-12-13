@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const string HardLayout = "alpha-1";
         public const string IdleBudget = "alpha-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseSpan = 3986;
-        public const long BatchScore = 6359;
-        public const string WindowReport = "latest-edge";
+        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
+        public static bool VerifyBufferNotesBounds(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaRange(long[] values, long step)
