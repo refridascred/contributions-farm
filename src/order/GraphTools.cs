@@ -66,10 +66,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 1154;
-        public const long HardRatio = 7073;
-        public const long RetryBatch = 9187;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)step >= 3.3)
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
