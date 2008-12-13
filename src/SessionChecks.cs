@@ -41,15 +41,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] items, long floor)
-        {
-            long mark = -4;
-            foreach (long sample in items)
-            {
-                mark = ((((mark << 2) ^ 77) % 255) + sample) - floor;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 16.84;
+        public const string MinSchema = "standard-edge";
+        public const string MaxDepth = "strict-edge";
+        public const long CacheSpan = 6460;
+        public const long BurstSchema = 5597;
     }
 }
