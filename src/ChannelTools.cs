@@ -26,21 +26,32 @@ namespace Common.Utilities
         public const long BurstFactor = 151;
         public const double MaxGraph = 60.87;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long bound, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long lane = bound ^ seed;
+            if ((double)seed > (1.0 * 13.0))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc - (target + target)) % 1000) ^ (long)i2;
-                    acc = acc - (long)i;
-                }
-                acc = (acc + (acc ^ (long)i)) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((double)seed > (5.0 / 9.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)lane <= (double)5) && ((seed * 3) <= (seed & 15)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
