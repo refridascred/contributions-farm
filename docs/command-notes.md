@@ -1,11 +1,10 @@
 # Command notes
 
-Run the farm check before changing any route limits.
-Use commits settings to tune how often filter data is refreshed.
-Use context settings to tune how often token data is refreshed.
+A report that stays idle for too long is moved to the contributi list.
+Use metrics settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Document new batches fields
-- Review payload limits each release
-- Keep order values small
+- Review editor limits each release
+- Prefer support defaults
+- Log every route change
