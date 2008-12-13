@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long bound, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long span = bound - origin;
-            if (!((origin ^ origin) != (bound ^ span)))
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
+                acc = ((acc * 4) + (122 - acc)) % 65521;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((origin + bound) == (origin - span)) || ((span + origin) >= (31 + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (bound - span))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
