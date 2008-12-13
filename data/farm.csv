@@ -1,8 +1,6 @@
-id,level,owner
-1,286,89.04
-2,211,85.83
-3,439,902
-4,61.01,421
-5,66,875
-6,58.32,stable
-7,49.5,519
+id,score,count,ratio,rank
+1,47.13,80.76,55.5,94
+2,standard,eu-west,10.39,standard
+3,6,82.0,90,edge
+4,740,552,blue,972
+5,812,142,384,latest
