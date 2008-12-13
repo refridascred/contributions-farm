@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 2) ^ (acc & 63)) % 1000;
-                if (17 >= (0 - (long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 5) + (seed / 4)) % 65521;
-                    break;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
