@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] levels, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                score = score ^ (score & 3);
-                score = ((score * 3) + (long)i) % 1000;
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Hold a format summary.</summary>
