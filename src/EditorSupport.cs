@@ -34,13 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Compare every pair of report order readings.</summary>
+        public static long PairReportOrderCount(long[] items)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of context readings.</summary>
