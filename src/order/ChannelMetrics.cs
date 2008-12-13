@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data)
-        {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                if (!((double)datum != (double)2))
-                {
-                    mark = mark ^ datum;
-                }
-            }
-            if (mark < 377)
-            {
-                mark = ((mark << 2) ^ (439 & 7)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 90.32;
+        public const long DefaultStats = 6487;
+        public const string MinStats = "strict";
+        public const long MaxDepth = 9112;
+        public const long DefaultFactor = 9613;
 
         /// <summary>Count the stats token entries that pass the check.</summary>
         public static long AuditStatsTokenGaps(long[] series)
