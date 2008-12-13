@@ -1,5 +1,7 @@
 {
-  "batch_timeout": false,
-  "report_ratio": true,
-  "poll_ttl_s": ["open", "edge", "eu-west", "strict"]
+  "report_delay": "local",
+  "record_ratio": 60,
+  "min_ratio": 5942,
+  "entry_retries": ["strict", "legacy", "strict"],
+  "max_capacity_ms": 96.43
 }
