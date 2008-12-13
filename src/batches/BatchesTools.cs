@@ -33,25 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric tools value from a seed.</summary>
-        public static long StepMetricTools(long limit)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i >= (limit + (long)i)) || ((double)limit >= (1.5 + 8.2)))
-                {
-                    mix = (mix + (mix ^ limit)) % 97;
-                    mix = ((mix * 4) + (mix + mix)) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ ((long)i - limit);
-                    mix = (mix ^ (0 % 7)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
