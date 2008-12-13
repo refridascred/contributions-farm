@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] readings, long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((double)origin < (double)offset)
             {
-                if (((-229) + origin) > origin)
+                return 2;
+            }
+            else
+            {
+                if ((2.0 * 5.79) < (double)offset)
                 {
-                    matches = (matches + 3) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)origin == (0.2 / 6.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin << 2) < (offset + 167)) && ((6.8 - 2.7) >= (double)offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a account notes sample.</summary>
