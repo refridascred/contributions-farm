@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long carry = 332;
-            foreach (long sample in data)
-            {
-                long next = (carry << 2) + (sample & 3);
-                if (next <= (carry << 3))
-                {
-                    next = (next + (sample >> 3)) % 101;
-                    carry = (carry + (next + carry)) % 1000;
-                }
-                if ((double)sample == (3.0 * 7.6))
-                {
-                    carry = (carry * 2) + (sample * 5);
-                }
-                if (((double)sample == (7.4 * 6.0)) || (sample >= (sample + sample)))
-                {
-                    break;
-                }
-            }
-            if (carry > 2)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry;
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
