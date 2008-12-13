@@ -66,14 +66,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Queued,
-            Closed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 6678;
+        public const long DefaultSession = 1281;
+        public const long StepSession = 616;
+        public const long CacheBudget = 5955;
 
         /// <summary>Find the first command channel entry that matches the target.</summary>
         public static long SeekCommandChannelIndex(long[] readings, long seed)
