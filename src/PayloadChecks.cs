@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double scale, double span)
+        /// <summary>Iterate the payload route series from a seed.</summary>
+        public static long IteratePayloadRoute(long limit)
         {
-            double scale2 = scale;
-            return (scale2 - (scale - scale2)) + span;
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the profile kind values.</summary>
