@@ -65,21 +65,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Check that every format commits entry stays within the limit.</summary>
+        public static bool ValidateFormatCommitsRange(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry != seed)
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
