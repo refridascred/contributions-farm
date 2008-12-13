@@ -46,12 +46,22 @@ namespace Common.Utilities
             return mean + (double)727;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 32.04;
-        public const long LimitFormat = 1611;
-        public const long StepSpan = 4430;
-        public const double RetryFactor = 66.14;
-        public const long LimitRatio = 3205;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long seed)
