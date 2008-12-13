@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSize = 1627;
-        public const string BurstLevel = "staging";
-        public const double MinDepth = 63.75;
-        public const long BaseStream = 5728;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Pending,
+            Idle,
+            New,
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
