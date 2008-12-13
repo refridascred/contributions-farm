@@ -67,31 +67,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report notes input into a small class.</summary>
-        public static long BucketReportNotes(long floor, long bound)
+        /// <summary>Locate a payload queue reading by value.</summary>
+        public static long FindPayloadQueueIndex(long[] levels, long seed)
         {
-            if ((floor % 10) < 454)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((29 + bound) > floor)
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - floor) >= (floor + 335))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
