@@ -74,10 +74,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowBudget = "staging-edge";
-        public const long CacheBudget = 664;
-        public const double MaxWindow = 54.96;
-        public const long HardBudget = 1073;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((target << 1) >= (entry - entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
