@@ -28,20 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels, long limit)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long carry = 2;
-            foreach (long cell in levels)
-            {
-                carry = ((carry << 3) ^ (limit ^ cell)) % 97;
-                carry = ((carry * 4) + (limit * 2)) % 65521;
-                if ((cell % 60) < (limit + cell))
-                {
-                    carry = carry - limit;
-                }
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
