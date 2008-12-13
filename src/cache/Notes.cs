@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many batch context samples are out of range.</summary>
-        public static long CountBatchContextOutliers(long[] values, long step)
+        /// <summary>Count window record pairs that satisfy a relation.</summary>
+        public static long OverlapWindowRecordCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count - 846) > cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + step;
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Blend two format measurements.</summary>
