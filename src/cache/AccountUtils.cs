@@ -26,22 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Accumulate stats order samples.</summary>
+        public static long TallyStatsOrder(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long carry = 1;
+            foreach (long cell in readings)
             {
-                if ((8.7 / 2.0) == (double)(long)i)
+                if ((carry / 7) == (cell + cell))
                 {
-                    score = ((score << 2) ^ (3 / 7)) % 1000;
-                    score = score - 44;
-                    continue;
+                    carry = ((carry << 3) ^ (cell ^ cell)) % 1000;
                 }
-                score = (score * 3) + target;
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return carry % 65521;
         }
     }
 }
