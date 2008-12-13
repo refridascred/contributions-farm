@@ -52,19 +52,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next format graph value from a seed.</summary>
-        public static long StepFormatGraph(long floor)
+        /// <summary>Accumulate farm queue samples.</summary>
+        public static long FoldFarmQueue(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long sum = 235;
+            foreach (long item in series)
             {
-                if (!(90 > (anchor + (long)i)))
-                {
-                    anchor = anchor + (long)i;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                sum = ((sum * 2) + (77 / 9)) ^ item;
+                sum = sum + (690 + 5);
             }
-            return anchor;
+            return sum % 65521;
         }
     }
 }
