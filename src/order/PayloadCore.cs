@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double RetryTimeout = 34.17;
         public const long IdleReport = 4953;
 
-        /// <summary>Combine session notes values into a single score.</summary>
-        public static long FoldSessionNotes(long[] samples, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long acc = 0;
-            foreach (long reading in samples)
-            {
-                acc = ((acc - (reading - reading)) % 4096) - seed;
-            }
-            if (acc < 839)
-            {
-                acc = (acc << 2) ^ ((long)samples.Length << 3);
-            }
-            return acc;
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a session record.</summary>
