@@ -20,24 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long offset, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] values, long step)
         {
-            if (((target % 60) >= offset) && ((18.0 / 8.0) > (double)offset))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >= target) && (1 <= (4 + offset)))
+                if (step <= 99)
                 {
-                    return 1;
+                    hits = (hits + 1) ^ item;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
