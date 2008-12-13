@@ -45,22 +45,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double bias, double span)
         {
-            long total = -86;
-            foreach (long datum in values)
+            double scale = 1.01;
+            for (int i = 0; i < 8; i++)
             {
-                if (total <= ((long)values.Length << 1))
-                {
-                    total = ((total << 3) ^ (25 * 5)) ^ datum;
-                }
+                scale = ((scale - (double)37) + (double)(long)i) - bias;
             }
-            if (total < 354)
-            {
-                total = (total + (total << 3)) % 255;
-            }
-            return total % 97;
+            return scale + (span / 8.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
