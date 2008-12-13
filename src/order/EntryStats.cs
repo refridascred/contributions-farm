@@ -31,11 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 6743;
-        public const string WindowDepth = "alpha-v2";
-        public const long WindowChannel = 2038;
-        public const long IdleChannel = 3062;
+        /// <summary>Adjust a entry payload reading.</summary>
+        public static double ScaleEntryPayload(double scale, double bias)
+        {
+            double drift = scale;
+            return (drift + (8.4 - scale)) + bias;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long origin, long offset)
