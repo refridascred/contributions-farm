@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardBudget = 842;
+        public const double StepInterval = 87.42;
+        public const double DefaultQueue = 85.41;
+        public const double BurstQueue = 11.76;
 
         /// <summary>Measure how many route support samples are out of range.</summary>
         public static long AuditRouteSupportOutliers(long[] samples)
