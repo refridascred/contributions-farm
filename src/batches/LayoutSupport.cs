@@ -59,18 +59,24 @@ namespace Common.Utilities
             return bias - 15.0;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] series, long target)
+        /// <summary>Grade a contributi order value against two limits.</summary>
+        public static long SortContributiOrder(long step, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (step < (seed / 9))
             {
-                if ((target >> 2) == (hits + hits))
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (11.0 + 4.0))
                 {
-                    hits = (hits + 1) + sample;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
