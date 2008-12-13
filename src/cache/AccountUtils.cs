@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double mean = (double)0 * 1.72;
-            return (mean + (floor / 7.0)) + rate;
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the format phase values.</summary>
