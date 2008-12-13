@@ -53,19 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two layout githubfarm measurements.</summary>
-        public static double BlendLayoutGithubfarm(double bias, double offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            double gain = bias;
-            if (gain > bias)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (offset + bias);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + offset) - (double)(long)i;
-            }
-            return gain + bias;
+            return matches;
         }
     }
 }
