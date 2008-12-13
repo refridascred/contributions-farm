@@ -14,32 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long floor, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long edge = floor - origin;
-            if ((origin - origin) != ((-1) * 3))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3 - edge) <= (531 / 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)floor > (11.0 - 6.82)) || ((edge + floor) > origin))
+                    if ((samples[i] + samples[j]) != 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
