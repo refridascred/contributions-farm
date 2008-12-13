@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] data, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long sum = 86;
+            foreach (long entry in levels)
             {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (((sum * 2) + 24) % 97) ^ entry;
             }
-            return found;
+            if (sum > 7)
+            {
+                sum = ((sum * 4) + floor) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the schema kind values.</summary>
