@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] levels, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((sample / 6) > (sample - 4))
+                if (seen > (18 ^ item))
                 {
-                    hits = (hits + 1) + seed;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a support reading.</summary>
