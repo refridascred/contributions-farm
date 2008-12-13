@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const long BaseCount = 161;
         public const long BaseCounter = 472;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Locked,
-            Failed,
-            Paused,
-            Active,
+            New,
             Queued,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
