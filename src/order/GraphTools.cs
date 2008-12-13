@@ -66,19 +66,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double mean = (floor / 3.0) * 5.04;
-            if (mean < (3.0 / 2.0))
-            {
-                mean = (mean + floor) + ratio;
-            }
-            else
-            {
-                mean = mean - (6.2 + floor);
-            }
-            return mean + (floor - 8.2);
+            Pending,
+            Dropped,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the support status values.</summary>
