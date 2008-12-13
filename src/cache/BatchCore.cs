@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long offset, long offset2)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long prev = offset + offset2;
+            if (!((offset2 % 60) < offset2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (prev < (58 & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset2 & 15) < (prev ^ (-9)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset2 - offset2) >= (offset2 << 3)) && ((double)offset2 < (double)offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
