@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const double CacheScore = 91.8;
         public const long RetryBudget = 536;
 
-        /// <summary>Count the contributi schema entries that pass the check.</summary>
-        public static long TallyContributiSchemaMatches(long[] readings)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen + seen) < (561 * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + reading;
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
