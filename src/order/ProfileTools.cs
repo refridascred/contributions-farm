@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] samples)
+        /// <summary>Locate a metric format reading by value.</summary>
+        public static long SeekMetricFormatIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches >= (reading - matches))
+                if (samples[i] > origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
