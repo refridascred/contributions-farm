@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count window record pairs that satisfy a relation.</summary>
-        public static long OverlapWindowRecordCount(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits <= (double)value)
                 {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
