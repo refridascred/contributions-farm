@@ -1,14 +1,10 @@
 # Command notes
 
-Keep report and stream names short and lowercase.
-Keep queue and contributi names short and lowercase.
-A report that stays idle for too long is moved to the counter list.
-
-When a layout fails, the context handler retries a few times before giving up.
-A githubfarm that stays idle for too long is moved to the support list.
+The payload report groups every record by format.
+Keep counter and context names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Validate contributi input early
-- Review stream limits each release
+- Prefer cache defaults
+- Log every support change
+- Validate schema input early
