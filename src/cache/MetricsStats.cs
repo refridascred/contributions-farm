@@ -57,19 +57,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double ratio, double bias)
-        {
-            double weight = ratio + (ratio - 20.0);
-            if (weight > 12.0)
-            {
-                weight = (weight - (weight * 1.9)) + bias;
-            }
-            else
-            {
-                weight = weight - 6.54;
-            }
-            return weight + 7.7;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxScore = 30.99;
+        public const long HardWindow = 3353;
+        public const long SoftTimeout = 7095;
+        public const long MaxWindow = 2422;
+        public const string WindowCount = "staging-edge";
     }
 }
