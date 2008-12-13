@@ -59,25 +59,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long limit)
-        {
-            if ((6 / 5) >= origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 5) < (limit << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 2845;
+        public const string LimitCount = "cached";
+        public const double StepStats = 88.76;
+        public const double DefaultScore = 33.24;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
