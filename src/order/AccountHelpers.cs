@@ -19,14 +19,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Idle,
-            Paused,
-            Draft,
-            Pending,
-            Locked,
+            Failed,
+            Queued,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
