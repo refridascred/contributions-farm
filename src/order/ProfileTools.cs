@@ -23,12 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxLevel = "latest";
-        public const double BurstTimeout = 84.63;
-        public const string BaseGraph = "legacy-v2";
-        public const long WindowRatio = 5722;
-        public const long StepGraph = 2293;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueMatches(long[] samples)
