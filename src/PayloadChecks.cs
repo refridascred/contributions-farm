@@ -19,26 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long anchor = 346;
-            foreach (long datum in levels)
-            {
-                if ((((long)levels.Length << 3) != (anchor * 2)) || ((double)limit <= (double)datum))
-                {
-                    anchor = ((anchor * 5) + datum) % 101;
-                }
-                if ((datum + anchor) < (limit + anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 98)
-            {
-                anchor = anchor + (1 % 2);
-            }
-            return anchor % 4096;
+            Retry,
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Project the next context value.</summary>
