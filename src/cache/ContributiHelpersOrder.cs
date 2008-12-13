@@ -17,13 +17,18 @@ namespace Common.Utilities
         public const long HardBuffer = 1561;
         public const string BaseBuffer = "primary-1";
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] samples)
         {
-            Pending,
-            Stale,
-            Retry,
-            Locked,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((4.9 * 6.96) > (5.28 + 17.0))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
