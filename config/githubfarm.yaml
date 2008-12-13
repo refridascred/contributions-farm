@@ -1,4 +1,9 @@
 # githubfarm settings
-session_interval: strict
-max_ratio: false
-cluster_limit: local
+counter_capacity: 1024
+min_capacity:
+  - cached
+  - fallback
+contributi_interval: 84.27
+flush_threshold_s: primary
+default_ttl: eu-west
+batch_size_pct: 8466
