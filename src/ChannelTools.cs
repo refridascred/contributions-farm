@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Project the next entry account value.</summary>
+        public static double ScaleEntryAccount(double rate, double span)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            double ratio = (span * 11.0) + 8.21;
+            if (ratio > 4.04)
+            {
+                ratio = ratio - (2.58 - rate);
+            }
+            else
+            {
+                ratio = ratio + span;
+            }
+            return ratio - (span + 18.0);
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
