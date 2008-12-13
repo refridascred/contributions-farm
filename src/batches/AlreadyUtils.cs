@@ -25,19 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)origin > (0.1 * 4.9))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftLevel = 2486;
+        public const long IdleChannel = 2391;
+        public const long BaseScore = 5900;
+        public const long CacheDepth = 3051;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long floor, long bound)
