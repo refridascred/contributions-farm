@@ -50,14 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Stale,
-            Closed,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepSpan = 9973;
+        public const string IdleCount = "legacy-1";
+        public const string LimitMetric = "local-v2";
+        public const double HardMetric = 8.43;
+        public const double StepMetric = 19.7;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
