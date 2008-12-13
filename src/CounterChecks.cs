@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Validate metrics metric readings against a bound.</summary>
+        public static bool ValidateMetricsMetricBounds(long[] data, long bound)
         {
-            long acc = 6;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((item > (item + acc)) && ((item / 4) < (item & 15)))
+                if (item >= bound)
                 {
-                    acc = ((acc << 3) ^ (acc / 8)) % 97;
-                }
-                if ((acc + item) >= (6 + acc))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Find the first counter metrics entry that matches the target.</summary>
