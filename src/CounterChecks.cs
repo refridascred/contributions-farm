@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a contributi batches pair into a bucket.</summary>
-        public static long SortContributiBatches(long target, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long edge = target ^ offset;
-            if (!((1.4 + 14.0) == (double)offset))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((edge * 3) < (34 * 3)) || ((double)offset == (5.0 - 11.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge <= (9.7 / 3.0))
+                    if ((samples[i] + samples[j]) < 20)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset % 60) >= (target & 3)) || ((target - target) > (edge << 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of report entries.</summary>
