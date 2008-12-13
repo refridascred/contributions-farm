@@ -1,8 +1,7 @@
-id,active,region
-1,70.18,11.29
-2,cached,33.37
-3,36.15,76.7
-4,blue,standard
-5,local,28.95
-6,34.6,57.07
-7,stable,eu-west
+id,owner,ratio
+1,green,981
+2,241,356
+3,82.78,264
+4,standard,351
+5,979,1
+6,84.52,96.09
