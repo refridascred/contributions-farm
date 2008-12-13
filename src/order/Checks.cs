@@ -24,12 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every layout cluster entry stays within the limit.</summary>
+        public static bool GuardLayoutClusterRange(long[] series, long step)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the batches level values.</summary>
