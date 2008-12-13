@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate entry payload readings against a bound.</summary>
-        public static bool GuardEntryPayloadBounds(long[] samples, long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up commits graph samples.</summary>
