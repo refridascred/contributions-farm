@@ -42,18 +42,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit already counter readings against a rule.</summary>
-        public static long TallyAlreadyCounterGaps(long[] data, long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 406;
+            foreach (long entry in readings)
             {
-                if ((6.97 / 2.0) <= (double)datum)
-                {
-                    tally = (tally + 2) - offset;
-                }
+                score = (score + (score * 4)) - entry;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Match up support samples.</summary>
