@@ -22,18 +22,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((floor - 9) <= (reading >> 3))
+                if ((35 - bound) < (bound * 2))
                 {
-                    count = count + 3;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
