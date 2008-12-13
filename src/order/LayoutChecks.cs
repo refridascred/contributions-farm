@@ -41,15 +41,17 @@ namespace Common.Utilities
         public const double IdleAccount = 40.63;
         public const long WindowDepth = 321;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] series, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a metrics record.</summary>
