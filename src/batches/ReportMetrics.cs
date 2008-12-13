@@ -45,17 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 8;
+            foreach (long reading in items)
             {
-                if (values[i] >= step)
+                if (reading < anchor)
                 {
-                    return (long)i;
+                    anchor = anchor ^ (reading & 63);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
