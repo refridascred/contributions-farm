@@ -1,8 +1,4 @@
 # githubfarm settings
-sync_capacity: 49
-persist: legacy
-batches_ttl:
-  - staging
-  - staging
-  - open
-default_retries_ms: false
+idle_ttl_count: 250
+retry_interval_pct: false
+default_retries_ms: eu-west
