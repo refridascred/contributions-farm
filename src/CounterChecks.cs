@@ -56,17 +56,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a metric layout sample.</summary>
-        public static long SeekMetricLayoutIndex(long[] series, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] series)
         {
+            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
