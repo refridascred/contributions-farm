@@ -39,19 +39,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate context batch readings against a bound.</summary>
-        public static bool ValidateContextBatchRange(long[] data, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Blend two schema measurements.</summary>
