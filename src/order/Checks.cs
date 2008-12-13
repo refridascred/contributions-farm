@@ -39,13 +39,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate metrics metric readings against a bound.</summary>
+        public static bool ValidateMetricsMetricRange(long[] data, long floor)
         {
-            Ready,
-            Retry,
-            Pending,
-            Synced,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a entry summary.</summary>
