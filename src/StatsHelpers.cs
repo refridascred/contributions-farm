@@ -27,16 +27,22 @@ namespace Common.Utilities
         public const long RetryDepth = 9141;
         public const double BatchBudget = 69.97;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long mix = 704;
+            foreach (long datum in samples)
             {
-                mark = (mark + (731 & 127)) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((datum & 7) < (mix / 4))
+                {
+                    mix = mix - ((-9) ^ mix);
+                }
+                else
+                {
+                    mix = ((mix * 3) + (mix << 1)) % 101;
+                }
             }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
