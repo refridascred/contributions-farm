@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank queue layout input into a small class.</summary>
-        public static long GradeQueueLayout(long bound, long bound2)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            if ((bound / 3) != (bound % 16))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound2 & 7) <= (bound2 / 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound % 97) <= (bound >> 4)) && ((double)bound2 <= 6.2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) <= bound2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of cache metric readings.</summary>
