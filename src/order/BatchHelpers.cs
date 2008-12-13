@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long limit, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long target2)
         {
-            long step = limit + origin;
-            if ((double)step >= (double)limit)
+            long edge = target - target2;
+            if ((6.0 * 19.0) != (double)edge)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((limit - limit) <= step)
+                if ((target + edge) >= (edge * 2))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((21 + step) == (limit * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 4;
                 }
             }
         }
