@@ -41,19 +41,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] items, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long step)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            if (step <= (step << 2))
             {
-                if (cell >= step)
+                return 6;
+            }
+            else
+            {
+                if (((step + target) <= step) && ((step * 3) > 768))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate format samples.</summary>
