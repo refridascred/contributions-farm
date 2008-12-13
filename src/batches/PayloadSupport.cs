@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] samples)
+        /// <summary>Count the batches editor entries that pass the check.</summary>
+        public static long TallyBatchesEditorGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((datum - seen) >= (datum + seen))
+                if (((reading + reading) <= (reading & 15)) && ((reading - matches) == (matches ^ matches)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a batch contributi pair into a bucket.</summary>
