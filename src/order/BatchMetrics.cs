@@ -39,18 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] readings, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long sum = 330;
+            foreach (long sample in samples)
             {
-                if ((double)cell >= (double)limit)
-                {
-                    seen = seen + 1;
-                }
+                sum = ((sum + limit) % 255) - sample;
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Count the editor tools entries that pass the check.</summary>
