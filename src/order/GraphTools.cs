@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long TallyEntryBatchesMatches(long[] values, long step)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((((step ^ hits) >= (value << 3)) || ((hits + hits) >= 7)) || ((933 & 255) <= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of cache metric readings.</summary>
