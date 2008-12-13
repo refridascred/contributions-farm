@@ -12,17 +12,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] samples, long target)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
