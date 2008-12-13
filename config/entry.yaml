@@ -1,8 +1,13 @@
 # entry settings
-account_ratio:
-  - 414
-  - 264
-  - 3
-  - 465
-persist: green
-commits_delay: 416
+enabled: green
+retry_threshold_count:
+  readonly: latest
+  dry_run: 250
+  verbose: 6354
+  stream_threshold: eu-west
+  retry_depth: primary
+counter_limit:
+  - latest
+  - staging
+  - open
+  - fallback
