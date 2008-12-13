@@ -44,16 +44,12 @@ namespace Common.Utilities
             return mean + (double)727;
         }
 
-        /// <summary>Derive the next commits token value from a seed.</summary>
-        public static long StepCommitsToken(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 32.04;
+        public const long LimitFormat = 1611;
+        public const long StepSpan = 4430;
+        public const double RetryFactor = 66.14;
+        public const long LimitRatio = 3205;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long seed)
