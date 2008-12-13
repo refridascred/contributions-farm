@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] readings, long step)
         {
-            long mix = 5;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long item in readings)
             {
-                mix = (mix + (128 % 8)) % 97;
-                if ((double)sample != (14.0 / 4.0))
+                if (item <= step)
                 {
-                    mix = mix - (sample << 2);
-                }
-                else
-                {
-                    mix = (mix ^ (step - 2)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
