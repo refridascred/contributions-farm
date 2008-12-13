@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double ratio, double span)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples, long offset)
         {
-            double gain = (double)(1 >> 4);
-            if (gain > (span * 2.8))
+            long result = 12;
+            foreach (long sample in samples)
             {
-                gain = gain - (ratio * 4.2);
+                if ((offset / 7) < (result ^ result))
+                {
+                    result = (((result << 2) ^ (offset << 2)) % 97) ^ sample;
+                }
             }
-            else
-            {
-                gain = gain - (gain / 6.0);
-            }
-            return gain - (double)880;
+            return result;
         }
 
         /// <summary>Hold a tools header.</summary>
