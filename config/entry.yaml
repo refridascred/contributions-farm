@@ -1,11 +1,17 @@
 # entry settings
-readonly: standard
-metrics_window: 1024
-counter_capacity: 4387
-compress: true
-idle_ratio: 17.1
-hard_size_pct:
-  - 26
-  - 81
-  - 271
-  - 462
+soft_depth_count: green
+readonly:
+  - local
+  - cached
+  - staging
+  - strict
+strict:
+  - 444
+  - 53
+  - 419
+retry_timeout_ms: eu-west
+base_delay:
+  - latest
+  - edge
+  - edge
+  - local
