@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double rate, double offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] samples, long target)
         {
-            double gain = 7.0;
-            if (gain < (double)6)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (double)50) + rate;
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + 8.0) + (double)(long)i;
-            }
-            return gain + offset;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
