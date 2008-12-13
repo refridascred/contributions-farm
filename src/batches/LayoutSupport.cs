@@ -19,13 +19,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Paused,
-            Active,
-            Synced,
-            Done,
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
