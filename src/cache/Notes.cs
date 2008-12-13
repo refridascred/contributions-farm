@@ -39,11 +39,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleTimeout = 57.42;
-        public const long CacheSize = 9294;
-        public const long MaxBatch = 9818;
-        public const string DefaultLevel = "fallback";
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] readings)
+        {
+            long score = 942;
+            foreach (long sample in readings)
+            {
+                if ((sample - score) != (sample >> 5))
+                {
+                    score = (score + (sample + sample)) % 65521;
+                }
+            }
+            if (score > 907)
+            {
+                score = (score - (score / 8)) % 255;
+            }
+            return score % 97;
+        }
 
         /// <summary>Rank support stream input into a small class.</summary>
         public static long SortSupportStream(long floor, long floor2)
