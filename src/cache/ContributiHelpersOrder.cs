@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 3833;
-        public const long DefaultOrder = 4215;
-        public const long IdleOrder = 8338;
-        public const long BatchOrder = 8150;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples)
+        {
+            long total = 5;
+            foreach (long entry in samples)
+            {
+                if ((entry % 64) != (total ^ (-2)))
+                {
+                    total = total ^ (entry >> 2);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] values)
