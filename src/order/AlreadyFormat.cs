@@ -48,12 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 2993;
-        public const double RetryCount = 23.83;
-        public const long SoftFactor = 9840;
-        public const long RetryProfile = 4409;
-        public const long MaxProfile = 2477;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 6057;
