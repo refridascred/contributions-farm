@@ -16,11 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=443
+RECORD_LIMIT=26
 log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
