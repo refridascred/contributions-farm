@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double gain, double offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] values, long seed)
         {
-            double load = offset;
-            if (load < offset)
+            long count = 0;
+            foreach (long cell in values)
             {
-                load = load - (double)20;
+                if ((cell ^ count) < (cell >> 3))
+                {
+                    count = (count + 2) + seed;
+                }
             }
-            else
-            {
-                load = load + (double)8;
-            }
-            return load + (6.41 + gain);
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
