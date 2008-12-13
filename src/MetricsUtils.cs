@@ -51,18 +51,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item % 8) < (matches - matches))
-                {
-                    matches = matches + 1;
-                }
+                total = total - (long)i;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Derive the next queue notes value from a seed.</summary>
