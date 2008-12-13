@@ -70,18 +70,18 @@ namespace Common.Utilities
             return mean - (mean * 3.0);
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] levels, long offset)
+        /// <summary>Count the order route entries that pass the check.</summary>
+        public static long CountOrderRouteMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((cell << 1) <= count)
+                if (!!((5.5 * 3.85) < (double)seen))
                 {
-                    count = (count + 3) + offset;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
