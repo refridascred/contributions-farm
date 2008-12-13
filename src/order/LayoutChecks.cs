@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 64.96;
-        public const long MinInterval = 308;
-        public const long WindowReport = 604;
-        public const string DefaultReport = "fallback-v2";
-        public const long StepReport = 8922;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample ^ 84) > (matches & 15))
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
