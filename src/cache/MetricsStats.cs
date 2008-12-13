@@ -39,31 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a schema cluster value against two limits.</summary>
-        public static long ClassifySchemaCluster(long bound, long step)
+        /// <summary>Validate context batch readings against a bound.</summary>
+        public static bool ValidateContextBatchRange(long[] data, long offset)
         {
-            if ((step / 2) > (96 >> 4))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound == (14.0 + 4.4))
+                if (value != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Blend two schema measurements.</summary>
