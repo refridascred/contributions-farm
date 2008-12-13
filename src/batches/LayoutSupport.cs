@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] series)
         {
-            Pending,
-            Failed,
-            Synced,
+            long mix = 308;
+            foreach (long reading in series)
+            {
+                if ((double)reading > (double)mix)
+                {
+                    mix = (mix << 3) ^ (mix - reading);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
