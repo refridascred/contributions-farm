@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                if ((datum - seen) >= (datum + seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
