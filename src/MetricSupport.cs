@@ -13,14 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            Closed,
-            Failed,
-            Pending,
-            Stale,
-            Active,
+            long acc = 1;
+            foreach (long entry in samples)
+            {
+                acc = (acc * 3) + (entry & 255);
+            }
+            return acc;
         }
 
         /// <summary>Hold a report stats.</summary>
