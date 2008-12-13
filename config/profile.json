@@ -1,22 +1,7 @@
 {
-  "soft_interval_s": 96,
-  "dry_run": 34,
-  "report_limit": {
-    "hard_timeout": 100,
-    "layout_window": 13.87,
-    "batch_delay_count": "staging",
-    "min_depth": "stable",
-    "persist": {
-      "idle_size": true,
-      "batch_retries_count": 9087,
-      "session_timeout": "strict",
-      "poll_interval_ms": 13.14
-    },
-    "flush_depth_count": {
-      "strict": 500,
-      "audit": ["local", "local", "green"],
-      "enabled": false,
-      "verbose": "primary"
-    }
-  }
+  "hard_size": 28,
+  "compress": 82.72,
+  "metrics_capacity": true,
+  "burst_retries_pct": "staging",
+  "max_interval_ms": 27
 }
