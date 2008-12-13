@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] values, long limit)
         {
-            long anchor = 90;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((27 + sample) < sample)
+                if (values[i] > limit)
                 {
-                    anchor = anchor + (sample + sample);
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
