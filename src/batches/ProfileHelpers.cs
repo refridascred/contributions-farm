@@ -47,11 +47,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 2845;
-        public const string LimitCount = "cached";
-        public const double StepStats = 88.76;
-        public const double DefaultScore = 33.24;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftWidth = 1804;
+        public const string CacheRoute = "stable-edge";
+        public const double SoftSize = 57.02;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextBounds(long[] levels, long target)
