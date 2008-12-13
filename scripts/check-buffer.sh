@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable legacy; do
+for item in local staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=444
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
