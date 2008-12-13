@@ -1,8 +1,7 @@
 {
-  "audit": true,
-  "compress": "blue",
-  "min_size_count": ["strict", "green", "cached"],
-  "contributi_limit": "local",
-  "sync_size": "primary",
-  "max_timeout_pct": 250
+  "max_capacity_count": 3460,
+  "readonly": 5.97,
+  "sync_threshold": 6698,
+  "default_depth": 2676,
+  "verbose": 6327
 }
