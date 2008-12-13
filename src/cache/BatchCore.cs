@@ -32,23 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account layout figure with a bias.</summary>
-        public static double BlendAccountLayout(double ratio, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long offset, long target)
         {
-            double mean = (double)8;
-            if (mean > (floor * 1.0))
+            long span = offset ^ target;
+            if (((offset << 1) != (target & 3)) && ((3.0 / 6.0) < (double)target))
             {
-                mean = (mean + (floor * 0.46)) + ratio;
+                return 5;
             }
             else
             {
-                mean = mean + (floor - mean);
+                if ((span & 3) == (392 + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (floor * 0.06);
         }
     }
 }
