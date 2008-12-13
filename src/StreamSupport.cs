@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const long BatchCount = 7827;
         public const long BurstToken = 6067;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Digest a series of tools filter entries.</summary>
+        public static long FoldToolsFilter(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 69;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = (mix + (mix - cell)) % 255;
+                if (!((mix & 3) <= (cell / 9)))
                 {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix ^ (cell >> 4);
                 }
+                mix = (mix + (cell + mix)) % 1000;
             }
-            return count;
+            if (mix < 691)
+            {
+                mix = (mix * 4) + (mix % 2);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
