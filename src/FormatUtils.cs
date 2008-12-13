@@ -66,12 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 13.84;
-        public const double WindowDepth = 9.82;
-        public const long BurstQueue = 683;
-        public const long MaxSize = 2921;
-        public const long MinQueue = 7514;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double gain, double offset)
