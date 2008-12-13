@@ -39,31 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long bound, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((20.0 - 17.0) < (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((989 * 3) == (bound & 15))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor <= (20.0 / 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
