@@ -24,18 +24,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((tally + sample) != (tally * 3))
+                if ((matches + limit) < (limit / 9))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up profile batches samples.</summary>
