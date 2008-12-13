@@ -33,10 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstTimeout = 2444;
-        public const long MaxRatio = 3498;
-        public const double BaseStream = 67.29;
-        public const long IdleStream = 2156;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
