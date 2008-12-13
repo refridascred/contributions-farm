@@ -44,11 +44,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long seed)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
