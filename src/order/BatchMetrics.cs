@@ -102,18 +102,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks layout values into a single score.</summary>
-        public static long ScoreChecksLayout(long[] items)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            long anchor = 515;
-            foreach (long item in items)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)anchor == (9.0 * 14.0)) || ((anchor + 6) < (item % 100)))
-                {
-                    anchor = ((anchor * 3) + (anchor - 6)) % 1000;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
     }
 }
