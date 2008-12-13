@@ -1,26 +1,9 @@
 # entry settings
-schema_delay: true
-retry_window: 11.46
-githubfarm_interval: staging
-verbose:
-  strict: 19.31
-  max_capacity_ms: 60
-  readonly: eu-west
-  base_capacity:
-    strict: true
-    flush_timeout: 6596
-    base_capacity_s: 9033
-    payload_capacity:
-      - 278
-      - 35
-    compress: 56.47
-    metrics_timeout:
-      - blue
-      - latest
-      - staging
-      - legacy
-  buffer_timeout: true
-  default_delay:
-    stats_delay: 1024
-    max_retries: true
-    hard_ttl: primary
+already_window: 7399
+min_ratio_count:
+  - 232
+  - 285
+flush_threshold: fallback
+cache_threshold_pct: 6960
+buffer_ratio: 84
+sync_limit_ms: staging
