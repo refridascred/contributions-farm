@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long limit, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double weight, double bias)
         {
-            if ((limit % 3) > (limit * 5))
+            double scale = weight;
+            if (scale < bias)
             {
-                return 6;
+                scale = scale + (double)53;
             }
-            else
-            {
-                if (9.1 <= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(seed <= limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed == (17.0 * 8.2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return scale + (scale - scale);
         }
 
         /// <summary>Fold a list of batch readings.</summary>
