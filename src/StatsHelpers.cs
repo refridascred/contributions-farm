@@ -32,19 +32,11 @@ namespace Common.Utilities
         public const double DefaultSpan = 41.48;
         public const long BaseWidth = 9975;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((3.9 - 2.61) > (double)sample)
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "cached-v2";
+        public const double LimitBatches = 51.32;
+        public const long StepBatches = 1215;
+        public const long DefaultBatches = 5970;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TotalFilter(long[] series, long floor)
