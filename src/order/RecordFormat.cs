@@ -60,15 +60,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] values, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] values, long origin)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long entry in values)
             {
-                if ((1.1 * 3.35) >= (double)count)
+                if (entry >= (count * 3))
                 {
-                    count = ((count + 3) + sample) - bound;
+                    count = (count + 2) + origin;
                 }
             }
             return count;
