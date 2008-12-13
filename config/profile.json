@@ -1,8 +1,6 @@
 {
-  "min_window": [339, 166, 436],
-  "compress": 5721,
-  "farm_depth": ["primary", "edge", "staging", "open"],
-  "audit": 96,
-  "warm_window_pct": "green",
-  "hard_ratio_ms": 4014
+  "session_ratio": false,
+  "layout_delay": 100,
+  "profile_interval": 25.12,
+  "compress": "latest"
 }
