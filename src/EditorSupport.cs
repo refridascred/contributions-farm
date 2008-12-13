@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheBudget = 3290;
+        public const long HardBudget = 9587;
+        public const string MaxContext = "local-1";
+        public const long HardContext = 1058;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] series, long offset)
