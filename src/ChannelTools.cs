@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] items, long origin)
         {
-            double rate = floor;
-            if (rate >= (weight + 1.0))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                rate = rate - (weight - 8.56);
+                if (seen < (11 + (-83)))
+                {
+                    seen = ((seen + 1) + datum) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (rate - weight)) + (double)(long)i;
-            }
-            return rate + floor;
+            return seen;
         }
 
         /// <summary>Rank order cache input into a small class.</summary>
