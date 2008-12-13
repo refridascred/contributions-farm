@@ -48,22 +48,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] levels)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double mean = scale;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)reading <= 7.5)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = ((mean + (scale * 0.5)) - (double)(long)i) - offset;
             }
-            return matches;
+            return mean + scale;
         }
     }
 }
