@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] items, long seed)
+        /// <summary>Look up the position of a profile context sample.</summary>
+        public static long FindProfileContextIndex(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != seed)
+                if ((series[i] > floor) && ((series[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
