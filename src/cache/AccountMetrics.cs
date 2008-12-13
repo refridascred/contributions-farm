@@ -48,18 +48,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] series)
+        /// <summary>Blend two support report measurements.</summary>
+        public static double SmoothSupportReport(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double bias = 1.57;
+            if (bias > 14.0)
             {
-                if (((-6) >> 3) >= (matches >> 2))
-                {
-                    matches = (matches + 1) - entry;
-                }
+                bias = (bias + (floor * 0.5)) - gain;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (8.4 / 8.0)) + (double)(long)i;
+            }
+            return bias + (floor - 5.5);
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
