@@ -27,21 +27,39 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = floor ^ floor2;
+            if (floor < (floor << 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor2 / 7) < floor2)
                 {
-                    if ((values[i] ^ values[j]) < 13)
+                    return 1;
+                }
+                else
+                {
+                    if (((8 << 2) <= delta) && ((floor << 1) > (floor2 >> 1)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor2 + floor2) < (floor2 << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
