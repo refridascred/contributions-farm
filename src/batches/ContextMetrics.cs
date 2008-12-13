@@ -59,12 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] data, long origin)
         {
-            Locked,
-            Draft,
-            Closed,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
