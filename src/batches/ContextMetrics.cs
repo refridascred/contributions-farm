@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] items, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                score = (score ^ (score * 3)) % 101;
-                score = ((score * 4) + (long)i) % 97;
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the context class values.</summary>
