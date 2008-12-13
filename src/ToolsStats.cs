@@ -51,13 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            Synced,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
