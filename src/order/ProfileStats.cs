@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 9364;
-        public const long DefaultCache = 9396;
-        public const long MinCache = 6678;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long floor, long origin)
