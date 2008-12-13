@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const long WindowRatio = 5722;
         public const long StepGraph = 2293;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a window options.</summary>
