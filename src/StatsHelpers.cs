@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] readings, long origin)
+        /// <summary>Roll a cache githubfarm counter forward.</summary>
+        public static long SeriesCacheGithubfarm(long limit)
         {
-            long score = 791;
-            foreach (long value in readings)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (((score + 750) == (score / 9)) && (origin < (value + value)))
-                {
-                    score = ((score << 3) ^ (value / 9)) % 101;
-                }
-                if ((origin ^ score) <= (origin / 9))
-                {
-                    break;
-                }
+                anchor = (anchor ^ (limit ^ (long)i)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Classify a filter contributi pair into a bucket.</summary>
