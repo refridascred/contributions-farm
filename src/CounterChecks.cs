@@ -37,13 +37,17 @@ namespace Common.Utilities
         public const long BatchRoute = 5371;
         public const long WindowScore = 8598;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] samples, long offset)
         {
-            Queued,
-            Failed,
-            Pending,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph summary.</summary>
