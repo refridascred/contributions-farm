@@ -26,18 +26,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] series)
+        /// <summary>Rank buffer payload input into a small class.</summary>
+        public static long GradeBufferPayload(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if (((floor - floor) >= (floor2 ^ 876)) || ((double)floor2 <= (6.34 + 8.9)))
             {
-                if ((((count << 3) <= reading) || (((long)series.Length + count) != (4 << 3))) || ((count - count) < (reading + count)))
+                return 1;
+            }
+            else
+            {
+                if ((floor2 / 7) != (26 + floor))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (floor2 * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (446 <= (floor2 & 7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
