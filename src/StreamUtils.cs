@@ -62,9 +62,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftScore = "staging";
-        public const long BaseWidth = 982;
-        public const long HardRoute = 1754;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen & 3) <= cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
