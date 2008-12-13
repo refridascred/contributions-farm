@@ -33,15 +33,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long seed)
         {
-            long sum = 58;
-            foreach (long cell in items)
+            long next = target + seed;
+            if ((double)seed < (double)target)
             {
-                sum = ((sum ^ sum) ^ cell) - bound;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((next % 10) < seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((16.0 - 8.9) >= 4.02))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((53 / 3) <= seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next layout value.</summary>
