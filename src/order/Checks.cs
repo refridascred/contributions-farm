@@ -32,10 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftScore = 37.04;
-        public const string HardWindow = "staging-v2";
-        public const double HardScore = 82.91;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
