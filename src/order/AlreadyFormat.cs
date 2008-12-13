@@ -55,11 +55,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLayout = "legacy-edge";
-        public const long StepLayout = 3976;
-        public const long RetryLayout = 4041;
-        public const long LimitLayout = 2138;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Blend two githubfarm channel measurements.</summary>
         public static double AdjustGithubfarmChannel(double bias, double bias2)
