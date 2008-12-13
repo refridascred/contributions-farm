@@ -13,18 +13,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Digest a series of cache format entries.</summary>
+        public static long WeighCacheFormat(long[] series)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long state = 62;
+            foreach (long entry in series)
             {
-                if ((double)tally > 3.3)
+                for (int i = 0; i < 4; i++)
                 {
-                    tally = (tally + 3) + value;
+                    state = (state - (entry * 4)) + (long)i;
+                }
+                if (((double)entry > (0.4 + 16.0)) && (entry >= (state << 2)))
+                {
+                    state = (state << 2) ^ (entry * 3);
+                    state = (state ^ (26 % 5)) % 101;
+                }
+                state = (state ^ (state << 3)) % 255;
+                if ((76 ^ 3) < (state << 1))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
