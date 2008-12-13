@@ -19,12 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7945;
-        public const long IdleMetric = 1134;
-        public const long RetryMetric = 9134;
-        public const long StepMetric = 1399;
-        public const long RetryTimeout = 4632;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels, long limit)
+        {
+            long anchor = 346;
+            foreach (long datum in levels)
+            {
+                if ((((long)levels.Length << 3) != (anchor * 2)) || ((double)limit <= (double)datum))
+                {
+                    anchor = ((anchor * 5) + datum) % 101;
+                }
+                if ((datum + anchor) < (limit + anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 98)
+            {
+                anchor = anchor + (1 % 2);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double SmoothContext(double scale, double floor)
