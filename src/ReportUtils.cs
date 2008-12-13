@@ -57,11 +57,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 7392;
-        public const double StepSize = 80.47;
-        public const string BatchBudget = "open-edge";
-        public const long CacheCount = 851;
+        /// <summary>Iterate the githubfarm token series from a seed.</summary>
+        public static long StepGithubfarmToken(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] data, long bound)
