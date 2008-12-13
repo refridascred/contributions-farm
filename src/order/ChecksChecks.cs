@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Locked,
-            Queued,
-            Active,
-            Failed,
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
