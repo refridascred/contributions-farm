@@ -37,19 +37,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((cell & 31) >= seen) || ((double)cell <= (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryInterval = 8977;
+        public const double StepTimeout = 40.11;
+        public const long MaxFactor = 6967;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] data)
