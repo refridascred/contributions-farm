@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Retry,
-            Queued,
-            New,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultLevel = 2818;
+        public const double HardGithubfarm = 50.89;
+        public const long LimitLevel = 3846;
+        public const double LimitRatio = 69.88;
+        public const string DefaultInterval = "legacy-v2";
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
