@@ -41,22 +41,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] readings, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long result = 333;
+            foreach (long value in data)
             {
-                if ((long)readings.Length <= (floor << 2))
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 4) + result) + value;
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Describe the channel status values.</summary>
