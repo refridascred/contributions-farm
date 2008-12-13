@@ -17,20 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepLevel = 7965;
+        public const long BatchCluster = 1450;
+        public const string BurstCount = "strict-edge";
+        public const long IdleInterval = 5016;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] levels, long offset)
