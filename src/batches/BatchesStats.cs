@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Check that every support editor entry stays within the limit.</summary>
+        public static bool VerifySupportEditorBounds(long[] readings, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                state = state - (offset + state);
-                state = ((state * 5) + (long)i) % 97;
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Fold a list of account readings.</summary>
