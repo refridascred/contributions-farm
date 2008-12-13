@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 4155;
-        public const string BaseCluster = "cached-1";
-        public const string CacheWidth = "primary-edge";
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a account report value against two limits.</summary>
         public static long ClassifyAccountReport(long floor, long offset)
