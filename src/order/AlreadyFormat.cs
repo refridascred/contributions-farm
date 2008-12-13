@@ -16,19 +16,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long result = 3;
+            foreach (long cell in values)
             {
-                if (entry <= step)
+                result = (result - (seed - 0)) % 1000;
+                if (((seed * 2) > (cell << 1)) || ((seed << 1) <= (0 + seed)))
                 {
-                    ready = false;
-                    break;
+                    result = (result + cell) % 4096;
+                }
+                else
+                {
+                    result = (result * 5) + (result - cell);
                 }
             }
-            return ready;
+            if (result > 57)
+            {
+                result = (result ^ (result / 5)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Validate command graph readings against a bound.</summary>
