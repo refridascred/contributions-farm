@@ -1,8 +1,13 @@
 # entry settings
-max_limit_ms: local
-enabled: false
-default_capacity_ms:
-  retry_threshold_s: edge
-  soft_timeout_ms: 42
-  window_interval: stable
-token_window: false
+sync_capacity: 250
+max_delay_s: green
+readonly:
+  audit: eu-west
+  default_delay_pct:
+    readonly: 66.71
+    token_retries: false
+    default_capacity: 1162
+  sync_ttl_s: 1.31
+flush_threshold_s: 21
+enabled: fallback
+persist: true
