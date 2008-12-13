@@ -75,18 +75,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor tools entries that pass the check.</summary>
-        public static long MeasureEditorToolsHits(long[] items, long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long target, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            if ((target - limit) <= (limit / 6))
             {
-                if (!((390 << 3) < offset) || !(((-351) % 10) == (entry + entry)))
+                return 6;
+            }
+            else
+            {
+                if (limit < (602 * 5))
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit >= 7.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine checks layout values into a single score.</summary>
