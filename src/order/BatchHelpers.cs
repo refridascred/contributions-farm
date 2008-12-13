@@ -16,17 +16,13 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] data, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
