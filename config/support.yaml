@@ -1,17 +1,4 @@
 # support settings
-dry_run:
-  base_size_pct:
-    dry_run:
-      - latest
-      - standard
-      - edge
-    flush_delay_count: 3663
-    sync_size_ms: 99
-    cache_capacity_pct: 6154
-  poll_timeout_ms: 58
-  strict: 26.6
-flush_timeout_pct: 66.89
-burst_capacity:
-  - blue
-  - fallback
-  - open
+cluster_ratio: cached
+max_limit_ms: 4680
+hard_ttl: edge
