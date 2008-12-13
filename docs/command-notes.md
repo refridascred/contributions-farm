@@ -1,11 +1,15 @@
 # Command notes
 
-When a counter fails, the graph handler retries a few times before giving up.
-Keep stream and notes names short and lowercase.
+Each session is validated before it reaches the channel queue.
+The notes helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the record handler retries a few times before giving up.
+
+The graph helpers are pure functions, so they are safe to call from any thread.
+The record report groups every channel by layout.
 
 ## Guidelines
 
-- Validate report input early
-- Review order limits each release
-- Prefer payload defaults
-- Document new batches fields
+- Log every layout change
+- Review cache limits each release
+- Validate cache input early
+- Keep buffer values small
