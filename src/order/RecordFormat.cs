@@ -28,19 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double ratio, double bias)
+        /// <summary>Count the cache window entries that pass the check.</summary>
+        public static long AuditCacheWindowOutliers(long[] samples, long seed)
         {
-            double scale = 16.0;
-            if (scale >= (2.6 + scale))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                scale = (scale + (double)41) - bias;
+                if ((double)cell >= (8.03 / 7.0))
+                {
+                    count = (count + 1) + seed;
+                }
             }
-            else
-            {
-                scale = scale + (ratio / 5.0);
-            }
-            return scale + (4.0 + scale);
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
