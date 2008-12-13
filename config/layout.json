@@ -1,11 +1,6 @@
 {
-  "flush_delay_s": "cached",
-  "filter_threshold": "primary",
-  "context_depth": "primary",
-  "verbose": "open",
-  "enabled": {
-    "idle_threshold_count": 500,
-    "warm_ttl": 76.78,
-    "channel_limit": ["local", "eu-west", "primary"]
-  }
+  "poll_ttl_pct": 6252,
+  "max_window_pct": 9289,
+  "dry_run": 45,
+  "poll_interval_s": 47
 }
