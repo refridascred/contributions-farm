@@ -1,12 +1,7 @@
 # entry settings
-queue_window: 7
-batch_interval_s: 47
-max_retries_s: 1341
-cache_timeout:
-  default_threshold: edge
-  dry_run: edge
-  max_limit_pct: 4098
-  min_capacity_ms: 65.43
-  sync_delay_ms: strict
-  persist: primary
-sync_capacity_s: 80.11
+poll_threshold_count: latest
+audit:
+  - edge
+  - cached
+  - legacy
+flush_ttl_ms: cached
