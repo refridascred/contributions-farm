@@ -37,19 +37,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] items, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (datum <= bound)
+                if ((long)readings.Length <= (floor << 2))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the stats level values.</summary>
