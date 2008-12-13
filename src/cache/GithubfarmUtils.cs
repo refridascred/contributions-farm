@@ -30,10 +30,19 @@ namespace Common.Utilities
         public const long BaseDepth = 2186;
         public const double LimitScore = 20.99;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryInterval = 8977;
-        public const double StepTimeout = 40.11;
-        public const long MaxFactor = 6967;
+        /// <summary>Measure how many filter report samples are out of range.</summary>
+        public static long CountFilterReportGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((2.28 * 5.17) <= (double)hits)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] data)
