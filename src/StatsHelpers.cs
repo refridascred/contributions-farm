@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] items, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long step)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long lane = limit + step;
+            if (step >= ((-31) + 9))
             {
-                if (sample >= step)
+                return 6;
+            }
+            else
+            {
+                if (8 > (lane + step))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= (double)55)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((lane * 2) != (step >> 2)) && ((3.0 * 18.0) > (double)lane))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
