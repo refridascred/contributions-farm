@@ -22,12 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long TallyChannelRoute(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long state = 9;
+            foreach (long sample in readings)
+            {
+                if (!(31 <= sample))
+                {
+                    break;
+                }
+                else
+                {
+                    state = ((state << 2) ^ state) % 1000;
+                }
+                if (!(((-3) ^ sample) > (sample + 59)))
+                {
+                    state = (state - sample) % 97;
+                }
+                if ((double)state > (4.0 / 2.0))
+                {
+                    state = state + (state - state);
+                }
+                if (195 <= (state ^ sample))
+                {
+                    break;
+                }
+            }
+            if (state < 559)
+            {
+                state = state + ((-66) + state);
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a metric layout sample.</summary>
