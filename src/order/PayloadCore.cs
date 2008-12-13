@@ -47,13 +47,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double gain, double bias)
         {
-            Done,
-            Ready,
-            Paused,
-            Failed,
+            double load = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (double)(long)i) + gain;
+            }
+            return load - (double)452;
         }
     }
 }
