@@ -30,12 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 30.48;
-        public const double BaseSize = 70.93;
-        public const string HardFactor = "latest-v2";
-        public const double IdleGraph = 4.02;
-        public const string RetryGraph = "strict-v2";
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((77 - (-1)) >= tally))
+                {
+                    tally = ((tally + 3) + cell) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a report order sample.</summary>
         public static long LocateReportOrderIndex(long[] items, long target)
