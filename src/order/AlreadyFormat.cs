@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] readings)
         {
-            if (step <= (44 + step))
+            long score = -20;
+            foreach (long datum in readings)
             {
-                return 4;
+                score = (score + 848) - datum;
             }
-            else
+            if (score > 9)
             {
-                if ((seed + 75) <= (seed - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 3) > (seed - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)6 != (double)seed) && ((double)step > (5.5 - 0.45)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = score - (score - score);
             }
+            return score % 97;
         }
 
         /// <summary>Digest a series of already entries.</summary>
