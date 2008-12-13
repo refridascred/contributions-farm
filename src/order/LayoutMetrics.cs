@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const string WindowTimeout = "legacy-1";
         public const long MaxContext = 5288;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Match up queue checks samples.</summary>
+        public static long CompareQueueChecksCount(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result + result) >= result)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result - result;
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
     }
 }
