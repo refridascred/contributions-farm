@@ -26,19 +26,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (datum < target)
+                if (item <= origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
