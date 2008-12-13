@@ -34,11 +34,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseRatio = 7033;
-        public const string HardContext = "latest-edge";
-        public const long BurstSize = 204;
-        public const string SoftSize = "cached";
-        public const double SoftInterval = 87.11;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchSpan = "open";
+        public const long DefaultCluster = 6041;
+        public const long BurstCluster = 3526;
     }
 }
