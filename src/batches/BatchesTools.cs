@@ -36,21 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Derive the next metric tools value from a seed.</summary>
+        public static long StepMetricTools(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)i >= (limit + (long)i)) || ((double)limit >= (1.5 + 8.2)))
                 {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (mix ^ limit)) % 97;
+                    mix = ((mix * 4) + (mix + mix)) % 4096;
                 }
+                else
+                {
+                    mix = mix ^ ((long)i - limit);
+                    mix = (mix ^ (0 % 7)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
     }
 }
