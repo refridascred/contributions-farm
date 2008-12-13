@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Adjust a graph support reading.</summary>
+        public static double ProjectGraphSupport(double ratio, double bias)
         {
-            Draft,
-            Ready,
-            Failed,
-            Pending,
+            double load = (bias * 1.71) * 15.0;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load + (ratio / 4.0);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
