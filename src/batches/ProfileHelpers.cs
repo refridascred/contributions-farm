@@ -22,22 +22,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
-        public static long MeasureGithubfarmFilterHits(long[] values, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] values, long origin)
         {
-            long tally = 0;
+            bool stale = true;
             foreach (long sample in values)
             {
-                if ((55 & 63) <= limit)
+                if (sample != origin)
                 {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
