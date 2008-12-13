@@ -31,11 +31,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 5305;
-        public const string BaseCount = "open";
-        public const long MinTools = 6669;
-        public const long RetryRatio = 7442;
-        public const double CacheTools = 9.03;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Idle,
+            Done,
+            Failed,
+            Locked,
+        }
     }
 }
