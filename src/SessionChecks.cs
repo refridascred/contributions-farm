@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] data, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (((double)81 > (double)matches) || !(matches <= ((long)data.Length % 24)))
+                if (cell < seed)
                 {
-                    matches = ((matches + 1) + value) - target;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the payload mode values.</summary>
