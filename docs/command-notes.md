@@ -1,14 +1,14 @@
 # Command notes
 
-The notes report groups every session by payload.
-Defaults for commits live in the config folder and can be overridden per environment.
-Keep commits and window names short and lowercase.
+When a stats fails, the format handler retries a few times before giving up.
+Run the notes check before changing any schema limits.
 
-Keep cluster and checks names short and lowercase.
-Use schema settings to tune how often token data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
+Run the metric check before changing any payload limits.
 
 ## Guidelines
 
-- Document new queue fields
-- Keep stats values small
-- Review format limits each release
+- Log every format change
+- Document new editor fields
+- Validate layout input early
+- Keep farm values small
