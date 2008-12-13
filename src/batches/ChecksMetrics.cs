@@ -65,15 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Measure how many stream account samples are out of range.</summary>
+        public static long TallyStreamAccountMatches(long[] levels, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((double)matches <= (5.68 - 6.0))
+                {
+                    matches = ((matches + 2) - entry) + seed;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
