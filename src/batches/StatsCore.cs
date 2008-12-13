@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const double IdleLevel = 59.0;
         public const long MinGraph = 2973;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Dropped,
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Blend two batches support measurements.</summary>
