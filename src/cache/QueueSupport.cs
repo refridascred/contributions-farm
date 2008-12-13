@@ -15,39 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank commits queue input into a small class.</summary>
-        public static long ClassifyCommitsQueue(long floor, long step)
+        /// <summary>Validate already context readings against a bound.</summary>
+        public static bool VerifyAlreadyContextRange(long[] samples, long bound)
         {
-            long cur = floor ^ step;
-            if ((1.0 + 0.08) != (double)step)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step << 2) >= (921 << 1)) && ((8 ^ step) <= (floor / 7)))
+                if (value >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)cur >= (7.0 + 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor != (double)step) && (20 <= (floor & 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a batch options.</summary>
