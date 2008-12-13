@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 95.43;
         public const long HardRatio = 2411;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] readings, long origin)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a farm notes value against two limits.</summary>
