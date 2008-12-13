@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Done,
-            Retry,
-            Paused,
-            Synced,
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
