@@ -14,22 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Validate schema support readings against a bound.</summary>
+        public static bool ValidateSchemaSupportLimits(long[] series, long bound)
         {
-            long anchor = 2;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((anchor & 7) <= value)
+                if (datum < bound)
                 {
-                    anchor = (anchor + (anchor - value)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 6)
-            {
-                anchor = anchor - ((long)items.Length + 342);
-            }
-            return anchor % 65521;
+            return found;
         }
 
         /// <summary>Digest a series of tools batches entries.</summary>
