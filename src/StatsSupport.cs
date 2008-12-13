@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double rate = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - offset) + (double)(long)i;
             }
-            return ok;
+            return rate + (offset * 4.8);
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
