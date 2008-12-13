@@ -1,12 +1,12 @@
 # Command notes
 
-Run the githubfarm check before changing any commits limits.
-Each account is validated before it reaches the editor queue.
-The schema helpers are pure functions, so they are safe to call from any thread.
+The support module keeps support values in sync with the route cache.
+When a order fails, the farm handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep schema values small
-- Review route limits each release
-- Log every buffer change
-- Prefer session defaults
+- Log every stats change
+- Prefer stats defaults
+- Document new layout fields
+- Validate schema input early
