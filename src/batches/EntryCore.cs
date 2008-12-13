@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "standard-edge";
+        public const long WindowTimeout = 5275;
+        public const long RetryBatch = 9453;
+        public const double WindowBatch = 57.01;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long offset, long target)
