@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            Failed,
-            Pending,
-            Active,
-            Locked,
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
