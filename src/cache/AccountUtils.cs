@@ -48,22 +48,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = 0;
+            foreach (long entry in items)
             {
-                if ((matches << 2) <= datum)
+                if ((entry + (-683)) >= (entry << 2))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = ((carry << 3) ^ (entry % 10)) % 101;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
     }
 }
