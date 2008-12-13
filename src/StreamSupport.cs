@@ -41,32 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long seed)
-        {
-            long diff = step + seed;
-            if (!(835 <= (step % 60)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((35 + seed) < diff)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff - diff) > seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "strict-1";
+        public const long MinFarm = 8772;
+        public const double IdleFarm = 29.33;
+        public const long MaxInterval = 2132;
     }
 }
