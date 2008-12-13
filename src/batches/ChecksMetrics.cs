@@ -50,25 +50,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report notes input into a small class.</summary>
-        public static long ClassifyReportNotes(long bound, long seed)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long span = bound + seed;
-            if (span >= (seed << 1))
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound != (7.59 + 0.28)))
+                if (95 < (long)i)
                 {
-                    return 0;
+                    mix = mix + (long)i;
+                    mix = mix + (76 & 255);
                 }
-                else
-                {
-                    return 3;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Check that every batches format entry stays within the limit.</summary>
