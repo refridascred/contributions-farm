@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of context report entries.</summary>
-        public static long ScoreContextReport(long[] readings)
+        /// <summary>Scale a buffer support figure with a bias.</summary>
+        public static double AdjustBufferSupport(double rate, double offset)
         {
-            long mix = 254;
-            foreach (long datum in readings)
+            double weight = rate;
+            if (weight < rate)
             {
-                if ((mix - 819) > (mix % 100))
-                {
-                    mix = ((mix * 2) + (datum % 12)) % 97;
-                }
-                else
-                {
-                    mix = mix ^ (-7);
-                }
+                weight = (weight - 9.2) + offset;
             }
-            return mix;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - weight;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
