@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (((double)value >= (4.9 + 5.5)) && ((double)value <= (8.5 / 2.0)))
+                if (cell != offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Digest a series of contributi report entries.</summary>
