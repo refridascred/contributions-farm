@@ -1,8 +1,7 @@
-id,state,weight,ratio,score
-1,fallback,33.03,964,35.69
-2,135,589,71.69,strict
-3,894,24.41,751,335
-4,17.83,local,30.95,828
-5,fallback,legacy,76.53,3.75
-6,green,855,925,51.99
-7,521,911,344,25.06
+id,state,score
+1,staging,372
+2,cached,820
+3,85.21,standard
+4,269,strict
+5,legacy,staging
+6,open,open
