@@ -68,19 +68,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 7853;
+        public const long StepCommand = 6529;
+        public const double DefaultCommand = 95.75;
+        public const long HardCommand = 2574;
     }
 }
