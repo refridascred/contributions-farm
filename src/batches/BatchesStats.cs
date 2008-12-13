@@ -30,22 +30,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit metrics editor readings against a rule.</summary>
-        public static long MeasureMetricsEditorOutliers(long[] series, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (!((seed > (entry << 2)) || ((28 - entry) <= (entry ^ seed))))
+                if (reading < origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Adjust a already reading.</summary>
