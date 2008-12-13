@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] values, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long carry = -846;
-            foreach (long entry in values)
+            long score = 3;
+            foreach (long reading in samples)
             {
-                if (!((entry + 61) >= 184))
+                if ((score - 66) > (score / 9))
                 {
-                    carry = carry ^ (carry ^ carry);
-                }
-                else
-                {
-                    carry = carry + (floor + 618);
+                    score = (score + (score - score)) ^ reading;
                 }
             }
-            if (carry > 9)
+            if (score > 0)
             {
-                carry = (carry * 5) + (floor % 2);
+                score = (score * 3) + (score - score);
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the graph mode values.</summary>
