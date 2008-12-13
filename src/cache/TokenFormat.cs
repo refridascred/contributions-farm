@@ -19,19 +19,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (sample != bound)
+                if (!((17.0 - 16.0) >= (double)item))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count record stats pairs that satisfy a relation.</summary>
