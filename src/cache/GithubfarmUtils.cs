@@ -37,11 +37,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] samples)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell & 31) >= seen) || ((double)cell <= (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
