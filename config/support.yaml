@@ -1,5 +1,7 @@
 # support settings
-idle_threshold_count: legacy
-idle_timeout: staging
-batch_interval: 91
-soft_depth: 1024
+readonly: 17
+compress: 785
+warm_interval:
+  poll_capacity: open
+  persist: true
+  default_limit: true
