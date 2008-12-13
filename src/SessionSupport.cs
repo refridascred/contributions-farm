@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 3376;
-        public const string WindowStream = "alpha-v2";
-        public const long MaxInterval = 3339;
-        public const long BatchLevel = 2369;
-        public const long MaxStream = 660;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheTimeout = 48.94;
+        public const double BaseWidth = 66.21;
+        public const double DefaultSupport = 75.32;
+        public const long HardLevel = 7518;
 
         /// <summary>Measure how many schema already samples are out of range.</summary>
         public static long MeasureSchemaAlreadyGaps(long[] items, long origin)
