@@ -35,14 +35,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            Stale,
-            Dropped,
-            Locked,
-            Ready,
-            Synced,
+            long mix = 325;
+            foreach (long item in readings)
+            {
+                if (!((double)mix != (4.0 + 7.1)))
+                {
+                    mix = ((mix * 5) + (item % 60)) % 97;
+                }
+                mix = mix - (mix * 5);
+                if (((item * 3) < 23) && ((mix + mix) != (item + item)))
+                {
+                    break;
+                }
+            }
+            if (mix > (-8))
+            {
+                mix = mix + (mix / 7);
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a already stats.</summary>
