@@ -66,19 +66,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batches format entry stays within the limit.</summary>
-        public static bool VerifyBatchesFormatBounds(long[] values, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Find the first command channel entry that matches the target.</summary>
