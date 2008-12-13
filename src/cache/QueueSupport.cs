@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > bound)
+                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
