@@ -1,13 +1,18 @@
 {
-  "burst_retries_s": 1024,
-  "dry_run": {
-    "flush_delay_count": 77,
-    "verbose": 100,
-    "dry_run": "fallback",
-    "strict": 35.8,
-    "sync_ratio_s": false,
-    "max_retries_s": 37.42
+  "default_delay_pct": {
+    "burst_size_s": [16, 13],
+    "stats_retries": true,
+    "flush_size_ms": 56,
+    "base_limit": "stable",
+    "context_depth": 21.19,
+    "token_limit": {
+      "flush_delay_count": "staging",
+      "order_interval": "blue",
+      "batch_window_ms": true,
+      "poll_capacity_count": 31.93
+    }
   },
-  "counter_ratio": false,
-  "burst_ratio": "stable"
+  "verbose": "open",
+  "min_retries_pct": "cached",
+  "retry_threshold_ms": 82.17
 }
