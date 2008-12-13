@@ -65,18 +65,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long TallyCounterOrderOutliers(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = -3;
+            foreach (long reading in values)
             {
-                if (598 >= (entry % 7))
+                if (!((2.0 - 16.0) != (double)reading))
                 {
-                    seen = seen + 2;
+                    acc = acc ^ acc;
                 }
             }
-            return seen;
+            if (acc < 481)
+            {
+                acc = ((acc << 3) ^ (acc * 4)) % 97;
+            }
+            return acc;
         }
     }
 }
