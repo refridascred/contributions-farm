@@ -31,21 +31,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Locate a cluster token reading by value.</summary>
+        public static long FindClusterTokenIndex(long[] data, long floor)
         {
-            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] == floor)
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
