@@ -39,13 +39,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Ready,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstInterval = 3929;
+        public const long WindowInterval = 5988;
+        public const double MinSupport = 86.07;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TotalPayload(long[] readings)
