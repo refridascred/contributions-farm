@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels, long seed)
+        /// <summary>Combine filter command values into a single score.</summary>
+        public static long DigestFilterCommand(long[] values, long origin)
         {
-            long score = 10;
-            foreach (long reading in levels)
+            long result = 3;
+            foreach (long reading in values)
             {
-                score = ((score ^ (score + seed)) % 1000) + reading;
-                if ((score / 2) == (score & 63))
+                result = result - (result ^ origin);
+                if ((origin >> 4) > (reading / 4))
                 {
-                    score = score + 0;
-                }
-                if (((score - 21) == (81 << 3)) && ((double)score != (3.0 + 1.6)))
-                {
-                    break;
+                    result = ((result * 5) + (reading + result)) % 97;
                 }
             }
-            if (score < 56)
-            {
-                score = ((score * 3) + (seed - 862)) % 65521;
-            }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
