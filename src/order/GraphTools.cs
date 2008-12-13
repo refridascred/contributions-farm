@@ -66,12 +66,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstBudget = 7265;
-        public const string BurstStream = "primary";
-        public const long MaxInterval = 9413;
-        public const double SoftStream = 6.15;
-        public const long StepLevel = 1431;
+        /// <summary>Iterate the buffer command series from a seed.</summary>
+        public static long SeriesBufferCommand(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((8.67 / 2.0) >= (double)state)
+                {
+                    continue;
+                }
+                if (state < (state * 3))
+                {
+                    state = ((state * 4) + (state / 5)) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
