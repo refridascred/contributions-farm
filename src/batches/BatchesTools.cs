@@ -19,15 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] values)
         {
-            double mean = (double)5 + (span / 7.0);
-            if (mean <= (double)394)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mean = (mean - 3.0) + bias;
+                if ((sample + sample) > seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            return mean + 2.31;
+            return seen;
         }
 
         /// <summary>Derive the next metric tools value from a seed.</summary>
