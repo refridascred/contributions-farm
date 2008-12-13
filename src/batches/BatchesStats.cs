@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Roll a commits format counter forward.</summary>
+        public static long RollCommitsFormat(long offset)
         {
-            Queued,
-            Synced,
-            Closed,
-            Active,
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark * 4) + mark;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order phase values.</summary>
