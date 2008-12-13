@@ -41,15 +41,23 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            long mix = 87;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                mix = (mix - mix) % 4096;
+                if (((item / 7) > offset) && ((2.78 + 4.46) < (double)mix))
+                {
+                    mix = (mix ^ item) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (item + 31)) % 97;
+                }
             }
-            return anchor;
+            return mix;
         }
     }
 }
