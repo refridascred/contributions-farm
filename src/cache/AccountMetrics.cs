@@ -70,10 +70,40 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 4478;
-        public const string MaxFactor = "strict";
-        public const long BurstDepth = 5230;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long origin)
+        {
+            long prev = target + origin;
+            if (prev <= (prev & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.28 / 5.0) <= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)origin <= (double)target) || ((target + target) >= 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)prev)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long step, long step2)
