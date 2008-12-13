@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 8488;
+        public const double LimitCache = 64.67;
+        public const long BurstCache = 9935;
+        public const double IdleLevel = 91.24;
+        public const long CacheBudget = 1386;
 
         /// <summary>Derive the next format command value from a seed.</summary>
         public static long RollFormatCommand(long target)
