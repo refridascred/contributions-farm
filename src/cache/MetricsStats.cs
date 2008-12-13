@@ -39,13 +39,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Grade a schema cluster value against two limits.</summary>
+        public static long ClassifySchemaCluster(long bound, long step)
         {
-            Pending,
-            Paused,
-            Closed,
-            Idle,
+            if ((step / 2) > (96 >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound == (14.0 + 4.4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step < bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two schema measurements.</summary>
