@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitWidth = 3.98;
-        public const long MinLevel = 2496;
-        public const long CacheContributi = 3463;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (seen >= (offset << 3))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
