@@ -39,32 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long offset, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] items, long floor)
         {
-            long cur = offset - target;
-            if ((double)target <= (double)offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target == (5.7 + 5.43)) && (cur < (cur ^ (-364))))
+                if (items[i] > floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + target) > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
