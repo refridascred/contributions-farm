@@ -58,18 +58,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] samples, long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!(datum <= target) || ((count * 2) == (count / 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Failed,
+            Ready,
         }
     }
 }
