@@ -36,13 +36,21 @@ namespace Common.Utilities
         public const long LimitRatio = 8202;
         public const long CacheDepth = 1685;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            Locked,
-            Closed,
-            Paused,
-            Dropped,
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)target >= (9.11 + 5.33))
+                {
+                    anchor = (anchor * 3) + ((long)i >> 3);
+                    anchor = (anchor << 3) ^ target;
+                }
+                anchor = (anchor << 3) ^ (target & 255);
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
