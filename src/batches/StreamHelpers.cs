@@ -59,11 +59,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheScore = "latest-edge";
-        public const long DefaultLevel = 5513;
-        public const double BatchBudget = 56.51;
-        public const string BurstCount = "standard-1";
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Look up the position of a notes command sample.</summary>
         public static long LocateNotesCommandIndex(long[] series, long limit)
