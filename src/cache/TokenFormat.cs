@@ -15,16 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum ^ 444;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Active,
+            Idle,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
