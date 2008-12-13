@@ -45,15 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] series, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] values, long offset)
         {
-            long total = -951;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                total = (((total * 2) + (offset % 100)) % 4096) ^ item;
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return flag;
         }
     }
 }
