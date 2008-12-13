@@ -20,22 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] items, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long mark = 2;
-            foreach (long item in items)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((mark - 5) == (mark + offset))
-                {
-                    mark = (((mark << 2) ^ (offset / 8)) % 255) + item;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (offset % 5);
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return carry;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
