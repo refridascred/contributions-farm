@@ -1,7 +1,4 @@
 # support settings
-default_size: true
-batch_window_pct: 14
-hard_threshold_count: 48.25
-verbose: 1615
-readonly: 29
-min_interval_count: 3617
+default_threshold: false
+idle_interval_pct: green
+idle_window: local
