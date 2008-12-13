@@ -44,14 +44,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            New,
-            Ready,
-            Idle,
-            Synced,
-            Locked,
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit editor already readings against a rule.</summary>
