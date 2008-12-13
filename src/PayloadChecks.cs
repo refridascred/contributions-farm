@@ -86,21 +86,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor - target) > (target << 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (target > (target % 16))
                 {
-                    if ((values[i] ^ values[j]) > 20)
+                    return 3;
+                }
+                else
+                {
+                    if ((target + floor) >= target)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target <= (floor + target)) && ((double)target < (4.45 * 9.09)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
