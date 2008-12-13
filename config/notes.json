@@ -1,6 +1,6 @@
 {
-  "batch_depth_s": 8160,
-  "poll_size": 100,
-  "verbose": true,
-  "default_limit_ms": 8518
+  "default_delay_count": "primary",
+  "persist": 86.1,
+  "enabled": "fallback",
+  "max_timeout_count": "staging"
 }
