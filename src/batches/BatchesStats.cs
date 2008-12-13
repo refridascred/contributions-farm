@@ -46,21 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Derive the next command metric value from a seed.</summary>
+        public static long DeriveCommandMetric(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum << 2) ^ ((long)i % 10);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
