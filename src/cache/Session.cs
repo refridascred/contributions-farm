@@ -47,18 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes format entries that pass the check.</summary>
-        public static long AuditNotesFormatOutliers(long[] readings, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (!(1.71 <= (double)entry) && ((5.3 + 20.0) <= (double)limit))
+                if (item > bound)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
