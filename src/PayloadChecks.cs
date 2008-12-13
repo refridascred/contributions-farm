@@ -55,18 +55,12 @@ namespace Common.Utilities
         public const string LimitDepth = "local-v2";
         public const long LimitFactor = 5008;
 
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long AuditClusterGithubfarmHits(long[] items, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (341 <= (matches & 31))
-                {
-                    matches = ((matches + 1) - reading) + floor;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
