@@ -1,5 +1,34 @@
 {
-  "burst_delay_ms": "staging",
-  "warm_limit": "latest",
-  "base_ttl_count": 90
+  "verbose": {
+    "flush_depth_ms": [207, 354, 147],
+    "channel_threshold": 48,
+    "hard_retries_ms": {
+      "metrics_retries": "strict",
+      "record_threshold": 35,
+      "cache_interval": false,
+      "account_ttl": 2633,
+      "strict": 30
+    },
+    "sync_timeout_ms": true
+  },
+  "githubfarm_limit": {
+    "dry_run": 75,
+    "idle_capacity_count": true,
+    "batch_size": false,
+    "context_threshold": true,
+    "report_retries": 250
+  },
+  "strict": "standard",
+  "max_depth": {
+    "cache_capacity": {
+      "base_ratio": 72,
+      "readonly": 32.23,
+      "already_ratio": 4414,
+      "strict": true,
+      "audit": 69.22
+    },
+    "burst_capacity": 60,
+    "checks_retries": false,
+    "dry_run": true
+  }
 }
