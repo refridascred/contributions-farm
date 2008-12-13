@@ -1,16 +1,14 @@
 # Command notes
 
-Each checks is validated before it reaches the support queue.
-The queue helpers are pure functions, so they are safe to call from any thread.
-When a window fails, the route handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
+A metric that stays idle for too long is moved to the session list.
+Run the tools check before changing any profile limits.
 
-The entry report groups every batch by entry.
-Each counter is validated before it reaches the entry queue.
-Keep githubfarm and tools names short and lowercase.
+The batches module keeps batch values in sync with the graph cache.
+Keep command and session names short and lowercase.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every counter change
-- Validate context input early
-- Keep counter values small
+- Keep schema values small
+- Review token limits each release
+- Validate counter input early
