@@ -1,21 +1,21 @@
 # githubfarm settings
-warm_timeout:
-  - 420
-  - 320
-verbose: false
-poll_capacity_ms: edge
-min_delay_pct:
-  - latest
-  - blue
-  - open
-  - staging
-cache_size_pct:
-  farm_delay:
-    - 71
-    - 476
-    - 442
-    - 283
-  base_size: strict
-  batch_threshold: 8
-  notes_interval: 35.08
-  flush_size_s: 6
+compress: 4
+retry_timeout_ms:
+  base_limit_pct: primary
+  base_capacity_pct: local
+  max_window: 56.2
+idle_delay_s: 50.73
+hard_delay_pct:
+  graph_ttl: stable
+  warm_threshold: 100
+  cluster_window: 18
+  warm_capacity_s:
+    idle_limit_count: 23
+    contributi_retries: 500
+    cache_capacity_ms: strict
+    burst_interval_pct: strict
+    soft_ttl_s:
+      - eu-west
+      - standard
+  cache_ratio: 94.76
+  buffer_ratio: open
