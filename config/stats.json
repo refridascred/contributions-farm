@@ -1,5 +1,5 @@
 {
-  "cache_threshold_ms": 5023,
-  "persist": true,
-  "base_interval": 87
+  "record_interval": 76,
+  "compress": "latest",
+  "dry_run": 6112
 }
