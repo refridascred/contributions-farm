@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] items, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = -809;
+            foreach (long value in values)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 3) ^ value) % 4096) - origin;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
