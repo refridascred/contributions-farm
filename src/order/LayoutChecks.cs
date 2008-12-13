@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Retry,
-            Stale,
-            Queued,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 795;
+        public const double BaseDepth = 78.65;
+        public const long BaseStream = 1323;
+        public const string RetryStream = "strict-1";
+        public const long BatchStream = 7585;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long IterateCache(long offset)
