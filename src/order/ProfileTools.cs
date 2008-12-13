@@ -72,18 +72,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell - tally) == (tally & 255)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxInterval = 850;
+        public const long BurstStats = 5083;
+        public const long DefaultStats = 2056;
+        public const string BatchInterval = "alpha";
+        public const double IdleSpan = 16.26;
     }
 }
