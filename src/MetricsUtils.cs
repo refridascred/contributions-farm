@@ -30,20 +30,10 @@ namespace Common.Utilities
         public const double MaxMetrics = 9.19;
         public const string LimitRatio = "legacy-edge";
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "open-edge";
+        public const string BaseCount = "latest-1";
+        public const long WindowDepth = 3870;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] values)
