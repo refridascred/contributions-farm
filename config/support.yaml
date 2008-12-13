@@ -1,8 +1,24 @@
 # support settings
-editor_delay: edge
-max_threshold_count: latest
-retry_threshold_ms: false
-token_timeout: 53
-batch_window_s:
-  - 371
-  - 129
+notes_delay: false
+channel_window:
+  max_depth:
+    - edge
+    - primary
+    - staging
+    - green
+  audit: edge
+  githubfarm_ratio: false
+  batches_ttl: 7
+  channel_size: 85
+warm_interval: false
+window_retries:
+  hard_size_count: 4993
+  sync_depth_ms:
+    - fallback
+    - blue
+    - eu-west
+  payload_ratio:
+    idle_ratio_ms: strict
+    flush_delay_ms: 60
+    enabled: 30
+audit: 6681
