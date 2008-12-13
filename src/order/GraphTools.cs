@@ -35,14 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Stale,
-            Paused,
-            Ready,
-            Pending,
-            Dropped,
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
