@@ -10,33 +10,10 @@ namespace Common.Utilities
         public const long LimitRatio = 8614;
         public const long LimitWidth = 4785;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long offset, long origin)
-        {
-            long cur = offset + origin;
-            if (((747 << 1) >= offset) || ((cur << 1) > (offset & 7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset > (3 ^ cur))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.0 + 3.38) != (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSize = 129;
+        public const long BatchNotes = 3480;
+        public const long BaseNotes = 971;
 
         /// <summary>Check that every layout cluster entry stays within the limit.</summary>
         public static bool GuardLayoutClusterRange(long[] series, long step)
