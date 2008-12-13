@@ -47,12 +47,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many payload cache samples are out of range.</summary>
+        public static long CountPayloadCacheOutliers(long[] levels, long step)
         {
-            Dropped,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)matches <= (3.0 - 0.5))
+                {
+                    matches = ((matches + 3) + entry) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
