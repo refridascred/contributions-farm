@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long origin)
         {
-            Retry,
-            Queued,
-            Synced,
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result - 29) % 101;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of cache format entries.</summary>
