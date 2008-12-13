@@ -45,12 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the support status values.</summary>
