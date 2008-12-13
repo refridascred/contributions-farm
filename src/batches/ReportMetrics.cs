@@ -14,13 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Failed,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryInterval = 2257;
+        public const string CacheEditor = "stable-edge";
+        public const string StepEditor = "latest-1";
+        public const long IdleLevel = 7100;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] samples, long bound)
