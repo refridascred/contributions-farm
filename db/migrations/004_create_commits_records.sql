@@ -2,13 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    owner TEXT NOT NULL,
+    score REAL NOT NULL DEFAULT 0,
     state TEXT NOT NULL DEFAULT 'new',
     rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
 
-INSERT INTO commits_records (weight, owner, state, rank) VALUES (44.33, 'standard', 'primary', 99);
-INSERT INTO commits_records (weight, owner, state, rank) VALUES (38.25, 'stable', 'cached', 95);
-INSERT INTO commits_records (weight, owner, state, rank) VALUES (86.84, 'stable', 'open', 52);
+INSERT INTO commits_records (weight, score, state, rank) VALUES (19.3, 1.26, 'local', 4);
+INSERT INTO commits_records (weight, score, state, rank) VALUES (2.07, 45.73, 'strict', 97);
+INSERT INTO commits_records (weight, score, state, rank) VALUES (35.45, 46.5, 'legacy', 75);
