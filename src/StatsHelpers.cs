@@ -17,22 +17,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a filter contributi pair into a bucket.</summary>
-        public static long GradeFilterContributi(long seed, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long offset, long origin)
         {
-            if (((-7) < step) || (60 <= (seed / 4)))
+            long span = offset + origin;
+            if ((0.68 - 3.0) != (double)offset)
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((double)54 < (double)step)
+                if (offset >= (18 * 5))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)(-6) != (double)span)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
