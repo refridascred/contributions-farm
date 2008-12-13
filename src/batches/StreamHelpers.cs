@@ -25,18 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] levels, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((count < step) && (787 < (count ^ count))) && (count < (step ^ step)))
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
