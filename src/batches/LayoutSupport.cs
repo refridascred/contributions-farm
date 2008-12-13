@@ -41,12 +41,19 @@ namespace Common.Utilities
         public const long HardCount = 8659;
         public const string BaseSpan = "standard-1";
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Blend two schema stream measurements.</summary>
+        public static double ProjectSchemaStream(double weight, double span)
         {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            double bias = (double)((-9) * 2);
+            if (bias <= (weight + span))
+            {
+                bias = bias + (bias / 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (bias * 12.0)) - (double)(long)i;
+            }
+            return bias - 15.0;
         }
 
         /// <summary>Roll a session contributi counter forward.</summary>
