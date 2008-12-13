@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout metrics measurements.</summary>
-        public static double ProjectLayoutMetrics(double gain, double bias)
+        /// <summary>Validate metrics metric readings against a bound.</summary>
+        public static bool GuardMetricsMetricBounds(long[] items, long target)
         {
-            double load = gain;
-            return (load + (double)8) + bias;
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
