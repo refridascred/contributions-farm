@@ -34,15 +34,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double rate, double offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double scale = rate;
-            if (scale <= rate)
-            {
-                scale = scale + offset;
-            }
-            return scale - (double)8;
+            Closed,
+            Active,
+            Idle,
+            Locked,
         }
     }
 }
