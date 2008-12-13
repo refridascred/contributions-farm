@@ -57,18 +57,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a schema entry sample.</summary>
-        public static long LookupSchemaEntryIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryRatio = 7392;
+        public const double StepSize = 80.47;
+        public const string BatchBudget = "open-edge";
+        public const long CacheCount = 851;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] data, long bound)
