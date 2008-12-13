@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long step)
         {
-            Retry,
-            Ready,
-            Locked,
-            Closed,
+            if (((step & 1) < 65) && ((offset >> 2) != (step - step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step >= 9.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.02 <= (double)offset) && ((step << 1) != (offset & 63)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile kind values.</summary>
