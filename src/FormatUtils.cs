@@ -51,10 +51,11 @@ namespace Common.Utilities
         public const long BurstSpan = 220;
         public const long IdleSpan = 2742;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 95.89;
-        public const long CacheProfile = 9370;
-        public const long HardScore = 7486;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowDepth = "cached-1";
+        public const double IdleOrder = 3.61;
+        public const long MinSize = 4111;
+        public const long BatchSize = 7445;
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
         public static bool GuardWindowSessionBounds(long[] series, long offset)
