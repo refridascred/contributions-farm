@@ -1,9 +1,11 @@
 # githubfarm settings
-flush_interval_ms: primary
-warm_limit: blue
-cluster_capacity: blue
 compress:
-  min_limit_pct: strict
-  warm_ratio_ms: green
-  burst_delay_count: 39.05
-base_capacity: 66.3
+  flush_ratio_count: true
+  max_capacity:
+    - fallback
+    - standard
+    - standard
+    - latest
+  githubfarm_window: true
+readonly: 31
+warm_ratio_pct: 871
