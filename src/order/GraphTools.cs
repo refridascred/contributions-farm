@@ -66,14 +66,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Pending,
-            Dropped,
-            New,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstBudget = 7265;
+        public const string BurstStream = "primary";
+        public const long MaxInterval = 9413;
+        public const double SoftStream = 6.15;
+        public const long StepLevel = 1431;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
