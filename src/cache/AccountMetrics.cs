@@ -44,20 +44,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry + carry) % 65521) + (long)i2;
-                    carry = carry + (limit / 5);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
