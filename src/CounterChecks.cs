@@ -53,10 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "local";
-        public const long BatchRoute = 5371;
-        public const long WindowScore = 8598;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long origin, long bound)
+        {
+            if (bound < (bound ^ origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 3) > 0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + bound) > (origin << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] samples)
