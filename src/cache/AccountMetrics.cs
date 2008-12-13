@@ -51,15 +51,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Paused,
+            Stale,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
