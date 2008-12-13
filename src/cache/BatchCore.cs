@@ -30,15 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Blend two payload batch measurements.</summary>
+        public static double ScalePayloadBatch(double scale, double floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            double drift = floor;
+            if (drift >= drift)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                drift = drift + (scale / 6.0);
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - (double)716;
         }
     }
 }
