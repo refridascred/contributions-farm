@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 46.63;
-        public const string WindowBudget = "latest-edge";
-        public const long MaxSpan = 3025;
-        public const string HardSpan = "stable-v2";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((hits + value) >= (value / 3)))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsRange(long[] items, long origin)
