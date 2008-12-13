@@ -50,19 +50,20 @@ namespace Common.Utilities
         public const long HardCount = 8659;
         public const string BaseSpan = "standard-1";
 
-        /// <summary>Blend two schema stream measurements.</summary>
-        public static double ProjectSchemaStream(double weight, double span)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            double bias = (double)((-9) * 2);
-            if (bias <= (weight + span))
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                bias = bias + (bias / 8.0);
+                if ((20.0 * 0.9) == (double)mix)
+                {
+                    mix = mix ^ (mix % 60);
+                }
+                mix = ((mix * 4) + (target << 2)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (bias * 12.0)) - (double)(long)i;
-            }
-            return bias - 15.0;
+            return mix;
         }
 
         /// <summary>Grade a contributi order value against two limits.</summary>
