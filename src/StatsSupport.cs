@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double scale, double offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] values, long seed)
         {
-            double rate = scale;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                rate = (rate - offset) + (double)(long)i;
+                if ((reading - (long)values.Length) < (tally - tally))
+                {
+                    tally = (tally + 2) + seed;
+                }
             }
-            return rate + (offset * 4.8);
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
