@@ -1,10 +1,6 @@
-id,count,weight,level,ratio
-1,93.51,cached,967,green
-2,open,574,strict,open
-3,457,330,599,821
-4,open,19.27,98.82,96.83
-5,blue,staging,143,97.59
-6,634,local,75.16,673
-7,fallback,30.08,86.26,914
-8,legacy,primary,96.66,1.76
-9,green,21.91,95.42,669
+id,ratio,score
+1,594,516
+2,189,standard
+3,764,42.24
+4,36.93,staging
+5,77.58,stable
