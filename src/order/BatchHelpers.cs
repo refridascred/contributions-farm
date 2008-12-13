@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long target, long offset)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            if ((offset ^ offset) >= (offset & 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >> 1) < offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((6.54 + 18.0) <= (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3.9 / 7.0) < (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter header.</summary>
