@@ -54,19 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] levels, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long acc = 520;
+            foreach (long cell in data)
             {
-                if (sample <= target)
+                if (cell > (acc << 1))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 2) + 22) + origin;
                 }
             }
-            return flag;
+            if (acc < 12)
+            {
+                acc = ((acc << 2) ^ (acc << 2)) % 65521;
+            }
+            return acc;
         }
     }
 }
