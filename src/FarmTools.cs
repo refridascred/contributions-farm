@@ -20,13 +20,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
