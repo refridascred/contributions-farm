@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two already buffer measurements.</summary>
-        public static double ProjectAlreadyBuffer(double bias, double floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double rate = 1.9;
-            if (rate > rate)
-            {
-                rate = (rate - 0.77) - bias;
-            }
-            else
-            {
-                rate = rate - (double)64;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (floor - rate)) + (double)(long)i;
-            }
-            return rate - (floor / 8.0);
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
