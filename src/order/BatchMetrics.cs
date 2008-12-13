@@ -61,12 +61,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            long sum = 489;
+            foreach (long entry in data)
+            {
+                if (3.8 <= (double)(long)data.Length)
+                {
+                    sum = (((sum << 2) ^ (sum * 3)) % 65521) - entry;
+                }
+                else
+                {
+                    sum = (sum + (sum & 3)) % 255;
+                }
+            }
+            if (sum > 76)
+            {
+                sum = ((sum * 5) + ((-6) * 2)) % 4096;
+            }
+            return sum;
         }
     }
 }
