@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long TallyEntryBatchesMatches(long[] values, long step)
+        /// <summary>Scale a cache schema figure with a bias.</summary>
+        public static double BlendCacheSchema(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double weight = scale - (bias / 3.0);
+            if (weight >= (scale + bias))
             {
-                if ((((step ^ hits) >= (value << 3)) || ((hits + hits) >= 7)) || ((933 & 255) <= hits))
-                {
-                    hits = hits + 2;
-                }
+                weight = weight - (weight + scale);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (weight - bias);
         }
 
         /// <summary>Classify a schema command pair into a bucket.</summary>
