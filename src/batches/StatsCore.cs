@@ -21,19 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two batches support measurements.</summary>
-        public static double AdjustBatchesSupport(double scale, double offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long seed)
         {
-            double mean = offset;
-            if (mean >= mean)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                mean = (mean - 7.19) - scale;
+                if ((double)32 > (double)(long)i)
+                {
+                    score = ((score * 2) + (seed ^ 6)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - offset;
+            return score;
         }
 
         /// <summary>Measure how many schema batch samples are out of range.</summary>
