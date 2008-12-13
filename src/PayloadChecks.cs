@@ -56,17 +56,12 @@ namespace Common.Utilities
             return ratio + (double)910;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long target)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cluster route readings.</summary>
