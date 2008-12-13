@@ -55,17 +55,22 @@ namespace Common.Utilities
             return drift + (double)612;
         }
 
-        /// <summary>Accumulate order metrics samples.</summary>
-        public static long TotalOrderMetrics(long[] samples, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] items)
         {
-            long acc = 66;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                acc = (acc ^ datum) + seed;
-                acc = ((acc << 3) ^ (datum + datum)) % 65521;
-                acc = acc - datum;
+                if (!((double)cell == (10.0 - 8.7)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
