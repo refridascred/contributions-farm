@@ -26,24 +26,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long step, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            if ((5.69 + 8.2) == (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((29 / 9) <= (bound << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Queued,
+            Ready,
+            Retry,
         }
 
         /// <summary>Digest a series of session entries.</summary>
