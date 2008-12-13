@@ -32,18 +32,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Compare every pair of layout context readings.</summary>
+        public static long OverlapLayoutContextCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen - entry) < seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
