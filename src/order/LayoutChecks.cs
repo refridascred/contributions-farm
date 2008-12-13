@@ -41,17 +41,19 @@ namespace Common.Utilities
         public const double IdleAccount = 40.63;
         public const long WindowDepth = 321;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] series, long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (offset - gain) + offset;
+            if (scale <= offset)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (offset - scale);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (offset / 4.0)) - (double)(long)i;
+            }
+            return scale + offset;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
