@@ -51,17 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] samples, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 4;
+            foreach (long entry in readings)
             {
-                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                if ((step + total) <= (entry + step))
                 {
-                    return (long)i;
+                    total = total - (step << 2);
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
