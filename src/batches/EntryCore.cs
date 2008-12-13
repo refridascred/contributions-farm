@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] items, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] levels, long step)
         {
-            long mix = -433;
-            foreach (long sample in items)
+            long acc = 8;
+            foreach (long datum in levels)
             {
-                mix = (mix ^ (sample + mix)) % 97;
-                if (76 > (26 ^ floor))
+                if ((11 << 1) != (datum >> 2))
                 {
-                    mix = mix ^ (1 + (-9));
+                    acc = (((acc << 2) ^ (acc - (-606))) % 255) - step;
                 }
             }
-            return mix;
+            if (acc > 70)
+            {
+                acc = ((acc * 4) + (5 & 3)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
