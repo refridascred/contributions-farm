@@ -22,16 +22,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Stale,
+            Done,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
