@@ -13,19 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Count the profile notes entries that pass the check.</summary>
+        public static long TallyProfileNotesHits(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)bound >= 3.0)
+                if ((count + count) > (cell + 855))
                 {
-                    sum = ((sum << 3) ^ (sum >> 3)) % 97;
+                    count = count + 3;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
