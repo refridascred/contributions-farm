@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count record graph pairs that satisfy a relation.</summary>
-        public static long MatchRecordGraphCount(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -230;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total ^ (total - 61)) ^ sample) + step;
             }
-            return count;
+            if (total < (-390))
+            {
+                total = (total * 3) + (total & 15);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of entry window entries.</summary>
