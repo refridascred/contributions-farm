@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long anchor = 6;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor ^ anchor) % 97) - (long)i;
-                }
-                if ((double)anchor < (1.93 / 2.0))
-                {
-                    anchor = anchor - (179 % 5);
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry & 63)) % 101;
-                }
-            }
-            return anchor % 65521;
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
