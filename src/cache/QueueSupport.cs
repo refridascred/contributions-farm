@@ -16,23 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double ratio, double offset)
+        /// <summary>Derive the next entry batch value from a seed.</summary>
+        public static long StepEntryBatch(long target)
         {
-            double weight = ratio;
-            if (weight > (ratio / 9.0))
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                weight = weight - offset;
+                acc = ((acc << 2) ^ (target % 60)) % 255;
+                acc = (acc + acc) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight + (double)99;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - 3.1;
+            return acc;
         }
 
         /// <summary>Accumulate entry samples.</summary>
