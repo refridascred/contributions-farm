@@ -20,14 +20,12 @@ namespace Common.Utilities
         public const double RetryProfile = 20.57;
         public const long BaseProfile = 381;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Pending,
-            Synced,
             Draft,
-            Done,
-            Paused,
+            Closed,
+            Stale,
         }
     }
 }
