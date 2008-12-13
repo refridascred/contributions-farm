@@ -19,13 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Classify a window cache pair into a bucket.</summary>
+        public static long GradeWindowCache(long origin, long target)
         {
-            Idle,
-            Queued,
-            Stale,
-            Dropped,
+            long offset = origin - target;
+            if ((origin + target) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)offset < (5.4 * 11.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(target < (target - offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.28 * 5.8) <= (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
