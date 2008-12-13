@@ -35,17 +35,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next commits stats value from a seed.</summary>
-        public static long SeriesCommitsStats(long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                total = total - floor;
-                total = ((total << 3) ^ (total - (long)i)) % 1000;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Ready,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
