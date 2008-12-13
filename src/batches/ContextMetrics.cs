@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] items)
         {
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            long state = 25;
+            foreach (long sample in items)
+            {
+                if ((sample * 5) <= sample)
+                {
+                    break;
+                }
+                state = ((state << 2) ^ (0 % 97)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the contributi state values.</summary>
