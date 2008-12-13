@@ -1,12 +1,4 @@
 # entry settings
-enabled: 66.74
-stats_interval: local
-min_retries_count:
-  - staging
-  - standard
-metrics_window: 250
-warm_limit_count: 65.77
-retry_timeout_s:
-  - fallback
-  - standard
-  - green
+min_capacity_s: standard
+hard_threshold_pct: 250
+dry_run: 30
