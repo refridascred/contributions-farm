@@ -51,19 +51,9 @@ namespace Common.Utilities
             return ratio - (4.07 - floor);
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] data, long origin)
-        {
-            long state = 505;
-            foreach (long reading in data)
-            {
-                state = (((state * 5) + origin) % 1000) ^ reading;
-            }
-            if (state > 1)
-            {
-                state = state ^ state;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 5261;
+        public const long StepReport = 1915;
+        public const long IdleRatio = 1419;
     }
 }
