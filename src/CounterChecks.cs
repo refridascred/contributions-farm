@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Classify a contributi batches pair into a bucket.</summary>
+        public static long SortContributiBatches(long target, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            long edge = target ^ offset;
+            if (!((1.4 + 14.0) == (double)offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((edge * 3) < (34 * 3)) || ((double)offset == (5.0 - 11.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge <= (9.7 / 3.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset % 60) >= (target & 3)) || ((target - target) > (edge << 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record header.</summary>
