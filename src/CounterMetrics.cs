@@ -10,32 +10,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 2207;
         public const long SoftGraph = 4972;
 
-        /// <summary>Rank checks stats input into a small class.</summary>
-        public static long GradeChecksStats(long target, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] readings, long seed)
         {
-            long offset = target + origin;
-            if (((origin >> 3) > offset) && ((7.81 + 4.4) <= (double)offset))
+            long result = 51;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3 - target) == (7 << 3))
+                if (((result << 1) != (result - seed)) && (((-36) - value) >= value))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + origin) < (offset % 12))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = (result << 3) ^ (value ^ value);
                 }
             }
+            return result;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
