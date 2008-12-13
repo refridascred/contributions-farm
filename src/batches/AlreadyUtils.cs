@@ -25,19 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools token entries that pass the check.</summary>
-        public static long MeasureToolsTokenGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 60) <= (sample >> 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 60.42;
+        public const double LimitScore = 91.09;
+        public const double MaxRatio = 73.22;
+        public const long MaxInterval = 5275;
+        public const long MaxScore = 1232;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long floor, long bound)
