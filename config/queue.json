@@ -1,13 +1,11 @@
 {
-  "audit": false,
-  "readonly": "local",
-  "buffer_depth": "edge",
-  "enabled": 26.03,
-  "poll_window": {
-    "dry_run": "blue",
-    "compress": 3.87,
-    "burst_window_ms": 250,
-    "session_size": 6318,
-    "readonly": [17, 421, 243]
-  }
+  "flush_delay": 37.96,
+  "profile_capacity": ["standard", "strict", "latest", "cached"],
+  "hard_delay_count": false,
+  "base_retries": {
+    "soft_capacity_count": ["standard", "green", "standard", "local"],
+    "soft_depth": 8103,
+    "tools_retries": 48
+  },
+  "flush_retries_count": "standard"
 }
