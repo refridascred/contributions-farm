@@ -51,11 +51,11 @@ namespace Common.Utilities
         public const long BurstSpan = 220;
         public const long IdleSpan = 2742;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowDepth = "cached-1";
-        public const double IdleOrder = 3.61;
-        public const long MinSize = 4111;
-        public const long BatchSize = 7445;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstInterval = 8376;
+        public const double RetryRoute = 20.57;
+        public const long DefaultRoute = 1493;
+        public const long BaseCount = 7484;
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
         public static bool GuardWindowSessionBounds(long[] series, long offset)
