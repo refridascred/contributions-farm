@@ -46,11 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric channel figure with a bias.</summary>
-        public static double ScaleMetricChannel(double scale, double offset)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            double mean = 2.9;
-            return (mean + (scale * 11.0)) + offset;
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
