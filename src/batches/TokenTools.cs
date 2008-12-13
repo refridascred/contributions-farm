@@ -13,17 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = sum + (2 * 4);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 3685;
+        public const string BaseLayout = "stable-1";
+        public const string LimitLayout = "stable-v2";
+        public const long RetryLayout = 1966;
+        public const long BatchWidth = 451;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinSpan = 84.33;
