@@ -1,15 +1,18 @@
 # support settings
-commits_timeout:
-  - open
-  - cached
-  - standard
-  - open
-min_retries_ms:
-  - 276
-  - 218
-persist: stable
-enabled: 1677
-min_depth_s:
-  - eu-west
+burst_capacity_ms:
+  - blue
+  - latest
+  - edge
+  - edge
+idle_capacity_ms: strict
+cluster_retries:
+  buffer_interval: cached
+  burst_ttl_ms: true
+  poll_capacity_pct: 30
+  metric_capacity: 35.5
+  soft_timeout_pct: 16.6
+soft_threshold:
   - legacy
-default_interval_ms: 27
+  - fallback
+  - staging
+  - open
