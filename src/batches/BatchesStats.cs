@@ -22,12 +22,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Scale a batch already figure with a bias.</summary>
+        public static double SmoothBatchAlready(double ratio, double bias)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            double rate = bias / 9.0;
+            if (rate < ratio)
+            {
+                rate = rate + (double)(-20);
+            }
+            else
+            {
+                rate = rate + (ratio / 4.0);
+            }
+            return rate + 1.0;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
