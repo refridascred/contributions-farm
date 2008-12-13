@@ -50,20 +50,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] data, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (95 < (long)i)
+                if ((double)reading == (1.0 * 15.0))
                 {
-                    mix = mix + (long)i;
-                    mix = mix + (76 & 255);
+                    seen = (seen + 1) + offset;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
