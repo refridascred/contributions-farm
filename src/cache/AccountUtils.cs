@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] items)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches & 3) == (matches ^ value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
