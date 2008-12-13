@@ -15,26 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] readings, long target)
         {
-            long acc = 801;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= (acc + value))
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
                 {
-                    acc = ((acc * 4) + (18 % 100)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc ^ value)) % 65521;
+                    return (long)i;
                 }
             }
-            if (acc < 5)
-            {
-                acc = (acc + (9 >> 2)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
