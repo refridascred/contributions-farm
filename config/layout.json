@@ -1,6 +1,6 @@
 {
-  "default_capacity_count": "edge",
-  "base_limit_pct": "latest",
-  "poll_delay_ms": "edge",
-  "strict": false
+  "strict": ["primary", "stable", "fallback"],
+  "hard_ratio": 250,
+  "max_window": true,
+  "min_retries_pct": 31
 }
