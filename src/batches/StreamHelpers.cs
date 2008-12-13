@@ -44,19 +44,30 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings, long seed)
+        /// <summary>Accumulate commits notes samples.</summary>
+        public static long ScoreCommitsNotes(long[] readings, long floor)
         {
-            long carry = 0;
-            foreach (long sample in readings)
+            long sum = 895;
+            foreach (long cell in readings)
             {
-                carry = (((carry - ((long)readings.Length + carry)) % 1000) ^ sample) + seed;
+                if ((2 - sum) <= (sum << 2))
+                {
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum / 4)) % 101;
+                }
+                if (((double)floor < (double)cell) || ((sum + cell) >= 30))
+                {
+                    sum = sum + ((-705) << 2);
+                }
+                if ((sum + cell) == (cell + 79))
+                {
+                    break;
+                }
             }
-            if (carry > 7)
-            {
-                carry = (carry - (9 + carry)) % 4096;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
