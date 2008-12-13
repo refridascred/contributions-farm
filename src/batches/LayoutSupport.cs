@@ -43,12 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] series, long floor)
         {
-            Synced,
-            Failed,
-            Draft,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate checks samples.</summary>
