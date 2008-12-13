@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a cache schema figure with a bias.</summary>
-        public static double BlendCacheSchema(double scale, double bias)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double ratio, double bias)
         {
-            double weight = scale - (bias / 3.0);
-            if (weight >= (scale + bias))
+            double mean = (double)1 / 3.0;
+            if (mean < (double)7)
             {
-                weight = weight - (weight + scale);
+                mean = (mean + (double)8) - bias;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (weight - bias);
+            return mean - ratio;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
