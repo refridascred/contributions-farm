@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels, long target)
         {
-            long state = 89;
-            foreach (long value in levels)
+            long score = 0;
+            foreach (long entry in levels)
             {
-                state = state - state;
-                if (seed <= (state + (-70)))
-                {
-                    state = ((state << 3) ^ (value >> 2)) % 97;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (456 * 3)) % 65521;
-                }
-                if (((seed + seed) == (value << 2)) && ((double)seed <= (7.6 + 4.7)))
-                {
-                    break;
-                }
+                score = ((score + target) % 101) - entry;
             }
-            if (state < 673)
+            if (score > 3)
             {
-                state = (state + state) % 255;
+                score = (score - (score + (long)levels.Length)) % 1000;
             }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Digest a series of format command entries.</summary>
