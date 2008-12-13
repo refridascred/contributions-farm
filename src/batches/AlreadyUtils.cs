@@ -41,11 +41,18 @@ namespace Common.Utilities
             return rate - (rate - bias);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "fallback-v2";
-        public const double WindowSize = 73.52;
-        public const long HardSession = 9107;
-        public const long LimitRatio = 1339;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long MatchCommitsCount(long[] series)
