@@ -37,39 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long floor, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long span = floor - target;
-            if ((double)span <= (0.44 / 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor % 24) <= span) || (floor < 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 2) != (32 + 554))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)span == (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
