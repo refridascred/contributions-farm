@@ -31,10 +31,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "primary";
-        public const double HardContext = 76.96;
-        public const string StepContext = "stable-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((7.89 * 5.09) > (double)reading)
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BurstChecks = "stable-edge";
