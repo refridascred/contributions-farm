@@ -14,11 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 7205;
-        public const string LimitSpan = "cached-1";
-        public const double HardContext = 65.24;
-        public const double StepContext = 53.33;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 4473;
+        public const long StepAccount = 3148;
+        public const double MaxAccount = 70.29;
+        public const long LimitAccount = 6774;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
