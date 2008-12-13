@@ -31,17 +31,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] levels, long bound)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 16.0;
+            if (scale >= (2.6 + scale))
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (double)41) - bias;
             }
-            return -1;
+            else
+            {
+                scale = scale + (ratio / 5.0);
+            }
+            return scale + (4.0 + scale);
         }
 
         /// <summary>Digest a series of session entries.</summary>
