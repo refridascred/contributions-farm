@@ -37,17 +37,15 @@ namespace Common.Utilities
         public const long BatchRoute = 5371;
         public const long WindowScore = 8598;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] samples, long offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = ratio;
+            if (bias2 > ratio)
             {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (double)718) + bias;
             }
-            return -1;
+            return bias2 - (bias2 * 19.0);
         }
 
         /// <summary>Hold a graph summary.</summary>
