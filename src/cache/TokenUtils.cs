@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long limit, long seed)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            if ((limit % 3) > (limit * 5))
             {
-                if (sample < offset)
+                return 6;
+            }
+            else
+            {
+                if (9.1 <= (double)limit)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(seed <= limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed == (17.0 * 8.2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate format tools readings against a bound.</summary>
