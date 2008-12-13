@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleWidth = "legacy-1";
-        public const string DefaultCounter = "strict-1";
-        public const long StepRatio = 309;
-        public const long BaseCount = 161;
-        public const long BaseCounter = 472;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result << 3) ^ (target >> 1)) % 101;
+                result = (result << 3) ^ (target / 8);
+                result = result + target;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchOutliers(long[] levels, long seed)
