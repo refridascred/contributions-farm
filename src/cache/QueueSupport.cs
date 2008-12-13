@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double bias2)
+        /// <summary>Count notes filter pairs that satisfy a relation.</summary>
+        public static long PairNotesFilterCount(long[] levels)
         {
-            double gain = (double)49;
-            if (gain <= bias)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (double)155;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (gain + gain)) + (double)(long)i;
-            }
-            return gain - (gain - bias2);
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
