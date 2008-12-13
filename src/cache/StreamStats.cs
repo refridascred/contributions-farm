@@ -25,25 +25,19 @@ namespace Common.Utilities
         public const long CacheScore = 2060;
         public const long MaxScore = 4479;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long seed, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] levels, long offset)
         {
-            long gap = seed - step;
-            if ((seed + seed) == (step - gap))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + gap) > (14 + seed))
+                if (reading >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
