@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 95.43;
         public const long HardRatio = 2411;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Active,
+            Closed,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Grade a farm notes value against two limits.</summary>
