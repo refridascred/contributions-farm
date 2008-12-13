@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] items, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            long mix = 579;
-            foreach (long sample in items)
+            long score = 93;
+            foreach (long entry in readings)
             {
-                if ((double)mix <= (5.0 * 4.5))
-                {
-                    mix = mix ^ (sample + mix);
-                }
-                if (mix < (mix ^ offset))
-                {
-                    break;
-                }
+                score = (((score << 3) ^ ((long)readings.Length ^ score)) % 4096) - entry;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
