@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] values, long floor)
         {
-            long score = 14;
-            foreach (long entry in series)
+            long carry = -846;
+            foreach (long entry in values)
             {
-                if ((limit & 1) != (718 / 8))
+                if (!((entry + 61) >= 184))
                 {
-                    score = ((score + (limit % 5)) % 97) ^ entry;
-                }
-                if ((limit * 5) < 577)
-                {
-                    score = score - (score >> 5);
+                    carry = carry ^ (carry ^ carry);
                 }
                 else
                 {
-                    score = (score - score) % 255;
+                    carry = carry + (floor + 618);
                 }
             }
-            return score;
+            if (carry > 9)
+            {
+                carry = (carry * 5) + (floor % 2);
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph mode values.</summary>
