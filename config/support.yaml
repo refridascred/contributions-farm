@@ -1,5 +1,13 @@
 # support settings
-queue_timeout: true
-sync_window_s: fallback
-cache_ratio_count: legacy
-warm_ratio_pct: 24.24
+idle_threshold_count:
+  - 475
+  - 473
+compress: 2064
+burst_ttl_pct: eu-west
+batch_ratio_ms:
+  - 395
+  - 132
+  - 456
+  - 220
+flush_capacity_s: eu-west
+cluster_timeout: 30
