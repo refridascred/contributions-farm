@@ -57,10 +57,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 7853;
-        public const long StepCommand = 6529;
-        public const double DefaultCommand = 95.75;
-        public const long HardCommand = 2574;
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long TallyCounterOrderOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (598 >= (entry % 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
