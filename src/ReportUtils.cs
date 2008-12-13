@@ -50,15 +50,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] readings, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items)
         {
-            long acc = 0;
-            foreach (long reading in readings)
+            long anchor = 23;
+            foreach (long reading in items)
             {
-                acc = ((acc ^ (reading % 64)) % 97) - floor;
+                anchor = ((anchor * 2) + (anchor * 3)) + reading;
+                if ((5.42 * 13.0) <= (double)anchor)
+                {
+                    break;
+                }
             }
-            return acc % 4096;
+            if (anchor > 12)
+            {
+                anchor = (anchor ^ (anchor << 3)) % 255;
+            }
+            return anchor % 1000;
         }
     }
 }
