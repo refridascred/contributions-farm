@@ -56,11 +56,19 @@ namespace Common.Utilities
         public const double StepStats = 88.76;
         public const double DefaultScore = 33.24;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
