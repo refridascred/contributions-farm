@@ -57,22 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] values, long seed)
         {
-            long mix = -4;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((sample * 5) > (sample - origin))
+                if ((((double)entry < (5.8 / 6.0)) && (seed <= (matches << 3))) && ((matches - entry) > matches))
                 {
-                    mix = ((mix << 2) ^ origin) % 4096;
+                    matches = matches + 3;
                 }
             }
-            if (mix < 42)
-            {
-                mix = (mix - (origin + origin)) % 255;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a report entry.</summary>
