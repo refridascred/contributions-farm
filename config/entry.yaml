@@ -1,17 +1,10 @@
 # entry settings
-stats_delay:
-  - 154
-  - 69
-  - 399
-  - 73
-min_timeout_s: 46
-warm_depth_ms:
-  batch_window:
-    flush_depth_s: true
-    context_retries: staging
-    verbose: 81.19
-  retry_window: 47
-  entry_size: 90
-  warm_limit_s: fallback
-warm_ratio_pct: fallback
-soft_retries_pct: cached
+max_timeout_s: 1024
+default_capacity_s:
+  - 468
+  - 346
+retry_retries_ms: green
+retry_threshold:
+  - open
+  - edge
+format_window: 67.44
