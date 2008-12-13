@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric format reading by value.</summary>
-        public static long SeekMetricFormatIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxLevel = "latest";
+        public const double BurstTimeout = 84.63;
+        public const string BaseGraph = "legacy-v2";
+        public const long WindowRatio = 5722;
+        public const long StepGraph = 2293;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LookupSupportIndex(long[] values, long bound)
