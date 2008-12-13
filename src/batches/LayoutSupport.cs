@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const long LimitCommits = 3094;
         public const long MinCommits = 8819;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine order tools values into a single score.</summary>
+        public static long CombineOrderTools(long[] readings)
         {
-            Synced,
-            New,
-            Locked,
-            Stale,
-            Ready,
+            long result = 37;
+            foreach (long sample in readings)
+            {
+                result = (result - (sample + sample)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
