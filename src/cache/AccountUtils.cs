@@ -48,18 +48,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long carry = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + (-683)) >= (entry << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (entry % 10)) % 101;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
