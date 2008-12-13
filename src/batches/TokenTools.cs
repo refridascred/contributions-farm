@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the account mode values.</summary>
