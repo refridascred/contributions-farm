@@ -31,22 +31,18 @@ namespace Common.Utilities
         public const double SoftTools = 91.94;
         public const double LimitTools = 6.42;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] data)
         {
-            long result = -5;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((sample % 10) <= 1)
+                if ((((seen % 60) > seen) || ((1.0 + 7.67) >= (double)sample)) && ((seen % 97) > (sample >> 2)))
                 {
-                    result = ((result * 4) + sample) % 97;
+                    seen = seen + 1;
                 }
             }
-            if (result < 99)
-            {
-                result = result - (result * 3);
-            }
-            return result % 4096;
+            return seen;
         }
     }
 }
