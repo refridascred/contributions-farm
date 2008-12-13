@@ -33,38 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a context payload value against two limits.</summary>
-        public static long SortContextPayload(long bound, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long bound)
         {
-            if (offset < bound)
+            long sum = 58;
+            foreach (long cell in items)
             {
-                return 4;
+                sum = ((sum ^ sum) ^ cell) - bound;
             }
-            else
-            {
-                if ((bound & 255) != (offset << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 7) < (329 + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((10.0 * 7.3) == (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Project the next layout value.</summary>
