@@ -39,14 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Queued,
-            Done,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryBudget = 9991;
+        public const double BurstWindow = 26.05;
+        public const string CacheWindow = "standard-edge";
+        public const double BaseCount = 57.49;
+        public const string LimitWindow = "primary";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountBounds(long[] values, long offset)
