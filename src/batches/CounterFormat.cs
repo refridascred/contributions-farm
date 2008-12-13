@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] items, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((((step - seen) < (step + entry)) || ((entry >> 3) <= (seen - 104))) && ((19.0 + 14.0) != (double)(long)items.Length))
+                if ((double)limit >= (9.9 + 12.0))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of stream window readings.</summary>
