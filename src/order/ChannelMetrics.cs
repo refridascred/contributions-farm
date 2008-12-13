@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const double SoftGithubfarm = 46.62;
         public const long DefaultBudget = 4378;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            double drift = 2.69;
+            if (drift < scale)
+            {
+                drift = (drift - (drift * 3.7)) - bias;
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            return drift + (double)3;
         }
     }
 }
