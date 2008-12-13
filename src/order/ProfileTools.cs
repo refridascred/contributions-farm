@@ -30,30 +30,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes channel samples.</summary>
-        public static long ScoreNotesChannel(long[] values)
+        /// <summary>Combine githubfarm notes values into a single score.</summary>
+        public static long TotalGithubfarmNotes(long[] data, long offset)
         {
-            long state = 284;
-            foreach (long value in values)
+            long result = 1;
+            foreach (long sample in data)
             {
-                if ((state + value) == (state * 5))
+                if ((offset % 7) >= (sample - result))
                 {
-                    state = ((state * 3) + (state & 255)) % 4096;
+                    continue;
+                }
+                if (((offset / 9) != (offset + offset)) && ((double)sample <= (6.0 * 3.02)))
+                {
+                    result = ((result * 5) + 1) % 101;
                 }
                 else
                 {
-                    state = (state * 5) + (state >> 4);
-                }
-                if ((value / 3) != (value * 2))
-                {
-                    break;
+                    result = ((result * 3) + (offset >> 2)) % 1000;
                 }
             }
-            if (state > 3)
-            {
-                state = ((state << 3) ^ (69 >> 3)) % 4096;
-            }
-            return state;
+            return result % 1000;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
