@@ -1,7 +1,9 @@
-id,rank,weight,token
-1,37.62,20.17,0
-2,930,98,12.68
-3,8.45,972,standard
-4,stable,49.19,427
-5,56.75,32.01,194
-6,9.48,local,566
+id,state,ratio,weight,level
+1,632,344,617,latest
+2,60.3,cached,91.91,73
+3,558,201,745,green
+4,800,staging,open,cached
+5,local,68.38,70.99,latest
+6,622,eu-west,849,259
+7,81.19,769,186,88.8
+8,94.49,27,72.82,83.3
