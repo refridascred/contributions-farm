@@ -27,19 +27,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long floor)
+        /// <summary>Rank order commits input into a small class.</summary>
+        public static long GradeOrderCommits(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            if ((0.89 - 7.0) <= (double)seed2)
             {
-                if (cell != floor)
+                return 0;
+            }
+            else
+            {
+                if ((seed / 5) < (seed + seed2))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed2 ^ seed2) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed2 - seed) >= (seed2 & 255))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
