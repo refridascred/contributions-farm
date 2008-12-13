@@ -57,19 +57,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a githubfarm support reading.</summary>
-        public static double ScaleGithubfarmSupport(double rate, double bias)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double drift = (double)(1 / 6);
-            if (drift <= (rate - 0.76))
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (rate * 7.0)) + (double)(long)i;
-            }
-            return drift + (double)612;
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a report info.</summary>
