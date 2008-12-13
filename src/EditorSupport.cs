@@ -47,25 +47,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long step, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long next = step ^ limit;
-            if ((8.9 - 6.4) >= (double)step)
+            long result = 132;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step ^ next) >= (limit % 100)) || ((6 + limit) > limit))
+                if ((result * 5) >= (result >> 3))
                 {
-                    return 8;
+                    result = ((result << 3) ^ (item ^ 98)) % 65521;
                 }
-                else
+                if ((double)result < (3.88 - 13.0))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a session stats.</summary>
