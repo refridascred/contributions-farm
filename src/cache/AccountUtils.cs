@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double floor)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            double mean = (double)0 * 1.72;
+            return (mean + (floor / 7.0)) + rate;
         }
 
         /// <summary>Describe the format phase values.</summary>
