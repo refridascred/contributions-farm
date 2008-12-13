@@ -13,16 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                state = state - (step / 5);
-                state = ((state * 2) + (long)i) % 4093;
+                if ((15 & 3) >= (seen - item))
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Blend two batches measurements.</summary>
