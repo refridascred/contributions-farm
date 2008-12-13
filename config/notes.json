@@ -1,6 +1,14 @@
 {
-  "idle_window_s": "staging",
-  "poll_interval_pct": "stable",
-  "base_capacity": ["edge", "legacy", "cached"],
-  "base_timeout_ms": [144, 469, 491]
+  "batch_size_ms": ["green", "edge"],
+  "enabled": {
+    "soft_ratio_s": 84.92,
+    "min_threshold": 20.15,
+    "soft_threshold_ms": 500,
+    "min_threshold_ms": ["stable", "blue"],
+    "max_ttl": "primary"
+  },
+  "readonly": 61,
+  "sync_delay_pct": 81.94,
+  "batch_timeout_s": true,
+  "strict": "open"
 }
