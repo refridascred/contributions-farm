@@ -21,12 +21,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 1.81;
-        public const long MinRatio = 6601;
-        public const string StepMetrics = "local-edge";
-        public const double MaxMetrics = 9.19;
-        public const string LimitRatio = "legacy-edge";
+        /// <summary>Accumulate batches contributi samples.</summary>
+        public static long WeighBatchesContributi(long[] levels, long origin)
+        {
+            long acc = 12;
+            foreach (long cell in levels)
+            {
+                if ((acc & 255) > (2 << 3))
+                {
+                    acc = ((acc - (cell + 11)) % 97) + origin;
+                }
+                acc = acc - (cell + cell);
+            }
+            if (acc > 90)
+            {
+                acc = (acc - (acc * 2)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksMatches(long[] data)
