@@ -22,39 +22,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a farm notes value against two limits.</summary>
-        public static long ClassifyFarmNotes(long step, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] levels)
         {
-            long span = step + seed;
-            if ((14.0 / 6.0) >= (double)step)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step * 3) > step)
+                if (!((double)entry > (double)503))
                 {
-                    return 0;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if (!(span >= (span & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)seed <= (6.77 - 4.0)) && ((step >> 1) > seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
