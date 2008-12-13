@@ -26,32 +26,17 @@ namespace Common.Utilities
         public const long BurstFactor = 151;
         public const double MaxGraph = 60.87;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] samples, long offset)
         {
-            long lane = bound ^ seed;
-            if ((double)seed > (1.0 * 13.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (5.0 / 9.0))
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)lane <= (double)5) && ((seed * 3) <= (seed & 15)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
