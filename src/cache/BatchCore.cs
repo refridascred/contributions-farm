@@ -57,31 +57,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long bound, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] data, long seed)
         {
-            if ((double)step >= (2.0 + 7.6))
+            long anchor = 6;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.7 >= (double)bound) || ((step * 4) >= 3))
+                if (((889 & 255) == (392 + seed)) || ((4.59 / 4.0) != (double)seed))
                 {
-                    return 4;
+                    anchor = anchor + (8 - datum);
                 }
-                else
+                if ((seed - datum) >= (datum - seed))
                 {
-                    if ((9 < bound) || ((step + bound) > ((-986) * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (anchor < 6)
+            {
+                anchor = (anchor - (-71)) % 97;
+            }
+            return anchor;
         }
     }
 }
