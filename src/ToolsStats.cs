@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long MeasureSessionStatsOutliers(long[] items, long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value + value) == (hits + bound))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Measure how many session batch samples are out of range.</summary>
