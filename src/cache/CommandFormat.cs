@@ -41,12 +41,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            New,
+            Failed,
+            Locked,
+            Dropped,
+            Done,
         }
     }
 }
