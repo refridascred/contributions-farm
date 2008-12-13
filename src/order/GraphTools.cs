@@ -45,23 +45,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the buffer command series from a seed.</summary>
-        public static long SeriesBufferCommand(long limit)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((8.67 / 2.0) >= (double)state)
-                {
-                    continue;
-                }
-                if (state < (state * 3))
-                {
-                    state = ((state * 4) + (state / 5)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two command checks measurements.</summary>
