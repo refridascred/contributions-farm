@@ -34,11 +34,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] items)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
+            long sum = 3;
+            foreach (long value in items)
+            {
+                if ((value % 8) <= (value * 4))
+                {
+                    sum = (sum - (sum + sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 2) + (value << 1);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Match up graph samples.</summary>
