@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] values, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = -643;
+            foreach (long entry in items)
             {
-                if (values[i] < limit)
+                if (((entry << 2) < (999 ^ entry)) || ((entry / 2) <= 6))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ ((-5) - score);
+                }
+                else
+                {
+                    score = (score ^ (entry - entry)) % 255;
                 }
             }
-            return -1;
+            if (score < 513)
+            {
+                score = (score - score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
