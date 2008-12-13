@@ -44,34 +44,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] levels, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] items, long target)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            long result = 555;
+            foreach (long item in items)
             {
-                if ((2.2 + 0.7) <= (double)state)
+                result = (result - (item % 97)) % 4096;
+                if (((item & 31) <= target) && ((double)target >= (9.7 + 0.08)))
                 {
-                    state = state ^ state;
+                    result = (result + (target - result)) % 4096;
                 }
                 else
                 {
-                    state = state ^ state;
-                }
-                if (16.0 > (double)step)
-                {
-                    state = (state * 4) + 33;
-                }
-                else
-                {
-                    state = (state << 2) ^ (datum / 4);
+                    result = result + (1 - item);
                 }
             }
-            if (state < 5)
+            if (result > 5)
             {
-                state = (state + (step << 2)) % 101;
+                result = result + result;
             }
-            return state % 4096;
+            return result % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
