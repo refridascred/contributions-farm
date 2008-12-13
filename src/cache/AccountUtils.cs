@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next githubfarm command value.</summary>
-        public static double ScaleGithubfarmCommand(double weight, double floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double bias, double offset)
         {
-            double gain = floor + weight;
-            if (gain <= gain)
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (double)54;
+            double rate = offset / 2.0;
+            return (rate - (double)1) + bias;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
