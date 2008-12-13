@@ -47,16 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score - (score - (long)i)) % 255;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "open-edge";
+        public const long BurstSession = 4391;
+        public const double DefaultTimeout = 81.61;
+        public const long StepFactor = 5498;
     }
 }
