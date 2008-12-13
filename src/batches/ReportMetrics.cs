@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const string StepEditor = "latest-1";
         public const long IdleLevel = 7100;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] samples, long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((35 - bound) < (bound * 2))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
