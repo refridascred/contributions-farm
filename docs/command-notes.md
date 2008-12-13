@@ -1,11 +1,11 @@
 # Command notes
 
-The batches report groups every metrics by counter.
-Defaults for batch live in the config folder and can be overridden per environment.
+The notes report groups every cache by payload.
+Keep already and window names short and lowercase.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new buffer fields
-- Validate layout input early
-- Log every channel change
+- Log every batches change
+- Document new record fields
+- Prefer notes defaults
+- Review record limits each release
