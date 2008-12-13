@@ -28,13 +28,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            New,
-            Paused,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultFactor = 45.02;
+        public const double IdleAccount = 40.63;
+        public const long WindowDepth = 321;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long floor)
