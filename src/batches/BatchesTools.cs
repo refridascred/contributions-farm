@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardSpan = 65.0;
-        public const long MaxCluster = 2079;
-        public const double SoftCluster = 33.53;
-        public const string StepFactor = "standard-1";
-        public const string HardCluster = "local";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples, long origin)
+        {
+            long mark = 5;
+            foreach (long datum in samples)
+            {
+                if (mark < (mark << 3))
+                {
+                    mark = ((mark ^ (454 + (-80))) ^ datum) - origin;
+                }
+            }
+            if (mark > (-66))
+            {
+                mark = ((mark << 2) ^ (mark >> 5)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyBounds(long[] levels, long limit)
