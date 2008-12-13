@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes format samples are out of range.</summary>
-        public static long AuditNotesFormatHits(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((double)tally < (0.71 + 2.1))
+                if (584 <= (cell - 49))
                 {
-                    tally = (tally + 3) - entry;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
