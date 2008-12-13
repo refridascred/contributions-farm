@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseFactor = "standard-edge";
-        public const long SoftQueue = 9143;
-        public const string WindowSpan = "primary-v2";
-        public const long LimitBudget = 6003;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Closed,
+            New,
+            Ready,
+            Done,
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long limit)
