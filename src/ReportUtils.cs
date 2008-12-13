@@ -38,23 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double bias)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double mean = (double)(65 * 5);
-            if (mean <= gain)
-            {
-                mean = (mean - 1.44) - bias;
-            }
-            else
-            {
-                mean = mean - (2.9 / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (gain * 7.0)) - (double)(long)i;
-            }
-            return mean + (double)584;
+            Failed,
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
