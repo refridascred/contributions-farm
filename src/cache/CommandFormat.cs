@@ -16,15 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a graph support reading.</summary>
-        public static double ProjectGraphSupport(double ratio, double bias)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] samples, long target)
         {
-            double load = (bias * 1.71) * 15.0;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                load = (load - bias) - (double)(long)i;
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + (ratio / 4.0);
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
