@@ -28,25 +28,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] series, long limit)
         {
-            long span = offset ^ target;
-            if (((offset << 1) != (target & 3)) && ((3.0 / 6.0) < (double)target))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span & 3) == (392 + offset))
+                if (cell < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
