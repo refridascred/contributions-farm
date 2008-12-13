@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels)
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            long acc = 6;
+            foreach (long item in levels)
+            {
+                if ((item > (item + acc)) && ((item / 4) < (item & 15)))
+                {
+                    acc = ((acc << 3) ^ (acc / 8)) % 97;
+                }
+                if ((acc + item) >= (6 + acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Find the first counter metrics entry that matches the target.</summary>
