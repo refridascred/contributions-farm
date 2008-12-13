@@ -45,14 +45,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] series, long offset)
         {
-            New,
-            Queued,
-            Failed,
-            Ready,
-            Locked,
+            long total = -951;
+            foreach (long item in series)
+            {
+                total = (((total * 2) + (offset % 100)) % 4096) ^ item;
+            }
+            return total % 1000;
         }
     }
 }
