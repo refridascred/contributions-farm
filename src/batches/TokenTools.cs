@@ -17,12 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 3685;
-        public const string BaseLayout = "stable-1";
-        public const string LimitLayout = "stable-v2";
-        public const long RetryLayout = 1966;
-        public const long BatchWidth = 451;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor - target) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] values, long bound)
