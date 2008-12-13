@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up buffer metric samples.</summary>
-        public static long MatchBufferMetricCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 5463;
+        public const long WindowScore = 1059;
+        public const long BurstLevel = 8582;
+        public const double WindowRatio = 83.61;
 
         /// <summary>Derive the next batch metric value from a seed.</summary>
         public static long DeriveBatchMetric(long target)
