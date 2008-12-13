@@ -13,22 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = 849;
-            foreach (long sample in series)
-            {
-                if (((sum + sum) != ((-895) << 3)) || ((0.57 * 0.99) < (double)sum))
-                {
-                    sum = ((sum + (80 + limit)) % 4096) ^ sample;
-                }
-            }
-            if (sum < 55)
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 65521;
-            }
-            return sum % 97;
+            Retry,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the counter level values.</summary>
