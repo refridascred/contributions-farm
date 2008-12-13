@@ -51,23 +51,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double scale, double bias)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double load = scale;
-            if (load >= scale)
-            {
-                load = load + (bias * 1.0);
-            }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load - 0.4;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
