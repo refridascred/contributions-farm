@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] items, long offset)
+        /// <summary>Count the context format entries that pass the check.</summary>
+        public static long AuditContextFormatGaps(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((double)offset != (6.0 * 16.0))
+                if ((9 << 1) < item)
                 {
-                    hits = (hits + 3) + cell;
+                    matches = (matches + 3) - step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
