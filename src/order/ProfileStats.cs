@@ -27,18 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks filter entries that pass the check.</summary>
-        public static long AuditChecksFilterGaps(long[] series, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = 22;
+            foreach (long item in samples)
             {
-                if (seed <= (seed << 3))
+                if (carry > (item + item))
                 {
-                    hits = (hits + 3) ^ cell;
+                    carry = (carry * 5) + carry;
                 }
+                carry = (carry + carry) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate stats samples.</summary>
