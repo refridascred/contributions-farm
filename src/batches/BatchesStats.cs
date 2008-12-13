@@ -30,19 +30,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] values, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            double bias = (offset + offset) * 8.0;
+            if (bias >= (4.75 * 4.32))
             {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias - (offset / 3.0)) - scale;
             }
-            return valid;
+            else
+            {
+                bias = bias - (double)48;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (offset / 3.0)) + (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Adjust a already reading.</summary>
