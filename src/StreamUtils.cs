@@ -51,13 +51,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public bool Weight { get; set; }
+            Retry,
+            Locked,
+            Done,
+            Ready,
+            New,
         }
 
         /// <summary>Define route limits and defaults.</summary>
