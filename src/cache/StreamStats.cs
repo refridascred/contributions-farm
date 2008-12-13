@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a profile context sample.</summary>
-        public static long FindProfileContextIndex(long[] series, long floor)
+        /// <summary>Audit batch graph readings against a rule.</summary>
+        public static long MeasureBatchGraphOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((series[i] > floor) && ((series[i] % 2) == 0))
+                if ((double)entry >= (6.55 + 4.0))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
