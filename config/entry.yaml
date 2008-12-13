@@ -1,4 +1,11 @@
 # entry settings
-min_capacity_s: standard
-hard_threshold_pct: 250
-dry_run: 30
+readonly: standard
+metrics_window: 1024
+counter_capacity: 4387
+compress: true
+idle_ratio: 17.1
+hard_size_pct:
+  - 26
+  - 81
+  - 271
+  - 462
