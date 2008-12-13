@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            double gain = (span + span) + span;
+            if (gain > (6.23 + bias))
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                gain = gain + (double)8;
             }
-            return carry;
+            else
+            {
+                gain = gain + (0.54 - gain);
+            }
+            return gain + 15.0;
         }
 
         /// <summary>Accumulate metric samples.</summary>
