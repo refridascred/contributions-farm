@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] levels, long step)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long acc = 8;
-            foreach (long datum in levels)
-            {
-                if ((11 << 1) != (datum >> 2))
-                {
-                    acc = (((acc << 2) ^ (acc - (-606))) % 255) - step;
-                }
-            }
-            if (acc > 70)
-            {
-                acc = ((acc * 4) + (5 & 3)) % 4096;
-            }
-            return acc % 97;
+            Failed,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
