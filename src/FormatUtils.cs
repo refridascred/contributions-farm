@@ -24,14 +24,31 @@ namespace Common.Utilities
             return scale2 + (floor + floor);
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long floor)
         {
-            Active,
-            Draft,
-            Queued,
-            Idle,
-            Synced,
+            if ((5.0 / 8.0) <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((746 + offset) >= (floor - 636))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((612 - offset) >= (offset >> 1)) || ((floor % 8) != (floor / 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
