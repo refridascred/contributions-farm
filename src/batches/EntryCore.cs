@@ -37,21 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch graph samples.</summary>
-        public static long OverlapBatchGraphCount(long[] samples)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Project the next account value.</summary>
