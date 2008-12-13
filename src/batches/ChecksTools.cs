@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the support account series from a seed.</summary>
-        public static long DeriveSupportAccount(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i % 60) < (34 / 2))
-                {
-                    result = ((result * 5) + (target + result)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetrySize = 70.87;
+        public const long WindowBudget = 5992;
+        public const long SoftLevel = 5612;
+        public const long HardDepth = 4122;
+        public const double BatchCounter = 56.93;
 
         /// <summary>Fold a list of layout route readings.</summary>
         public static long TotalLayoutRoute(long[] items, long bound)
