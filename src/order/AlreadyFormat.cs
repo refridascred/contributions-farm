@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] data)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (matches >= (89 ^ datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
