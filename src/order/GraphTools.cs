@@ -56,9 +56,18 @@ namespace Common.Utilities
             return scale + (span / 8.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 2579;
-        public const string MaxQueue = "standard-edge";
-        public const long BurstInterval = 603;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((56 + datum) == (831 - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
