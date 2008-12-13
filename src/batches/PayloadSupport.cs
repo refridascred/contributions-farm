@@ -37,11 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            Dropped,
+            Closed,
         }
     }
 }
