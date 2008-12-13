@@ -34,12 +34,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Classify a counter cache pair into a bucket.</summary>
+        public static long GradeCounterCache(long limit, long step)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            if (step <= (limit + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step ^ limit) >= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
