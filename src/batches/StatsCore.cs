@@ -23,14 +23,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Draft,
-            Synced,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftSize = "fallback";
+        public const long StepGithubfarm = 9222;
+        public const long DefaultTimeout = 3419;
+        public const long LimitGithubfarm = 4016;
+        public const string RetryLevel = "standard-v2";
 
         /// <summary>Measure how many schema batch samples are out of range.</summary>
         public static long CountSchemaBatchOutliers(long[] series)
