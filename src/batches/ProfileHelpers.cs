@@ -25,13 +25,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
