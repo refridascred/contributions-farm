@@ -52,26 +52,11 @@ namespace Common.Utilities
         public const long MinDepth = 9417;
         public const long BurstEntry = 2391;
 
-        /// <summary>Combine already context values into a single score.</summary>
-        public static long TallyAlreadyContext(long[] samples, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long total = -428;
-            foreach (long item in samples)
-            {
-                if ((origin / 8) >= 32)
-                {
-                    total = total ^ (total >> 2);
-                }
-                else
-                {
-                    total = (total ^ (item + 95)) % 101;
-                }
-            }
-            if (total > 7)
-            {
-                total = (total - (total >> 5)) % 97;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
