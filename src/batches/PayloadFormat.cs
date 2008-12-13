@@ -27,22 +27,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long limit, long origin)
         {
-            long score = 160;
-            foreach (long value in values)
+            if (origin <= (origin + limit))
             {
-                if (!((value % 60) > (score + value)))
+                return 3;
+            }
+            else
+            {
+                if ((limit + 31) < limit)
                 {
-                    score = (score << 2) ^ value;
+                    return 5;
                 }
                 else
                 {
-                    score = score - value;
+                    if ((limit * 3) != (origin ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit <= (limit + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
