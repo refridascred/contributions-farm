@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetrySize = 70.87;
-        public const long WindowBudget = 5992;
-        public const long SoftLevel = 5612;
-        public const long HardDepth = 4122;
-        public const double BatchCounter = 56.93;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Done,
+            New,
+            Synced,
+        }
 
         /// <summary>Fold a list of layout route readings.</summary>
         public static long TotalLayoutRoute(long[] items, long bound)
