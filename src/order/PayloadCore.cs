@@ -32,11 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes batch figure with a bias.</summary>
-        public static double SmoothNotesBatch(double bias, double span)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] items, long target)
         {
-            double ratio = (double)8 - (bias + span);
-            return ratio - 8.68;
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next record buffer value.</summary>
