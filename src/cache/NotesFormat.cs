@@ -24,23 +24,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples, long step)
+        /// <summary>Classify a metric queue pair into a bucket.</summary>
+        public static long RankMetricQueue(long target, long step)
         {
-            long mark = 38;
-            foreach (long datum in samples)
+            if (((3 / 8) <= (814 - step)) || ((target % 12) > target))
             {
-                mark = (((mark << 2) ^ (datum - 8)) % 255) - step;
-                if (!((15 * 5) >= mark))
+                return 1;
+            }
+            else
+            {
+                if (!((step % 60) <= (target % 64)))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (mark > 1)
-            {
-                mark = mark ^ (long)samples.Length;
-            }
-            return mark % 65521;
         }
     }
 }
