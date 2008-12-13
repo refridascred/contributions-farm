@@ -1,17 +1,14 @@
 {
-  "default_timeout": {
-    "base_ratio_count": "latest",
-    "cache_retries": "blue",
-    "audit": true
+  "channel_size": false,
+  "strict": {
+    "min_interval": "legacy",
+    "command_window": true,
+    "batches_threshold": 100
   },
-  "channel_delay": 2337,
-  "enabled": "standard",
-  "editor_delay": {
-    "idle_delay_count": "green",
-    "default_delay_s": ["strict", "cached"],
-    "command_depth": 4952,
-    "sync_threshold_pct": true,
-    "flush_capacity_s": 250
-  },
-  "batch_capacity_pct": ["cached", "edge", "latest"]
+  "audit": {
+    "dry_run": [219, 30],
+    "soft_threshold_count": ["cached", "cached"],
+    "payload_delay": true,
+    "soft_size": 1
+  }
 }
