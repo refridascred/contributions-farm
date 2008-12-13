@@ -1,10 +1,12 @@
 # support settings
-flush_retries_count: 9570
-commits_timeout: false
-flush_limit_count:
-  hard_window_ms: cached
-  max_window: open
-  dry_run: 100
-  default_retries: true
-command_ratio: 30
-burst_capacity_pct: 9866
+soft_interval: 49.34
+filter_interval: true
+strict:
+  order_ttl: 25
+  soft_timeout_count: latest
+  report_ratio:
+    support_ratio: true
+    retry_depth: 5.82
+    max_depth_pct: primary
+  default_depth: false
+farm_interval: 1024
