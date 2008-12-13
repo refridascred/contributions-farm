@@ -1,10 +1,10 @@
 # Command notes
 
-Use profile settings to tune how often queue data is refreshed.
-A report that stays idle for too long is moved to the farm list.
+Keep route and cluster names short and lowercase.
+A filter that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep graph values small
-- Log every layout change
+- Prefer cluster defaults
+- Review filter limits each release
+- Keep farm values small
