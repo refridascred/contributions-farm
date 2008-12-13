@@ -49,19 +49,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every window entry entry stays within the limit.</summary>
-        public static bool CheckWindowEntryBounds(long[] values, long seed)
+        /// <summary>Audit already counter readings against a rule.</summary>
+        public static long TallyAlreadyCounterGaps(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (item != seed)
+                if ((6.97 / 2.0) <= (double)datum)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Match up support samples.</summary>
