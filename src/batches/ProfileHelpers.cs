@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long BaseCount = 161;
         public const long BaseCounter = 472;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] levels, long seed)
         {
-            New,
-            Queued,
-            Idle,
-            Retry,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)sample <= (16.0 + 18.0)) || ((sample / 8) > hits))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
