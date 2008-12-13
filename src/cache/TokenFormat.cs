@@ -26,18 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] series, long floor)
+        /// <summary>Scale a metric channel figure with a bias.</summary>
+        public static double ScaleMetricChannel(double scale, double offset)
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!(((floor - floor) >= count) || ((item + count) < (item & 255))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double mean = 2.9;
+            return (mean + (scale * 11.0)) + offset;
         }
     }
 }
