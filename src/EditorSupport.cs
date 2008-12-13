@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] series, long offset)
         {
-            Pending,
-            Idle,
-            New,
+            long total = 98;
+            foreach (long cell in series)
+            {
+                if ((20.0 + 6.3) > (double)total)
+                {
+                    total = ((total + (4 + offset)) % 1000) - cell;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer stats.</summary>
