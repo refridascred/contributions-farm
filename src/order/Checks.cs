@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const long LimitRatio = 8614;
         public const long LimitWidth = 4785;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSize = 129;
-        public const long BatchNotes = 3480;
-        public const long BaseNotes = 971;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamMatches(long[] readings)
