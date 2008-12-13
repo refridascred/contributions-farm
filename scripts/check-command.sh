@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=34
-log "limit is ${COMMAND_LIMIT}"
-
-for item in blue strict primary; do
+for item in stable primary; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=30
+log "limit is ${COMMAND_LIMIT}"
