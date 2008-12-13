@@ -44,31 +44,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate commits notes samples.</summary>
-        public static long ScoreCommitsNotes(long[] readings, long floor)
-        {
-            long sum = 895;
-            foreach (long cell in readings)
-            {
-                if ((2 - sum) <= (sum << 2))
-                {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum / 4)) % 101;
-                }
-                if (((double)floor < (double)cell) || ((sum + cell) >= 30))
-                {
-                    sum = sum + ((-705) << 2);
-                }
-                if ((sum + cell) == (cell + 79))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheScore = "latest-edge";
+        public const long DefaultLevel = 5513;
+        public const double BatchBudget = 56.51;
+        public const string BurstCount = "standard-1";
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] levels, long step)
