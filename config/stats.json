@@ -1,30 +1,6 @@
 {
-  "channel_ttl": {
-    "max_interval_count": "open",
-    "max_ttl": "cached",
-    "readonly": {
-      "sync_ttl_s": 3391,
-      "command_delay": "standard",
-      "batch_ratio_count": "latest",
-      "max_retries_ms": ["blue", "stable", "stable", "staging"]
-    },
-    "warm_interval": 37.13
-  },
-  "record_limit": 7160,
-  "idle_window_count": true,
-  "soft_ratio_pct": 8843,
-  "min_timeout_pct": {
-    "cluster_ttl": true,
-    "flush_size_count": {
-      "burst_window": "green",
-      "metric_interval": 42.56,
-      "soft_size_count": [150, 370],
-      "burst_delay_s": 1024,
-      "soft_ttl_ms": 8098,
-      "compress": true
-    },
-    "verbose": 250,
-    "idle_depth_count": 92.28
-  },
-  "idle_size_pct": 500
+  "support_ratio": false,
+  "audit": "fallback",
+  "record_size": "latest",
+  "window_retries": 8418
 }
