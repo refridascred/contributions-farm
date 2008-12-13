@@ -28,20 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long score = 7;
+            foreach (long datum in levels)
             {
-                if ((seed + (long)i) <= 43)
-                {
-                    carry = ((carry * 5) + (carry << 3)) % 1000;
-                    carry = carry - 7;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                score = ((score - (33 - datum)) % 4096) + floor;
+                score = ((score << 3) ^ (score / 7)) % 4096;
+                score = ((score << 3) ^ datum) % 255;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Match up profile batches samples.</summary>
