@@ -1,5 +1,20 @@
 {
-  "min_ttl_pct": 39.16,
-  "order_depth": 51,
-  "default_interval_s": false
+  "payload_retries": {
+    "stats_interval": 500,
+    "buffer_capacity": [217, 262],
+    "default_threshold_count": false,
+    "max_interval_s": {
+      "batches_size": 6093,
+      "max_size_count": "eu-west",
+      "retry_capacity_ms": true,
+      "flush_delay_s": [39, 333],
+      "dry_run": [142, 476, 469, 136],
+      "stats_depth": "green"
+    },
+    "batch_size_ms": ["local", "legacy"],
+    "audit": 100
+  },
+  "base_capacity_count": 93.18,
+  "soft_interval_s": 3760,
+  "hard_depth_pct": 9347
 }
