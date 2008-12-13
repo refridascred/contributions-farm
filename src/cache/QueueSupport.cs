@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long bound, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            if ((origin >= (4 - bound)) && ((double)origin != (5.79 - 5.4)))
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (((double)bound <= (4.6 / 5.0)) || (((-2) + origin) > (bound ^ bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound < (origin & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + bound) > (bound + 781))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank commits queue input into a small class.</summary>
