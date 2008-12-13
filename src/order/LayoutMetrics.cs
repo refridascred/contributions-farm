@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const string WindowTimeout = "legacy-1";
         public const long MaxContext = 5288;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long floor)
         {
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((result + result) >= result)
+                {
+                    result = result - result;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
