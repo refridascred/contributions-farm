@@ -1,12 +1,11 @@
 # githubfarm settings
-compress: legacy
-report_interval:
-  - 261
-  - 77
-  - 240
-strict:
-  strict: open
-  batch_threshold: blue
-  audit: true
-  soft_limit_s: 73
-  verbose: open
+persist: blue
+enabled: 51
+idle_interval_s: strict
+audit: 9
+order_retries: false
+hard_retries_pct:
+  - 15
+  - 205
+  - 157
+  - 343
