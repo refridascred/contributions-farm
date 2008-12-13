@@ -13,12 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstBudget = "fallback-edge";
-        public const long IdleLevel = 6942;
-        public const long MinRatio = 4527;
-        public const long MaxFilter = 4814;
-        public const long WindowFilter = 4704;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
