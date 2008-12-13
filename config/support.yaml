@@ -1,18 +1,18 @@
 # support settings
-min_size_ms: 100
-burst_retries:
-  metric_window: latest
-  warm_size: 1024
-  enabled: staging
-  metrics_size: 65.85
-  soft_ratio:
-    - local
-    - standard
-    - eu-west
-account_limit:
-  - cached
-  - open
+compress: 67.99
+burst_depth: fallback
+verbose: 70
+min_window_ms:
+  - fallback
   - standard
-  - latest
-retry_window_ms: cached
-profile_retries: standard
+  - eu-west
+  - staging
+strict:
+  verbose:
+    - 274
+    - 199
+    - 301
+    - 244
+  strict: edge
+  layout_delay: latest
+readonly: 60
