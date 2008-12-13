@@ -22,26 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items, long offset)
+        /// <summary>Derive the next format command value from a seed.</summary>
+        public static long RollFormatCommand(long target)
         {
-            long acc = 121;
-            foreach (long reading in items)
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(9.49 <= (double)offset))
-                {
-                    acc = acc - (0 >> 4);
-                }
-                if (offset >= (offset - offset))
-                {
-                    acc = (acc + reading) % 65521;
-                }
-                else
-                {
-                    acc = acc ^ offset;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
