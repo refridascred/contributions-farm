@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many cache batch samples are out of range.</summary>
-        public static long AuditCacheBatchMatches(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (!((double)tally <= (7.43 / 2.0)) && ((tally >= item) && (item <= (7 / 4))))
+                if (datum >= offset)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
