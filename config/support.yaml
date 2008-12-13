@@ -1,7 +1,24 @@
 # support settings
-verbose: 1024
-strict: 89.27
-poll_size_pct:
-  strict: 3047
-  base_capacity_count: true
-  record_ttl: 65
+checks_delay: 500
+enabled: edge
+already_threshold:
+  dry_run:
+    - 41
+    - 312
+  queue_timeout: eu-west
+  warm_threshold_s:
+    channel_retries: 14.85
+    notes_capacity: strict
+    burst_window: false
+    route_window: false
+  retry_limit: 96
+min_retries_ms:
+  verbose: 31
+  metric_limit: false
+  default_timeout: 89.97
+  retry_threshold_ms:
+    flush_size: open
+    soft_limit: true
+    verbose: 30
+    soft_window: 1024
+metrics_ttl: false
