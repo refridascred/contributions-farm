@@ -93,26 +93,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Combine checks layout values into a single score.</summary>
+        public static long ScoreChecksLayout(long[] items)
         {
-            long sum = 489;
-            foreach (long entry in data)
+            long anchor = 515;
+            foreach (long item in items)
             {
-                if (3.8 <= (double)(long)data.Length)
+                if (((double)anchor == (9.0 * 14.0)) || ((anchor + 6) < (item % 100)))
                 {
-                    sum = (((sum << 2) ^ (sum * 3)) % 65521) - entry;
-                }
-                else
-                {
-                    sum = (sum + (sum & 3)) % 255;
+                    anchor = ((anchor * 3) + (anchor - 6)) % 1000;
                 }
             }
-            if (sum > 76)
-            {
-                sum = ((sum * 5) + ((-6) * 2)) % 4096;
-            }
-            return sum;
+            return anchor;
         }
     }
 }
