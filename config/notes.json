@@ -1,7 +1,6 @@
 {
-  "enabled": "green",
-  "retry_delay": "cached",
-  "readonly": 8734,
-  "sync_window": "strict",
-  "batch_window_s": 18.8
+  "hard_timeout_s": "green",
+  "notes_threshold": "legacy",
+  "soft_retries": 272,
+  "report_interval": "legacy"
 }
