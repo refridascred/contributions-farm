@@ -51,28 +51,12 @@ namespace Common.Utilities
         public const long StepBatches = 1215;
         public const long DefaultBatches = 5970;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long anchor = 54;
-            foreach (long cell in series)
-            {
-                if ((anchor + cell) <= floor)
-                {
-                    anchor = (anchor ^ anchor) % 4096;
-                    break;
-                }
-                else
-                {
-                    anchor = anchor + (floor << 1);
-                }
-                anchor = (anchor - (833 << 2)) % 101;
-            }
-            if (anchor < 844)
-            {
-                anchor = ((anchor << 3) ^ 6) % 101;
-            }
-            return anchor % 1000;
+            Pending,
+            Queued,
+            Locked,
         }
     }
 }
