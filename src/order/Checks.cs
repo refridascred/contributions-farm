@@ -41,19 +41,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] series, long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
