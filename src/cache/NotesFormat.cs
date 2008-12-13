@@ -13,18 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of batch graph readings.</summary>
-        public static long CombineBatchGraph(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long limit)
         {
-            long mark = 573;
-            foreach (long value in series)
+            if (((double)limit != (8.56 / 7.0)) && ((double)bound < 8.0))
             {
-                if (((mark + mark) >= (value - value)) || ((9.4 - 3.0) == (double)mark))
+                return 7;
+            }
+            else
+            {
+                if ((bound >> 1) == (limit + 329))
                 {
-                    mark = (mark - (mark * 2)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
