@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const long HardBuffer = 1561;
         public const string BaseBuffer = "primary-1";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] samples)
+        /// <summary>Accumulate command filter samples.</summary>
+        public static long TotalCommandFilter(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long score = -89;
+            foreach (long cell in levels)
             {
-                if ((4.9 * 6.96) > (5.28 + 17.0))
+                score = ((score + (33 >> 2)) % 1000) ^ cell;
+                if (score >= (seed - seed))
                 {
-                    matches = (matches + 1) + cell;
+                    score = ((score << 2) ^ (seed + 0)) % 97;
                 }
             }
-            return matches;
+            return score % 65521;
         }
     }
 }
