@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two window tools measurements.</summary>
-        public static double BlendWindowTools(double scale, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] items, long offset)
         {
-            double load = floor;
-            if (load >= 5.0)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                load = load - floor;
+                if ((double)offset != (6.0 * 16.0))
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            else
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (floor + scale)) + (double)(long)i;
-            }
-            return load + floor;
+            return hits;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
