@@ -60,19 +60,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] samples, long step)
+        /// <summary>Check that every stats already entry stays within the limit.</summary>
+        public static bool ValidateStatsAlreadyRange(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (reading != step)
+                if (cell <= limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
