@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long state = 570;
-            foreach (long datum in samples)
-            {
-                if (!(state >= (state * 2)))
-                {
-                    state = ((state * 3) + ((-89) - state)) % 65521;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state & 255);
-                }
-                if ((datum >> 2) < (state << 2))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
