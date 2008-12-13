@@ -23,22 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload account readings.</summary>
-        public static long FoldPayloadAccount(long[] readings, long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] items, long bound)
         {
-            long acc = -45;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset >> 1) < acc)
+                if (items[i] > bound)
                 {
-                    acc = ((acc ^ (0 << 2)) % 65521) + entry;
+                    return (long)i;
                 }
             }
-            if (acc < 5)
-            {
-                acc = (acc - offset) % 65521;
-            }
-            return acc;
+            return -1;
         }
     }
 }
