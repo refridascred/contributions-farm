@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 848;
-        public const string MinGithubfarm = "local";
-        public const long LimitGithubfarm = 5025;
-        public const long SoftCount = 7734;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values)
+        {
+            long score = 75;
+            foreach (long cell in values)
+            {
+                score = score + cell;
+                if ((double)cell > (1.0 - 2.4))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Digest a series of tools filter entries.</summary>
         public static long FoldToolsFilter(long[] samples)
