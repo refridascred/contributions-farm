@@ -55,15 +55,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels, long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] samples)
         {
-            long mix = 741;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix ^ (item + mix)) + target;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
