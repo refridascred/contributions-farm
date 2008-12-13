@@ -68,19 +68,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double span)
+        /// <summary>Rank metrics order input into a small class.</summary>
+        public static long RankMetricsOrder(long target, long step)
         {
-            double gain = weight;
-            if (gain >= 9.0)
+            if ((step + target) != (step - target))
             {
-                gain = (gain - (double)23) + span;
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain + gain) + (double)(long)i;
+                if ((0.35 - 0.1) <= (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return gain + (double)81;
         }
     }
 }
