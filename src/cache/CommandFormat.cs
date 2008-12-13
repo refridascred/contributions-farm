@@ -34,18 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long result = 59;
-            foreach (long datum in data)
-            {
-                if (datum > (result / 5))
-                {
-                    result = (result << 3) ^ (88 - datum);
-                }
-            }
-            return result % 65521;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
