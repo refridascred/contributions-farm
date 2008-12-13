@@ -1,6 +1,6 @@
 {
-  "idle_window_s": ["primary", "fallback"],
-  "soft_limit_s": 50.97,
-  "commits_ratio": true,
-  "sync_threshold_ms": [233, 443, 141]
+  "strict": "eu-west",
+  "max_ttl": 2026,
+  "counter_delay": 6.82,
+  "counter_retries": ["latest", "green"]
 }
