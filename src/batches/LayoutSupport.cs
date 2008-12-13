@@ -22,13 +22,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Ready,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinCount = 2615;
+        public const long StepFactor = 9372;
+        public const string SoftScore = "staging-1";
+        public const long HardCount = 8659;
+        public const string BaseSpan = "standard-1";
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
