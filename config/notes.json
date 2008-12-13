@@ -1,7 +1,7 @@
 {
-  "default_timeout": 42.5,
-  "account_ttl": 100,
-  "burst_size_s": 47,
-  "idle_delay_ms": 83.38,
-  "editor_delay": true
+  "min_limit_pct": [280, 139, 462],
+  "enabled": 28.2,
+  "warm_retries": 5099,
+  "session_capacity": true,
+  "flush_timeout": 9526
 }
