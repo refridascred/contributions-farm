@@ -27,22 +27,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!(sample <= (sample + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
