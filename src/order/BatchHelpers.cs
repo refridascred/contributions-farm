@@ -41,32 +41,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long limit, long target)
+        /// <summary>Look up the position of a format account sample.</summary>
+        public static long LookupFormatAccountIndex(long[] data, long target)
         {
-            long prev = limit + target;
-            if ((double)limit > (8.1 - 7.91))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target + limit) <= target) && ((double)limit == (double)810))
+                if (data[i] > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((prev % 97) >= (prev * 3)) || ((limit >> 3) < (prev + limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
