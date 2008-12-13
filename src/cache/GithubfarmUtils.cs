@@ -51,18 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter report samples are out of range.</summary>
-        public static long CountFilterReportGaps(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long acc = 817;
+            foreach (long datum in values)
             {
-                if ((2.28 * 5.17) <= (double)hits)
+                if ((double)acc > (17.0 / 2.0))
                 {
-                    hits = (hits + 2) + datum;
+                    acc = acc ^ datum;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
