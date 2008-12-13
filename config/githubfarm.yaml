@@ -1,5 +1,33 @@
 # githubfarm settings
-graph_window: legacy
-dry_run: true
-layout_threshold: 31
-max_capacity: false
+metric_depth:
+  - 185
+  - 368
+  - 68
+default_delay_count:
+  - 289
+  - 241
+hard_window: fallback
+counter_capacity: edge
+tools_depth: latest
+readonly:
+  cache_timeout_count: 6192
+  buffer_capacity:
+    editor_window: 1024
+    default_delay: eu-west
+    entry_interval: primary
+    default_interval: 90
+  enabled:
+    - 50
+    - 366
+    - 466
+  compress:
+    base_ratio_pct: true
+    farm_threshold: 22.91
+    payload_capacity: blue
+  window_limit:
+    burst_capacity: 7033
+    poll_timeout: false
+    batch_threshold: staging
+    retry_interval: primary
+    poll_interval_count: 60
+    route_limit: 500
