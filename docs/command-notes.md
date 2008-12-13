@@ -1,12 +1,12 @@
 # Command notes
 
-The support module keeps support values in sync with the route cache.
-When a order fails, the farm handler retries a few times before giving up.
-Defaults for route live in the config folder and can be overridden per environment.
+Keep editor and counter names short and lowercase.
+Use context settings to tune how often checks data is refreshed.
+Each notes is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Log every stats change
-- Prefer stats defaults
-- Document new layout fields
-- Validate schema input early
+- Review schema limits each release
+- Validate stats input early
+- Document new entry fields
+- Prefer cache defaults
