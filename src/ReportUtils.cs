@@ -70,13 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] data, long bound)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
