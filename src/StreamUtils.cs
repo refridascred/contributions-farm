@@ -66,12 +66,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftScore = "staging";
+        public const long BaseWidth = 982;
+        public const long HardRoute = 1754;
     }
 }
