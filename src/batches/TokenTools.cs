@@ -22,9 +22,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 4519;
-        public const long BatchBudget = 2083;
-        public const long StepWidth = 4427;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor - (anchor * 3)) % 65521;
+                if ((double)(long)i <= (15.0 / 3.0))
+                {
+                    anchor = (anchor + (seed + anchor)) % 65521;
+                    anchor = (anchor ^ (seed + anchor)) % 4096;
+                }
+                anchor = anchor ^ (seed - seed);
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
