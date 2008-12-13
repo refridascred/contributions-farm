@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 5195;
-        public const long IdleFactor = 7562;
-        public const double CacheScore = 91.8;
-        public const long RetryBudget = 536;
+        /// <summary>Compare every pair of record tools readings.</summary>
+        public static long MatchRecordToolsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] items, long offset)
