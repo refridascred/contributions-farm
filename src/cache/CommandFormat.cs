@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepCount = 7431;
-        public const double MaxDepth = 64.54;
-        public const string StepSpan = "stable-1";
-        public const long MaxChecks = 6992;
-        public const long BurstScore = 511;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] data)
