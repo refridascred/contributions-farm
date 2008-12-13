@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
