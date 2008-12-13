@@ -28,13 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit buffer command readings against a rule.</summary>
