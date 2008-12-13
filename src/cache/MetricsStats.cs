@@ -39,12 +39,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            Pending,
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Blend two schema measurements.</summary>
