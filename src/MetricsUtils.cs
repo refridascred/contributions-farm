@@ -18,22 +18,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 1.81;
+        public const long MinRatio = 6601;
+        public const string StepMetrics = "local-edge";
+        public const double MaxMetrics = 9.19;
+        public const string LimitRatio = "legacy-edge";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool VerifyAlreadyLimits(long[] levels, long target)
