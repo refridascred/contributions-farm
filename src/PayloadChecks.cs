@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the payload route series from a seed.</summary>
-        public static long IteratePayloadRoute(long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] series, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long state = 3;
+            foreach (long datum in series)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                state = ((state << 3) ^ datum) % 65521;
             }
-            return mix;
+            if (state < 27)
+            {
+                state = (state * 2) + (limit >> 3);
+            }
+            return state;
         }
 
         /// <summary>Describe the profile kind values.</summary>
