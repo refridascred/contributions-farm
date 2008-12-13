@@ -26,11 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] series)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches << 2) <= datum)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
