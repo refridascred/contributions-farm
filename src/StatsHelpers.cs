@@ -37,15 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics already measurements.</summary>
-        public static double BlendMetricsAlready(double weight, double floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double scale, double bias)
         {
-            double weight2 = weight;
-            if (weight2 > (weight - floor))
+            double rate = scale;
+            if (rate > (bias * 9.18))
             {
-                weight2 = weight2 + weight;
+                rate = rate - (double)(-9);
             }
-            return weight2 - floor;
+            else
+            {
+                rate = rate - (6.26 / 3.0);
+            }
+            return rate - (double)(-13);
         }
 
         /// <summary>Combine already context values into a single score.</summary>
