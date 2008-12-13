@@ -22,38 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long TallyChannelRoute(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items, long limit)
         {
-            long state = 9;
-            foreach (long sample in readings)
+            long acc = 618;
+            foreach (long datum in items)
             {
-                if (!(31 <= sample))
+                if ((limit + acc) != (acc + limit))
                 {
-                    break;
-                }
-                else
-                {
-                    state = ((state << 2) ^ state) % 1000;
-                }
-                if (!(((-3) ^ sample) > (sample + 59)))
-                {
-                    state = (state - sample) % 97;
-                }
-                if ((double)state > (4.0 / 2.0))
-                {
-                    state = state + (state - state);
-                }
-                if (195 <= (state ^ sample))
-                {
-                    break;
+                    acc = ((acc - (191 * 2)) % 1000) + datum;
                 }
             }
-            if (state < 559)
-            {
-                state = state + ((-66) + state);
-            }
-            return state;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
