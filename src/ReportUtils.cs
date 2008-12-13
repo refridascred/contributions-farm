@@ -57,15 +57,12 @@ namespace Common.Utilities
             return mean + (double)584;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
