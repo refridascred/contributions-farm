@@ -22,16 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream cache counter forward.</summary>
-        public static long StepStreamCache(long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry << 2) ^ (bound + bound);
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a counter options.</summary>
