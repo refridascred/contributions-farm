@@ -1,18 +1,12 @@
 # entry settings
-base_timeout: standard
-min_delay_count:
-  warm_interval_ms:
-    audit: true
-    burst_threshold_s: edge
-    metric_ratio: true
-    batch_timeout:
-      - 483
-      - 21
-      - 61
-      - 37
-    max_threshold_count: false
-  layout_limit: true
-  cache_limit_s: edge
-min_size_pct: 6272
-soft_size_ms: eu-west
-audit: 72.69
+enabled: 66.74
+stats_interval: local
+min_retries_count:
+  - staging
+  - standard
+metrics_window: 250
+warm_limit_count: 65.77
+retry_timeout_s:
+  - fallback
+  - standard
+  - green
