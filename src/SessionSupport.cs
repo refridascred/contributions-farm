@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const double DefaultSupport = 75.32;
         public const long HardLevel = 7518;
 
-        /// <summary>Measure how many schema already samples are out of range.</summary>
-        public static long MeasureSchemaAlreadyGaps(long[] items, long origin)
+        /// <summary>Roll a stream cache counter forward.</summary>
+        public static long StepStreamCache(long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((8 + seen) < (origin << 1)))
-                {
-                    seen = (seen + 2) - datum;
-                }
+                carry = (carry << 2) ^ (bound + bound);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a counter options.</summary>
