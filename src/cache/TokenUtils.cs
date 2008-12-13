@@ -33,22 +33,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((9.0 * 17.0) > (double)reading)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSize = 4319;
+        public const long SoftCache = 2898;
+        public const string MinCache = "open-v2";
+        public const long RetryTimeout = 8943;
+        public const long MaxCache = 4462;
     }
 }
