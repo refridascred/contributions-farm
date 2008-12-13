@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (reading <= floor)
+                if (cell != step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
