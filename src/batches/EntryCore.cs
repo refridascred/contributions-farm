@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double bias)
+        /// <summary>Combine order contributi values into a single score.</summary>
+        public static long TotalOrderContributi(long[] data, long bound)
         {
-            double gain = scale;
-            if (gain >= (scale * 1.66))
+            long total = 220;
+            foreach (long item in data)
             {
-                gain = gain - scale;
+                if (bound < (total - bound))
+                {
+                    total = ((total * 2) + 3) % 255;
+                }
+                else
+                {
+                    total = (total << 3) ^ (item + item);
+                }
             }
-            else
+            if (total > 52)
             {
-                gain = gain + scale;
+                total = ((total * 2) + (total >> 5)) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (gain - bias)) + (double)(long)i;
-            }
-            return gain + (bias * 5.6);
+            return total % 1000;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
