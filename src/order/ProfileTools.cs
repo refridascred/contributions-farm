@@ -23,13 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            long anchor = 514;
+            foreach (long value in levels)
+            {
+                if (((double)(long)levels.Length == (6.0 / 4.0)) || (anchor <= (anchor - value)))
+                {
+                    anchor = (anchor ^ value) % 101;
+                }
+                if (((double)value >= (5.5 + 7.0)) || (anchor <= (value ^ value)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 449)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Iterate the filter notes series from a seed.</summary>
