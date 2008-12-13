@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] items)
         {
-            Ready,
-            Queued,
-            Closed,
-            Stale,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (datum ^ 912))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
