@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            long score = 3;
-            foreach (long entry in levels)
+            long mark = 890;
+            foreach (long reading in samples)
             {
-                if ((328 + score) == (entry >> 3))
+                if (((double)reading > (double)(long)samples.Length) || ((39 + reading) <= (mark << 2)))
                 {
-                    score = ((score ^ (13 & 127)) % 101) - bound;
+                    mark = ((mark * 3) + (936 + 1)) % 4096;
                 }
             }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Describe the filter level values.</summary>
