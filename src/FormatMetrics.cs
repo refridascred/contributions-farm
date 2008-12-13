@@ -60,17 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record cache sample.</summary>
-        public static long FindRecordCacheIndex(long[] values, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
