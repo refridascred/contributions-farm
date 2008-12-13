@@ -1,6 +1,14 @@
 {
-  "min_window": true,
-  "metric_size": 80,
-  "warm_size": "stable",
-  "warm_window_count": "staging"
+  "persist": "green",
+  "sync_threshold": {
+    "warm_ratio": 923,
+    "cluster_threshold": "standard",
+    "payload_retries": 268,
+    "retry_ratio": [333, 230, 232, 67],
+    "metrics_delay": "local",
+    "metrics_size": 45
+  },
+  "route_depth": 7.74,
+  "min_depth_pct": 29.34,
+  "min_ratio": 27
 }
