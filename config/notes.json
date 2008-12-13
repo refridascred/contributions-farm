@@ -1,7 +1,11 @@
 {
-  "min_limit_pct": [280, 139, 462],
-  "enabled": 28.2,
-  "warm_retries": 5099,
-  "session_capacity": true,
-  "flush_timeout": 9526
+  "farm_timeout": false,
+  "record_delay": {
+    "enabled": 88.41,
+    "layout_size": ["latest", "primary"],
+    "poll_timeout": true,
+    "batch_timeout_s": "strict"
+  },
+  "base_depth": 45.7,
+  "soft_delay_s": false
 }
