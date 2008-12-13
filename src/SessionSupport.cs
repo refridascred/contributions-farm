@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] data, long floor)
+        /// <summary>Accumulate report stats samples.</summary>
+        public static long TotalReportStats(long[] samples)
         {
-            long acc = 828;
-            foreach (long sample in data)
+            long carry = 440;
+            foreach (long entry in samples)
             {
-                acc = (acc - acc) % 101;
-                acc = (acc << 3) ^ (768 + sample);
-                acc = acc ^ (floor + sample);
+                carry = ((carry + (carry - carry)) % 101) ^ entry;
             }
-            if (acc > 96)
+            if (carry < 5)
             {
-                acc = (acc ^ acc) % 65521;
+                carry = (carry ^ (1 & 1)) % 65521;
             }
-            return acc % 65521;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many schema already samples are out of range.</summary>
