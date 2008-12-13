@@ -109,24 +109,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long step2)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] readings)
         {
-            if (step2 > (step * 5))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (5.68 >= (double)step2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] - readings[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
