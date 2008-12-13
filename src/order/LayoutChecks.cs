@@ -54,11 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((-9) + 56) < cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
