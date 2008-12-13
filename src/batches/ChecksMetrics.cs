@@ -64,10 +64,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 6889;
-        public const long IdleReport = 6860;
-        public const double LimitReport = 48.86;
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 4353;
