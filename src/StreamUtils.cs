@@ -33,13 +33,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            Failed,
+            New,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
