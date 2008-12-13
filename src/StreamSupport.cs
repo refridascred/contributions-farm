@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
             Idle,
-            Closed,
-            Locked,
+            Stale,
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Digest a series of tools filter entries.</summary>
