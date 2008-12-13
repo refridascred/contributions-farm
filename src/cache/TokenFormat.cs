@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long mark = 890;
-            foreach (long reading in samples)
-            {
-                if (((double)reading > (double)(long)samples.Length) || ((39 + reading) <= (mark << 2)))
-                {
-                    mark = ((mark * 3) + (936 + 1)) % 4096;
-                }
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the filter level values.</summary>
