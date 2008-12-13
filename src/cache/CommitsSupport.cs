@@ -48,14 +48,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Failed,
-            Queued,
-            Draft,
-            New,
-            Locked,
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
