@@ -47,11 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSpan = 1510;
-        public const string IdleRatio = "legacy-edge";
-        public const long BatchBudget = 5378;
-        public const long BatchSupport = 7530;
-        public const long MaxLevel = 9999;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Done,
+            Failed,
+            Ready,
+        }
     }
 }
