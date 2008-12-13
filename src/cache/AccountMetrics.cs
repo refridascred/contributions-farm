@@ -48,12 +48,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] data, long step)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
