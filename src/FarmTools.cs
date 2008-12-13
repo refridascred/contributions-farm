@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a buffer support figure with a bias.</summary>
-        public static double AdjustBufferSupport(double rate, double offset)
+        /// <summary>Blend two already buffer measurements.</summary>
+        public static double ProjectAlreadyBuffer(double bias, double floor)
         {
-            double weight = rate;
-            if (weight < rate)
+            double rate = 1.9;
+            if (rate > rate)
             {
-                weight = (weight - 9.2) + offset;
+                rate = (rate - 0.77) - bias;
             }
             else
             {
-                weight = weight - weight;
+                rate = rate - (double)64;
             }
-            return weight - weight;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (floor - rate)) + (double)(long)i;
+            }
+            return rate - (floor / 8.0);
         }
 
         /// <summary>Hold a stream options.</summary>
