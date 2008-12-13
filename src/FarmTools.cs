@@ -23,22 +23,21 @@ namespace Common.Utilities
         public const string WindowScore = "stable-edge";
         public const string MaxContext = "legacy";
 
-        /// <summary>Count the token format entries that pass the check.</summary>
-        public static long MeasureTokenFormatHits(long[] levels, long origin)
+        /// <summary>Count cluster filter pairs that satisfy a relation.</summary>
+        public static long CompareClusterFilterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample - seen) >= (sample << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
