@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=204
-log "limit is ${COMMAND_LIMIT}"
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in legacy standard; do
+    log "checking ${item}"
+done
