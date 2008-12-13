@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Match up stream tools samples.</summary>
+        public static long MatchStreamToolsCount(long[] series)
         {
-            long carry = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((cell + cell) != (cell + 96)) || ((double)carry >= (9.47 / 3.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry ^ (680 + carry)) % 1000;
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
