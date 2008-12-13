@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((92 / 3) == (floor & 63))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
