@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum ^ (target - sum)) % 255;
-                sum = ((sum * 4) + (target % 16)) % 101;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Ready,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
