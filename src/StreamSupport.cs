@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] values, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long limit, long floor)
         {
-            long mark = -809;
-            foreach (long value in values)
+            long lane = limit ^ floor;
+            if (!((18.0 + 2.7) > (double)floor))
             {
-                mark = (((mark << 3) ^ value) % 4096) - origin;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((lane & 255) < lane) && ((76 >> 4) >= (floor * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
