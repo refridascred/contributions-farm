@@ -23,13 +23,15 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Adjust a command metric reading.</summary>
+        public static double AdjustCommandMetric(double ratio, double floor)
         {
-            Synced,
-            Active,
-            Paused,
-            Closed,
+            double bias = 9.36;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias + ratio;
         }
     }
 }
