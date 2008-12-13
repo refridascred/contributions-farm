@@ -16,18 +16,18 @@ namespace Common.Utilities
             return weight + (ratio / 4.0);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] items, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (838 > (datum - datum))
+                if ((double)cell >= 1.0)
                 {
-                    matches = (matches + 2) + origin;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
