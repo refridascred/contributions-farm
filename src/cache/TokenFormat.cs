@@ -27,13 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long offset)
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
