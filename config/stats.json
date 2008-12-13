@@ -1,18 +1,8 @@
 {
-  "hard_threshold_count": "blue",
-  "flush_ratio_ms": {
-    "hard_ratio_s": 64,
-    "batch_retries": ["cached", "eu-west", "edge", "open"],
-    "checks_window": "cached",
-    "verbose": {
-      "filter_window": true,
-      "sync_ratio": 20,
-      "report_delay": 41
-    },
-    "layout_timeout": true,
-    "support_threshold": "green"
-  },
-  "default_retries_ms": 7.59,
-  "payload_depth": "local",
-  "poll_window_ms": true
+  "audit": 250,
+  "strict": "local",
+  "default_timeout": "fallback",
+  "retry_limit_s": "strict",
+  "githubfarm_delay": "open",
+  "persist": 63.92
 }
