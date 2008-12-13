@@ -57,23 +57,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            double mean = (double)1 / 3.0;
-            if (mean <= (ratio + bias))
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - (double)(-722);
+                if ((double)seed > (double)mark)
+                {
+                    mark = (mark ^ (seed + mark)) % 1000;
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - (double)403;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean + (ratio * 19.0);
+            return mark;
         }
     }
 }
