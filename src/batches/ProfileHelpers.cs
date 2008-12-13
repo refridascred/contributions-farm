@@ -15,18 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (entry + 34))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a counter stats.</summary>
