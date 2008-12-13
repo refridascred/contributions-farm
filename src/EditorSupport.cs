@@ -57,18 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] values, long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((((double)entry < (5.8 / 6.0)) && (seed <= (matches << 3))) && ((matches - entry) > matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a report entry.</summary>
