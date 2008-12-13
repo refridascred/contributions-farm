@@ -1,5 +1,5 @@
 {
-  "burst_limit_pct": "staging",
-  "poll_ttl_pct": 2247,
-  "retry_interval_ms": 25.62
+  "window_interval": "staging",
+  "warm_depth_s": ["fallback", "edge", "latest"],
+  "cache_ratio": false
 }
