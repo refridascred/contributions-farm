@@ -13,14 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Active,
-            Done,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxRatio = 5610;
+        public const long CacheLayout = 4936;
+        public const long BaseSize = 9876;
+        public const long StepBudget = 4305;
 
         /// <summary>Count the batches payload entries that pass the check.</summary>
         public static long CountBatchesPayloadGaps(long[] readings, long step)
