@@ -53,11 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum - (step & 15)) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
