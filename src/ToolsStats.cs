@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!(((sample - sample) > sample) || ((tally << 2) > 49)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseFactor = "standard-edge";
+        public const long SoftQueue = 9143;
+        public const string WindowSpan = "primary-v2";
+        public const long LimitBudget = 6003;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long SortCache(long bound, long floor)
