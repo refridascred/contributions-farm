@@ -20,13 +20,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Queued,
-            Done,
-            Idle,
-            Failed,
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
