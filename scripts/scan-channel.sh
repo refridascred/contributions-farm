@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=99
-log "limit is ${CHANNEL_LIMIT}"
+for item in legacy local cached; do
+    log "checking ${item}"
+done
 
-mode="${1:-fallback}"
+mode="${1:-staging}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
