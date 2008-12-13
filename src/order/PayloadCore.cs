@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long bound)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] == step) && ((values[i] % 5) != 0))
+                if (values[i] == bound)
                 {
                     return (long)i;
                 }
