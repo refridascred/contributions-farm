@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Iterate the checks already series from a seed.</summary>
+        public static long IterateChecksAlready(long target)
         {
-            long score = -643;
-            foreach (long entry in items)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (((entry << 2) < (999 ^ entry)) || ((entry / 2) <= 6))
-                {
-                    score = (score << 2) ^ ((-5) - score);
-                }
-                else
-                {
-                    score = (score ^ (entry - entry)) % 255;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (score < 513)
-            {
-                score = (score - score) % 101;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
