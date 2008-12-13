@@ -43,12 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] samples, long offset)
         {
-            Pending,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset + 9) <= (offset + count))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
