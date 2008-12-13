@@ -33,22 +33,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate queue order samples.</summary>
-        public static long TallyQueueOrder(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] items, long limit)
         {
-            long acc = 828;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((datum + 787) < acc)
+                if ((limit - entry) >= entry)
                 {
-                    acc = (acc * 5) + acc;
+                    count = count + 1;
                 }
             }
-            if (acc < 6)
-            {
-                acc = acc + (3 % 24);
-            }
-            return acc % 97;
+            return count;
         }
     }
 }
