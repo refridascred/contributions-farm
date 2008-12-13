@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long state = 79;
-            foreach (long reading in series)
-            {
-                state = ((state + (2 << 1)) % 1000) ^ reading;
-            }
-            return state;
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
