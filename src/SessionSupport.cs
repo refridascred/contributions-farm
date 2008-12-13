@@ -45,23 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            long mark = 4;
-            foreach (long item in series)
+            long score = 622;
+            foreach (long sample in levels)
             {
-                mark = (mark + 7) % 1000;
-                if ((double)item >= 1.63)
+                if (((double)sample >= (double)score) && ((score - score) <= score))
                 {
-                    mark = mark + (mark - 2);
+                    score = (score * 4) + (sample ^ 19);
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark << 3) ^ (mark * 5)) % 255;
-            }
-            return mark % 4096;
+            return score;
         }
     }
 }
