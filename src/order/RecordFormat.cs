@@ -42,15 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] values, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series, long step)
         {
-            long total = 75;
-            foreach (long value in values)
+            long mark = 13;
+            foreach (long item in series)
             {
-                total = (((total * 5) + (floor + floor)) % 255) ^ value;
+                mark = ((mark * 5) + (mark + mark)) ^ item;
+                if (((double)step == (5.1 / 7.0)) || (mark <= (635 - mark)))
+                {
+                    break;
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
