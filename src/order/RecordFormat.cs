@@ -52,34 +52,35 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long floor, long limit)
         {
-            if (((target << 2) == (3 + 995)) || ((seed % 8) > 674))
+            long slot = floor - limit;
+            if (floor >= (slot + floor))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (!((target + target) <= seed))
+                if ((483 ^ slot) >= (36 + floor))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((19.0 + 19.0) > (7.14 / 6.0))
+                    if (!((limit + floor) == (1 / 8)))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)target != (4.52 - 17.0))
+                        if (slot > floor)
                         {
                             return 2;
                         }
                         else
                         {
-                            return 6;
+                            return 5;
                         }
                     }
                 }
