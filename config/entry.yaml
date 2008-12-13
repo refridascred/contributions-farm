@@ -1,12 +1,11 @@
 # entry settings
-already_threshold: false
-hard_retries:
-  - 83
-  - 72
-  - 57
-soft_size_pct: fallback
-audit:
-  contributi_limit: cached
-  sync_depth_ms: 47.79
-  min_window_pct: primary
-  idle_ttl_count: 96.87
+tools_timeout:
+  compress: 80.12
+  idle_window_ms: 87.83
+  verbose: true
+  default_ratio: true
+  hard_size: 6
+soft_ratio_ms: false
+dry_run: 8168
+idle_depth_ms: false
+poll_ratio: 1519
