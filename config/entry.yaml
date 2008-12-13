@@ -1,17 +1,27 @@
 # entry settings
-soft_depth_count: green
-readonly:
-  - local
-  - cached
-  - staging
-  - strict
-strict:
-  - 444
-  - 53
-  - 419
-retry_timeout_ms: eu-west
-base_delay:
-  - latest
-  - edge
-  - edge
-  - local
+enabled:
+  verbose: 250
+  persist:
+    min_threshold_pct: eu-west
+    burst_ratio:
+      - staging
+      - open
+      - open
+    soft_retries: false
+    compress: false
+  editor_depth: local
+  soft_capacity_pct:
+    default_limit: true
+    record_ratio: 500
+    min_size_pct:
+      - strict
+      - edge
+      - staging
+      - open
+    route_timeout: 250
+  hard_ttl_s: 5.85
+flush_capacity_count: 74.17
+readonly: 39
+burst_size_ms: primary
+report_interval: 5490
+githubfarm_capacity: 24
