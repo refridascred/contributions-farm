@@ -33,26 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mix = 8;
-            foreach (long entry in data)
-            {
-                if (entry < mix)
-                {
-                    mix = mix - (mix + entry);
-                }
-                else
-                {
-                    mix = mix - (26 >> 5);
-                }
-                if ((mix & 255) <= (entry >> 2))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
