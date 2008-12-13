@@ -43,13 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] samples, long origin)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Retry,
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the batch level values.</summary>
