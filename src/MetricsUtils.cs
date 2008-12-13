@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] samples, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long reading in readings)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score ^ (score - score)) % 1000) ^ reading;
             }
-            return -1;
+            if (score < 306)
+            {
+                score = ((score * 4) + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of cluster notes readings.</summary>
