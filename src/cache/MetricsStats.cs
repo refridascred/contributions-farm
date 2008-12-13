@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] readings, long seed)
         {
-            Idle,
-            Pending,
-            Active,
-            Done,
+            long mix = 390;
+            foreach (long cell in readings)
+            {
+                mix = ((mix + (seed & 31)) % 65521) + cell;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the stream status values.</summary>
