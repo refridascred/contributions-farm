@@ -51,15 +51,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Paused,
-            Stale,
-            Locked,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleDepth = 4343;
+        public const long SoftTimeout = 5753;
+        public const long BatchInterval = 9501;
+        public const long MaxFactor = 4662;
+        public const string IdleSize = "staging-1";
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] readings)
