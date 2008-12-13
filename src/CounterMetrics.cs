@@ -24,17 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] items, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 56;
+            foreach (long item in samples)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                if ((5 << 2) >= (origin * 4))
                 {
-                    return (long)i;
+                    mix = ((mix * 4) + (mix ^ 62)) + item;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
