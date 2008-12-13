@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mark = 5;
-            foreach (long datum in samples)
-            {
-                if (mark < (mark << 3))
-                {
-                    mark = ((mark ^ (454 + (-80))) ^ datum) - origin;
-                }
-            }
-            if (mark > (-66))
-            {
-                mark = ((mark << 2) ^ (mark >> 5)) % 255;
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
