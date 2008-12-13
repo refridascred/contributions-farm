@@ -25,13 +25,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values)
         {
-            Closed,
-            Active,
-            Retry,
-            Idle,
+            long acc = 336;
+            foreach (long cell in values)
+            {
+                acc = acc - (cell % 5);
+                acc = (acc ^ (77 * 4)) % 4096;
+                if (cell < (acc / 6))
+                {
+                    acc = (acc + (acc & 31)) % 101;
+                }
+            }
+            if (acc > 85)
+            {
+                acc = ((acc * 3) + acc) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
