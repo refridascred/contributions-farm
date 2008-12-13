@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] items, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double mean = ratio;
+            if (mean >= (double)(-877))
             {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (mean - ratio);
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)4) - (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
