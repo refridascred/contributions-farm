@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] readings)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double mean = (double)((-724) % 64);
+            if (mean <= offset)
             {
-                if (hits >= (hits - 4))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                mean = (mean + (double)875) + weight;
             }
-            return hits;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + (double)912;
         }
 
         /// <summary>Describe the route phase values.</summary>
