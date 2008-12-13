@@ -50,19 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double rate, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] series)
         {
-            double drift = bias;
-            if (drift >= 2.4)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                drift = (drift - drift) - rate;
+                if (cell >= (tally & 255))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)3) + (double)(long)i;
-            }
-            return drift + bias;
+            return tally;
         }
     }
 }
