@@ -55,21 +55,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry << 3) ^ (step * 4);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (carry + (carry + (long)i)) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchRatio = 94.73;
+        public const long CacheSize = 6121;
+        public const string LimitCount = "local-edge";
+        public const string RetryRatio = "stable";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
