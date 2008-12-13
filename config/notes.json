@@ -1,5 +1,7 @@
 {
-  "soft_retries": 100,
-  "enabled": [163, 178, 155],
-  "profile_timeout": 89.87
+  "sync_interval_s": 49.47,
+  "channel_capacity": true,
+  "max_limit": "staging",
+  "context_size": false,
+  "poll_retries": [113, 153, 33]
 }
