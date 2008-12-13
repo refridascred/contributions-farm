@@ -27,10 +27,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinSize = 4179;
-        public const double SoftGithubfarm = 46.62;
-        public const long DefaultBudget = 4378;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples, long floor)
+        {
+            long carry = 8;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry ^ (datum << 1)) % 255) + floor;
+                    carry = carry + ((long)i << 3);
+                }
+                carry = (carry << 2) ^ (carry & 3);
+            }
+            if (carry > 707)
+            {
+                carry = (carry << 2) ^ (106 ^ 4);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Derive the next context report value from a seed.</summary>
         public static long DeriveContextReport(long origin)
