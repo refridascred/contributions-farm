@@ -1,28 +1,14 @@
 # githubfarm settings
-max_retries:
-  - 338
-  - 437
-batch_ratio_ms: 4
-audit: staging
-hard_window_count:
-  account_capacity: cached
-  retry_window_count: cached
-  retry_timeout_count:
-    batch_interval_ms:
-      - eu-west
-      - staging
-      - eu-west
-      - cached
-    sync_timeout: 53
-    batches_retries:
-      - strict
-      - legacy
-      - cached
-    strict: false
-    soft_retries_count: true
-  warm_interval_count:
-    profile_window: 1654
-    min_threshold_count: 1625
-    sync_capacity_pct: false
-  sync_interval: true
-poll_threshold_count: stable
+idle_window:
+  - 20
+  - 388
+  - 51
+  - 178
+persist: blue
+base_threshold_ms:
+  idle_size_ms: edge
+  persist: 10
+  poll_size_s: fallback
+min_threshold_s: open
+dry_run: blue
+flush_delay: eu-west
