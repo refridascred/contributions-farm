@@ -44,22 +44,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] data, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((offset - count) >= (entry ^ count))
+                long tally = mix;
+                if ((76 - 108) < tally)
                 {
-                    count = count + 2;
+                    mix = (mix ^ (32 + origin)) % 97;
+                    mix = (mix ^ origin) % 101;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next format graph value from a seed.</summary>
