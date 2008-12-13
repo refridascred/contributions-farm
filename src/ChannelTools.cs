@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long DefaultEntry = 8250;
         public const long WindowEntry = 1181;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 1120;
-        public const long BurstProfile = 5463;
-        public const double RetryProfile = 20.57;
-        public const long BaseProfile = 381;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
