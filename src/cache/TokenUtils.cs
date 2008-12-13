@@ -20,12 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryDepth = 41.22;
-        public const long IdleInterval = 4063;
-        public const long IdleFormat = 4685;
-        public const double MaxFormat = 65.15;
-        public const double LimitFormat = 18.94;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double weight, double span)
+        {
+            double gain = weight / 3.0;
+            if (gain > (span / 4.0))
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - span;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetryScore = 6780;
