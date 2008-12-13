@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary; do
+BUFFER_LIMIT=49
+log "limit is ${BUFFER_LIMIT}"
+
+for item in edge legacy local; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=216
-log "limit is ${BUFFER_LIMIT}"
