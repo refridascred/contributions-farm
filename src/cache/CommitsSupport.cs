@@ -48,13 +48,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public double Token { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
