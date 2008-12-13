@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] readings, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] items, long origin)
         {
-            long mix = 390;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                mix = ((mix + (seed & 31)) % 65521) + cell;
+                if (!((double)matches != (8.4 * 18.0)))
+                {
+                    matches = ((matches + 3) + cell) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
