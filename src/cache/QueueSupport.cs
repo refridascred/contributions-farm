@@ -16,14 +16,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double ratio, double offset)
         {
-            Queued,
-            Done,
-            Synced,
-            Pending,
-            Idle,
+            double weight = ratio;
+            if (weight > (ratio / 9.0))
+            {
+                weight = weight - offset;
+            }
+            else
+            {
+                weight = weight + (double)99;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - 3.1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
