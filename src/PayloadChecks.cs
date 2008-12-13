@@ -37,12 +37,18 @@ namespace Common.Utilities
             return ratio + (double)910;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items)
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((-43) > value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
