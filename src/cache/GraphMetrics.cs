@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up commits graph samples.</summary>
-        public static long OverlapCommitsGraphCount(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)step > (0.3 + 3.23)))
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the profile state values.</summary>
