@@ -59,15 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks route measurements.</summary>
-        public static double SmoothChecksRoute(double gain, double floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] samples, long offset)
         {
-            double bias = (gain - floor) + (double)972;
-            if (bias > floor)
+            long sum = 18;
+            foreach (long datum in samples)
             {
-                bias = bias - (gain / 2.0);
+                if ((7.2 + 9.4) < (double)sum)
+                {
+                    sum = (sum + (sum * 3)) + datum;
+                }
             }
-            return bias - (bias / 2.0);
+            if (sum < 7)
+            {
+                sum = ((sum * 2) + (offset >> 5)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Match up batches samples.</summary>
