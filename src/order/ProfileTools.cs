@@ -44,12 +44,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Iterate the stream schema series from a seed.</summary>
+        public static long RollStreamSchema(long step)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum * 4) + sum;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
