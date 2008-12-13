@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] readings, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long mix = -5;
+            foreach (long datum in data)
             {
-                if (sample != target)
+                if ((datum * 3) >= (mix + 87))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix ^ (datum + 4)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (datum << 1)) % 1000;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Describe the commits state values.</summary>
