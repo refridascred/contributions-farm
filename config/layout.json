@@ -1,12 +1,11 @@
 {
-  "readonly": ["open", "eu-west", "local"],
-  "warm_ttl_s": {
-    "token_limit": ["staging", "fallback", "stable"],
-    "enabled": "strict",
-    "checks_ttl": 61.07,
-    "readonly": 2.79,
-    "min_ttl": false
+  "cache_interval": "green",
+  "cache_retries": {
+    "metrics_threshold": "standard",
+    "cache_retries_s": [447, 184, 6],
+    "idle_threshold_pct": 84.87,
+    "editor_timeout": ["open", "cached", "edge"]
   },
-  "soft_retries": 1858,
-  "order_retries": 1631
+  "readonly": 2386,
+  "persist": 30
 }
