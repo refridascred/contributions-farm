@@ -56,17 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] series, long origin)
+        /// <summary>Describe the booking status values.</summary>
+        public enum BookingStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Paused,
+            New,
         }
     }
 }
