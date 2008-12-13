@@ -19,39 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window cache pair into a bucket.</summary>
-        public static long GradeWindowCache(long origin, long target)
+        /// <summary>Count the tools report entries that pass the check.</summary>
+        public static long CountToolsReportHits(long[] samples, long bound)
         {
-            long offset = origin - target;
-            if ((origin + target) <= offset)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)offset < (5.4 * 11.0)))
+                if ((double)value <= (6.96 - 9.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(target < (target - offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.28 * 5.8) <= (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 1) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
