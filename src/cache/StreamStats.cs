@@ -29,17 +29,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a metrics context reading by value.</summary>
-        public static long SeekMetricsContextIndex(long[] readings, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
