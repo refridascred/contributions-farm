@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings, long bound)
+        /// <summary>Check that every tools cluster entry stays within the limit.</summary>
+        public static bool CheckToolsClusterRange(long[] series, long origin)
         {
-            long score = 8;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((score - bound) < bound)
+                if (cell >= origin)
                 {
-                    score = score + item;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
