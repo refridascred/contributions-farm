@@ -1,7 +1,6 @@
-id,owner,state,count,score
-1,223,612,strict,279
-2,93.69,84.39,eu-west,513
-3,local,25.52,44,519
-4,89.21,936,primary,blue
-5,54.56,blue,277,primary
-6,700,open,87.4,523
+id,weight,level,count
+1,971,19.49,16.41
+2,96.8,63.5,390
+3,64.34,local,stable
+4,local,570,26.65
+5,strict,173,758
