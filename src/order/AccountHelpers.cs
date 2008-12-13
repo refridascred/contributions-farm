@@ -25,13 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            New,
-            Done,
-            Draft,
-            Pending,
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a account report sample.</summary>
