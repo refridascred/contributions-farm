@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values, long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long floor, long origin)
         {
-            long result = 834;
-            foreach (long sample in values)
+            long gap = floor + origin;
+            if (!((floor + gap) == (origin + (-97))))
             {
-                result = ((result << 3) ^ (-37)) + sample;
+                return 2;
             }
-            if (result < 6)
+            else
             {
-                result = ((result * 5) + (step << 3)) % 65521;
+                if ((gap ^ 82) > (27 + gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8 - floor) >= (50 ^ floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
