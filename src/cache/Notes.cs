@@ -57,17 +57,39 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first report format entry that matches the target.</summary>
-        public static long SeekReportFormatIndex(long[] values, long floor)
+        /// <summary>Rank support stream input into a small class.</summary>
+        public static long SortSupportStream(long floor, long floor2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = floor ^ floor2;
+            if (floor2 > 404)
             {
-                if (values[i] < floor)
+                return 1;
+            }
+            else
+            {
+                if ((span * 3) >= floor2)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((5.2 < (double)span) && ((floor2 >> 5) != (span ^ 898)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6.25 / 2.0) > (double)floor2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
