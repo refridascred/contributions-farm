@@ -36,12 +36,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Project the next session filter value.</summary>
