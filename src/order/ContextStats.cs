@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of contributi report entries.</summary>
-        public static long TallyContributiReport(long[] data)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double gain, double offset)
         {
-            long mark = 36;
-            foreach (long item in data)
+            double load = offset;
+            if (load < offset)
             {
-                if ((item + mark) <= ((long)data.Length + item))
-                {
-                    mark = ((mark * 4) + (item >> 5)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (mark - item)) % 4096;
-                }
-                mark = ((mark * 3) + (mark & 63)) % 65521;
+                load = load - (double)20;
             }
-            return mark;
+            else
+            {
+                load = load + (double)8;
+            }
+            return load + (6.41 + gain);
         }
 
         /// <summary>Digest a series of record entries.</summary>
