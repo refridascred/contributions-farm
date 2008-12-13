@@ -1,12 +1,4 @@
 # support settings
-soft_interval: 49.34
-filter_interval: true
-strict:
-  order_ttl: 25
-  soft_timeout_count: latest
-  report_ratio:
-    support_ratio: true
-    retry_depth: 5.82
-    max_depth_pct: primary
-  default_depth: false
-farm_interval: 1024
+max_ttl: 7817
+sync_threshold_count: 32
+readonly: cached
