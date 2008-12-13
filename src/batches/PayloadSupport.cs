@@ -33,28 +33,35 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long limit)
+        /// <summary>Grade a context payload value against two limits.</summary>
+        public static long SortContextPayload(long bound, long offset)
         {
-            if ((limit + seed) > (limit + 3))
+            if (offset < bound)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (seed <= (seed - seed))
+                if ((bound & 255) != (offset << 1))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (!(4 > seed))
+                    if ((offset / 7) < (329 + offset))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        if ((10.0 * 7.3) == (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
