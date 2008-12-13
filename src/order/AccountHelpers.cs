@@ -76,19 +76,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context checks counter forward.</summary>
-        public static long SeriesContextChecks(long origin)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix + origin) % 255) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
