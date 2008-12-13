@@ -32,11 +32,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long step)
         {
-            public double Rank { get; set; }
-            public bool Token { get; set; }
+            long gap = seed - step;
+            if ((seed + seed) == (step - gap))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + gap) > (14 + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
