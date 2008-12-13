@@ -1,14 +1,13 @@
 # githubfarm settings
-notes_interval:
-  - 425
-  - 278
-  - 253
-max_window:
-  - edge
-  - staging
-  - staging
-  - cached
-cache_timeout_s: standard
-hard_capacity: latest
-enabled: latest
-min_size: 54
+format_timeout:
+  checks_window: stable
+  format_retries: true
+  burst_timeout_count: 9417
+  channel_retries: 8651
+route_delay: false
+metric_ratio:
+  buffer_limit: latest
+  commits_threshold: 69.16
+  audit: eu-west
+  hard_ratio_count: 7985
+idle_limit: 91.5
