@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a cache githubfarm counter forward.</summary>
-        public static long SeriesCacheGithubfarm(long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] items, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                anchor = (anchor ^ (limit ^ (long)i)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
