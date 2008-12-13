@@ -18,18 +18,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (reading < (reading * 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
