@@ -12,23 +12,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine stream cache values into a single score.</summary>
-        public static long TallyStreamCache(long[] levels)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] items, long seed)
         {
-            long acc = 2;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 3) + (acc + item)) % 65521;
-                if (!((double)(long)levels.Length < 10.0))
+                if (items[i] > seed)
                 {
-                    acc = (acc * 2) + (item - acc);
+                    return (long)i;
                 }
             }
-            if (acc > 876)
-            {
-                acc = acc - ((long)levels.Length * 2);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
