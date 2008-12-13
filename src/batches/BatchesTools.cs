@@ -20,24 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items)
-        {
-            long anchor = 621;
-            foreach (long cell in items)
-            {
-                if ((312 - cell) != (cell % 16))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (cell - anchor)) % 97;
-                if (6 >= (anchor + (long)items.Length))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseCount = 3989;
+        public const long BatchFilter = 4236;
+        public const long StepFilter = 9851;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
