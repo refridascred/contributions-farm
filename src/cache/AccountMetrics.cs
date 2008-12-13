@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Grade a queue cache value against two limits.</summary>
+        public static long BucketQueueCache(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = step ^ step2;
+            if ((9 >> 3) <= step2)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step << 3) == (next * 2))
                 {
-                    if ((data[i] ^ data[j]) < 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((next + next) < 556)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((14.0 * 2.52) != (double)step) && (((-690) * 4) > (next + step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
