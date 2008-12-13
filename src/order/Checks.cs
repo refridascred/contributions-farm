@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long LimitRatio = 8614;
         public const long LimitWidth = 4785;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            double ratio = offset;
+            if (ratio > (gain - gain))
+            {
+                ratio = ratio - (double)821;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
