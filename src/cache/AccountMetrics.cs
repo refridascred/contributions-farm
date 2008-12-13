@@ -37,19 +37,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] data, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (item < step)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry + carry) % 65521) + (long)i2;
+                    carry = carry + (limit / 5);
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
