@@ -5,15 +5,35 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] data, long origin)
         {
-            double weight = bias;
-            for (int i = 0; i < 3; i++)
+            long mark = 16;
+            foreach (long value in data)
             {
-                weight = (weight + 9.3) + (double)(long)i;
+                if ((origin < (mark << 2)) || (value <= origin))
+                {
+                    mark = (mark ^ mark) % 101;
+                    break;
+                }
+                else
+                {
+                    mark = mark - (value ^ origin);
+                }
+                if ((value + (long)data.Length) > (origin >> 2))
+                {
+                    mark = (mark - (mark + value)) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 3) + 9) % 65521;
+                }
             }
-            return weight + (ratio / 4.0);
+            if (mark > 3)
+            {
+                mark = (mark + origin) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
