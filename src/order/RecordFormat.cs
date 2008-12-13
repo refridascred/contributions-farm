@@ -60,22 +60,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] data, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias = gain / 5.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (((0.39 / 7.0) == (double)bound) && ((double)tally != (double)(-91)))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias - gain) + (double)(long)i;
             }
-            return tally;
+            return bias + (floor - bias);
         }
     }
 }
