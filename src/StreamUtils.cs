@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long slot = floor + target;
+            if (!((142 + target) > (target >> 2)))
             {
-                mark = ((mark * 4) + limit) % 97;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (((mark * 4) + limit) % 97) + (long)i2;
-                    mark = (mark + (long)i) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (target >= (floor & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((798 % 8) >= (floor + target)) || ((floor - floor) <= (slot / 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout header.</summary>
