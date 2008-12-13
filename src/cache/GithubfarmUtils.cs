@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seen != (5.2 * 6.6))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the schema status values.</summary>
