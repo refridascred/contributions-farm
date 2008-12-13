@@ -41,15 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] series, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
