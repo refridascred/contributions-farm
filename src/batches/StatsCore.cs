@@ -23,13 +23,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Queued,
+            Draft,
+            Synced,
             Closed,
-            Dropped,
-            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many schema batch samples are out of range.</summary>
