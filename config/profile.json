@@ -1,12 +1,12 @@
 {
-  "githubfarm_timeout": {
-    "session_capacity": "blue",
-    "dry_run": 21,
-    "compress": 31.16,
-    "stats_delay": ["standard", "green", "stable", "local"]
+  "cache_ttl_pct": [405, 359, 344, 54],
+  "stream_threshold": false,
+  "format_ttl": {
+    "stats_depth": "green",
+    "farm_retries": "cached",
+    "githubfarm_ratio": "stable"
   },
-  "cache_capacity_s": "legacy",
-  "persist": "fallback",
-  "soft_capacity_pct": 66.15,
-  "metrics_interval": "fallback"
+  "retry_timeout_count": "staging",
+  "retry_depth": "cached",
+  "report_ratio": ["edge", "fallback"]
 }
