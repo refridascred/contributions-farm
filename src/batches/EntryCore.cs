@@ -42,22 +42,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 6693;
+        public const double BatchEditor = 84.6;
+        public const long WindowDepth = 4317;
+        public const double MaxRatio = 74.76;
+        public const long RetryEditor = 7337;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] data, long seed)
