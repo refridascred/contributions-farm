@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
