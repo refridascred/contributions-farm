@@ -1,10 +1,5 @@
 # entry settings
-default_retries: 39.51
-flush_capacity_s: open
-min_ratio:
-  - blue
-  - green
-  - eu-west
-hard_threshold_s: false
-idle_timeout_s: blue
-batch_threshold: 13
+farm_capacity: 60
+min_depth_ms: 336
+cache_delay_ms: 66.34
+warm_limit: 15.57
