@@ -1,8 +1,10 @@
 # githubfarm settings
-audit: 51.01
-batch_window_count:
-  - 168
-  - 416
-  - 293
-account_ttl: 9366
-burst_ttl_ms: false
+cache_window: 51.99
+flush_timeout_pct: edge
+verbose:
+  enabled: 12
+  poll_timeout: green
+  entry_window: false
+  schema_capacity: false
+  sync_threshold_count: eu-west
+  schema_window: latest
