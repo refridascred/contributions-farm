@@ -43,10 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 62.2;
-        public const string MaxCounter = "strict-edge";
-        public const long RetryTimeout = 9931;
-        public const long HardLevel = 1597;
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double span)
+        {
+            double gain = weight;
+            if (gain >= 9.0)
+            {
+                gain = (gain - (double)23) + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (double)81;
+        }
     }
 }
