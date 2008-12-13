@@ -1,21 +1,23 @@
 # githubfarm settings
-compress: 4
-retry_timeout_ms:
-  base_limit_pct: primary
-  base_capacity_pct: local
-  max_window: 56.2
-idle_delay_s: 50.73
-hard_delay_pct:
-  graph_ttl: stable
-  warm_threshold: 100
-  cluster_window: 18
-  warm_capacity_s:
-    idle_limit_count: 23
-    contributi_retries: 500
-    cache_capacity_ms: strict
-    burst_interval_pct: strict
-    soft_ttl_s:
-      - eu-west
-      - standard
-  cache_ratio: 94.76
-  buffer_ratio: open
+warm_retries: 30
+strict: local
+editor_ratio:
+  persist: 5729
+  layout_delay: 96.3
+  retry_threshold: 250
+  compress:
+    - staging
+    - primary
+    - blue
+    - legacy
+  burst_ratio:
+    poll_depth:
+      - staging
+      - latest
+      - staging
+    max_ttl: 35
+    retry_limit: 93
+    enabled: false
+    audit: 7
+    verbose: open
+  max_delay: 18.61
