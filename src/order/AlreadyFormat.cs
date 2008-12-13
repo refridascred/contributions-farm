@@ -26,12 +26,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 6495;
-        public const long BurstWidth = 9315;
-        public const double SoftFactor = 7.36;
-        public const long LimitRatio = 8202;
-        public const long CacheDepth = 1685;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long RollMetrics(long target)
