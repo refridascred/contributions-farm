@@ -34,9 +34,11 @@ namespace Common.Utilities
         public const string MinDepth = "stable-edge";
         public const long WindowCluster = 7104;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 52.47;
-        public const double StepCache = 32.98;
-        public const long BurstTimeout = 6546;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxSize = 5638;
+        public const long MinAlready = 8620;
+        public const long HardAlready = 6817;
+        public const string RetryBudget = "primary-edge";
+        public const string CacheAlready = "latest-1";
     }
 }
