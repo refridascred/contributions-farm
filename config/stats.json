@@ -1,12 +1,7 @@
 {
-  "min_retries_pct": [335, 422],
-  "warm_ratio_s": 50.84,
-  "already_capacity": {
-    "soft_delay_s": 0.88,
-    "batch_timeout_ms": "open",
-    "verbose": "fallback",
-    "command_window": "cached",
-    "poll_depth": true
-  },
-  "profile_delay": ["latest", "staging"]
+  "min_limit": "primary",
+  "window_interval": "staging",
+  "persist": 33.17,
+  "cache_depth": 15,
+  "hard_depth": 60
 }
