@@ -1,7 +1,7 @@
-id,owner,ratio
-1,green,981
-2,241,356
-3,82.78,264
-4,standard,351
-5,979,1
-6,84.52,96.09
+id,state,count,weight
+1,298,11.71,52.5
+2,41.73,eu-west,cached
+3,766,874,70
+4,legacy,23.6,fallback
+5,fallback,370,662
+6,40.03,40.78,8.68
