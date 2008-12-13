@@ -1,7 +1,8 @@
 {
-  "flush_ratio": 32,
-  "verbose": false,
-  "warm_window_pct": false,
-  "flush_capacity_ms": true,
-  "persist": 100
+  "idle_delay_s": 1024,
+  "editor_ratio": false,
+  "batch_threshold": 36,
+  "persist": 94.11,
+  "counter_limit": "cached",
+  "order_retries": ["cached", "cached", "local", "fallback"]
 }
