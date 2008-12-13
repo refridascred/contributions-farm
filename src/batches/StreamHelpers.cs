@@ -39,24 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm contributi value from a seed.</summary>
-        public static long IterateFarmContributi(long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sum <= (double)bound)
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
                 {
-                    sum = sum ^ (sum + bound);
+                    return (long)i;
                 }
-                if ((long)i > bound)
-                {
-                    long cur = ((long)i - sum) << 2;
-                    sum = (sum ^ (cur << 3)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
