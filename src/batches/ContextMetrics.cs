@@ -57,22 +57,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] items, long origin)
         {
-            long sum = 3;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((sample + sum) != (sample % 5)) || (68 >= (sum & 63)))
+                if ((((count / 2) < (cell & 1)) && (0 < (726 + count))) || ((origin >= (count % 3)) && ((origin % 2) < (count ^ 63))))
                 {
-                    sum = (sum ^ sum) % 65521;
-                }
-                else
-                {
-                    sum = sum ^ ((long)levels.Length - sample);
+                    count = count + 3;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
