@@ -55,18 +55,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] readings)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (400 > (seen / 6))
+                if (datum <= step)
                 {
-                    seen = (seen + 1) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
