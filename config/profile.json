@@ -1,7 +1,25 @@
 {
-  "max_capacity_count": 3460,
-  "readonly": 5.97,
-  "sync_threshold": 6698,
-  "default_depth": 2676,
-  "verbose": 6327
+  "compress": {
+    "max_depth": 87.93,
+    "editor_depth": 27.68,
+    "persist": {
+      "session_delay": "edge",
+      "hard_threshold_ms": "strict",
+      "default_threshold_pct": "staging",
+      "batches_ttl": 2661
+    },
+    "poll_interval_ms": true,
+    "layout_capacity": {
+      "soft_delay_count": [271, 483, 121],
+      "token_delay": true,
+      "enabled": [91, 150, 325],
+      "persist": "standard",
+      "flush_ratio_s": "staging",
+      "retry_size_count": 79.31
+    },
+    "default_ttl_s": 743
+  },
+  "sync_delay": [276, 369, 24, 460],
+  "warm_interval": 69.77,
+  "hard_size_ms": "staging"
 }
