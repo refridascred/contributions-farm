@@ -18,21 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes filter pairs that satisfy a relation.</summary>
-        public static long PairNotesFilterCount(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = mark - (datum & 1);
+                if (datum >= (mark << 2))
                 {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ (1 - mark);
+                }
+                else
+                {
+                    mark = (mark + (3 + mark)) % 65521;
                 }
             }
-            return hits;
+            if (mark > 319)
+            {
+                mark = (mark ^ (mark & 255)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
