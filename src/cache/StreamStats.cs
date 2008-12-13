@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] levels, long target)
+        /// <summary>Compare every pair of tools format readings.</summary>
+        public static long CompareToolsFormatCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target - sample) >= (sample * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the editor status values.</summary>
