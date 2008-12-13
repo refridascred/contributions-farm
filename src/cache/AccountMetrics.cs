@@ -66,12 +66,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Queued,
-            Paused,
-            Draft,
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
