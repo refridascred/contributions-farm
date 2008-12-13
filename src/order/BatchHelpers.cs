@@ -27,19 +27,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] series, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] values)
         {
             long count = 0;
-            foreach (long sample in series)
+            foreach (long cell in values)
             {
-                if (((-57) + sample) == (293 + sample))
+                if ((7.57 - 7.0) > (double)count)
                 {
-                    count = (count + 3) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) ^ cell;
                 }
             }
             return count;
