@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 4802;
-        public const long BaseMetric = 1136;
-        public const double MinBudget = 8.88;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score ^ (score * 3)) % 101;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
