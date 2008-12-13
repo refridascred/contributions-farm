@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
