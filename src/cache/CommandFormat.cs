@@ -48,18 +48,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long target, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if ((double)origin <= 1.4)
             {
-                if ((origin / 9) > (origin >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((target < (origin * 4)) && ((origin + target) >= target))
                 {
-                    hits = (hits + 2) - item;
+                    return 7;
+                }
+                else
+                {
+                    if ((target - target) > (target >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin << 3) >= (origin >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the batch level values.</summary>
