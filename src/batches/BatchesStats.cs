@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every support editor entry stays within the limit.</summary>
-        public static bool VerifySupportEditorBounds(long[] readings, long bound)
+        /// <summary>Rank batches support input into a small class.</summary>
+        public static long GradeBatchesSupport(long seed, long seed2)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long lane = seed + seed2;
+            if ((lane >> 5) <= (seed - seed2))
             {
-                if (reading >= bound)
+                return 4;
+            }
+            else
+            {
+                if (((seed & 15) < (523 * 5)) || ((3.0 - 5.0) == (double)seed2))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed2 ^ lane) == (lane / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of account readings.</summary>
