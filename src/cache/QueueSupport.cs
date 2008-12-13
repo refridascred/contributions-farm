@@ -50,11 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 58.45;
-        public const string RetryOrder = "fallback";
-        public const double HardRatio = 16.51;
-        public const long CacheInterval = 720;
-        public const long DefaultOrder = 3567;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
