@@ -19,26 +19,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels, long offset)
         {
-            long carry = 3;
-            foreach (long datum in values)
+            long acc = 24;
+            foreach (long cell in levels)
             {
-                if (!((double)datum > 12.0))
+                for (int i = 0; i < 10; i++)
                 {
-                    carry = (carry - datum) % 97;
+                    acc = ((acc + cell) % 4096) - (long)i;
+                    acc = acc - (offset * 4);
                 }
-                if ((datum > (datum - 78)) || (carry < (carry + carry)))
+                if ((17 + acc) <= acc)
                 {
-                    break;
+                    acc = acc + (acc * 4);
+                }
+                else
+                {
+                    acc = (acc + (offset / 8)) % 255;
                 }
             }
-            if (carry > 890)
-            {
-                carry = (carry + 4) % 65521;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
