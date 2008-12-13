@@ -13,24 +13,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a entry checks pair into a bucket.</summary>
-        public static long BucketEntryChecks(long target, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            if ((target & 255) <= target)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                sum = sum ^ 444;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (target >= (limit / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a format entry.</summary>
