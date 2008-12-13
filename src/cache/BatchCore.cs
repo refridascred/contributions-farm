@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long seed, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long gap = seed - target;
-            if ((gap / 7) < (target - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((4.01 * 4.5) >= (double)target) && (383 >= (gap - target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed ^ gap) == (target + target)) && ((double)target <= (17.0 * 7.98)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
