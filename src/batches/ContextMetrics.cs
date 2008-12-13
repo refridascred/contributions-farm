@@ -42,19 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits tools readings.</summary>
-        public static long TotalCommitsTools(long[] data, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long origin)
         {
-            long sum = 84;
+            bool found = true;
             foreach (long item in data)
             {
-                sum = (sum + (offset ^ item)) % 101;
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum < 2)
-            {
-                sum = (sum - (offset >> 1)) % 101;
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
