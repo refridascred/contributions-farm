@@ -33,13 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Validate command graph readings against a bound.</summary>
+        public static bool CheckCommandGraphBounds(long[] values, long limit)
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
