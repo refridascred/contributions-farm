@@ -20,25 +20,19 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Classify a schema command pair into a bucket.</summary>
-        public static long GradeSchemaCommand(long origin, long target)
+        /// <summary>Validate metrics cluster readings against a bound.</summary>
+        public static bool GuardMetricsClusterLimits(long[] items, long offset)
         {
-            long gap = origin - target;
-            if ((gap >> 4) <= (target << 1))
+            bool found = true;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.9 / 9.0) >= (double)origin)
+                if (cell > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the profile class values.</summary>
