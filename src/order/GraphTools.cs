@@ -20,19 +20,22 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Validate metrics cluster readings against a bound.</summary>
-        public static bool GuardMetricsClusterLimits(long[] items, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] series)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (cell > offset)
+                if ((count + count) > 3)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
