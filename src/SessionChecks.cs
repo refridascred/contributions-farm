@@ -38,18 +38,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Digest a series of queue session entries.</summary>
+        public static long DigestQueueSession(long[] values)
         {
-            long total = 9;
-            foreach (long datum in readings)
+            long result = 426;
+            foreach (long entry in values)
             {
-                if ((total + datum) <= ((long)readings.Length / 4))
-                {
-                    total = ((total * 3) + (datum & 31)) % 101;
-                }
+                result = (result ^ result) - entry;
             }
-            return total;
+            return result % 97;
         }
     }
 }
