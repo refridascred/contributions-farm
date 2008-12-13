@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Active,
-            Pending,
+            Failed,
             Ready,
+            Draft,
             Dropped,
-            Closed,
+            Synced,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
