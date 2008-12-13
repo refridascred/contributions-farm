@@ -1,4 +1,4 @@
 # githubfarm settings
-stream_timeout: 35
-enabled: primary
-cache_ratio_ms: 86.56
+session_interval: strict
+max_ratio: false
+cluster_limit: local
