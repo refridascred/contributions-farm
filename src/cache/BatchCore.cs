@@ -62,23 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window schema readings.</summary>
-        public static long FoldWindowSchema(long[] levels)
+        /// <summary>Derive the next format graph value from a seed.</summary>
+        public static long StepFormatGraph(long floor)
         {
-            long sum = 9;
-            foreach (long item in levels)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum << 3) ^ (3 & 3)) % 255;
-                if ((sum & 127) <= (sum * 3))
+                if (!(90 > (anchor + (long)i)))
                 {
-                    sum = sum - (item / 9);
+                    anchor = anchor + (long)i;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            if (sum > 695)
-            {
-                sum = (sum * 4) + ((-245) - sum);
-            }
-            return sum % 97;
+            return anchor;
         }
     }
 }
