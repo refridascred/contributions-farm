@@ -48,18 +48,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] items)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen < cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
