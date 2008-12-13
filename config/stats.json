@@ -1,10 +1,18 @@
 {
-  "report_size": [26, 65, 259],
-  "max_interval": {
-    "githubfarm_timeout": 34,
-    "flush_delay": false,
-    "soft_ttl": [116, 78, 474, 140]
-  },
-  "batch_retries_ms": [258, 133, 66, 154],
-  "window_timeout": ["cached", "open"]
+  "batch_delay": 250,
+  "max_delay": 36.42,
+  "burst_window": 45.2,
+  "sync_depth": 1024,
+  "retry_ttl": {
+    "commits_window": 42,
+    "cache_threshold_pct": "standard",
+    "queue_ratio": true,
+    "sync_capacity": 406,
+    "strict": {
+      "batch_delay_count": "cached",
+      "hard_threshold_ms": "blue",
+      "default_ttl": "legacy",
+      "default_size_pct": 21.07
+    }
+  }
 }
