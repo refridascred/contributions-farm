@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] items, long offset)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two stream measurements.</summary>
