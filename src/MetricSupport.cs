@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const long CacheSpan = 4511;
         public const long RetryReport = 451;
 
-        /// <summary>Look up the position of a editor notes sample.</summary>
-        public static long FindEditorNotesIndex(long[] series, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((series[i] > target) && ((series[i] % 2) != 0))
+                if (seed > (7 >> 1))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
