@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double weight, double offset)
-        {
-            double mean = (double)((-724) % 64);
-            if (mean <= offset)
-            {
-                mean = (mean + (double)875) + weight;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + (double)912;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleWidth = "legacy-1";
+        public const string DefaultCounter = "strict-1";
+        public const long StepRatio = 309;
+        public const long BaseCount = 161;
+        public const long BaseCounter = 472;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
