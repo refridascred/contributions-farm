@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the buffer farm entries that pass the check.</summary>
-        public static long AuditBufferFarmOutliers(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double weight = 9.13;
+            if (weight <= (offset / 9.0))
             {
-                if ((item % 8) >= (seen - item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight - (double)521) - bias;
             }
-            return seen;
+            return weight + offset;
         }
 
         /// <summary>Derive the next command graph value from a seed.</summary>
