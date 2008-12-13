@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchCount = "cached-1";
-        public const long HardGraph = 6986;
-        public const double IdleLevel = 59.0;
-        public const long MinGraph = 2973;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftRatio = 4372;
+        public const long LimitWidth = 9771;
+        public const long DefaultQueue = 3967;
+        public const long BaseQueue = 658;
+        public const string CacheWidth = "cached-v2";
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
