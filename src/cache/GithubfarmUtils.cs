@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] series, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] series, long limit)
         {
-            long count = 0;
+            long score = 14;
             foreach (long entry in series)
             {
-                if (entry >= (count - offset))
+                if ((limit & 1) != (718 / 8))
                 {
-                    count = count + 1;
+                    score = ((score + (limit % 5)) % 97) ^ entry;
+                }
+                if ((limit * 5) < 577)
+                {
+                    score = score - (score >> 5);
+                }
+                else
+                {
+                    score = (score - score) % 255;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the graph mode values.</summary>
