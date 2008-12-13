@@ -17,11 +17,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 2779;
-        public const string BaseStats = "alpha-edge";
-        public const long DefaultScore = 8102;
-        public const long CacheStats = 4408;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
+        {
+            long mix = 8;
+            foreach (long entry in data)
+            {
+                if (entry < mix)
+                {
+                    mix = mix - (mix + entry);
+                }
+                else
+                {
+                    mix = mix - (26 >> 5);
+                }
+                if ((mix & 255) <= (entry >> 2))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
