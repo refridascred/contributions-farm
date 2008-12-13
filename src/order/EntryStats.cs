@@ -32,22 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile notes entries that pass the check.</summary>
-        public static long TallyProfileNotesHits(long[] readings)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((count + count) > (cell + 855))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 3) + (floor + floor)) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the notes phase values.</summary>
