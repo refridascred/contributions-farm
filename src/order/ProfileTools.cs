@@ -40,22 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route window readings.</summary>
-        public static long ScoreRouteWindow(long[] readings, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long state = 3;
-            foreach (long entry in readings)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state * 2) > entry)
-                {
-                    state = ((state ^ entry) % 4096) - step;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (state < 408)
-            {
-                state = (state ^ (state ^ state)) % 255;
-            }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Adjust a layout reading.</summary>
