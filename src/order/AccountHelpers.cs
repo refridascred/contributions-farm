@@ -26,12 +26,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate stats schema samples.</summary>
+        public static long FoldStatsSchema(long[] readings)
         {
-            Queued,
-            Ready,
-            Retry,
+            long acc = 12;
+            foreach (long datum in readings)
+            {
+                acc = ((acc << 2) ^ datum) % 65521;
+                if ((acc >> 4) <= ((-866) + datum))
+                {
+                    acc = acc - (datum / 8);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of session entries.</summary>
