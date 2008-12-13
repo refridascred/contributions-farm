@@ -1,10 +1,13 @@
 # entry settings
-max_timeout_s: 1024
-default_capacity_s:
-  - 468
-  - 346
-retry_retries_ms: green
-retry_threshold:
-  - open
+token_ratio: staging
+poll_ratio_count:
+  - local
+  - cached
+  - cached
+  - blue
+soft_depth: legacy
+base_timeout_pct:
+  - fallback
+  - eu-west
   - edge
-format_window: 67.44
+record_delay: 3788
