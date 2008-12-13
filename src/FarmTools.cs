@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] readings)
         {
-            Stale,
-            Ready,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (seen <= 63)
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the support kind values.</summary>
