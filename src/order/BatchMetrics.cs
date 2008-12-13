@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] data)
+        /// <summary>Accumulate command order samples.</summary>
+        public static long DigestCommandOrder(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mix = 35;
+            foreach (long sample in samples)
             {
-                if ((5.61 - 3.64) <= (double)item)
+                if (2.5 >= (double)sample)
                 {
-                    count = count + 1;
+                    mix = (((mix * 2) + (sample - mix)) % 1000) + seed;
+                }
+                if ((mix % 7) >= 495)
+                {
+                    mix = ((mix << 2) ^ mix) % 101;
+                }
+                if (!(sample < (mix & 3)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Combine commits checks values into a single score.</summary>
