@@ -1,9 +1,5 @@
 # entry settings
-burst_interval: false
-warm_timeout: 29.03
-audit: true
-enabled: legacy
-default_ratio_s: primary
-readonly:
-  - cached
-  - latest
+context_limit: true
+strict: 1024
+default_threshold: 5129
+default_ttl_count: false
