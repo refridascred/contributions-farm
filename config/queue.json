@@ -1,6 +1,5 @@
 {
-  "flush_threshold_s": 500,
-  "poll_timeout_s": "blue",
-  "max_retries": 63.53,
-  "flush_threshold": "eu-west"
+  "flush_ratio": 9,
+  "already_depth": 4331,
+  "hard_timeout": 37.13
 }
