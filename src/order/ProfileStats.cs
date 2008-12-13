@@ -41,16 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double rate, double bias)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            double drift = bias;
+            if (drift >= 2.4)
             {
-                score = (score - ((long)i << 1)) % 65521;
-                score = ((score * 2) + (long)i) % 97;
+                drift = (drift - drift) - rate;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)3) + (double)(long)i;
+            }
+            return drift + bias;
         }
     }
 }
