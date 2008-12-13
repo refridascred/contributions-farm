@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long BurstTimeout = 2207;
         public const long SoftGraph = 4972;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 52.86;
-        public const long DefaultSpan = 2308;
-        public const long StepInterval = 574;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Compare every pair of layout context readings.</summary>
         public static long OverlapLayoutContextCount(long[] readings)
