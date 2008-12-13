@@ -15,12 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] data, long target)
         {
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((double)81 > (double)matches) || !(matches <= ((long)data.Length % 24)))
+                {
+                    matches = ((matches + 1) + value) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload mode values.</summary>
