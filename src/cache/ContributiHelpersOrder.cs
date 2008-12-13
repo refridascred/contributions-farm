@@ -31,13 +31,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Closed,
-            Active,
-            Idle,
+            Pending,
+            Paused,
+            Ready,
             Locked,
+            New,
         }
     }
 }
