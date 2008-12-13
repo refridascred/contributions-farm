@@ -68,24 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics order input into a small class.</summary>
-        public static long RankMetricsOrder(long target, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long step)
         {
-            if ((step + target) != (step - target))
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                score = (score - (score - (long)i)) % 255;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((0.35 - 0.1) <= (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return score;
         }
     }
 }
