@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double floor)
         {
-            double bias2 = bias;
-            if (bias2 > (double)92)
+            double rate = floor;
+            if (rate >= (weight + 1.0))
             {
-                bias2 = bias2 - bias2;
+                rate = rate - (weight - 8.56);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                bias2 = bias2 + (double)30;
+                rate = (rate + (rate - weight)) + (double)(long)i;
             }
-            return bias2 + offset;
+            return rate + floor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
