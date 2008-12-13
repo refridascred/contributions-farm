@@ -39,17 +39,21 @@ namespace Common.Utilities
         public const double IdleGraph = 4.02;
         public const string RetryGraph = "strict-v2";
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
