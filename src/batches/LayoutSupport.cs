@@ -19,13 +19,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
