@@ -34,22 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the profile schema entries that pass the check.</summary>
-        public static long AuditProfileSchemaHits(long[] data)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((7.0 + 19.0) == (double)count)
-                {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
