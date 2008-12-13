@@ -32,23 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double weight, double floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series)
         {
-            double ratio = (double)(768 * 3);
-            if (ratio >= 8.0)
+            long acc = 559;
+            foreach (long datum in series)
             {
-                ratio = ratio + (weight - weight);
+                acc = ((acc << 3) ^ (datum - datum)) % 4096;
+                acc = (acc - ((long)series.Length % 97)) % 1000;
+                acc = acc + (732 + 340);
             }
-            else
-            {
-                ratio = ratio + (weight + weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio - (4.07 - floor);
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
