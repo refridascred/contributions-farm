@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    token TEXT
+    active INTEGER NOT NULL DEFAULT 1,
+    token TEXT,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
+CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
 
-INSERT INTO layout_items (label, ratio, count, token) VALUES ('blue', 97.49, 33, 'standard');
+INSERT INTO layout_items (label, active, token, count) VALUES ('blue', 88, 'latest', 72);
