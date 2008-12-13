@@ -37,19 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values)
-        {
-            long acc = 817;
-            foreach (long datum in values)
-            {
-                if ((double)acc > (17.0 / 2.0))
-                {
-                    acc = acc ^ datum;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleSpan = 84.18;
+        public const long LimitTimeout = 8298;
+        public const double MaxRatio = 55.23;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long RankSupport(long bound, long limit)
