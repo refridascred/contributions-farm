@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double weight, double span)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long seed)
         {
-            double gain = weight / 3.0;
-            if (gain > (span / 4.0))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                gain = gain + gain;
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - span;
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
