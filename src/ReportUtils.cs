@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 9235;
         public const long BatchChannel = 5496;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Failed,
-            Pending,
-            Ready,
-            Paused,
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many payload cache samples are out of range.</summary>
