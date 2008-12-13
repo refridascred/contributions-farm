@@ -15,12 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double floor)
-        {
-            double gain = (double)(193 % 16);
-            return (gain - floor) + bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 702;
+        public const double RetryCount = 92.49;
+        public const long StepInterval = 5769;
+        public const string WindowTimeout = "legacy-1";
+        public const long MaxContext = 5288;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
