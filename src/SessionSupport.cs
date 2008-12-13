@@ -45,21 +45,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 4;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = (mark + 7) % 1000;
+                if ((double)item >= 1.63)
                 {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark + (mark - 2);
                 }
             }
-            return hits;
+            if (mark < 2)
+            {
+                mark = ((mark << 3) ^ (mark * 5)) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
