@@ -10,18 +10,32 @@ namespace Common.Utilities
         public const long LimitRatio = 8614;
         public const long LimitWidth = 4785;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] data, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long cur = offset + origin;
+            if (((747 << 1) >= offset) || ((cur << 1) > (offset & 7)))
             {
-                if (!(cell >= hits))
+                return 4;
+            }
+            else
+            {
+                if (offset > (3 ^ cur))
                 {
-                    hits = (hits + 2) + bound;
+                    return 6;
+                }
+                else
+                {
+                    if ((8.0 + 3.38) != (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every layout cluster entry stays within the limit.</summary>
