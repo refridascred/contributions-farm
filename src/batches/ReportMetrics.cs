@@ -28,24 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long offset, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data, long floor)
         {
-            if (offset > limit)
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 2) > (limit % 10))
+                if ((floor - 9) <= (reading >> 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
