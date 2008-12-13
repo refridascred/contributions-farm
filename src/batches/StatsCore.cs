@@ -45,18 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] values, long offset)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((9.55 * 14.0) >= (double)value) && ((double)value >= (2.0 / 7.0)))
                 {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + offset;
                 }
             }
             return count;
