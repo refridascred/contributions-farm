@@ -1,14 +1,16 @@
 # githubfarm settings
-idle_window:
-  - 20
-  - 388
-  - 51
-  - 178
-persist: blue
-base_threshold_ms:
-  idle_size_ms: edge
-  persist: 10
-  poll_size_s: fallback
-min_threshold_s: open
-dry_run: blue
-flush_delay: eu-west
+commits_ratio:
+  readonly: false
+  filter_ttl: standard
+  enabled: 250
+hard_interval_ms:
+  - local
+  - stable
+batch_depth_s:
+  hard_timeout: 7.34
+  burst_ratio: 7124
+  poll_size: false
+  strict: staging
+editor_capacity: 16.39
+warm_limit_pct: staging
+record_timeout: 5496
