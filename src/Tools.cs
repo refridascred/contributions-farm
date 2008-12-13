@@ -40,19 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((double)item <= (9.8 + 1.0)) || ((item * 4) != (matches << 1)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 167;
+        public const double HardInterval = 33.9;
+        public const long StepToken = 9791;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
