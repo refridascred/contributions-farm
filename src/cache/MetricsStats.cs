@@ -35,13 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
