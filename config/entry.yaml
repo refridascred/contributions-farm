@@ -1,5 +1,18 @@
 # entry settings
-farm_capacity: 60
-min_depth_ms: 336
-cache_delay_ms: 66.34
-warm_limit: 15.57
+cache_timeout: false
+flush_ratio:
+  profile_size: strict
+  min_size:
+    - local
+    - latest
+  cache_window: 1.83
+retry_ratio:
+  base_threshold: 74
+  soft_timeout:
+    - 8
+    - 202
+  context_delay:
+    - eu-west
+    - primary
+    - blue
+    - strict
