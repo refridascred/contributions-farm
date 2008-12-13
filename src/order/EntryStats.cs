@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit route checks readings against a rule.</summary>
-        public static long MeasureRouteChecksOutliers(long[] values, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (((limit % 8) > (item - limit)) || ((limit - item) >= (limit >> 3)))
+                if ((double)bound >= 3.0)
                 {
-                    tally = tally + 3;
+                    sum = ((sum << 3) ^ (sum >> 3)) % 97;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
