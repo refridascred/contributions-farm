@@ -49,21 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up entry contributi samples.</summary>
-        public static long PairEntryContributiCount(long[] samples)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a report stats.</summary>
