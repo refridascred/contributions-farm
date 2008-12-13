@@ -1,4 +1,4 @@
 # githubfarm settings
-idle_ttl_count: 250
-retry_interval_pct: false
-default_retries_ms: eu-west
+stream_timeout: 35
+enabled: primary
+cache_ratio_ms: 86.56
