@@ -37,17 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a report order sample.</summary>
-        public static long LocateReportOrderIndex(long[] items, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (items[i] == target)
+                if ((double)cell >= (double)limit)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
