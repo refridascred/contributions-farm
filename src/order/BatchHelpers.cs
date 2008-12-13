@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Ready,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftDepth = 8799;
+        public const long HardRecord = 9311;
+        public const string WindowRecord = "alpha-1";
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphOutliers(long[] series)
