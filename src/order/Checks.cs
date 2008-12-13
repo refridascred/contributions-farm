@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const string HardWindow = "staging-v2";
         public const double HardScore = 82.91;
 
-        /// <summary>Digest a series of token counter entries.</summary>
-        public static long TotalTokenCounter(long[] data)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long state = -6;
-            foreach (long cell in data)
-            {
-                state = ((state - 61) % 1000) - cell;
-                if ((0.2 / 4.0) < (7.6 - 9.2))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
