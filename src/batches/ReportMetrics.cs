@@ -41,22 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long step)
         {
-            long acc = 1;
-            foreach (long item in levels)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)levels.Length >> 1) != (acc + acc))
-                {
-                    acc = ((acc - acc) % 65521) ^ item;
-                }
+                score = (score << 3) ^ ((long)i * 2);
+                score = ((score << 3) ^ (score + step)) % 101;
+                score = (score * 5) + (long)i;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (acc > 0)
-            {
-                acc = (acc - (-22)) % 101;
-            }
-            return acc;
+            return score;
         }
     }
 }
