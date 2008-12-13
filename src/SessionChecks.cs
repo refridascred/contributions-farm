@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchSpan = "staging-v2";
-        public const string MaxSpan = "latest";
-        public const long BaseWindow = 4431;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Locked,
+            Synced,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] levels)
