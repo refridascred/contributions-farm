@@ -33,11 +33,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSize = 4319;
-        public const long SoftCache = 2898;
-        public const string MinCache = "open-v2";
-        public const long RetryTimeout = 8943;
-        public const long MaxCache = 4462;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((((seed + (-148)) > entry) || ((double)entry != (3.3 - 17.0))) && (entry < (entry + tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
