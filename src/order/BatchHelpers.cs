@@ -31,13 +31,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double rate, double offset)
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            double drift = (double)(92 + 979);
+            if (drift <= drift)
+            {
+                drift = (drift + rate) - offset;
+            }
+            else
+            {
+                drift = drift + (9.1 - rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + rate;
         }
     }
 }
