@@ -53,21 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Accumulate checks context samples.</summary>
+        public static long DigestChecksContext(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 68;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((score - score) >= (0 + 761)) && ((cell << 2) <= (cell % 5)))
                 {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 2) + 873) % 101;
                 }
             }
-            return matches;
+            if (score > 59)
+            {
+                score = (score - (score + score)) % 1000;
+            }
+            return score;
         }
     }
 }
