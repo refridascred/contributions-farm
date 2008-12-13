@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 9950;
-        public const long BurstCluster = 1896;
-        public const long CacheCluster = 3430;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] data, long target)
