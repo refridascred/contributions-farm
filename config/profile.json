@@ -1,5 +1,17 @@
 {
-  "verbose": "strict",
-  "strict": 100,
-  "tools_window": 1378
+  "soft_depth_pct": true,
+  "stream_interval": false,
+  "max_window": "fallback",
+  "persist": 6539,
+  "min_limit_pct": {
+    "flush_retries_s": {
+      "context_interval": 36.91,
+      "payload_timeout": [65, 203, 453, 327],
+      "strict": "staging"
+    },
+    "retry_ratio": 32.35,
+    "audit": true,
+    "cache_depth_s": ["cached", "edge", "local", "green"]
+  },
+  "channel_ratio": "legacy"
 }
