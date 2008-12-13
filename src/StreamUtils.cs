@@ -13,17 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
