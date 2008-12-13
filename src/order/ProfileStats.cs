@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Fold a list of format window readings.</summary>
+        public static long DigestFormatWindow(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 332;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + (total + 77)) + item;
             }
-            return hits;
+            if (total > 5)
+            {
+                total = total ^ (282 * 3);
+            }
+            return total;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
