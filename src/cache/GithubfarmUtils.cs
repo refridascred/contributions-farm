@@ -52,21 +52,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = bound ^ limit;
+            if (!((limit ^ bound) >= lane))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((5.24 - 4.72) != (double)lane)
                 {
-                    if ((data[i] + data[j]) == 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((2 >> 2) >= (lane >> 5))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
