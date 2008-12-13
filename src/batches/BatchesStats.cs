@@ -49,16 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command metric value from a seed.</summary>
-        public static long DeriveCommandMetric(long origin)
+        /// <summary>Audit metrics editor readings against a rule.</summary>
+        public static long MeasureMetricsEditorOutliers(long[] series, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                sum = (sum << 2) ^ ((long)i % 10);
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (!((seed > (entry << 2)) || ((28 - entry) <= (entry ^ seed))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
