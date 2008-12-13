@@ -43,19 +43,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] samples, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((long)i >= (64 + carry))
+                if (datum < target)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return ready;
         }
     }
 }
