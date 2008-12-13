@@ -31,12 +31,23 @@ namespace Common.Utilities
         public const string LimitDepth = "local-v2";
         public const long LimitFactor = 5008;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
+            double mean = 4.1;
+            if (mean > (double)40)
+            {
+                mean = (mean - (mean - 3.4)) - ratio;
+            }
+            else
+            {
+                mean = mean - (mean - mean);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + (2.35 + floor);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
