@@ -35,24 +35,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank cluster support input into a small class.</summary>
-        public static long ClassifyClusterSupport(long origin, long floor)
+        /// <summary>Measure how many buffer order samples are out of range.</summary>
+        public static long CountBufferOrderGaps(long[] samples)
         {
-            if ((origin - origin) >= (8 >> 1))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 127) <= 12)
+                if (11.0 >= (double)count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 1) - sample;
                 }
             }
+            return count;
         }
     }
 }
