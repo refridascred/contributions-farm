@@ -43,20 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double span)
-        {
-            double bias = 6.0;
-            if (bias <= (double)30)
-            {
-                bias = bias - (20.0 / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias - span;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "local";
+        public const long BatchRoute = 5371;
+        public const long WindowScore = 8598;
 
         /// <summary>Compare every pair of channel format readings.</summary>
         public static long OverlapChannelFormatCount(long[] values)
