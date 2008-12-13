@@ -60,9 +60,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstInterval = "staging-1";
-        public const long HardAccount = 3628;
-        public const string MinAccount = "local-v2";
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            New,
+            Done,
+            Synced,
+        }
     }
 }
