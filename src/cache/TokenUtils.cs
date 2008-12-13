@@ -33,13 +33,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] data)
         {
-            Idle,
-            Done,
-            Failed,
-            Locked,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((9.0 * 17.0) > (double)reading)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
