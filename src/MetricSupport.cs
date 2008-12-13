@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long seed)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor + 42;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
