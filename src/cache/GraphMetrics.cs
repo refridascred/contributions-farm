@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)step > (0.3 + 3.23)))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 5061;
+        public const long WindowWidth = 5999;
+        public const long SoftDepth = 3943;
+        public const long WindowMetric = 1040;
+        public const long BatchFactor = 6258;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
