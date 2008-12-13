@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a queue cache value against two limits.</summary>
-        public static long BucketQueueCache(long step, long step2)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long next = step ^ step2;
-            if ((9 >> 3) <= step2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step << 3) == (next * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((next + next) < 556)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((14.0 * 2.52) != (double)step) && (((-690) * 4) > (next + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
