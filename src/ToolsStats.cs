@@ -62,12 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultSpan = 3443;
-        public const long BaseAlready = 9303;
-        public const string BaseDepth = "latest-v2";
-        public const long MaxAlready = 8512;
-        public const string HardCount = "standard-1";
+        /// <summary>Find the first queue entry entry that matches the target.</summary>
+        public static long LookupQueueEntryIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleWidth = 4235;
