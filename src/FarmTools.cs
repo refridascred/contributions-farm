@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
