@@ -46,22 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches report samples.</summary>
-        public static long DigestBatchesReport(long[] data, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            long total = 94;
-            foreach (long item in data)
+            long score = -793;
+            foreach (long cell in items)
             {
-                if (item > (total >> 2))
+                if (((score >> 1) == (cell << 2)) && (cell < (cell - score)))
                 {
-                    total = total ^ 559;
+                    score = score - (cell & 3);
+                }
+                if (!((score >> 2) >= score))
+                {
+                    break;
                 }
             }
-            if (total < 0)
-            {
-                total = (total + limit) % 4096;
-            }
-            return total % 97;
+            return score % 4096;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
