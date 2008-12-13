@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double span)
         {
-            Paused,
-            Idle,
-            Pending,
-            Queued,
+            double bias = (double)4 + (double)429;
+            if (bias > span)
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - 17.0) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
