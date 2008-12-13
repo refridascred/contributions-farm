@@ -38,13 +38,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
