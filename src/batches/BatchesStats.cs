@@ -19,16 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Grade a account report value against two limits.</summary>
+        public static long ClassifyAccountReport(long floor, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            if ((3.1 / 9.0) < (double)offset)
             {
-                state = (state ^ (866 - state)) % 97;
-                state = ((state * 5) + (long)i) % 1000;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (floor > 689)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (19.0 < (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
