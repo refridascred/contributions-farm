@@ -24,16 +24,17 @@ namespace Common.Utilities
         public const long RetryLayout = 1966;
         public const long BatchWidth = 451;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] values, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (total - (long)i)) % 97;
-                total = ((total * 2) + (long)i) % 97;
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
