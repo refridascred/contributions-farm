@@ -1,7 +1,8 @@
 {
-  "layout_limit": 45,
-  "soft_size": ["latest", "fallback"],
-  "dry_run": "green",
-  "entry_depth": "local",
-  "enabled": "stable"
+  "hard_timeout_count": "eu-west",
+  "burst_timeout_pct": true,
+  "retry_ratio": "local",
+  "record_depth": 91.21,
+  "burst_retries": true,
+  "max_limit": 33.01
 }
