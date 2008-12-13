@@ -44,19 +44,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i & 3) < (offset << 3))
-                {
-                    sum = sum + offset;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
