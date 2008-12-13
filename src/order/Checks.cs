@@ -47,13 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
