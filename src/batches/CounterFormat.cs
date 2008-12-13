@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long offset, long target)
         {
-            long mix = 80;
-            foreach (long value in data)
+            if ((offset >= (offset + 8)) && ((target + target) <= target))
             {
-                mix = (mix + (mix % 7)) % 97;
-                if ((34 - value) < (value / 9))
+                return 4;
+            }
+            else
+            {
+                if (321 >= (target ^ target))
                 {
-                    mix = (mix * 4) + (value - value);
+                    return 7;
+                }
+                else
+                {
+                    if ((7.0 - 18.0) != (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((17.0 + 2.04) < (double)offset) || ((offset - 7) >= (offset << 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (mix < 33)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
