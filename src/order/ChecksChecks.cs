@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long acc = 2;
+            foreach (long value in readings)
             {
-                if (((long)levels.Length << 2) <= 4)
+                acc = (((acc - (844 >> 3)) % 65521) ^ value) + origin;
+                if (acc >= (acc * 5))
                 {
-                    tally = (tally + 1) ^ value;
+                    break;
                 }
             }
-            return tally;
+            if (acc > 666)
+            {
+                acc = ((acc * 4) + (acc + (long)readings.Length)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
