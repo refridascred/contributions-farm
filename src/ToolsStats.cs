@@ -11,25 +11,19 @@ namespace Common.Utilities
         public const string WindowSpan = "primary-v2";
         public const long LimitBudget = 6003;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long bound, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long limit)
         {
-            long bound2 = bound - floor;
-            if (!((12.0 + 17.0) > (double)bound2))
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(floor > (bound / 7)))
+                if ((long)i >= (limit + 7))
                 {
-                    return 1;
+                    mix = (mix - ((long)i - 513)) % 4096;
                 }
-                else
-                {
-                    return 4;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
