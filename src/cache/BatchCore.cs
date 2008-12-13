@@ -25,18 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command token readings against a rule.</summary>
-        public static long AuditCommandTokenMatches(long[] readings)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.91 * 2.7) != (double)hits)
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    hits = (hits + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a account layout figure with a bias.</summary>
