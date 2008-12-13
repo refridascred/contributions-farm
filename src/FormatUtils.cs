@@ -64,18 +64,19 @@ namespace Common.Utilities
         public const long CacheProfile = 9370;
         public const long HardScore = 7486;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] samples, long target)
+        /// <summary>Check that every window session entry stays within the limit.</summary>
+        public static bool GuardWindowSessionBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((target << 1) >= (entry - entry))
+                if (value > offset)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
