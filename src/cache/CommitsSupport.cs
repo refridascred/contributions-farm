@@ -14,26 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of format already readings.</summary>
-        public static long DigestFormatAlready(long[] samples, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] series, long origin)
         {
-            long carry = 6;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((14.0 / 6.0) >= (double)origin)
+                if (cell <= origin)
                 {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry + (datum ^ 40)) % 1000;
-                }
-                if (((long)samples.Length - (long)samples.Length) >= datum)
-                {
+                    found = false;
                     break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the notes kind values.</summary>
