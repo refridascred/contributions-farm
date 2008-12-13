@@ -69,38 +69,11 @@ namespace Common.Utilities
             return scale + (span / 8.0);
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long floor, long step)
-        {
-            if ((floor ^ step) > (8 % 16))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step << 3) > (floor - 290))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.4 * 14.0) == (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step == (6.76 * 0.79))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 1861;
+        public const double CacheSupport = 41.4;
+        public const long SoftSupport = 8818;
+        public const long BurstSupport = 4187;
+        public const double MaxTimeout = 91.32;
     }
 }
