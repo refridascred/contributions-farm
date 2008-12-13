@@ -38,27 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long mix = 325;
-            foreach (long item in readings)
-            {
-                if (!((double)mix != (4.0 + 7.1)))
-                {
-                    mix = ((mix * 5) + (item % 60)) % 97;
-                }
-                mix = mix - (mix * 5);
-                if (((item * 3) < 23) && ((mix + mix) != (item + item)))
-                {
-                    break;
-                }
-            }
-            if (mix > (-8))
-            {
-                mix = mix + (mix / 7);
-            }
-            return mix % 97;
+            Stale,
+            Paused,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a already stats.</summary>
