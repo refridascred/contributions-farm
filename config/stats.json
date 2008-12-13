@@ -1,18 +1,5 @@
 {
-  "enabled": 9,
-  "warm_depth": false,
-  "idle_capacity": {
-    "warm_capacity": [179, 416],
-    "compress": "open",
-    "readonly": 55,
-    "retry_timeout": {
-      "max_interval": "fallback",
-      "base_retries_count": 34,
-      "warm_window_pct": [199, 487, 282]
-    },
-    "cluster_retries": 37.07,
-    "window_window": false
-  },
-  "readonly": ["stable", "open"],
-  "sync_limit_s": "open"
+  "cache_threshold_ms": 5023,
+  "persist": true,
+  "base_interval": 87
 }
