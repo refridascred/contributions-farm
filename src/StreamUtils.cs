@@ -57,35 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] values, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long sum = 83;
-            foreach (long value in values)
-            {
-                if ((sum % 3) >= (sum - bound))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = sum ^ (bound - bound);
-                    sum = (sum + bound) % 101;
-                }
-                if (((double)sum < 5.89) || ((2.6 / 9.0) != (double)sum))
-                {
-                    sum = (sum ^ (value + value)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ bound) % 1000;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = sum - (bound * 5);
-            }
-            return sum;
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
