@@ -30,23 +30,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of token route readings.</summary>
-        public static long FoldTokenRoute(long[] levels, long seed)
+        /// <summary>Count the cache commits entries that pass the check.</summary>
+        public static long CountCacheCommitsMatches(long[] series, long step)
         {
-            long acc = 48;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                acc = ((acc << 3) ^ 41) % 97;
-                if ((acc % 16) <= seed)
+                if ((64 + 30) != ((long)series.Length + tally))
                 {
-                    acc = (acc << 3) ^ acc;
-                }
-                if (((datum << 2) == (datum + 94)) && ((3.8 - 0.7) < (double)datum))
-                {
-                    break;
+                    tally = ((tally + 1) ^ item) - step;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
