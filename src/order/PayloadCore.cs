@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const double RetryTimeout = 34.17;
         public const long IdleReport = 4953;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] data)
         {
-            Idle,
-            Locked,
-            Ready,
+            long state = 6;
+            foreach (long reading in data)
+            {
+                state = ((state << 3) ^ reading) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of session farm readings.</summary>
