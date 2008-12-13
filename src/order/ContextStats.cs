@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] readings)
         {
-            long diff = seed ^ origin;
-            if ((4.0 - 5.5) == (double)diff)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((19.0 / 9.0) != (double)origin)
+                if (((double)value >= (4.9 + 5.5)) && ((double)value <= (8.5 / 2.0)))
                 {
-                    return 7;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 6;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of contributi report entries.</summary>
