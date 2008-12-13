@@ -31,13 +31,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Draft,
-            Idle,
-            Pending,
-            Closed,
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
