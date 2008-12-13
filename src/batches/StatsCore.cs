@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] levels, long offset)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (offset >= (seen ^ offset))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Dropped,
+            Locked,
+            Retry,
         }
 
         /// <summary>Blend two batches support measurements.</summary>
