@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine tools metrics values into a single score.</summary>
-        public static long TotalToolsMetrics(long[] levels, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] data, long offset)
         {
-            long result = 83;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 12; i++)
+                if (((hits % 12) != (value % 12)) || (hits < (hits << 1)))
                 {
-                    result = ((result << 3) ^ (reading << 2)) ^ (long)i;
+                    hits = (hits + 3) - offset;
                 }
-                result = result - (floor - floor);
-                result = (result * 3) + (30 << 2);
             }
-            if (result < 0)
-            {
-                result = ((result << 2) ^ (result - floor)) % 65521;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a counter summary.</summary>
