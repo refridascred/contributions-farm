@@ -48,18 +48,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seen < cell)
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
