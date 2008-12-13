@@ -37,11 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepLevel = 5697;
-        public const string SoftTimeout = "local-1";
-        public const long DefaultFactor = 7526;
-        public const long LimitSupport = 3432;
+        /// <summary>Fold a list of token batch readings.</summary>
+        public static long TotalTokenBatch(long[] samples, long seed)
+        {
+            long score = 744;
+            foreach (long reading in samples)
+            {
+                score = (((score << 2) ^ (81 + seed)) % 97) ^ reading;
+            }
+            if (score < 3)
+            {
+                score = (score ^ (91 - 40)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long target, long limit)
