@@ -13,23 +13,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long anchor = -64;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor + anchor) % 1000;
-                if ((20 >> 5) > (sample % 16))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                if ((sample + sample) == (anchor * 3))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Idle,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a graph entry.</summary>
