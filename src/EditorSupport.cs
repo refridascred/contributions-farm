@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (18.0 < (double)limit)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 5170;
+        public const long BatchMetric = 1398;
+        public const long RetryMetric = 9236;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] series, long offset)
