@@ -1,7 +1,7 @@
-id,weight,state,score
-1,89,857,27.26
-2,44.73,primary,743
-3,stable,strict,80.17
-4,19.31,open,650
-5,967,726,open
-6,70.71,cached,374
+id,owner
+1,879
+2,staging
+3,cached
+4,89.54
+5,legacy
+6,510
