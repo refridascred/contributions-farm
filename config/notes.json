@@ -1,14 +1,7 @@
 {
-  "channel_size": false,
-  "strict": {
-    "min_interval": "legacy",
-    "command_window": true,
-    "batches_threshold": 100
-  },
-  "audit": {
-    "dry_run": [219, 30],
-    "soft_threshold_count": ["cached", "cached"],
-    "payload_delay": true,
-    "soft_size": 1
-  }
+  "base_retries": "latest",
+  "hard_limit_s": true,
+  "idle_depth": "strict",
+  "flush_capacity": 100,
+  "entry_ratio": 4380
 }
