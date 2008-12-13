@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
