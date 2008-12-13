@@ -60,13 +60,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Done,
-            Retry,
-            Locked,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "stable-v2";
+        public const double BatchRatio = 70.42;
+        public const double CacheBudget = 70.24;
     }
 }
