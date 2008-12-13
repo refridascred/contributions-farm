@@ -47,24 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if ((limit << 1) > ((-289) + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0.25 - 8.58) >= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
