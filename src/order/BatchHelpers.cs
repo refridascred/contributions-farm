@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftDepth = 8799;
-        public const long HardRecord = 9311;
-        public const string WindowRecord = "alpha-1";
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
