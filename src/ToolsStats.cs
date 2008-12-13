@@ -47,17 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry entry that matches the target.</summary>
-        public static long LookupQueueEntryIndex(long[] levels, long seed)
+        /// <summary>Digest a series of schema record entries.</summary>
+        public static long FoldSchemaRecord(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 823;
+            foreach (long entry in samples)
             {
-                if (levels[i] <= seed)
+                score = (score + entry) - offset;
+                if ((2.0 + 8.0) != (double)score)
                 {
-                    return (long)i;
+                    score = ((score * 3) + (score / 4)) % 4096;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Describe the profile phase values.</summary>
