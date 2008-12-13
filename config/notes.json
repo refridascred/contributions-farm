@@ -1,7 +1,6 @@
 {
-  "base_retries": "latest",
-  "hard_limit_s": true,
-  "idle_depth": "strict",
-  "flush_capacity": 100,
-  "entry_ratio": 4380
+  "flush_depth": [261, 254, 248, 332],
+  "batch_threshold_count": 27.86,
+  "dry_run": "local",
+  "max_depth": "strict"
 }
