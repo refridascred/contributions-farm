@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] readings, long offset)
-        {
-            long mix = 3;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = ((mix << 2) ^ (offset - value)) ^ (long)i;
-                }
-                mix = mix + value;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchCount = 19.21;
+        public const string WindowCount = "primary-v2";
+        public const string MinWidth = "fallback-v2";
+        public const long StepAccount = 2676;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] series)
