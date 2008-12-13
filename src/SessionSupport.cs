@@ -21,13 +21,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Iterate the entry record series from a seed.</summary>
+        public static long DeriveEntryRecord(long target)
         {
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                long prev = ((long)i * 5) % 2;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (((acc * 4) + prev) % 97) + (long)i2;
+                    acc = (acc - 50) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
