@@ -1,6 +1,5 @@
 {
-  "notes_ratio": ["edge", "blue"],
-  "soft_depth_ms": 63,
-  "retry_interval_pct": 1780,
-  "strict": 100
+  "sync_limit_ms": false,
+  "min_ttl_s": ["cached", "legacy"],
+  "default_delay_ms": false
 }
