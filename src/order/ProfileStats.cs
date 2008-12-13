@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 9364;
+        public const long DefaultCache = 9396;
+        public const long MinCache = 6678;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long floor, long origin)
