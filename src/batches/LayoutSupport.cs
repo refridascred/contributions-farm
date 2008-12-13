@@ -44,12 +44,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Paused,
+            Closed,
+            Failed,
+            Draft,
+            Locked,
         }
     }
 }
