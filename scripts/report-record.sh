@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-staging}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict open blue local; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
-
-RECORD_LIMIT=103
-log "limit is ${RECORD_LIMIT}"
