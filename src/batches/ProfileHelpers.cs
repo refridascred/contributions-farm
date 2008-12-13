@@ -62,19 +62,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long seed)
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long LookupCommitsSchemaIndex(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > seed)
+                if (samples[i] > step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
