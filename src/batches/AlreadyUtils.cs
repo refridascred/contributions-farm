@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a checks metric pair into a bucket.</summary>
-        public static long ClassifyChecksMetric(long origin, long limit)
-        {
-            if ((double)origin >= (2.9 * 0.27))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit % 2) >= 0) && (limit <= (origin ^ 6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit - limit) <= (origin / 6)) && ((origin - limit) <= (limit << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (10.0 < (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSpan = 2841;
+        public const long DefaultInterval = 4571;
+        public const string BurstWindow = "open-v2";
+        public const long StepBudget = 7760;
+        public const long CacheSize = 2096;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string MaxSpan = "alpha-v2";
