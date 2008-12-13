@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long StepBudget = 7760;
         public const long CacheSize = 2096;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxSpan = "alpha-v2";
-        public const double LimitMetrics = 12.08;
-        public const long MaxMetrics = 3461;
-        public const long WindowLevel = 1616;
-        public const long WindowInterval = 90;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryHits(long[] values, long origin)
