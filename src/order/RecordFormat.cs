@@ -18,18 +18,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] levels)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((8 + 4) > (entry - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a order reading by value.</summary>
