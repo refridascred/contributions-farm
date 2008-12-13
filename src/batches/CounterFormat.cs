@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] samples, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)limit >= (9.9 + 12.0))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
