@@ -40,11 +40,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "open-v2";
-        public const double DefaultLevel = 77.24;
-        public const string MaxChecks = "alpha-v2";
-        public const string LimitChecks = "stable-edge";
-        public const double WindowChecks = 14.83;
+        public const long CacheSize = 9202;
+        public const long BaseTimeout = 3758;
+        public const double RetryLevel = 13.03;
+        public const long MaxChecks = 6170;
+        public const string BurstCount = "latest-v2";
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] items)
