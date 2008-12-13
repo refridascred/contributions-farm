@@ -24,18 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] levels)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((9.06 * 11.0) == (double)datum)
+                if (reading >= step)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a filter options.</summary>
