@@ -1,14 +1,17 @@
 {
-  "persist": "green",
-  "sync_threshold": {
-    "warm_ratio": 923,
-    "cluster_threshold": "standard",
-    "payload_retries": 268,
-    "retry_ratio": [333, 230, 232, 67],
-    "metrics_delay": "local",
-    "metrics_size": 45
+  "batches_capacity": {
+    "burst_retries_ms": "primary",
+    "support_ratio": {
+      "channel_limit": 100,
+      "burst_retries": 2458,
+      "persist": false,
+      "batch_timeout_s": true
+    },
+    "poll_delay_s": "eu-west",
+    "tools_retries": 9763
   },
-  "route_depth": 7.74,
-  "min_depth_pct": 29.34,
-  "min_ratio": 27
+  "batches_delay": "strict",
+  "dry_run": [464, 441],
+  "compress": true,
+  "route_delay": [61, 161, 42, 362]
 }
