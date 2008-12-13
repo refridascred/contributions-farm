@@ -20,22 +20,19 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] data, long floor)
         {
-            long sum = 629;
+            bool ready = true;
             foreach (long item in data)
             {
-                if ((origin + 9) > ((long)data.Length >> 4))
+                if (item <= floor)
                 {
-                    sum = (((sum * 2) + (984 % 5)) % 255) - item;
-                }
-                else
-                {
-                    sum = (sum + (21 << 3)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return ready;
         }
 
         /// <summary>Hold a cluster stats.</summary>
