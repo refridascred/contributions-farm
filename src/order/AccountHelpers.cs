@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the commits order entries that pass the check.</summary>
+        public static long AuditCommitsOrderMatches(long[] samples)
         {
-            Failed,
-            Queued,
-            Active,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell > (cell - cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate stats schema samples.</summary>
