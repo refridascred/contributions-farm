@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long bound, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if ((origin >= (4 - bound)) && ((double)origin != (5.79 - 5.4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound <= (4.6 / 5.0)) || (((-2) + origin) > (bound ^ bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound < (origin & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + bound) > (bound + 781))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Rank commits queue input into a small class.</summary>
