@@ -40,19 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] items, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long anchor = -64;
+            foreach (long sample in samples)
             {
-                if (value > seed)
+                anchor = (anchor + anchor) % 1000;
+                if ((20 >> 5) > (sample % 16))
                 {
-                    valid = false;
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                if ((sample + sample) == (anchor * 3))
+                {
                     break;
                 }
             }
-            return valid;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a graph entry.</summary>
