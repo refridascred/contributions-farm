@@ -42,15 +42,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double gain, double bias)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long bound)
         {
-            double load = bias;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (double)(long)i) + gain;
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)452;
+            return -1;
         }
     }
 }
