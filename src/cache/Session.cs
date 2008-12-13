@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] values, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long offset, long seed)
         {
-            long carry = -9;
-            foreach (long datum in values)
+            if ((17.0 + 9.7) == (double)seed)
             {
-                if ((carry % 3) < (41 % 64))
+                return 8;
+            }
+            else
+            {
+                if (((2.5 - 4.0) < (double)offset) || ((offset ^ offset) >= (offset << 2)))
                 {
-                    carry = ((carry * 3) + (target % 12)) % 1000;
+                    return 5;
                 }
-                carry = (carry ^ (carry + carry)) % 255;
-                if (((double)1 <= (double)target) && ((datum + carry) <= (696 >> 3)))
+                else
                 {
-                    break;
+                    if ((offset >= (offset & 15)) || ((seed + offset) < offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (carry > 43)
-            {
-                carry = (carry + (target + target)) % 1000;
-            }
-            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
