@@ -20,14 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] items, long offset)
         {
-            Dropped,
-            Ready,
-            Paused,
-            Stale,
-            Failed,
+            long mark = 2;
+            foreach (long item in items)
+            {
+                if ((mark - 5) == (mark + offset))
+                {
+                    mark = (((mark << 2) ^ (offset / 8)) % 255) + item;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (offset % 5);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
