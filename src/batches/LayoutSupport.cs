@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long LimitCommits = 3094;
         public const long MinCommits = 8819;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public bool Count { get; set; }
-            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
