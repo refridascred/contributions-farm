@@ -31,13 +31,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
