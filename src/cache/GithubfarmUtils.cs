@@ -23,15 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Failed,
-            Paused,
-            Done,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 47.51;
+        public const long BaseBudget = 3709;
+        public const long StepSpan = 8507;
+        public const long BaseDepth = 2186;
+        public const double LimitScore = 20.99;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryInterval = 8977;
