@@ -13,12 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
+                if (values[i] < target)
                 {
                     return (long)i;
                 }
