@@ -1,26 +1,7 @@
 # support settings
-base_interval_pct: latest
-verbose: 500
-default_ttl:
-  graph_depth: true
-  retry_ratio_count:
-    - 63
-    - 26
-  metric_capacity: 500
-  base_delay_s: 2935
-  layout_capacity:
-    cache_size: 38
-    cluster_retries:
-      - local
-      - green
-      - edge
-      - eu-west
-    batch_interval: 35.49
-    batch_retries_count:
-      - 385
-      - 156
-    min_delay_ms: 27.17
-    schema_delay: false
-base_limit: 29
-burst_timeout_pct: open
-flush_threshold: false
+verbose: strict
+enabled: 93.81
+dry_run: 500
+idle_capacity_count: 20
+soft_timeout_s: 17
+base_timeout: eu-west
