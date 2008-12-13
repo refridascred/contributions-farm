@@ -44,18 +44,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long mix = 106;
-            foreach (long sample in series)
-            {
-                if ((12.0 - 1.0) > (double)sample)
-                {
-                    mix = mix + (mix + sample);
-                }
-            }
-            return mix;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
