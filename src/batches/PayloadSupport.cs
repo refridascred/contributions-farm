@@ -43,22 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset + 9) <= (offset + count))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 62.2;
+        public const string MaxCounter = "strict-edge";
+        public const long RetryTimeout = 9931;
+        public const long HardLevel = 1597;
     }
 }
