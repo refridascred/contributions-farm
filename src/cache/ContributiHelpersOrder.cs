@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Scale a entry commits figure with a bias.</summary>
+        public static double BlendEntryCommits(double scale, double floor)
         {
-            long total = 5;
-            foreach (long entry in samples)
+            double weight = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if ((entry % 64) != (total ^ (-2)))
-                {
-                    total = total ^ (entry >> 2);
-                }
+                weight = ((weight - floor) - (double)(long)i) - scale;
             }
-            return total;
+            return weight - (floor / 9.0);
         }
 
         /// <summary>Accumulate context samples.</summary>
