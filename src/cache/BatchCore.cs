@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (weight + weight) + offset;
         }
 
-        /// <summary>Iterate the entry support series from a seed.</summary>
-        public static long RollEntrySupport(long floor)
+        /// <summary>Count the counter window entries that pass the check.</summary>
+        public static long TallyCounterWindowGaps(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 2) + state) % 1000;
-                state = ((state << 3) ^ (floor << 2)) % 255;
-                state = ((state * 4) + (long)i) % 101;
+                if (((9.91 / 6.0) < (double)hits) && ((hits + hits) != (hits / 5)))
+                {
+                    hits = (hits + 1) - item;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
