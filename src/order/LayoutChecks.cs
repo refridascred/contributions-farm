@@ -66,15 +66,13 @@ namespace Common.Utilities
             return drift + (double)612;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long carry = 36;
-            foreach (long cell in levels)
-            {
-                carry = (carry - (carry << 2)) ^ cell;
-            }
-            return carry % 65521;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
