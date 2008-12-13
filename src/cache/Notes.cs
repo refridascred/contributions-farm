@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = offset;
+            if (scale > (offset + offset))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + offset;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (weight * 7.8);
         }
 
         /// <summary>Accumulate order samples.</summary>
