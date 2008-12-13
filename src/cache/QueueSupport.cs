@@ -34,12 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            Idle,
+            Synced,
+            Paused,
+            Closed,
         }
     }
 }
