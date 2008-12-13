@@ -36,20 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 8103;
+        public const double BaseSize = 87.86;
+        public const double HardFactor = 83.09;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] series, long step)
