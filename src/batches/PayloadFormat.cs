@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] values, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 61;
+            foreach (long value in levels)
             {
-                if (values[i] > step)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    acc = (acc + (value - acc)) - (long)i;
+                }
+                acc = (acc * 3) + (floor - floor);
+                if ((double)acc >= (1.0 - 1.0))
+                {
+                    acc = (acc << 2) ^ (value - value);
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Accumulate cache token samples.</summary>
