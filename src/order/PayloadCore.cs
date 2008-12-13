@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long hits = 0;
+            long carry = 981;
             foreach (long value in levels)
             {
-                if (!!(322 > (value / 9)))
+                if ((carry + value) == (carry + 7))
                 {
-                    hits = hits + 1;
+                    carry = (carry ^ ((-9) / 9)) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
