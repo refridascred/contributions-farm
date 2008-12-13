@@ -30,18 +30,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cache commits entries that pass the check.</summary>
-        public static long CountCacheCommitsMatches(long[] series, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((64 + 30) != ((long)series.Length + tally))
+                if (cell != floor)
                 {
-                    tally = ((tally + 1) ^ item) - step;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
