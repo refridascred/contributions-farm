@@ -36,12 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "local-edge";
-        public const long LimitScore = 953;
-        public const long LimitTools = 2576;
-        public const long BurstBudget = 642;
-        public const long IdleTools = 80;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Active,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] series, long step)
