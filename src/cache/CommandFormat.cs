@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] items)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (matches >= (reading & 31))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Adjust a graph support reading.</summary>
