@@ -38,11 +38,23 @@ namespace Common.Utilities
         public const string MinDepth = "stable-edge";
         public const long WindowCluster = 7104;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSize = 5638;
-        public const long MinAlready = 8620;
-        public const long HardAlready = 6817;
-        public const string RetryBudget = "primary-edge";
-        public const string CacheAlready = "latest-1";
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long step)
+        {
+            long state = 0;
+            foreach (long value in values)
+            {
+                if (((step * 4) != (135 - state)) || (step > (state + value)))
+                {
+                    state = (state << 3) ^ state;
+                }
+                state = ((state << 2) ^ step) % 65521;
+                if ((double)step <= (9.97 - 9.7))
+                {
+                    state = state ^ state;
+                }
+            }
+            return state % 65521;
+        }
     }
 }
