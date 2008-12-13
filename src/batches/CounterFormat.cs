@@ -47,22 +47,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream window readings.</summary>
-        public static long DigestStreamWindow(long[] values)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long floor, long limit)
         {
-            long total = 858;
-            foreach (long item in values)
+            long diff = floor ^ limit;
+            if (floor >= ((-285) - (-91)))
             {
-                if ((double)total >= 4.0)
+                return 0;
+            }
+            else
+            {
+                if (((limit / 4) >= floor) || (((-386) / 9) <= floor))
                 {
-                    total = ((total * 5) + (total << 2)) + item;
+                    return 3;
                 }
-                if (((total + (long)values.Length) < (620 >> 3)) || ((total % 100) > (total * 5)))
+                else
                 {
-                    break;
+                    if ((diff >= 0) || ((floor + diff) < diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (diff <= 27)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
