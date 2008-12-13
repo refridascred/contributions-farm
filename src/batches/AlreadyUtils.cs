@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long StepBudget = 7760;
         public const long CacheSize = 2096;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a format cache sample.</summary>
+        public static long LocateFormatCacheIndex(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] < seed)
+                if ((data[i] > bound) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
