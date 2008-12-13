@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetryRatio = 55.37;
-        public const string MinFactor = "strict-1";
-        public const string BatchScore = "local-v2";
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
