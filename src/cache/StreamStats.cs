@@ -44,21 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
