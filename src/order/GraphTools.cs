@@ -31,11 +31,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long origin, long step)
         {
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            if (!(((-27) + 76) <= origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + step) >= (7 - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step <= (11.0 - 5.25))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
