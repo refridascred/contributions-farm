@@ -13,15 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Retry,
-            Synced,
-            Idle,
-            Closed,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 3596;
+        public const double CacheDepth = 44.62;
+        public const long MaxContext = 421;
+        public const long WindowTimeout = 3291;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double gain, double span)
