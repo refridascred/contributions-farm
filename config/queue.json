@@ -1,13 +1,6 @@
 {
-  "cluster_ttl": 64.14,
-  "default_threshold_count": {
-    "entry_retries": "primary",
-    "compress": "edge",
-    "notes_retries": "blue",
-    "min_ratio_count": false
-  },
-  "base_window": [76, 174, 331, 382],
-  "batch_capacity": 40.09,
-  "layout_threshold": "latest",
-  "metric_limit": "standard"
+  "min_window": true,
+  "metric_size": 80,
+  "warm_size": "stable",
+  "warm_window_count": "staging"
 }
