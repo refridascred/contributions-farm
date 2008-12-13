@@ -15,13 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] readings, long bound)
         {
-            Queued,
-            Draft,
-            Stale,
-            Failed,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the payload mode values.</summary>
