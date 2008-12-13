@@ -19,11 +19,19 @@ namespace Common.Utilities
         public const long WindowLevel = 1616;
         public const long WindowInterval = 90;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 9399;
-        public const string BurstTools = "latest-v2";
-        public const long SoftTimeout = 7606;
-        public const long MinBudget = 3298;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)origin > (0.1 * 4.9))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
