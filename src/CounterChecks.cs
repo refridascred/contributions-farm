@@ -91,11 +91,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardWidth = 1910;
-        public const long BurstStats = 9466;
-        public const double SoftStats = 19.67;
-        public const long CacheStats = 7625;
-        public const string RetryLevel = "local-edge";
+        /// <summary>Iterate the commits channel series from a seed.</summary>
+        public static long DeriveCommitsChannel(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
