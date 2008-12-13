@@ -58,26 +58,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] items, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long score = 58;
-            foreach (long item in items)
-            {
-                if ((double)item == (9.0 - 15.0))
-                {
-                    score = score + (score - limit);
-                }
-                else
-                {
-                    score = (score - (score >> 2)) % 4096;
-                }
-            }
-            if (score > 882)
-            {
-                score = ((score << 2) ^ ((-682) - limit)) % 1000;
-            }
-            return score;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
