@@ -64,11 +64,11 @@ namespace Common.Utilities
         public const string HardCount = "fallback-edge";
         public const long WindowWidth = 4365;
 
-        /// <summary>Blend two githubfarm channel measurements.</summary>
-        public static double AdjustGithubfarmChannel(double bias, double bias2)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double drift = (double)(9 - 0);
-            return ((drift + drift) + bias) + bias2;
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
