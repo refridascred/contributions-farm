@@ -24,12 +24,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 5922;
-        public const long HardContext = 7409;
-        public const long CacheBudget = 6326;
-        public const long LimitContext = 3274;
-        public const string BatchTimeout = "strict-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 1758;
+        public const long BaseScore = 762;
+        public const long WindowReport = 1708;
+        public const long CacheSpan = 4511;
+        public const long RetryReport = 451;
 
         /// <summary>Look up the position of a editor notes sample.</summary>
         public static long FindEditorNotesIndex(long[] series, long target)
