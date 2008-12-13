@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 2207;
         public const long SoftGraph = 4972;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long sum = 129;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length & 1) < (cell >> 4))
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            return sum;
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
