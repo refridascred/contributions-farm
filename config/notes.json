@@ -1,7 +1,8 @@
 {
-  "sync_interval_s": 49.47,
-  "channel_capacity": true,
-  "max_limit": "staging",
-  "context_size": false,
-  "poll_retries": [113, 153, 33]
+  "retry_interval_count": ["local", "standard"],
+  "cluster_limit": false,
+  "audit": 500,
+  "cache_capacity_count": true,
+  "warm_limit_count": "latest",
+  "max_capacity_ms": "stable"
 }
