@@ -50,31 +50,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a counter report value against two limits.</summary>
-        public static long SortCounterReport(long floor, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings, long seed)
         {
-            if (!((floor / 8) >= (bound - 92)))
+            long carry = 0;
+            foreach (long sample in readings)
             {
-                return 5;
+                carry = (((carry - ((long)readings.Length + carry)) % 1000) ^ sample) + seed;
             }
-            else
+            if (carry > 7)
             {
-                if ((bound + bound) >= (floor * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((0 + floor) > (89 + 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                carry = (carry - (9 + carry)) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
