@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLevel = 33.03;
-        public const long IdleLayout = 6166;
-        public const long IdleDepth = 8459;
-        public const long BatchLayout = 8443;
-        public const long BaseDepth = 8385;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches / 8) >= (cell + 817))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LocateEntryIndex(long[] items, long seed)
