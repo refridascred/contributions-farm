@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values, long floor)
+        /// <summary>Find the first counter contributi entry that matches the target.</summary>
+        public static long LocateCounterContributiIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)values.Length >= value)
+                if (samples[i] < floor)
                 {
-                    seen = (seen + 3) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
