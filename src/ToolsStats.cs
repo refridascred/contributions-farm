@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long acc = 2;
+            foreach (long item in samples)
             {
-                if ((long)i >= (limit + 7))
-                {
-                    mix = (mix - ((long)i - 513)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                acc = acc ^ (item << 2);
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
