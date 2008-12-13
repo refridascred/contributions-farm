@@ -20,14 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Match up buffer metric samples.</summary>
+        public static long MatchBufferMetricCount(long[] readings)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Paused,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next batch metric value from a seed.</summary>
