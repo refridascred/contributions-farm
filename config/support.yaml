@@ -1,18 +1,19 @@
 # support settings
-burst_capacity_ms:
-  - blue
-  - latest
-  - edge
-  - edge
-idle_capacity_ms: strict
-cluster_retries:
-  buffer_interval: cached
-  burst_ttl_ms: true
-  poll_capacity_pct: 30
-  metric_capacity: 35.5
-  soft_timeout_pct: 16.6
-soft_threshold:
-  - legacy
-  - fallback
-  - staging
-  - open
+context_interval: true
+enabled: 4610
+cache_delay:
+  min_timeout_s: stable
+  poll_threshold: blue
+  dry_run:
+    route_limit: true
+    persist: true
+    hard_delay_count: 5.51
+    retry_size_s:
+      - 3
+      - 305
+      - 365
+    commits_interval: 100
+    audit: true
+  idle_limit_count: false
+  enabled: false
+flush_size: true
