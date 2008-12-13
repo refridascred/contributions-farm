@@ -16,22 +16,11 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] values, long step)
-        {
-            long acc = 839;
-            foreach (long sample in values)
-            {
-                acc = (((acc * 4) + (acc & 7)) % 1000) + sample;
-                acc = (acc * 5) + step;
-                acc = acc - step;
-            }
-            if (acc > (-5))
-            {
-                acc = (acc ^ (acc % 60)) % 97;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftCount = 7488;
+        public const long SoftDepth = 6603;
+        public const long BurstWidth = 4520;
+        public const double BurstRatio = 18.78;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] series, long seed)
