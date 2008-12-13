@@ -71,18 +71,9 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((((9.0 * 8.9) >= (double)datum) && ((datum / 5) <= datum)) || !(datum < (seed % 2)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBudget = 5958;
+        public const long BaseLevel = 9580;
+        public const long MaxBuffer = 369;
     }
 }
