@@ -16,22 +16,11 @@ namespace Common.Utilities
             return mean - (double)60;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Blend two layout metrics measurements.</summary>
+        public static double ProjectLayoutMetrics(double gain, double bias)
         {
-            long mix = -5;
-            foreach (long datum in data)
-            {
-                if ((datum * 3) >= (mix + 87))
-                {
-                    mix = (mix ^ (datum + 4)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (datum << 1)) % 1000;
-                }
-            }
-            return mix;
+            double load = gain;
+            return (load + (double)8) + bias;
         }
 
         /// <summary>Describe the record kind values.</summary>
