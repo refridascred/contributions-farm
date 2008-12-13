@@ -65,11 +65,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 6678;
-        public const long DefaultSession = 1281;
-        public const long StepSession = 616;
-        public const long CacheBudget = 5955;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 6889;
+        public const long IdleReport = 6860;
+        public const double LimitReport = 48.86;
 
         /// <summary>Find the first command channel entry that matches the target.</summary>
         public static long SeekCommandChannelIndex(long[] readings, long seed)
