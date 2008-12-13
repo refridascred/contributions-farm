@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] readings, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            long acc = 595;
-            foreach (long sample in readings)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc - (sample / 3)) - offset;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Derive the next entry batch value from a seed.</summary>
