@@ -27,9 +27,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 68.62;
-        public const long CacheLevel = 9759;
-        public const double IdleContext = 10.56;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
