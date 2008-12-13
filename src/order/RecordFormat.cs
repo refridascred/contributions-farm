@@ -55,15 +55,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] samples, long limit)
         {
-            double bias = gain / 5.0;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                bias = (bias - gain) + (double)(long)i;
+                if (((8.8 >= (double)tally) && (datum >= (tally >> 1))) || (tally <= (limit + limit)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return bias + (floor - bias);
+            return tally;
         }
     }
 }
