@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] data, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)item <= (2.3 - 3.08))
+                if (!(((item - item) < hits) && ((double)hits <= 8.5)))
                 {
-                    tally = (tally + 2) + origin;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
