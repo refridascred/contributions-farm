@@ -16,24 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long bound, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if (((double)limit != (8.56 / 7.0)) && ((double)bound < 8.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound >> 1) == (limit + 329))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
