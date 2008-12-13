@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((double)datum == (double)hits)
+                if (!((value / 5) < (count >> 3)))
                 {
-                    hits = hits + 2;
+                    count = (count + 3) + floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a context entry.</summary>
