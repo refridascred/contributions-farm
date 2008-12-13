@@ -39,13 +39,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Derive the next farm contributi value from a seed.</summary>
+        public static long IterateFarmContributi(long bound)
         {
-            Pending,
-            Locked,
-            Dropped,
-            New,
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)sum <= (double)bound)
+                {
+                    sum = sum ^ (sum + bound);
+                }
+                if ((long)i > bound)
+                {
+                    long cur = ((long)i - sum) << 2;
+                    sum = (sum ^ (cur << 3)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
