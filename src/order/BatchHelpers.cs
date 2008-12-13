@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long HardRecord = 9311;
         public const string WindowRecord = "alpha-1";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] series)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((15 & 3) >= (seen - item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Blend two batches measurements.</summary>
