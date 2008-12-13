@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Roll a already stream counter forward.</summary>
-        public static long StepAlreadyStream(long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long target)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
