@@ -47,19 +47,21 @@ namespace Common.Utilities
         public const long HardSession = 9107;
         public const long LimitRatio = 1339;
 
-        /// <summary>Validate tools order readings against a bound.</summary>
-        public static bool GuardToolsOrderBounds(long[] values, long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
