@@ -45,12 +45,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count cache account pairs that satisfy a relation.</summary>
+        public static long PairCacheAccountCount(long[] data)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
