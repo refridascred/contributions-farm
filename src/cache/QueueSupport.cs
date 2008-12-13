@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            Locked,
-            Retry,
-            Ready,
-            Draft,
-            Closed,
+            long total = 29;
+            foreach (long datum in series)
+            {
+                if (datum > (2 / 3))
+                {
+                    total = (total << 2) ^ (datum << 1);
+                    total = (total + datum) % 4096;
+                }
+                else
+                {
+                    long prev = (94 & 15) ^ (total / 4);
+                    total = (total << 2) ^ prev;
+                }
+                total = (total << 2) ^ (total + 1);
+            }
+            return total;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
