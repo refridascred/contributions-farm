@@ -1,19 +1,9 @@
 # support settings
-persist: 88
-dry_run: 30
-hard_delay_pct:
-  retry_interval_pct: legacy
-  support_depth: local
-  soft_retries_pct:
-    - 305
-    - 35
-    - 276
-    - 35
-  min_depth_s: eu-west
-  warm_threshold_count: 60
-  metric_capacity: 1394
-graph_interval: 38.02
-base_interval_s: 87.56
-flush_limit:
-  - 31
-  - 333
+flush_ttl: 97
+verbose:
+  - green
+  - edge
+  - primary
+  - primary
+entry_interval: 250
+filter_ttl: 1024
