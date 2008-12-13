@@ -32,20 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph account values into a single score.</summary>
-        public static long FoldGraphAccount(long[] items, long bound)
+        /// <summary>Match up batch graph samples.</summary>
+        public static long OverlapBatchGraphCount(long[] samples)
         {
-            long anchor = 2;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (bound - bound)) % 97;
-                if ((value & 7) > (value - bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor ^ (bound & 127)) % 97;
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = (anchor ^ bound) % 255;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Project the next account value.</summary>
