@@ -55,13 +55,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetrySize = 7448;
+        public const long RetryBatches = 163;
+        public const double IdleDepth = 30.83;
+        public const string HardCount = "fallback-edge";
+        public const long WindowWidth = 4365;
 
         /// <summary>Blend two githubfarm channel measurements.</summary>
         public static double AdjustGithubfarmChannel(double bias, double bias2)
