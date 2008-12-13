@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] data, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long mark = 95;
+            foreach (long item in levels)
             {
-                if (entry > floor)
+                mark = (((mark * 4) + (mark - 2)) % 255) - item;
+                if ((14.0 / 8.0) > (3.0 - 3.0))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (mark < (-25))
+            {
+                mark = (mark << 3) ^ (mark - mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count layout queue pairs that satisfy a relation.</summary>
