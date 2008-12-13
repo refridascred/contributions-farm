@@ -48,39 +48,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long target, long origin)
-        {
-            if ((double)origin <= 1.4)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target < (origin * 4)) && ((origin + target) >= target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - target) > (target >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin << 3) >= (origin >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 7166;
+        public const string MinLevel = "local";
+        public const double SoftSchema = 58.5;
+        public const string MaxWidth = "legacy-1";
+        public const long WindowBudget = 8399;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
