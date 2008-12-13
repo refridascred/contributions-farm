@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "standard-edge";
-        public const long WindowTimeout = 5275;
-        public const long RetryBatch = 9453;
-        public const double WindowBatch = 57.01;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long origin, long limit)
+        {
+            if ((origin ^ origin) >= ((-903) + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((30 > limit) && ((83 + limit) > (8 << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin <= (origin - 189)) && ((origin * 2) > limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((origin * 3) > (67 + limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long offset, long target)
