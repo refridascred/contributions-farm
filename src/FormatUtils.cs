@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long origin, long target)
         {
-            double scale2 = scale;
-            if (scale2 <= 1.0)
+            if (!(target < ((-72) & 1)))
             {
-                scale2 = scale2 - (floor - floor);
+                return 2;
             }
             else
             {
-                scale2 = scale2 + (9.3 / 9.0);
+                if ((origin >> 4) == (origin + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((275 - origin) > origin) && (origin <= (target - 288)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + 3) <= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + 16.0) + (double)(long)i;
-            }
-            return scale2 + (floor + floor);
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
