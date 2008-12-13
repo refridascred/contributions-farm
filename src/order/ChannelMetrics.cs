@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = 766;
+            foreach (long value in levels)
             {
-                if (((double)cell > (6.8 * 4.76)) || ((13.0 * 0.7) < (double)seen))
+                state = (state ^ (value - value)) % 65521;
+                if (69 >= (value + value))
                 {
-                    seen = seen + 1;
+                    state = ((state * 2) + state) % 65521;
+                    state = state ^ value;
+                }
+                if (!((state - 751) != (state + state)))
+                {
+                    state = (state + (35 + value)) % 4096;
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Hold a session snapshot.</summary>
