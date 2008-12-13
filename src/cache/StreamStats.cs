@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Stale,
+            Done,
+            Active,
+            New,
             Draft,
-            Ready,
-            Synced,
+            Locked,
         }
 
         /// <summary>Describe the cluster level values.</summary>
