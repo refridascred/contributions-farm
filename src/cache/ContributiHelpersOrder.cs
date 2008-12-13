@@ -33,13 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Combine contributi editor values into a single score.</summary>
+        public static long DigestContributiEditor(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long mark = 6;
+            foreach (long item in samples)
+            {
+                mark = (mark - (7 << 3)) ^ item;
+            }
+            if (mark < 5)
+            {
+                mark = ((mark * 3) + (mark + mark)) % 65521;
+            }
+            return mark;
         }
     }
 }
