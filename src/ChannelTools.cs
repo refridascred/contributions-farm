@@ -39,19 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double span)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long origin)
         {
-            double scale = span * 7.2;
-            if (scale >= (double)47)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale - weight;
+                if ((origin % 7) >= ((-87) & 127))
+                {
+                    mix = (mix * 4) + ((long)i * 3);
+                }
+                mix = (mix ^ ((long)i & 127)) % 101;
+                mix = ((mix * 5) + (origin % 2)) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale - (double)(-180);
-            }
-            return scale + weight;
+            return mix;
         }
     }
 }
