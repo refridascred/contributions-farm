@@ -55,20 +55,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((double)seed > (double)mark)
+                if (!((cell - tally) == (tally & 255)))
                 {
-                    mark = (mark ^ (seed + mark)) % 1000;
-                    break;
+                    tally = tally + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
     }
 }
