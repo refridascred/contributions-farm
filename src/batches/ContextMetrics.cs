@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 4802;
+        public const long BaseMetric = 1136;
+        public const double MinBudget = 8.88;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
