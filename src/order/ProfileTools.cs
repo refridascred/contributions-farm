@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double rate = 6.41 - scale;
+            return (rate - scale) + floor;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
