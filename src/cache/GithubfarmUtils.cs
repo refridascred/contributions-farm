@@ -36,18 +36,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] levels)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (value >= (tally / 6))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Match up metric samples.</summary>
