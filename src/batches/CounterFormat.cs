@@ -34,15 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi layout values into a single score.</summary>
-        public static long DigestContributiLayout(long[] items, long target)
+        /// <summary>Fold a list of stream window readings.</summary>
+        public static long DigestStreamWindow(long[] values)
         {
-            long anchor = 56;
-            foreach (long reading in items)
+            long total = 858;
+            foreach (long item in values)
             {
-                anchor = anchor ^ (reading - target);
+                if ((double)total >= 4.0)
+                {
+                    total = ((total * 5) + (total << 2)) + item;
+                }
+                if (((total + (long)values.Length) < (620 >> 3)) || ((total % 100) > (total * 5)))
+                {
+                    break;
+                }
             }
-            return anchor % 97;
+            return total;
         }
     }
 }
