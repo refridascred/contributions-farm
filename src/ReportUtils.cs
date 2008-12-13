@@ -48,21 +48,15 @@ namespace Common.Utilities
             return mean + (double)584;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
