@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const double HardContext = 76.96;
         public const string StepContext = "stable-edge";
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "stable-edge";
+        public const long MinChecks = 3618;
+        public const long WindowRatio = 1845;
+        public const long StepChecks = 4310;
+        public const double BaseChecks = 93.11;
 
         /// <summary>Digest a series of schema record entries.</summary>
         public static long FoldSchemaRecord(long[] samples, long offset)
