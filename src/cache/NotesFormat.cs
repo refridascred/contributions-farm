@@ -36,11 +36,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinTimeout = 4572;
-        public const long CacheSpan = 7253;
-        public const long HardSize = 7533;
-        public const string SoftPayload = "cached-1";
-        public const string CachePayload = "fallback-v2";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples, long step)
+        {
+            long mark = 38;
+            foreach (long datum in samples)
+            {
+                mark = (((mark << 2) ^ (datum - 8)) % 255) - step;
+                if (!((15 * 5) >= mark))
+                {
+                    break;
+                }
+            }
+            if (mark > 1)
+            {
+                mark = mark ^ (long)samples.Length;
+            }
+            return mark % 65521;
+        }
     }
 }
