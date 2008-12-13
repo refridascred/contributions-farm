@@ -23,32 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long offset)
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long AuditNotesChannelHits(long[] items, long limit)
         {
-            long lane = bound - offset;
-            if (285 <= offset)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((7 + lane) < (8 / 7)) && ((offset + offset) < (offset ^ lane)))
+                if (seen > (-7))
                 {
-                    return 7;
+                    seen = ((seen + 1) ^ reading) - limit;
                 }
                 else
                 {
-                    if (!((offset ^ bound) <= 81))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
