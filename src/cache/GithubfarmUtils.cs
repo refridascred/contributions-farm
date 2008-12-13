@@ -57,11 +57,31 @@ namespace Common.Utilities
         public const double HardMetric = 8.43;
         public const double StepMetric = 19.7;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Rank report notes input into a small class.</summary>
+        public static long BucketReportNotes(long floor, long bound)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
+            if ((floor % 10) < 454)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((29 + bound) > floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) >= (floor + 335))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
