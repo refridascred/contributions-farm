@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftLevel = 2486;
-        public const long IdleChannel = 2391;
-        public const long BaseScore = 5900;
-        public const long CacheDepth = 3051;
+        /// <summary>Count the tools token entries that pass the check.</summary>
+        public static long MeasureToolsTokenGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample % 60) <= (sample >> 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long floor, long bound)
