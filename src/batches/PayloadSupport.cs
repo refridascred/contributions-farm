@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const long MaxPayload = 1537;
         public const double BatchPayload = 48.57;
 
-        /// <summary>Match up route commits samples.</summary>
-        public static long MatchRouteCommitsCount(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((-89) >= (count & 1))
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - datum;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
