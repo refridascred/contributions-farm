@@ -15,19 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] readings, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
