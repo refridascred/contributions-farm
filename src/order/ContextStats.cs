@@ -28,18 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] values, long floor)
+        /// <summary>Find the first checks metrics entry that matches the target.</summary>
+        public static long LookupChecksMetricsIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches + floor) <= (9 >> 2))
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
                 {
-                    matches = (matches + 1) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
