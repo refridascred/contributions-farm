@@ -76,15 +76,21 @@ namespace Common.Utilities
         public const long BatchRoute = 5371;
         public const long WindowScore = 8598;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double ratio, double bias)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            double bias2 = ratio;
-            if (bias2 > ratio)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 + (double)718) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 - (bias2 * 19.0);
+            return matches;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
