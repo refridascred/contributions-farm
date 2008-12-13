@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            if (((origin * 4) != (98 + bound)) || (2 > (origin >> 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)0 < (double)bound)
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound > (5.63 - 0.04))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
