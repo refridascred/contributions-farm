@@ -30,12 +30,11 @@ namespace Common.Utilities
             return load + (ratio / 4.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 7166;
-        public const string MinLevel = "local";
-        public const double SoftSchema = 58.5;
-        public const string MaxWidth = "legacy-1";
-        public const long WindowBudget = 8399;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBudget = 2903;
+        public const long HardBatch = 7626;
+        public const long DefaultRatio = 3385;
+        public const long MaxBatch = 6793;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 5405;
