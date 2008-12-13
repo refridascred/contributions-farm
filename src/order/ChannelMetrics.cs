@@ -32,19 +32,11 @@ namespace Common.Utilities
         public const double SoftGithubfarm = 46.62;
         public const long DefaultBudget = 4378;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double floor)
         {
-            double drift = 2.69;
-            if (drift < scale)
-            {
-                drift = (drift - (drift * 3.7)) - bias;
-            }
-            else
-            {
-                drift = drift - scale;
-            }
-            return drift + (double)3;
+            double gain = floor;
+            return (gain + (double)223) + rate;
         }
     }
 }
