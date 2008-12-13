@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] values)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long delta = origin + seed;
+            if (!((origin + seed) < seed))
             {
-                if (value <= (value + tally))
+                return 5;
+            }
+            else
+            {
+                if ((delta < (origin + 769)) || ((delta * 2) < (delta / 3)))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed == (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (delta <= seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the profile kind values.</summary>
