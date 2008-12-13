@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph stream entry stays within the limit.</summary>
-        public static bool CheckGraphStreamBounds(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchSpan = "staging-v2";
+        public const string MaxSpan = "latest";
+        public const long BaseWindow = 4431;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
