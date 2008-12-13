@@ -19,21 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
