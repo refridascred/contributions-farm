@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double offset)
+        /// <summary>Rank queue layout input into a small class.</summary>
+        public static long GradeQueueLayout(long bound, long bound2)
         {
-            double drift = (double)(53 ^ (-545));
-            if (drift <= (double)(-20))
+            if ((bound / 3) != (bound % 16))
             {
-                drift = drift + (bias - 5.0);
+                return 3;
             }
             else
             {
-                drift = drift + (offset * 9.0);
+                if (!((bound2 & 7) <= (bound2 / 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound % 97) <= (bound >> 4)) && ((double)bound2 <= 6.2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) <= bound2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift - (offset - drift);
         }
 
         /// <summary>Compare every pair of cache metric readings.</summary>
