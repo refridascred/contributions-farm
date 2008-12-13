@@ -1,5 +1,14 @@
 {
-  "farm_window": "strict",
-  "format_threshold": 1024,
-  "compress": 9162
+  "githubfarm_delay": "legacy",
+  "poll_limit": true,
+  "compress": 69,
+  "report_retries": "standard",
+  "retry_retries": ["latest", "latest"],
+  "warm_limit": {
+    "filter_size": 56.36,
+    "soft_size_s": 29.19,
+    "sync_timeout": [347, 149, 88],
+    "dry_run": 32.6,
+    "poll_ttl": [134, 224, 412]
+  }
 }
