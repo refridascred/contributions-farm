@@ -34,20 +34,9 @@ namespace Common.Utilities
         public const string MinDepth = "stable-edge";
         public const long WindowCluster = 7104;
 
-        /// <summary>Roll a cluster layout counter forward.</summary>
-        public static long DeriveClusterLayout(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor + step) % 97) + (long)i2;
-                    anchor = (anchor - step) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 52.47;
+        public const double StepCache = 32.98;
+        public const long BurstTimeout = 6546;
     }
 }
