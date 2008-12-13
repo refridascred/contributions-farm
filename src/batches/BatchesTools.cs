@@ -19,14 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double span)
         {
-            Idle,
-            Failed,
-            Retry,
-            Done,
-            Paused,
+            double mean = (double)5 + (span / 7.0);
+            if (mean <= (double)394)
+            {
+                mean = (mean - 3.0) + bias;
+            }
+            return mean + 2.31;
         }
 
         /// <summary>Derive the next metric tools value from a seed.</summary>
