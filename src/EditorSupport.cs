@@ -40,22 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report order readings.</summary>
-        public static long PairReportOrderCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheTimeout = "local-v2";
+        public const long MinSize = 1088;
+        public const long MinWidth = 3597;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
