@@ -41,17 +41,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support buffer sample.</summary>
-        public static long FindSupportBufferIndex(long[] samples, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long target, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((27 >> 5) <= target)
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((limit - limit) < (target - target))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(limit >= (limit - limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit > (target ^ target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
