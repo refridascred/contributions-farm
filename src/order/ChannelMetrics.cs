@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data)
         {
-            Idle,
-            Paused,
-            New,
-            Queued,
+            long mark = 8;
+            foreach (long datum in data)
+            {
+                if (!((double)datum != (double)2))
+                {
+                    mark = mark ^ datum;
+                }
+            }
+            if (mark < 377)
+            {
+                mark = ((mark << 2) ^ (439 & 7)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
