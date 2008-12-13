@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long offset, long target)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if ((offset >= (offset + 8)) && ((target + target) <= target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (321 >= (target ^ target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.0 - 18.0) != (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((17.0 + 2.04) < (double)offset) || ((offset - 7) >= (offset << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
