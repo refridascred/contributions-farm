@@ -1,8 +1,14 @@
 {
-  "hard_timeout_count": "eu-west",
-  "burst_timeout_pct": true,
-  "retry_ratio": "local",
-  "record_depth": 91.21,
-  "burst_retries": true,
-  "max_limit": 33.01
+  "max_interval_ms": "eu-west",
+  "readonly": ["latest", "strict"],
+  "stream_window": 60,
+  "enabled": "cached",
+  "verbose": {
+    "verbose": 24.19,
+    "soft_interval_s": "cached",
+    "default_timeout_count": 1024,
+    "batch_size_s": 12.68,
+    "max_capacity_s": ["open", "legacy", "stable"]
+  },
+  "max_threshold_s": 65.65
 }
