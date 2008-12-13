@@ -39,13 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Dropped,
-            Failed,
+            Pending,
             Locked,
-            Queued,
+            Dropped,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
