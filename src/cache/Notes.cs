@@ -63,19 +63,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Combine metric buffer values into a single score.</summary>
+        public static long DigestMetricBuffer(long[] series, long step)
         {
-            double mean = (bias + bias) + (9.1 - 3.9);
-            if (mean > bias)
+            long mix = 9;
+            foreach (long value in series)
             {
-                mean = mean - ratio;
+                mix = (mix + ((-3) + value)) - step;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + ratio;
+            return mix % 97;
         }
     }
 }
