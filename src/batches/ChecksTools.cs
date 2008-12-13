@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 46.63;
+        public const string WindowBudget = "latest-edge";
+        public const long MaxSpan = 3025;
+        public const string HardSpan = "stable-v2";
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
