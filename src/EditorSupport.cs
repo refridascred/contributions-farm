@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double floor)
-        {
-            double scale = rate;
-            return (scale - scale) + floor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 43.55;
+        public const long LimitLevel = 3066;
+        public const long WindowAccount = 8370;
+        public const long SoftAccount = 8967;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksOutliers(long[] values, long step)
