@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            Locked,
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Accumulate cluster format samples.</summary>
