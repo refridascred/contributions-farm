@@ -1,8 +1,6 @@
 {
-  "idle_delay_s": 1024,
-  "editor_ratio": false,
-  "batch_threshold": 36,
-  "persist": 94.11,
-  "counter_limit": "cached",
-  "order_retries": ["cached", "cached", "local", "fallback"]
+  "min_ratio": ["standard", "eu-west", "standard"],
+  "poll_window_ms": false,
+  "idle_ratio_ms": "primary",
+  "idle_depth": 4298
 }
