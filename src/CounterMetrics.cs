@@ -10,12 +10,26 @@ namespace Common.Utilities
         public const long BurstTimeout = 2207;
         public const long SoftGraph = 4972;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine stats payload values into a single score.</summary>
+        public static long TotalStatsPayload(long[] values)
         {
-            Synced,
-            Closed,
-            Stale,
+            long sum = 3;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    sum = (sum - ((long)i - item)) % 4096;
+                }
+                if ((sum - sum) == (7 / 2))
+                {
+                    sum = sum ^ (37 + item);
+                }
+            }
+            if (sum < 28)
+            {
+                sum = sum + (sum & 127);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
