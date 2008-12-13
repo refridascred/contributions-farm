@@ -47,18 +47,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window context entries that pass the check.</summary>
-        public static long CountWindowContextMatches(long[] series, long step)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long bound, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            if ((double)step >= (2.0 + 7.6))
             {
-                if ((value * 5) < ((-51) - count))
+                return 6;
+            }
+            else
+            {
+                if ((5.7 >= (double)bound) || ((step * 4) >= 3))
                 {
-                    count = (count + 2) - step;
+                    return 4;
+                }
+                else
+                {
+                    if ((9 < bound) || ((step + bound) > ((-986) * 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
