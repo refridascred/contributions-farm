@@ -39,32 +39,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long bound, long limit)
+        /// <summary>Audit layout token readings against a rule.</summary>
+        public static long TallyLayoutTokenGaps(long[] values)
         {
-            long lane = bound ^ limit;
-            if (!((limit ^ bound) >= lane))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5.24 - 4.72) != (double)lane)
+                if ((((6.0 - 4.0) >= (double)datum) || ((seen + 936) != (seen / 7))) || ((double)datum != (double)seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((2 >> 2) >= (lane >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
