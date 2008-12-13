@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            double gain = (span + span) + span;
-            if (gain > (6.23 + bias))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                gain = gain + (double)8;
+                if ((reading * 2) <= reading)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain = gain + (0.54 - gain);
-            }
-            return gain + 15.0;
+            return seen;
         }
 
         /// <summary>Accumulate stats samples.</summary>
