@@ -23,13 +23,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double gain, double span)
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            double rate = gain / 9.0;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (span / 5.0)) + (double)(long)i;
+            }
+            return rate + (gain + span);
         }
     }
 }
