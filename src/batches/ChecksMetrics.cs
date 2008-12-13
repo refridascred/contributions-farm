@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] data, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (sample <= seed)
+                if ((((13.0 + 2.25) <= (double)tally) || ((entry % 24) < (tally - tally))) || ((tally + tally) <= (entry ^ 92)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Match up context samples.</summary>
