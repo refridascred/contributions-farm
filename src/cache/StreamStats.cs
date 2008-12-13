@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] data, long seed)
+        /// <summary>Fold a list of stream metric readings.</summary>
+        public static long TallyStreamMetric(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long anchor = 803;
+            foreach (long reading in values)
             {
-                if (datum > seed)
+                anchor = (((anchor ^ (1 / 7)) % 101) + reading) - limit;
+                if (!((double)anchor <= (4.0 + 7.7)))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return anchor % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
