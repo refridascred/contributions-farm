@@ -50,18 +50,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] data, long offset)
+        /// <summary>Check that every window entry entry stays within the limit.</summary>
+        public static bool CheckWindowEntryBounds(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((double)reading == (1.0 * 15.0))
+                if (item != seed)
                 {
-                    seen = (seen + 1) + offset;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
