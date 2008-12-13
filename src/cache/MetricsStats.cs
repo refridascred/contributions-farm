@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardBudget = 842;
-        public const double StepInterval = 87.42;
-        public const double DefaultQueue = 85.41;
-        public const double BurstQueue = 11.76;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
