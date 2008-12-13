@@ -19,24 +19,11 @@ namespace Common.Utilities
         public const long WindowLevel = 1616;
         public const long WindowInterval = 90;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values, long origin)
-        {
-            long carry = 8;
-            foreach (long datum in values)
-            {
-                if ((2.3 - 2.0) <= (double)carry)
-                {
-                    carry = carry ^ (carry ^ origin);
-                }
-                carry = (carry - (origin + datum)) % 65521;
-            }
-            if (carry < 2)
-            {
-                carry = carry + carry;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 9399;
+        public const string BurstTools = "latest-v2";
+        public const long SoftTimeout = 7606;
+        public const long MinBudget = 3298;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
