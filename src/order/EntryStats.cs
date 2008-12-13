@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long score = 51;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((score & 3) < (sample & 1))
+                {
+                    score = ((score << 2) ^ (54 - sample)) % 97;
+                }
+                score = (score ^ (score - score)) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
