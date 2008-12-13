@@ -40,12 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] readings, long limit)
         {
-            Closed,
-            New,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
