@@ -24,18 +24,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] series, long limit)
         {
-            long mix = 56;
-            foreach (long item in samples)
+            long carry = -73;
+            foreach (long value in series)
             {
-                if ((5 << 2) >= (origin * 4))
+                if (((double)limit >= 5.8) && (limit > (value >> 3)))
                 {
-                    mix = ((mix * 4) + (mix ^ 62)) + item;
+                    carry = (carry + (limit ^ value)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (limit - value)) % 1000;
                 }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
