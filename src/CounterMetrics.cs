@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 2207;
         public const long SoftGraph = 4972;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mix = ((mix * 4) + (465 + floor)) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
+                if (hits >= (hits + 0))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
