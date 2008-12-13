@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const long MaxPayload = 1537;
         public const double BatchPayload = 48.57;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
             long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-89) >= (count & 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) - datum;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
