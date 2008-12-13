@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a cluster layout reading by value.</summary>
-        public static long FindClusterLayoutIndex(long[] items, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long step, long step2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!(((-6) * 3) < (step2 - 283)))
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((step << 1) < (7 & 3)) && (1.6 < (double)step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 + step2) <= (step2 % 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the profile notes entries that pass the check.</summary>
