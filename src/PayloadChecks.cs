@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (matches < ((long)items.Length & 127))
-                {
-                    matches = ((matches + 1) ^ datum) + limit;
-                }
-            }
-            return matches;
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the profile kind values.</summary>
