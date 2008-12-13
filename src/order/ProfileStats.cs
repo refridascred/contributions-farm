@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowLevel = 4471;
-        public const long CacheDepth = 1739;
-        public const long BaseWidth = 1907;
-        public const long BurstWidth = 9353;
-        public const long WindowCommand = 3923;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double bias)
+        {
+            double drift = ratio;
+            if (drift >= (ratio * 5.64))
+            {
+                drift = drift + (ratio + ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift - (bias / 6.0);
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] items)
