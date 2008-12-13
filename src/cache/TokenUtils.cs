@@ -22,22 +22,32 @@ namespace Common.Utilities
         public const long BurstWidth = 4520;
         public const double BurstRatio = 18.78;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] series, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long offset2 = offset - seed;
+            if (((0 + offset) == (seed + 984)) && ((seed + seed) < offset))
             {
-                if ((((seed + (-148)) > entry) || ((double)entry != (3.3 - 17.0))) && (entry < (entry + tally)))
+                return 8;
+            }
+            else
+            {
+                if (seed >= offset2)
                 {
-                    tally = tally + 2;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((offset * 4) > (504 + offset)) || ((offset2 << 1) > (seed - seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
