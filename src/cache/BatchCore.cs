@@ -28,19 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] series, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (cell < limit)
+                if ((16 & 255) <= (sample + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
