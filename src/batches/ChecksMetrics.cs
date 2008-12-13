@@ -80,11 +80,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 4353;
-        public const string BurstRoute = "strict-v2";
-        public const string DefaultRoute = "latest-edge";
-        public const long HardWidth = 7674;
-        public const double LimitSpan = 25.91;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
