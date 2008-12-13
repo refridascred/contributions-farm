@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] data, long seed)
+        /// <summary>Match up buffer channel samples.</summary>
+        public static long CompareBufferChannelCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a metric format reading by value.</summary>
