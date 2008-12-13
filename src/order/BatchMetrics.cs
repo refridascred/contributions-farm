@@ -69,18 +69,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] items)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry - seen) >= (entry << 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
