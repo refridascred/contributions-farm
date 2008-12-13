@@ -15,12 +15,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 702;
-        public const double RetryCount = 92.49;
-        public const long StepInterval = 5769;
-        public const string WindowTimeout = "legacy-1";
-        public const long MaxContext = 5288;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsOutliers(long[] series)
