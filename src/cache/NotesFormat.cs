@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 95.43;
         public const long HardRatio = 2411;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] readings, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Grade a farm notes value against two limits.</summary>
