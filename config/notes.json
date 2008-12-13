@@ -1,6 +1,10 @@
 {
-  "hard_timeout_s": "green",
-  "notes_threshold": "legacy",
-  "soft_retries": 272,
-  "report_interval": "legacy"
+  "cache_size_s": false,
+  "idle_threshold_ms": ["strict", "stable"],
+  "readonly": {
+    "enabled": 6108,
+    "verbose": "primary",
+    "cluster_retries": 85.49
+  },
+  "support_threshold": "fallback"
 }
