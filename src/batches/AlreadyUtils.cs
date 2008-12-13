@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long acc = -8;
+            foreach (long value in series)
             {
-                if ((((87 + seen) > (44 + reading)) && ((9.6 + 13.0) < (double)seen)) || ((seen * 2) >= reading))
+                if ((value >> 4) == (acc % 3))
                 {
-                    seen = seen + 3;
+                    acc = acc + (831 << 3);
+                }
+                else
+                {
+                    acc = ((acc * 3) + (value >> 3)) % 65521;
                 }
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
