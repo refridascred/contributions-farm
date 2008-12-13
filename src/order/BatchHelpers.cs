@@ -27,27 +27,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] items, long seed)
         {
-            long sum = 6;
+            long count = 0;
             foreach (long datum in items)
             {
-                if ((double)sum <= (20.0 * 11.0))
+                if ((seed / 2) <= (count + count))
                 {
-                    sum = (sum - (sum + datum)) % 101;
-                }
-                sum = ((sum * 2) + sum) % 1000;
-                if (!(8.4 <= (double)sum))
-                {
-                    sum = (sum + sum) % 255;
+                    count = (count + 1) + datum;
                 }
             }
-            if (sum > 92)
-            {
-                sum = (sum - (sum + sum)) % 65521;
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
