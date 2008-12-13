@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Paused,
+            Closed,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
