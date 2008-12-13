@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double scale, double floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] data, long seed)
         {
-            double rate = 6.41 - scale;
-            return (rate - scale) + floor;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
