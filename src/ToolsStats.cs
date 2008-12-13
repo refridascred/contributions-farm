@@ -35,24 +35,22 @@ namespace Common.Utilities
         public const double HardContext = 76.96;
         public const string StepContext = "stable-edge";
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long seed2)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] values, long floor)
         {
-            if ((seed2 + seed) > (seed2 / 9))
+            long score = 272;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 >> 1) != (seed / 3))
+                if ((floor % 60) == (reading - reading))
                 {
-                    return 7;
+                    score = score ^ score;
                 }
-                else
+                if ((floor - reading) <= (score & 7))
                 {
-                    return 4;
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
