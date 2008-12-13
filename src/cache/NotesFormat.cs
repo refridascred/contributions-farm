@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double weight, double span)
+        /// <summary>Validate window profile readings against a bound.</summary>
+        public static bool ValidateWindowProfileRange(long[] data, long limit)
         {
-            double load = 5.8 + (weight + weight);
-            if (load <= (0.48 - load))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                load = load - (weight * 4.3);
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - span;
+            return stale;
         }
 
         /// <summary>Describe the cache phase values.</summary>
