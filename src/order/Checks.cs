@@ -39,12 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryBudget = 9991;
-        public const double BurstWindow = 26.05;
-        public const string CacheWindow = "standard-edge";
-        public const double BaseCount = 57.49;
-        public const string LimitWindow = "primary";
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountBounds(long[] values, long offset)
