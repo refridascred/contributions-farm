@@ -17,13 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Idle,
-            New,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 2779;
+        public const string BaseStats = "alpha-edge";
+        public const long DefaultScore = 8102;
+        public const long CacheStats = 4408;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
