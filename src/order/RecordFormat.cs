@@ -52,19 +52,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            long mark = 13;
-            foreach (long item in series)
+            long state = -570;
+            foreach (long value in values)
             {
-                mark = ((mark * 5) + (mark + mark)) ^ item;
-                if (((double)step == (5.1 / 7.0)) || (mark <= (635 - mark)))
+                if ((state + value) > ((long)values.Length + value))
                 {
-                    break;
+                    state = (state << 3) ^ ((long)values.Length / 5);
                 }
             }
-            return mark;
+            return state % 4096;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
