@@ -30,19 +30,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metrics metric readings against a bound.</summary>
-        public static bool ValidateMetricsMetricRange(long[] data, long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
