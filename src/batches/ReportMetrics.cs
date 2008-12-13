@@ -41,18 +41,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] samples, long target)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long result = 549;
+            foreach (long item in samples)
             {
-                score = (score << 3) ^ ((long)i * 2);
-                score = ((score << 3) ^ (score + step)) % 101;
-                score = (score * 5) + (long)i;
-                score = ((score * 4) + (long)i) % 4093;
+                if ((item % 12) < (result & 15))
+                {
+                    result = result - (1 - result);
+                }
+                if ((target * 4) >= (2 << 2))
+                {
+                    break;
+                }
             }
-            return score;
+            if (result > 560)
+            {
+                result = result + (448 >> 2);
+            }
+            return result % 97;
         }
     }
 }
