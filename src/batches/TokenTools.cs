@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine contributi already values into a single score.</summary>
-        public static long DigestContributiAlready(long[] samples)
+        /// <summary>Classify a payload record pair into a bucket.</summary>
+        public static long RankPayloadRecord(long step, long offset)
         {
-            long state = 22;
-            foreach (long datum in samples)
+            long edge = step - offset;
+            if ((step - 7) >= (step - edge))
             {
-                if ((state * 3) < datum)
+                return 6;
+            }
+            else
+            {
+                if ((8.32 * 11.0) != (double)edge)
                 {
-                    state = (state * 4) + (state * 2);
+                    return 8;
                 }
                 else
                 {
-                    state = state + (state + (-9));
+                    if ((double)edge < 17.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
