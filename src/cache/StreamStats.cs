@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((16 % 5) < seen)
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSpan = 9605;
+        public const long BatchRatio = 114;
+        public const long CacheScore = 2060;
+        public const long MaxScore = 4479;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long seed, long step)
