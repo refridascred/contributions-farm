@@ -47,19 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two payload batch measurements.</summary>
-        public static double ScalePayloadBatch(double scale, double floor)
+        /// <summary>Count the window context entries that pass the check.</summary>
+        public static long CountWindowContextMatches(long[] series, long step)
         {
-            double drift = floor;
-            if (drift >= drift)
+            long count = 0;
+            foreach (long value in series)
             {
-                drift = drift + (scale / 6.0);
+                if ((value * 5) < ((-51) - count))
+                {
+                    count = (count + 2) - step;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - (double)716;
+            return count;
         }
     }
 }
