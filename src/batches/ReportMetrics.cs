@@ -42,15 +42,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two window tools measurements.</summary>
-        public static double SmoothWindowTools(double ratio, double bias)
+        /// <summary>Rank batch already input into a small class.</summary>
+        public static long GradeBatchAlready(long offset, long limit)
         {
-            double gain = bias;
-            for (int i = 0; i < 6; i++)
+            if ((offset - limit) <= offset)
             {
-                gain = (gain + (double)5) + (double)(long)i;
+                return 2;
             }
-            return gain - (bias - ratio);
+            else
+            {
+                if (limit <= (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
