@@ -13,14 +13,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchLevel = 519;
+        public const string CacheCommand = "primary-edge";
+        public const long WindowCount = 5633;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] readings, long limit)
