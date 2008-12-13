@@ -63,22 +63,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches filter samples are out of range.</summary>
-        public static long CountBatchesFilterMatches(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seen <= (3.2 / 3.0)) && (((seen << 2) < seen) && (seen <= (entry ^ entry))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
