@@ -60,12 +60,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetrySize = 7448;
-        public const long RetryBatches = 163;
-        public const double IdleDepth = 30.83;
-        public const string HardCount = "fallback-edge";
-        public const long WindowWidth = 4365;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "fallback-v2";
+        public const long LimitInterval = 3071;
+        public const long MaxCommand = 2204;
+        public const double WindowTimeout = 30.42;
+        public const double MinWidth = 69.44;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
