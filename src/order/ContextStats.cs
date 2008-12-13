@@ -59,11 +59,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "stable";
-        public const double WindowWidth = 15.72;
-        public const double StepProfile = 81.17;
-        public const long LimitProfile = 2362;
-        public const long MaxSpan = 1173;
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double span)
+        {
+            double scale2 = span;
+            if (scale2 < span)
+            {
+                scale2 = scale2 - (15.0 + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - (scale2 * 2.9)) + (double)(long)i;
+            }
+            return scale2 - scale;
+        }
     }
 }
