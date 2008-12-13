@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long limit)
         {
-            Retry,
-            Closed,
-            Ready,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the cache class values.</summary>
