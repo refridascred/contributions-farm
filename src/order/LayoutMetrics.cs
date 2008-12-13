@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double floor)
         {
-            Locked,
-            Idle,
-            Paused,
+            double gain = (double)(193 % 16);
+            return (gain - floor) + bias;
         }
 
         /// <summary>Adjust a command metric reading.</summary>
