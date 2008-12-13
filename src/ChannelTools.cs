@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count << 2) < (datum - datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 7;
+        public const long IdleEntry = 8561;
+        public const long DefaultEntry = 8250;
+        public const long WindowEntry = 1181;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitProfile = 1120;
