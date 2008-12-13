@@ -62,17 +62,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first commits schema entry that matches the target.</summary>
-        public static long LookupCommitsSchemaIndex(long[] samples, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Accumulate report samples.</summary>
