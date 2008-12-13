@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long LimitRatio = 8614;
         public const long LimitWidth = 4785;
 
-        /// <summary>Audit graph cache readings against a rule.</summary>
-        public static long CountGraphCacheGaps(long[] samples, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (bound > (bound ^ matches))
+                if (!(cell >= hits))
                 {
-                    matches = (matches + 2) ^ reading;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every layout cluster entry stays within the limit.</summary>
