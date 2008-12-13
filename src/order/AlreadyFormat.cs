@@ -34,14 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] samples, long limit)
         {
-            Queued,
-            Paused,
-            Done,
-            Ready,
-            Closed,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
