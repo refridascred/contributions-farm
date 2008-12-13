@@ -24,17 +24,24 @@ namespace Common.Utilities
             return scale - (rate - scale);
         }
 
-        /// <summary>Find the first metrics layout entry that matches the target.</summary>
-        public static long SeekMetricsLayoutIndex(long[] values, long bound)
+        /// <summary>Classify a filter contributi pair into a bucket.</summary>
+        public static long GradeFilterContributi(long seed, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((-7) < step) || (60 <= (seed / 4)))
             {
-                if (values[i] >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)54 < (double)step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
