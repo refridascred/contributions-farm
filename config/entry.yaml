@@ -1,7 +1,8 @@
 # entry settings
-poll_threshold_count: latest
-audit:
-  - edge
-  - cached
-  - legacy
-flush_ttl_ms: cached
+max_limit_ms: local
+enabled: false
+default_capacity_ms:
+  retry_threshold_s: edge
+  soft_timeout_ms: 42
+  window_interval: stable
+token_window: false
