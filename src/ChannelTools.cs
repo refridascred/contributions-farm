@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] data, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double bias2 = bias;
+            if (bias2 > (double)92)
             {
-                if (((hits % 12) != (value % 12)) || (hits < (hits << 1)))
-                {
-                    hits = (hits + 3) - offset;
-                }
+                bias2 = bias2 - bias2;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 + (double)30;
+            }
+            return bias2 + offset;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
