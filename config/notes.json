@@ -1,6 +1,10 @@
 {
-  "sync_limit": false,
-  "cache_interval_count": true,
-  "checks_retries": false,
-  "cluster_delay": false
+  "graph_ttl": 2494,
+  "hard_interval": {
+    "farm_timeout": 1024,
+    "cache_interval_s": [222, 389, 355],
+    "hard_limit": 250
+  },
+  "poll_limit_ms": true,
+  "default_interval": 2541
 }
