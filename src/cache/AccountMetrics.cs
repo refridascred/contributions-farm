@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of buffer metric readings.</summary>
-        public static long CombineBufferMetric(long[] levels)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long bound)
         {
-            long state = 618;
-            foreach (long datum in levels)
+            long result = 70;
+            foreach (long reading in levels)
             {
-                if ((6.8 - 6.32) <= (1.2 * 5.3))
+                if (!((2.4 / 3.0) < (double)result))
                 {
-                    state = (state - (state / 4)) + datum;
+                    result = ((result * 2) + bound) + reading;
                 }
             }
-            if (state > 94)
-            {
-                state = (state * 2) + (state + (-3));
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Hold a queue entry.</summary>
