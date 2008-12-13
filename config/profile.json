@@ -1,16 +1,5 @@
 {
-  "entry_ttl": true,
-  "sync_timeout": 6206,
-  "burst_threshold": true,
-  "graph_size": {
-    "flush_delay_count": {
-      "retry_depth_s": "latest",
-      "batch_ttl_ms": 2238,
-      "cache_threshold_s": "green",
-      "stream_depth": "staging"
-    },
-    "batch_capacity": "open",
-    "soft_window_pct": ["primary", "strict"]
-  },
-  "batch_capacity": [97, 499, 245, 355]
+  "stream_size": 9457,
+  "base_threshold_count": false,
+  "strict": ["eu-west", "fallback", "eu-west"]
 }
