@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            Failed,
-            Draft,
-            New,
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + limit) % 97;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = (((mark * 4) + limit) % 97) + (long)i2;
+                    mark = (mark + (long)i) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout header.</summary>
