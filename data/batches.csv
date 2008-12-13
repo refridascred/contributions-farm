@@ -1,6 +1,10 @@
-id,rank,active
-1,60.8,local
-2,91.15,77.47
-3,908,796
-4,700,open
-5,legacy,322
+id,ratio,token,level
+1,strict,505,437
+2,47.25,stable,331
+3,601,52.97,30.85
+4,960,201,64.81
+5,37.42,172,eu-west
+6,stable,462,fallback
+7,970,0.22,75.43
+8,472,622,edge
+9,798,edge,402
