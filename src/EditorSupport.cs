@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 5170;
-        public const long BatchMetric = 1398;
-        public const long RetryMetric = 9236;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] series, long offset)
