@@ -52,10 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "open-edge";
-        public const long BurstSession = 4391;
-        public const double DefaultTimeout = 81.61;
-        public const long StepFactor = 5498;
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
