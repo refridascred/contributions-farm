@@ -59,16 +59,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Look up the position of a schema entry sample.</summary>
+        public static long LookupSchemaEntryIndex(long[] data, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every format commits entry stays within the limit.</summary>
