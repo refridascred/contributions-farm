@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Ready,
-            Draft,
-            Active,
-            New,
-            Closed,
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
