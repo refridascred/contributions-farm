@@ -31,12 +31,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
             public long Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
