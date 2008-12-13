@@ -49,12 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "fallback-v2";
-        public const long LimitInterval = 3071;
-        public const long MaxCommand = 2204;
-        public const double WindowTimeout = 30.42;
-        public const double MinWidth = 69.44;
+        /// <summary>Compare every pair of profile support readings.</summary>
+        public static long OverlapProfileSupportCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 6057;
