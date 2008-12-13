@@ -13,12 +13,33 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheSize = "strict-1";
-        public const double MaxBudget = 71.5;
-        public const long SoftTools = 922;
-        public const long IdleTools = 2204;
-        public const long DefaultTools = 1915;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long floor, long origin)
+        {
+            long edge = floor - origin;
+            if ((origin - origin) != ((-1) * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3 - edge) <= (531 / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)floor > (11.0 - 6.82)) || ((edge + floor) > origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] items)
