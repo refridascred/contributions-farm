@@ -28,13 +28,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long step)
         {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            if (((floor - floor) > (floor % 12)) || ((double)step != (4.63 - 5.7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor > 8) && ((floor / 3) > (floor & 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step > (step + 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
