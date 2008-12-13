@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Audit graph cache readings against a rule.</summary>
+        public static long CountGraphCacheGaps(long[] samples, long bound)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (bound > (bound ^ matches))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
