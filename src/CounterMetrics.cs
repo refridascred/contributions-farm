@@ -42,22 +42,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] series)
-        {
-            long state = 6;
-            foreach (long sample in series)
-            {
-                if ((double)sample >= (5.34 + 1.26))
-                {
-                    state = state + state;
-                }
-            }
-            if (state < 7)
-            {
-                state = state ^ (state >> 2);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 59.59;
+        public const string WindowBatch = "strict";
+        public const long HardBatch = 9767;
+        public const double DefaultWidth = 60.36;
     }
 }
