@@ -39,11 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double weight, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] values, long step)
         {
-            double ratio = 1.7;
-            return ((ratio + (double)99) + weight) + bias;
+            long acc = 839;
+            foreach (long sample in values)
+            {
+                acc = (((acc * 4) + (acc & 7)) % 1000) + sample;
+                acc = (acc * 5) + step;
+                acc = acc - step;
+            }
+            if (acc > (-5))
+            {
+                acc = (acc ^ (acc % 60)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the stream level values.</summary>
