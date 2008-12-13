@@ -29,11 +29,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 7518;
-        public const long LimitSize = 1121;
-        public const double DefaultRatio = 56.34;
-        public const double CacheInterval = 14.14;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSpan = 6238;
+        public const long BatchBudget = 8517;
+        public const long RetryCluster = 8297;
+        public const string MinDepth = "stable-edge";
+        public const long WindowCluster = 7104;
 
         /// <summary>Roll a cluster layout counter forward.</summary>
         public static long DeriveClusterLayout(long step)
