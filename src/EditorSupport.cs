@@ -38,10 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheTimeout = "local-v2";
-        public const long MinSize = 1088;
-        public const long MinWidth = 3597;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 76.94;
+        public const long BurstGithubfarm = 6498;
+        public const long BaseGithubfarm = 4471;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
