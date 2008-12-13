@@ -1,8 +1,14 @@
 # githubfarm settings
-token_timeout: edge
-schema_window: 41.76
-retry_timeout_s:
-  - local
-  - edge
-  - strict
-default_threshold_pct: 2
+graph_size: false
+cluster_delay: local
+persist: 3542
+tools_capacity: staging
+cache_delay_pct: 6557
+poll_delay_s:
+  base_timeout_pct:
+    session_limit: 30
+    burst_delay: primary
+    burst_depth_pct: true
+    default_ttl: 92
+  audit: latest
+  filter_size: 52.97
