@@ -36,18 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] data)
+        /// <summary>Compare every pair of cluster notes readings.</summary>
+        public static long OverlapClusterNotesCount(long[] items)
         {
-            long result = 128;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (result > (entry + result))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + entry) % 65521;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
