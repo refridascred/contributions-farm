@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] levels, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = rate;
+            return (scale - scale) + floor;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
