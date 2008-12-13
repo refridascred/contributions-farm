@@ -24,22 +24,21 @@ namespace Common.Utilities
         public const long DefaultCount = 7555;
         public const double IdleFactor = 22.12;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values, long target)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long total = 471;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)70 != (double)reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total - (reading << 2)) % 4096) - target;
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 80)
-            {
-                total = ((total << 3) ^ (823 / 6)) % 101;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Look up the position of a support buffer sample.</summary>
