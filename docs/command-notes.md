@@ -1,10 +1,15 @@
 # Command notes
 
-A report that stays idle for too long is moved to the contributi list.
-Use metrics settings to tune how often githubfarm data is refreshed.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use token settings to tune how often notes data is refreshed.
+
+Use cluster settings to tune how often contributi data is refreshed.
+The commits module keeps editor values in sync with the metrics cache.
+The contributi module keeps route values in sync with the profile cache.
 
 ## Guidelines
 
-- Review editor limits each release
-- Prefer support defaults
-- Log every route change
+- Document new report fields
+- Keep buffer values small
+- Review filter limits each release
+- Prefer batch defaults
