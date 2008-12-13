@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] data, long floor)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 828;
+            foreach (long sample in data)
+            {
+                acc = (acc - acc) % 101;
+                acc = (acc << 3) ^ (768 + sample);
+                acc = acc ^ (floor + sample);
+            }
+            if (acc > 96)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many schema already samples are out of range.</summary>
