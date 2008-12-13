@@ -1,15 +1,11 @@
 # Command notes
 
-Each commits is validated before it reaches the channel queue.
-When a support fails, the window handler retries a few times before giving up.
-
-Use command settings to tune how often filter data is refreshed.
-The batches helpers are pure functions, so they are safe to call from any thread.
-When a schema fails, the report handler retries a few times before giving up.
+When a counter fails, the graph handler retries a few times before giving up.
+Keep stream and notes names short and lowercase.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new checks fields
-- Validate channel input early
-- Keep token values small
+- Validate report input early
+- Review order limits each release
+- Prefer payload defaults
+- Document new batches fields
