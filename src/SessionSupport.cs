@@ -45,18 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long score = 622;
-            foreach (long sample in levels)
-            {
-                if (((double)sample >= (double)score) && ((score - score) <= score))
-                {
-                    score = (score * 4) + (sample ^ 19);
-                }
-            }
-            return score;
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
