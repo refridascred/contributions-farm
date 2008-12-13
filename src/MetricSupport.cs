@@ -30,9 +30,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 5261;
-        public const long StepReport = 1915;
-        public const long IdleRatio = 1419;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "staging-1";
+        public const long BatchBuffer = 2981;
+        public const long StepBuffer = 8005;
+        public const string IdleBuffer = "local";
+        public const long MaxSize = 9700;
     }
 }
