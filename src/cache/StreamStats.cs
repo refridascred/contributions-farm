@@ -40,12 +40,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] items, long limit)
+        /// <summary>Locate a metrics context reading by value.</summary>
+        public static long SeekMetricsContextIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > limit)
+                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
