@@ -45,20 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double scale, double bias)
-        {
-            double rate = scale;
-            if (rate > (bias * 9.18))
-            {
-                rate = rate - (double)(-9);
-            }
-            else
-            {
-                rate = rate - (6.26 / 3.0);
-            }
-            return rate - (double)(-13);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 44;
+        public const long WindowEntry = 4689;
+        public const long SoftEntry = 2446;
+        public const long MinDepth = 9417;
+        public const long BurstEntry = 2391;
 
         /// <summary>Combine already context values into a single score.</summary>
         public static long TallyAlreadyContext(long[] samples, long origin)
