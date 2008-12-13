@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Failed,
-            Ready,
-            Queued,
+            Draft,
             Stale,
+            Idle,
         }
     }
 }
