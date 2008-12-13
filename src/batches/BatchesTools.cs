@@ -19,21 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Derive the next metric tools value from a seed.</summary>
