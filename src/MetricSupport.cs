@@ -24,15 +24,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long bound)
         {
-            long acc = 1;
-            foreach (long entry in samples)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc * 3) + (entry & 255);
+                score = score - bound;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Look up the position of a editor notes sample.</summary>
