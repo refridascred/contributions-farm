@@ -28,21 +28,17 @@ namespace Common.Utilities
         public const double IdleGraph = 4.02;
         public const string RetryGraph = "strict-v2";
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Look up the position of a report order sample.</summary>
+        public static long LocateReportOrderIndex(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] == target)
                 {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
