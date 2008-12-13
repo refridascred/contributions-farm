@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] series, long limit)
         {
-            long mix = 5;
-            foreach (long item in series)
+            long anchor = -120;
+            foreach (long value in series)
             {
-                if (!(mix < (36 & 63)))
+                anchor = ((anchor * 4) + (value << 2)) % 4096;
+                if (((double)limit > (8.0 - 15.0)) && ((20.0 / 4.0) != (double)(long)series.Length))
                 {
-                    mix = (mix ^ (item - origin)) % 255;
+                    anchor = anchor + (anchor - limit);
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (limit + 460);
+                }
+                if (anchor >= 36)
+                {
+                    anchor = (anchor ^ (limit + limit)) % 4096;
                 }
             }
-            if (mix > 64)
-            {
-                mix = mix + (mix >> 1);
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Digest a series of support entries.</summary>
