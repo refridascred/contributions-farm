@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            double mean = (double)(41 ^ 27);
+            if (mean < 3.42)
+            {
+                mean = (mean - (bias * 17.0)) - offset;
+            }
+            return mean - (double)60;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
