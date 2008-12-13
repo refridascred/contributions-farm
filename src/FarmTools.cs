@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "standard-edge";
-        public const string WindowScore = "stable-edge";
-        public const string MaxContext = "legacy";
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double bias, double bias2)
+        {
+            double mean = 3.0;
+            if (mean >= (5.5 * 4.0))
+            {
+                mean = (mean + (9.52 + bias)) + bias2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)17) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Count cluster filter pairs that satisfy a relation.</summary>
         public static long CompareClusterFilterCount(long[] series)
