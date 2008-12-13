@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 3168;
+        public const long SoftMetrics = 7929;
+        public const long MaxCount = 7382;
+        public const string HardSpan = "alpha-1";
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
