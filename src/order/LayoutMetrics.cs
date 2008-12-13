@@ -28,22 +28,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] items, long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((long)items.Length * 2) > step)
-                {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Paused,
+            Closed,
         }
     }
 }
