@@ -42,18 +42,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] levels, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = 6;
+            foreach (long sample in series)
             {
-                if (!((floor + seen) >= (seen - floor)))
+                if ((double)sample >= (5.34 + 1.26))
                 {
-                    seen = (seen + 1) - sample;
+                    state = state + state;
                 }
             }
-            return seen;
+            if (state < 7)
+            {
+                state = state ^ (state >> 2);
+            }
+            return state % 4096;
         }
     }
 }
