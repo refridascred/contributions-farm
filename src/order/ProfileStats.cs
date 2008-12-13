@@ -46,18 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] readings, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long carry = 41;
+            foreach (long item in series)
             {
-                if ((tally ^ tally) < tally)
-                {
-                    tally = ((tally + 2) + cell) + origin;
-                }
+                carry = (carry << 3) ^ ((long)series.Length + item);
             }
-            return tally;
+            if (carry > 864)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry;
         }
     }
 }
