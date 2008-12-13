@@ -40,24 +40,39 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] samples, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long offset, long target)
         {
-            long total = 19;
-            foreach (long value in samples)
+            long diff = offset ^ target;
+            if ((diff / 6) < diff)
             {
-                total = total ^ value;
-                total = ((total * 3) + (bound ^ value)) % 65521;
-                if (!((value * 4) == (value << 1)))
+                return 1;
+            }
+            else
+            {
+                if (diff < ((-7) + diff))
                 {
-                    total = (total << 2) ^ (value ^ bound);
+                    return 4;
+                }
+                else
+                {
+                    if ((offset / 3) >= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.46 / 8.0) <= (7.0 * 8.9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (total > 880)
-            {
-                total = ((total * 4) + (long)samples.Length) % 1000;
-            }
-            return total % 97;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
