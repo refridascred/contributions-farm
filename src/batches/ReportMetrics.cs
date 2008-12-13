@@ -42,12 +42,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Blend two window tools measurements.</summary>
+        public static double SmoothWindowTools(double ratio, double bias)
         {
-            Paused,
-            Retry,
-            Idle,
+            double gain = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)5) + (double)(long)i;
+            }
+            return gain - (bias - ratio);
         }
     }
 }
