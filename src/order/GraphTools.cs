@@ -19,21 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cache metric readings.</summary>
-        public static long MatchCacheMetricCount(long[] items)
+        /// <summary>Classify a schema command pair into a bucket.</summary>
+        public static long GradeSchemaCommand(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = origin - target;
+            if ((gap >> 4) <= (target << 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((6.9 / 9.0) >= (double)origin)
                 {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
