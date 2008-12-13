@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Digest a series of graph channel entries.</summary>
+        public static long ScoreGraphChannel(long[] data, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            long mix = 8;
+            foreach (long sample in data)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((sample ^ 7) == (mix + sample))
+                {
+                    mix = (mix - (sample + 2)) - seed;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the report class values.</summary>
