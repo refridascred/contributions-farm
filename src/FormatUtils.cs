@@ -79,15 +79,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double gain, double offset)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] values, long limit)
         {
-            double scale = (double)(2 - 72);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = ((scale - gain) + (double)(long)i) + offset;
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)175;
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
