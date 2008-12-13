@@ -51,17 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm support entry that matches the target.</summary>
-        public static long FindFarmSupportIndex(long[] readings, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
