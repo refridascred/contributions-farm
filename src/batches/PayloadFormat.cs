@@ -29,11 +29,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "primary-edge";
-        public const string HardLevel = "legacy";
-        public const string IdleFactor = "alpha-v2";
-        public const long BurstScore = 8019;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 7518;
+        public const long LimitSize = 1121;
+        public const double DefaultRatio = 56.34;
+        public const double CacheInterval = 14.14;
 
         /// <summary>Roll a cluster layout counter forward.</summary>
         public static long DeriveClusterLayout(long step)
