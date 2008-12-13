@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of already payload readings.</summary>
-        public static long MatchAlreadyPayloadCount(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-229) + origin) > origin)
                 {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a account notes sample.</summary>
