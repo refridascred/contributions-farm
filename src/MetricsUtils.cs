@@ -36,23 +36,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches contributi samples.</summary>
-        public static long WeighBatchesContributi(long[] levels, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long floor, long floor2)
         {
-            long acc = 12;
-            foreach (long cell in levels)
+            if (0.19 <= (double)floor2)
             {
-                if ((acc & 255) > (2 << 3))
+                return 3;
+            }
+            else
+            {
+                if (!((floor & 127) < (1 + floor2)))
                 {
-                    acc = ((acc - (cell + 11)) % 97) + origin;
+                    return 0;
                 }
-                acc = acc - (cell + cell);
+                else
+                {
+                    if ((5.7 / 9.0) >= (double)floor2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)floor >= (2.55 * 20.0)) && ((floor2 & 127) >= floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            if (acc > 90)
-            {
-                acc = (acc - (acc * 2)) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
