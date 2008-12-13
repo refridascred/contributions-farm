@@ -32,12 +32,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long origin, long target)
         {
-            Done,
-            Synced,
-            Retry,
+            long gap = origin + target;
+            if (49 <= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4 + origin) == (origin / 4)) || ((double)target < (5.8 / 7.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin & 1) < (target / 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin % 24) > (gap >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
