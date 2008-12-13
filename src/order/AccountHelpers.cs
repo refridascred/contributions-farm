@@ -19,13 +19,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Done,
-            Retry,
-            Dropped,
-            Ready,
+            Idle,
+            Paused,
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
