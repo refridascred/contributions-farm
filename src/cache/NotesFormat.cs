@@ -24,22 +24,37 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a metric queue pair into a bucket.</summary>
-        public static long RankMetricQueue(long target, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long origin)
         {
-            if (((3 / 8) <= (814 - step)) || ((target % 12) > target))
+            long slot = bound - origin;
+            if ((double)bound < (9.0 - 1.0))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (!((step % 60) <= (target % 64)))
+                if (slot < bound)
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 0;
+                    if ((927 & 15) < (origin - 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)(-272) <= (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
