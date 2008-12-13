@@ -19,11 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryInterval = 2257;
-        public const string CacheEditor = "stable-edge";
-        public const string StepEditor = "latest-1";
-        public const long IdleLevel = 7100;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] samples, long origin)
+        {
+            long mix = 41;
+            foreach (long datum in samples)
+            {
+                if (((origin << 2) != ((-743) * 3)) || ((mix + origin) != (mix - datum)))
+                {
+                    mix = ((mix << 3) ^ origin) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (datum - 95)) % 1000;
+                }
+                if (!(12.0 >= (double)origin))
+                {
+                    mix = ((mix << 2) ^ origin) % 1000;
+                }
+            }
+            if (mix < 307)
+            {
+                mix = mix + 1;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
