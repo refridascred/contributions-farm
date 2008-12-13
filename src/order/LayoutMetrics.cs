@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch commits measurements.</summary>
-        public static double AdjustBatchCommits(double rate, double floor)
-        {
-            double scale = floor / 6.0;
-            if (scale >= scale)
-            {
-                scale = (scale + (scale * 8.3)) - rate;
-            }
-            return scale - floor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftCount = 46.31;
+        public const long BaseContributi = 1568;
+        public const long MaxContributi = 2167;
+        public const string DefaultWidth = "fallback";
+        public const string CacheDepth = "primary-edge";
 
         /// <summary>Adjust a command metric reading.</summary>
         public static double AdjustCommandMetric(double ratio, double floor)
