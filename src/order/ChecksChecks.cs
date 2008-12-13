@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record buffer samples are out of range.</summary>
-        public static long MeasureRecordBufferOutliers(long[] samples)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((15.0 / 8.0) > (double)cell)
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the command status values.</summary>
