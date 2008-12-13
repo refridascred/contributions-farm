@@ -41,26 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] samples, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long result = 549;
-            foreach (long item in samples)
+            long carry = 9;
+            foreach (long item in series)
             {
-                if ((item % 12) < (result & 15))
-                {
-                    result = result - (1 - result);
-                }
-                if ((target * 4) >= (2 << 2))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (item ^ carry)) % 1000;
             }
-            if (result > 560)
+            if (carry < 900)
             {
-                result = result + (448 >> 2);
+                carry = (carry ^ (882 - carry)) % 255;
             }
-            return result % 97;
+            return carry;
         }
     }
 }
