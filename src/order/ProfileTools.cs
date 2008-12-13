@@ -45,14 +45,28 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the filter notes series from a seed.</summary>
-        public static long RollFilterNotes(long origin)
+        /// <summary>Accumulate notes channel samples.</summary>
+        public static long ScoreNotesChannel(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long state = 284;
+            foreach (long value in values)
             {
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 65521;
+                if ((state + value) == (state * 5))
+                {
+                    state = ((state * 3) + (state & 255)) % 4096;
+                }
+                else
+                {
+                    state = (state * 5) + (state >> 4);
+                }
+                if ((value / 3) != (value * 2))
+                {
+                    break;
+                }
+            }
+            if (state > 3)
+            {
+                state = ((state << 3) ^ (69 >> 3)) % 4096;
             }
             return state;
         }
