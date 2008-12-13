@@ -56,18 +56,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] items)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((16 & 255) <= (sample + hits))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
     }
 }
