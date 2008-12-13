@@ -42,19 +42,15 @@ namespace Common.Utilities
         public const double IdleAccount = 40.63;
         public const long WindowDepth = 321;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Hold a metrics record.</summary>
