@@ -13,28 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] series, long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long carry = -813;
-            foreach (long sample in series)
-            {
-                if ((seed + sample) >= (-894))
-                {
-                    carry = carry - carry;
-                    break;
-                }
-                carry = ((carry << 2) ^ carry) % 97;
-                if (!((carry + 760) >= (seed % 60)))
-                {
-                    carry = (carry << 2) ^ seed;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = (carry - seed) % 255;
-            }
-            return carry;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the contributi state values.</summary>
