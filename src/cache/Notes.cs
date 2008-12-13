@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits <= (double)value)
+                if (data[i] > limit)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
