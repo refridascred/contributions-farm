@@ -26,19 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] values, long step)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double rate = bias;
+            if (rate < scale)
             {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - scale;
             }
-            return ok;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - (rate - bias);
         }
 
         /// <summary>Define session limits and defaults.</summary>
