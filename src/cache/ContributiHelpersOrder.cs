@@ -50,19 +50,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi editor values into a single score.</summary>
-        public static long DigestContributiEditor(long[] samples)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            long mark = 6;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - (7 << 3)) ^ item;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < 5)
-            {
-                mark = ((mark * 3) + (mark + mark)) % 65521;
-            }
-            return mark;
+            return hits;
         }
     }
 }
