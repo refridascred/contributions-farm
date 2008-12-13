@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Classify a checks metric pair into a bucket.</summary>
+        public static long ClassifyChecksMetric(long origin, long limit)
         {
-            long anchor = 606;
-            foreach (long sample in data)
+            if ((double)origin >= (2.9 * 0.27))
             {
-                anchor = (anchor ^ (96 / 2)) ^ sample;
+                return 8;
             }
-            if (anchor < (-208))
+            else
             {
-                anchor = ((anchor * 3) + (anchor << 2)) % 255;
+                if (((limit % 2) >= 0) && (limit <= (origin ^ 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit - limit) <= (origin / 6)) && ((origin - limit) <= (limit << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (10.0 < (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
