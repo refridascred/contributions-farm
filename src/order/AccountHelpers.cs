@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 9767;
+        public const double CacheSize = 0.41;
+        public const double StepFactor = 96.53;
+        public const long MinEntry = 5751;
 
         /// <summary>Count the commits order entries that pass the check.</summary>
         public static long AuditCommitsOrderMatches(long[] samples)
