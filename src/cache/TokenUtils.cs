@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format tools readings against a bound.</summary>
-        public static bool ValidateFormatToolsBounds(long[] levels, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = 1.7;
+            return ((ratio + (double)99) + weight) + bias;
         }
 
         /// <summary>Describe the stream level values.</summary>
