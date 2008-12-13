@@ -56,18 +56,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long bound)
         {
-            long sum = 851;
-            foreach (long reading in data)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (0.26 <= (double)sum)
-                {
-                    sum = (sum - (sum + sum)) - reading;
-                }
+                acc = acc ^ acc;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
