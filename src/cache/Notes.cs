@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long step)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the layout class values.</summary>
