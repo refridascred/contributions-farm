@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double scale, double floor)
         {
-            double weight = 9.13;
-            if (weight <= (offset / 9.0))
+            double scale2 = scale;
+            if (scale2 <= 1.0)
             {
-                weight = (weight - (double)521) - bias;
+                scale2 = scale2 - (floor - floor);
             }
-            return weight + offset;
+            else
+            {
+                scale2 = scale2 + (9.3 / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + 16.0) + (double)(long)i;
+            }
+            return scale2 + (floor + floor);
         }
 
         /// <summary>Describe the commits status values.</summary>
