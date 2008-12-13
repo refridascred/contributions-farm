@@ -18,26 +18,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Combine stream metrics values into a single score.</summary>
+        public static long FoldStreamMetrics(long[] levels)
         {
-            long anchor = -966;
-            foreach (long cell in levels)
+            long mark = 703;
+            foreach (long datum in levels)
             {
-                if (!((cell + anchor) < cell))
+                if (datum < (datum & 1))
                 {
-                    anchor = ((anchor << 3) ^ (cell % 24)) % 101;
+                    mark = ((mark * 2) + (datum * 4)) % 97;
+                    mark = (mark ^ (datum + 5)) % 97;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + (9 / 8);
+                    mark = ((mark << 3) ^ (mark ^ datum)) % 97;
                 }
-                if (((22 + cell) <= anchor) || (9.93 <= (double)anchor))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + mark) % 4096;
             }
-            return anchor % 65521;
+            if (mark < 634)
+            {
+                mark = (mark * 5) + mark;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the report mode values.</summary>
