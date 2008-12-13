@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double span)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings)
         {
-            double bias = (double)4 + (double)429;
-            if (bias > span)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                bias = bias - bias;
+                if ((((87 + seen) > (44 + reading)) && ((9.6 + 13.0) < (double)seen)) || ((seen * 2) >= reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - 17.0) + (double)(long)i;
-            }
-            return bias - gain;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
