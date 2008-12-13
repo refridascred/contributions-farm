@@ -30,13 +30,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Look up the position of a filter support sample.</summary>
+        public static long FindFilterSupportIndex(long[] values, long step)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
