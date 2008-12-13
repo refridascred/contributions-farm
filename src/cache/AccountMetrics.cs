@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Fold a list of buffer metric readings.</summary>
+        public static long CombineBufferMetric(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long state = 618;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((6.8 - 6.32) <= (1.2 * 5.3))
+                {
+                    state = (state - (state / 4)) + datum;
+                }
             }
-            return sum;
+            if (state > 94)
+            {
+                state = (state * 2) + (state + (-3));
+            }
+            return state;
         }
 
         /// <summary>Hold a queue entry.</summary>
