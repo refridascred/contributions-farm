@@ -1,18 +1,5 @@
 {
-  "retry_window_pct": {
-    "record_threshold": ["open", "blue", "green", "eu-west"],
-    "enabled": "eu-west",
-    "default_capacity_count": 19,
-    "flush_size_ms": "eu-west"
-  },
-  "notes_ttl": {
-    "graph_delay": 53.07,
-    "dry_run": 500,
-    "max_capacity_count": "local",
-    "sync_limit": "green"
-  },
-  "hard_retries_ms": 25.25,
-  "token_interval": 100,
-  "flush_timeout": "staging",
-  "warm_limit_ms": 60
+  "burst_limit_pct": "staging",
+  "poll_ttl_pct": 2247,
+  "retry_interval_ms": 25.62
 }
