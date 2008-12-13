@@ -20,19 +20,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double bias, double bias2)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double mean = 3.0;
-            if (mean >= (5.5 * 4.0))
-            {
-                mean = (mean + (9.52 + bias)) + bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)17) + (double)(long)i;
-            }
-            return mean - mean;
+            Queued,
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
