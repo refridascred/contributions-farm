@@ -60,18 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] values, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (count * 3))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
