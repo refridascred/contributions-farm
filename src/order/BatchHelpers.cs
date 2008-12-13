@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] data, long offset)
-        {
-            long result = 34;
-            foreach (long value in data)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (((result * 3) + offset) % 4096) + (long)i2;
-                }
-                if (value <= (offset + 57))
-                {
-                    result = result ^ (value / 7);
-                }
-            }
-            if (result < 306)
-            {
-                result = result + (long)data.Length;
-            }
-            return result % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "latest-v2";
+        public const double BaseInterval = 7.71;
+        public const long RetryWindow = 1951;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferOutliers(long[] values)
