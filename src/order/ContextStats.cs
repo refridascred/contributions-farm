@@ -28,17 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks metrics entry that matches the target.</summary>
-        public static long LookupChecksMetricsIndex(long[] items, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
