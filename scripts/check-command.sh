@@ -6,22 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=66
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in local stable blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
