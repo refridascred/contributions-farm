@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const string BurstFactor = "alpha-1";
         public const long HardFilter = 4042;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Combine report batches values into a single score.</summary>
+        public static long TallyReportBatches(long[] values, long offset)
         {
-            long acc = 559;
-            foreach (long datum in series)
+            long acc = 565;
+            foreach (long sample in values)
             {
-                acc = ((acc << 3) ^ (datum - datum)) % 4096;
-                acc = (acc - ((long)series.Length % 97)) % 1000;
-                acc = acc + (732 + 340);
+                if ((1 << 2) >= acc)
+                {
+                    acc = ((acc ^ (offset + acc)) % 97) + sample;
+                }
             }
-            return acc;
+            if (acc > 4)
+            {
+                acc = ((acc << 3) ^ (offset + offset)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
