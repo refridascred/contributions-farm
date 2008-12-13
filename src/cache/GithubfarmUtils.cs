@@ -16,18 +16,11 @@ namespace Common.Utilities
             return weight + (ratio / 4.0);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell >= 1.0)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
