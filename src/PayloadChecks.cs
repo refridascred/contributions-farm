@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] values)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (value <= (value + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile kind values.</summary>
