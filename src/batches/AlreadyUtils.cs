@@ -14,19 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
-        public static bool VerifyBufferNotesBounds(long[] samples, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != step)
+                if (series[i] > seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
