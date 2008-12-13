@@ -1,6 +1,5 @@
 {
-  "idle_ratio": true,
-  "idle_interval_pct": 84,
-  "flush_capacity_pct": "latest",
-  "dry_run": 4109
+  "max_retries": ["open", "blue"],
+  "flush_ttl": 70,
+  "strict": [337, 149]
 }
