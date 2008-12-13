@@ -26,15 +26,22 @@ namespace Common.Utilities
             return (gain - floor) + bias;
         }
 
-        /// <summary>Adjust a command metric reading.</summary>
-        public static double AdjustCommandMetric(double ratio, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] samples, long limit)
         {
-            double bias = 9.36;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                bias = (bias + floor) + (double)(long)i;
+                if ((944 - (-87)) == (count + limit))
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias + ratio;
+            return count;
         }
     }
 }
