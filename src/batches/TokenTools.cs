@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry + ((long)i ^ (long)i)) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the batch level values.</summary>
