@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((416 - 733) <= seen)
+                if (matches >= (89 ^ datum))
                 {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
