@@ -60,12 +60,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Closed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstInterval = "staging-1";
+        public const long HardAccount = 3628;
+        public const string MinAccount = "local-v2";
     }
 }
