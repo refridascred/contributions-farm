@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const long MaxInterval = 3178;
         public const double MaxWidth = 40.96;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSpan = 6238;
-        public const long BatchBudget = 8517;
-        public const long RetryCluster = 8297;
-        public const string MinDepth = "stable-edge";
-        public const long WindowCluster = 7104;
+        /// <summary>Measure how many contributi graph samples are out of range.</summary>
+        public static long TallyContributiGraphMatches(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((20.0 - 11.0) < (double)matches)
+                {
+                    matches = ((matches + 1) - sample) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] values)
