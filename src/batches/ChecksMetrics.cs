@@ -35,15 +35,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] data, long limit)
         {
-            long score = 406;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + (score * 4)) - entry;
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
