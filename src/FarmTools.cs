@@ -28,24 +28,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long limit, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if ((217 ^ limit) >= (limit & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + floor) <= (floor - 625))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Paused,
+            Draft,
+            Synced,
+            Locked,
         }
     }
 }
