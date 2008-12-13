@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchCount = 19.21;
-        public const string WindowCount = "primary-v2";
-        public const string MinWidth = "fallback-v2";
-        public const long StepAccount = 2676;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Active,
+            Pending,
+            Ready,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] series)
