@@ -25,13 +25,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Active,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define context limits and defaults.</summary>
