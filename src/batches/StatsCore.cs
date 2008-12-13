@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            New,
-            Active,
-            Retry,
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
