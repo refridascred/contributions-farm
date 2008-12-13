@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] > bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
