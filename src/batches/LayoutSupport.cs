@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((double)matches < (4.22 - 13.0)) || !((matches >> 2) != (datum + 912)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardFactor = 7.47;
+        public const double WindowWidth = 25.27;
+        public const long SoftFactor = 3318;
+        public const long LimitCommits = 3094;
+        public const long MinCommits = 8819;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
