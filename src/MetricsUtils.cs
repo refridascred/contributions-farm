@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const double MaxMetrics = 9.19;
         public const string LimitRatio = "legacy-edge";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "open-edge";
-        public const string BaseCount = "latest-1";
-        public const long WindowDepth = 3870;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item % 8) < (matches - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] values)
