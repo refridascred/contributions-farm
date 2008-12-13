@@ -42,11 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowDepth = 1320;
-        public const long IdleCount = 9300;
-        public const long BaseCount = 9572;
-        public const long WindowLayout = 645;
-        public const double BatchLayout = 72.19;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Stale,
+            Retry,
+            Active,
+            Closed,
+        }
     }
 }
