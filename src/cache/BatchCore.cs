@@ -27,22 +27,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] readings)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)hits == (double)706)
+                if ((((-63) / 7) >= total) || ((total + (long)i) >= floor))
                 {
-                    hits = (hits + 2) + cell;
+                    total = (total - floor) % 65521;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total ^ (total & 255)) % 65521;
                 }
+                total = (total + (732 % 60)) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Blend two payload batch measurements.</summary>
