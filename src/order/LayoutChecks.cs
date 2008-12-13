@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 56;
+        public const double SoftScore = 41.27;
+        public const string SoftCommits = "strict-1";
+        public const double BaseCommits = 61.11;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double DefaultFactor = 45.02;
