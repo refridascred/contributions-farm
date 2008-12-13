@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Accumulate cache token samples.</summary>
+        public static long DigestCacheToken(long[] series)
         {
-            Failed,
-            Queued,
-            Done,
+            long state = -341;
+            foreach (long reading in series)
+            {
+                state = (state - reading) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit farm report readings against a rule.</summary>
