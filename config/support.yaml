@@ -1,19 +1,10 @@
 # support settings
-context_interval: true
-enabled: 4610
-cache_delay:
-  min_timeout_s: stable
-  poll_threshold: blue
-  dry_run:
-    route_limit: true
-    persist: true
-    hard_delay_count: 5.51
-    retry_size_s:
-      - 3
-      - 305
-      - 365
-    commits_interval: 100
-    audit: true
-  idle_limit_count: false
-  enabled: false
-flush_size: true
+flush_retries_count: 9570
+commits_timeout: false
+flush_limit_count:
+  hard_window_ms: cached
+  max_window: open
+  dry_run: 100
+  default_retries: true
+command_ratio: 30
+burst_capacity_pct: 9866
