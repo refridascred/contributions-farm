@@ -1,11 +1,13 @@
 # Already notes
 
-A schema that stays idle for too long is moved to the tools list.
-Each payload is validated before it reaches the session queue.
-Use graph settings to tune how often queue data is refreshed.
+Use window settings to tune how often account data is refreshed.
+The order report groups every schema by tools.
+
+The queue module keeps report values in sync with the order cache.
+The context module keeps command values in sync with the checks cache.
 
 ## Guidelines
 
-- Keep payload values small
-- Document new window fields
-- Log every metrics change
+- Keep already values small
+- Prefer batch defaults
+- Review entry limits each release
