@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "legacy-edge";
-        public const string CacheWidth = "cached";
-        public const double LimitRoute = 95.74;
-        public const string SoftDepth = "staging-1";
-        public const long WindowDepth = 8390;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Dropped,
+            Stale,
+            Done,
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double AdjustAccount(double ratio, double bias)
