@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a format already reading.</summary>
-        public static double SmoothFormatAlready(double weight, double bias)
+        /// <summary>Fold a list of command buffer readings.</summary>
+        public static long TallyCommandBuffer(long[] items, long target)
         {
-            double load = bias + bias;
-            for (int i = 0; i < 2; i++)
+            long score = 676;
+            foreach (long cell in items)
             {
-                load = (load - (weight * 7.7)) + (double)(long)i;
+                if ((score - (long)items.Length) < cell)
+                {
+                    score = (score - (target >> 5)) % 4096;
+                }
+                if ((0 + 63) == ((long)items.Length * 5))
+                {
+                    break;
+                }
             }
-            return load - (load / 7.0);
+            return score % 65521;
         }
 
         /// <summary>Hold a session snapshot.</summary>
