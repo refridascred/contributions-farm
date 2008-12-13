@@ -42,18 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values)
+        /// <summary>Look up the position of a account report sample.</summary>
+        public static long LocateAccountReportIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches > datum)
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
