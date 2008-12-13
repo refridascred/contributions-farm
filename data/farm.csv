@@ -1,8 +1,6 @@
-id,ratio,state,score
-1,fallback,624,latest
-2,863,967,213
-3,edge,873,strict
-4,blue,standard,94.67
-5,open,214,staging
-6,93.31,94.42,785
-7,422,primary,42.09
+id,active,owner
+1,local,stable
+2,58.48,187
+3,225,latest
+4,28.67,54.16
+5,961,stable
