@@ -22,21 +22,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] readings, long limit)
         {
-            long carry = 25;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry + (entry / 7)) % 97) - offset;
-                carry = (carry + (entry >> 2)) % 255;
-                carry = ((carry * 2) + (entry - entry)) % 4096;
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 8)
-            {
-                carry = (carry * 4) + ((long)items.Length + (-53));
-            }
-            return carry;
+            return -1;
         }
     }
 }
