@@ -37,12 +37,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 13;
+        public const double LimitAlready = 1.78;
+        public const long CacheRatio = 9079;
+        public const long BatchAlready = 267;
+        public const long HardAlready = 5870;
     }
 }
