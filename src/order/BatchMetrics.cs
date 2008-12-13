@@ -55,20 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Count the editor tools entries that pass the check.</summary>
+        public static long MeasureEditorToolsHits(long[] items, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (!(((double)bound <= (double)5) && ((total + 5) >= (bound + total))))
+                if (!((390 << 3) < offset) || !(((-351) % 10) == (entry + entry)))
                 {
-                    total = ((total * 2) + ((long)i & 7)) % 4096;
-                    total = ((total << 2) ^ (bound >> 1)) % 4096;
+                    matches = matches + 3;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
