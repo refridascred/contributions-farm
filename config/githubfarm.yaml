@@ -1,6 +1,4 @@
 # githubfarm settings
-filter_retries: 3231
-batch_delay_pct: staging
-compress: 8152
-account_size: 42.86
-dry_run: blue
+idle_retries_ms: 5.53
+strict: green
+cache_delay: 86
