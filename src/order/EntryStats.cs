@@ -30,13 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 6743;
+        public const string WindowDepth = "alpha-v2";
+        public const long WindowChannel = 2038;
+        public const long IdleChannel = 3062;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] series, long origin)
