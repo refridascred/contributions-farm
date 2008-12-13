@@ -21,22 +21,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] samples)
-        {
-            long sum = 172;
-            foreach (long reading in samples)
-            {
-                if (((double)reading >= (double)63) || (reading <= sum))
-                {
-                    sum = (sum - reading) % 1000;
-                }
-            }
-            if (sum > 28)
-            {
-                sum = (sum * 5) + (sum % 3);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 4519;
+        public const long BatchBudget = 2083;
+        public const long StepWidth = 4427;
     }
 }
