@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] items, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long mark = 952;
+            foreach (long cell in levels)
             {
-                if (reading > origin)
+                if ((mark << 3) <= (mark % 97))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark * 2) + (mark >> 3)) + cell;
                 }
             }
-            return ready;
+            if (mark > 3)
+            {
+                mark = ((mark << 2) ^ (4 / 9)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
