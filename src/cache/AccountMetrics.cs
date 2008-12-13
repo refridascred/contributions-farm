@@ -29,12 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double ratio, double span)
         {
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
+            double gain = (double)(1 >> 4);
+            if (gain > (span * 2.8))
+            {
+                gain = gain - (ratio * 4.2);
+            }
+            else
+            {
+                gain = gain - (gain / 6.0);
+            }
+            return gain - (double)880;
         }
 
         /// <summary>Hold a tools header.</summary>
