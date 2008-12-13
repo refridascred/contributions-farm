@@ -60,22 +60,17 @@ namespace Common.Utilities
             return drift + (double)612;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] levels, long bound)
+        /// <summary>Accumulate order metrics samples.</summary>
+        public static long TotalOrderMetrics(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = 66;
+            foreach (long datum in samples)
             {
-                if (bound > (hits >> 2))
-                {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc ^ datum) + seed;
+                acc = ((acc << 3) ^ (datum + datum)) % 65521;
+                acc = acc - datum;
             }
-            return hits;
+            return acc;
         }
     }
 }
