@@ -37,22 +37,11 @@ namespace Common.Utilities
             return scale + (weight * 7.8);
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long score = 942;
-            foreach (long sample in readings)
-            {
-                if ((sample - score) != (sample >> 5))
-                {
-                    score = (score + (sample + sample)) % 65521;
-                }
-            }
-            if (score > 907)
-            {
-                score = (score - (score / 8)) % 255;
-            }
-            return score % 97;
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank support stream input into a small class.</summary>
