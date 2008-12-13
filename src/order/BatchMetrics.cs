@@ -43,12 +43,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long offset, long offset2)
         {
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            long edge = offset ^ offset2;
+            if ((edge * 4) != (offset2 << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - 92) > (offset2 - edge))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((edge % 12) < (edge >> 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((17.0 * 9.0) > (double)edge)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor tools entries that pass the check.</summary>
