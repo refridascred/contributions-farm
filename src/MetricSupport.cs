@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long origin, long seed)
-        {
-            if ((origin - (-124)) >= (origin + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (9.16 - 2.1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 7) != (0 ^ 414))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetrySize = 58.18;
+        public const string MaxFilter = "alpha-1";
+        public const long BaseFilter = 3369;
+        public const string BurstFactor = "alpha-1";
+        public const long HardFilter = 4042;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long DigestAlready(long[] series)
