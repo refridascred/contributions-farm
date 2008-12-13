@@ -16,12 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Queued,
-            Closed,
-            Locked,
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
