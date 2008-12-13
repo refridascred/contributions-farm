@@ -12,13 +12,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine stream cache values into a single score.</summary>
+        public static long TallyStreamCache(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long acc = 2;
+            foreach (long item in levels)
+            {
+                acc = ((acc * 3) + (acc + item)) % 65521;
+                if (!((double)(long)levels.Length < 10.0))
+                {
+                    acc = (acc * 2) + (item - acc);
+                }
+            }
+            if (acc > 876)
+            {
+                acc = acc - ((long)levels.Length * 2);
+            }
+            return acc;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
