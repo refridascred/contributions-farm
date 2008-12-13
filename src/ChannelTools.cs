@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] values)
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count << 2) < (datum - datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
