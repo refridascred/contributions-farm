@@ -66,14 +66,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 95.89;
+        public const long CacheProfile = 9370;
+        public const long HardScore = 7486;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long TallyFormatOutliers(long[] samples, long target)
