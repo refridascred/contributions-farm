@@ -1,11 +1,14 @@
 # Command notes
 
-The context module keeps account values in sync with the window cache.
-The command module keeps route values in sync with the command cache.
+Each editor is validated before it reaches the githubfarm queue.
+A command that stays idle for too long is moved to the contributi list.
+
+The checks report groups every stats by farm.
+When a metric fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new checks fields
-- Review token limits each release
-- Log every entry change
+- Document new token fields
+- Review githubfarm limits each release
+- Log every batch change
+- Prefer session defaults
