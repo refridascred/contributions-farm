@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long carry = 27;
-            foreach (long cell in values)
-            {
-                carry = ((carry * 2) + (offset + cell)) % 4096;
-                carry = carry + cell;
-                carry = (carry + offset) % 1000;
-            }
-            if (carry < 19)
-            {
-                carry = carry + (carry * 3);
-            }
-            return carry % 97;
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
