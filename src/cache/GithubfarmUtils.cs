@@ -22,19 +22,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit cache record readings against a rule.</summary>
-        public static long TallyCacheRecordOutliers(long[] samples, long floor)
+        /// <summary>Count the batches payload entries that pass the check.</summary>
+        public static long CountBatchesPayloadGaps(long[] readings, long step)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long reading in readings)
             {
-                if ((tally % 100) == (floor >> 1))
+                if ((reading + reading) < step)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
