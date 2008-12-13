@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
             Dropped,
-            Stale,
-            Done,
+            Pending,
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count the cache window entries that pass the check.</summary>
