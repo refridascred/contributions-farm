@@ -22,32 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a counter already value against two limits.</summary>
-        public static long GradeCounterAlready(long origin, long bound)
-        {
-            if (540 < (origin % 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 3) <= origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-22) / 3) > (bound % 64))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstWidth = 46.73;
+        public const long IdleGithubfarm = 8484;
+        public const long MinScore = 7901;
+        public const long DefaultScore = 741;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
