@@ -26,15 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Idle,
-            Pending,
-            Stale,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxDepth = 8722;
+        public const long BaseFarm = 1801;
+        public const double RetryFarm = 97.94;
+        public const string DefaultFarm = "staging-v2";
+        public const long LimitTimeout = 878;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
