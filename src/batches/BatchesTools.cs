@@ -23,38 +23,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank order commits input into a small class.</summary>
-        public static long GradeOrderCommits(long seed, long seed2)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            if ((0.89 - 7.0) <= (double)seed2)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 5) < (seed + seed2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed2 ^ seed2) > seed))
+                    if ((items[i] ^ items[j]) == 20)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed2 - seed) >= (seed2 & 255))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
