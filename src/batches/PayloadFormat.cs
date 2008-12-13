@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Validate cluster batch readings against a bound.</summary>
+        public static bool ValidateClusterBatchRange(long[] values, long bound)
         {
-            double scale = (double)(672 - (-478));
-            if (scale >= scale)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                scale = (scale - scale) + offset;
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - ratio;
+            return stale;
         }
 
         /// <summary>Accumulate cache token samples.</summary>
