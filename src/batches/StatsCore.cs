@@ -49,19 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats already entry stays within the limit.</summary>
-        public static bool ValidateStatsAlreadyRange(long[] levels, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
