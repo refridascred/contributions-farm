@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 5544;
+        public const long DefaultEditor = 9570;
+        public const long RetryWidth = 503;
+        public const long MinEditor = 7586;
+        public const double HardFactor = 75.91;
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] levels)
