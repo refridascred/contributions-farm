@@ -39,15 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
