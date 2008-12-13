@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSpan = 9605;
-        public const long BatchRatio = 114;
-        public const long CacheScore = 2060;
-        public const long MaxScore = 4479;
+        /// <summary>Locate a entry queue reading by value.</summary>
+        public static long LookupEntryQueueIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueLimits(long[] levels, long offset)
