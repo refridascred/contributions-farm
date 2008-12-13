@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels, long seed)
         {
-            Locked,
-            Stale,
-            Paused,
-            Failed,
-            Idle,
+            long state = 89;
+            foreach (long value in levels)
+            {
+                state = state - state;
+                if (seed <= (state + (-70)))
+                {
+                    state = ((state << 3) ^ (value >> 2)) % 97;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (456 * 3)) % 65521;
+                }
+                if (((seed + seed) == (value << 2)) && ((double)seed <= (7.6 + 4.7)))
+                {
+                    break;
+                }
+            }
+            if (state < 673)
+            {
+                state = (state + state) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Digest a series of format command entries.</summary>
