@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long origin)
         {
-            Retry,
-            Idle,
-            Pending,
-            Stale,
+            long diff = seed ^ origin;
+            if ((4.0 - 5.5) == (double)diff)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((19.0 / 9.0) != (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi report entries.</summary>
