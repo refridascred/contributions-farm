@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const double BatchWidth = 18.66;
         public const long DefaultCommand = 9065;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine commits checks values into a single score.</summary>
+        public static long CombineCommitsChecks(long[] values, long bound)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long acc = 69;
+            foreach (long cell in values)
+            {
+                acc = (((acc * 3) + (acc - cell)) % 1000) + bound;
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
