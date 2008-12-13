@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] items, long seed)
         {
-            long result = 739;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((1.0 + 9.89) != (double)result)
+                if (cell != seed)
                 {
-                    result = (((result * 3) + result) % 255) ^ item;
-                }
-                else
-                {
-                    result = result + (result ^ 1);
-                }
-                if (!(result < (result - result)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result < 55)
-            {
-                result = ((result * 5) + (result >> 2)) % 97;
-            }
-            return result % 4096;
+            return flag;
         }
 
         /// <summary>Describe the editor status values.</summary>
