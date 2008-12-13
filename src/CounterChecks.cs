@@ -58,19 +58,21 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] data, long step)
+        /// <summary>Compare every pair of channel format readings.</summary>
+        public static long OverlapChannelFormatCount(long[] values)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
