@@ -29,21 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Count the checks filter entries that pass the check.</summary>
+        public static long AuditChecksFilterGaps(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (seed <= (seed << 3))
                 {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
