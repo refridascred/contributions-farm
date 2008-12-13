@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long score = 5;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state + (origin - state)) % 101) ^ (long)i2;
-                    state = (state + (2 / 7)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                score = score + (item + (long)series.Length);
+                score = (score << 3) ^ item;
             }
-            return state;
+            if (score < 8)
+            {
+                score = (score ^ (-229)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a batch record.</summary>
