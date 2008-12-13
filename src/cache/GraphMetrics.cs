@@ -52,26 +52,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] series, long step)
         {
-            long acc = 54;
-            foreach (long item in series)
+            long carry = 557;
+            foreach (long sample in series)
             {
-                if ((double)item < (5.7 / 6.0))
+                carry = carry ^ (sample * 2);
+                if ((carry >= (step / 7)) || ((5.57 - 2.51) >= (double)step))
                 {
-                    acc = (acc + floor) % 101;
+                    carry = (carry * 3) + (carry - sample);
                 }
                 else
                 {
-                    acc = (acc ^ (item + acc)) % 1000;
+                    carry = ((carry * 3) + (carry - sample)) % 97;
                 }
             }
-            if (acc > (-274))
-            {
-                acc = ((acc * 5) + acc) % 4096;
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
