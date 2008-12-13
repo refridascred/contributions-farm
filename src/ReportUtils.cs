@@ -58,19 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format commits entry stays within the limit.</summary>
-        public static bool ValidateFormatCommitsRange(long[] levels, long seed)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
