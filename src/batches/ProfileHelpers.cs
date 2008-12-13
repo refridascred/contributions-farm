@@ -59,12 +59,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Draft,
+            Active,
+            Idle,
+            Pending,
+            Failed,
             Stale,
-            Locked,
         }
 
         /// <summary>Accumulate report samples.</summary>
