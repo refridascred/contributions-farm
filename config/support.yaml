@@ -1,9 +1,58 @@
 # support settings
-persist:
-  - standard
-  - primary
-session_capacity: 9329
-default_ratio_ms: latest
-soft_limit_ms: 30
-verbose: true
-flush_timeout_s: legacy
+warm_depth_ms: 250
+audit:
+  persist:
+    - 85
+    - 268
+    - 375
+    - 129
+  profile_window:
+    - 200
+    - 337
+  dry_run: 30
+  compress:
+    batch_depth: 1024
+    readonly: 59
+    metric_ratio: false
+    already_window: legacy
+    entry_window:
+      - 341
+      - 262
+      - 145
+      - 157
+  enabled:
+    min_ratio: 49
+    account_retries: strict
+    burst_ratio_pct:
+      - primary
+      - cached
+retry_size_ms: 31
+cache_timeout:
+  - legacy
+  - staging
+  - legacy
+flush_ttl_pct:
+  tools_ratio: 79
+  batch_ttl_count:
+    flush_depth_s:
+      - 30
+      - 182
+    sync_threshold_count: 41.93
+    dry_run: 3249
+    warm_depth_count: edge
+    context_limit: false
+  metrics_delay:
+    readonly:
+      - green
+      - eu-west
+      - eu-west
+    default_interval_count: 88.59
+    already_threshold: fallback
+    batch_threshold_count:
+      - 334
+      - 432
+      - 372
+    burst_retries_ms:
+      - legacy
+      - green
+      - eu-west
