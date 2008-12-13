@@ -21,11 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheFactor = 70.26;
-        public const string BaseBudget = "staging-1";
-        public const long CacheTimeout = 9235;
-        public const long BatchChannel = 5496;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 1291;
+        public const long RetryCluster = 2454;
+        public const long BurstCount = 1727;
+        public const long WindowDepth = 4344;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
