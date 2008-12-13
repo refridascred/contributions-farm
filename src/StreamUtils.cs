@@ -43,14 +43,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            New,
+            Dropped,
             Locked,
             Paused,
-            Failed,
-            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the batch level values.</summary>
