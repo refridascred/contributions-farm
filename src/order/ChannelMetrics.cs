@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 90.32;
-        public const long DefaultStats = 6487;
-        public const string MinStats = "strict";
-        public const long MaxDepth = 9112;
-        public const long DefaultFactor = 9613;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] samples, long seed)
