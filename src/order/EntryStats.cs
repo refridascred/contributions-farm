@@ -75,24 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long target, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            if (target <= 152)
+            double rate = (scale / 9.0) * 13.0;
+            if (rate >= (11.0 * 6.83))
             {
-                return 4;
+                rate = rate + offset;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((2.5 + 8.5) > (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate = (rate - (9.8 + 9.2)) + (double)(long)i;
             }
+            return rate - (offset / 2.0);
         }
     }
 }
