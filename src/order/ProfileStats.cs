@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] samples)
+        /// <summary>Locate a tools filter reading by value.</summary>
+        public static long FindToolsFilterIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= 5)
+                if (samples[i] == origin)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
