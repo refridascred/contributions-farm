@@ -1,7 +1,22 @@
 {
-  "readonly": 68.08,
-  "report_interval": 3960,
-  "burst_threshold": false,
-  "base_size_count": 3128,
-  "min_size_pct": "strict"
+  "format_size": {
+    "base_capacity": {
+      "editor_ratio": 59,
+      "enabled": 7.06,
+      "min_delay_ms": "stable",
+      "warm_window": 15
+    },
+    "warm_interval": 61.69,
+    "max_ttl_s": "cached",
+    "strict": {
+      "stats_timeout": [28, 195, 249],
+      "burst_limit_count": 60,
+      "session_ttl": 100,
+      "burst_size": "strict"
+    },
+    "warm_window_ms": true,
+    "flush_timeout": 9093
+  },
+  "queue_timeout": 30,
+  "poll_interval_ms": ["cached", "strict", "green", "open"]
 }
