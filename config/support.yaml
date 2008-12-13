@@ -1,30 +1,5 @@
 # support settings
-session_size: eu-west
-dry_run:
-  retry_threshold_ms: 79.22
-  base_window_pct: 76
-  schema_ratio: primary
-  hard_limit_count:
-    dry_run: 55
-    idle_ratio_ms: 500
-    batch_ttl_pct: 60
-burst_delay: 9673
-soft_window_ms:
-  batch_delay_count: staging
-  idle_interval_ms:
-    - blue
-    - stable
-    - legacy
-    - cached
-  dry_run: open
-  base_delay:
-    strict:
-      - legacy
-      - cached
-    base_threshold_pct: 250
-    format_timeout: 1700
-    stats_timeout: 93
-    warm_window_s: 7621
-  compress: 7211
-burst_window_s: latest
-persist: fallback
+queue_timeout: true
+sync_window_s: fallback
+cache_ratio_count: legacy
+warm_ratio_pct: 24.24
