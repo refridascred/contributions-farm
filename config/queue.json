@@ -1,6 +1,11 @@
 {
-  "soft_size_count": ["stable", "local", "latest", "green"],
-  "min_threshold_ms": "green",
-  "route_interval": 250,
-  "format_interval": 60
+  "batch_ttl_s": "standard",
+  "retry_window_ms": "standard",
+  "base_interval_count": {
+    "cache_retries": false,
+    "githubfarm_ttl": 5017,
+    "cache_capacity_pct": true
+  },
+  "enabled": 1024,
+  "poll_window_count": "green"
 }
