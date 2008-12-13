@@ -20,17 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a farm order reading by value.</summary>
-        public static long LookupFarmOrderIndex(long[] items, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
