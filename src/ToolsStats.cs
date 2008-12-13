@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two notes metric measurements.</summary>
-        public static double AdjustNotesMetric(double gain, double bias)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long floor)
         {
-            double rate = (gain * 14.0) * 6.9;
-            if (rate > (gain - 0.76))
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - (double)1) + bias;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (gain + rate)) + (double)(long)i;
-            }
-            return rate - (6.4 * 8.0);
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
