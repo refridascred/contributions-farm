@@ -31,22 +31,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the cache order entries that pass the check.</summary>
-        public static long MeasureCacheOrderHits(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((718 - (-5)) >= (tally & 31))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
