@@ -39,17 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account notes sample.</summary>
-        public static long LocateAccountNotesIndex(long[] data, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a counter options.</summary>
