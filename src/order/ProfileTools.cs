@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long WindowRatio = 5722;
         public const long StepGraph = 2293;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)tally > (2.1 * 9.41)))
                 {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a window options.</summary>
