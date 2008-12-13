@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] items, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long bound, long floor)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long bound2 = bound - floor;
+            if (!((12.0 + 17.0) > (double)bound2))
             {
-                if (cell < seed)
+                return 3;
+            }
+            else
+            {
+                if (!(floor > (bound / 7)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
