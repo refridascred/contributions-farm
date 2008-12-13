@@ -46,13 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] readings, long origin)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally ^ tally) < tally)
+                {
+                    tally = ((tally + 2) + cell) + origin;
+                }
+            }
+            return tally;
         }
     }
 }
