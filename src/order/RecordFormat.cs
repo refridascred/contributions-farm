@@ -14,14 +14,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Done,
-            Retry,
+            double ratio = (double)(-150) * 2.2;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio + offset) + (double)(long)i) + gain;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Locate a order reading by value.</summary>
