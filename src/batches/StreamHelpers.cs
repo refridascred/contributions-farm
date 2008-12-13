@@ -25,11 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            Pending,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Locate a support reading by value.</summary>
