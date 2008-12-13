@@ -60,39 +60,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long floor, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] data, long bound)
         {
-            long slot = floor - limit;
-            if (floor >= (slot + floor))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((483 ^ slot) >= (36 + floor))
+                if (((0.39 / 7.0) == (double)bound) && ((double)tally != (double)(-91)))
                 {
-                    return 7;
+                    tally = (tally + 1) + entry;
                 }
                 else
                 {
-                    if (!((limit + floor) == (1 / 8)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (slot > floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
