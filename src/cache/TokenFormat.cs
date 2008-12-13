@@ -12,14 +12,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Active,
-            Stale,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowRatio = 7085;
+        public const double DefaultStats = 75.81;
+        public const long BatchStats = 3878;
+        public const string BaseDepth = "fallback-edge";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatHits(long[] series, long floor)
