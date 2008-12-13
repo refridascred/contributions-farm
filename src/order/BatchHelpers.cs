@@ -16,13 +16,12 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Active,
-            Locked,
-            Retry,
-            Failed,
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate token readings against a bound.</summary>
