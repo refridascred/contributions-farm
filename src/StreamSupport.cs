@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long BatchCount = 7827;
         public const long BurstToken = 6067;
 
-        /// <summary>Fold a list of token queue readings.</summary>
-        public static long CombineTokenQueue(long[] readings, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            long sum = 60;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - (offset & 15)) ^ cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
