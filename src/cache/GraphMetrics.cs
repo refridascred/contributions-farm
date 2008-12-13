@@ -28,22 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long MeasureEntryBatchesGaps(long[] levels)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((long)levels.Length - datum) > datum)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
