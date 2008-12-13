@@ -28,19 +28,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many session batch samples are out of range.</summary>
-        public static long TallySessionBatchOutliers(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches + matches) <= (matches + seed))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "primary";
+        public const double HardContext = 76.96;
+        public const string StepContext = "stable-edge";
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long seed, long seed2)
