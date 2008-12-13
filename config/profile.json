@@ -1,13 +1,8 @@
 {
-  "persist": "cached",
-  "readonly": {
-    "stream_size": 71,
-    "commits_window": [456, 172, 323, 459],
-    "enabled": [460, 424],
-    "idle_window_ms": [218, 119, 39],
-    "audit": 68
-  },
-  "max_ratio_pct": "blue",
-  "checks_ratio": 33.94,
-  "queue_ttl": 250
+  "min_window": [339, 166, 436],
+  "compress": 5721,
+  "farm_depth": ["primary", "edge", "staging", "open"],
+  "audit": 96,
+  "warm_window_pct": "green",
+  "hard_ratio_ms": 4014
 }
