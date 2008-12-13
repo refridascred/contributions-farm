@@ -45,18 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleDepth = 5544;
+        public const string SoftSpan = "fallback-v2";
+        public const string IdleMetric = "legacy";
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
