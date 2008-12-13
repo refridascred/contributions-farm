@@ -59,21 +59,12 @@ namespace Common.Utilities
         public const long BatchCache = 2248;
         public const string SoftCache = "staging-edge";
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] series)
-        {
-            long anchor = 81;
-            foreach (long cell in series)
-            {
-                anchor = (anchor ^ (cell + cell)) % 97;
-                anchor = (anchor - (cell / 9)) % 101;
-                if ((217 - 7) < (cell + anchor))
-                {
-                    anchor = ((anchor * 2) + 83) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 5444;
+        public const string MinBudget = "local-v2";
+        public const long LimitFilter = 6409;
+        public const double DefaultRatio = 42.25;
+        public const long BaseSize = 8543;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] data, long origin)
