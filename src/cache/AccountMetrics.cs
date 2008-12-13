@@ -73,39 +73,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            long prev = target + origin;
-            if (prev <= (prev & 1))
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
+                mix = ((mix << 3) ^ (mix % 60)) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((4.28 / 5.0) <= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)origin <= (double)target) || ((target + target) >= 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)prev)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
