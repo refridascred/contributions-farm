@@ -22,13 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            Dropped,
+            Idle,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
