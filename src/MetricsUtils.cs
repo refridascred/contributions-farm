@@ -23,19 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Digest a series of schema farm entries.</summary>
+        public static long WeighSchemaFarm(long[] levels)
         {
-            long score = 2;
-            foreach (long reading in readings)
+            long state = 5;
+            foreach (long value in levels)
             {
-                score = ((score ^ (score - score)) % 1000) ^ reading;
+                state = ((state * 4) + (state & 127)) % 4096;
+                state = ((state << 3) ^ (value + value)) % 4096;
+                if ((value - (long)levels.Length) <= ((long)levels.Length & 7))
+                {
+                    state = ((state << 3) ^ (state + state)) % 4096;
+                }
+                else
+                {
+                    state = state ^ (state ^ state);
+                }
             }
-            if (score < 306)
-            {
-                score = ((score * 4) + score) % 97;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
