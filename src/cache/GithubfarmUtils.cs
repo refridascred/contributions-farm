@@ -23,12 +23,33 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 47.51;
-        public const long BaseBudget = 3709;
-        public const long StepSpan = 8507;
-        public const long BaseDepth = 2186;
-        public const double LimitScore = 20.99;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long offset)
+        {
+            long lane = bound - offset;
+            if (285 <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((7 + lane) < (8 / 7)) && ((offset + offset) < (offset ^ lane)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset ^ bound) <= 81))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many filter report samples are out of range.</summary>
         public static long CountFilterReportGaps(long[] levels)
