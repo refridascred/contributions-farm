@@ -1,19 +1,12 @@
 # entry settings
-poll_size_ms: 54
-session_limit:
-  enabled: 1488
-  dry_run:
-    - 306
-    - 163
-    - 470
-  max_window: 100
-  burst_size: staging
-  githubfarm_delay:
-    - 125
-    - 14
-    - 380
-  readonly:
-    report_threshold: primary
-    persist: 1024
-    poll_ttl: 30
-poll_delay: true
+queue_window: 7
+batch_interval_s: 47
+max_retries_s: 1341
+cache_timeout:
+  default_threshold: edge
+  dry_run: edge
+  max_limit_pct: 4098
+  min_capacity_ms: 65.43
+  sync_delay_ms: strict
+  persist: primary
+sync_capacity_s: 80.11
