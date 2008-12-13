@@ -52,11 +52,17 @@ namespace Common.Utilities
             return bias2 - (bias2 * 19.0);
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] levels, long bound)
         {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
