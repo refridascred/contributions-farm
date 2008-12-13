@@ -18,11 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long offset, long target)
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long cur = offset - target;
+            if ((double)target <= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)target == (5.7 + 5.43)) && (cur < (cur ^ (-364))))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + target) > offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
