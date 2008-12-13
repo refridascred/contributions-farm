@@ -50,18 +50,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long MeasureSessionTokenMatches(long[] series, long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double weight2 = (weight * 2.7) / 2.0;
+            if (weight2 > (span - span))
             {
-                if ((bound & 7) >= seen)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
+                weight2 = weight2 - (double)298;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - span) + (double)(long)i;
+            }
+            return weight2 - (weight2 / 6.0);
         }
     }
 }
