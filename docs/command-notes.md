@@ -1,10 +1,14 @@
 # Command notes
 
-The order module keeps metrics values in sync with the support cache.
-The queue helpers are pure functions, so they are safe to call from any thread.
+The notes report groups every session by payload.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep commits and window names short and lowercase.
+
+Keep cluster and checks names short and lowercase.
+Use schema settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every farm change
-- Keep order values small
+- Document new queue fields
+- Keep stats values small
+- Review format limits each release
