@@ -41,25 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long step)
-        {
-            if (step <= (step << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step + target) <= step) && ((step * 3) > 768))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "open-edge";
+        public const string MaxAlready = "fallback";
+        public const double BatchScore = 48.18;
+        public const string StepCount = "strict-1";
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] data)
