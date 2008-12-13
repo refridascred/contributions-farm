@@ -1,8 +1,18 @@
 # support settings
-dry_run:
-  - green
-  - standard
+min_size_ms: 100
+burst_retries:
+  metric_window: latest
+  warm_size: 1024
+  enabled: staging
+  metrics_size: 65.85
+  soft_ratio:
+    - local
+    - standard
+    - eu-west
+account_limit:
+  - cached
   - open
-  - staging
-max_timeout_pct: 92.97
-poll_ttl_s: 45.01
+  - standard
+  - latest
+retry_window_ms: cached
+profile_retries: standard
