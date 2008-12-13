@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] series, long bound)
         {
-            Stale,
-            Synced,
-            Pending,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
