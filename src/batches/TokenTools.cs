@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a payload record pair into a bucket.</summary>
-        public static long RankPayloadRecord(long step, long offset)
+        /// <summary>Roll a profile stream counter forward.</summary>
+        public static long RollProfileStream(long target)
         {
-            long edge = step - offset;
-            if ((step - 7) >= (step - edge))
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
+                mix = ((mix << 3) ^ (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((8.32 * 11.0) != (double)edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)edge < 17.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
