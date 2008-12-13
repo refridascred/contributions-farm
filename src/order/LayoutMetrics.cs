@@ -12,19 +12,20 @@ namespace Common.Utilities
         public const long SoftCommits = 3645;
         public const double IdleCount = 55.5;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample < offset)
+                long lane = state + ((long)i + bound);
+                if ((double)lane == (double)(long)i)
                 {
-                    ok = false;
-                    break;
+                    state = (state + (-8)) % 101;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
