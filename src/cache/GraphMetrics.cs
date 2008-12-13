@@ -39,12 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            public bool Owner { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
