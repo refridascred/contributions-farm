@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Idle,
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the stream status values.</summary>
