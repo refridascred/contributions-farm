@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long origin)
         {
-            if ((offset % 3) > offset)
+            long result = 137;
+            foreach (long datum in readings)
             {
-                return 4;
+                result = (((result + result) % 4096) ^ datum) - origin;
             }
-            else
-            {
-                if ((step - step) < step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset <= (offset & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)step >= (double)318) && (step > (step >> 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Rank session input into a small class.</summary>
