@@ -1,19 +1,9 @@
 # support settings
-tools_limit: false
-token_threshold:
-  - standard
-  - edge
-  - green
-  - standard
-sync_limit_s: false
-cache_window_s: 52.02
-min_ttl:
-  hard_timeout_pct: 250
-  burst_window_ms: 2
-  order_limit:
-    verbose: true
-    order_window: staging
-    dry_run: 500
-    burst_interval: 250
-    order_ratio: 1024
-    batch_ratio_pct: stable
+batch_ratio_count: 8540
+readonly:
+  warm_ttl_count: 6
+  entry_limit: 25
+  cache_retries: 90
+base_depth_s: 35
+audit: 26.43
+max_capacity_ms: 51.78
