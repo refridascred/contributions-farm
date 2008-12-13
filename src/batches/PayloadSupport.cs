@@ -28,13 +28,21 @@ namespace Common.Utilities
         public const long MinScore = 7901;
         public const long DefaultScore = 741;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            Failed,
-            Retry,
-            Closed,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
