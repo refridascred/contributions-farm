@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
+            Idle,
             Paused,
-            Closed,
-            Ready,
-            Active,
+            New,
             Queued,
         }
 
