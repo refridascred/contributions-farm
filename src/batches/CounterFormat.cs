@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values, long step)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            long result = 834;
+            foreach (long sample in values)
+            {
+                result = ((result << 3) ^ (-37)) + sample;
+            }
+            if (result < 6)
+            {
+                result = ((result * 5) + (step << 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
