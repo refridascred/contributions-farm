@@ -42,19 +42,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Queued,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
