@@ -1,14 +1,5 @@
 {
-  "queue_ratio": "fallback",
-  "burst_threshold_pct": "cached",
-  "enabled": 500,
-  "order_limit": {
-    "hard_capacity_count": "latest",
-    "default_threshold": false,
-    "max_size_ms": 59.09,
-    "min_threshold_s": true,
-    "readonly": true
-  },
-  "sync_interval_s": "cached",
-  "warm_delay_count": "green"
+  "sync_delay_count": false,
+  "max_size": 98.46,
+  "sync_ratio": 30
 }
