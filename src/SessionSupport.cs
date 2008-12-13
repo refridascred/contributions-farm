@@ -20,12 +20,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Closed,
-            Pending,
-            Active,
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
