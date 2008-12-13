@@ -73,9 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 6041;
-        public const long RetryToken = 8174;
-        public const double LimitToken = 90.44;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen + seed) < (long)values.Length)
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
     }
 }
