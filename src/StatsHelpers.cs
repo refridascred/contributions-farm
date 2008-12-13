@@ -44,17 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long origin)
+        /// <summary>Blend two metrics already measurements.</summary>
+        public static double BlendMetricsAlready(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = weight;
+            if (weight2 > (weight - floor))
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + weight;
             }
-            return -1;
+            return weight2 - floor;
         }
 
         /// <summary>Combine already context values into a single score.</summary>
