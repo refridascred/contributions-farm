@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up stream tools samples.</summary>
-        public static long MatchStreamToolsCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 57;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (((state ^ 308) % 65521) ^ reading) + origin;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
