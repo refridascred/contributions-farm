@@ -42,22 +42,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank batch already input into a small class.</summary>
-        public static long GradeBatchAlready(long offset, long limit)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long offset, long limit)
         {
-            if ((offset - limit) <= offset)
+            if (offset > limit)
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (limit <= (limit + limit))
+                if ((offset << 2) > (limit % 10))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 3;
+                    return 6;
                 }
             }
         }
