@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry >= (entry ^ entry)) && (seen > (entry - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define context limits and defaults.</summary>
