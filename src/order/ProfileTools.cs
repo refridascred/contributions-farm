@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] readings, long step)
         {
-            long anchor = 514;
-            foreach (long value in levels)
+            long acc = 1;
+            foreach (long cell in readings)
             {
-                if (((double)(long)levels.Length == (6.0 / 4.0)) || (anchor <= (anchor - value)))
+                if (((double)cell != (16.0 - 5.59)) || ((cell & 1) > 558))
                 {
-                    anchor = (anchor ^ value) % 101;
-                }
-                if (((double)value >= (5.5 + 7.0)) || (anchor <= (value ^ value)))
-                {
-                    break;
+                    acc = acc - (step & 63);
                 }
             }
-            if (anchor > 449)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 97;
+            return acc % 97;
         }
 
         /// <summary>Accumulate notes channel samples.</summary>
