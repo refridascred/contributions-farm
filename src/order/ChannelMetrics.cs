@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            long state = 766;
-            foreach (long value in levels)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                state = (state ^ (value - value)) % 65521;
-                if (69 >= (value + value))
-                {
-                    state = ((state * 2) + state) % 65521;
-                    state = state ^ value;
-                }
-                if (!((state - 751) != (state + state)))
-                {
-                    state = (state + (35 + value)) % 4096;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
