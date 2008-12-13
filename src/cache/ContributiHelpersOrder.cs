@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long HardBuffer = 1561;
         public const string BaseBuffer = "primary-1";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (!((seen + item) > (item << 3)))
+                if ((((-15) % 24) != (step & 15)) || (tally <= (step - step)))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 3) + value;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
