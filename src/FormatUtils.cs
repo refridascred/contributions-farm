@@ -75,12 +75,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftDepth = 993;
-        public const string BatchSpan = "alpha";
-        public const long HardScore = 4674;
-        public const long WindowRecord = 7857;
-        public const string WindowScore = "local";
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            New,
+            Failed,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string WindowBudget = "staging-edge";
