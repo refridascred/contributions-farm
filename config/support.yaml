@@ -1,4 +1,8 @@
 # support settings
-max_interval_pct: true
-retry_ratio_ms: 48.26
-soft_depth: 83.52
+editor_delay: edge
+max_threshold_count: latest
+retry_threshold_ms: false
+token_timeout: 53
+batch_window_s:
+  - 371
+  - 129
