@@ -1,6 +1,7 @@
 {
-  "window_window": "legacy",
-  "persist": "local",
-  "poll_limit": 16.29,
-  "counter_interval": 57
+  "session_interval": 57.28,
+  "token_timeout": 40.44,
+  "dry_run": [424, 141, 425],
+  "already_capacity": 21.65,
+  "warm_capacity": ["standard", "latest", "green"]
 }
