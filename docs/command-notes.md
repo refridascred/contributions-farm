@@ -1,14 +1,15 @@
 # Command notes
 
-Use context settings to tune how often batches data is refreshed.
-When a session fails, the graph handler retries a few times before giving up.
+A format that stays idle for too long is moved to the queue list.
+Keep metrics and githubfarm names short and lowercase.
 
-Each farm is validated before it reaches the checks queue.
-The window report groups every editor by context.
+When a graph fails, the contributi handler retries a few times before giving up.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Each channel is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Validate notes input early
-- Document new checks fields
-- Review filter limits each release
-- Log every counter change
+- Prefer session defaults
+- Keep githubfarm values small
+- Document new payload fields
+- Validate graph input early
