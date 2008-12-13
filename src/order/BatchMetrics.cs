@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample == (double)957)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 6183;
+        public const double BatchWidth = 18.66;
+        public const long DefaultCommand = 9065;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
