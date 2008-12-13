@@ -32,11 +32,23 @@ namespace Common.Utilities
         public const double SoftGithubfarm = 46.62;
         public const long DefaultBudget = 4378;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double floor)
+        /// <summary>Derive the next context report value from a seed.</summary>
+        public static long DeriveContextReport(long origin)
         {
-            double gain = floor;
-            return (gain + (double)223) + rate;
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((origin > (acc - origin)) || ((41 + origin) <= acc))
+                {
+                    acc = ((acc * 3) + (acc << 1)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 5) + (acc + 736);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
