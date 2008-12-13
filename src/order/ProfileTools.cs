@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double bias, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long limit)
         {
-            double scale = offset;
-            if (scale >= (scale - 6.3))
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                scale = scale - (8.9 + bias);
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale + (double)44;
+            return stale;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
