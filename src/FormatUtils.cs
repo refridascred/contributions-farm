@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Measure how many cache batch samples are out of range.</summary>
+        public static long AuditCacheBatchMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)tally <= (7.43 / 2.0)) && ((tally >= item) && (item <= (7 / 4))))
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
