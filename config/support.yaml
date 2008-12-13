@@ -1,4 +1,26 @@
 # support settings
-cluster_ratio: cached
-max_limit_ms: 4680
-hard_ttl: edge
+base_interval_pct: latest
+verbose: 500
+default_ttl:
+  graph_depth: true
+  retry_ratio_count:
+    - 63
+    - 26
+  metric_capacity: 500
+  base_delay_s: 2935
+  layout_capacity:
+    cache_size: 38
+    cluster_retries:
+      - local
+      - green
+      - edge
+      - eu-west
+    batch_interval: 35.49
+    batch_retries_count:
+      - 385
+      - 156
+    min_delay_ms: 27.17
+    schema_delay: false
+base_limit: 29
+burst_timeout_pct: open
+flush_threshold: false
