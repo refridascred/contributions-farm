@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] values, long target)
         {
-            long mark = 95;
-            foreach (long item in levels)
+            long carry = -9;
+            foreach (long datum in values)
             {
-                mark = (((mark * 4) + (mark - 2)) % 255) - item;
-                if ((14.0 / 8.0) > (3.0 - 3.0))
+                if ((carry % 3) < (41 % 64))
+                {
+                    carry = ((carry * 3) + (target % 12)) % 1000;
+                }
+                carry = (carry ^ (carry + carry)) % 255;
+                if (((double)1 <= (double)target) && ((datum + carry) <= (696 >> 3)))
                 {
                     break;
                 }
             }
-            if (mark < (-25))
+            if (carry > 43)
             {
-                mark = (mark << 3) ^ (mark - mark);
+                carry = (carry + (target + target)) % 1000;
             }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
