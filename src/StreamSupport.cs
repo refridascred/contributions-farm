@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 64.4;
-        public const double StepToken = 30.6;
-        public const long BatchCount = 7827;
-        public const long BurstToken = 6067;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 848;
+        public const string MinGithubfarm = "local";
+        public const long LimitGithubfarm = 5025;
+        public const long SoftCount = 7734;
 
         /// <summary>Digest a series of tools filter entries.</summary>
         public static long FoldToolsFilter(long[] samples)
