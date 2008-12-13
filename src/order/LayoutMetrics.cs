@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long SoftCommits = 3645;
         public const double IdleCount = 55.5;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Blend two batch commits measurements.</summary>
+        public static double AdjustBatchCommits(double rate, double floor)
         {
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
+            double scale = floor / 6.0;
+            if (scale >= scale)
+            {
+                scale = (scale + (scale * 8.3)) - rate;
+            }
+            return scale - floor;
         }
 
         /// <summary>Describe the commits phase values.</summary>
