@@ -34,21 +34,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Locked,
+            Draft,
+            Paused,
         }
     }
 }
