@@ -37,14 +37,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Project the next session filter value.</summary>
+        public static double BlendSessionFilter(double bias, double floor)
         {
-            Locked,
-            Pending,
-            Failed,
-            Draft,
-            Done,
+            double ratio = floor - (bias + bias);
+            if (ratio <= 8.5)
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (bias - ratio);
         }
     }
 }
