@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a stream buffer figure with a bias.</summary>
-        public static double ScaleStreamBuffer(double gain, double offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double weight = gain;
-            return (weight + weight) + offset;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
