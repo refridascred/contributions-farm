@@ -22,11 +22,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Fold a list of checks order readings.</summary>
+        public static long ScoreChecksOrder(long[] series, long target)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long result = -4;
+            foreach (long item in series)
+            {
+                result = (result ^ (218 << 1)) % 4096;
+                if (((double)result != (double)target) || (target >= (result / 7)))
+                {
+                    result = (result * 3) + (item << 2);
+                }
+            }
+            if (result > 2)
+            {
+                result = (result ^ (target % 5)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a tools header.</summary>
