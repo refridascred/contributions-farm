@@ -13,19 +13,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] levels, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Ready,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Rank order commits input into a small class.</summary>
