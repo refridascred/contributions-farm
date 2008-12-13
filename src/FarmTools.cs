@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] readings)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (seen <= 63)
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
