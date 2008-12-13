@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Paused,
-            Active,
-            Dropped,
-            Stale,
-            Ready,
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
