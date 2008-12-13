@@ -25,23 +25,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double bias = (offset + offset) * 8.0;
-            if (bias >= (4.75 * 4.32))
-            {
-                bias = (bias - (offset / 3.0)) - scale;
-            }
-            else
-            {
-                bias = bias - (double)48;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (offset / 3.0)) + (double)(long)i;
-            }
-            return bias + offset;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
