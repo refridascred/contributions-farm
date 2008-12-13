@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Count record graph pairs that satisfy a relation.</summary>
+        public static long MatchRecordGraphCount(long[] series)
         {
-            long score = 3;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score - 66) > (score / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score + (score - score)) ^ reading;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 0)
-            {
-                score = (score * 3) + (score - score);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of entry window entries.</summary>
