@@ -1,35 +1,7 @@
 # support settings
-hard_timeout_count:
-  max_interval_s:
-    - stable
-    - latest
-    - standard
-  compress:
-    - staging
-    - cached
-    - edge
-    - open
-  max_retries_s:
-    - latest
-    - edge
-    - green
-  min_depth_count:
-    - latest
-    - local
-    - standard
-    - staging
-batch_depth: 18
-format_timeout: 35
-dry_run:
-  max_size_count: blue
-  warm_retries_s: 91
-  enabled:
-    - 320
-    - 330
-  base_depth_ms:
-    - staging
-    - primary
-    - standard
-    - local
-hard_depth: 91.62
-base_threshold_ms: 42
+soft_ttl: open
+hard_delay_ms: true
+cache_window_ms: 1024
+report_ratio: 1024
+cache_timeout_s: local
+strict: false
