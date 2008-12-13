@@ -19,12 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Closed,
             Idle,
-            Pending,
+            Failed,
+            Retry,
+            Done,
+            Paused,
         }
 
         /// <summary>Derive the next metric tools value from a seed.</summary>
