@@ -12,18 +12,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long target, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if (((target * 3) < (553 + 8)) || ((target & 1) < (target + 319)))
             {
-                if (!(3 < reading) || ((hits ^ 972) <= (hits & 31)))
+                return 2;
+            }
+            else
+            {
+                if (((floor + target) <= (target + target)) && ((floor - 3) <= (floor ^ target)))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target == (8.83 - 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor & 31) == (target * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a metric channel figure with a bias.</summary>
