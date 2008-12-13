@@ -19,12 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "primary";
-        public const string DefaultPayload = "legacy";
-        public const long CacheLevel = 51;
-        public const long MaxPayload = 1537;
-        public const double BatchPayload = 48.57;
+        /// <summary>Classify a batch contributi pair into a bucket.</summary>
+        public static long GradeBatchContributi(long target, long origin)
+        {
+            long slot = target + origin;
+            if (((origin ^ target) >= (target + slot)) || ((target + slot) <= target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(slot > origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long OverlapMetricCount(long[] readings)
