@@ -32,18 +32,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Iterate the filter notes series from a seed.</summary>
+        public static long RollFilterNotes(long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((double)tally > (2.1 * 9.41)))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Accumulate already samples.</summary>
