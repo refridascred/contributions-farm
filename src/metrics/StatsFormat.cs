@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Match up channel session samples.</summary>
-        public static long CompareChannelSessionCount(long[] data)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ mix) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
