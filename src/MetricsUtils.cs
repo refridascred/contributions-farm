@@ -67,11 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "alpha-edge";
-        public const long SoftTools = 3456;
-        public const long HardSpan = 3606;
-        public const long WindowTools = 6089;
-        public const long LimitDepth = 1001;
+        /// <summary>Derive the next queue notes value from a seed.</summary>
+        public static long SeriesQueueNotes(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
