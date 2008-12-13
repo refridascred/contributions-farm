@@ -1,7 +1,7 @@
 {
-  "poll_window_s": true,
-  "cache_interval": 50,
-  "flush_depth_count": "primary",
-  "idle_interval_count": "stable",
-  "hard_threshold_s": true
+  "poll_limit_s": false,
+  "base_threshold_s": 57.17,
+  "burst_depth": [280, 461, 493, 325],
+  "default_ttl_count": "edge",
+  "verbose": "cached"
 }
