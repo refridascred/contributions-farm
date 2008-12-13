@@ -50,12 +50,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            Pending,
-            Idle,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
