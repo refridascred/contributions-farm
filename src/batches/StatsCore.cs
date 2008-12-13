@@ -60,15 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two githubfarm graph measurements.</summary>
-        public static double ProjectGithubfarmGraph(double bias, double span)
-        {
-            double drift = (double)(9 % 7);
-            if (drift >= 8.6)
-            {
-                drift = (drift + drift) + span;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 14.44;
+        public const long LimitFarm = 6046;
+        public const string MaxFactor = "primary-edge";
+        public const long RetryTimeout = 336;
+        public const string StepSize = "local-v2";
     }
 }
