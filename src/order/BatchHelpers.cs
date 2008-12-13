@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long target, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] data, long offset)
         {
-            if ((offset ^ offset) >= (offset & 3))
+            long result = 34;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 1) < offset)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 5;
+                    result = (((result * 3) + offset) % 4096) + (long)i2;
                 }
-                else
+                if (value <= (offset + 57))
                 {
-                    if (!((6.54 + 18.0) <= (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3.9 / 7.0) < (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = result ^ (value / 7);
                 }
             }
+            if (result < 306)
+            {
+                result = result + (long)data.Length;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the token state values.</summary>
