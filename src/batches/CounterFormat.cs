@@ -20,18 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] values)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell >= (cell + seen)) || (((double)seen < (20.0 + 7.0)) || ((seen * 4) < (cell ^ seen))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double ratio = 1.83;
+            return ((ratio - (3.8 * 3.7)) + gain) + floor;
         }
 
         /// <summary>Accumulate checks context samples.</summary>
