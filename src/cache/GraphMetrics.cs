@@ -39,21 +39,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((20.0 - 17.0) < (double)floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((989 * 3) == (bound & 15))
                 {
-                    if ((values[i] ^ values[j]) > 9)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor <= (20.0 / 2.0))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
