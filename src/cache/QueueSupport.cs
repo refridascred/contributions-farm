@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            long total = 29;
-            foreach (long datum in series)
+            long sum = 86;
+            foreach (long cell in readings)
             {
-                if (datum > (2 / 3))
+                if (sum >= (sum + (-5)))
                 {
-                    total = (total << 2) ^ (datum << 1);
-                    total = (total + datum) % 4096;
+                    sum = (sum + (sum >> 3)) ^ cell;
                 }
-                else
-                {
-                    long prev = (94 & 15) ^ (total / 4);
-                    total = (total << 2) ^ prev;
-                }
-                total = (total << 2) ^ (total + 1);
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
