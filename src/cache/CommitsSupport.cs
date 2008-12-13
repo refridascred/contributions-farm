@@ -70,13 +70,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Retry,
-            Synced,
-            Idle,
-            Dropped,
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
