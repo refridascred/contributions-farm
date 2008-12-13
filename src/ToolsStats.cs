@@ -51,13 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Synced,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultSpan = 3443;
+        public const long BaseAlready = 9303;
+        public const string BaseDepth = "latest-v2";
+        public const long MaxAlready = 8512;
+        public const string HardCount = "standard-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string IdleNotes = "stable-v2";
