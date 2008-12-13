@@ -1,34 +1,33 @@
 {
-  "verbose": {
-    "flush_depth_ms": [207, 354, 147],
-    "channel_threshold": 48,
-    "hard_retries_ms": {
-      "metrics_retries": "strict",
-      "record_threshold": 35,
-      "cache_interval": false,
-      "account_ttl": 2633,
-      "strict": 30
-    },
-    "sync_timeout_ms": true
+  "metric_depth": 49.94,
+  "poll_delay_ms": {
+    "min_ratio_ms": "edge",
+    "sync_threshold_ms": 588,
+    "stats_threshold": false,
+    "warm_capacity": ["primary", "green", "staging"]
   },
-  "githubfarm_limit": {
-    "dry_run": 75,
-    "idle_capacity_count": true,
-    "batch_size": false,
-    "context_threshold": true,
-    "report_retries": 250
-  },
-  "strict": "standard",
-  "max_depth": {
-    "cache_capacity": {
-      "base_ratio": 72,
-      "readonly": 32.23,
-      "already_ratio": 4414,
-      "strict": true,
-      "audit": 69.22
+  "dry_run": true,
+  "warm_limit": {
+    "min_delay": {
+      "report_depth": false,
+      "strict": "standard",
+      "context_depth": 92.35,
+      "audit": 17,
+      "warm_interval": 2168
     },
-    "burst_capacity": 60,
-    "checks_retries": false,
-    "dry_run": true
-  }
+    "audit": [316, 52],
+    "sync_size_s": false,
+    "default_ratio_s": 44.44,
+    "window_timeout": 293,
+    "enabled": ["fallback", "local", "edge"]
+  },
+  "max_ratio_count": {
+    "route_retries": 1334,
+    "enabled": 60,
+    "readonly": "strict",
+    "soft_threshold": 5358,
+    "base_limit_count": 833,
+    "burst_delay_s": "open"
+  },
+  "compress": 4320
 }
