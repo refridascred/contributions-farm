@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] readings, long target)
+        /// <summary>Check that every session format entry stays within the limit.</summary>
+        public static bool VerifySessionFormatLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (readings[i] < target)
+                if (value >= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
