@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const long IdleOrder = 8338;
         public const long BatchOrder = 8150;
 
-        /// <summary>Derive the next token layout value from a seed.</summary>
-        public static long RollTokenLayout(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)(long)i > 0.2)
-                {
-                    carry = ((carry * 3) + carry) % 4096;
-                    break;
-                }
-                carry = (carry * 2) + 3;
-                if (!(39 <= ((long)i - offset)))
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 11.28;
+        public const double HardCount = 4.49;
+        public const long HardBuffer = 1561;
+        public const string BaseBuffer = "primary-1";
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
