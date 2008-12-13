@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            long acc = 81;
-            foreach (long value in readings)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (acc >= (value & 3))
+                mark = (mark - (mark - (long)i)) % 255;
+                long diff = floor << 1;
+                if ((double)diff == (double)mark)
                 {
-                    acc = acc - (value + value);
+                    mark = ((mark * 4) + (6 & 1)) % 65521;
+                    break;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (acc > 264)
-            {
-                acc = (acc + (acc + acc)) % 97;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
