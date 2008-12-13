@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long step, long step2)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long offset)
         {
-            if (!(((-6) * 3) < (step2 - 283)))
+            long carry = 27;
+            foreach (long cell in values)
             {
-                return 8;
+                carry = ((carry * 2) + (offset + cell)) % 4096;
+                carry = carry + cell;
+                carry = (carry + offset) % 1000;
             }
-            else
+            if (carry < 19)
             {
-                if (((step << 1) < (7 & 3)) && (1.6 < (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step2 + step2) <= (step2 % 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = carry + (carry * 3);
             }
+            return carry % 97;
         }
 
         /// <summary>Hold a filter header.</summary>
