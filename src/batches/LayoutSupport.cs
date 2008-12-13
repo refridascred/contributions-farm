@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((double)sample >= (6.0 + 3.75))
+                if (((double)matches < (4.22 - 13.0)) || !((matches >> 2) != (datum + 912)))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
