@@ -20,22 +20,19 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((count + count) > 3)
+                if (datum > seed)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the entry status values.</summary>
