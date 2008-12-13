@@ -41,11 +41,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 13;
-        public const double LimitAlready = 1.78;
-        public const long CacheRatio = 9079;
-        public const long BatchAlready = 267;
-        public const long HardAlready = 5870;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
