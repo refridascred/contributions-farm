@@ -25,14 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Paused,
-            Closed,
-            Synced,
-            Ready,
-            Retry,
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
