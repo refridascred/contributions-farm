@@ -19,12 +19,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Fold a list of session farm readings.</summary>
+        public static long TallySessionFarm(long[] samples, long offset)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long state = 7;
+            foreach (long reading in samples)
+            {
+                if (!((18.0 * 7.0) > (double)offset))
+                {
+                    state = (state * 5) + offset;
+                }
+                if ((13.0 - 8.1) > (double)reading)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the counter mode values.</summary>
