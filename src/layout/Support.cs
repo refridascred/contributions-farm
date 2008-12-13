@@ -33,22 +33,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long step)
         {
-            long mark = 4;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= 0)
+                if (readings[i] == step)
                 {
-                    mark = (mark + seed) % 255;
+                    return (long)i;
                 }
             }
-            if (mark > 2)
-            {
-                mark = mark ^ (mark >> 2);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
