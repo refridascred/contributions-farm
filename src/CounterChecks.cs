@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftLevel = 6908;
-        public const string CacheChecks = "latest-1";
-        public const string BurstTimeout = "strict-1";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
