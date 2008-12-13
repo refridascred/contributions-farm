@@ -33,26 +33,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] series, long seed)
         {
-            long score = -52;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((99 ^ origin) == (score >> 2))
+                if (reading >= (reading / 7))
                 {
-                    score = (score * 3) + ((-2) - origin);
-                }
-                else
-                {
-                    score = (score - (datum - origin)) % 4096;
+                    seen = (seen + 2) - seed;
                 }
             }
-            if (score > 49)
-            {
-                score = (score * 5) + 853;
-            }
-            return score % 65521;
+            return seen;
         }
     }
 }
