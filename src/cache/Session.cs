@@ -42,32 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long floor, long bound)
+        /// <summary>Count the notes format entries that pass the check.</summary>
+        public static long AuditNotesFormatOutliers(long[] readings, long limit)
         {
-            long offset = floor ^ bound;
-            if (((floor ^ 5) >= (offset / 2)) && (floor <= (bound << 1)))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 31) >= offset)
+                if (!(1.71 <= (double)entry) && ((5.3 + 20.0) <= (double)limit))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((521 & 31) > floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
