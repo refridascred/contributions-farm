@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the token format entries that pass the check.</summary>
+        public static long MeasureTokenFormatHits(long[] levels, long origin)
         {
-            Draft,
-            Stale,
-            Idle,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - seen) >= (sample << 1))
+                {
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
