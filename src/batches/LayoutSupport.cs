@@ -20,13 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((8 * 5) <= entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue kind values.</summary>
