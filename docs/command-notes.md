@@ -1,14 +1,10 @@
 # Command notes
 
-Use payload settings to tune how often report data is refreshed.
-The report helpers are pure functions, so they are safe to call from any thread.
-Run the githubfarm check before changing any graph limits.
-
-When a checks fails, the filter handler retries a few times before giving up.
-Use order settings to tune how often tools data is refreshed.
+Each farm is validated before it reaches the route queue.
+A checks that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer support defaults
-- Validate graph input early
+- Log every entry change
+- Review batches limits each release
+- Prefer checks defaults
