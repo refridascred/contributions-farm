@@ -46,21 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit << 1) > ((-289) + limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((0.25 - 8.58) >= (double)limit)
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
