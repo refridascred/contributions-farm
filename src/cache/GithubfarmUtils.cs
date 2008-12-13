@@ -16,19 +16,25 @@ namespace Common.Utilities
             return weight + (ratio / 4.0);
         }
 
-        /// <summary>Digest a series of entry window entries.</summary>
-        public static long ScoreEntryWindow(long[] values, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long origin, long step)
         {
-            long carry = 73;
-            foreach (long sample in values)
+            long offset = origin ^ step;
+            if (!((step + 895) <= (origin / 9)))
             {
-                carry = (((carry * 2) + carry) % 65521) + sample;
-                if ((double)seed < (3.0 / 4.0))
+                return 0;
+            }
+            else
+            {
+                if (step >= (offset + offset))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
