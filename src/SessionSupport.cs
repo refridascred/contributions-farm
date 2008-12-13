@@ -47,12 +47,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
