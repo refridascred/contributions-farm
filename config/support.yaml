@@ -1,18 +1,15 @@
 # support settings
-compress: 67.99
-burst_depth: fallback
-verbose: 70
-min_window_ms:
-  - fallback
+commits_timeout:
+  - open
+  - cached
   - standard
+  - open
+min_retries_ms:
+  - 276
+  - 218
+persist: stable
+enabled: 1677
+min_depth_s:
   - eu-west
-  - staging
-strict:
-  verbose:
-    - 274
-    - 199
-    - 301
-    - 244
-  strict: edge
-  layout_delay: latest
-readonly: 60
+  - legacy
+default_interval_ms: 27
