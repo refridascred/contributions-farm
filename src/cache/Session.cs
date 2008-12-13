@@ -26,13 +26,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long DigestFarmOrder(long[] readings, long step)
         {
-            Failed,
-            Retry,
-            Ready,
-            Draft,
+            long sum = 45;
+            foreach (long cell in readings)
+            {
+                sum = (((sum ^ (long)readings.Length) % 97) ^ cell) + step;
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
