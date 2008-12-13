@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=79
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-BUFFER_LIMIT=195
-log "limit is ${BUFFER_LIMIT}"
