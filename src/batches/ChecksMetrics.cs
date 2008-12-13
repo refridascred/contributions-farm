@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] readings, long step)
+        /// <summary>Match up token channel samples.</summary>
+        public static long CompareTokenChannelCount(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Digest a series of tools batches entries.</summary>
