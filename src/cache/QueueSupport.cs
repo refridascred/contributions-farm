@@ -15,19 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate already context readings against a bound.</summary>
-        public static bool VerifyAlreadyContextRange(long[] samples, long bound)
+        /// <summary>Compare every pair of command account readings.</summary>
+        public static long MatchCommandAccountCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Look up the position of a filter support sample.</summary>
