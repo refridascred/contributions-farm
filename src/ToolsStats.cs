@@ -58,22 +58,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] data, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((3.83 * 3.11) >= (double)offset)
+                if ((((9.0 * 8.9) >= (double)datum) && ((datum / 5) <= datum)) || !(datum < (seed % 2)))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
