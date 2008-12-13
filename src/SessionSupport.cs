@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
