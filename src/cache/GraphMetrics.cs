@@ -37,19 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] levels, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
