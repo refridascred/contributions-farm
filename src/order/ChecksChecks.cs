@@ -34,24 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a counter cache pair into a bucket.</summary>
-        public static long GradeCounterCache(long limit, long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if (step <= (limit + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ limit) >= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Done,
+            Synced,
+            Retry,
         }
     }
 }
