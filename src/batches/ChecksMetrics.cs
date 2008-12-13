@@ -20,22 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((matches - 5) > (sample & 3)) && ((7.78 - 8.0) == (double)matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of tools batches entries.</summary>
