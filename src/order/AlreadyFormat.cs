@@ -15,15 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of channel buffer readings.</summary>
-        public static long ScoreChannelBuffer(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] items, long step)
         {
-            long sum = -47;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                sum = (sum << 3) ^ (value - value);
+                if ((7.5 - 3.2) > (double)count)
+                {
+                    count = ((count + 1) ^ cell) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Hold a metrics stats.</summary>
