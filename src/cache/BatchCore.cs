@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the report metrics series from a seed.</summary>
-        public static long StepReportMetrics(long offset)
+        /// <summary>Check that every buffer token entry stays within the limit.</summary>
+        public static bool CheckBufferTokenRange(long[] samples, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Digest a series of cache format entries.</summary>
