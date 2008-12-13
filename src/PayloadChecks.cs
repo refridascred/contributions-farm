@@ -54,18 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] series, long limit)
+        /// <summary>Compare every pair of cluster route readings.</summary>
+        public static long MatchClusterRouteCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)limit > (20.0 / 9.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + cell;
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
