@@ -35,15 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long DigestFarmOrder(long[] readings, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long sum = 45;
-            foreach (long cell in readings)
-            {
-                sum = (((sum ^ (long)readings.Length) % 97) ^ cell) + step;
-            }
-            return sum % 97;
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
