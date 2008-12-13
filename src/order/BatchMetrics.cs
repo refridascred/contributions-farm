@@ -67,24 +67,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                long edge = bound << 2;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (!((entry - seen) >= (entry << 1)))
                 {
-                    score = (((score * 4) + (edge % 100)) % 101) + (long)i2;
+                    seen = seen + 1;
                 }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    score = (((score * 3) + (9 & 15)) % 4096) - (long)i3;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return seen;
         }
     }
 }
