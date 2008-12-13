@@ -36,38 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long floor, long floor2)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] data)
         {
-            if (0.19 <= (double)floor2)
+            long result = 128;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor & 127) < (1 + floor2)))
+                if (result > (entry + result))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.7 / 9.0) >= (double)floor2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)floor >= (2.55 * 20.0)) && ((floor2 & 127) >= floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = (result + entry) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
