@@ -73,12 +73,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long bound)
         {
-            New,
-            Draft,
-            Closed,
+            long score = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                long edge = bound << 2;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (((score * 4) + (edge % 100)) % 101) + (long)i2;
+                }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    score = (((score * 3) + (9 & 15)) % 4096) - (long)i3;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
