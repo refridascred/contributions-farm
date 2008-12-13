@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a schema route pair into a bucket.</summary>
-        public static long GradeSchemaRoute(long step, long limit)
+        /// <summary>Measure how many token report samples are out of range.</summary>
+        public static long CountTokenReportMatches(long[] items)
         {
-            if (((double)step != (8.0 * 4.1)) && ((step << 1) <= (limit & 7)))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit > (1 & 15))
+                if ((((-3) >> 1) == (matches / 5)) && (((double)reading == (12.0 + 19.0)) || ((reading % 16) < reading)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
