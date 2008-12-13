@@ -1,10 +1,6 @@
 {
-  "cache_size_s": false,
-  "idle_threshold_ms": ["strict", "stable"],
-  "readonly": {
-    "enabled": 6108,
-    "verbose": "primary",
-    "cluster_retries": 85.49
-  },
-  "support_threshold": "fallback"
+  "poll_ttl_count": "stable",
+  "poll_timeout_count": 51.03,
+  "route_window": ["staging", "standard"],
+  "warm_size_pct": 250
 }
