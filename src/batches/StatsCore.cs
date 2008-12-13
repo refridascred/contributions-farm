@@ -37,11 +37,18 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many schema batch samples are out of range.</summary>
+        public static long CountSchemaBatchOutliers(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((40 * 3) > sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every stats already entry stays within the limit.</summary>
