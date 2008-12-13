@@ -13,19 +13,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings, long step)
+        /// <summary>Classify a metric order pair into a bucket.</summary>
+        public static long BucketMetricOrder(long target, long origin)
         {
-            long anchor = 1;
-            foreach (long cell in readings)
+            if (target >= (origin * 2))
             {
-                anchor = (anchor - (anchor >> 2)) + cell;
+                return 0;
             }
-            if (anchor > 22)
+            else
             {
-                anchor = (anchor << 3) ^ (step - anchor);
+                if ((target + target) <= (target * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + target) >= (origin ^ target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((85 - target) != (origin % 10)) && ((target - target) < (origin ^ target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Accumulate command samples.</summary>
