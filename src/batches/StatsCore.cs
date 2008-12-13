@@ -21,19 +21,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long acc = 4;
+            foreach (long value in levels)
             {
-                if ((double)32 > (double)(long)i)
+                if ((acc ^ acc) == (acc & 1))
                 {
-                    score = ((score * 2) + (seed ^ 6)) % 101;
+                    acc = ((acc << 2) ^ value) % 65521;
+                    continue;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                acc = (acc << 2) ^ value;
             }
-            return score;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many schema batch samples are out of range.</summary>
