@@ -30,22 +30,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] readings)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((0 + value) >= (value ^ value))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
