@@ -13,38 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long step, long step2)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings, long step)
         {
-            if (5.4 > (double)step2)
+            long anchor = 1;
+            foreach (long cell in readings)
             {
-                return 5;
+                anchor = (anchor - (anchor >> 2)) + cell;
             }
-            else
+            if (anchor > 22)
             {
-                if (((double)step <= (17.0 - 18.0)) && (9.88 < (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step == (7.76 + 16.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step ^ step) > (step + step2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = (anchor << 3) ^ (step - anchor);
             }
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate command samples.</summary>
