@@ -14,15 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine commits checks values into a single score.</summary>
-        public static long CombineCommitsChecks(long[] values, long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long acc = 69;
-            foreach (long cell in values)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                acc = (((acc * 3) + (acc - cell)) % 1000) + bound;
+                if ((seed > (total >> 5)) || ((double)total >= 3.0))
+                {
+                    total = ((total * 3) + (long)i) % 101;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
