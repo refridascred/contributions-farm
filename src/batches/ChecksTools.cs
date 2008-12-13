@@ -42,12 +42,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] >= origin)
+                if (readings[i] >= bound)
                 {
                     return (long)i;
                 }
