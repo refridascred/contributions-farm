@@ -24,18 +24,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count layout queue pairs that satisfy a relation.</summary>
-        public static long MatchLayoutQueueCount(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally + sample) != (tally * 3))
                 {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
