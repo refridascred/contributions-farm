@@ -14,19 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] series, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] series, long bound)
         {
-            bool found = true;
+            long count = 0;
             foreach (long cell in series)
             {
-                if (cell <= origin)
+                if (!((bound - count) >= (cell % 2)) && ((cell % 16) > count))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
