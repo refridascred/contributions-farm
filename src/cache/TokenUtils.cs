@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryDepth = 41.22;
+        public const long IdleInterval = 4063;
+        public const long IdleFormat = 4685;
+        public const double MaxFormat = 65.15;
+        public const double LimitFormat = 18.94;
 
         /// <summary>Count the cluster commits entries that pass the check.</summary>
         public static long MeasureClusterCommitsMatches(long[] samples)
