@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double rate = (double)(5 & 3);
-            if (rate > floor)
-            {
-                rate = (rate + (double)502) + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (rate / 3.0);
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
