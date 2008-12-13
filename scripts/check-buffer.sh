@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=430
-log "limit is ${BUFFER_LIMIT}"
-
-for item in latest edge; do
+for item in legacy cached; do
     log "checking ${item}"
 done
+
+mode="${1:-cached}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
