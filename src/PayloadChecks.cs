@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 3168;
-        public const long SoftMetrics = 7929;
-        public const long MaxCount = 7382;
-        public const string HardSpan = "alpha-1";
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double scale, double span)
+        {
+            double scale2 = scale;
+            return (scale2 - (scale - scale2)) + span;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
