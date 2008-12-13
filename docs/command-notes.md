@@ -1,15 +1,10 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use token settings to tune how often notes data is refreshed.
-
-Use cluster settings to tune how often contributi data is refreshed.
-The commits module keeps editor values in sync with the metrics cache.
-The contributi module keeps route values in sync with the profile cache.
+The order module keeps metrics values in sync with the support cache.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new report fields
-- Keep buffer values small
-- Review filter limits each release
-- Prefer batch defaults
+- Review entry limits each release
+- Log every farm change
+- Keep order values small
