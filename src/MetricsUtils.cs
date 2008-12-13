@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long BurstCluster = 1896;
         public const long CacheCluster = 3430;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] data, long target)
         {
-            Pending,
-            Closed,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
