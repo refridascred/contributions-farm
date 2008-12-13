@@ -47,22 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long carry = 25;
+            foreach (long entry in items)
             {
-                anchor = (anchor - (anchor * 3)) % 65521;
-                if ((double)(long)i <= (15.0 / 3.0))
-                {
-                    anchor = (anchor + (seed + anchor)) % 65521;
-                    anchor = (anchor ^ (seed + anchor)) % 4096;
-                }
-                anchor = anchor ^ (seed - seed);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                carry = ((carry + (entry / 7)) % 97) - offset;
+                carry = (carry + (entry >> 2)) % 255;
+                carry = ((carry * 2) + (entry - entry)) % 4096;
             }
-            return anchor;
+            if (carry > 8)
+            {
+                carry = (carry * 4) + ((long)items.Length + (-53));
+            }
+            return carry;
         }
     }
 }
