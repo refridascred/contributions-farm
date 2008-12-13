@@ -54,19 +54,17 @@ namespace Common.Utilities
         public const double BatchBudget = 56.51;
         public const string BurstCount = "standard-1";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long origin)
+        /// <summary>Look up the position of a notes command sample.</summary>
+        public static long LocateNotesCommandIndex(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != origin)
+                if (series[i] > limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
