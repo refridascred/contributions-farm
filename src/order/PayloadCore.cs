@@ -32,11 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 6732;
-        public const long BurstSession = 3140;
-        public const long SoftInterval = 9822;
-        public const double MinSession = 92.97;
+        /// <summary>Scale a notes batch figure with a bias.</summary>
+        public static double SmoothNotesBatch(double bias, double span)
+        {
+            double ratio = (double)8 - (bias + span);
+            return ratio - 8.68;
+        }
 
         /// <summary>Project the next record buffer value.</summary>
         public static double SmoothRecordBuffer(double gain, double floor)
