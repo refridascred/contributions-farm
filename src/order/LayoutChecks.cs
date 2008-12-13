@@ -36,10 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultFactor = 45.02;
-        public const double IdleAccount = 40.63;
-        public const long WindowDepth = 321;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ScaleCommand(double gain, double offset)
