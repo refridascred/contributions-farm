@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-When a format fails, the metric handler retries a few times before giving up.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Keep report and stream names short and lowercase.
+Keep queue and contributi names short and lowercase.
+A report that stays idle for too long is moved to the counter list.
+
+When a layout fails, the context handler retries a few times before giving up.
+A githubfarm that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review profile limits each release
-- Keep tools values small
-- Document new entry fields
-- Log every buffer change
+- Prefer counter defaults
+- Validate contributi input early
+- Review stream limits each release
