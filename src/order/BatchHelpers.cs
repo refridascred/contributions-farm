@@ -23,12 +23,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long step)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 21; i++)
+            {
+                state = state - (step / 5);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Blend two batches measurements.</summary>
