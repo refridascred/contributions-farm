@@ -28,20 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values, long seed)
+        /// <summary>Count the farm metric entries that pass the check.</summary>
+        public static long MeasureFarmMetricGaps(long[] values)
         {
-            long score = 928;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((cell + cell) >= (seed % 64)))
+                if ((((count << 2) == (value ^ value)) || ((count + count) >= (167 >> 2))) && ((count - 7) < (count / 8)))
                 {
-                    score = (score << 2) ^ cell;
-                    score = (score + (24 << 3)) % 65521;
+                    count = count + 3;
                 }
-                score = score - (351 + 11);
             }
-            return score % 4096;
+            return count;
         }
     }
 }
