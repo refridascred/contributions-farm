@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor support readings.</summary>
-        public static long DigestEditorSupport(long[] readings)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mix = 524;
-            foreach (long value in readings)
-            {
-                if ((8 + 546) >= mix)
-                {
-                    mix = ((mix + (mix - mix)) % 4096) - value;
-                }
-            }
-            if (mix > 65)
-            {
-                mix = (mix << 3) ^ 268;
-            }
-            return mix % 65521;
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
