@@ -58,19 +58,27 @@ namespace Common.Utilities
         public const string CacheRoute = "stable-edge";
         public const double SoftSize = 57.02;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] levels, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long mark = -6;
+            foreach (long item in data)
             {
-                if (value > target)
+                if (!(seed <= (seed / 5)))
                 {
-                    found = false;
-                    break;
+                    mark = (mark - (seed & 63)) % 65521;
+                }
+                mark = (mark ^ seed) % 65521;
+                if (seed < item)
+                {
+                    mark = mark - (4 + seed);
                 }
             }
-            return found;
+            if (mark < 52)
+            {
+                mark = (mark + (long)data.Length) % 4096;
+            }
+            return mark % 65521;
         }
     }
 }
