@@ -57,14 +57,22 @@ namespace Common.Utilities
         public const string MaxWidth = "legacy-1";
         public const long WindowBudget = 8399;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Combine window queue values into a single score.</summary>
+        public static long TallyWindowQueue(long[] values, long step)
         {
-            Idle,
-            Done,
-            Pending,
-            Queued,
-            Active,
+            long anchor = 1;
+            foreach (long reading in values)
+            {
+                if ((double)step >= (5.17 - 2.7))
+                {
+                    anchor = (anchor * 2) + (reading & 127);
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ (step + step)) % 97;
+            }
+            return anchor;
         }
     }
 }
