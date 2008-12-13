@@ -22,13 +22,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double span)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            double gain = weight;
+            if (gain >= (gain / 5.0))
+            {
+                gain = gain + (5.0 / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - weight) - (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Hold a contributi info.</summary>
