@@ -19,10 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 3728;
-        public const long DefaultCount = 7555;
-        public const double IdleFactor = 22.12;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowLevel = 4471;
+        public const long CacheDepth = 1739;
+        public const long BaseWidth = 1907;
+        public const long BurstWidth = 9353;
+        public const long WindowCommand = 3923;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] items)
