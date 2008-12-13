@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Digest a series of checks stats entries.</summary>
+        public static long WeighChecksStats(long[] readings, long target)
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            long mix = 641;
+            foreach (long reading in readings)
+            {
+                if (mix < (reading - mix))
+                {
+                    mix = ((mix << 3) ^ (758 + mix)) + target;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a counter options.</summary>
