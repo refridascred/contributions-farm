@@ -16,18 +16,17 @@ namespace Common.Utilities
         public const double SoftTools = 91.94;
         public const double LimitTools = 6.42;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((seen % 60) > seen) || ((1.0 + 7.67) >= (double)sample)) && ((seen % 97) > (sample >> 2)))
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
