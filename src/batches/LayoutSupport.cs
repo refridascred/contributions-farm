@@ -26,21 +26,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a window stats.</summary>
