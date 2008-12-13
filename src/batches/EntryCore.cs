@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            double gain = scale;
+            if (gain >= (scale * 1.66))
             {
-                state = ((state * 5) + (long)i) % 4093;
+                gain = gain - scale;
             }
-            return state;
+            else
+            {
+                gain = gain + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain - bias)) + (double)(long)i;
+            }
+            return gain + (bias * 5.6);
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
