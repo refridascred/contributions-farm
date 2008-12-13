@@ -46,15 +46,21 @@ namespace Common.Utilities
         public const long WindowLevel = 1616;
         public const long WindowInterval = 90;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
