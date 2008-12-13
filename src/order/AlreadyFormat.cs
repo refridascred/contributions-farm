@@ -22,27 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] readings)
         {
-            long result = 3;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                result = (result - (seed - 0)) % 1000;
-                if (((seed * 2) > (cell << 1)) || ((seed << 1) <= (0 + seed)))
+                if ((416 - 733) <= seen)
                 {
-                    result = (result + cell) % 4096;
+                    seen = (seen + 2) + reading;
                 }
                 else
                 {
-                    result = (result * 5) + (result - cell);
+                    seen = seen - 1;
                 }
             }
-            if (result > 57)
-            {
-                result = (result ^ (result / 5)) % 101;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the session phase values.</summary>
