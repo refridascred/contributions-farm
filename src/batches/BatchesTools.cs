@@ -20,15 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            Idle,
+            Locked,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
