@@ -1,7 +1,16 @@
 {
-  "report_delay": "local",
-  "record_ratio": 60,
-  "min_ratio": 5942,
-  "entry_retries": ["strict", "legacy", "strict"],
-  "max_capacity_ms": 96.43
+  "burst_ratio_count": 2225,
+  "context_interval": 46.13,
+  "base_ttl_s": {
+    "poll_timeout_pct": "standard",
+    "report_limit": 250,
+    "report_size": false,
+    "compress": {
+      "flush_delay": 57,
+      "tools_retries": "cached",
+      "audit": false,
+      "base_ttl": "legacy"
+    }
+  },
+  "editor_capacity": true
 }
