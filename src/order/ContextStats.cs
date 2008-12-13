@@ -33,21 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)data.Length + cell) < (seen & 255))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
