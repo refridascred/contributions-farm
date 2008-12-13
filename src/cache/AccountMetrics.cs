@@ -22,23 +22,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of checks order readings.</summary>
-        public static long ScoreChecksOrder(long[] series, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] values, long seed)
         {
-            long result = -4;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (218 << 1)) % 4096;
-                if (((double)result != (double)target) || (target >= (result / 7)))
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
                 {
-                    result = (result * 3) + (item << 2);
+                    return (long)i;
                 }
             }
-            if (result > 2)
-            {
-                result = (result ^ (target % 5)) % 65521;
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Hold a tools header.</summary>
