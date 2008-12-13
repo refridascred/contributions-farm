@@ -17,12 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Retry,
-            Stale,
-            New,
+            Closed,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
