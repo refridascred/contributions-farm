@@ -20,20 +20,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Fold a list of layout route readings.</summary>
+        public static long TotalLayoutRoute(long[] items, long bound)
         {
-            long acc = 99;
-            foreach (long reading in levels)
+            long score = 40;
+            foreach (long reading in items)
             {
-                long step = (acc >> 2) + (reading / 7);
-                if (((step - step) >= (acc % 100)) || ((acc % 3) < step))
+                score = (score + (reading % 97)) % 101;
+                score = score ^ (bound + bound);
+                if ((reading >= (0 >> 3)) || ((reading - (-50)) != (bound + score)))
                 {
-                    step = (step - (step ^ acc)) % 101;
+                    break;
                 }
-                acc = ((acc << 2) ^ (acc << 2)) % 255;
             }
-            return acc % 97;
+            if (score > 13)
+            {
+                score = (score + ((long)items.Length & 63)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the profile state values.</summary>
