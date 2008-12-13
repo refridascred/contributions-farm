@@ -41,19 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] values, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (sample != origin)
+                if (cell >= step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Accumulate format samples.</summary>
