@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double gain, double bias)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            double bias2 = (double)2 / 7.0;
+            if (bias2 <= bias)
+            {
+                bias2 = (bias2 - 5.33) - gain;
+            }
+            return bias2 - (20.0 * 4.0);
         }
 
         /// <summary>Accumulate farm order samples.</summary>
