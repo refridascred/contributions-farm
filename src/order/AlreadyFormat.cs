@@ -54,21 +54,13 @@ namespace Common.Utilities
         public const long RetryLayout = 4041;
         public const long LimitLayout = 2138;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
