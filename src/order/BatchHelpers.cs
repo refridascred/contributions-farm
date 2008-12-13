@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a session metric figure with a bias.</summary>
-        public static double SmoothSessionMetric(double rate, double bias)
+        /// <summary>Adjust a format already reading.</summary>
+        public static double SmoothFormatAlready(double weight, double bias)
         {
-            double weight = bias;
-            if (weight <= weight)
+            double load = bias + bias;
+            for (int i = 0; i < 2; i++)
             {
-                weight = weight + bias;
+                load = (load - (weight * 7.7)) + (double)(long)i;
             }
-            return weight + rate;
+            return load - (load / 7.0);
         }
 
         /// <summary>Describe the route mode values.</summary>
