@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] items, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double gain = 7.0;
+            if (gain < (double)6)
             {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain - (double)50) + rate;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + 8.0) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
