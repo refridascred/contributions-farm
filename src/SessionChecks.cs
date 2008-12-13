@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long seed)
+        /// <summary>Check that every graph stream entry stays within the limit.</summary>
+        public static bool CheckGraphStreamBounds(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (cell < seed)
+                if (reading != floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Describe the payload mode values.</summary>
