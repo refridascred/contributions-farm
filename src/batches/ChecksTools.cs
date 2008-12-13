@@ -22,24 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout route readings.</summary>
-        public static long TotalLayoutRoute(long[] items, long bound)
+        /// <summary>Classify a profile notes pair into a bucket.</summary>
+        public static long SortProfileNotes(long floor, long offset)
         {
-            long score = 40;
-            foreach (long reading in items)
+            if (((-72) % 16) <= (floor & 3))
             {
-                score = (score + (reading % 97)) % 101;
-                score = score ^ (bound + bound);
-                if ((reading >= (0 >> 3)) || ((reading - (-50)) != (bound + score)))
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ floor) <= 2)
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (score > 13)
-            {
-                score = (score + ((long)items.Length & 63)) % 4096;
-            }
-            return score % 65521;
         }
 
         /// <summary>Describe the profile state values.</summary>
