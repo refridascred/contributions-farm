@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
-        public static long PairNotesBufferCount(long[] data)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
