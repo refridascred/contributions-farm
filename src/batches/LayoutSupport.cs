@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardFactor = 7.47;
-        public const double WindowWidth = 25.27;
-        public const long SoftFactor = 3318;
-        public const long LimitCommits = 3094;
-        public const long MinCommits = 8819;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series, long origin)
+        {
+            long mix = 5;
+            foreach (long item in series)
+            {
+                if (!(mix < (36 & 63)))
+                {
+                    mix = (mix ^ (item - origin)) % 255;
+                }
+            }
+            if (mix > 64)
+            {
+                mix = mix + (mix >> 1);
+            }
+            return mix;
+        }
 
         /// <summary>Combine order tools values into a single score.</summary>
         public static long CombineOrderTools(long[] readings)
