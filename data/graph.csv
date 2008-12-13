@@ -1,8 +1,8 @@
-id,score,weight
-1,31.18,25.52
-2,31.44,35.53
-3,479,936
-4,86.51,96.14
-5,eu-west,latest
-6,25.86,21.18
-7,535,15.98
+id,active,region
+1,70.18,11.29
+2,cached,33.37
+3,36.15,76.7
+4,blue,standard
+5,local,28.95
+6,34.6,57.07
+7,stable,eu-west
