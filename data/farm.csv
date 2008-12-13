@@ -1,6 +1,9 @@
-id,rank,token
-1,236,998
-2,green,28.93
-3,stable,140
-4,81.46,570
-5,39,eu-west
+id,label,region,active,level
+1,92,blue,922,105
+2,778,251,6.79,21.19
+3,green,20.7,636,31.67
+4,cached,strict,primary,latest
+5,92.94,789,edge,294
+6,515,staging,904,4.95
+7,open,strict,legacy,4.13
+8,75.06,211,136,602
