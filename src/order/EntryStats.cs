@@ -40,11 +40,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8990;
-        public const long DefaultBatches = 6998;
-        public const string RetryBatches = "standard-v2";
-        public const string MaxBatches = "alpha-v2";
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] samples, long bound)
+        {
+            long total = 19;
+            foreach (long value in samples)
+            {
+                total = total ^ value;
+                total = ((total * 3) + (bound ^ value)) % 65521;
+                if (!((value * 4) == (value << 1)))
+                {
+                    total = (total << 2) ^ (value ^ bound);
+                }
+            }
+            if (total > 880)
+            {
+                total = ((total * 4) + (long)samples.Length) % 1000;
+            }
+            return total % 97;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long BucketFilter(long target, long seed)
