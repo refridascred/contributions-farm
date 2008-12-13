@@ -1,25 +1,24 @@
 # support settings
-hard_limit_s: true
-queue_limit: 69
-idle_retries_s:
-  order_retries: 9135
-  idle_timeout_ms: 5530
-  soft_ratio_count:
-    stream_window:
-      - standard
-      - fallback
-      - edge
-      - standard
-    min_ttl_s: standard
-    base_limit: false
-    hard_threshold_s: strict
-    buffer_delay: false
-  format_limit:
-    default_limit_s: 87
-    idle_timeout_count: 30.99
-    hard_ratio: 97.29
-    batch_limit: false
-    route_ratio: stable
-cache_retries_pct: fallback
-batches_interval: eu-west
-retry_ttl_s: 81.73
+warm_depth_ms: 93.49
+burst_delay_pct:
+  cache_delay_ms: fallback
+  poll_threshold_ms: 37.35
+  retry_window: 40
+  cache_limit_s: green
+  soft_limit_ms:
+    flush_delay_s: 100
+    compress: blue
+    base_threshold:
+      - 151
+      - 187
+      - 320
+      - 194
+    burst_window_pct: 5974
+    verbose: 53.53
+    max_threshold_s: stable
+hard_threshold_count:
+  - 434
+  - 499
+  - 403
+idle_limit: staging
+filter_limit: open
