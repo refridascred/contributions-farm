@@ -20,13 +20,10 @@ namespace Common.Utilities
         public const double MaxAccount = 70.29;
         public const long LimitAccount = 6774;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 6270;
+        public const long MaxFactor = 242;
+        public const string BaseMetrics = "strict-v2";
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
