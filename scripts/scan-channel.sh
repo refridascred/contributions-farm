@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy local cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=86
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
