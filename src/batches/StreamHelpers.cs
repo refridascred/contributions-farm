@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            Pending,
-            Retry,
-            New,
-            Closed,
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = (sum - 16) - (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Locate a support reading by value.</summary>
