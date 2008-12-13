@@ -1,6 +1,6 @@
 {
-  "burst_size_ms": 67.0,
-  "counter_capacity": false,
-  "readonly": ["fallback", "fallback", "legacy", "strict"],
-  "layout_retries": 250
+  "verbose": 100,
+  "format_ratio": 91,
+  "readonly": "edge",
+  "audit": true
 }
