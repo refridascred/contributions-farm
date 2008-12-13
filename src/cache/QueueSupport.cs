@@ -74,18 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
-        {
-            long state = 406;
-            foreach (long value in values)
-            {
-                if ((18.0 - 2.4) <= 9.4)
-                {
-                    state = ((state + state) % 255) - value;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 58.45;
+        public const string RetryOrder = "fallback";
+        public const double HardRatio = 16.51;
+        public const long CacheInterval = 720;
+        public const long DefaultOrder = 3567;
     }
 }
