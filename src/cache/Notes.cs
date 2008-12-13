@@ -37,12 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Ready,
+            Queued,
             New,
-            Stale,
+            Closed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
