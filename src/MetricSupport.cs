@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many farm record samples are out of range.</summary>
-        public static long MeasureFarmRecordHits(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 89;
+            foreach (long sample in readings)
             {
-                if (((63 * 2) <= ((long)items.Length & 63)) || ((0.73 + 19.0) != (double)tally))
-                {
-                    tally = (tally + 1) + value;
-                }
+                total = ((total + total) % 101) - step;
+                total = (total - (sample * 4)) % 101;
             }
-            return tally;
+            if (total < 6)
+            {
+                total = (total + (519 + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Roll a order counter forward.</summary>
