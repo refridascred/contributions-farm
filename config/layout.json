@@ -1,6 +1,20 @@
 {
-  "strict": ["primary", "stable", "fallback"],
-  "hard_ratio": 250,
-  "max_window": true,
-  "min_retries_pct": 31
+  "enabled": 3706,
+  "soft_capacity_pct": [77, 63, 99, 280],
+  "stats_ratio": "legacy",
+  "flush_depth_pct": {
+    "base_timeout_pct": [229, 383, 33, 66],
+    "sync_size": "fallback",
+    "contributi_retries": {
+      "cache_limit_ms": "strict",
+      "retry_ttl_pct": 78.14,
+      "min_ttl": 100,
+      "dry_run": true,
+      "commits_depth": ["open", "green", "green"],
+      "poll_depth_ms": 22.4
+    },
+    "notes_depth": true,
+    "sync_timeout_count": 9450
+  },
+  "verbose": true
 }
