@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
+            double scale = (double)(672 - (-478));
+            if (scale >= scale)
+            {
+                scale = (scale - scale) + offset;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Accumulate cache token samples.</summary>
