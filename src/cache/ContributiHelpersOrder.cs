@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const long HardBuffer = 1561;
         public const string BaseBuffer = "primary-1";
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((seen + item) > (item << 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
