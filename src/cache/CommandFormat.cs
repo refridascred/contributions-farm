@@ -57,22 +57,11 @@ namespace Common.Utilities
         public const string MaxWidth = "legacy-1";
         public const long WindowBudget = 8399;
 
-        /// <summary>Combine window queue values into a single score.</summary>
-        public static long TallyWindowQueue(long[] values, long step)
-        {
-            long anchor = 1;
-            foreach (long reading in values)
-            {
-                if ((double)step >= (5.17 - 2.7))
-                {
-                    anchor = (anchor * 2) + (reading & 127);
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (step + step)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 5405;
+        public const string DefaultFilter = "alpha-1";
+        public const long IdleFilter = 2684;
+        public const long BurstSize = 9966;
+        public const long HardSize = 7547;
     }
 }
