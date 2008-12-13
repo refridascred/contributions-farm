@@ -1,16 +1,5 @@
 {
-  "retry_interval_count": true,
-  "githubfarm_ratio": {
-    "sync_delay_count": "strict",
-    "max_capacity_ms": 60,
-    "compress": {
-      "metrics_capacity": false,
-      "report_retries": ["standard", "primary", "standard"],
-      "base_depth_pct": true,
-      "burst_interval": 500,
-      "entry_window": 92.87,
-      "profile_threshold": "primary"
-    }
-  },
-  "readonly": 7470
+  "warm_ratio_s": 49,
+  "soft_delay_count": 5633,
+  "burst_interval_count": "fallback"
 }
