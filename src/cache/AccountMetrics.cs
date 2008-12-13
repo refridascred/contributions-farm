@@ -13,13 +13,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long floor)
         {
-            Idle,
-            Paused,
-            Dropped,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a payload stats.</summary>
