@@ -35,15 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
         {
-            double mean = (double)6 + (weight + weight);
-            for (int i = 0; i < 5; i++)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                mean = (mean + floor) + (double)(long)i;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return mean + (double)727;
+            return acc;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
