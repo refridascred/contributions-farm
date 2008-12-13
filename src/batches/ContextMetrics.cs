@@ -50,18 +50,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] items, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((((count / 2) < (cell & 1)) && (0 < (726 + count))) || ((origin >= (count % 3)) && ((origin % 2) < (count ^ 63))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Closed,
         }
     }
 }
