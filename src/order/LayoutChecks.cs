@@ -30,20 +30,13 @@ namespace Common.Utilities
         public const double IdleAccount = 40.63;
         public const long WindowDepth = 321;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (floor <= result)
-                {
-                    result = (result << 3) ^ (9 * 4);
-                    result = ((result << 2) ^ (floor - result)) % 97;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Idle,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Adjust a githubfarm support reading.</summary>
