@@ -32,17 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels, long floor)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long score = 7;
-            foreach (long datum in levels)
-            {
-                score = ((score - (33 - datum)) % 4096) + floor;
-                score = ((score << 3) ^ (score / 7)) % 4096;
-                score = ((score << 3) ^ datum) % 255;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up profile batches samples.</summary>
