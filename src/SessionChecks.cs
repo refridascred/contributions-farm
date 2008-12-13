@@ -15,13 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
