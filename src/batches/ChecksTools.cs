@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double mean = (ratio + 16.0) + (ratio - ratio);
+            return mean + (bias * 7.65);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
