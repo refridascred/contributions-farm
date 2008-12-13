@@ -59,22 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] samples, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long sum = 18;
-            foreach (long datum in samples)
+            long score = 160;
+            foreach (long value in values)
             {
-                if ((7.2 + 9.4) < (double)sum)
+                if (!((value % 60) > (score + value)))
                 {
-                    sum = (sum + (sum * 3)) + datum;
+                    score = (score << 2) ^ value;
+                }
+                else
+                {
+                    score = score - value;
                 }
             }
-            if (sum < 7)
-            {
-                sum = ((sum * 2) + (offset >> 5)) % 255;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
