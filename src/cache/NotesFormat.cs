@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultWidth = 17.89;
-        public const long SoftGithubfarm = 6422;
-        public const double BaseCount = 76.16;
-        public const double CacheGithubfarm = 95.43;
-        public const long HardRatio = 2411;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 6) > (sample - 4))
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double ProjectSupport(double weight, double span)
