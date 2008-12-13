@@ -31,22 +31,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] values, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long anchor = 14;
-            foreach (long cell in values)
-            {
-                if (bound <= (bound + bound))
-                {
-                    anchor = (anchor + (bound / 5)) + cell;
-                }
-            }
-            if (anchor > 77)
-            {
-                anchor = ((anchor * 3) + (anchor ^ bound)) % 97;
-            }
-            return anchor;
+            Failed,
+            Active,
+            Done,
+            Pending,
         }
     }
 }
