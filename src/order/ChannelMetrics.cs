@@ -43,15 +43,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
