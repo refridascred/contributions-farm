@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long bound, long origin)
         {
-            long state = 57;
-            foreach (long reading in readings)
+            long span = bound - origin;
+            if (!((origin ^ origin) != (bound ^ span)))
             {
-                state = (((state ^ 308) % 65521) ^ reading) + origin;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (((origin + bound) == (origin - span)) || ((span + origin) >= (31 + bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (bound - span))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
