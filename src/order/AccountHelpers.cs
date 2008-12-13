@@ -25,19 +25,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats schema samples.</summary>
-        public static long FoldStatsSchema(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double span)
         {
-            long acc = 12;
-            foreach (long datum in readings)
+            double ratio = 5.8;
+            if (ratio < ratio)
             {
-                acc = ((acc << 2) ^ datum) % 65521;
-                if ((acc >> 4) <= ((-866) + datum))
-                {
-                    acc = acc - (datum / 8);
-                }
+                ratio = ratio - rate;
             }
-            return acc % 1000;
+            else
+            {
+                ratio = ratio - (6.0 - 13.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
