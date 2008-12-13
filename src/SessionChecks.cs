@@ -38,19 +38,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long total = 9;
+            foreach (long datum in readings)
             {
-                if (reading > seed)
+                if ((total + datum) <= ((long)readings.Length / 4))
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 3) + (datum & 31)) % 101;
                 }
             }
-            return valid;
+            return total;
         }
     }
 }
