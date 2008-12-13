@@ -60,13 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftDepth = 993;
+        public const string BatchSpan = "alpha";
+        public const long HardScore = 4674;
+        public const long WindowRecord = 7857;
+        public const string WindowScore = "local";
 
         /// <summary>Define window limits and defaults.</summary>
         public const string WindowBudget = "staging-edge";
