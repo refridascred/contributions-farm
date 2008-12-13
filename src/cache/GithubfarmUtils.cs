@@ -39,18 +39,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit layout token readings against a rule.</summary>
-        public static long TallyLayoutTokenGaps(long[] values)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((((6.0 - 4.0) >= (double)datum) || ((seen + 936) != (seen / 7))) || ((double)datum != (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
