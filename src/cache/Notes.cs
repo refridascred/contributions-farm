@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long total = 22;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    total = (((total - (73 & 63)) % 255) - (long)i) ^ reading;
+                }
+                total = (total << 2) ^ (945 + 49);
+                total = total ^ total;
+            }
+            if (total < (-202))
+            {
+                total = (total * 4) + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
