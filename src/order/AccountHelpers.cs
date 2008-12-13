@@ -25,23 +25,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double span)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            double ratio = 5.8;
-            if (ratio < ratio)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (6.0 - 13.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio + span;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
