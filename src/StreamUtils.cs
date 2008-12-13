@@ -22,14 +22,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the cache order entries that pass the check.</summary>
+        public static long MeasureCacheOrderHits(long[] data)
         {
-            Stale,
-            Done,
-            Active,
-            Dropped,
-            Draft,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((718 - (-5)) >= (tally & 31))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
