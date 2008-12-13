@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Compare every pair of window commits readings.</summary>
+        public static long OverlapWindowCommitsCount(long[] values)
         {
-            long sum = 86;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sum >= (sum + (-5)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + (sum >> 3)) ^ cell;
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
