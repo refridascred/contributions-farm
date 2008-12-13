@@ -58,13 +58,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long floor, long bound)
         {
-            Active,
-            Stale,
-            Closed,
-            Queued,
+            long offset = floor ^ bound;
+            if (((floor ^ 5) >= (offset / 2)) && (floor <= (bound << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound & 31) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((521 & 31) > floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
