@@ -57,22 +57,13 @@ namespace Common.Utilities
             return weight2 - 4.2;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long result = 132;
-            foreach (long item in readings)
-            {
-                if ((result * 5) >= (result >> 3))
-                {
-                    result = ((result << 3) ^ (item ^ 98)) % 65521;
-                }
-                if ((double)result < (3.88 - 13.0))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
