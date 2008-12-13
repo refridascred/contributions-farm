@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window profile readings against a bound.</summary>
-        public static bool ValidateWindowProfileRange(long[] data, long limit)
+        /// <summary>Audit batch checks readings against a rule.</summary>
+        public static long CountBatchChecksOutliers(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (reading > limit)
+                if ((count + sample) < (sample % 24))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + limit;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
