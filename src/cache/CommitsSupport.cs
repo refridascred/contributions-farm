@@ -55,13 +55,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            Locked,
-            Idle,
-            Done,
-            Draft,
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry << 3) ^ (step * 4);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = (carry + (carry + (long)i)) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a batch summary.</summary>
