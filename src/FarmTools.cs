@@ -29,22 +29,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((target ^ datum) <= (datum - seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 68.62;
+        public const long CacheLevel = 9759;
+        public const double IdleContext = 10.56;
     }
 }
