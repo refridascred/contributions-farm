@@ -23,22 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long AuditNotesChannelHits(long[] items, long limit)
+        /// <summary>Digest a series of entry window entries.</summary>
+        public static long ScoreEntryWindow(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = 73;
+            foreach (long sample in values)
             {
-                if (seen > (-7))
+                carry = (((carry * 2) + carry) % 65521) + sample;
+                if ((double)seed < (3.0 / 4.0))
                 {
-                    seen = ((seen + 1) ^ reading) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
