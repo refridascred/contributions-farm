@@ -45,12 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 44;
-        public const long WindowEntry = 4689;
-        public const long SoftEntry = 2446;
-        public const long MinDepth = 9417;
-        public const long BurstEntry = 2391;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
