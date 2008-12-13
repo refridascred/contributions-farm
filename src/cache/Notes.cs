@@ -45,12 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultCounter = "latest-edge";
-        public const long BatchCounter = 8422;
-        public const double RetryCounter = 3.88;
-        public const long SoftSpan = 740;
-        public const long IdleCounter = 5349;
+        /// <summary>Find the first report format entry that matches the target.</summary>
+        public static long SeekReportFormatIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
