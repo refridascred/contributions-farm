@@ -28,14 +28,19 @@ namespace Common.Utilities
         public const long MaxSpan = 3025;
         public const string HardSpan = "stable-v2";
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] items, long origin)
         {
-            Idle,
-            Failed,
-            Ready,
-            Draft,
-            Done,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
