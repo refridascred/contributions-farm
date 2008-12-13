@@ -16,15 +16,14 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Derive the next command graph value from a seed.</summary>
-        public static long StepCommandGraph(long step)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Active,
+            Draft,
+            Queued,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
