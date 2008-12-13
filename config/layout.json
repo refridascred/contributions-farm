@@ -1,11 +1,5 @@
 {
-  "cache_interval": "green",
-  "cache_retries": {
-    "metrics_threshold": "standard",
-    "cache_retries_s": [447, 184, 6],
-    "idle_threshold_pct": 84.87,
-    "editor_timeout": ["open", "cached", "edge"]
-  },
-  "readonly": 2386,
-  "persist": 30
+  "burst_delay_ms": "staging",
+  "warm_limit": "latest",
+  "base_ttl_count": 90
 }
