@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    label TEXT,
-    owner TEXT NOT NULL
+    owner TEXT NOT NULL,
+    ratio REAL
 );
 
 CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
 
-INSERT INTO stream_events (token, label, owner) VALUES ('stable', 'latest', 'local');
-INSERT INTO stream_events (token, label, owner) VALUES ('latest', 'green', 'legacy');
-INSERT INTO stream_events (token, label, owner) VALUES ('open', 'cached', 'staging');
+INSERT INTO stream_events (token, owner, ratio) VALUES ('stable', 'legacy', 73.36);
+INSERT INTO stream_events (token, owner, ratio) VALUES ('eu-west', 'edge', 6.46);
