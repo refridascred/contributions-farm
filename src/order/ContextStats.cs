@@ -42,21 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (weight / 3.0) - (bias / 8.0);
+            if (bias2 >= bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + (weight * 1.43);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (double)66;
+            }
+            return bias2 + (double)724;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
