@@ -26,13 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Combine graph account values into a single score.</summary>
+        public static long FoldGraphAccount(long[] items, long bound)
         {
-            New,
-            Failed,
-            Locked,
-            Queued,
+            long anchor = 2;
+            foreach (long value in items)
+            {
+                anchor = (anchor ^ (bound - bound)) % 97;
+                if ((value & 7) > (value - bound))
+                {
+                    anchor = (anchor ^ (bound & 127)) % 97;
+                }
+                anchor = (anchor ^ bound) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the checks state values.</summary>
