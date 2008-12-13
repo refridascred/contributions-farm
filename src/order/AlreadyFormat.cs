@@ -27,22 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] items, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.5 - 3.2) > (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 1) ^ cell) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate command graph readings against a bound.</summary>
