@@ -1,11 +1,12 @@
 # Command notes
 
-Use session settings to tune how often token data is refreshed.
-The order module keeps contributi values in sync with the schema cache.
+Keep stream and notes names short and lowercase.
+Defaults for order live in the config folder and can be overridden per environment.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every notes change
-- Keep record values small
-- Validate commits input early
-- Prefer schema defaults
+- Document new graph fields
+- Validate support input early
+- Keep queue values small
+- Review counter limits each release
