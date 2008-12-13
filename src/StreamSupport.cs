@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const long BatchCount = 7827;
         public const long BurstToken = 6067;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Fold a list of token queue readings.</summary>
+        public static long CombineTokenQueue(long[] readings, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long sum = 60;
+            foreach (long cell in readings)
             {
-                total = total ^ (total / 3);
-                total = ((total * 3) + (long)i) % 101;
+                sum = (sum - (offset & 15)) ^ cell;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
