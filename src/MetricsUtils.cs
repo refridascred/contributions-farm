@@ -56,15 +56,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next queue notes value from a seed.</summary>
-        public static long SeriesQueueNotes(long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] items, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long result = -8;
+            foreach (long item in items)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((result % 5) > (result & 7))
+                {
+                    result = ((result * 3) + (step - result)) ^ item;
+                }
             }
-            return mark;
+            if (result < 59)
+            {
+                result = (result ^ (result - 98)) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
