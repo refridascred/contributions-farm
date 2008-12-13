@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            double rate = 8.5 * 19.0;
-            return (rate - offset) + gain;
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state - (offset + state);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the order phase values.</summary>
