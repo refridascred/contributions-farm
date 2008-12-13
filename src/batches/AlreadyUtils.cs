@@ -46,22 +46,10 @@ namespace Common.Utilities
         public const long WindowLevel = 1616;
         public const long WindowInterval = 90;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "latest-edge";
+        public const long StepChecks = 2401;
+        public const long HardChecks = 72;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long CompareQueueCount(long[] series)
