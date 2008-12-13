@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every session batch entry stays within the limit.</summary>
-        public static bool ValidateSessionBatchBounds(long[] samples, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (item <= limit)
+                if (sample <= bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
