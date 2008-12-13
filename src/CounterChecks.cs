@@ -22,39 +22,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long floor, long floor2)
+        /// <summary>Find the first counter metrics entry that matches the target.</summary>
+        public static long LocateCounterMetricsIndex(long[] items, long bound)
         {
-            long delta = floor ^ floor2;
-            if (floor < (floor << 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 / 7) < floor2)
+                if (items[i] > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((8 << 2) <= delta) && ((floor << 1) > (floor2 >> 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor2 + floor2) < (floor2 << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
