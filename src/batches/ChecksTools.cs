@@ -22,24 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile notes pair into a bucket.</summary>
-        public static long SortProfileNotes(long floor, long offset)
+        /// <summary>Fold a list of editor support readings.</summary>
+        public static long DigestEditorSupport(long[] readings)
         {
-            if (((-72) % 16) <= (floor & 3))
+            long mix = 524;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ floor) <= 2)
+                if ((8 + 546) >= mix)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    mix = ((mix + (mix - mix)) % 4096) - value;
                 }
             }
+            if (mix > 65)
+            {
+                mix = (mix << 3) ^ 268;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the profile state values.</summary>
