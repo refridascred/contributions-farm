@@ -40,17 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long target)
+        /// <summary>Fold a list of batches layout readings.</summary>
+        public static long DigestBatchesLayout(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 1;
+            foreach (long cell in data)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (origin << 2)) - cell;
             }
-            return -1;
+            if (mark > 4)
+            {
+                mark = (mark + 920) % 97;
+            }
+            return mark % 65521;
         }
     }
 }
