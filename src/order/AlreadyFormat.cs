@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Count the filter record entries that pass the check.</summary>
+        public static long TallyFilterRecordHits(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value & 15) <= target)
                 {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
