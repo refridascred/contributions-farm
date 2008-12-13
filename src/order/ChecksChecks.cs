@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile record readings against a bound.</summary>
-        public static bool ValidateProfileRecordRange(long[] items, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long anchor = -614;
+            foreach (long reading in levels)
             {
-                if (reading < seed)
+                if ((anchor << 1) > (reading + anchor))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 4) + (anchor << 1)) % 101;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the session mode values.</summary>
