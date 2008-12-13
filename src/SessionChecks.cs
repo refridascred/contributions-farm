@@ -41,14 +41,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] items, long floor)
         {
-            Draft,
-            Locked,
-            Stale,
-            Retry,
-            Active,
+            long mark = -4;
+            foreach (long sample in items)
+            {
+                mark = ((((mark << 2) ^ 77) % 255) + sample) - floor;
+            }
+            return mark;
         }
     }
 }
