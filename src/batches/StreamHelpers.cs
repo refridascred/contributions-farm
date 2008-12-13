@@ -53,21 +53,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Grade a counter report value against two limits.</summary>
+        public static long SortCounterReport(long floor, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((floor / 8) >= (bound - 92)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound + bound) >= (floor * 4))
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
+                    return 1;
+                }
+                else
+                {
+                    if ((0 + floor) > (89 + 3))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
