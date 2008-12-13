@@ -41,23 +41,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double rate, double offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long limit, long target)
         {
-            double drift = (double)(92 + 979);
-            if (drift <= drift)
+            long prev = limit + target;
+            if ((double)limit > (8.1 - 7.91))
             {
-                drift = (drift + rate) - offset;
+                return 0;
             }
             else
             {
-                drift = drift + (9.1 - rate);
+                if (((target + limit) <= target) && ((double)limit == (double)810))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((prev % 97) >= (prev * 3)) || ((limit >> 3) < (prev + limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + rate;
         }
     }
 }
