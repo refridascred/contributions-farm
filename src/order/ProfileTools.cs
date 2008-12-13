@@ -30,26 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine githubfarm notes values into a single score.</summary>
-        public static long TotalGithubfarmNotes(long[] data, long offset)
+        /// <summary>Project the next already farm value.</summary>
+        public static double ScaleAlreadyFarm(double gain, double floor)
         {
-            long result = 1;
-            foreach (long sample in data)
+            double bias = (double)8 * 4.9;
+            if (bias <= (bias - 16.0))
             {
-                if ((offset % 7) >= (sample - result))
-                {
-                    continue;
-                }
-                if (((offset / 9) != (offset + offset)) && ((double)sample <= (6.0 * 3.02)))
-                {
-                    result = ((result * 5) + 1) % 101;
-                }
-                else
-                {
-                    result = ((result * 3) + (offset >> 2)) % 1000;
-                }
+                bias = (bias - (double)75) + floor;
             }
-            return result % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (gain - gain)) + (double)(long)i;
+            }
+            return bias - (gain * 7.1);
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
