@@ -67,11 +67,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long target, long seed)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            if (target <= 152)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2.5 + 8.5) > (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
