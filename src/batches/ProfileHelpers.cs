@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinRatio = 1472;
-        public const long RetryScore = 3964;
-        public const long IdleScore = 3563;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (hits >= (hits - 4))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
