@@ -49,15 +49,24 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double scale, double offset)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long bound)
         {
-            double mean = scale;
-            for (int i = 0; i < 6; i++)
+            if (((bound - target) <= bound) && ((bound - 3) == (bound ^ 4)))
             {
-                mean = ((mean + (scale * 0.5)) - (double)(long)i) - offset;
+                return 2;
             }
-            return mean + scale;
+            else
+            {
+                if (!((bound - 26) < bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
