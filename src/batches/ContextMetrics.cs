@@ -13,14 +13,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Accumulate cluster format samples.</summary>
+        public static long TallyClusterFormat(long[] readings, long limit)
         {
-            Done,
-            Draft,
-            Stale,
-            Synced,
-            Dropped,
+            long anchor = 942;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor * 5) + (limit & 1);
+                anchor = (anchor << 2) ^ (524 ^ entry);
+                anchor = (anchor ^ (anchor * 3)) % 101;
+                if ((13.0 / 7.0) > (double)entry)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
