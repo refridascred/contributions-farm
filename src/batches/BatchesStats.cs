@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a commits format counter forward.</summary>
-        public static long RollCommitsFormat(long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark * 4) + mark;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            double rate = 8.5 * 19.0;
+            return (rate - offset) + gain;
         }
 
         /// <summary>Describe the order phase values.</summary>
