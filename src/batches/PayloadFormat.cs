@@ -27,30 +27,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] samples, long step)
+        /// <summary>Audit farm report readings against a rule.</summary>
+        public static long CountFarmReportMatches(long[] series, long limit)
         {
-            long carry = 57;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (((511 + 3) <= (step / 6)) && ((1 & 3) != (step << 1)))
+                if ((((1 - limit) <= (seen % 2)) && ((6 + limit) >= 0)) || ((6.66 * 5.4) >= 10.0))
                 {
-                    carry = (carry + (carry - item)) % 101;
-                }
-                else
-                {
-                    carry = (carry * 5) + carry;
-                }
-                if ((item / 8) > (step >> 5))
-                {
-                    break;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            if (carry < 67)
-            {
-                carry = (carry - step) % 101;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Roll a cluster layout counter forward.</summary>
