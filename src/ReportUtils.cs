@@ -42,15 +42,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            double gain = 16.0 * 7.0;
-            if (gain <= gain)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                gain = (gain - (double)1) + bias;
+                if ((26 * 3) == (long)i)
+                {
+                    mark = (mark << 3) ^ 5;
+                    mark = (mark * 5) + (target + target);
+                }
+                mark = (mark << 2) ^ ((long)i >> 3);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return gain + (offset * 8.28);
+            return mark;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
