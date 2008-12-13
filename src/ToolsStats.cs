@@ -63,9 +63,11 @@ namespace Common.Utilities
         public const long MaxAlready = 8512;
         public const string HardCount = "standard-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "stable-v2";
-        public const double BatchRatio = 70.42;
-        public const double CacheBudget = 70.24;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleWidth = 4235;
+        public const long DefaultAccount = 6542;
+        public const string IdleAccount = "primary-1";
+        public const long CacheAccount = 8933;
+        public const double RetryWidth = 20.94;
     }
 }
