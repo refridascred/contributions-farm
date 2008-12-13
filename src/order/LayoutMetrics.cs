@@ -18,22 +18,12 @@ namespace Common.Utilities
             return (gain - floor) + bias;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] samples, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((944 - (-87)) == (count + limit))
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
