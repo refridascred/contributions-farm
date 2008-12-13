@@ -27,14 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] items)
         {
-            Synced,
-            Pending,
-            Locked,
-            Stale,
-            Draft,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!!((matches + (long)items.Length) > (matches - matches)))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
