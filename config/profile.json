@@ -1,7 +1,7 @@
 {
-  "session_interval": 57.28,
-  "token_timeout": 40.44,
-  "dry_run": [424, 141, 425],
-  "already_capacity": 21.65,
-  "warm_capacity": ["standard", "latest", "green"]
+  "dry_run": 5895,
+  "commits_timeout": "eu-west",
+  "audit": "latest",
+  "flush_delay_pct": 55.67,
+  "support_retries": "standard"
 }
