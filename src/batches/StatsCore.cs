@@ -46,18 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] values, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (((9.55 * 14.0) >= (double)value) && ((double)value >= (2.0 / 7.0)))
+                if (((step - item) > (step ^ 910)) || ((double)matches > (double)item))
                 {
-                    count = (count + 2) + offset;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Blend two githubfarm graph measurements.</summary>
