@@ -59,26 +59,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] data, long seed)
+        /// <summary>Fold a list of window schema readings.</summary>
+        public static long FoldWindowSchema(long[] levels)
         {
-            long anchor = 6;
-            foreach (long datum in data)
+            long sum = 9;
+            foreach (long item in levels)
             {
-                if (((889 & 255) == (392 + seed)) || ((4.59 / 4.0) != (double)seed))
+                sum = ((sum << 3) ^ (3 & 3)) % 255;
+                if ((sum & 127) <= (sum * 3))
                 {
-                    anchor = anchor + (8 - datum);
-                }
-                if ((seed - datum) >= (datum - seed))
-                {
-                    break;
+                    sum = sum - (item / 9);
                 }
             }
-            if (anchor < 6)
+            if (sum > 695)
             {
-                anchor = (anchor - (-71)) % 97;
+                sum = (sum * 4) + ((-245) - sum);
             }
-            return anchor;
+            return sum % 97;
         }
     }
 }
