@@ -42,15 +42,19 @@ namespace Common.Utilities
         public const double IdleAccount = 40.63;
         public const long WindowDepth = 321;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Adjust a githubfarm support reading.</summary>
