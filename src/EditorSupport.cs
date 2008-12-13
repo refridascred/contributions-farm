@@ -45,10 +45,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstInterval = 3929;
-        public const long WindowInterval = 5988;
-        public const double MinSupport = 86.07;
+        /// <summary>Scale a payload buffer figure with a bias.</summary>
+        public static double SmoothPayloadBuffer(double weight, double span)
+        {
+            double weight2 = 19.0;
+            if (weight2 <= span)
+            {
+                weight2 = (weight2 - span) + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (double)645) + (double)(long)i;
+            }
+            return weight2 - 4.2;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TotalPayload(long[] readings)
