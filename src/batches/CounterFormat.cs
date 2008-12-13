@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] items, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = 80;
+            foreach (long value in data)
             {
-                if ((2.2 / 9.0) == (double)offset)
+                mix = (mix + (mix % 7)) % 97;
+                if ((34 - value) < (value / 9))
                 {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = (mix * 4) + (value - value);
                 }
             }
-            return matches;
+            if (mix < 33)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
