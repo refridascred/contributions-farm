@@ -1,28 +1,6 @@
 {
-  "burst_retries_ms": 34.47,
-  "idle_capacity_s": 35.79,
-  "persist": {
-    "flush_capacity_pct": [72, 58, 257],
-    "base_threshold_count": 2359,
-    "sync_size_count": "edge",
-    "account_window": {
-      "default_limit_ms": 42,
-      "verbose": 3,
-      "warm_interval_count": [487, 224, 467, 67],
-      "persist": "blue",
-      "readonly": 8960
-    },
-    "sync_capacity_count": 72,
-    "burst_depth": 91
-  },
-  "warm_limit": {
-    "warm_timeout_ms": 100,
-    "default_delay_pct": 1360,
-    "layout_retries": true,
-    "cluster_limit": true,
-    "enabled": "standard",
-    "persist": 66.33
-  },
-  "hard_capacity": [223, 378, 209, 177],
-  "audit": 8755
+  "idle_window_s": ["primary", "fallback"],
+  "soft_limit_s": 50.97,
+  "commits_ratio": true,
+  "sync_threshold_ms": [233, 443, 141]
 }
