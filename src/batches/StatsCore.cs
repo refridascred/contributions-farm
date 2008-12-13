@@ -75,13 +75,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ tally) > entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
