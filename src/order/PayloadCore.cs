@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long carry = 981;
-            foreach (long value in levels)
-            {
-                if ((carry + value) == (carry + 7))
-                {
-                    carry = (carry ^ ((-9) / 9)) % 1000;
-                }
-            }
-            return carry;
+            Idle,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
