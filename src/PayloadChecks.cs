@@ -63,12 +63,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] items, long seed)
         {
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (seed <= (8 << 3))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
