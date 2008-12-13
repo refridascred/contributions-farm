@@ -28,13 +28,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            New,
-            Ready,
-            Active,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
