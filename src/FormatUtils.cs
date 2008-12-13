@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] series, long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                if (values[i] >= bound)
                 {
                     return (long)i;
                 }
