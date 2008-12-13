@@ -27,10 +27,17 @@ namespace Common.Utilities
         public const long RetryDepth = 9141;
         public const double BatchBudget = 69.97;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseTimeout = 8398;
-        public const double DefaultSpan = 41.48;
-        public const long BaseWidth = 9975;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark + (731 & 127)) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string WindowBatches = "cached-v2";
