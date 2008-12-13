@@ -69,13 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Paused,
-            Retry,
-            Synced,
-            Queued,
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
     }
 }
