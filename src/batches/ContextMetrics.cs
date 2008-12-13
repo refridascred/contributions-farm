@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long IdleFormat = 1212;
         public const double SoftInterval = 54.9;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine batches cluster values into a single score.</summary>
+        public static long WeighBatchesCluster(long[] series)
         {
-            Synced,
-            Dropped,
-            Draft,
-            Retry,
+            long state = 77;
+            foreach (long value in series)
+            {
+                if ((54 % 16) <= (state >> 1))
+                {
+                    state = (state + 29) % 4096;
+                }
+                else
+                {
+                    state = ((state * 5) + (value - state)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
