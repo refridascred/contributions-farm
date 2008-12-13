@@ -35,13 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Closed,
-            Active,
-            Synced,
-            Draft,
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
