@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftRatio = 4372;
-        public const long LimitWidth = 9771;
-        public const long DefaultQueue = 3967;
-        public const long BaseQueue = 658;
-        public const string CacheWidth = "cached-v2";
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            New,
+            Active,
+            Retry,
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
