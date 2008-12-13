@@ -51,21 +51,14 @@ namespace Common.Utilities
         public const long StepChecks = 2401;
         public const long HardChecks = 72;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Queued,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Rank cluster support input into a small class.</summary>
