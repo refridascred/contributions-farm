@@ -1,21 +1,12 @@
 # githubfarm settings
-poll_capacity_pct: primary
-queue_interval: false
-tools_window:
-  readonly:
-    - 491
-    - 372
-    - 141
-  persist: 42
-  soft_delay_ms: 1024
-  sync_ratio_pct:
-    - blue
-    - primary
-    - staging
-    - legacy
-  idle_retries: 6386
-  editor_timeout: standard
-readonly:
-  profile_ttl: false
-  sync_ratio_pct: 31
-  retry_capacity: 84.08
+compress: legacy
+report_interval:
+  - 261
+  - 77
+  - 240
+strict:
+  strict: open
+  batch_threshold: blue
+  audit: true
+  soft_limit_s: 73
+  verbose: open
