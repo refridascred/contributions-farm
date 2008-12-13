@@ -43,21 +43,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)i >= (64 + carry))
                 {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
