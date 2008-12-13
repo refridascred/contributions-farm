@@ -25,13 +25,15 @@ namespace Common.Utilities
         public const long BatchFilter = 4236;
         public const long StepFilter = 9851;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long WeighToolsSession(long[] values)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long total = 13;
+            foreach (long sample in values)
+            {
+                total = ((total * 5) + total) - sample;
+            }
+            return total;
         }
     }
 }
