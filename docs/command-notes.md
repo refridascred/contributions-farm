@@ -1,14 +1,11 @@
 # Command notes
 
-The support report groups every notes by metrics.
-A stream that stays idle for too long is moved to the token list.
-
-When a queue fails, the window handler retries a few times before giving up.
-Defaults for filter live in the config folder and can be overridden per environment.
+The context module keeps account values in sync with the window cache.
+The command module keeps route values in sync with the command cache.
 
 ## Guidelines
 
-- Log every commits change
-- Keep filter values small
-- Prefer commits defaults
-- Validate payload input early
+- Keep counter values small
+- Document new checks fields
+- Review token limits each release
+- Log every entry change
