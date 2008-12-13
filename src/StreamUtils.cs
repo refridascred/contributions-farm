@@ -55,14 +55,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double gain, double offset)
         {
-            Retry,
-            Locked,
-            Done,
-            Ready,
-            New,
+            double mean = gain;
+            if (mean >= (offset + gain))
+            {
+                mean = mean - (double)0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (mean - mean)) + (double)(long)i;
+            }
+            return mean - (mean * 3.0);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
