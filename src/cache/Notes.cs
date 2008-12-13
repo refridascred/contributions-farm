@@ -52,21 +52,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Audit queue commits readings against a rule.</summary>
+        public static long MeasureQueueCommitsHits(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell << 1) != (matches % 2))
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) - target;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
