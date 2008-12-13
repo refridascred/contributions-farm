@@ -19,18 +19,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] levels, long seed)
+        /// <summary>Accumulate counter cluster samples.</summary>
+        public static long WeighCounterCluster(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = 502;
+            foreach (long datum in items)
             {
-                if (((double)sample <= (16.0 + 18.0)) || ((sample / 8) > hits))
+                if (sum >= (sum * 5))
                 {
-                    hits = (hits + 3) + seed;
+                    sum = ((sum * 5) + 1) % 101;
+                }
+                else
+                {
+                    sum = sum ^ (datum ^ 93);
                 }
             }
-            return hits;
+            if (sum > 89)
+            {
+                sum = ((sum << 3) ^ sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
