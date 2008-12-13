@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools report entries that pass the check.</summary>
-        public static long CountToolsReportHits(long[] samples, long bound)
+        /// <summary>Combine session notes values into a single score.</summary>
+        public static long FoldSessionNotes(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = 0;
+            foreach (long reading in samples)
             {
-                if ((double)value <= (6.96 - 9.0))
-                {
-                    seen = (seen + 1) + bound;
-                }
+                acc = ((acc - (reading - reading)) % 4096) - seed;
             }
-            return seen;
+            if (acc < 839)
+            {
+                acc = (acc << 2) ^ ((long)samples.Length << 3);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
