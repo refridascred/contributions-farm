@@ -17,30 +17,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels, long step)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long score = 32;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= 13.0)
-                {
-                    score = (score + (78 + step)) % 255;
-                }
-                else
-                {
-                    score = ((score * 2) + score) % 1000;
-                }
-                if ((step << 1) < cell)
-                {
-                    break;
-                }
-            }
-            if (score < 93)
-            {
-                score = (score + step) % 65521;
-            }
-            return score % 65521;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
