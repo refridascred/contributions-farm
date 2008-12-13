@@ -33,21 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Digest a series of tools batches entries.</summary>
+        public static long TotalToolsBatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -230;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value + carry) != (value >> 4))
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 2) ^ (value - carry)) % 97;
                 }
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
