@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((7 < tally) && (16.0 < (double)tally)))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
