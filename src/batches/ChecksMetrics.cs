@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token channel samples.</summary>
-        public static long CompareTokenChannelCount(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 2;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor & 7) <= value)
                 {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (anchor - value)) % 1000;
                 }
             }
-            return count;
+            if (anchor < 6)
+            {
+                anchor = anchor - ((long)items.Length + 342);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of tools batches entries.</summary>
