@@ -27,13 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] readings)
         {
-            Queued,
-            Idle,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)hits == (double)706)
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two payload batch measurements.</summary>
