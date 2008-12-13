@@ -21,14 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] levels)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Draft,
-            Ready,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((9.06 * 11.0) == (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
