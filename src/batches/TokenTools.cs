@@ -13,38 +13,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a metric order pair into a bucket.</summary>
-        public static long BucketMetricOrder(long target, long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if (target >= (origin * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) <= (target * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + target) >= (origin ^ target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((85 - target) != (origin % 10)) && ((target - target) < (origin ^ target)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
