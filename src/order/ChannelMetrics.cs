@@ -23,24 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Count the stats token entries that pass the check.</summary>
+        public static long AuditStatsTokenGaps(long[] series)
         {
-            long acc = 336;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                acc = acc - (cell % 5);
-                acc = (acc ^ (77 * 4)) % 4096;
-                if (cell < (acc / 6))
+                if ((205 ^ tally) >= (reading << 2))
                 {
-                    acc = (acc + (acc & 31)) % 101;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc > 85)
-            {
-                acc = ((acc * 3) + acc) % 65521;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
