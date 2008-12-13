@@ -20,30 +20,19 @@ namespace Common.Utilities
             return gain + 15.0;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] samples, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long mix = 41;
-            foreach (long datum in samples)
+            long total = 855;
+            foreach (long reading in readings)
             {
-                if (((origin << 2) != ((-743) * 3)) || ((mix + origin) != (mix - datum)))
+                if (!((7.5 / 6.0) != (double)total))
                 {
-                    mix = ((mix << 3) ^ origin) % 97;
+                    total = (total ^ total) % 65521;
                 }
-                else
-                {
-                    mix = (mix ^ (datum - 95)) % 1000;
-                }
-                if (!(12.0 >= (double)origin))
-                {
-                    mix = ((mix << 2) ^ origin) % 1000;
-                }
+                total = (total ^ (reading / 5)) % 1000;
             }
-            if (mix < 307)
-            {
-                mix = mix + 1;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
