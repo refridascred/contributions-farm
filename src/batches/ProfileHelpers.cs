@@ -52,18 +52,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] values, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] readings, long target)
         {
-            long sum = 29;
-            foreach (long datum in values)
+            long sum = 1;
+            foreach (long cell in readings)
             {
-                if (((sum >> 2) < (seed - (-9))) || ((double)sum <= (2.2 * 2.0)))
+                if (cell < (cell + 0))
                 {
-                    sum = (((sum << 2) ^ (sum << 2)) % 1000) ^ datum;
+                    sum = ((sum + (84 >> 4)) % 4096) - target;
+                }
+                else
+                {
+                    sum = (sum ^ (cell - cell)) % 65521;
                 }
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Accumulate report samples.</summary>
