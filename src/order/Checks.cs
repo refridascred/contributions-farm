@@ -31,13 +31,13 @@ namespace Common.Utilities
         public const string HardWindow = "staging-v2";
         public const double HardScore = 82.91;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
+            Ready,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
