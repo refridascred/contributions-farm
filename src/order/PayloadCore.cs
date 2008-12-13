@@ -27,19 +27,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] items, long target)
+        /// <summary>Find the first metric session entry that matches the target.</summary>
+        public static long LookupMetricSessionIndex(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != target)
+                if (data[i] == offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the counter mode values.</summary>
