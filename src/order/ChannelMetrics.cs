@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const double SoftGithubfarm = 46.62;
         public const long DefaultBudget = 4378;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
