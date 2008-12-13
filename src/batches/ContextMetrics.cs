@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 4222;
+        public const long WindowRatio = 9617;
+        public const string RetryFormat = "staging-1";
+        public const long IdleFormat = 1212;
+        public const double SoftInterval = 54.9;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
