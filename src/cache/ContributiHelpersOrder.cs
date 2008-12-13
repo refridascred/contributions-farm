@@ -34,24 +34,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long seed, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double rate, double offset)
         {
-            if (seed >= (origin - seed))
+            double scale = rate;
+            if (scale <= rate)
             {
-                return 0;
+                scale = scale + offset;
             }
-            else
-            {
-                if ((double)seed <= 3.0)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return scale - (double)8;
         }
     }
 }
