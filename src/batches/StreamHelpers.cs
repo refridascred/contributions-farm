@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] series, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (entry < seed)
                 {
-                    sum = (sum - 16) - (long)i2;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Locate a support reading by value.</summary>
