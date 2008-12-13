@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((((13.0 + 2.25) <= (double)tally) || ((entry % 24) < (tally - tally))) || ((tally + tally) <= (entry ^ 92)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 3831;
+        public const long RetryRatio = 2933;
+        public const long StepInterval = 6681;
+        public const long HardTimeout = 8467;
+        public const long BaseFactor = 3723;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
