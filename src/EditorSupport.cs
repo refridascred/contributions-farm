@@ -74,13 +74,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Synced,
+            long acc = 26;
+            foreach (long entry in data)
+            {
+                acc = (acc * 4) + acc;
+                if (acc > (entry - entry))
+                {
+                    acc = ((acc << 2) ^ (acc % 2)) % 101;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
