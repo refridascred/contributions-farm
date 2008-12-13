@@ -22,17 +22,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] values, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a tools header.</summary>
