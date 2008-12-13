@@ -102,15 +102,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 6041;
+        public const long RetryToken = 8174;
+        public const double LimitToken = 90.44;
     }
 }
