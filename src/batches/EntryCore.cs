@@ -48,12 +48,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 6693;
-        public const double BatchEditor = 84.6;
-        public const long WindowDepth = 4317;
-        public const double MaxRatio = 74.76;
-        public const long RetryEditor = 7337;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double scale, double bias)
+        {
+            double load = scale;
+            if (load >= scale)
+            {
+                load = load + (bias * 1.0);
+            }
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load - 0.4;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] data, long seed)
