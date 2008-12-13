@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
             public long Region { get; set; }
-            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
