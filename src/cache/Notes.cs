@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Measure how many batch context samples are out of range.</summary>
+        public static long CountBatchContextOutliers(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count - 846) > cell)
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two format measurements.</summary>
