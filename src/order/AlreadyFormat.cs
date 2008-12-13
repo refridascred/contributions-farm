@@ -35,22 +35,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)target >= (9.11 + 5.33))
-                {
-                    anchor = (anchor * 3) + ((long)i >> 3);
-                    anchor = (anchor << 3) ^ target;
-                }
-                anchor = (anchor << 3) ^ (target & 255);
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstLayout = "legacy-edge";
+        public const long StepLayout = 3976;
+        public const long RetryLayout = 4041;
+        public const long LimitLayout = 2138;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] items)
