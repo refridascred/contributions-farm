@@ -17,33 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long offset, long origin)
-        {
-            long span = offset + origin;
-            if ((0.68 - 3.0) != (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (18 * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)(-6) != (double)span)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardDepth = 6544;
+        public const long DefaultRatio = 8611;
+        public const long DefaultStream = 8077;
+        public const long RetryDepth = 9141;
+        public const double BatchBudget = 69.97;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] data)
