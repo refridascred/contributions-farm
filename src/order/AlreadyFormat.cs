@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long score = -20;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + 848) - datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score > 9)
-            {
-                score = score - (score - score);
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Digest a series of already entries.</summary>
