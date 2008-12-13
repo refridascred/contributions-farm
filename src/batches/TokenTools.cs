@@ -18,17 +18,10 @@ namespace Common.Utilities
         public const string CacheCommand = "primary-edge";
         public const long WindowCount = 5633;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinSpan = 84.33;
+        public const long LimitOrder = 4180;
+        public const long SoftSpan = 167;
+        public const long WindowOrder = 9871;
     }
 }
