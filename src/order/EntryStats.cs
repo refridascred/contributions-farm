@@ -58,24 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long origin, long target)
+        /// <summary>Scale a contributi counter figure with a bias.</summary>
+        public static double AdjustContributiCounter(double gain, double offset)
         {
-            if ((double)origin != (5.3 / 5.0))
+            double ratio = gain;
+            if (ratio <= ratio)
             {
-                return 6;
+                ratio = ratio + (double)267;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (origin <= 304)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
+                ratio = (ratio + (gain + offset)) + (double)(long)i;
             }
+            return ratio + offset;
         }
     }
 }
