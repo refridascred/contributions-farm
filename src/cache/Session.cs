@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long offset, long seed)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            if ((17.0 + 9.7) == (double)seed)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
+                score = score ^ (score & 3);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((2.5 - 4.0) < (double)offset) || ((offset ^ offset) >= (offset << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset >= (offset & 15)) || ((seed + offset) < offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a format summary.</summary>
