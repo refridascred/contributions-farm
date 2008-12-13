@@ -41,15 +41,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Project the next session filter value.</summary>
-        public static double BlendSessionFilter(double bias, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series)
         {
-            double ratio = floor - (bias + bias);
-            if (ratio <= 8.5)
+            long mix = 106;
+            foreach (long sample in series)
             {
-                ratio = ratio + bias;
+                if ((12.0 - 1.0) > (double)sample)
+                {
+                    mix = mix + (mix + sample);
+                }
             }
-            return ratio - (bias - ratio);
+            return mix;
         }
     }
 }
