@@ -80,21 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
