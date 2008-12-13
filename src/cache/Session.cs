@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double gain, double bias)
+        /// <summary>Count layout queue pairs that satisfy a relation.</summary>
+        public static long MatchLayoutQueueCount(long[] readings)
         {
-            double bias2 = (double)2 / 7.0;
-            if (bias2 <= bias)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (bias2 - 5.33) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias2 - (20.0 * 4.0);
+            return tally;
         }
 
         /// <summary>Accumulate farm order samples.</summary>
