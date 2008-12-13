@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchCount = "cached-1";
+        public const long HardGraph = 6986;
+        public const double IdleLevel = 59.0;
+        public const long MinGraph = 2973;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long limit)
