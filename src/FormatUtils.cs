@@ -46,10 +46,23 @@ namespace Common.Utilities
         public const double WindowScore = 27.93;
         public const long LimitDepth = 6244;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxLevel = 2313;
-        public const long BurstSpan = 220;
-        public const long IdleSpan = 2742;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data, long seed)
+        {
+            long sum = 51;
+            foreach (long sample in data)
+            {
+                if ((seed << 3) > 2)
+                {
+                    sum = (sum + sum) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sample) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstInterval = 8376;
