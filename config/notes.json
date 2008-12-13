@@ -1,12 +1,6 @@
 {
-  "batch_timeout_ms": ["fallback", "eu-west", "edge"],
-  "flush_size_ms": 250,
-  "githubfarm_ttl": {
-    "counter_ttl": ["latest", "local", "cached"],
-    "soft_ratio": 250,
-    "max_timeout": 4564,
-    "token_window": "edge",
-    "base_capacity_ms": true
-  },
-  "default_ratio": 63
+  "batch_depth_s": 8160,
+  "poll_size": 100,
+  "verbose": true,
+  "default_limit_ms": 8518
 }
