@@ -46,16 +46,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            long acc = 12;
-            foreach (long value in samples)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc + (value + (-702))) % 1000;
-                acc = (acc * 5) + (acc / 2);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
     }
 }
