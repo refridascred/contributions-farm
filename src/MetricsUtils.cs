@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] values, long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((5.86 - 13.0) == (double)item))
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    tally = (tally + 3) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster notes readings.</summary>
