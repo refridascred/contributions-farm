@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public double Total { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardSize = "standard-edge";
+        public const long SoftNotes = 6157;
+        public const long WindowSize = 760;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long target)
