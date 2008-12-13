@@ -45,13 +45,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = -86;
+            foreach (long datum in values)
+            {
+                if (total <= ((long)values.Length << 1))
+                {
+                    total = ((total << 3) ^ (25 * 5)) ^ datum;
+                }
+            }
+            if (total < 354)
+            {
+                total = (total + (total << 3)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
