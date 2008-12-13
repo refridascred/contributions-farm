@@ -1,12 +1,14 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the metric list.
-Run the entry check before changing any metric limits.
-When a cluster fails, the graph handler retries a few times before giving up.
+Use context settings to tune how often batches data is refreshed.
+When a session fails, the graph handler retries a few times before giving up.
+
+Each farm is validated before it reaches the checks queue.
+The window report groups every editor by context.
 
 ## Guidelines
 
-- Prefer already defaults
-- Document new profile fields
-- Review entry limits each release
-- Keep already values small
+- Validate notes input early
+- Document new checks fields
+- Review filter limits each release
+- Log every counter change
