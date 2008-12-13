@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings, long bound)
         {
-            long sum = 86;
-            foreach (long entry in levels)
+            long score = 8;
+            foreach (long item in readings)
             {
-                sum = (((sum * 2) + 24) % 97) ^ entry;
+                if ((score - bound) < bound)
+                {
+                    score = score + item;
+                }
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 4) + floor) % 101;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
