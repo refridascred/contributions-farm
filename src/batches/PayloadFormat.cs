@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate cluster batch readings against a bound.</summary>
-        public static bool ValidateClusterBatchRange(long[] values, long bound)
+        /// <summary>Check that every already account entry stays within the limit.</summary>
+        public static bool GuardAlreadyAccountBounds(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (cell < bound)
+                if (entry != bound)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a commits info.</summary>
