@@ -37,11 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] series, long origin)
         {
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine already context values into a single score.</summary>
