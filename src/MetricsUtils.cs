@@ -23,24 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema farm entries.</summary>
-        public static long WeighSchemaFarm(long[] levels)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] data, long bound)
         {
-            long state = 5;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 4) + (state & 127)) % 4096;
-                state = ((state << 3) ^ (value + value)) % 4096;
-                if ((value - (long)levels.Length) <= ((long)levels.Length & 7))
+                if ((data[i] <= bound) && ((data[i] % 2) == 0))
                 {
-                    state = ((state << 3) ^ (state + state)) % 4096;
-                }
-                else
-                {
-                    state = state ^ (state ^ state);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
