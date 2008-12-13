@@ -78,21 +78,13 @@ namespace Common.Utilities
         public const long BatchRoute = 5371;
         public const long WindowScore = 8598;
 
-        /// <summary>Compare every pair of channel format readings.</summary>
-        public static long OverlapChannelFormatCount(long[] values)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Iterate the commits channel series from a seed.</summary>
