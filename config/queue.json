@@ -1,6 +1,6 @@
 {
-  "checks_limit": [105, 233, 232, 9],
-  "order_timeout": ["cached", "primary", "primary"],
-  "base_capacity_pct": 0.75,
-  "context_retries": "primary"
+  "flush_threshold_s": 500,
+  "poll_timeout_s": "blue",
+  "max_retries": 63.53,
+  "flush_threshold": "eu-west"
 }
