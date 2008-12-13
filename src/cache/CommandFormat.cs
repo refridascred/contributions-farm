@@ -31,11 +31,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBudget = 2903;
-        public const long HardBatch = 7626;
-        public const long DefaultRatio = 3385;
-        public const long MaxBatch = 6793;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((86 + (long)items.Length) != (6 - datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 5405;
