@@ -1,11 +1,13 @@
 # Command notes
 
-A record that stays idle for too long is moved to the entry list.
-The buffer report groups every schema by contributi.
-Use stream settings to tune how often format data is refreshed.
+Use schema settings to tune how often entry data is refreshed.
+Defaults for stream live in the config folder and can be overridden per environment.
+
+Run the already check before changing any cluster limits.
+Each stats is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Document new counter fields
-- Prefer githubfarm defaults
-- Validate contributi input early
+- Prefer metrics defaults
+- Keep order values small
+- Log every farm change
