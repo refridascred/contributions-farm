@@ -37,19 +37,25 @@ namespace Common.Utilities
         public const long WindowChannel = 2038;
         public const long IdleChannel = 3062;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long origin, long offset)
         {
-            double mean = rate;
-            if (mean < mean)
+            long step = origin + offset;
+            if ((double)offset != (9.0 + 8.0))
             {
-                mean = (mean + (mean * 1.9)) + bias;
+                return 8;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean - (mean * 2.0)) - (double)(long)i;
+                if ((step & 255) < step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mean + (mean / 7.0);
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
