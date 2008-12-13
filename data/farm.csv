@@ -1,6 +1,8 @@
-id,weight,level,count
-1,971,19.49,16.41
-2,96.8,63.5,390
-3,64.34,local,stable
-4,local,570,26.65
-5,strict,173,758
+id,state,region,label,count
+1,742,59.89,197,17
+2,eu-west,50.07,168,198
+3,6.55,404,84.23,992
+4,858,primary,84.78,148
+5,684,422,green,37.77
+6,blue,stable,8.71,975
+7,78.59,local,72.33,959
