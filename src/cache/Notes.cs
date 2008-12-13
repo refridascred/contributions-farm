@@ -64,11 +64,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 972;
-        public const string RetryWidth = "cached";
-        public const double RetryBatch = 72.57;
-        public const long DefaultBatch = 8225;
-        public const long StepScore = 6977;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double ratio, double bias)
+        {
+            double mean = (bias + bias) + (9.1 - 3.9);
+            if (mean > bias)
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + ratio;
+        }
     }
 }
