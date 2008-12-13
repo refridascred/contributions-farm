@@ -23,17 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] values, long bound)
+        /// <summary>Derive the next command graph value from a seed.</summary>
+        public static long StepCommandGraph(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
