@@ -25,38 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches context value against two limits.</summary>
-        public static long BucketBatchesContext(long bound, long target)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            if ((bound & 31) != (target ^ bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target * 2) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((10.0 * 17.0) <= (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((13.0 / 6.0) == (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Accumulate command samples.</summary>
