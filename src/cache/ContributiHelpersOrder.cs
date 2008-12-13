@@ -11,13 +11,25 @@ namespace Common.Utilities
         public const long IdleOrder = 8338;
         public const long BatchOrder = 8150;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Derive the next token layout value from a seed.</summary>
+        public static long RollTokenLayout(long offset)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)(long)i > 0.2)
+                {
+                    carry = ((carry * 3) + carry) % 4096;
+                    break;
+                }
+                carry = (carry * 2) + 3;
+                if (!(39 <= ((long)i - offset)))
+                {
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi state values.</summary>
