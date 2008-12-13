@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long origin, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            if (!(target < ((-72) & 1)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 4) == (origin + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((275 - origin) > origin) && (origin <= (target - 288)))
+                    if ((data[i] + data[j]) < 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + 3) <= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
