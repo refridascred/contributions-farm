@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many token report samples are out of range.</summary>
-        public static long CountTokenReportMatches(long[] items)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((((-3) >> 1) == (matches / 5)) && (((double)reading == (12.0 + 19.0)) || ((reading % 16) < reading)))
-                {
-                    matches = matches + 3;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Accumulate cache token samples.</summary>
