@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long score = 75;
-            foreach (long cell in values)
-            {
-                score = score + cell;
-                if ((double)cell > (1.0 - 2.4))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Idle,
+            Closed,
+            Locked,
         }
 
         /// <summary>Digest a series of tools filter entries.</summary>
