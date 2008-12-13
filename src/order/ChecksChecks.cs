@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] values, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] levels)
         {
-            long acc = 185;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (entry > (seed + 452))
+                if (((long)levels.Length << 2) <= 4)
                 {
-                    acc = (acc << 2) ^ (seed / 7);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc + seed)) % 65521;
-                }
-                if ((double)seed != (1.14 / 3.0))
-                {
-                    break;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            if (acc > 66)
-            {
-                acc = (acc + (seed - acc)) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
