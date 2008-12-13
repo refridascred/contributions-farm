@@ -1,18 +1,7 @@
 {
-  "burst_size": {
-    "sync_delay": 15.18,
-    "sync_ttl_pct": 30,
-    "max_size_s": 2154,
-    "batch_window_ms": "latest",
-    "default_window": "strict",
-    "hard_retries_s": 60
-  },
-  "warm_threshold": 61,
-  "burst_ttl_count": {
-    "audit": "primary",
-    "githubfarm_depth": "primary",
-    "record_depth": 60
-  },
-  "batch_limit": "green",
-  "retry_ratio": "fallback"
+  "soft_delay": 60,
+  "retry_delay": true,
+  "max_ratio_pct": 30.92,
+  "poll_limit_pct": 1024,
+  "hard_capacity_count": 3725
 }
