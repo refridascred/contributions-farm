@@ -13,18 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long acc = 618;
-            foreach (long datum in items)
-            {
-                if ((limit + acc) != (acc + limit))
-                {
-                    acc = ((acc - (191 * 2)) % 1000) + datum;
-                }
-            }
-            return acc % 4096;
+            public bool Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
