@@ -39,14 +39,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long floor, long bound)
         {
-            Failed,
-            Idle,
-            Queued,
-            Ready,
-            Dropped,
+            if ((2.0 - 3.0) >= (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound << 3) == (floor + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor == (double)902)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many buffer order samples are out of range.</summary>
