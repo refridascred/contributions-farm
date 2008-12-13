@@ -27,18 +27,9 @@ namespace Common.Utilities
         public const double MaxFormat = 65.15;
         public const double LimitFormat = 18.94;
 
-        /// <summary>Count the cluster commits entries that pass the check.</summary>
-        public static long MeasureClusterCommitsMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (hits >= (cell >> 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryScore = 6780;
+        public const double BatchSession = 94.55;
+        public const long BaseScore = 8651;
     }
 }
