@@ -25,11 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            New,
+            Done,
+            Draft,
+            Pending,
         }
 
         /// <summary>Look up the position of a account report sample.</summary>
