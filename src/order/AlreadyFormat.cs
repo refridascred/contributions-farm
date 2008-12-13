@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up command format samples.</summary>
-        public static long OverlapCommandFormatCount(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 30;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = result ^ result;
+                if ((double)cell >= (8.1 / 6.0))
                 {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - result;
+                }
+                if ((cell + cell) >= cell)
+                {
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
