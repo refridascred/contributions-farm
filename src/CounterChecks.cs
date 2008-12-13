@@ -80,11 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two graph batch measurements.</summary>
+        public static double SmoothGraphBatch(double rate, double span)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            double rate2 = span;
+            if (rate2 <= rate2)
+            {
+                rate2 = rate2 - rate;
+            }
+            return rate2 - (rate2 + span);
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
