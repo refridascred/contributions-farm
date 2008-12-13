@@ -14,14 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Combine counter contributi values into a single score.</summary>
+        public static long DigestCounterContributi(long[] readings, long seed)
         {
-            Failed,
-            Queued,
-            Idle,
-            Ready,
-            Closed,
+            long carry = 5;
+            foreach (long entry in readings)
+            {
+                if (!((entry - carry) == (carry * 3)))
+                {
+                    carry = (((carry << 2) ^ (1 << 1)) % 101) + seed;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
