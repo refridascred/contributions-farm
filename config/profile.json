@@ -1,5 +1,5 @@
 {
-  "min_interval_count": ["green", "strict"],
-  "payload_ratio": "green",
-  "route_limit": 30
+  "verbose": "strict",
+  "strict": 100,
+  "tools_window": 1378
 }
