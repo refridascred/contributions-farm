@@ -40,40 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long offset, long offset2)
-        {
-            long edge = offset ^ offset2;
-            if ((edge * 4) != (offset2 << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset - 92) > (offset2 - edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((edge % 12) < (edge >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((17.0 * 9.0) > (double)edge)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepLevel = 5697;
+        public const string SoftTimeout = "local-1";
+        public const long DefaultFactor = 7526;
+        public const long LimitSupport = 3432;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long target, long limit)
