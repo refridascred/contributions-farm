@@ -51,15 +51,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of githubfarm metric entries.</summary>
-        public static long ScoreGithubfarmMetric(long[] values)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long result = 268;
-            foreach (long cell in values)
-            {
-                result = (((result * 4) + (result & 31)) % 1000) ^ cell;
-            }
-            return result % 97;
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
