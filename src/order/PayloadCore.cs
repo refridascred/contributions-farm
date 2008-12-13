@@ -47,39 +47,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long offset, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long cur = offset - floor;
-            if ((275 << 2) > offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 3) > (offset - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((cur * 5) == (offset + 5)) && ((double)cur >= (7.96 + 4.4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((offset ^ cur) < cur) || ((775 - floor) == (99 - cur)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Paused,
+            Failed,
         }
     }
 }
