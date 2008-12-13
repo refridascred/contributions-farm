@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double bias, double offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double ratio, double offset)
         {
-            double rate = offset / 2.0;
-            return (rate - (double)1) + bias;
+            double load = offset;
+            return load - ratio;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
