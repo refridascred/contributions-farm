@@ -13,17 +13,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long step, long step2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (5.4 > (double)step2)
             {
-                if (data[i] > seed)
+                return 5;
+            }
+            else
+            {
+                if (((double)step <= (17.0 - 18.0)) && (9.88 < (double)step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step == (7.76 + 16.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step ^ step) > (step + step2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
