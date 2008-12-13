@@ -1,8 +1,5 @@
 {
-  "retry_interval_count": ["local", "standard"],
-  "cluster_limit": false,
-  "audit": 500,
-  "cache_capacity_count": true,
-  "warm_limit_count": "latest",
-  "max_capacity_ms": "stable"
+  "retry_threshold_s": true,
+  "max_ttl_pct": ["legacy", "primary"],
+  "batch_delay_count": false
 }
