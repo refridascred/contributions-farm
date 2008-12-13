@@ -1,5 +1,12 @@
 {
-  "sync_delay_count": false,
-  "max_size": 98.46,
-  "sync_ratio": 30
+  "readonly": ["open", "eu-west", "local"],
+  "warm_ttl_s": {
+    "token_limit": ["staging", "fallback", "stable"],
+    "enabled": "strict",
+    "checks_ttl": 61.07,
+    "readonly": 2.79,
+    "min_ttl": false
+  },
+  "soft_retries": 1858,
+  "order_retries": 1631
 }
