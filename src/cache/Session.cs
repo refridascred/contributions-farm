@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((7 + 47) < ((long)series.Length / 8))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a order reading by value.</summary>
