@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            long mark = 16;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark + (mark + sample);
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (sample - mark)) ^ (long)i;
-                }
-                if ((double)mark <= (3.8 + 8.17))
-                {
-                    mark = (mark ^ (sample + sample)) % 1000;
-                }
-                if (!((868 - mark) != (sample + mark)))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
