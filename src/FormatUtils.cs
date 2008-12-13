@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] data, long offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
