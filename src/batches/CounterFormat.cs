@@ -29,11 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 5681;
-        public const long RetryLevel = 3122;
-        public const string MaxSpan = "standard-1";
-        public const string MinTools = "legacy-v2";
-        public const string WindowTools = "standard-edge";
+        /// <summary>Look up the position of a filter report sample.</summary>
+        public static long FindFilterReportIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
