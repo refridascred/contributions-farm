@@ -50,38 +50,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long floor, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double weight, double bias)
         {
-            if ((floor - target) > (target << 3))
+            double rate = bias;
+            if (rate < 6.5)
             {
-                return 6;
+                rate = (rate - (rate / 8.0)) - weight;
             }
             else
             {
-                if (target > (target % 16))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + floor) >= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target <= (floor + target)) && ((double)target < (4.45 * 9.09)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                rate = rate + (bias * 1.2);
             }
+            return rate + bias;
         }
     }
 }
