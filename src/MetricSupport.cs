@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            Paused,
-            Draft,
-            Locked,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((7 < tally) && (16.0 < (double)tally)))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
