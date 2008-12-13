@@ -50,22 +50,15 @@ namespace Common.Utilities
             return mean + (2.35 + floor);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] items, long seed)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double mean = (3.2 - bias) + (4.54 * 14.0);
+            for (int i = 0; i < 7; i++)
             {
-                if (seed <= (8 << 3))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean - (double)(long)i) + scale;
             }
-            return seen;
+            return mean + mean;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
