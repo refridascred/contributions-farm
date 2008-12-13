@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of contributi counter readings.</summary>
-        public static long TallyContributiCounter(long[] series, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] values, long step)
         {
-            long state = 28;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit / 5) <= (entry + 52))
+                if ((values[i] == step) && ((values[i] % 5) != 0))
                 {
-                    state = (state ^ (entry % 12)) % 1000;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
