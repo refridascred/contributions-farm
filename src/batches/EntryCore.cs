@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the context format entries that pass the check.</summary>
-        public static long AuditContextFormatGaps(long[] levels, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = -433;
+            foreach (long sample in items)
             {
-                if ((9 << 1) < item)
+                mix = (mix ^ (sample + mix)) % 97;
+                if (76 > (26 ^ floor))
                 {
-                    matches = (matches + 3) - step;
+                    mix = mix ^ (1 + (-9));
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
