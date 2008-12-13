@@ -61,12 +61,13 @@ namespace Common.Utilities
         public const string LimitCount = "local-edge";
         public const string RetryRatio = "stable";
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
