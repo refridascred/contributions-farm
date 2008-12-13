@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double bias)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long offset)
         {
-            double rate = weight;
-            if (rate > (weight * 17.0))
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                rate = (rate - (rate * 8.4)) + bias;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return rate - (double)356;
+            return carry;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
