@@ -1,9 +1,21 @@
 # githubfarm settings
-counter_capacity: 1024
-min_capacity:
-  - cached
-  - fallback
-contributi_interval: 84.27
-flush_threshold_s: primary
-default_ttl: eu-west
-batch_size_pct: 8466
+poll_capacity_pct: primary
+queue_interval: false
+tools_window:
+  readonly:
+    - 491
+    - 372
+    - 141
+  persist: 42
+  soft_delay_ms: 1024
+  sync_ratio_pct:
+    - blue
+    - primary
+    - staging
+    - legacy
+  idle_retries: 6386
+  editor_timeout: standard
+readonly:
+  profile_ttl: false
+  sync_ratio_pct: 31
+  retry_capacity: 84.08
