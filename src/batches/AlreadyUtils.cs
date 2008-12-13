@@ -29,18 +29,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the entry stats entries that pass the check.</summary>
-        public static long MeasureEntryStatsMatches(long[] levels)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double mean = (double)6 + (weight + weight);
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches + 0) > (entry & 1))
-                {
-                    matches = matches + 1;
-                }
+                mean = (mean + floor) + (double)(long)i;
             }
-            return matches;
+            return mean + (double)727;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
