@@ -1,13 +1,7 @@
 # support settings
-idle_threshold_count:
-  - 475
-  - 473
-compress: 2064
-burst_ttl_pct: eu-west
-batch_ratio_ms:
-  - 395
-  - 132
-  - 456
-  - 220
-flush_capacity_s: eu-west
-cluster_timeout: 30
+verbose: 1024
+strict: 89.27
+poll_size_pct:
+  strict: 3047
+  base_capacity_count: true
+  record_ttl: 65
