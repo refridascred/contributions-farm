@@ -13,12 +13,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Classify a entry checks pair into a bucket.</summary>
+        public static long BucketEntryChecks(long target, long limit)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            if ((target & 255) <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (target >= (limit / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a format entry.</summary>
