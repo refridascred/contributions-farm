@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count batch profile pairs that satisfy a relation.</summary>
-        public static long OverlapBatchProfileCount(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 739;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1.0 + 9.89) != (double)result)
                 {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (((result * 3) + result) % 255) ^ item;
+                }
+                else
+                {
+                    result = result + (result ^ 1);
+                }
+                if (!(result < (result - result)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result < 55)
+            {
+                result = ((result * 5) + (result >> 2)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the editor status values.</summary>
