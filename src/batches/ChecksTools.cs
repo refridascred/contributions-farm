@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] levels, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!((hits + value) >= (value / 3)))
+                if ((count - 0) >= (item - count))
                 {
-                    hits = (hits + 1) + step;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
