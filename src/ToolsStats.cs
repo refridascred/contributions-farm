@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
+                if (!(((sample - sample) > sample) || ((tally << 2) > 49)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
