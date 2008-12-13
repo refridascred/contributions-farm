@@ -45,21 +45,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)(long)i >= (double)sum)
                 {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ (origin / 2)) % 1000;
                 }
+                if ((sum < (origin + origin)) && ((double)(long)i >= (8.5 * 2.0)))
+                {
+                    break;
+                }
+                sum = sum + (origin - sum);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Locate a payload queue reading by value.</summary>
