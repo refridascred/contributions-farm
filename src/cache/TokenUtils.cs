@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long offset)
         {
-            long score = 93;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                score = (((score << 3) ^ ((long)readings.Length ^ score)) % 4096) - entry;
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Validate format tools readings against a bound.</summary>
