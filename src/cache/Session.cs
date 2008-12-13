@@ -28,18 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] readings, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((matches + limit) < (limit / 9))
+                if ((seed + (long)i) <= 43)
                 {
-                    matches = (matches + 3) + item;
+                    carry = ((carry * 5) + (carry << 3)) % 1000;
+                    carry = carry - 7;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Match up profile batches samples.</summary>
