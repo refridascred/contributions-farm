@@ -38,11 +38,15 @@ namespace Common.Utilities
             return mean + (double)727;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Derive the next commits token value from a seed.</summary>
+        public static long StepCommitsToken(long origin)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long state = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Roll a already counter forward.</summary>
