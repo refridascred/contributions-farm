@@ -69,17 +69,18 @@ namespace Common.Utilities
             return load - 0.4;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] data, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (data[i] >= seed)
+                if ((double)cell == (1.0 - 10.0))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
