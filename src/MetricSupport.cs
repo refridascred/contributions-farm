@@ -24,17 +24,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = score - bound;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 5922;
+        public const long HardContext = 7409;
+        public const long CacheBudget = 6326;
+        public const long LimitContext = 3274;
+        public const string BatchTimeout = "strict-edge";
 
         /// <summary>Look up the position of a editor notes sample.</summary>
         public static long FindEditorNotesIndex(long[] series, long target)
