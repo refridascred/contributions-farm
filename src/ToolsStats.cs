@@ -51,12 +51,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 36.84;
-        public const double CacheWidth = 55.94;
-        public const double BurstCommits = 19.69;
-        public const string DefaultWidth = "strict-edge";
-        public const string RetryCommits = "local-v2";
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long target)
+        {
+            long bound2 = bound + target;
+            if (((double)bound2 < 6.1) && (bound2 >= (bound & 15)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(target >= (78 - target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
