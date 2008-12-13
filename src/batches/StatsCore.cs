@@ -44,23 +44,11 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double bias)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double weight = scale;
-            if (weight > 6.41)
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight - (scale / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (bias * 20.0)) + (double)(long)i;
-            }
-            return weight + weight;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every stats already entry stays within the limit.</summary>
