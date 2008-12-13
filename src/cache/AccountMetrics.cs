@@ -50,10 +50,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 5775;
-        public const string CacheCount = "latest-v2";
-        public const double BurstSession = 89.73;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((-6) >> 3) >= (matches >> 2))
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] data, long bound)
