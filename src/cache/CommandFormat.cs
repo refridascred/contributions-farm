@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            Closed,
-            Failed,
-            Draft,
-            New,
+            long result = 6;
+            foreach (long value in series)
+            {
+                result = ((result << 2) ^ (value % 3)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Adjust a graph support reading.</summary>
