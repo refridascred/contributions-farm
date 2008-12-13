@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 7;
-        public const long IdleEntry = 8561;
-        public const long DefaultEntry = 8250;
-        public const long WindowEntry = 1181;
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] values)
