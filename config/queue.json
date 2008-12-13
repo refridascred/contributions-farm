@@ -1,7 +1,13 @@
 {
-  "window_interval": 70.27,
-  "warm_ratio": "latest",
-  "support_threshold": 30,
-  "default_window": false,
-  "cache_size": "staging"
+  "burst_retries_s": 1024,
+  "dry_run": {
+    "flush_delay_count": 77,
+    "verbose": 100,
+    "dry_run": "fallback",
+    "strict": 35.8,
+    "sync_ratio_s": false,
+    "max_retries_s": 37.42
+  },
+  "counter_ratio": false,
+  "burst_ratio": "stable"
 }
