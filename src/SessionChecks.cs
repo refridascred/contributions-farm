@@ -46,12 +46,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Dropped,
+            Active,
+            Failed,
             Locked,
-            Idle,
+            Pending,
+            Retry,
         }
     }
 }
