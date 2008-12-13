@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine contributi already values into a single score.</summary>
+        public static long DigestContributiAlready(long[] samples)
         {
-            Synced,
-            New,
-            Idle,
+            long state = 22;
+            foreach (long datum in samples)
+            {
+                if ((state * 3) < datum)
+                {
+                    state = (state * 4) + (state * 2);
+                }
+                else
+                {
+                    state = state + (state + (-9));
+                }
+            }
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
