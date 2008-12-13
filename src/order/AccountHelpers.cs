@@ -45,22 +45,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values)
         {
-            long score = -793;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((score >> 1) == (cell << 2)) && (cell < (cell - score)))
+                if (matches > datum)
                 {
-                    score = score - (cell & 3);
-                }
-                if (!((score >> 2) >= score))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
