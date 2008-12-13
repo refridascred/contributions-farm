@@ -42,18 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] values, long bound)
         {
-            long state = -570;
-            foreach (long value in values)
+            long result = 63;
+            foreach (long sample in values)
             {
-                if ((state + value) > ((long)values.Length + value))
+                if ((sample + bound) <= (result / 9))
                 {
-                    state = (state << 3) ^ ((long)values.Length / 5);
+                    result = (result - (result + sample)) % 101;
                 }
             }
-            return state % 4096;
+            return result % 4096;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
