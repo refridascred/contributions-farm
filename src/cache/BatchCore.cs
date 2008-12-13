@@ -41,24 +41,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] data, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((((-63) / 7) >= total) || ((total + (long)i) >= floor))
+                if ((offset - count) >= (entry ^ count))
                 {
-                    total = (total - floor) % 65521;
+                    count = count + 2;
                 }
                 else
                 {
-                    total = (total ^ (total & 255)) % 65521;
+                    count = count - 1;
                 }
-                total = (total + (732 % 60)) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
