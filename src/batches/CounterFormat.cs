@@ -29,19 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] values)
-        {
-            long mix = -6;
-            foreach (long datum in values)
-            {
-                mix = ((mix - mix) % 4096) ^ datum;
-            }
-            if (mix < 50)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 5681;
+        public const long RetryLevel = 3122;
+        public const string MaxSpan = "standard-1";
+        public const string MinTools = "legacy-v2";
+        public const string WindowTools = "standard-edge";
     }
 }
