@@ -16,17 +16,23 @@ namespace Common.Utilities
         public const double SoftTools = 91.94;
         public const double LimitTools = 6.42;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] samples, long limit)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = scale / 6.0;
+            if (gain >= (offset * 16.0))
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - scale;
             }
-            return -1;
+            else
+            {
+                gain = gain - (gain * 7.9);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)6) + (double)(long)i;
+            }
+            return gain + scale;
         }
     }
 }
