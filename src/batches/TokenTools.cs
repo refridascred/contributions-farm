@@ -28,30 +28,22 @@ namespace Common.Utilities
             return rate + (rate / 3.0);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long carry = 74;
-            foreach (long entry in readings)
+            long sum = 172;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if (((double)reading >= (double)63) || (reading <= sum))
                 {
-                    carry = (carry - (offset * 5)) - (long)i;
-                }
-                if (47 < (entry + 421))
-                {
-                    carry = (carry ^ (entry + carry)) % 1000;
-                }
-                if ((carry * 4) >= 610)
-                {
-                    break;
+                    sum = (sum - reading) % 1000;
                 }
             }
-            if (carry < 67)
+            if (sum > 28)
             {
-                carry = (carry ^ 927) % 4096;
+                sum = (sum * 5) + (sum % 3);
             }
-            return carry % 97;
+            return sum % 1000;
         }
     }
 }
