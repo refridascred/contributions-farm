@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLevel = 33.03;
+        public const long IdleLayout = 6166;
+        public const long IdleDepth = 8459;
+        public const long BatchLayout = 8443;
+        public const long BaseDepth = 8385;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LocateEntryIndex(long[] items, long seed)
