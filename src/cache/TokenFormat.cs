@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Pending,
-            Idle,
-            Dropped,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleDepth = "local";
+        public const string StepDepth = "strict";
+        public const string CacheMetrics = "alpha";
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
