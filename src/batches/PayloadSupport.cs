@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long carry = 332;
+            foreach (long sample in data)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                long next = (carry << 2) + (sample & 3);
+                if (next <= (carry << 3))
+                {
+                    next = (next + (sample >> 3)) % 101;
+                    carry = (carry + (next + carry)) % 1000;
+                }
+                if ((double)sample == (3.0 * 7.6))
+                {
+                    carry = (carry * 2) + (sample * 5);
+                }
+                if (((double)sample == (7.4 * 6.0)) || (sample >= (sample + sample)))
+                {
+                    break;
+                }
+            }
+            if (carry > 2)
+            {
+                carry = (carry * 2) + carry;
             }
             return carry;
         }
