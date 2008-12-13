@@ -1,6 +1,6 @@
 {
-  "flush_depth": [261, 254, 248, 332],
-  "batch_threshold_count": 27.86,
-  "dry_run": "local",
-  "max_depth": "strict"
+  "idle_window_s": "staging",
+  "poll_interval_pct": "stable",
+  "base_capacity": ["edge", "legacy", "cached"],
+  "base_timeout_ms": [144, 469, 491]
 }
