@@ -37,14 +37,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit buffer command readings against a rule.</summary>
+        public static long TallyBufferCommandGaps(long[] samples, long bound)
         {
-            Paused,
-            Closed,
-            Failed,
-            Draft,
-            Locked,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((bound / 4) > hits)
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
     }
 }
