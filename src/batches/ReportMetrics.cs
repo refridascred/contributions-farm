@@ -45,18 +45,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long anchor = 8;
-            foreach (long reading in items)
+            long acc = 1;
+            foreach (long item in levels)
             {
-                if (reading < anchor)
+                if (((long)levels.Length >> 1) != (acc + acc))
                 {
-                    anchor = anchor ^ (reading & 63);
+                    acc = ((acc - acc) % 65521) ^ item;
                 }
             }
-            return anchor;
+            if (acc > 0)
+            {
+                acc = (acc - (-22)) % 101;
+            }
+            return acc;
         }
     }
 }
