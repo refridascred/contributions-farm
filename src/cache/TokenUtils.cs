@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every cluster editor entry stays within the limit.</summary>
-        public static bool VerifyClusterEditorRange(long[] samples, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long mix = 579;
+            foreach (long sample in items)
             {
-                if (datum < offset)
+                if ((double)mix <= (5.0 * 4.5))
                 {
-                    valid = false;
+                    mix = mix ^ (sample + mix);
+                }
+                if (mix < (mix ^ offset))
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
