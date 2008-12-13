@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate tools layout samples.</summary>
+        public static long CombineToolsLayout(long[] samples)
         {
-            Draft,
-            Retry,
-            Closed,
+            long state = 912;
+            foreach (long value in samples)
+            {
+                if (value > (state >> 4))
+                {
+                    state = (state * 5) + state;
+                }
+                else
+                {
+                    state = (state + ((-32) & 3)) % 4096;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
