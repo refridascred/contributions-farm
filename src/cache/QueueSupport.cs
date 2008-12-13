@@ -16,17 +16,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next entry batch value from a seed.</summary>
-        public static long StepEntryBatch(long target)
+        /// <summary>Rank commits queue input into a small class.</summary>
+        public static long ClassifyCommitsQueue(long floor, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long cur = floor ^ step;
+            if ((1.0 + 0.08) != (double)step)
             {
-                acc = ((acc << 2) ^ (target % 60)) % 255;
-                acc = (acc + acc) % 97;
-                acc = ((acc * 3) + (long)i) % 101;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (((step << 2) >= (921 << 1)) && ((8 ^ step) <= (floor / 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)cur >= (7.0 + 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor != (double)step) && (20 <= (floor & 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate entry samples.</summary>
