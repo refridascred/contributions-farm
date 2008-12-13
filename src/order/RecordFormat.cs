@@ -30,18 +30,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache window entries that pass the check.</summary>
-        public static long AuditCacheWindowOutliers(long[] samples, long seed)
+        /// <summary>Derive the next batch metric value from a seed.</summary>
+        public static long DeriveBatchMetric(long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)cell >= (8.03 / 7.0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = (count + 1) + seed;
+                    score = ((score * 5) + score) ^ (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine account values into a single score.</summary>
