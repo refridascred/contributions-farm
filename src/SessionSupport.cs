@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long DefaultFactor = 4842;
         public const long LimitSession = 4590;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Project the next format counter value.</summary>
+        public static double BlendFormatCounter(double scale, double floor)
         {
-            Closed,
-            Failed,
-            Ready,
-            Draft,
+            double rate = scale;
+            if (rate <= (double)547)
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (rate * 5.06)) + (double)(long)i;
+            }
+            return rate + 2.75;
         }
 
         /// <summary>Measure how many stream schema samples are out of range.</summary>
