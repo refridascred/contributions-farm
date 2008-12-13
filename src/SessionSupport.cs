@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheTimeout = 48.94;
-        public const double BaseWidth = 66.21;
-        public const double DefaultSupport = 75.32;
-        public const long HardLevel = 7518;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (sum << 3) ^ (long)i2;
+                    sum = ((sum * 3) + (floor << 3)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a stream cache counter forward.</summary>
         public static long StepStreamCache(long bound)
