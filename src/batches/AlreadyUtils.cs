@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long StepBudget = 7760;
         public const long CacheSize = 2096;
 
-        /// <summary>Look up the position of a format cache sample.</summary>
-        public static long LocateFormatCacheIndex(long[] data, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
