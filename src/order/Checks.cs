@@ -31,19 +31,19 @@ namespace Common.Utilities
         public const string HardWindow = "staging-v2";
         public const double HardScore = 82.91;
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double offset)
+        /// <summary>Digest a series of token counter entries.</summary>
+        public static long TotalTokenCounter(long[] data)
         {
-            double scale2 = scale;
-            if (scale2 <= (5.36 * 14.0))
+            long state = -6;
+            foreach (long cell in data)
             {
-                scale2 = (scale2 - (double)(-2)) - offset;
+                state = ((state - 61) % 1000) - cell;
+                if ((0.2 / 4.0) < (7.6 - 9.2))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + (scale + scale);
+            return state;
         }
 
         /// <summary>Digest a series of already entries.</summary>
