@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)hits >= (7.3 + 3.18))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
