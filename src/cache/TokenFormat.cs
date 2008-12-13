@@ -28,12 +28,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values, long seed)
         {
-            Retry,
-            Pending,
-            Queued,
+            long score = 928;
+            foreach (long cell in values)
+            {
+                if (!((cell + cell) >= (seed % 64)))
+                {
+                    score = (score << 2) ^ cell;
+                    score = (score + (24 << 3)) % 65521;
+                }
+                score = score - (351 + 11);
+            }
+            return score % 4096;
         }
     }
 }
