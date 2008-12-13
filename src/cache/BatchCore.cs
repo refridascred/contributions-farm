@@ -39,11 +39,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Scale a account layout figure with a bias.</summary>
+        public static double BlendAccountLayout(double ratio, double floor)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            double mean = (double)8;
+            if (mean > (floor * 1.0))
+            {
+                mean = (mean + (floor * 0.46)) + ratio;
+            }
+            else
+            {
+                mean = mean + (floor - mean);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (floor * 0.06);
         }
     }
 }
