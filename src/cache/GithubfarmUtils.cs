@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            long total = -230;
-            foreach (long sample in levels)
+            double weight = bias;
+            for (int i = 0; i < 3; i++)
             {
-                total = ((total ^ (total - 61)) ^ sample) + step;
+                weight = (weight + 9.3) + (double)(long)i;
             }
-            if (total < (-390))
-            {
-                total = (total * 3) + (total & 15);
-            }
-            return total;
+            return weight + (ratio / 4.0);
         }
 
         /// <summary>Digest a series of entry window entries.</summary>
