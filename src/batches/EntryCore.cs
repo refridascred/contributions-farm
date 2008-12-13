@@ -70,18 +70,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!(((sample / 5) != (sample + hits)) || ((double)sample < (11.0 + 20.0))))
+                if (!(datum <= target) || ((count * 2) == (count / 3)))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
