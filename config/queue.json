@@ -1,6 +1,6 @@
 {
-  "enabled": true,
-  "verbose": 35.02,
-  "persist": 77,
-  "default_interval": "eu-west"
+  "checks_limit": [105, 233, 232, 9],
+  "order_timeout": ["cached", "primary", "primary"],
+  "base_capacity_pct": 0.75,
+  "context_retries": "primary"
 }
