@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local staging eu-west; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in standard cached green; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=102
+CHANNEL_LIMIT=416
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-cached}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
