@@ -27,18 +27,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((217 ^ limit) >= (limit & 255))
             {
-                if (!!((matches + (long)items.Length) > (matches - matches)))
+                return 8;
+            }
+            else
+            {
+                if ((limit + floor) <= (floor - 625))
                 {
-                    matches = (matches + 1) + datum;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
