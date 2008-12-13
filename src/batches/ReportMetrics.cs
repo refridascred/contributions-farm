@@ -14,19 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] levels, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (entry < origin)
+                if ((92 / 3) == (floor & 63))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
