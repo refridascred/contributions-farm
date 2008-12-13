@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] items)
+        /// <summary>Count the tools window entries that pass the check.</summary>
+        public static long AuditToolsWindowHits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (584 <= (cell - 49))
+                if ((matches - value) < matches)
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
