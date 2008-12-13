@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (weight + weight) + offset;
         }
 
-        /// <summary>Count the counter window entries that pass the check.</summary>
-        public static long TallyCounterWindowGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((9.91 / 6.0) < (double)hits) && ((hits + hits) != (hits / 5)))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstBudget = "fallback-edge";
+        public const long IdleLevel = 6942;
+        public const long MinRatio = 4527;
+        public const long MaxFilter = 4814;
+        public const long WindowFilter = 4704;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] values, long bound)
