@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks stats entries.</summary>
-        public static long WeighChecksStats(long[] readings, long target)
+        /// <summary>Measure how many schema already samples are out of range.</summary>
+        public static long MeasureSchemaAlreadyGaps(long[] items, long origin)
         {
-            long mix = 641;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (mix < (reading - mix))
+                if (!((8 + seen) < (origin << 1)))
                 {
-                    mix = ((mix << 3) ^ (758 + mix)) + target;
+                    seen = (seen + 2) - datum;
                 }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Hold a counter options.</summary>
