@@ -77,19 +77,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double weight, double bias)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            double rate = bias;
-            if (rate < 6.5)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                rate = (rate - (rate / 8.0)) - weight;
+                acc = (acc * 5) + (long)i;
+                if ((double)origin >= 10.0)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc - (660 ^ acc)) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate + (bias * 1.2);
-            }
-            return rate + bias;
+            return acc;
         }
     }
 }
