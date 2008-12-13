@@ -59,17 +59,18 @@ namespace Common.Utilities
             return bias - 15.0;
         }
 
-        /// <summary>Roll a session contributi counter forward.</summary>
-        public static long DeriveSessionContributi(long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] series, long target)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                score = (score - (82 % 10)) % 101;
-                score = (score + 3) % 65521;
-                score = ((score * 2) + (long)i) % 1000;
+                if ((target >> 2) == (hits + hits))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
