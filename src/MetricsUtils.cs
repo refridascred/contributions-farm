@@ -54,13 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] levels, long target)
         {
-            Stale,
-            Retry,
-            Active,
-            Closed,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
