@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Stale,
-            Ready,
-            Queued,
-            Active,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 9304;
+        public const long MinDepth = 5467;
+        public const long LimitRecord = 9851;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchHits(long[] data, long target)
