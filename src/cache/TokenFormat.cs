@@ -19,18 +19,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] series, long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((17.0 - 16.0) >= (double)item))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
