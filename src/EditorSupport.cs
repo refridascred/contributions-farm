@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every session batch entry stays within the limit.</summary>
+        public static bool ValidateSessionBatchBounds(long[] samples, long limit)
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
