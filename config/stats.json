@@ -1,14 +1,8 @@
 {
-  "githubfarm_delay": "legacy",
-  "poll_limit": true,
-  "compress": 69,
-  "report_retries": "standard",
-  "retry_retries": ["latest", "latest"],
-  "warm_limit": {
-    "filter_size": 56.36,
-    "soft_size_s": 29.19,
-    "sync_timeout": [347, 149, 88],
-    "dry_run": 32.6,
-    "poll_ttl": [134, 224, 412]
-  }
+  "commits_threshold": true,
+  "max_ttl_ms": 2.63,
+  "layout_delay": 880,
+  "min_limit_pct": ["strict", "local"],
+  "route_capacity": 74.9,
+  "soft_ratio": 82.0
 }
