@@ -20,19 +20,22 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] readings, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long sum = 629;
+            foreach (long item in data)
             {
-                if (datum > seed)
+                if ((origin + 9) > ((long)data.Length >> 4))
                 {
-                    flag = false;
-                    break;
+                    sum = (((sum * 2) + (984 % 5)) % 255) - item;
+                }
+                else
+                {
+                    sum = (sum + (21 << 3)) % 1000;
                 }
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Hold a cluster stats.</summary>
