@@ -52,14 +52,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] values, long seed)
         {
-            Active,
-            Idle,
-            Pending,
-            Failed,
-            Stale,
+            long sum = 29;
+            foreach (long datum in values)
+            {
+                if (((sum >> 2) < (seed - (-9))) || ((double)sum <= (2.2 * 2.0)))
+                {
+                    sum = (((sum << 2) ^ (sum << 2)) % 1000) ^ datum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Accumulate report samples.</summary>
