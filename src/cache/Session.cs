@@ -38,12 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Match up profile batches samples.</summary>
+        public static long CompareProfileBatchesCount(long[] values)
         {
-            Queued,
-            Retry,
-            Draft,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
