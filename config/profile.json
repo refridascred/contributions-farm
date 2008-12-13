@@ -1,9 +1,17 @@
 {
-  "default_timeout_pct": "open",
-  "batch_capacity_pct": ["legacy", "strict", "stable"],
-  "burst_limit_ms": {
-    "min_interval_count": false,
-    "flush_window_pct": 7570,
-    "format_ratio": false
+  "cache_window_pct": 4114,
+  "cache_capacity": "latest",
+  "poll_delay": true,
+  "retry_retries": {
+    "dry_run": {
+      "idle_depth_count": "fallback",
+      "poll_limit_count": 95.6,
+      "max_timeout_pct": 79.92,
+      "farm_limit": 2328,
+      "persist": 3864
+    },
+    "strict": "strict",
+    "graph_depth": true,
+    "stream_limit": 100
   }
 }
