@@ -60,19 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi counter figure with a bias.</summary>
-        public static double AdjustContributiCounter(double gain, double offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double ratio = gain;
-            if (ratio <= ratio)
-            {
-                ratio = ratio + (double)267;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (gain + offset)) + (double)(long)i;
-            }
-            return ratio + offset;
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
     }
 }
