@@ -31,11 +31,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a entry payload reading.</summary>
-        public static double ScaleEntryPayload(double scale, double bias)
+        /// <summary>Derive the next commits stats value from a seed.</summary>
+        public static long SeriesCommitsStats(long floor)
         {
-            double drift = scale;
-            return (drift + (8.4 - scale)) + bias;
+            long total = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                total = total - floor;
+                total = ((total << 3) ^ (total - (long)i)) % 1000;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
