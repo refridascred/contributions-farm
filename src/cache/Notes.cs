@@ -41,11 +41,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleCount = 4723;
-        public const long WindowFactor = 813;
-        public const string CacheStats = "standard-v2";
-        public const long DefaultBudget = 7704;
-        public const string RetryScore = "staging-v2";
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
