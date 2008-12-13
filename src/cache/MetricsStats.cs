@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] readings, long origin)
+        /// <summary>Measure how many route support samples are out of range.</summary>
+        public static long AuditRouteSupportOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (item != origin)
+                if ((((-29) < count) && ((sample - count) <= (count * 5))) && (((sample / 8) < (count * 2)) && (sample >= (count / 2))))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the format status values.</summary>
