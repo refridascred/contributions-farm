@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 7175;
-        public const long WindowLayout = 1325;
-        public const double LimitLayout = 13.07;
-        public const long SoftLayout = 6361;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Paused,
+            Queued,
+            New,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double AdjustEntry(double bias, double floor)
