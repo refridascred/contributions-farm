@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 5463;
-        public const long WindowScore = 1059;
-        public const long BurstLevel = 8582;
-        public const double WindowRatio = 83.61;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next batch metric value from a seed.</summary>
         public static long DeriveBatchMetric(long target)
