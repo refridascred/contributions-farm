@@ -23,25 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order cache input into a small class.</summary>
-        public static long SortOrderCache(long origin, long bound)
-        {
-            if ((bound / 2) == (origin << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - bound) > (bound >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 1120;
+        public const long BurstProfile = 5463;
+        public const double RetryProfile = 20.57;
+        public const long BaseProfile = 381;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
