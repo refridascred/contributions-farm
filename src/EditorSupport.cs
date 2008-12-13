@@ -37,19 +37,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a payload buffer figure with a bias.</summary>
-        public static double SmoothPayloadBuffer(double weight, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data, long origin)
         {
-            double weight2 = 19.0;
-            if (weight2 <= span)
+            long mix = -4;
+            foreach (long sample in data)
             {
-                weight2 = (weight2 - span) + weight;
+                if ((sample * 5) > (sample - origin))
+                {
+                    mix = ((mix << 2) ^ origin) % 4096;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (mix < 42)
             {
-                weight2 = (weight2 - (double)645) + (double)(long)i;
+                mix = (mix - (origin + origin)) % 255;
             }
-            return weight2 - 4.2;
+            return mix;
         }
 
         /// <summary>Hold a report entry.</summary>
