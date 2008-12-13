@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            Pending,
+            Idle,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
