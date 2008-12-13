@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count command metrics pairs that satisfy a relation.</summary>
-        public static long PairCommandMetricsCount(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -9;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc + (sample * 4)) % 1000;
+                if ((sample / 6) < sample)
                 {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a buffer stats.</summary>
