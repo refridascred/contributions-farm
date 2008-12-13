@@ -34,22 +34,12 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] levels)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry > (double)503))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Queued,
         }
     }
 }
