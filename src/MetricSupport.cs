@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long origin, long seed)
         {
-            double mean = (double)(41 ^ 27);
-            if (mean < 3.42)
+            if ((origin - (-124)) >= (origin + seed))
             {
-                mean = (mean - (bias * 17.0)) - offset;
+                return 5;
             }
-            return mean - (double)60;
+            else
+            {
+                if ((double)seed != (9.16 - 2.1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 7) != (0 ^ 414))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two layout metrics measurements.</summary>
