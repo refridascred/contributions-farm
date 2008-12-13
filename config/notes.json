@@ -1,5 +1,6 @@
 {
-  "githubfarm_interval": 6552,
-  "cache_ratio_ms": 250,
-  "profile_timeout": 73.01
+  "notes_ratio": ["edge", "blue"],
+  "soft_depth_ms": 63,
+  "retry_interval_pct": 1780,
+  "strict": 100
 }
