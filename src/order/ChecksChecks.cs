@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Locate a report channel reading by value.</summary>
+        public static long LookupReportChannelIndex(long[] items, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
                 {
-                    carry = (carry + seed) ^ (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
