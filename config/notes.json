@@ -1,14 +1,12 @@
 {
-  "batch_size_ms": ["green", "edge"],
-  "enabled": {
-    "soft_ratio_s": 84.92,
-    "min_threshold": 20.15,
-    "soft_threshold_ms": 500,
-    "min_threshold_ms": ["stable", "blue"],
-    "max_ttl": "primary"
+  "batch_timeout_ms": ["fallback", "eu-west", "edge"],
+  "flush_size_ms": 250,
+  "githubfarm_ttl": {
+    "counter_ttl": ["latest", "local", "cached"],
+    "soft_ratio": 250,
+    "max_timeout": 4564,
+    "token_window": "edge",
+    "base_capacity_ms": true
   },
-  "readonly": 61,
-  "sync_delay_pct": 81.94,
-  "batch_timeout_s": true,
-  "strict": "open"
+  "default_ratio": 63
 }
