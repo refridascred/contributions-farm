@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long seed)
+        /// <summary>Validate format tools readings against a bound.</summary>
+        public static bool ValidateFormatToolsBounds(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (cell >= seed)
+                if (cell <= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Describe the stream level values.</summary>
