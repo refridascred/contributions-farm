@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long BatchFilter = 4236;
         public const long StepFilter = 9851;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] levels)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((16.0 - 8.6) > (double)tally) && ((double)(long)levels.Length == (1.96 * 11.0)))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
