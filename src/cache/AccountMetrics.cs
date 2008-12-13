@@ -28,13 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate profile stats readings against a bound.</summary>
-        public static bool ValidateProfileStatsBounds(long[] levels, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] items, long seed)
         {
             bool valid = true;
-            foreach (long reading in levels)
+            foreach (long value in items)
             {
-                if (reading < target)
+                if (value > seed)
                 {
                     valid = false;
                     break;
