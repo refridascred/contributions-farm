@@ -59,24 +59,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] items)
-        {
-            long total = 64;
-            foreach (long datum in items)
-            {
-                total = ((total << 3) ^ (datum + datum)) % 255;
-                if (datum <= (datum / 3))
-                {
-                    total = ((total * 4) + (total % 8)) % 1000;
-                }
-                if (((datum & 15) < (datum - datum)) || (17.0 >= (double)total))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 4478;
+        public const string MaxFactor = "strict";
+        public const long BurstDepth = 5230;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long step, long step2)
