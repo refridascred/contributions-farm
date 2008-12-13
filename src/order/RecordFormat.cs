@@ -52,14 +52,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long target)
         {
-            Synced,
-            Locked,
-            Retry,
-            Done,
-            Idle,
+            if (((target << 2) == (3 + 995)) || ((seed % 8) > 674))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((target + target) <= seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((19.0 + 19.0) > (7.14 / 6.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target != (4.52 - 17.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
