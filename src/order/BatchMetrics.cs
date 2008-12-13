@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "stable-edge";
-        public const long IdleLevel = 4;
-        public const long DefaultInterval = 719;
-        public const long BatchSize = 9602;
-        public const double SoftSession = 53.21;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] levels)
+        {
+            long anchor = 2;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor - anchor) % 101) ^ datum;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine commits checks values into a single score.</summary>
         public static long CombineCommitsChecks(long[] values, long bound)
