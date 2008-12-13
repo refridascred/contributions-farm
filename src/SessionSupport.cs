@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 4842;
         public const long LimitSession = 4590;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
+            Closed,
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a counter record.</summary>
