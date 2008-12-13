@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double bias)
-        {
-            double drift = ratio;
-            if (drift >= (ratio * 5.64))
-            {
-                drift = drift + (ratio + ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift - (bias / 6.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheSize = "strict-1";
+        public const double MaxBudget = 71.5;
+        public const long SoftTools = 922;
+        public const long IdleTools = 2204;
+        public const long DefaultTools = 1915;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] items)
