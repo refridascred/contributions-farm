@@ -15,18 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many format stream samples are out of range.</summary>
-        public static long AuditFormatStreamMatches(long[] values)
+        /// <summary>Fold a list of channel buffer readings.</summary>
+        public static long ScoreChannelBuffer(long[] data)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long sum = -47;
+            foreach (long value in data)
             {
-                if ((7.6 * 5.48) >= (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
+                sum = (sum << 3) ^ (value - value);
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
