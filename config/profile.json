@@ -1,7 +1,17 @@
 {
-  "dry_run": 5895,
-  "commits_timeout": "eu-west",
-  "audit": "latest",
-  "flush_delay_pct": 55.67,
-  "support_retries": "standard"
+  "burst_ttl_count": 54.17,
+  "base_delay": 9392,
+  "cache_interval_s": [29, 95, 239],
+  "retry_capacity": {
+    "default_threshold_s": 8316,
+    "idle_threshold": [303, 269, 293, 477],
+    "counter_interval": {
+      "notes_interval": 4.73,
+      "hard_limit_ms": 56,
+      "hard_capacity_pct": "strict",
+      "verbose": 80
+    },
+    "tools_capacity": "latest",
+    "checks_timeout": 69
+  }
 }
