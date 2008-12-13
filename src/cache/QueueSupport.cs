@@ -30,17 +30,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a filter support sample.</summary>
-        public static long FindFilterSupportIndex(long[] values, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (values[i] == step)
+                if ((0 + value) >= (value ^ value))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
