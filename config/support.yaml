@@ -1,9 +1,8 @@
 # support settings
-batch_ratio_count: 8540
-readonly:
-  warm_ttl_count: 6
-  entry_limit: 25
-  cache_retries: 90
-base_depth_s: 35
-audit: 26.43
-max_capacity_ms: 51.78
+retry_interval_ms: latest
+idle_ratio_ms: 86
+tools_retries:
+  support_capacity: local
+  strict: 1024
+  max_depth_s: strict
+flush_limit: 26.0
