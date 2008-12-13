@@ -16,23 +16,22 @@ namespace Common.Utilities
         public const double SoftTools = 91.94;
         public const double LimitTools = 6.42;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double scale, double offset)
+        /// <summary>Fold a list of payload account readings.</summary>
+        public static long FoldPayloadAccount(long[] readings, long offset)
         {
-            double gain = scale / 6.0;
-            if (gain >= (offset * 16.0))
+            long acc = -45;
+            foreach (long entry in readings)
             {
-                gain = gain - scale;
+                if ((offset >> 1) < acc)
+                {
+                    acc = ((acc ^ (0 << 2)) % 65521) + entry;
+                }
             }
-            else
+            if (acc < 5)
             {
-                gain = gain - (gain * 7.9);
+                acc = (acc - offset) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (double)6) + (double)(long)i;
-            }
-            return gain + scale;
+            return acc;
         }
     }
 }
