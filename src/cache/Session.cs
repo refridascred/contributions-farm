@@ -46,18 +46,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long limit, long bound)
         {
-            long sum = 510;
-            foreach (long datum in readings)
+            if ((limit + bound) < (limit - limit))
             {
-                if (((datum + sum) < (sum * 4)) && (datum < (sum * 2)))
+                return 8;
+            }
+            else
+            {
+                if (8.11 >= (double)bound)
                 {
-                    sum = sum + sum;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return sum;
         }
     }
 }
