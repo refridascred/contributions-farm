@@ -1,8 +1,35 @@
 # support settings
-retry_interval_ms: latest
-idle_ratio_ms: 86
-tools_retries:
-  support_capacity: local
-  strict: 1024
-  max_depth_s: strict
-flush_limit: 26.0
+hard_timeout_count:
+  max_interval_s:
+    - stable
+    - latest
+    - standard
+  compress:
+    - staging
+    - cached
+    - edge
+    - open
+  max_retries_s:
+    - latest
+    - edge
+    - green
+  min_depth_count:
+    - latest
+    - local
+    - standard
+    - staging
+batch_depth: 18
+format_timeout: 35
+dry_run:
+  max_size_count: blue
+  warm_retries_s: 91
+  enabled:
+    - 320
+    - 330
+  base_depth_ms:
+    - staging
+    - primary
+    - standard
+    - local
+hard_depth: 91.62
+base_threshold_ms: 42
