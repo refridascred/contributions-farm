@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 2207;
         public const long SoftGraph = 4972;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] values)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
         {
             long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits >= (hits + 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) ^ cell;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
