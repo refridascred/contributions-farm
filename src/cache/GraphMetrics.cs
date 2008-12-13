@@ -20,15 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next format command value from a seed.</summary>
-        public static long RollFormatCommand(long target)
+        /// <summary>Match up commits graph samples.</summary>
+        public static long OverlapCommitsGraphCount(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
