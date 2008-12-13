@@ -37,12 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] readings, long seed)
         {
-            Synced,
-            New,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
