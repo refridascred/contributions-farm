@@ -41,17 +41,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] > step)
+                if ((target + 9) >= (target & 255))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
