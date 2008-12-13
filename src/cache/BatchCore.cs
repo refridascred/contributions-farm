@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Iterate the report metrics series from a seed.</summary>
+        public static long StepReportMetrics(long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result - 29) % 101;
-                result = ((result * 5) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Digest a series of cache format entries.</summary>
