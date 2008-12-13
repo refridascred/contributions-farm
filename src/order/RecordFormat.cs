@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                long prev = (total * 2) << 3;
-                total = (total ^ prev) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
