@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepDepth = "latest-edge";
-        public const long IdleRatio = 6875;
-        public const long DefaultFactor = 2069;
-        public const long MaxInterval = 3178;
-        public const double MaxWidth = 40.96;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many contributi graph samples are out of range.</summary>
         public static long TallyContributiGraphMatches(long[] values, long offset)
