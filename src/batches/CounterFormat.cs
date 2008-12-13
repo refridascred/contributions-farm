@@ -20,11 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double gain, double floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] samples, long seed)
         {
-            double ratio = 1.83;
-            return ((ratio - (3.8 * 3.7)) + gain) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate checks context samples.</summary>
