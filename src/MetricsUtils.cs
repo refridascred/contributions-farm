@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((7.6 / 5.0) >= (double)entry)
+                if (!((5.86 - 13.0) == (double)item))
                 {
-                    seen = (seen + 3) - seed;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster notes readings.</summary>
