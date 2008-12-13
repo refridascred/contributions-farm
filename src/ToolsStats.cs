@@ -66,14 +66,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] data, long offset)
         {
-            Dropped,
-            Failed,
-            Stale,
-            Locked,
-            Done,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((3.83 * 3.11) >= (double)offset)
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
