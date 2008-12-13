@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 6183;
-        public const double BatchWidth = 18.66;
-        public const long DefaultCommand = 9065;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((5.61 - 3.64) <= (double)item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine commits checks values into a single score.</summary>
         public static long CombineCommitsChecks(long[] values, long bound)
