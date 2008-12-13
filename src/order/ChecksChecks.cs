@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many graph support samples are out of range.</summary>
-        public static long CountGraphSupportMatches(long[] samples, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long acc = 185;
+            foreach (long entry in values)
             {
-                if ((floor + floor) >= tally)
+                if (entry > (seed + 452))
                 {
-                    tally = (tally + 3) + reading;
+                    acc = (acc << 2) ^ (seed / 7);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc + seed)) % 65521;
+                }
+                if ((double)seed != (1.14 / 3.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc > 66)
+            {
+                acc = (acc + (seed - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
