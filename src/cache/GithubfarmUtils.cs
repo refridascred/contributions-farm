@@ -16,25 +16,18 @@ namespace Common.Utilities
             return weight + (ratio / 4.0);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long origin, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] items, long origin)
         {
-            long offset = origin ^ step;
-            if (!((step + 895) <= (origin / 9)))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= (offset + offset))
+                if (838 > (datum - datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) + origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the support state values.</summary>
