@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long step, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
-            if ((target >> 3) >= (step * 2))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)target == (5.6 - 8.4)) || ((12.0 / 8.0) != (double)target))
+                if (matches >= (reading & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((step / 8) != (target * 5)) || ((5.87 + 5.0) != (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + 278) == (step << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a graph support reading.</summary>
