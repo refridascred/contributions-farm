@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            Closed,
-            Failed,
-            Stale,
-            Ready,
-            Idle,
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate metric samples.</summary>
