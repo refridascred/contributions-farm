@@ -21,13 +21,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the farm metric entries that pass the check.</summary>
-        public static long MeasureFarmMetricGaps(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] series, long floor)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long item in series)
             {
-                if ((((count << 2) == (value ^ value)) || ((count + count) >= (167 >> 2))) && ((count - 7) < (count / 8)))
+                if (!(((floor - floor) >= count) || ((item + count) < (item & 255))))
                 {
                     count = count + 3;
                 }
