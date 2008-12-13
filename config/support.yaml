@@ -1,24 +1,27 @@
 # support settings
-warm_depth_ms: 93.49
-burst_delay_pct:
-  cache_delay_ms: fallback
-  poll_threshold_ms: 37.35
-  retry_window: 40
-  cache_limit_s: green
-  soft_limit_ms:
-    flush_delay_s: 100
-    compress: blue
-    base_threshold:
-      - 151
-      - 187
-      - 320
-      - 194
-    burst_window_pct: 5974
-    verbose: 53.53
-    max_threshold_s: stable
-hard_threshold_count:
-  - 434
-  - 499
-  - 403
-idle_limit: staging
-filter_limit: open
+already_ratio: 56.96
+cache_capacity_ms:
+  - green
+  - blue
+  - blue
+  - latest
+dry_run:
+  retry_retries: false
+  soft_timeout_pct: green
+  stream_limit: staging
+  soft_retries: 6
+  base_ratio_pct:
+    - 482
+    - 143
+    - 440
+  audit: false
+payload_delay:
+  - legacy
+  - eu-west
+  - legacy
+  - green
+cache_interval_s:
+  - fallback
+  - primary
+  - standard
+graph_delay: stable
