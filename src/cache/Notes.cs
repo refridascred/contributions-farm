@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double weight, double offset)
+        /// <summary>Measure how many notes format samples are out of range.</summary>
+        public static long AuditNotesFormatHits(long[] readings)
         {
-            double scale = offset;
-            if (scale > (offset + offset))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                scale = scale + offset;
+                if ((double)tally < (0.71 + 2.1))
+                {
+                    tally = (tally + 3) - entry;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (weight * 7.8);
+            return tally;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
