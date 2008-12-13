@@ -54,22 +54,21 @@ namespace Common.Utilities
         public const long RetryLayout = 4041;
         public const long LimitLayout = 2138;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            long result = 48;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((result % 2) < (result / 6)) && ((62 & 31) >= (cell + (long)items.Length)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result + result) % 97;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 502)
-            {
-                result = (result * 2) + (result + result);
-            }
-            return result % 4096;
+            return tally;
         }
     }
 }
