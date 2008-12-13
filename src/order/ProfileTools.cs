@@ -30,19 +30,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next already farm value.</summary>
-        public static double ScaleAlreadyFarm(double gain, double floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            double bias = (double)8 * 4.9;
-            if (bias <= (bias - 16.0))
+            long mark = 8;
+            foreach (long item in samples)
             {
-                bias = (bias - (double)75) + floor;
+                if ((mark + item) < item)
+                {
+                    mark = (mark * 4) + (item % 64);
+                }
+                if ((item >> 2) >= mark)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (mark < 0)
             {
-                bias = (bias - (gain - gain)) + (double)(long)i;
+                mark = (mark << 2) ^ (mark << 3);
             }
-            return bias - (gain * 7.1);
+            return mark % 4096;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
