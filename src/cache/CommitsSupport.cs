@@ -20,10 +20,15 @@ namespace Common.Utilities
         public const double MaxAccount = 70.29;
         public const long LimitAccount = 6774;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 6270;
-        public const long MaxFactor = 242;
-        public const string BaseMetrics = "strict-v2";
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Synced,
+            Active,
+            Locked,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
