@@ -64,13 +64,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] items, long step)
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a context checks counter forward.</summary>
