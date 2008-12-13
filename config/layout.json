@@ -1,12 +1,15 @@
 {
-  "stats_timeout": "fallback",
-  "format_capacity": {
-    "base_ratio_count": 29.26,
-    "counter_size": 72.4,
-    "batch_timeout": ["staging", "stable"],
-    "hard_delay_ms": 250
+  "format_window": 20.11,
+  "hard_timeout_pct": {
+    "idle_timeout": {
+      "already_limit": 2064,
+      "soft_ttl": 6736,
+      "persist": false
+    },
+    "compress": "green",
+    "verbose": 1024,
+    "burst_retries_ms": 66.26,
+    "filter_interval": "standard"
   },
-  "strict": 60,
-  "persist": 250,
-  "default_limit_pct": "green"
+  "entry_window": "eu-west"
 }
