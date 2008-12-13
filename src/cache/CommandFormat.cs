@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long target, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long step, long target)
         {
-            long lane = target - seed;
-            if ((9.0 / 2.0) >= (double)lane)
+            if ((target >> 3) >= (step * 2))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((lane % 16) <= (seed + lane))
+                if (((double)target == (5.6 - 8.4)) || ((12.0 / 8.0) != (double)target))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    if (((step / 8) != (target * 5)) || ((5.87 + 5.0) != (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + 278) == (step << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
