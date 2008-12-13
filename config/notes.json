@@ -1,6 +1,7 @@
 {
-  "verbose": 100,
-  "format_ratio": 91,
-  "readonly": "edge",
-  "audit": true
+  "default_timeout": 42.5,
+  "account_ttl": 100,
+  "burst_size_s": 47,
+  "idle_delay_ms": 83.38,
+  "editor_delay": true
 }
