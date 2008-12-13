@@ -20,11 +20,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((origin / 9) > (origin >> 5))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batch level values.</summary>
