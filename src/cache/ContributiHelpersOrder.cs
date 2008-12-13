@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitSpan = "staging";
-        public const long MinInterval = 7607;
-        public const long StepCache = 9826;
-        public const double BurstCache = 86.2;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series)
+        {
+            long state = 79;
+            foreach (long reading in series)
+            {
+                state = ((state + (2 << 1)) % 1000) ^ reading;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] series, long limit)
