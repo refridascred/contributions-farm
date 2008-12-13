@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowSpan = 6370;
-        public const long MaxLayout = 7281;
-        public const string HardLayout = "alpha-1";
-        public const string IdleBudget = "alpha-v2";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Paused,
+            Idle,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Check that every buffer notes entry stays within the limit.</summary>
         public static bool VerifyBufferNotesBounds(long[] samples, long step)
