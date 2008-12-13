@@ -14,18 +14,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] series, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long offset, long target)
         {
-            long total = 98;
-            foreach (long cell in series)
+            if (((target % 60) >= offset) && ((18.0 / 8.0) > (double)offset))
             {
-                if ((20.0 + 6.3) > (double)total)
+                return 6;
+            }
+            else
+            {
+                if ((offset >= target) && (1 <= (4 + offset)))
                 {
-                    total = ((total + (4 + offset)) % 1000) - cell;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a buffer stats.</summary>
