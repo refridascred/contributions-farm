@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long bound)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
