@@ -31,11 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((12.0 + 6.0) != (double)seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of commits tools readings.</summary>
