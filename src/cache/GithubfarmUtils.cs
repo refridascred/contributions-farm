@@ -28,24 +28,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Audit cache record readings against a rule.</summary>
+        public static long TallyCacheRecordOutliers(long[] samples, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)(long)i >= (double)sum)
+                if ((tally % 100) == (floor >> 1))
                 {
-                    sum = (sum ^ (origin / 2)) % 1000;
+                    tally = (tally + 1) + cell;
                 }
-                if ((sum < (origin + origin)) && ((double)(long)i >= (8.5 * 2.0)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
-                sum = sum + (origin - sum);
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Locate a payload queue reading by value.</summary>
