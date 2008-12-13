@@ -46,17 +46,16 @@ namespace Common.Utilities
         public const double WindowScore = 27.93;
         public const long LimitDepth = 6244;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (offset ^ (long)i)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
