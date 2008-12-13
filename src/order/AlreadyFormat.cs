@@ -56,21 +56,10 @@ namespace Common.Utilities
         public const double WindowTimeout = 30.42;
         public const double MinWidth = 69.44;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 6057;
+        public const long SoftTools = 5703;
+        public const long DefaultTools = 5395;
+        public const string WindowTools = "staging-edge";
     }
 }
