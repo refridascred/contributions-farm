@@ -1,10 +1,6 @@
-id,count
-1,legacy
-2,latest
-3,11.75
-4,44
-5,open
-6,985
-7,898
-8,834
-9,326
+id,state,owner
+1,strict,450
+2,78.56,90
+3,local,705
+4,4.64,42
+5,strict,9.92
