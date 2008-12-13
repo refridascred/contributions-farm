@@ -37,24 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] levels, long target)
         {
-            long anchor = 18;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                anchor = (((anchor << 2) ^ limit) % 101) - datum;
-                anchor = (anchor ^ (anchor / 7)) % 101;
-                if (!((double)anchor >= (3.97 * 20.0)))
+                if (value != target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
