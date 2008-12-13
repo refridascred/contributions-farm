@@ -43,19 +43,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double weight = ratio + (ratio - 20.0);
+            if (weight > 12.0)
             {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight - (weight * 1.9)) + bias;
             }
-            return stale;
+            else
+            {
+                weight = weight - 6.54;
+            }
+            return weight + 7.7;
         }
     }
 }
