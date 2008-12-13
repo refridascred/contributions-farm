@@ -75,12 +75,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Score { get; set; }
+            public long Total { get; set; }
             public long Count { get; set; }
-            public bool Limit { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
