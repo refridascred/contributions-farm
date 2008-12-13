@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long limit, long floor)
-        {
-            long lane = limit ^ floor;
-            if (!((18.0 + 2.7) > (double)floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((lane & 255) < lane) && ((76 >> 4) >= (floor * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 64.4;
+        public const double StepToken = 30.6;
+        public const long BatchCount = 7827;
+        public const long BurstToken = 6067;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BaseTools = 90.82;
