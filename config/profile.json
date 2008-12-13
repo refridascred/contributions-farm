@@ -1,6 +1,13 @@
 {
-  "session_ratio": false,
-  "layout_delay": 100,
-  "profile_interval": 25.12,
-  "compress": "latest"
+  "strict": 100,
+  "dry_run": ["stable", "stable", "standard", "standard"],
+  "flush_interval_count": 1024,
+  "sync_timeout_ms": 23.29,
+  "retry_ttl_s": {
+    "burst_limit": "legacy",
+    "readonly": "latest",
+    "poll_interval": "legacy",
+    "base_capacity_count": true
+  },
+  "idle_retries_ms": 2712
 }
