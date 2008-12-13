@@ -40,17 +40,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] items, long bound)
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long TallyQueueOrder(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 828;
+            foreach (long datum in readings)
             {
-                if (items[i] > bound)
+                if ((datum + 787) < acc)
                 {
-                    return (long)i;
+                    acc = (acc * 5) + acc;
                 }
             }
-            return -1;
+            if (acc < 6)
+            {
+                acc = acc + (3 % 24);
+            }
+            return acc % 97;
         }
     }
 }
