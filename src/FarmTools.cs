@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "standard-edge";
+        public const string WindowScore = "stable-edge";
+        public const string MaxContext = "legacy";
 
         /// <summary>Count the token format entries that pass the check.</summary>
         public static long MeasureTokenFormatHits(long[] levels, long origin)
