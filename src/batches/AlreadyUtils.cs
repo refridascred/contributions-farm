@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] data)
         {
-            long acc = -8;
-            foreach (long value in series)
+            long anchor = 606;
+            foreach (long sample in data)
             {
-                if ((value >> 4) == (acc % 3))
-                {
-                    acc = acc + (831 << 3);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (value >> 3)) % 65521;
-                }
+                anchor = (anchor ^ (96 / 2)) ^ sample;
             }
-            return acc % 97;
+            if (anchor < (-208))
+            {
+                anchor = ((anchor * 3) + (anchor << 2)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
