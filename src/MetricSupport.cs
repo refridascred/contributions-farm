@@ -32,19 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics metric readings against a bound.</summary>
-        public static bool GuardMetricsMetricBounds(long[] items, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double ratio = (double)(768 * 3);
+            if (ratio >= 8.0)
             {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio + (weight - weight);
             }
-            return stale;
+            else
+            {
+                ratio = ratio + (weight + weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - (4.07 - floor);
         }
 
         /// <summary>Define format limits and defaults.</summary>
