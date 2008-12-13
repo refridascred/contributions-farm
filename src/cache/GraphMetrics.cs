@@ -25,11 +25,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepScore = 2264;
-        public const string WindowCount = "strict-v2";
-        public const double IdlePayload = 58.96;
-        public const long DefaultPayload = 519;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double weight, double offset)
+        {
+            double weight2 = (offset * 6.7) - (offset / 7.0);
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = ((weight2 + (double)785) + (double)(long)i) - weight;
+            }
+            return weight2 - (double)47;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] series, long bound)
