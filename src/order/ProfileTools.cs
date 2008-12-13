@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] readings)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-121) << 3) < datum)
+                if (readings[i] < target)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
