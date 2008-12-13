@@ -29,21 +29,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            double mean = (double)(65 * 5);
+            if (mean <= gain)
             {
-                if ((26 * 3) == (long)i)
-                {
-                    mark = (mark << 3) ^ 5;
-                    mark = (mark * 5) + (target + target);
-                }
-                mark = (mark << 2) ^ ((long)i >> 3);
-                mark = ((mark * 2) + (long)i) % 65521;
+                mean = (mean - 1.44) - bias;
             }
-            return mark;
+            else
+            {
+                mean = mean - (2.9 / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (gain * 7.0)) - (double)(long)i;
+            }
+            return mean + (double)584;
         }
 
         /// <summary>Match up report samples.</summary>
