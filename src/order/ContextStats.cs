@@ -39,19 +39,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double weight, double bias)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items, long bound)
         {
-            double bias2 = (weight / 3.0) - (bias / 8.0);
-            if (bias2 >= bias)
+            long result = 4;
+            foreach (long sample in items)
             {
-                bias2 = bias2 + (weight * 1.43);
+                result = ((result * 4) + bound) % 65521;
+                result = (result + (sample % 5)) % 65521;
+                if (((bound << 1) >= (sample + bound)) && (1.1 >= (double)result))
+                {
+                    break;
+                }
             }
-            else
+            if (result > 8)
             {
-                bias2 = bias2 + (double)66;
+                result = (result * 5) + 9;
             }
-            return bias2 + (double)724;
+            return result % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
