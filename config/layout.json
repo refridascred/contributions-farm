@@ -1,15 +1,5 @@
 {
-  "format_window": 20.11,
-  "hard_timeout_pct": {
-    "idle_timeout": {
-      "already_limit": 2064,
-      "soft_ttl": 6736,
-      "persist": false
-    },
-    "compress": "green",
-    "verbose": 1024,
-    "burst_retries_ms": 66.26,
-    "filter_interval": "standard"
-  },
-  "entry_window": "eu-west"
+  "flush_timeout_pct": 55.46,
+  "stats_interval": true,
+  "flush_ratio_s": 100
 }
