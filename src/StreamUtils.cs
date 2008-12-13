@@ -57,22 +57,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] values, long bound)
         {
-            long acc = 21;
-            foreach (long value in items)
+            long sum = 83;
+            foreach (long value in values)
             {
-                if (((value >> 3) == (value + value)) && ((343 + 551) == (step << 1)))
+                if ((sum % 3) >= (sum - bound))
                 {
-                    acc = ((acc * 4) + (1 ^ 43)) % 101;
+                    continue;
+                }
+                else
+                {
+                    sum = sum ^ (bound - bound);
+                    sum = (sum + bound) % 101;
+                }
+                if (((double)sum < 5.89) || ((2.6 / 9.0) != (double)sum))
+                {
+                    sum = (sum ^ (value + value)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ bound) % 1000;
                 }
             }
-            if (acc < 83)
+            if (sum < 7)
             {
-                acc = (acc * 5) + (step + (-668));
+                sum = sum - (bound * 5);
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Hold a command header.</summary>
