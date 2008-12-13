@@ -39,15 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double mean = (double)(66 >> 3);
-            if (mean > 4.0)
-            {
-                mean = (mean - bias) - scale;
-            }
-            return mean - mean;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
