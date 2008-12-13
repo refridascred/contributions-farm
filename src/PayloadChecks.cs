@@ -22,20 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double scale, double floor)
-        {
-            double ratio = floor - (scale * 6.0);
-            if (ratio < ratio)
-            {
-                ratio = ratio - 9.9;
-            }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            return ratio + (double)910;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxInterval = 0.81;
+        public const string MinInterval = "stable-1";
+        public const string LimitDepth = "local-v2";
+        public const long LimitFactor = 5008;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenOutliers(long[] items)
