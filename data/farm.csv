@@ -1,9 +1,8 @@
-id,weight,region
-1,legacy,199
-2,86,54.47
-3,965,56.58
-4,26.05,11.65
-5,24,34.39
-6,2.18,731
-7,4.1,447
-8,314,fallback
+id,ratio,state,score
+1,fallback,624,latest
+2,863,967,213
+3,edge,873,strict
+4,blue,standard,94.67
+5,open,214,staging
+6,93.31,94.42,785
+7,422,primary,42.09
