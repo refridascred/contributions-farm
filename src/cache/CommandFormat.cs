@@ -41,11 +41,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
+            Idle,
+            Done,
+            Pending,
+            Queued,
+            Active,
         }
     }
 }
