@@ -1,11 +1,8 @@
 # githubfarm settings
-compress:
-  flush_ratio_count: true
-  max_capacity:
-    - fallback
-    - standard
-    - standard
-    - latest
-  githubfarm_window: true
-readonly: 31
-warm_ratio_pct: 871
+readonly: latest
+burst_delay_pct: 30
+sync_retries_ms: legacy
+idle_ratio_ms:
+  - legacy
+  - staging
+  - strict
