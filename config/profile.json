@@ -1,5 +1,12 @@
 {
-  "window_interval": "staging",
-  "warm_depth_s": ["fallback", "edge", "latest"],
-  "cache_ratio": false
+  "githubfarm_timeout": {
+    "session_capacity": "blue",
+    "dry_run": 21,
+    "compress": 31.16,
+    "stats_delay": ["standard", "green", "stable", "local"]
+  },
+  "cache_capacity_s": "legacy",
+  "persist": "fallback",
+  "soft_capacity_pct": 66.15,
+  "metrics_interval": "fallback"
 }
