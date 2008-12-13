@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            Synced,
-            Active,
-            Closed,
+            long total = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total ^ (offset * 4)) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
