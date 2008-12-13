@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] samples, long origin)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + entry) == (hits << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up commits graph samples.</summary>
