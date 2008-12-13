@@ -34,9 +34,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchSpan = "open";
-        public const long DefaultCluster = 6041;
-        public const long BurstCluster = 3526;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
