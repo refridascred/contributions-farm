@@ -20,26 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of format command entries.</summary>
-        public static long DigestFormatCommand(long[] values)
+        /// <summary>Locate a farm order reading by value.</summary>
+        public static long LookupFarmOrderIndex(long[] items, long floor)
         {
-            long mark = 797;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item - item) > mark)
+                if (items[i] == floor)
                 {
-                    mark = (mark ^ ((long)values.Length << 1)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark > 71)
-            {
-                mark = (mark - (mark >> 1)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
