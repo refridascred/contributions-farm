@@ -24,12 +24,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 1758;
-        public const long BaseScore = 762;
-        public const long WindowReport = 1708;
-        public const long CacheSpan = 4511;
-        public const long RetryReport = 451;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelHits(long[] items, long seed)
