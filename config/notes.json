@@ -1,7 +1,12 @@
 {
-  "soft_delay": 60,
-  "retry_delay": true,
-  "max_ratio_pct": 30.92,
-  "poll_limit_pct": 1024,
-  "hard_capacity_count": 3725
+  "readonly": 500,
+  "poll_depth": "primary",
+  "layout_ratio": [488, 330, 49, 452],
+  "cache_limit_s": {
+    "base_threshold_s": ["blue", "local", "local", "open"],
+    "max_window_s": 12,
+    "flush_size_ms": "blue",
+    "batch_capacity_ms": false,
+    "verbose": [368, 353, 47, 136]
+  }
 }
