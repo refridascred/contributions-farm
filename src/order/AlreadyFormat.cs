@@ -62,19 +62,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate command graph readings against a bound.</summary>
-        public static bool CheckCommandGraphBounds(long[] values, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
