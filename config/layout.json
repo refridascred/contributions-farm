@@ -1,6 +1,12 @@
 {
-  "metric_retries": true,
-  "burst_capacity": "legacy",
-  "layout_interval": "eu-west",
-  "graph_ratio": 44.61
+  "stats_timeout": "fallback",
+  "format_capacity": {
+    "base_ratio_count": 29.26,
+    "counter_size": 72.4,
+    "batch_timeout": ["staging", "stable"],
+    "hard_delay_ms": 250
+  },
+  "strict": 60,
+  "persist": 250,
+  "default_limit_pct": "green"
 }
