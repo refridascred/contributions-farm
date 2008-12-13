@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowBudget = 723;
-        public const double BurstBudget = 65.94;
-        public const long SoftTimeout = 4317;
-        public const double DefaultSession = 18.82;
-        public const double HardSession = 24.4;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardSpan = 65.0;
+        public const long MaxCluster = 2079;
+        public const double SoftCluster = 33.53;
+        public const string StepFactor = "standard-1";
+        public const string HardCluster = "local";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyBounds(long[] levels, long limit)
