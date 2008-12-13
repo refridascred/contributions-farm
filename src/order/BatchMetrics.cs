@@ -50,21 +50,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((double)bound <= (double)5) && ((total + 5) >= (bound + total))))
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 2) + ((long)i & 7)) % 4096;
+                    total = ((total << 2) ^ (bound >> 1)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Roll a report counter forward.</summary>
