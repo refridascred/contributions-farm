@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] levels, long origin)
+        /// <summary>Blend two notes metric measurements.</summary>
+        public static double AdjustNotesMetric(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (gain * 14.0) * 6.9;
+            if (rate > (gain - 0.76))
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)1) + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (gain + rate)) + (double)(long)i;
+            }
+            return rate - (6.4 * 8.0);
         }
 
         /// <summary>Accumulate support samples.</summary>
