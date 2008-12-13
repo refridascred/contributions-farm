@@ -28,21 +28,21 @@ namespace Common.Utilities
         public const long MinScore = 7901;
         public const long DefaultScore = 741;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Match up route commits samples.</summary>
+        public static long MatchRouteCommitsCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 16)
+                    if ((readings[i] + readings[j]) > 15)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
