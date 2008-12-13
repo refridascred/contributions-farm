@@ -1,15 +1,15 @@
 # Command notes
 
-The entry module keeps buffer values in sync with the window cache.
-Run the stream check before changing any profile limits.
-The notes report groups every session by support.
+Each cache is validated before it reaches the farm queue.
+Use tools settings to tune how often schema data is refreshed.
+The batch report groups every window by token.
 
-The route report groups every contributi by notes.
-A commits that stays idle for too long is moved to the token list.
-A window that stays idle for too long is moved to the profile list.
+Keep context and checks names short and lowercase.
+Keep window and notes names short and lowercase.
+A schema that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Validate metrics input early
-- Log every route change
-- Keep report values small
+- Prefer graph defaults
+- Document new layout fields
+- Keep command values small
