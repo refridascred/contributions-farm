@@ -1,7 +1,17 @@
 {
-  "base_ratio": "primary",
-  "compress": "strict",
-  "flush_ratio_ms": 86.71,
-  "cache_capacity_s": 27.68,
-  "filter_limit": 5381
+  "cache_capacity_pct": "latest",
+  "warm_ratio_ms": "primary",
+  "filter_window": true,
+  "batches_size": {
+    "base_window": "latest",
+    "poll_depth_s": [77, 374, 119],
+    "hard_size": {
+      "default_timeout": "standard",
+      "dry_run": 93.48,
+      "poll_timeout": "cached",
+      "base_threshold_count": [274, 423]
+    },
+    "token_ttl": false,
+    "commits_ratio": [72, 239, 397, 170]
+  }
 }
