@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            long sum = 230;
-            foreach (long item in values)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (7.9 < (double)sum)
-                {
-                    sum = ((sum << 3) ^ sum) + item;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Describe the report class values.</summary>
