@@ -23,15 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine order tools values into a single score.</summary>
-        public static long CombineOrderTools(long[] readings)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long result = 37;
-            foreach (long sample in readings)
-            {
-                result = (result - (sample + sample)) % 1000;
-            }
-            return result % 1000;
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
