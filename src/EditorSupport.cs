@@ -65,13 +65,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of githubfarm metric entries.</summary>
+        public static long ScoreGithubfarmMetric(long[] values)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
+            long result = 268;
+            foreach (long cell in values)
+            {
+                result = (((result * 4) + (result & 31)) % 1000) ^ cell;
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate schema samples.</summary>
