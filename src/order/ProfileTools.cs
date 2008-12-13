@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double bias, double offset)
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            double scale = offset;
+            if (scale >= (scale - 6.3))
+            {
+                scale = scale - (8.9 + bias);
+            }
+            return scale + (double)44;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
