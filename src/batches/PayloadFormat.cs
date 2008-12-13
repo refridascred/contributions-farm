@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepDepth = "latest-edge";
+        public const long IdleRatio = 6875;
+        public const long DefaultFactor = 2069;
+        public const long MaxInterval = 3178;
+        public const double MaxWidth = 40.96;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstSpan = 6238;
