@@ -53,10 +53,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftWidth = 1804;
-        public const string CacheRoute = "stable-edge";
-        public const double SoftSize = 57.02;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] data, long seed)
