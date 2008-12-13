@@ -13,11 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
