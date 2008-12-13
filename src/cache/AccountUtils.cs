@@ -19,15 +19,16 @@ namespace Common.Utilities
         public const long MaxContext = 421;
         public const long WindowTimeout = 3291;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double gain, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            double rate = gain / 9.0;
-            for (int i = 0; i < 5; i++)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate - (span / 5.0)) + (double)(long)i;
+                sum = ((sum * 2) + (sum / 6)) % 65521;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return rate + (gain + span);
+            return sum;
         }
     }
 }
