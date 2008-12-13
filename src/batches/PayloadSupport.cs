@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of channel notes readings.</summary>
-        public static long MatchChannelNotesCount(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((origin * 4) != (98 + bound)) || (2 > (origin >> 3)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)0 < (double)bound)
                 {
-                    if ((samples[i] - samples[j]) == 12)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound > (5.63 - 0.04))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
