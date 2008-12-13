@@ -22,14 +22,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
             Pending,
-            Paused,
-            Ready,
+            Stale,
+            Retry,
             Locked,
-            New,
         }
     }
 }
