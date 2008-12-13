@@ -36,10 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 8103;
-        public const double BaseSize = 87.86;
-        public const double HardFactor = 83.09;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "local-edge";
+        public const long LimitScore = 953;
+        public const long LimitTools = 2576;
+        public const long BurstBudget = 642;
+        public const long IdleTools = 80;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] series, long step)
