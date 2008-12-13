@@ -1,18 +1,12 @@
 # entry settings
-cache_timeout: false
-flush_ratio:
-  profile_size: strict
-  min_size:
-    - local
-    - latest
-  cache_window: 1.83
-retry_ratio:
-  base_threshold: 74
-  soft_timeout:
-    - 8
-    - 202
-  context_delay:
-    - eu-west
-    - primary
-    - blue
-    - strict
+min_capacity_ms:
+  - edge
+  - primary
+  - open
+default_ratio_pct: true
+retry_capacity_pct:
+  - 220
+  - 477
+  - 155
+  - 247
+account_depth: true
