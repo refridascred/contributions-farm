@@ -1,7 +1,8 @@
-id,owner
-1,879
-2,staging
-3,cached
-4,89.54
-5,legacy
-6,510
+id,rank,ratio,state
+1,legacy,684,local
+2,83.64,874,stable
+3,90,8.33,staging
+4,44,stable,latest
+5,2.2,152,33.19
+6,64.43,cached,66.02
+7,96.37,38.72,397
