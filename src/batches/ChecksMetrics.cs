@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate schema support readings against a bound.</summary>
-        public static bool ValidateSchemaSupportLimits(long[] series, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (datum < bound)
+                if (((matches - 5) > (sample & 3)) && ((7.78 - 8.0) == (double)matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Digest a series of tools batches entries.</summary>
