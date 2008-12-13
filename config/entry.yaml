@@ -1,13 +1,36 @@
 # entry settings
-token_ratio: staging
-poll_ratio_count:
-  - local
-  - cached
-  - cached
-  - blue
-soft_depth: legacy
-base_timeout_pct:
-  - fallback
-  - eu-west
+account_limit: local
+hard_delay_ms:
+  readonly:
+    compress: false
+    default_threshold: stable
+    max_interval_ms:
+      - green
+      - blue
+    graph_retries: false
+  persist:
+    - cached
+    - green
+  max_ratio_s:
+    order_size: 3.35
+    profile_interval: 3288
+    cache_ratio_pct: 60
+    persist: 60
+    sync_capacity: blue
+  schema_capacity:
+    burst_ttl_ms: staging
+    enabled: latest
+    retry_window_pct: 83
+    min_timeout_s: 81
+    default_threshold: false
+    batch_depth: false
+  batch_delay_count: 16
+  soft_window_s:
+    - 276
+    - 88
+    - 220
+metric_interval: 27.47
+metrics_threshold:
+  - open
+  - green
   - edge
-record_delay: 3788
