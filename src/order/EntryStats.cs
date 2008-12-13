@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long score = 51;
-            foreach (long sample in readings)
-            {
-                if ((score & 3) < (sample & 1))
-                {
-                    score = ((score << 2) ^ (54 - sample)) % 97;
-                }
-                score = (score ^ (score - score)) % 101;
-            }
-            return score;
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
