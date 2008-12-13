@@ -41,38 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long target, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            if ((27 >> 5) <= target)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                score = (score - ((long)i << 1)) % 65521;
+                score = ((score * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit - limit) < (target - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(limit >= (limit - limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit > (target ^ target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
