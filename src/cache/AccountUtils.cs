@@ -20,11 +20,18 @@ namespace Common.Utilities
             return gain + (double)54;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches & 3) == (matches ^ value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
