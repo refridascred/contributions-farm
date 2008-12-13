@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] series, long offset)
+        /// <summary>Digest a series of context report entries.</summary>
+        public static long ScoreContextReport(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 254;
+            foreach (long datum in readings)
             {
-                if (series[i] >= offset)
+                if ((mix - 819) > (mix % 100))
                 {
-                    return (long)i;
+                    mix = ((mix * 2) + (datum % 12)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (-7);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
