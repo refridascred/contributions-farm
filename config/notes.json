@@ -1,6 +1,5 @@
 {
-  "min_ratio": ["standard", "eu-west", "standard"],
-  "poll_window_ms": false,
-  "idle_ratio_ms": "primary",
-  "idle_depth": 4298
+  "soft_retries": 100,
+  "enabled": [163, 178, 155],
+  "profile_timeout": 89.87
 }
