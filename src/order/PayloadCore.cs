@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (4.0 < (double)floor)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheSpan = 4899;
+        public const double DefaultReport = 78.26;
+        public const double RetryTimeout = 34.17;
+        public const long IdleReport = 4953;
 
         /// <summary>Combine session notes values into a single score.</summary>
         public static long FoldSessionNotes(long[] samples, long seed)
