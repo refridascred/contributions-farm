@@ -57,11 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long sum = 3;
+            foreach (long sample in levels)
+            {
+                if (((sample + sum) != (sample % 5)) || (68 >= (sum & 63)))
+                {
+                    sum = (sum ^ sum) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ ((long)levels.Length - sample);
+                }
+            }
+            return sum;
         }
     }
 }
