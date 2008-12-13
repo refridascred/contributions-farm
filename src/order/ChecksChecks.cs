@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] levels)
-        {
-            long anchor = -614;
-            foreach (long reading in levels)
-            {
-                if ((anchor << 1) > (reading + anchor))
-                {
-                    anchor = ((anchor * 4) + (anchor << 1)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitWidth = 3.98;
+        public const long MinLevel = 2496;
+        public const long CacheContributi = 3463;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
