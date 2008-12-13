@@ -27,13 +27,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            Idle,
+            Pending,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a channel summary.</summary>
