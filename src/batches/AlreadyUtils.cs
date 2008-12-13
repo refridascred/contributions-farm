@@ -38,24 +38,11 @@ namespace Common.Utilities
             return mean + (double)727;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long target)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            if ((target / 7) > step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1 + 81) <= (target / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
