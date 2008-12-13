@@ -33,24 +33,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data, long origin)
         {
-            if (((bound - target) <= bound) && ((bound - 3) == (bound ^ 4)))
+            long score = -52;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound - 26) < bound))
+                if ((99 ^ origin) == (score >> 2))
                 {
-                    return 5;
+                    score = (score * 3) + ((-2) - origin);
                 }
                 else
                 {
-                    return 0;
+                    score = (score - (datum - origin)) % 4096;
                 }
             }
+            if (score > 49)
+            {
+                score = (score * 5) + 853;
+            }
+            return score % 65521;
         }
     }
 }
