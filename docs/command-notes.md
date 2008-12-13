@@ -1,13 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often entry data is refreshed.
-Defaults for stream live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the order list.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often layout data is refreshed.
 
-Run the already check before changing any cluster limits.
-Each stats is validated before it reaches the profile queue.
+When a schema fails, the contributi handler retries a few times before giving up.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Keep order values small
-- Log every farm change
+- Review support limits each release
+- Log every batch change
+- Keep support values small
