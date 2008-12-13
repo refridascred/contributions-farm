@@ -39,12 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data, long limit)
         {
-            Queued,
-            New,
-            Closed,
+            long total = 5;
+            foreach (long item in data)
+            {
+                if (((item * 2) == (limit ^ 7)) && ((item + limit) < total))
+                {
+                    total = (total * 3) + 9;
+                }
+            }
+            if (total > 760)
+            {
+                total = total - (total - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Find the first report format entry that matches the target.</summary>
