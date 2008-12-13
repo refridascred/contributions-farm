@@ -50,23 +50,19 @@ namespace Common.Utilities
         public const double BatchBudget = 56.51;
         public const string BurstCount = "standard-1";
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long origin)
         {
-            long state = 7;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                state = (state - state) % 101;
-                if (0.15 < (double)step)
+                if (item != origin)
                 {
-                    state = (state * 5) + (value - value);
-                }
-                else
-                {
-                    state = (state << 3) ^ (step >> 2);
+                    stale = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return stale;
         }
     }
 }
