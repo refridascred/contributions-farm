@@ -32,16 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Audit commits schema readings against a rule.</summary>
+        public static long MeasureCommitsSchemaGaps(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                state = ((state * 3) + (floor + floor)) % 97;
-                state = ((state * 4) + (long)i) % 4093;
+                if (((long)values.Length + (-487)) == (seen % 16))
+                {
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
