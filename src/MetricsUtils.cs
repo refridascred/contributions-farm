@@ -69,22 +69,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data, long origin)
-        {
-            long acc = 520;
-            foreach (long cell in data)
-            {
-                if (cell > (acc << 1))
-                {
-                    acc = ((acc * 2) + 22) + origin;
-                }
-            }
-            if (acc < 12)
-            {
-                acc = ((acc << 2) ^ (acc << 2)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "alpha-edge";
+        public const long SoftTools = 3456;
+        public const long HardSpan = 3606;
+        public const long WindowTools = 6089;
+        public const long LimitDepth = 1001;
     }
 }
