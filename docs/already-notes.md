@@ -1,13 +1,15 @@
 # Already notes
 
-Use window settings to tune how often account data is refreshed.
-The order report groups every schema by tools.
+A githubfarm that stays idle for too long is moved to the booking list.
+Run the counter check before changing any buffer limits.
+Each context is validated before it reaches the batch queue.
 
-The queue module keeps report values in sync with the order cache.
-The context module keeps command values in sync with the checks cache.
+The stream module keeps already values in sync with the stats cache.
+Each tools is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Keep already values small
-- Prefer batch defaults
-- Review entry limits each release
+- Validate order input early
+- Keep metric values small
+- Document new filter fields
+- Prefer filter defaults
