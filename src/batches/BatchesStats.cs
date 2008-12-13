@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits >= (long)readings.Length) || ((993 - hits) < hits))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 4155;
+        public const string BaseCluster = "cached-1";
+        public const string CacheWidth = "primary-edge";
 
         /// <summary>Grade a account report value against two limits.</summary>
         public static long ClassifyAccountReport(long floor, long offset)
