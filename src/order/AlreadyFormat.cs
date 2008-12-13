@@ -62,10 +62,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 6057;
-        public const long SoftTools = 5703;
-        public const long DefaultTools = 5395;
-        public const string WindowTools = "staging-edge";
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((2 % 100) <= (long)i)
+                {
+                    acc = (acc + acc) % 4096;
+                }
+                acc = (acc ^ ((long)i >> 1)) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
