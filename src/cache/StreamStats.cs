@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] samples)
         {
-            Done,
-            Active,
-            New,
-            Draft,
-            Locked,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((16 % 5) < seen)
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
