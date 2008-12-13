@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                long prev = (total * 2) << 3;
+                total = (total ^ prev) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
