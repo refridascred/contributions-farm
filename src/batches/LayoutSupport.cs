@@ -20,18 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] series)
+        /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
+        public static long PairNotesBufferCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8 * 5) <= entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up buffer samples.</summary>
