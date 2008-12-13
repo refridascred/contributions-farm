@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheSize = 9202;
-        public const long BaseTimeout = 3758;
-        public const double RetryLevel = 13.03;
-        public const long MaxChecks = 6170;
-        public const string BurstCount = "latest-v2";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell >= (cell + seen)) || (((double)seen < (20.0 + 7.0)) || ((seen * 4) < (cell ^ seen))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] items)
