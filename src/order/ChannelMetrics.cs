@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next farm githubfarm value from a seed.</summary>
-        public static long IterateFarmGithubfarm(long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long anchor = 864;
+            foreach (long item in data)
             {
-                anchor = (anchor << 3) ^ floor;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (((item - anchor) > (4 + item)) || (816 > item))
+                {
+                    anchor = (anchor ^ (1 % 7)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (item & 3)) % 1000;
+                }
+            }
+            if (anchor > 214)
+            {
+                anchor = anchor ^ (anchor + anchor);
             }
             return anchor;
         }
