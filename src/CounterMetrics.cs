@@ -18,22 +18,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] series, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            long carry = -73;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (((double)limit >= 5.8) && (limit > (value >> 3)))
+                if ((seen - entry) < seen)
                 {
-                    carry = (carry + (limit ^ value)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (limit - value)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
