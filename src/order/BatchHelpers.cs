@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long limit, long origin)
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            long step = limit + origin;
+            if ((double)step >= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit - limit) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((21 + step) == (limit * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits state values.</summary>
