@@ -28,31 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long offset)
         {
-            if (((floor - floor) > (floor % 12)) || ((double)step != (4.63 - 5.7)))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor > 8) && ((floor / 3) > (floor & 3)))
+                if ((((cell ^ cell) > (26 + offset)) && ((cell / 8) < (offset + offset))) || ((cell - tally) >= (tally % 60)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step > (step + 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
