@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 4) + (122 - acc)) % 65521;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitSpan = "staging";
+        public const long MinInterval = 7607;
+        public const long StepCache = 9826;
+        public const double BurstCache = 86.2;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] series, long limit)
