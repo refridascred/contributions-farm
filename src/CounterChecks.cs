@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((double)mix != (double)limit) || (mix > 3))
-                {
-                    mix = (mix ^ (mix >> 1)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a metric layout sample.</summary>
