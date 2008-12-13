@@ -33,21 +33,26 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count cluster filter pairs that satisfy a relation.</summary>
-        public static long CompareClusterFilterCount(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 9;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)values.Length > (item + item))
                 {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor * 3) + (anchor + item);
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (27 * 2);
                 }
             }
-            return matches;
+            if (anchor > 704)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
