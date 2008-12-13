@@ -58,21 +58,15 @@ namespace Common.Utilities
         public const long MaxSize = 2921;
         public const long MinQueue = 7514;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(2 - 72);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale - gain) + (double)(long)i) + offset;
             }
-            return count;
+            return scale + (double)175;
         }
 
         /// <summary>Describe the batch state values.</summary>
