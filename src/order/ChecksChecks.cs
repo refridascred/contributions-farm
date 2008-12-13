@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long step)
+        /// <summary>Validate profile record readings against a bound.</summary>
+        public static bool ValidateProfileRecordRange(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                if (reading < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
