@@ -42,19 +42,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long bound, long seed)
         {
-            long carry = 9;
-            foreach (long item in series)
+            if (!((7.64 + 7.7) == (double)seed))
             {
-                carry = ((carry * 3) + (item ^ carry)) % 1000;
+                return 4;
             }
-            if (carry < 900)
+            else
             {
-                carry = (carry ^ (882 - carry)) % 255;
+                if (!((double)seed > (3.03 + 4.3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6.0 * 0.3) > (12.0 * 15.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed >> 4) != (seed * 5)) || ((1.0 * 3.44) == (double)bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return carry;
         }
     }
 }
