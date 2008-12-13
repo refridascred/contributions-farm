@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long floor)
+        /// <summary>Scale a cluster profile figure with a bias.</summary>
+        public static double SmoothClusterProfile(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = 9.1 + (double)(-5);
+            if (load >= (double)18)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                load = (load + (double)23) + bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - weight) - (double)(long)i;
+            }
+            return load - (weight + load);
         }
 
         /// <summary>Accumulate support samples.</summary>
