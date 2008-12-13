@@ -68,17 +68,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] series, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] <= origin)
+                if ((cell << 1) <= count)
                 {
-                    return (long)i;
+                    count = (count + 3) + offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
