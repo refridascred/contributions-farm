@@ -42,13 +42,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            Paused,
-            Ready,
-            Locked,
-            Done,
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
