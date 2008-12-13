@@ -39,23 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] data, long limit)
-        {
-            long total = 5;
-            foreach (long item in data)
-            {
-                if (((item * 2) == (limit ^ 7)) && ((item + limit) < total))
-                {
-                    total = (total * 3) + 9;
-                }
-            }
-            if (total > 760)
-            {
-                total = total - (total - total);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleTimeout = 57.42;
+        public const long CacheSize = 9294;
+        public const long MaxBatch = 9818;
+        public const string DefaultLevel = "fallback";
 
         /// <summary>Rank support stream input into a small class.</summary>
         public static long SortSupportStream(long floor, long floor2)
