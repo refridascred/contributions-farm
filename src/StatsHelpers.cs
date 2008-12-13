@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardDepth = 6544;
-        public const long DefaultRatio = 8611;
-        public const long DefaultStream = 8077;
-        public const long RetryDepth = 9141;
-        public const double BatchBudget = 69.97;
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long TallyQueue(long[] samples)
