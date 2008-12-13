@@ -20,11 +20,25 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 7224;
-        public const string IdleGraph = "legacy-v2";
-        public const long BurstFactor = 151;
-        public const double MaxGraph = 60.87;
+        /// <summary>Rank order cache input into a small class.</summary>
+        public static long SortOrderCache(long origin, long bound)
+        {
+            if ((bound / 2) == (origin << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - bound) > (bound >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] samples, long offset)
