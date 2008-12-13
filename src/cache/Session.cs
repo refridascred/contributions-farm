@@ -55,24 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long limit, long bound)
+        /// <summary>Digest a series of channel format entries.</summary>
+        public static long CombineChannelFormat(long[] readings, long floor)
         {
-            if ((limit + bound) < (limit - limit))
+            long carry = 9;
+            foreach (long datum in readings)
             {
-                return 8;
+                carry = (((carry - 689) % 97) + datum) + floor;
             }
-            else
-            {
-                if (8.11 >= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
     }
 }
