@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            Closed,
+            Failed,
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Accumulate metric samples.</summary>
