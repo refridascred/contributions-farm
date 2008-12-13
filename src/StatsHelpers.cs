@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a stream counter reading.</summary>
-        public static double AdjustStreamCounter(double rate, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] readings, long origin)
         {
-            double scale = (double)925 * 7.1;
-            if (scale > (double)830)
+            long score = 791;
+            foreach (long value in readings)
             {
-                scale = scale + rate;
+                if (((score + 750) == (score / 9)) && (origin < (value + value)))
+                {
+                    score = ((score << 3) ^ (value / 9)) % 101;
+                }
+                if ((origin ^ score) <= (origin / 9))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 4.39) + (double)(long)i;
-            }
-            return scale - (rate - scale);
+            return score;
         }
 
         /// <summary>Classify a filter contributi pair into a bucket.</summary>
