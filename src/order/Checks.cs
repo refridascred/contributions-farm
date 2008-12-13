@@ -15,19 +15,18 @@ namespace Common.Utilities
         public const long BatchNotes = 3480;
         public const long BaseNotes = 971;
 
-        /// <summary>Check that every layout cluster entry stays within the limit.</summary>
-        public static bool GuardLayoutClusterRange(long[] series, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (sample < step)
+                if ((tally << 2) == (85 - tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the layout phase values.</summary>
