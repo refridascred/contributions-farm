@@ -1,4 +1,13 @@
 # support settings
-default_threshold: false
-idle_interval_pct: green
-idle_window: local
+sync_window: 13
+poll_size_ms: 6889
+poll_timeout:
+  batch_limit_s: 76.12
+  dry_run: false
+  idle_window_count: 20
+  commits_threshold: cached
+  retry_size_count: green
+min_limit:
+  - cached
+  - edge
+  - local
