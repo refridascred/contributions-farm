@@ -52,18 +52,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit queue commits readings against a rule.</summary>
-        public static long MeasureQueueCommitsHits(long[] readings, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((cell << 1) != (matches % 2))
+                if (!((cell % 60) < (cell ^ tally)))
                 {
-                    matches = (matches + 2) - target;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
