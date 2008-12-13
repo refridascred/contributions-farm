@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every buffer token entry stays within the limit.</summary>
-        public static bool CheckBufferTokenRange(long[] samples, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double scale = floor / 9.0;
+            if (scale > floor)
             {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + (floor + weight);
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale / 6.0)) + (double)(long)i;
+            }
+            return scale + (double)57;
         }
 
         /// <summary>Digest a series of cache format entries.</summary>
