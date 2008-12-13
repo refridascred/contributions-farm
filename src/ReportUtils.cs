@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a channel githubfarm value against two limits.</summary>
-        public static long SortChannelGithubfarm(long seed, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long origin)
         {
-            if ((seed <= ((-250) + 825)) && (floor < (seed * 2)))
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed != (20.0 - 4.9))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 6;
+                    state = ((state + (origin - state)) % 101) ^ (long)i2;
+                    state = (state + (2 / 7)) % 101;
                 }
-                else
-                {
-                    if ((15.0 - 2.9) > (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Hold a batch record.</summary>
