@@ -42,16 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 3) ^ acc) % 97;
-                acc = ((acc * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
