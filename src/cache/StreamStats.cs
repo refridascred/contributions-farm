@@ -40,19 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of batches layout readings.</summary>
-        public static long DigestBatchesLayout(long[] data, long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mark = 1;
-            foreach (long cell in data)
-            {
-                mark = (mark ^ (origin << 2)) - cell;
-            }
-            if (mark > 4)
-            {
-                mark = (mark + 920) % 97;
-            }
-            return mark % 65521;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
