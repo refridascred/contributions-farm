@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the checks already series from a seed.</summary>
-        public static long IterateChecksAlready(long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            if (step <= (44 + step))
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((seed + 75) <= (seed - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 3) > (seed - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)6 != (double)seed) && ((double)step > (5.5 - 0.45)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of already entries.</summary>
