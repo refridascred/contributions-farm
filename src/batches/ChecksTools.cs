@@ -36,22 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mark = 952;
-            foreach (long cell in levels)
-            {
-                if ((mark << 3) <= (mark % 97))
-                {
-                    mark = ((mark * 2) + (mark >> 3)) + cell;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = ((mark << 2) ^ (4 / 9)) % 65521;
-            }
-            return mark % 1000;
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
