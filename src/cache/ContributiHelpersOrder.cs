@@ -35,21 +35,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long seed, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (seed >= (origin - seed))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed <= 3.0)
                 {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
