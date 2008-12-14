@@ -27,22 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long total = 689;
-            foreach (long item in series)
-            {
-                if (((item + item) < item) || ((total << 1) < item))
-                {
-                    total = (total ^ total) % 65521;
-                }
-            }
-            if (total > (-79))
-            {
-                total = (total << 2) ^ (total - total);
-            }
-            return total;
+            Draft,
+            Failed,
+            Done,
+            Ready,
         }
     }
 }
