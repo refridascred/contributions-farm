@@ -34,15 +34,22 @@ namespace Common.Utilities
             return drift - (double)89;
         }
 
-        /// <summary>Blend two metric batches measurements.</summary>
-        public static double AdjustMetricBatches(double bias, double floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] readings, long seed)
         {
-            double scale = (double)6 - floor;
-            if (scale < bias)
+            long mark = 5;
+            foreach (long value in readings)
             {
-                scale = scale - 4.0;
+                if (((seed >> 3) == (422 - 6)) && ((value + mark) >= (value ^ seed)))
+                {
+                    mark = ((mark * 5) + (54 ^ mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (6 + value)) % 1000;
+                }
             }
-            return scale - scale;
+            return mark;
         }
     }
 }
