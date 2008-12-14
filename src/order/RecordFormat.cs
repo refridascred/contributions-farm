@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryBudget = "standard";
-        public const string DefaultCommand = "primary-1";
-        public const long StepCommand = 2628;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] values)
