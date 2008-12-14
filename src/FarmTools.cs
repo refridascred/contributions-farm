@@ -26,18 +26,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the buffer cache entries that pass the check.</summary>
-        public static long TallyBufferCacheMatches(long[] values)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2 + (-578)) > reading)
+                if (series[i] == offset)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
