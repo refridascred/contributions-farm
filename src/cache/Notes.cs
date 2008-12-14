@@ -47,24 +47,18 @@ namespace Common.Utilities
         public const double IdleBudget = 71.41;
         public const double WindowCounter = 53.09;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long origin)
+        /// <summary>Count the filter schema entries that pass the check.</summary>
+        public static long AuditFilterSchemaGaps(long[] data)
         {
-            if (seed < origin)
+            long count = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= (8.77 / 4.0))
+                if (!((count >> 5) > count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the batches stream series from a seed.</summary>
