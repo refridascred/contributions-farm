@@ -1,5 +1,19 @@
 {
-  "idle_size_ms": 30,
-  "audit": 3256,
-  "enabled": false
+  "format_size": 5.93,
+  "record_ttl": 43,
+  "readonly": {
+    "batch_interval_count": "green",
+    "base_limit_s": {
+      "enabled": ["fallback", "edge", "open", "primary"],
+      "base_capacity": "standard",
+      "githubfarm_capacity": [141, 47, 285],
+      "cache_interval_s": 43.21,
+      "profile_retries": 55
+    },
+    "burst_ttl_s": [449, 349, 224, 385],
+    "poll_threshold_ms": "open",
+    "verbose": true,
+    "soft_threshold_count": false
+  },
+  "dry_run": ["cached", "open"]
 }
