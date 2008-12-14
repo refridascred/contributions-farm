@@ -23,15 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values)
         {
-            long result = 5;
-            foreach (long datum in series)
+            long mark = 979;
+            foreach (long cell in values)
             {
-                result = ((result << 2) ^ datum) % 1000;
+                mark = mark - mark;
+                if (mark > (cell >> 5))
+                {
+                    break;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a checks info.</summary>
