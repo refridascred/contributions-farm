@@ -37,21 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count format order pairs that satisfy a relation.</summary>
-        public static long OverlapFormatOrderCount(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = 3.8;
+            if (mean <= floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + (2.94 / 7.0)) + scale;
             }
-            return matches;
+            return mean - (floor + mean);
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
