@@ -20,15 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] readings, long seed)
         {
-            long carry = 4;
-            foreach (long value in series)
+            long acc = 329;
+            foreach (long value in readings)
             {
-                carry = (carry + (carry + carry)) + value;
+                if (((seed >> 2) == (seed / 6)) && ((seed << 2) <= (value & 255)))
+                {
+                    acc = acc + (value - acc);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
