@@ -1,6 +1,5 @@
 {
-  "batch_capacity_pct": "cached",
-  "flush_limit_s": false,
-  "base_threshold_ms": true,
-  "report_limit": 88
+  "dry_run": 87,
+  "cluster_ttl": "open",
+  "entry_depth": 14
 }
