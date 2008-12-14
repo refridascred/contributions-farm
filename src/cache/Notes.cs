@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 408;
-        public const long BatchCount = 2296;
-        public const long HardDepth = 9581;
-        public const long HardQueue = 5051;
-        public const double BurstQueue = 58.73;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long floor, long bound)
+        {
+            long offset = floor + bound;
+            if ((bound % 2) < bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (54 > (offset - (-1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double SoftDepth = 42.58;
