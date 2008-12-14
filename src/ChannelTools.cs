@@ -14,11 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 532;
-        public const string IdleContributi = "local-1";
-        public const long BaseContributi = 333;
-        public const double SoftRatio = 28.6;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 2995;
+        public const long LimitToken = 1079;
+        public const long CacheTimeout = 7361;
+        public const double LimitLevel = 9.05;
 
         /// <summary>Audit context editor readings against a rule.</summary>
         public static long CountContextEditorGaps(long[] items, long seed)
