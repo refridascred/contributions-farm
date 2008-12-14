@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((7 + 47) < ((long)series.Length / 8))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 9666;
+        public const string WindowRatio = "stable-edge";
+        public const double CacheCount = 20.5;
+        public const string IdleSchema = "legacy-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleTools = 4638;
