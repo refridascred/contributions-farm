@@ -24,24 +24,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine farm report values into a single score.</summary>
-        public static long WeighFarmReport(long[] items)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mix = 3;
-            foreach (long datum in items)
-            {
-                mix = (mix << 2) ^ mix;
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = (mix + (datum - mix)) ^ (long)i;
-                }
-                mix = (mix - (mix + datum)) % 4096;
-            }
-            if (mix < 2)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
