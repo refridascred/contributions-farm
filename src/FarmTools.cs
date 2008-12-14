@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            Synced,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
