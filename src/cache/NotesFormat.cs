@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long carry = 289;
-            foreach (long value in levels)
-            {
-                carry = carry ^ (carry * 5);
-                if ((value > (325 - carry)) && ((840 ^ 0) > (value + value)))
-                {
-                    break;
-                }
-            }
-            if (carry < (-95))
-            {
-                carry = carry - (carry - seed);
-            }
-            return carry % 4096;
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Grade a channel buffer value against two limits.</summary>
