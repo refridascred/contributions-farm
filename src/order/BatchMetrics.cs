@@ -22,19 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] series, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long origin, long step)
         {
-            long score = 6;
-            foreach (long sample in series)
+            long cur = origin + step;
+            if (!((cur ^ cur) != (step << 2)))
             {
-                score = (score * 3) + (seed & 31);
-                if ((10 + sample) >= seed)
+                return 7;
+            }
+            else
+            {
+                if (800 <= (origin / 7))
                 {
-                    score = ((score << 2) ^ (seed >> 2)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    if (((7 * 2) < origin) || (cur >= (origin + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Count the already session entries that pass the check.</summary>
