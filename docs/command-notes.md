@@ -1,16 +1,11 @@
 # Command notes
 
-The metrics report groups every cluster by channel.
-A report that stays idle for too long is moved to the contributi list.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-
-The stats report groups every metrics by context.
-The notes module keeps channel values in sync with the order cache.
-Run the batch check before changing any schema limits.
+The route helpers are pure functions, so they are safe to call from any thread.
+Keep profile and channel names short and lowercase.
+A payload that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Review command limits each release
-- Document new checks fields
-- Validate channel input early
-- Log every contributi change
+- Prefer commits defaults
+- Review cache limits each release
+- Validate buffer input early
