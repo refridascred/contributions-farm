@@ -51,23 +51,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double bias, double bias2)
+        /// <summary>Check that every record commits entry stays within the limit.</summary>
+        public static bool GuardRecordCommitsBounds(long[] data, long bound)
         {
-            double rate = (bias2 * 2.56) / 9.0;
-            if (rate < (double)1)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                rate = (rate + (bias2 / 2.0)) - bias;
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - 7.0) + (double)(long)i;
-            }
-            return rate - (rate / 5.0);
+            return flag;
         }
     }
 }
