@@ -40,15 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] values, long target)
-        {
-            long state = 265;
-            foreach (long value in values)
-            {
-                state = ((state - state) - value) - target;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 9971;
+        public const long RetryRatio = 5434;
+        public const long CacheSpan = 5013;
+        public const long DefaultWindow = 6747;
+        public const long MaxWindow = 5857;
     }
 }
