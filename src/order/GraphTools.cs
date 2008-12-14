@@ -18,17 +18,13 @@ namespace Common.Utilities
         public const string MinSize = "latest-edge";
         public const long SoftCommand = 2541;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] values, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
