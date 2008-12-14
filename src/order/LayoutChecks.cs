@@ -62,15 +62,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a counter graph reading.</summary>
-        public static double BlendCounterGraph(double weight, double floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double drift = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift + 1.0) - (double)(long)i) - floor;
-            }
-            return drift + weight;
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
