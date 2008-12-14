@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepBudget = 9373;
+        public const long MinSize = 2137;
+        public const long HardDepth = 270;
+        public const long BatchCommits = 3384;
+        public const long StepWidth = 7308;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] series)
