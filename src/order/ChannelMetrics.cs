@@ -37,18 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] values, long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)hits >= (9.96 / 7.0))
-                {
-                    hits = ((hits + 2) - item) - target;
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Retry,
         }
     }
 }
