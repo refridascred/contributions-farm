@@ -99,21 +99,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Done,
+            Pending,
         }
     }
 }
