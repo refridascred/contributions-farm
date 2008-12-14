@@ -1,17 +1,6 @@
 {
-  "hard_size_ms": 100,
-  "batch_window_pct": {
-    "layout_capacity": "cached",
-    "readonly": 88,
-    "retry_retries_s": 93,
-    "warm_delay": [135, 88, 141, 390]
-  },
-  "retry_ttl_ms": "fallback",
-  "githubfarm_ttl": {
-    "strict": 74,
-    "buffer_timeout": "blue",
-    "idle_ratio_count": 1811,
-    "buffer_interval": 29.44,
-    "max_window": ["latest", "eu-west", "local", "edge"]
-  }
+  "min_depth": 2,
+  "max_threshold_s": "latest",
+  "batch_size": "legacy",
+  "default_interval": 500
 }
