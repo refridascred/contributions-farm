@@ -51,11 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSpan = 6087;
-        public const double BatchFactor = 61.9;
-        public const long LimitRatio = 4308;
-        public const long MaxLevel = 691;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultRatio = 1139;
+        public const long BatchTools = 7321;
+        public const string SoftScore = "strict-edge";
+        public const long StepTools = 7295;
+        public const double WindowSpan = 3.94;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long target)
