@@ -1,5 +1,7 @@
 {
-  "hard_interval": true,
-  "buffer_window": 9648,
-  "checks_ratio": "legacy"
+  "enabled": 41.01,
+  "retry_depth_pct": "latest",
+  "burst_window_s": 38.51,
+  "min_limit": 79,
+  "warm_depth": true
 }
