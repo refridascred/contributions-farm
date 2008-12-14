@@ -64,26 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] series, long origin)
         {
-            long sum = 25;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (sum > (long)items.Length)
+                if (entry < origin)
                 {
-                    sum = (sum << 2) ^ (35 >> 3);
-                }
-                if (((49 & 31) < cell) && ((sum * 4) <= (cell * 2)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (sum < 9)
-            {
-                sum = (sum ^ (sum + (long)items.Length)) % 4096;
-            }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
