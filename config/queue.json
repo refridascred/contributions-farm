@@ -1,5 +1,6 @@
 {
-  "channel_interval": false,
-  "cache_depth": false,
-  "flush_window": 1267
+  "metrics_ttl": false,
+  "support_capacity": 7121,
+  "enabled": "strict",
+  "verbose": 80.07
 }
