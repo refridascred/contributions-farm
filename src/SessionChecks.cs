@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepBudget = 9373;
-        public const long MinSize = 2137;
-        public const long HardDepth = 270;
-        public const long BatchCommits = 3384;
-        public const long StepWidth = 7308;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long seed)
+        {
+            if ((0 + floor) == (floor + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed > (0 * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] series)
