@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Queued,
-            Paused,
-            Dropped,
-            Synced,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "primary-edge";
+        public const long SoftChecks = 8512;
+        public const string StepBudget = "staging-edge";
+        public const string LimitChecks = "staging-1";
+        public const double CacheScore = 54.96;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] samples, long floor)
