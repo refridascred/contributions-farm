@@ -1,10 +1,4 @@
 # entry settings
-retry_limit_pct:
-  - primary
-  - stable
-counter_size: open
-flush_window_ms: 60
-base_ratio_count:
-  - staging
-  - blue
-  - staging
+base_limit_ms: 35.67
+hard_window_ms: 55.56
+cache_threshold_s: 4908
