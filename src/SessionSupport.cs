@@ -13,25 +13,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long bound, long target)
-        {
-            if (((-66) + bound) > (target ^ 91))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound > (578 + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 1901;
+        public const long RetryOrder = 2848;
+        public const double MaxOrder = 3.9;
 
         /// <summary>Adjust a route reading.</summary>
         public static double ScaleRoute(double weight, double bias)
