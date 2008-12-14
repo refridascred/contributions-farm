@@ -1,15 +1,6 @@
 # entry settings
-poll_capacity_pct:
-  - eu-west
-  - edge
-  - legacy
-  - edge
-max_threshold: 30
-token_ratio: 100
-record_retries:
-  - 460
-  - 57
-strict: 7778
-audit:
-  - 285
-  - 312
+base_capacity_ms:
+  - 315
+  - 41
+checks_limit: cached
+cluster_depth: 81.42
