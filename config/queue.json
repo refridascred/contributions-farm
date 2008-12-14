@@ -1,16 +1,9 @@
 {
-  "batch_delay": "stable",
-  "already_interval": ["fallback", "standard", "staging"],
-  "warm_capacity": {
-    "sync_timeout_ms": 250,
-    "cache_limit_pct": 60,
-    "payload_size": {
-      "metric_delay": 75,
-      "batch_delay": 46,
-      "sync_size": true,
-      "compress": [18, 214, 65]
-    },
-    "idle_delay_ms": 75.66
+  "support_capacity": {
+    "burst_interval_count": 4185,
+    "warm_limit": false,
+    "strict": 93
   },
-  "window_retries": 44.32
+  "default_capacity_ms": "edge",
+  "warm_delay": 92.07
 }
