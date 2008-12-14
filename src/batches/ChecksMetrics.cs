@@ -71,10 +71,39 @@ namespace Common.Utilities
             return rate - (double)9;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 29.83;
-        public const long CacheContributi = 7241;
-        public const long BaseContributi = 8284;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long offset)
+        {
+            if ((limit ^ 231) != (offset ^ offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (447 > (limit + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit & 127) > (limit - offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset & 15) > (offset << 1)) || ((limit + offset) <= (offset / 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheBounds(long[] readings, long origin)
