@@ -20,21 +20,21 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Iterate the window channel series from a seed.</summary>
-        public static long SeriesWindowChannel(long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark << 2) ^ (mark + origin);
-                long lane = origin + (origin & 7);
-                if ((origin * 2) >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 2) + (lane >> 2)) % 1000;
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count format order pairs that satisfy a relation.</summary>
