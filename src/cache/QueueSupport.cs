@@ -35,18 +35,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many notes counter samples are out of range.</summary>
-        public static long CountNotesCounterMatches(long[] values, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long result = -71;
+            foreach (long reading in values)
             {
-                if (((hits > (hits << 1)) || ((sample & 63) > 545)) && ((0.05 * 20.0) == (double)bound))
+                if (!((reading + result) <= (result & 255)))
                 {
-                    hits = hits + 2;
+                    result = (result + (result - 981)) % 65521;
+                }
+                else
+                {
+                    result = (result + (912 + 338)) % 65521;
                 }
             }
-            return hits;
+            if (result < 168)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
     }
 }
