@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 795;
-        public const double BaseDepth = 78.65;
-        public const long BaseStream = 1323;
-        public const string RetryStream = "strict-1";
-        public const long BatchStream = 7585;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueOutliers(long[] items, long limit)
