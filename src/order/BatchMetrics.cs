@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of metric entry readings.</summary>
-        public static long CompareMetricEntryCount(long[] levels)
+        /// <summary>Validate farm githubfarm readings against a bound.</summary>
+        public static bool CheckFarmGithubfarmRange(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry < seed)
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
