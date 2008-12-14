@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload cache samples are out of range.</summary>
-        public static long CountPayloadCacheOutliers(long[] levels, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)matches <= (3.0 - 0.5))
+                if ((step + sample) < (hits + step))
                 {
-                    matches = ((matches + 3) + entry) + step;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
