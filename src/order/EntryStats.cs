@@ -58,39 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long offset, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] series, long target)
         {
-            long diff = offset ^ target;
-            if ((diff / 6) < diff)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (diff < ((-7) + diff))
+                if (cell > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset / 3) >= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.46 / 8.0) <= (7.0 * 8.9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
