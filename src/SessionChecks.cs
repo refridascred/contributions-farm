@@ -53,11 +53,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            long anchor = 5;
+            foreach (long reading in values)
+            {
+                if (585 <= anchor)
+                {
+                    anchor = (anchor - anchor) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor * 5)) % 255;
+                }
+            }
+            if (anchor < 72)
+            {
+                anchor = anchor + (anchor & 7);
+            }
+            return anchor % 1000;
         }
     }
 }
