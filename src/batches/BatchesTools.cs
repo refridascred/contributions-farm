@@ -34,12 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long score = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((score ^ (-658)) < (offset << 1)) && (score > ((long)i + (-4))))
+                {
+                    score = score + (score * 5);
+                    score = score - (long)i;
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
