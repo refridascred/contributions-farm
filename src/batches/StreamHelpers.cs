@@ -102,18 +102,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] data, long limit)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((((double)hits != (20.0 - 2.1)) && ((limit / 5) != (reading & 63))) && ((double)reading != (7.29 / 8.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
