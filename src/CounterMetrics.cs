@@ -38,12 +38,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
+            double gain = (double)61;
+            if (gain >= bias)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - (gain + bias2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain + (gain + gain);
         }
 
         /// <summary>Hold a context info.</summary>
