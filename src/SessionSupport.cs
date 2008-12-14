@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 4003;
-        public const string LimitBudget = "open-v2";
-        public const long BaseSession = 7113;
-        public const long DefaultFactor = 4842;
-        public const long LimitSession = 4590;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum == (11.0 + 7.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank batches profile input into a small class.</summary>
         public static long GradeBatchesProfile(long offset, long origin)
