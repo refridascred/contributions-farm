@@ -31,19 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of batches cluster readings.</summary>
-        public static long ScoreBatchesCluster(long[] readings)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long result = 6;
-            foreach (long value in readings)
-            {
-                result = (result - value) % 65521;
-                if ((result ^ 184) > (6 + 2))
-                {
-                    result = (result * 4) + result;
-                }
-            }
-            return result;
+            Active,
+            Draft,
+            Done,
         }
     }
 }
