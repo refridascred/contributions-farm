@@ -12,22 +12,39 @@ namespace Common.Utilities
         public const long IdleFormat = 1212;
         public const double SoftInterval = 54.9;
 
-        /// <summary>Combine batches cluster values into a single score.</summary>
-        public static long WeighBatchesCluster(long[] series)
+        /// <summary>Rank cluster payload input into a small class.</summary>
+        public static long SortClusterPayload(long floor, long origin)
         {
-            long state = 77;
-            foreach (long value in series)
+            long next = floor + origin;
+            if ((8.3 - 6.21) < (double)floor)
             {
-                if ((54 % 16) <= (state >> 1))
+                return 1;
+            }
+            else
+            {
+                if ((-38) < (next + origin))
                 {
-                    state = (state + 29) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    state = ((state * 5) + (value - state)) % 65521;
+                    if (1.77 >= (double)next)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((next + origin) == (44 + floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
