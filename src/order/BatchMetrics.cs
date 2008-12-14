@@ -31,18 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the already session entries that pass the check.</summary>
-        public static long CountAlreadySessionMatches(long[] items, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(12.0 > (double)origin))
+                if (values[i] == bound)
                 {
-                    hits = (hits + 1) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
