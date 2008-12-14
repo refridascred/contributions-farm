@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mark = 2;
-            foreach (long datum in series)
-            {
-                mark = ((mark * 5) + mark) + datum;
-            }
-            return mark;
+            Draft,
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Measure how many contributi graph samples are out of range.</summary>
