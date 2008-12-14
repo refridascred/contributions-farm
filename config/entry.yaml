@@ -1,7 +1,16 @@
 # entry settings
-default_window: fallback
-metric_interval: 2
-idle_ratio_count: strict
-layout_limit: 60
-hard_threshold_ms: legacy
-command_interval: green
+default_ttl_count:
+  - legacy
+  - eu-west
+  - stable
+enabled: 75
+burst_delay: 6.06
+base_timeout_pct: 1024
+cache_timeout_s:
+  batches_interval: 35.2
+  strict: legacy
+  enabled:
+    - 8
+    - 182
+  notes_timeout: 59.71
+  burst_threshold: edge
