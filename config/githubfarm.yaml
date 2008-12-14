@@ -1,6 +1,6 @@
 # githubfarm settings
-githubfarm_ttl: eu-west
-idle_threshold_s: 1024
-buffer_retries: 35.76
-min_limit: open
-farm_window: 60
+support_interval: latest
+flush_ttl_pct: 72.23
+max_ratio: primary
+verbose: cached
+default_ttl: open
