@@ -49,13 +49,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            Dropped,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
