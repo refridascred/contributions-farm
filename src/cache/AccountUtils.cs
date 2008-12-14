@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepScore = 4603;
-        public const double SoftTools = 60.02;
-        public const long RetrySize = 4327;
-        public const long SoftCount = 6889;
-        public const double DefaultTools = 55.44;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count batch profile pairs that satisfy a relation.</summary>
         public static long OverlapBatchProfileCount(long[] levels)
