@@ -1,8 +1,8 @@
-id,state,token,count
-1,cached,57.66,130
-2,primary,80.66,16.98
-3,latest,15.34,10.91
-4,84.21,417,448
-5,604,84.69,legacy
-6,open,local,70.4
-7,5.65,492,standard
+id,owner,region,weight,rank
+1,legacy,local,685,primary
+2,cached,20.69,439,local
+3,429,55.96,staging,530
+4,latest,green,180,97.21
+5,716,752,350,96.55
+6,455,555,267,blue
+7,642,91.33,36.72,edge
