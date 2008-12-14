@@ -34,22 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] readings)
+        /// <summary>Audit buffer stream readings against a rule.</summary>
+        public static long CountBufferStreamOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((long)readings.Length > hits)
+                if (((seen <= 5) || ((seen ^ item) > (item + seen))) || ((item * 3) > seen))
                 {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
