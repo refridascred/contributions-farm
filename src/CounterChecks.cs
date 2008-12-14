@@ -47,19 +47,22 @@ namespace Common.Utilities
         public const long SoftBatch = 326;
         public const string BurstScore = "staging-edge";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] samples, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (reading < seed)
+                if ((double)hits < (16.0 * 5.0))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
