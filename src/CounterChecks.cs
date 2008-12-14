@@ -23,20 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (state < (1 ^ origin))
+                if ((tally + origin) == (entry * 3))
                 {
-                    state = (state - (state + origin)) % 101;
-                    state = (state * 5) + (long)i;
+                    tally = tally + 3;
                 }
-                state = ((state * 5) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
