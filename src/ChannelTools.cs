@@ -19,11 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long floor, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long edge = floor - target;
+            if (((floor + floor) >= (553 - target)) && ((18.0 + 3.3) != (double)floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((221 % 2) > (edge + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the entry level values.</summary>
