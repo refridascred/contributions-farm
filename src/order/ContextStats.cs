@@ -33,18 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] items, long target)
+        /// <summary>Count format session pairs that satisfy a relation.</summary>
+        public static long PairFormatSessionCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches > (7.3 + 5.65))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 3) ^ item) + target;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a channel options.</summary>
