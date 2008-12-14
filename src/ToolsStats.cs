@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a cluster profile figure with a bias.</summary>
-        public static double SmoothClusterProfile(double weight, double bias)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double load = 9.1 + (double)(-5);
-            if (load >= (double)18)
-            {
-                load = (load + (double)23) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - weight) - (double)(long)i;
-            }
-            return load - (weight + load);
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank contributi session input into a small class.</summary>
