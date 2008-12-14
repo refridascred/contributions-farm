@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 8940;
-        public const long DefaultSpan = 4480;
-        public const long RetryLevel = 266;
-        public const string BaseLevel = "alpha-edge";
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long seed)
+        {
+            if ((2.0 + 2.07) >= (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= (seed / 9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] items)
