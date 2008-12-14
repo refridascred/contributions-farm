@@ -27,12 +27,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Draft,
-            Failed,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
