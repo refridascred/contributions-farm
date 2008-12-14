@@ -15,12 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 43.77;
-        public const string RetryQueue = "cached-edge";
-        public const long CacheFactor = 2063;
-        public const long BurstTimeout = 1133;
-        public const double MaxQueue = 67.7;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 3338;
+        public const long MinTimeout = 2514;
+        public const string BaseChecks = "standard-edge";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] series, long step)
