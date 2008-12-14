@@ -63,33 +63,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long floor)
-        {
-            long next = offset - floor;
-            if ((0.1 / 2.0) > (double)next)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((33 * 5) >= next) && ((next + 24) <= (next + 46)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + floor) > (offset & 31))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstTimeout = "staging-1";
+        public const double IdleOrder = 73.55;
+        public const long RetryOrder = 4836;
+        public const string BatchBudget = "latest";
+        public const long StepLevel = 3200;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BurstStats = 38.77;
