@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long floor, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((-32) / 4) >= (origin - 90))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor + origin) > (origin / 4))
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
