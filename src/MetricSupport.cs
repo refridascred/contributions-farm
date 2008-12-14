@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long bound, long floor)
         {
-            long total = 89;
-            foreach (long sample in readings)
+            if ((bound + bound) > (-885))
             {
-                total = ((total + total) % 101) - step;
-                total = (total - (sample * 4)) % 101;
+                return 3;
             }
-            if (total < 6)
+            else
             {
-                total = (total + (519 + total)) % 65521;
+                if ((bound - 1) > 613)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor << 2) <= (bound & 3)) && ((bound + 0) > bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Roll a order counter forward.</summary>
