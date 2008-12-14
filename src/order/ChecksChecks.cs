@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepScore = "open-edge";
-        public const double BaseFactor = 73.08;
-        public const double BurstSpan = 0.12;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
