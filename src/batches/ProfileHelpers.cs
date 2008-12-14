@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph schema entry stays within the limit.</summary>
-        public static bool GuardGraphSchemaRange(long[] samples, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (reading != origin)
+                if ((matches < (4 * 2)) && (2.79 >= (double)sample))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Adjust a format stream reading.</summary>
