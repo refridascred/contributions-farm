@@ -1,11 +1,11 @@
 # Command notes
 
-Each editor is validated before it reaches the tools queue.
-The entry module keeps context values in sync with the report cache.
-Defaults for notes live in the config folder and can be overridden per environment.
+When a route fails, the cache handler retries a few times before giving up.
+A schema that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Document new format fields
-- Prefer channel defaults
-- Keep githubfarm values small
+- Validate schema input early
+- Review tools limits each release
+- Document new already fields
+- Keep metrics values small
