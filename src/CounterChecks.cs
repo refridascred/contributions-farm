@@ -84,17 +84,18 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] levels, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] == bound)
+                if ((target - target) <= (916 >> 5))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
