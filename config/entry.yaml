@@ -1,13 +1,10 @@
 # entry settings
-retry_interval_count: 27
-warm_ttl_pct:
-  - 245
-  - 344
-  - 410
-  - 310
-payload_size: 42.01
-cache_threshold_s:
-  warm_window: 66
-  counter_interval: false
-  dry_run: true
-  soft_ratio_count: false
+retry_limit_pct:
+  - primary
+  - stable
+counter_size: open
+flush_window_ms: 60
+base_ratio_count:
+  - staging
+  - blue
+  - staging
