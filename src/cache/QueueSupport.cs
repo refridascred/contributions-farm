@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
