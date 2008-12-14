@@ -39,11 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 37.53;
-        public const double MinBuffer = 97.27;
-        public const string BaseBuffer = "alpha-v2";
-        public const string LimitBuffer = "open-edge";
-        public const double StepTimeout = 25.53;
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double span)
+        {
+            double rate = gain - (gain + gain);
+            if (rate < rate)
+            {
+                rate = rate + (span * 4.12);
+            }
+            return rate + span;
+        }
     }
 }
