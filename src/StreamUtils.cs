@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                if (cell <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Combine context values into a single score.</summary>
