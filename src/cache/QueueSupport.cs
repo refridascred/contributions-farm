@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Accumulate token profile samples.</summary>
+        public static long WeighTokenProfile(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 69;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state ^ (target + state)) % 4096) - (long)i;
+                }
+                if ((entry < (target ^ state)) || ((entry - entry) < (long)readings.Length))
+                {
+                    state = state - (state - target);
                 }
             }
-            return hits;
+            if (state < (-2))
+            {
+                state = state ^ target;
+            }
+            return state;
         }
 
         /// <summary>Describe the stats state values.</summary>
