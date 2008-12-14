@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const string DefaultCommand = "primary-1";
         public const long StepCommand = 2628;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long origin, long origin2)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            if ((origin * 4) >= (origin2 + origin2))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)origin >= (double)origin2) && ((5 % 5) != (origin2 * 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin2 >= (origin * 3))
+                    if ((values[i] + values[j]) > 6)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin2 / 9) < (origin & 63)) && ((5.0 - 4.18) >= (double)origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate contributi cluster readings against a bound.</summary>
