@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 174;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)(long)levels.Length <= 8.0)
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 3) ^ (1 ^ state)) - sample;
+                }
+                else
+                {
+                    state = (state + (state ^ 504)) % 97;
                 }
             }
-            return count;
+            if (state > (-1))
+            {
+                state = (state ^ (limit << 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
