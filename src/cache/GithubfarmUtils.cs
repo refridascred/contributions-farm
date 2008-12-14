@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long total = 5;
+            foreach (long reading in levels)
+            {
+                total = ((total * 4) + reading) % 101;
+                if (!((double)reading < (9.87 * 2.49)))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total - reading) % 101;
+                    total = (total << 2) ^ total;
+                }
+                if (reading >= ((long)levels.Length + total))
+                {
+                    total = ((total << 3) ^ (8 & 3)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
