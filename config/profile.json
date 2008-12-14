@@ -1,19 +1,5 @@
 {
-  "profile_size": 1024,
-  "retry_timeout_pct": 500,
-  "strict": {
-    "dry_run": [1, 141, 397, 288],
-    "readonly": {
-      "readonly": "cached",
-      "compress": "strict",
-      "audit": "cached",
-      "cache_size": false,
-      "enabled": 1024,
-      "min_timeout_pct": [96, 200]
-    },
-    "max_retries_ms": 86,
-    "route_timeout": 2513,
-    "filter_ratio": 743
-  },
-  "max_capacity_count": [164, 336, 357]
+  "readonly": true,
+  "soft_delay_ms": "local",
+  "idle_depth": ["latest", "open", "cached"]
 }
