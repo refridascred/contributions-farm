@@ -1,7 +1,6 @@
 {
-  "audit": "green",
-  "batch_limit": 500,
-  "min_capacity_ms": 96.32,
-  "hard_window_ms": false,
-  "strict": false
+  "cache_timeout": "cached",
+  "soft_threshold_ms": "latest",
+  "batch_ttl": false,
+  "cache_retries_count": true
 }
