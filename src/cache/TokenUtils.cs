@@ -16,21 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading <= origin)
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a editor layout value against two limits.</summary>
