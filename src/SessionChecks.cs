@@ -24,28 +24,18 @@ namespace Common.Utilities
             return mean - 6.0;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] readings)
         {
-            long mix = -68;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!((double)mix >= (3.0 * 0.1)))
+                if ((value ^ value) > (tally ^ value))
                 {
-                    mix = (mix + (mix + value)) % 1000;
-                    mix = mix ^ (mix * 2);
-                }
-                mix = (mix + (value * 5)) % 65521;
-                if ((value + 761) != (mix % 24))
-                {
-                    mix = ((mix << 2) ^ (mix ^ value)) % 255;
-                }
-                if ((65 >> 4) >= mix)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
