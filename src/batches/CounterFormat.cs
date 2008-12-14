@@ -29,24 +29,19 @@ namespace Common.Utilities
         public const long BurstCount = 7482;
         public const long IdleCluster = 2367;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long floor, long floor2)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long target)
         {
-            if (((floor - floor2) <= (floor2 - floor)) && ((double)floor >= 3.0))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (floor - floor))
+                if (value <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
