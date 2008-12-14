@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=125
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-edge}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in eu-west legacy latest fallback; do
+for item in eu-west standard fallback; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
