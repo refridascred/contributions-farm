@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long BaseContributi = 333;
         public const double SoftRatio = 28.6;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit context editor readings against a rule.</summary>
+        public static long CountContextEditorGaps(long[] items, long seed)
         {
-            Draft,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((59 % 12) < (seed & 127))
+                {
+                    seen = (seen + 2) - datum;
+                }
+            }
+            return seen;
         }
     }
 }
