@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double StepFactor = 96.53;
         public const long MinEntry = 5751;
 
-        /// <summary>Count the commits order entries that pass the check.</summary>
-        public static long AuditCommitsOrderMatches(long[] samples)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double gain = scale;
+            if (gain <= 9.24)
             {
-                if (cell > (cell - cell))
-                {
-                    hits = hits + 1;
-                }
+                gain = (gain - (double)3) + span;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (gain + scale)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
