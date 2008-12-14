@@ -1,28 +1,12 @@
 # githubfarm settings
-burst_size_pct: true
-soft_capacity_s:
-  - 415
-  - 222
-  - 487
-  - 229
-cache_timeout_ms:
-  cache_delay: latest
-  account_depth: standard
-  soft_ratio_ms:
-    poll_delay: false
-    readonly: false
-    hard_capacity_pct: 7545
-    batch_ttl_pct: green
-    cache_limit_s: strict
-    checks_retries: 5708
-  verbose: open
-  retry_interval: 5927
-  persist:
-    command_window: 19.41
-    profile_ratio: standard
-    base_interval_pct: 40
-    min_depth: 1408
-    idle_ttl_pct: eu-west
-    graph_capacity: primary
-format_window: 1024
-base_depth_count: edge
+verbose: local
+metrics_ratio:
+  - 69
+  - 453
+  - 420
+base_limit: standard
+cache_size_ms: 492
+batch_capacity_pct: 2499
+base_interval_ms:
+  - 220
+  - 104
