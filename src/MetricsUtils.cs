@@ -23,26 +23,15 @@ namespace Common.Utilities
         public const long BatchInterval = 7528;
         public const long SoftCluster = 8350;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Project the next support schema value.</summary>
+        public static double BlendSupportSchema(double bias, double offset)
         {
-            long total = 93;
-            foreach (long reading in readings)
+            double rate = (double)(72 >> 4);
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (total + ((long)i / 7)) % 1000;
-                }
-                if ((reading - total) >= total)
-                {
-                    total = (total + total) % 1000;
-                }
-                if (((double)reading >= (double)total) || (total >= (total + total)))
-                {
-                    total = (total - (total >> 2)) % 1000;
-                }
+                rate = ((rate - (2.0 * 9.0)) + (double)(long)i) - offset;
             }
-            return total;
+            return rate + bias;
         }
 
         /// <summary>Define format limits and defaults.</summary>
