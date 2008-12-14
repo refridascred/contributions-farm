@@ -67,19 +67,22 @@ namespace Common.Utilities
         public const long CacheMetrics = 2160;
         public const long WindowMetrics = 7127;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] values, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!((sum - 43) < 373))
+                if ((value + seen) < value)
                 {
-                    continue;
+                    seen = (seen + 2) + target;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
