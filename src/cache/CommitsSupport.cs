@@ -31,12 +31,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 3894;
-        public const string BurstCounter = "strict-edge";
-        public const long CacheWidth = 4901;
-        public const double MaxLevel = 75.96;
-        public const string RetryCounter = "latest";
+        /// <summary>Measure how many account payload samples are out of range.</summary>
+        public static long AuditAccountPayloadGaps(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (201 <= (seen - 613))
+                {
+                    seen = ((seen + 2) + reading) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
