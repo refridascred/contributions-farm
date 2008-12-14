@@ -1,5 +1,6 @@
 {
-  "idle_limit_s": [446, 79],
-  "enabled": false,
-  "min_ratio_count": 2.97
+  "batch_depth": true,
+  "enabled": [211, 435],
+  "soft_delay_count": "fallback",
+  "metric_window": true
 }
