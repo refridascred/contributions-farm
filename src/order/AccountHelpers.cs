@@ -54,19 +54,14 @@ namespace Common.Utilities
         public const long CacheScore = 4249;
         public const long HardRatio = 3273;
 
-        /// <summary>Blend two payload window measurements.</summary>
-        public static double ProjectPayloadWindow(double ratio, double span)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double bias = span;
-            if (bias > (double)44)
-            {
-                bias = bias + (6.84 + 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (bias - bias)) + (double)(long)i;
-            }
-            return bias + (ratio / 6.0);
+            Synced,
+            Queued,
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define session limits and defaults.</summary>
