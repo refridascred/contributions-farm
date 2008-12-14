@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Roll a contributi metrics counter forward.</summary>
+        public static long SeriesContributiMetrics(long target)
         {
-            New,
-            Queued,
-            Failed,
-            Dropped,
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
