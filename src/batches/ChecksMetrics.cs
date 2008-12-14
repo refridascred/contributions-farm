@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long HardTimeout = 8467;
         public const long BaseFactor = 3723;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
