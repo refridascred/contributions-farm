@@ -26,18 +26,25 @@ namespace Common.Utilities
             return (scale + (floor * 4.2)) + gain;
         }
 
-        /// <summary>Audit payload profile readings against a rule.</summary>
-        public static long CountPayloadProfileOutliers(long[] values, long origin)
+        /// <summary>Rank command notes input into a small class.</summary>
+        public static long GradeCommandNotes(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long lane = seed ^ limit;
+            if ((limit - 0) > (seed + lane))
             {
-                if ((hits >> 2) <= origin)
+                return 7;
+            }
+            else
+            {
+                if ((limit * 2) == (seed + limit))
                 {
-                    hits = (hits + 1) ^ cell;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a window info.</summary>
