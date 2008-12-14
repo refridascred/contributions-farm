@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine tools session values into a single score.</summary>
-        public static long DigestToolsSession(long[] samples)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long sum = 266;
-            foreach (long cell in samples)
-            {
-                sum = (sum + (sum % 7)) % 97;
-                if ((double)cell >= (4.57 * 8.0))
-                {
-                    break;
-                }
-            }
-            if (sum < 35)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-            }
-            return sum;
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
