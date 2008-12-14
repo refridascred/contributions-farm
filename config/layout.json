@@ -1,6 +1,5 @@
 {
-  "soft_ratio": 2754,
-  "persist": 17,
-  "warm_size_count": 6913,
-  "hard_limit_count": "staging"
+  "max_retries": ["strict", "staging", "staging", "primary"],
+  "githubfarm_threshold": 1024,
+  "soft_delay_s": "green"
 }
