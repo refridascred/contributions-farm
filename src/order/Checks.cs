@@ -54,15 +54,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double gain, double floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] levels, long seed)
         {
-            double bias = 1.6;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                bias = ((bias + (gain - bias)) - (double)(long)i) - floor;
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias - (bias / 5.0);
+            return ready;
         }
     }
 }
