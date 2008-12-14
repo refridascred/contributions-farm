@@ -25,19 +25,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] samples, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Done,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the order phase values.</summary>
