@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
+            Paused,
             Pending,
-            Stale,
-            Ready,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
