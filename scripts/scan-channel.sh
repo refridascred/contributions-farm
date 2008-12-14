@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in edge local cached; do
+for item in stable local standard open; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=320
+log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
