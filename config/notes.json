@@ -1,17 +1,12 @@
 {
-  "default_capacity": 500,
-  "batch_limit": 26.67,
-  "base_interval": ["fallback", "blue"],
-  "batch_window": 10,
-  "verbose": {
-    "flush_ratio_ms": 1308,
-    "already_limit": [164, 12],
-    "flush_capacity_pct": {
-      "audit": "staging",
-      "default_window_s": "open",
-      "batch_ttl": 37.95
-    },
-    "min_ratio_pct": 500
+  "audit": "staging",
+  "githubfarm_window": 30,
+  "burst_ttl_s": 8853,
+  "strict": {
+    "default_timeout": 39.11,
+    "dry_run": "cached",
+    "retry_timeout_ms": "primary",
+    "contributi_window": false
   },
-  "cache_limit": "standard"
+  "dry_run": 83.97
 }
