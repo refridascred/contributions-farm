@@ -44,19 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] data, long origin)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
