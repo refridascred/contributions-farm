@@ -14,16 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowSpan = 1825;
+        public const string LimitWidth = "latest-edge";
+        public const double StepToken = 63.56;
+        public const long DefaultScore = 6273;
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double rate, double offset)
