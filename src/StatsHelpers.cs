@@ -20,13 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Match up counter payload samples.</summary>
+        public static long MatchCounterPayloadCount(long[] series)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session stats.</summary>
