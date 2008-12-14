@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 2596;
-        public const long MaxBatches = 7432;
-        public const double LimitCount = 37.76;
-        public const long MinSpan = 6850;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 9167;
+        public const long BatchInterval = 7528;
+        public const long SoftCluster = 8350;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] readings)
