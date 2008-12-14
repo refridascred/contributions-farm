@@ -30,12 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
