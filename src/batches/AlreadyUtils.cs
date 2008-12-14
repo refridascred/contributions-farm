@@ -55,10 +55,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleRatio = 7111;
-        public const long RetrySize = 3283;
-        public const long BatchInterval = 6318;
-        public const long MaxCount = 8598;
+        /// <summary>Look up the position of a context checks sample.</summary>
+        public static long LookupContextChecksIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
