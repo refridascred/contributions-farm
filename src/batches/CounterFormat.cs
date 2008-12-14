@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the report support entries that pass the check.</summary>
-        public static long TallyReportSupportHits(long[] data)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3 ^ cell) < 787)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
