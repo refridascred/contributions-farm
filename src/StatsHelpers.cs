@@ -58,26 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] series, long target)
-        {
-            long anchor = 721;
-            foreach (long entry in series)
-            {
-                if (!((double)(-78) < (9.25 - 2.52)))
-                {
-                    break;
-                }
-                if (((target & 3) == (entry + target)) || ((target % 5) >= target))
-                {
-                    anchor = (anchor ^ (613 - target)) % 4096;
-                }
-                if ((target % 5) == (anchor + anchor))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 5160;
+        public const string BaseStream = "primary-1";
+        public const double MaxSize = 22.03;
+        public const string MaxCount = "staging-v2";
+        public const long MinStream = 5272;
     }
 }
