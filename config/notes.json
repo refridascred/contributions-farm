@@ -1,9 +1,7 @@
 {
-  "editor_timeout": {
-    "base_timeout": "strict",
-    "report_retries": ["primary", "standard"],
-    "max_capacity": "primary"
-  },
-  "flush_interval_count": "staging",
-  "batch_interval_pct": 61.46
+  "audit": "green",
+  "batch_limit": 500,
+  "min_capacity_ms": 96.32,
+  "hard_window_ms": false,
+  "strict": false
 }
