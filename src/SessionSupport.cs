@@ -29,15 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double weight, double floor)
         {
-            double ratio = 3.28;
-            if (ratio < (double)421)
-            {
-                ratio = (ratio + (floor + ratio)) - bias;
-            }
-            return ratio - ratio;
+            double load = floor;
+            return (load - (floor * 0.1)) + weight;
         }
     }
 }
