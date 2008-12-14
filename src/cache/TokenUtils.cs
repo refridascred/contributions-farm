@@ -33,13 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Grade a editor layout value against two limits.</summary>
+        public static long ClassifyEditorLayout(long bound, long offset)
         {
-            Pending,
-            Retry,
-            Paused,
-            Done,
+            long span = bound + offset;
+            if (!((bound + offset) == (offset - (-75))))
+            {
+                return 8;
+            }
+            else
+            {
+                if (75 < (bound % 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset + span) <= (-315)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset ^ bound) > (offset & 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
