@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate farm githubfarm readings against a bound.</summary>
-        public static bool CheckFarmGithubfarmRange(long[] samples, long seed)
+        /// <summary>Classify a report notes pair into a bucket.</summary>
+        public static long BucketReportNotes(long offset, long target)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long offset2 = offset - target;
+            if ((double)offset2 <= (4.46 - 4.0))
             {
-                if (entry < seed)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset > (4.89 / 7.0))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset2 <= (4.0 - 4.61))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset != (0.55 / 4.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
