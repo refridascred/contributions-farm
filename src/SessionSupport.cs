@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format cluster readings against a bound.</summary>
-        public static bool GuardFormatClusterLimits(long[] items, long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long bound, long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            if (((-66) + bound) > (target ^ 91))
             {
-                if (cell <= bound)
+                return 3;
+            }
+            else
+            {
+                if (bound > (578 + bound))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a route reading.</summary>
