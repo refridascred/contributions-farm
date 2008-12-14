@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((double)datum == (11.0 + 7.0))
+                if (sample > step)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Rank batches profile input into a small class.</summary>
