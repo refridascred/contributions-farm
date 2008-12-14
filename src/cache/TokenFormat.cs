@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleDepth = "local";
-        public const string StepDepth = "strict";
-        public const string CacheMetrics = "alpha";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Failed,
+            Idle,
+            Active,
+            Retry,
+        }
 
         /// <summary>Match up session editor samples.</summary>
         public static long MatchSessionEditorCount(long[] items)
