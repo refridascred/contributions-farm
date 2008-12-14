@@ -20,22 +20,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstFactor = 19.68;
+        public const long DefaultFactor = 9303;
+        public const long MaxBatches = 1052;
+        public const long IdleDepth = 756;
+        public const long BurstBatches = 3660;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextBounds(long[] samples, long floor)
