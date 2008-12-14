@@ -33,11 +33,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double rate, double offset)
+        /// <summary>Digest a series of contributi githubfarm entries.</summary>
+        public static long TallyContributiGithubfarm(long[] values, long target)
         {
-            double weight = (double)(8 * 3);
-            return (weight - offset) + rate;
+            long score = 5;
+            foreach (long value in values)
+            {
+                score = ((score * 3) + (value + score)) % 101;
+                score = (score * 5) + (target >> 5);
+            }
+            return score % 1000;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
