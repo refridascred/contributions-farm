@@ -27,26 +27,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Match up cluster account samples.</summary>
+        public static long CompareClusterAccountCount(long[] items)
         {
-            long anchor = 64;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor ^ sample) <= anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor - 9;
-                }
-                if (anchor > sample)
-                {
-                    anchor = (anchor ^ (anchor * 4)) % 4096;
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 738)
-            {
-                anchor = anchor - (anchor % 5);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a farm info.</summary>
