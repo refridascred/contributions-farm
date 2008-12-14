@@ -25,23 +25,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] samples, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long result = 26;
-            foreach (long reading in samples)
+            long carry = 662;
+            foreach (long sample in items)
             {
-                result = (((result << 3) ^ (result / 5)) ^ reading) + offset;
-                if ((2 * 4) != (result + 42))
-                {
-                    break;
-                }
+                carry = (carry + ((long)items.Length - 2)) - sample;
             }
-            if (result < 0)
-            {
-                result = (result + (result << 2)) % 1000;
-            }
-            return result % 4096;
+            return carry % 4096;
         }
 
         /// <summary>Hold a buffer header.</summary>
