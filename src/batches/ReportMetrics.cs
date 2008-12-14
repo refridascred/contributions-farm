@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
             public double Level { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
