@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "open-edge";
+        public const string IdleWidth = "primary";
+        public const long DefaultDepth = 3321;
+        public const double HardCount = 11.68;
+        public const long RetryFarm = 6881;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
