@@ -79,16 +79,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor + (anchor - (long)i)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
