@@ -1,16 +1,5 @@
 # entry settings
-default_ttl_count:
-  - legacy
-  - eu-west
-  - stable
-enabled: 75
-burst_delay: 6.06
-base_timeout_pct: 1024
-cache_timeout_s:
-  batches_interval: 35.2
-  strict: legacy
-  enabled:
-    - 8
-    - 182
-  notes_timeout: 59.71
-  burst_threshold: edge
+batch_window_count: false
+audit: 94.48
+max_ttl: primary
+warm_size: fallback
