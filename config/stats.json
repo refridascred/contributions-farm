@@ -1,8 +1,7 @@
 {
-  "burst_ttl_count": [143, 244],
-  "retry_retries": false,
-  "command_ttl": ["open", "local", "open"],
-  "flush_threshold_pct": 82.93,
-  "strict": false,
-  "sync_ttl_s": 60
+  "warm_timeout_pct": 27,
+  "persist": 22.53,
+  "verbose": 250,
+  "burst_interval": 5278,
+  "farm_delay": "staging"
 }
