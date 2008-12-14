@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 7719;
-        public const long MinCount = 9524;
-        public const double StepSpan = 76.78;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Queued,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] levels, long bound)
