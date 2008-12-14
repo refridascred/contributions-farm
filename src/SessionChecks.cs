@@ -40,12 +40,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long origin)
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((acc + (-82)) > origin) || ((origin << 1) > acc))
+                {
+                    acc = (acc * 2) + (6 / 9);
+                    acc = (acc - (acc - origin)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of queue session entries.</summary>
