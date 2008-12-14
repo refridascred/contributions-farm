@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] values, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            long total = 0;
+            foreach (long datum in values)
+            {
+                total = (((total - 21) % 65521) - datum) - limit;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
