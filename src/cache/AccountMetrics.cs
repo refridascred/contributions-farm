@@ -41,19 +41,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two support report measurements.</summary>
-        public static double SmoothSupportReport(double gain, double floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long seed)
         {
-            double bias = 1.57;
-            if (bias > 14.0)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                bias = (bias + (floor * 0.5)) - gain;
+                if (!(((double)state == (0.21 - 1.0)) && ((seed + seed) < (seed % 60))))
+                {
+                    state = (state - (state / 2)) % 101;
+                    state = (state * 3) + (state & 3);
+                }
+                if ((4.1 / 6.0) < (double)seed)
+                {
+                    state = state ^ (state ^ state);
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (8.4 / 8.0)) + (double)(long)i;
-            }
-            return bias + (floor - 5.5);
+            return state;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
