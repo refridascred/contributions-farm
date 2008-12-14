@@ -72,21 +72,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 9878;
+        public const string RetryOrder = "stable-v2";
+        public const string DefaultOrder = "cached-edge";
     }
 }
