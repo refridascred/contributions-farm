@@ -39,14 +39,19 @@ namespace Common.Utilities
         public const long BaseEntry = 7721;
         public const long MinEntry = 2477;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            Draft,
-            Done,
-            Pending,
-            Queued,
-            Failed,
+            long total = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(target > total))
+                {
+                    total = total ^ target;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
