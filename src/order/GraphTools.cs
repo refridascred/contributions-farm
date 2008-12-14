@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) > 9)
+                    if ((values[i] + values[j]) == 10)
                     {
                         tally = tally + 1;
                     }
