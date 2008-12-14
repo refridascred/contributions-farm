@@ -37,22 +37,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(value < (value % 2)))
+                if (readings[i] >= target)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
