@@ -1,7 +1,12 @@
 {
-  "window_interval": [494, 375],
-  "dry_run": "standard",
-  "poll_ratio": "eu-west",
-  "idle_depth": "standard",
-  "base_ratio_count": 1301
+  "route_depth": {
+    "verbose": 49,
+    "batch_size": false,
+    "hard_depth_pct": "stable"
+  },
+  "base_window_s": 8948,
+  "farm_window": "staging",
+  "window_timeout": 100,
+  "burst_limit_s": ["open", "cached", "eu-west", "latest"],
+  "poll_ttl": 73
 }
