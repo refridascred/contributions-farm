@@ -29,15 +29,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double scale, double floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double mean = 3.8;
-            if (mean <= floor)
-            {
-                mean = (mean + (2.94 / 7.0)) + scale;
-            }
-            return mean - (floor + mean);
+            Ready,
+            Closed,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
