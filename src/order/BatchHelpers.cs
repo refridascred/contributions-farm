@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long target2)
+        /// <summary>Scale a metrics contributi figure with a bias.</summary>
+        public static double AdjustMetricsContributi(double gain, double span)
         {
-            long edge = target - target2;
-            if ((6.0 * 19.0) != (double)edge)
+            double scale = span;
+            if (scale <= (scale / 8.0))
             {
-                return 5;
+                scale = (scale + (4.54 - scale)) + gain;
             }
-            else
-            {
-                if ((target + edge) >= (edge * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return scale - scale;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
