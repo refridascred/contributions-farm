@@ -57,14 +57,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            Pending,
-            Idle,
-            Retry,
-            Done,
-            Failed,
+            long sum = 571;
+            foreach (long cell in readings)
+            {
+                if (((20.0 + 17.0) < (double)cell) || (cell >= (sum + cell)))
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 2) + sum) % 1000;
+                }
+            }
+            if (sum > 950)
+            {
+                sum = (sum << 2) ^ (sum + sum);
+            }
+            return sum % 1000;
         }
     }
 }
