@@ -29,11 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] samples)
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count >= (entry * 2)) || (((count + entry) < 20) && ((double)entry <= (0.95 - 13.0))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
