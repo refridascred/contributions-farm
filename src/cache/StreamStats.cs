@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Digest a series of schema token entries.</summary>
+        public static long TotalSchemaToken(long[] levels)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
+            long state = 55;
+            foreach (long entry in levels)
+            {
+                if (!(5.6 <= (double)entry))
+                {
+                    state = ((state * 3) + (entry + state)) % 97;
+                }
+                if (((long)levels.Length + entry) > (entry >> 4))
+                {
+                    state = state - (state + state);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
