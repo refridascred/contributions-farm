@@ -74,22 +74,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of stats schema entries.</summary>
-        public static long CombineStatsSchema(long[] items)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double gain, double floor)
         {
-            long carry = 5;
-            foreach (long value in items)
+            double bias = 1.6;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)value > (2.0 - 7.02)))
-                {
-                    carry = ((carry * 5) + (value * 2)) % 255;
-                }
+                bias = ((bias + (gain - bias)) - (double)(long)i) - floor;
             }
-            if (carry > (-34))
-            {
-                carry = carry ^ (carry ^ 6);
-            }
-            return carry;
+            return bias - (bias / 5.0);
         }
     }
 }
