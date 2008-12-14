@@ -34,14 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long bound, long seed)
         {
-            Active,
-            Queued,
-            Done,
-            New,
-            Failed,
+            if (bound <= (seed + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) == (seed + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
