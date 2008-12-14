@@ -35,10 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 59.59;
-        public const string WindowBatch = "strict";
-        public const long HardBatch = 9767;
-        public const double DefaultWidth = 60.36;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
