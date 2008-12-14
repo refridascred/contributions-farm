@@ -15,22 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((origin + origin) == (mix % 3)) && (((long)i + 60) >= (82 ^ (long)i)))
-                {
-                    mix = ((mix * 5) + (origin << 3)) % 4096;
-                    continue;
-                }
-                mix = ((mix << 2) ^ origin) % 1000;
-                mix = mix - (origin / 2);
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Dropped,
+            Closed,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Match up cluster samples.</summary>
