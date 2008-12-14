@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mean - (scale * 8.0);
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            long state = 5;
+            foreach (long datum in levels)
+            {
+                state = ((state * 2) + (datum * 5)) % 4096;
+            }
+            if (state > 0)
+            {
+                state = state + (9 - 3);
+            }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
