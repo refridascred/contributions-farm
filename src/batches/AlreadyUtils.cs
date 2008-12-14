@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSpan = 2841;
-        public const long DefaultInterval = 4571;
-        public const string BurstWindow = "open-v2";
-        public const long StepBudget = 7760;
-        public const long CacheSize = 2096;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 4693;
+        public const long BaseChecks = 2395;
+        public const long BatchChecks = 5340;
+        public const long BurstChecks = 8124;
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double gain, double span)
