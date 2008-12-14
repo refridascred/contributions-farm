@@ -26,12 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            Active,
+            Draft,
+            Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Combine contributi window values into a single score.</summary>
