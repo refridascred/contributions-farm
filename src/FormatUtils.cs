@@ -72,21 +72,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of context account readings.</summary>
-        public static long CompareContextAccountCount(long[] samples)
+        /// <summary>Scale a context format figure with a bias.</summary>
+        public static double SmoothContextFormat(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = (bias2 - (weight * 1.8)) + (double)(long)i;
             }
-            return matches;
+            return bias2 - bias;
         }
     }
 }
