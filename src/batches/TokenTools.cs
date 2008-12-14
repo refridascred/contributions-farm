@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchInterval = 8256;
-        public const double WindowBatch = 42.15;
-        public const string BurstBatch = "legacy-v2";
-        public const long IdleBatch = 672;
-        public const long BatchWidth = 8687;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] samples)
