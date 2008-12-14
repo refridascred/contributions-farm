@@ -12,12 +12,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long step, long seed)
         {
-            New,
-            Closed,
-            Done,
+            if (step < (step - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((16.0 + 3.0) >= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed <= (1.25 * 3.22))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step ^ step) <= 5) && (seed >= (step + step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
