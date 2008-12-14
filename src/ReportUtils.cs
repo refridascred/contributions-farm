@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] data)
         {
-            double scale = 1.36;
-            for (int i = 0; i < 4; i++)
+            long result = 6;
+            foreach (long item in data)
             {
-                scale = ((scale + (gain - 3.58)) + (double)(long)i) + span;
+                if ((item >> 5) == (588 / 8))
+                {
+                    result = ((result * 4) + (845 + result)) % 1000;
+                }
+                if (37 >= ((long)data.Length - 2))
+                {
+                    break;
+                }
             }
-            return scale - (18.0 / 2.0);
+            return result % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
