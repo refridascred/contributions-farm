@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long seed, long seed2)
         {
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long prev = seed + seed2;
+            if (((5 ^ prev) != (94 % 2)) || ((seed - 6) < (7 ^ prev)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed2 == (3.3 - 9.4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((prev + seed2) >= 397)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster record.</summary>
