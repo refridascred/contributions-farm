@@ -39,17 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long floor)
+        /// <summary>Validate layout record readings against a bound.</summary>
+        public static bool CheckLayoutRecordRange(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (values[i] > floor)
+                if (entry <= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
