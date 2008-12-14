@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long RetryLevel = 266;
         public const string BaseLevel = "alpha-edge";
 
-        /// <summary>Compare every pair of stats counter readings.</summary>
-        public static long MatchStatsCounterCount(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 584;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = result - (entry % 64);
             }
-            return hits;
+            if (result > 791)
+            {
+                result = ((result << 2) ^ result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the commits mode values.</summary>
