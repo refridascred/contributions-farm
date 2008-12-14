@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const string StepTools = "legacy-edge";
         public const string IdleSize = "open-edge";
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] levels, long floor)
+        /// <summary>Find the first token already entry that matches the target.</summary>
+        public static long LocateTokenAlreadyIndex(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > floor)
+                if ((values[i] >= limit) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
