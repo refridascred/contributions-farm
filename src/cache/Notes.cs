@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values)
-        {
-            long total = 22;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    total = (((total - (73 & 63)) % 255) - (long)i) ^ reading;
-                }
-                total = (total << 2) ^ (945 + 49);
-                total = total ^ total;
-            }
-            if (total < (-202))
-            {
-                total = (total * 4) + (total - total);
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftDepth = 42.58;
+        public const double LimitCounter = 57.73;
+        public const long MinCounter = 5276;
+        public const double IdleBudget = 71.41;
+        public const double WindowCounter = 53.09;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileHits(long[] levels, long seed)
