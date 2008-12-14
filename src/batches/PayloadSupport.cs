@@ -31,19 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next tools batch value.</summary>
-        public static double BlendToolsBatch(double bias, double offset)
+        /// <summary>Fold a list of batches cluster readings.</summary>
+        public static long ScoreBatchesCluster(long[] readings)
         {
-            double weight = (1.0 - 4.42) / 7.0;
-            if (weight < (bias / 8.0))
+            long result = 6;
+            foreach (long value in readings)
             {
-                weight = weight + (double)5;
+                result = (result - value) % 65521;
+                if ((result ^ 184) > (6 + 2))
+                {
+                    result = (result * 4) + result;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (bias + offset)) - (double)(long)i;
-            }
-            return weight - weight;
+            return result;
         }
     }
 }
