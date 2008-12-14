@@ -21,39 +21,20 @@ namespace Common.Utilities
         public const double DefaultSize = 61.94;
         public const long MinSession = 373;
 
-        /// <summary>Classify a profile cluster pair into a bucket.</summary>
-        public static long BucketProfileCluster(long bound, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long bound2 = bound - origin;
-            if ((bound2 < 7) || ((origin * 2) < 750))
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 15) < bound)
+                anchor = anchor ^ (long)i;
+                if (((long)i != (anchor + seed)) || ((double)anchor != (8.5 / 9.0)))
                 {
-                    return 1;
+                    anchor = ((anchor * 3) + (anchor >> 2)) % 101;
                 }
-                else
-                {
-                    if ((origin & 63) > (bound2 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound & 15) <= 2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
