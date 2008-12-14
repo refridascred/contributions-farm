@@ -13,19 +13,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long bound)
         {
-            long mix = 0;
-            foreach (long cell in levels)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                mix = (mix - (mix / 4)) ^ cell;
+                if (((long)i * 4) < 51)
+                {
+                    continue;
+                }
+                if (((double)anchor < (7.4 * 16.0)) && (bound > (anchor >> 1)))
+                {
+                    anchor = anchor - bound;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (mix > 937)
-            {
-                mix = (mix ^ (5 - target)) % 65521;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
