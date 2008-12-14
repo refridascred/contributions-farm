@@ -21,13 +21,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Audit githubfarm format readings against a rule.</summary>
+        public static long CountGithubfarmFormatOutliers(long[] levels, long origin)
         {
-            Locked,
-            Synced,
-            Retry,
-            Failed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry << 1) > (origin >> 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
