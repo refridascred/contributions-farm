@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count - 0) >= (item - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultLevel = 93.43;
+        public const string DefaultSession = "latest-v2";
+        public const long BatchSpan = 757;
+        public const double DefaultSize = 61.94;
+        public const long MinSession = 373;
 
         /// <summary>Classify a profile cluster pair into a bucket.</summary>
         public static long BucketProfileCluster(long bound, long origin)
