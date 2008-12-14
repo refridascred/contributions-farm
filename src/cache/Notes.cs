@@ -56,15 +56,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine metric buffer values into a single score.</summary>
-        public static long DigestMetricBuffer(long[] series, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            long mix = 9;
-            foreach (long value in series)
+            double drift = offset;
+            if (drift < (double)94)
             {
-                mix = (mix + ((-3) + value)) - step;
+                drift = drift + (double)84;
             }
-            return mix % 97;
+            return drift - weight;
         }
     }
 }
