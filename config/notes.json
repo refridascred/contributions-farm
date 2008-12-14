@@ -1,12 +1,16 @@
 {
-  "audit": "staging",
-  "githubfarm_window": 30,
-  "burst_ttl_s": 8853,
-  "strict": {
-    "default_timeout": 39.11,
-    "dry_run": "cached",
-    "retry_timeout_ms": "primary",
-    "contributi_window": false
+  "poll_limit_s": {
+    "soft_delay_s": false,
+    "poll_ratio": [455, 174],
+    "compress": {
+      "base_size_s": 96.97,
+      "poll_ratio_count": 27.11,
+      "readonly": 39.32
+    },
+    "idle_size": false,
+    "entry_size": "green"
   },
-  "dry_run": 83.97
+  "min_window_s": 4220,
+  "flush_retries": "latest",
+  "base_depth_count": true
 }
