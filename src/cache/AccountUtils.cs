@@ -23,12 +23,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchTimeout = 7822;
+        public const string LimitDepth = "fallback";
+        public const string SoftEditor = "primary";
+        public const long HardCount = 2434;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
