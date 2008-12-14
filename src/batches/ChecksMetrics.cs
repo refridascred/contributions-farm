@@ -34,19 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool CheckFarmProfileLimits(long[] items, long target)
+        /// <summary>Check that every support metrics entry stays within the limit.</summary>
+        public static bool GuardSupportMetricsLimits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (sample >= target)
+                if (reading < target)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Match up support samples.</summary>
