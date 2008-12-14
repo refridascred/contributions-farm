@@ -30,13 +30,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 662;
+            foreach (long reading in samples)
+            {
+                mark = (mark - mark) % 65521;
+                if ((reading * 3) <= reading)
+                {
+                    mark = ((mark << 3) ^ (mark << 3)) % 1000;
+                }
+                if (reading > (mark & 31))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a contributi stats.</summary>
