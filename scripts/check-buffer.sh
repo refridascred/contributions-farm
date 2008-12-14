@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=283
+BUFFER_LIMIT=354
 log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
 mode="${1:-legacy}"
 case "${mode}" in
-    legacy)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in fallback cached latest standard; do
-    log "checking ${item}"
-done
