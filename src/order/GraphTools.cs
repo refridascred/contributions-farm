@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mix = -285;
-            foreach (long value in values)
-            {
-                mix = ((mix * 5) + value) % 101;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
