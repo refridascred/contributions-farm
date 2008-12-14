@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] data, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate format cache samples.</summary>
