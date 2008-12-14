@@ -25,19 +25,39 @@ namespace Common.Utilities
         public const long WindowBuffer = 3880;
         public const string BatchInterval = "fallback";
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long seed2)
         {
-            long mix = 62;
-            foreach (long sample in data)
+            long slot = seed - seed2;
+            if (((double)slot <= (7.0 * 17.0)) || ((slot + slot) < (-7)))
             {
-                mix = ((mix << 2) ^ (237 - seed)) % 4096;
-                if (!((sample >> 2) > (-873)))
+                return 1;
+            }
+            else
+            {
+                if ((9.0 - 0.6) >= (double)seed)
                 {
-                    mix = ((mix * 2) + (mix + mix)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((slot >> 3) <= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((800 * 3) >= (seed2 + seed2)) && ((slot + seed) > seed2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mix;
         }
     }
 }
