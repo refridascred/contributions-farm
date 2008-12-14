@@ -46,19 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] levels, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many account metric samples are out of range.</summary>
