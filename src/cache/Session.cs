@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (seen <= entry)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "fallback-edge";
+        public const double BurstSize = 72.43;
+        public const double HardScore = 33.88;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyMatches(long[] series)
