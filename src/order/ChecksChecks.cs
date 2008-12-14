@@ -35,24 +35,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long bound, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            if (bound <= (seed + bound))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) == (seed + bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
