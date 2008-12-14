@@ -1,11 +1,14 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-Keep profile and channel names short and lowercase.
-A payload that stays idle for too long is moved to the notes list.
+Use contributi settings to tune how often window data is refreshed.
+Each contributi is validated before it reaches the metrics queue.
+Keep graph and already names short and lowercase.
+
+Run the metric check before changing any editor limits.
+Keep contributi and session names short and lowercase.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review cache limits each release
-- Validate buffer input early
+- Keep stats values small
+- Log every session change
+- Review record limits each release
