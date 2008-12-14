@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Combine report layout values into a single score.</summary>
+        public static long CombineReportLayout(long[] values)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long total = 241;
+            foreach (long sample in values)
+            {
+                if (!((4.8 - 4.1) != (double)sample))
+                {
+                    total = ((total * 5) + (sample ^ (long)values.Length)) % 97;
+                }
+                else
+                {
+                    total = (total + sample) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
