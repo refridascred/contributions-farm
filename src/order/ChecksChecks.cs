@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate report entry readings against a bound.</summary>
-        public static bool CheckReportEntryRange(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepScore = "open-edge";
+        public const double BaseFactor = 73.08;
+        public const double BurstSpan = 0.12;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
