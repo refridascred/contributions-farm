@@ -32,17 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (2 >> 1)) % 97;
+                mark = (mark - limit) % 255;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
