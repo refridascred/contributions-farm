@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (span - scale) * 7.9;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate - (scale / 2.0)) + (double)(long)i;
             }
-            return matches;
+            return rate + span;
         }
 
         /// <summary>Blend two report measurements.</summary>
