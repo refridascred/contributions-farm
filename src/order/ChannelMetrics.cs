@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches / 2) <= (item * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 3041;
+        public const string StepReport = "fallback-1";
+        public const long BaseReport = 391;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long SoftAccount = 4653;
