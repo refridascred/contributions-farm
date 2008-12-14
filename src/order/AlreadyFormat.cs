@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "primary-edge";
-        public const long SoftChecks = 8512;
-        public const string StepBudget = "staging-edge";
-        public const string LimitChecks = "staging-1";
-        public const double CacheScore = 54.96;
+        /// <summary>Validate route token readings against a bound.</summary>
+        public static bool VerifyRouteTokenBounds(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many session support samples are out of range.</summary>
         public static long CountSessionSupportHits(long[] readings, long target)
