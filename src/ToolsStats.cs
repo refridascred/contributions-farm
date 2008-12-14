@@ -44,12 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "stable-edge";
-        public const long MinChecks = 3618;
-        public const long WindowRatio = 1845;
-        public const long StepChecks = 4310;
-        public const double BaseChecks = 93.11;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples)
+        {
+            long state = 962;
+            foreach (long value in samples)
+            {
+                if (state <= (value + value))
+                {
+                    state = (state * 4) + (state * 3);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] values, long floor)
