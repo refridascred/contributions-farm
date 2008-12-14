@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            if ((16.0 / 5.0) != (double)offset)
             {
-                if (value < offset)
+                return 4;
+            }
+            else
+            {
+                if (((double)seed <= 8.5) || (seed <= (760 >> 5)))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)offset > (1.14 / 8.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the batch phase values.</summary>
