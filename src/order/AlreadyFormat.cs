@@ -15,13 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples, long floor)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits + floor) != (hits ^ reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
