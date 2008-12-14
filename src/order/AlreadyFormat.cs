@@ -51,12 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultRatio = 1139;
-        public const long BatchTools = 7321;
-        public const string SoftScore = "strict-edge";
-        public const long StepTools = 7295;
-        public const double WindowSpan = 3.94;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long target)
