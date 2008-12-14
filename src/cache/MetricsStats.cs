@@ -36,19 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token filter readings against a bound.</summary>
-        public static bool CheckTokenFilterBounds(long[] values, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long edge = offset - step;
+            if ((8.84 - 15.0) >= (double)offset)
             {
-                if (item > target)
+                return 5;
+            }
+            else
+            {
+                if (edge < step)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a batches options.</summary>
