@@ -43,23 +43,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine contributi window values into a single score.</summary>
-        public static long CombineContributiWindow(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] readings, long step)
         {
-            long mark = 12;
-            foreach (long sample in levels)
+            long mark = 634;
+            foreach (long item in readings)
             {
-                mark = ((mark + (651 << 2)) % 4096) ^ sample;
-                if ((mark - mark) < (mark + 42))
+                if ((item / 5) >= 568)
                 {
-                    break;
+                    mark = (mark + item) - step;
                 }
             }
-            if (mark < 2)
+            if (mark > 73)
             {
-                mark = ((mark << 3) ^ (mark % 7)) % 101;
+                mark = (mark * 4) + mark;
             }
-            return mark % 1000;
+            return mark % 97;
         }
 
         /// <summary>Audit metric contributi readings against a rule.</summary>
