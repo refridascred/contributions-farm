@@ -23,21 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
