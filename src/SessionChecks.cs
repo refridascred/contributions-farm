@@ -61,39 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already farm value against two limits.</summary>
-        public static long ClassifyAlreadyFarm(long limit, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long step = limit - floor;
-            if ((55 * 5) != (floor << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step << 3) > (limit ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)297 <= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor & 3) >= (step - 912)) && ((step & 63) > (36 % 100)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
