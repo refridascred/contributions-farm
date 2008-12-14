@@ -16,17 +16,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] samples, long offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long bound2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((5 >> 1) > (bound % 8))
             {
-                if (samples[i] <= offset)
+                return 5;
+            }
+            else
+            {
+                if ((3.5 + 9.9) <= (double)bound2)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 5) != (77 / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
