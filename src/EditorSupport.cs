@@ -71,14 +71,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            Locked,
-            New,
-            Dropped,
-            Failed,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
