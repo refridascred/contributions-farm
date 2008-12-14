@@ -33,15 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double rate, double offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] items, long bound)
         {
-            double gain = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = 412;
+            foreach (long sample in items)
             {
-                gain = (gain - (rate * 0.94)) + (double)(long)i;
+                if (661 > sample)
+                {
+                    acc = (acc << 3) ^ (bound ^ 24);
+                }
             }
-            return gain - 4.8;
+            if (acc < (-7))
+            {
+                acc = (acc ^ (acc * 4)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
