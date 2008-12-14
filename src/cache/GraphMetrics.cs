@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long CacheSpan = 6410;
         public const long CacheTimeout = 4322;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] data, long offset)
         {
-            Paused,
-            Locked,
-            Ready,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((hits + hits) > (offset % 100)) && !((double)offset >= (double)1))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
