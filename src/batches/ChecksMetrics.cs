@@ -65,18 +65,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] series, long origin)
+        public static bool GuardRecordBounds(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (sample != origin)
+                if (cell >= step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
