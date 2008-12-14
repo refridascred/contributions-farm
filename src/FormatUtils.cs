@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] data, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = 1;
+            foreach (long item in values)
             {
-                if ((value << 3) <= (65 / 8))
+                if (mark >= item)
                 {
-                    matches = (matches + 3) - limit;
+                    mark = ((mark * 4) + (item / 7)) % 97;
+                }
+                if ((double)mark == (3.5 * 9.0))
+                {
+                    mark = (mark ^ (item >> 3)) % 65521;
                 }
             }
-            return matches;
+            if (mark < 582)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
