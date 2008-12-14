@@ -32,19 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a queue window reading.</summary>
-        public static double ProjectQueueWindow(double bias, double floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] items, long offset)
         {
-            double gain = (double)(64 ^ 82);
-            if (gain >= (double)8)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain - (floor / 3.0)) - bias;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - gain;
+            return -1;
         }
     }
 }
