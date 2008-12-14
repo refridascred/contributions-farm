@@ -14,38 +14,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long limit, long bound)
+        /// <summary>Locate a editor notes reading by value.</summary>
+        public static long SeekEditorNotesIndex(long[] data, long step)
         {
-            if (((bound - limit) < bound) || (9.5 <= (double)limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= 69)
+                if (data[i] < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound == (7.55 + 6.2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit ^ limit) > (limit - 77)) || ((bound / 9) < limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a command options.</summary>
