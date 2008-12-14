@@ -35,19 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] series, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the metrics level values.</summary>
