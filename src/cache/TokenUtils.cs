@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBudget = 8387;
-        public const string IdleBuffer = "standard-edge";
-        public const long WindowBuffer = 3880;
-        public const string BatchInterval = "fallback";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen ^ seen) <= (item * 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long SortCluster(long seed, long seed2)
