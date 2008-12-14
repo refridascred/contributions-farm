@@ -46,24 +46,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long target, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long target)
         {
-            if (offset >= (offset / 9))
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset + offset) <= (offset * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix;
         }
     }
 }
