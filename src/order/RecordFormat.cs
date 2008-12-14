@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long bound, long seed)
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            if ((1.9 + 1.0) > (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.94 / 2.0) < (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the notes kind values.</summary>
