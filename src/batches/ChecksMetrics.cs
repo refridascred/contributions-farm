@@ -34,22 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] samples)
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool CheckFarmProfileLimits(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((datum - hits) == (850 << 1))
+                if (sample >= target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Match up support samples.</summary>
