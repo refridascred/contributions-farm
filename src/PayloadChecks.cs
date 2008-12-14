@@ -28,19 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] samples, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((double)floor >= 13.0)
+                if (sample < origin)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Blend two layout measurements.</summary>
