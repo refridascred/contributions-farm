@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const double SoftSize = 66.4;
         public const long RetryAccount = 4936;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double offset)
-        {
-            double load = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinWidth = 6120;
+        public const double WindowMetrics = 46.75;
+        public const long MinMetrics = 8094;
+        public const double CacheMetrics = 3.87;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long BucketWindow(long step, long floor)
