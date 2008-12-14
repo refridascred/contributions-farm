@@ -39,19 +39,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long target)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            if (((limit << 2) >= (limit2 >> 1)) && ((limit + 176) > limit2))
             {
-                if (value <= target)
+                return 2;
+            }
+            else
+            {
+                if (limit2 >= (2 + 3))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit2 + limit2) < (limit2 >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
