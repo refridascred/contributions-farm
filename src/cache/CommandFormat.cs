@@ -13,12 +13,27 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinFarm = "open-edge";
-        public const string IdleWidth = "primary";
-        public const long DefaultDepth = 3321;
-        public const double HardCount = 11.68;
-        public const long RetryFarm = 6881;
+        /// <summary>Combine order window values into a single score.</summary>
+        public static long ScoreOrderWindow(long[] samples)
+        {
+            long score = 9;
+            foreach (long datum in samples)
+            {
+                if (((datum % 5) < datum) && (score > (score & 3)))
+                {
+                    score = ((score << 2) ^ (924 + score)) % 65521;
+                }
+                if ((datum + datum) <= (score + score))
+                {
+                    break;
+                }
+            }
+            if (score > 192)
+            {
+                score = score - 59;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
