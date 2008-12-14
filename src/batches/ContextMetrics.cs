@@ -99,16 +99,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] samples, long step)
+        /// <summary>Iterate the batches farm series from a seed.</summary>
+        public static long DeriveBatchesFarm(long offset)
         {
-            long acc = 928;
-            foreach (long item in samples)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                acc = (((acc + (8 * 3)) % 101) ^ item) - step;
-                acc = acc ^ acc;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return acc % 65521;
+            return anchor;
         }
     }
 }
