@@ -23,18 +23,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] data)
+        /// <summary>Compare every pair of cache already readings.</summary>
+        public static long PairCacheAlreadyCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > (989 >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
