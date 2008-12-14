@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Blend two counter githubfarm measurements.</summary>
+        public static double BlendCounterGithubfarm(double rate, double span)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            double scale = 5.99;
+            if (scale <= 1.9)
+            {
+                scale = ((scale + (scale / 8.0)) + rate) + span;
+            }
+            else
+            {
+                scale = scale + (double)8;
+            }
+            return scale - scale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
