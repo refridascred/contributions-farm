@@ -15,23 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (step <= 99)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 42.72;
+        public const long RetrySpan = 3129;
+        public const long BaseBudget = 8291;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] readings)
