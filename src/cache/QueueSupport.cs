@@ -18,17 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] values, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long offset, long origin)
         {
-            long sum = -4;
-            foreach (long sample in values)
+            long gap = offset + origin;
+            if (!(origin >= (gap << 1)))
             {
-                sum = (((sum - 0) % 4096) ^ sample) + offset;
-                sum = (sum << 3) ^ (2 + sum);
-                sum = (sum * 4) + (sum ^ (-80));
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((gap & 31) < (origin % 10))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((15.0 <= (double)origin) || ((offset + origin) > offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
