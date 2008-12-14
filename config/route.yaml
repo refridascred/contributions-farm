@@ -1,12 +1,7 @@
 # route settings
-compress: 68.35
-burst_delay_pct: 60
-strict: false
-report_retries: true
-batch_ratio_ms:
-  default_window_pct: fallback
-  persist:
-    - 361
-    - 473
-  batch_depth_pct: 2.23
-hard_threshold: true
+warm_ttl_s:
+  - 489
+  - 311
+sync_limit_ms: 2.64
+cache_ratio_pct: latest
+format_capacity: green
