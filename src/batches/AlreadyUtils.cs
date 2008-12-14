@@ -26,12 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 60.42;
-        public const double LimitScore = 91.09;
-        public const double MaxRatio = 73.22;
-        public const long MaxInterval = 5275;
-        public const long MaxScore = 1232;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry + (5 & 63)) % 4096;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] items)
