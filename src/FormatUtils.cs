@@ -35,18 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample % 7) >= (hits & 7)))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            double scale = (double)(8 >> 2);
+            return (scale + (floor * 4.2)) + gain;
         }
 
         /// <summary>Combine layout checks values into a single score.</summary>
