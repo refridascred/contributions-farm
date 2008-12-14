@@ -53,17 +53,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] data, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -2;
+            foreach (long reading in samples)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                if ((reading ^ reading) < ((-727) & 127))
                 {
-                    return (long)i;
+                    acc = acc + (reading - reading);
+                }
+                if (acc > (acc / 5))
+                {
+                    acc = (acc - reading) % 65521;
+                }
+                else
+                {
+                    acc = acc - (acc % 97);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
