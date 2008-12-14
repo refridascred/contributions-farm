@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] readings, long origin)
         {
-            Paused,
-            Dropped,
-            Synced,
-            Draft,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
