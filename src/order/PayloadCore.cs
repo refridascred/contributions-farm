@@ -20,20 +20,11 @@ namespace Common.Utilities
         public const string SoftWindow = "stable-edge";
         public const long SoftFactor = 7330;
 
-        /// <summary>Validate metrics farm readings against a bound.</summary>
-        public static bool CheckMetricsFarmBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 3729;
+        public const long LimitTimeout = 5942;
+        public const long BaseSize = 909;
+        public const double BatchScore = 66.45;
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double gain, double span)
