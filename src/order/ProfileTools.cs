@@ -34,15 +34,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a entry graph counter forward.</summary>
-        public static long IterateEntryGraph(long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Stale,
+            Queued,
+            Synced,
+            Idle,
         }
 
         /// <summary>Combine format values into a single score.</summary>
