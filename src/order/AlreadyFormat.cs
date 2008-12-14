@@ -50,38 +50,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long limit, long limit2)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if ((double)limit2 <= (5.64 + 8.09))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit2 < (limit * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit2 & 31) != ((-23) + 9)) && ((limit % 60) != (4 << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit < 34)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Active,
+            New,
+            Paused,
+            Pending,
         }
     }
 }
