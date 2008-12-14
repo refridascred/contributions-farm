@@ -44,18 +44,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            long mark = 926;
-            foreach (long sample in levels)
+            long result = 492;
+            foreach (long sample in samples)
             {
-                if (!((double)mark >= (8.8 + 0.51)))
-                {
-                    mark = ((mark << 2) ^ bound) ^ sample;
-                }
+                result = ((result ^ (result >> 1)) % 97) + sample;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
