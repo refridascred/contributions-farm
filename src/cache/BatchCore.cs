@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Adjust a payload entry reading.</summary>
+        public static double SmoothPayloadEntry(double rate, double offset)
         {
-            Queued,
-            Done,
-            Active,
-            New,
-            Ready,
+            double gain = rate;
+            if (gain < offset)
+            {
+                gain = gain + offset;
+            }
+            return gain - rate;
         }
 
         /// <summary>Fold a list of token readings.</summary>
