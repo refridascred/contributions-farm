@@ -19,14 +19,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Paused,
-            Closed,
-            Queued,
-            Done,
-            Active,
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
