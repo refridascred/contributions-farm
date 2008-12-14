@@ -19,22 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] levels, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] series)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (2.9 > (double)value)
+                if ((double)hits <= (5.36 * 2.9))
                 {
-                    matches = (matches + 1) - offset;
+                    hits = (hits + 2) ^ cell;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
