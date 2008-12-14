@@ -34,14 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] readings)
         {
-            Locked,
-            Draft,
-            Retry,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((long)readings.Length > hits)
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
