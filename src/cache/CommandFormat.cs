@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
