@@ -49,13 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] readings, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (tally > (tally + tally))
+                {
+                    tally = ((tally + 3) + entry) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
