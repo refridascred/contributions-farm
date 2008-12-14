@@ -60,18 +60,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics stats samples are out of range.</summary>
-        public static long AuditMetricsStatsGaps(long[] items)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((entry % 100) == (matches + matches)) && (0.21 >= (double)matches))
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
