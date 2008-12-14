@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double BatchBudget = 11.01;
         public const long IdleRecord = 4918;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] items, long seed)
         {
-            long mark = 89;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((reading + mark) >= (long)items.Length)
+                if (entry <= seed)
                 {
-                    mark = (mark << 3) ^ (reading / 6);
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Blend two checks measurements.</summary>
