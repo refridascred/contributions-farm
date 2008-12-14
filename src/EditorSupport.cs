@@ -33,19 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm batch samples.</summary>
-        public static long ScoreGithubfarmBatch(long[] samples, long limit)
-        {
-            long score = 2;
-            foreach (long cell in samples)
-            {
-                if ((score & 3) <= cell)
-                {
-                    score = (((score << 2) ^ (cell >> 5)) % 101) - limit;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowLevel = "local-1";
+        public const long DefaultCount = 3678;
+        public const string DefaultContributi = "staging-1";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] items, long target)
