@@ -28,32 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long seed, long seed2)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            long lane = seed + seed2;
-            if (!((lane + seed2) > (49 >> 5)))
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((15.0 - 6.0) > (double)seed2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed2 ^ seed2) != (39 ^ seed2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a format info.</summary>
