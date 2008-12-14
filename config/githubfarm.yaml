@@ -1,6 +1,10 @@
 # githubfarm settings
-compress: 46.2
-verbose: 60
-persist: 43.08
-batch_interval_pct: 500
-hard_ttl_s: 23
+dry_run: 11.31
+window_window: 9502
+warm_timeout_ms:
+  - staging
+  - stable
+  - blue
+poll_threshold_pct: 309
+readonly: local
+schema_capacity: 16.42
