@@ -52,19 +52,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Failed,
+            Synced,
+            Paused,
         }
     }
 }
