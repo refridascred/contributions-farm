@@ -41,12 +41,23 @@ namespace Common.Utilities
             return mean - (offset - offset);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultWidth = 8491;
-        public const long RetryInterval = 5884;
-        public const double HardRatio = 12.14;
-        public const long IdleStats = 8969;
-        public const long DefaultStats = 9909;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches + matches) > (datum & 127))
+                {
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
