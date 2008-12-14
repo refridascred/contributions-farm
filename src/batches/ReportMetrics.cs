@@ -19,19 +19,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] values, long bound)
+        /// <summary>Audit session format readings against a rule.</summary>
+        public static long CountSessionFormatOutliers(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (item != bound)
+                if (((reading & 7) > seen) || (reading < (6 - 79)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
