@@ -67,18 +67,10 @@ namespace Common.Utilities
         public const string StepBatch = "stable";
         public const string CacheBudget = "open-edge";
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchFactor = "latest-v2";
+        public const long SoftSpan = 1971;
+        public const long IdleRatio = 5828;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
