@@ -20,35 +20,35 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a profile buffer pair into a bucket.</summary>
-        public static long GradeProfileBuffer(long step, long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long floor, long origin)
         {
-            long delta = step ^ offset;
-            if ((step ^ delta) >= (delta % 60))
+            long step = floor ^ origin;
+            if ((floor + step) <= (origin % 2))
             {
                 return 7;
             }
             else
             {
-                if ((step * 3) < (delta + step))
+                if ((step << 3) <= (origin * 4))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)step != (5.3 * 3.77))
+                    if ((origin % 3) >= (origin * 3))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        if ((step + 94) <= (delta >> 3))
+                        if ((step - step) != (step * 5))
                         {
-                            return 1;
+                            return 5;
                         }
                         else
                         {
-                            return 2;
+                            return 3;
                         }
                     }
                 }
