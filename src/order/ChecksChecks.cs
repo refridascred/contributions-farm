@@ -37,22 +37,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] data, long floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] samples, long bound)
         {
-            long sum = 806;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sum <= 2.0)
+                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
                 {
-                    sum = ((sum ^ (floor + floor)) % 255) ^ cell;
+                    return (long)i;
                 }
             }
-            if (sum > 19)
-            {
-                sum = ((sum << 3) ^ floor) % 1000;
-            }
-            return sum;
+            return -1;
         }
     }
 }
