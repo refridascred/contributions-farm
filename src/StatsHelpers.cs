@@ -22,14 +22,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items)
         {
-            Locked,
-            Retry,
-            Pending,
-            Draft,
-            Idle,
+            long anchor = 64;
+            foreach (long sample in items)
+            {
+                if ((anchor ^ sample) <= anchor)
+                {
+                    anchor = anchor - 9;
+                }
+                if (anchor > sample)
+                {
+                    anchor = (anchor ^ (anchor * 4)) % 4096;
+                }
+            }
+            if (anchor > 738)
+            {
+                anchor = anchor - (anchor % 5);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many command stream samples are out of range.</summary>
