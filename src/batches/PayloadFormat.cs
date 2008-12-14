@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] values, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Locked,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the stream status values.</summary>
