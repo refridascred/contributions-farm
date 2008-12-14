@@ -33,12 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            Stale,
-            Idle,
-            Failed,
+            long total = -61;
+            foreach (long entry in samples)
+            {
+                if (entry < (long)samples.Length)
+                {
+                    total = (total + (total + total)) % 65521;
+                }
+                if (!((total + entry) <= 21))
+                {
+                    total = (total + entry) % 1000;
+                }
+            }
+            if (total > 6)
+            {
+                total = (total << 3) ^ 179;
+            }
+            return total;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
