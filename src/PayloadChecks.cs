@@ -73,32 +73,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Rank editor command input into a small class.</summary>
-        public static long RankEditorCommand(long origin, long step)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            long gap = origin ^ step;
-            if (step < (step - (-23)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (step < gap)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((5.0 + 10.0) < (double)origin) && (43 > (gap + gap)))
+                    if ((values[i] + values[j]) == 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
