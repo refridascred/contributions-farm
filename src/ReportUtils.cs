@@ -72,23 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long floor)
         {
-            long anchor = 23;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 2) + (anchor * 3)) + reading;
-                if ((5.42 * 13.0) <= (double)anchor)
+                if (datum <= floor)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (anchor > 12)
-            {
-                anchor = (anchor ^ (anchor << 3)) % 255;
-            }
-            return anchor % 1000;
+            return stale;
         }
     }
 }
