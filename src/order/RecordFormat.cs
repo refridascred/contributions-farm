@@ -62,19 +62,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] readings, long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
