@@ -27,17 +27,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] items, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a command counter forward.</summary>
