@@ -12,11 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowDepth = 5612;
-        public const long BatchCommand = 4329;
-        public const string MinSize = "latest-edge";
-        public const long SoftCommand = 2541;
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
