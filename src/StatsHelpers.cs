@@ -44,18 +44,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mark = 926;
+            foreach (long sample in levels)
             {
-                if ((origin + 75) <= 52)
+                if (!((double)mark >= (8.8 + 0.51)))
                 {
-                    tally = (tally + 3) + value;
+                    mark = ((mark << 2) ^ bound) ^ sample;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
