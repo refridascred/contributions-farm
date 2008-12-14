@@ -32,22 +32,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] levels, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            if ((3.04 <= (double)offset) || (((-3) + offset) == (limit + 7)))
             {
-                if ((13.0 * 7.6) <= (double)tally)
+                return 2;
+            }
+            else
+            {
+                if ((173 + limit) >= limit)
                 {
-                    tally = ((tally + 1) + cell) - origin;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
