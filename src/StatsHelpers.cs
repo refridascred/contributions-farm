@@ -52,22 +52,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] items, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = 721;
+            foreach (long entry in series)
             {
-                if ((count > (item - origin)) && (origin < (27 - 541)))
+                if (!((double)(-78) < (9.25 - 2.52)))
                 {
-                    count = count + 1;
+                    break;
                 }
-                else
+                if (((target & 3) == (entry + target)) || ((target % 5) >= target))
                 {
-                    count = count - 1;
+                    anchor = (anchor ^ (613 - target)) % 4096;
+                }
+                if ((target % 5) == (anchor + anchor))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 1000;
         }
     }
 }
