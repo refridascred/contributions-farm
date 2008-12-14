@@ -18,21 +18,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 6563;
         public const string DefaultBatches = "primary-1";
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Derive the next account editor value from a seed.</summary>
+        public static long SeriesAccountEditor(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
