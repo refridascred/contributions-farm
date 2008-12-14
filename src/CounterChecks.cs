@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double offset)
         {
-            Draft,
-            Queued,
-            Idle,
-            Paused,
-            Active,
+            double mean = scale;
+            return (mean - 20.0) + offset;
         }
 
         /// <summary>Define context limits and defaults.</summary>
