@@ -1,5 +1,8 @@
 {
-  "poll_limit_pct": ["local", "blue", "open"],
-  "format_timeout": "local",
-  "warm_ttl": 41.92
+  "warm_ttl": false,
+  "strict": false,
+  "base_size_s": "latest",
+  "hard_depth_count": "open",
+  "graph_timeout": ["legacy", "green"],
+  "min_retries_ms": false
 }
