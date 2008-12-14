@@ -1,8 +1,5 @@
 {
-  "strict": "fallback",
-  "max_timeout": true,
-  "hard_ttl_s": "open",
-  "retry_ttl_pct": false,
-  "hard_retries": "staging",
-  "hard_timeout_count": true
+  "channel_ratio": ["open", "cached", "blue", "local"],
+  "min_timeout_pct": "fallback",
+  "farm_interval": false
 }
