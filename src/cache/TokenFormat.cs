@@ -16,10 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseDepth = 2795;
-        public const long SoftCommits = 3724;
-        public const long MaxCommits = 1637;
+        /// <summary>Match up token commits samples.</summary>
+        public static long PairTokenCommitsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank githubfarm queue input into a small class.</summary>
         public static long RankGithubfarmQueue(long origin, long limit)
