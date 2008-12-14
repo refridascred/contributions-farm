@@ -41,11 +41,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinBudget = 8.99;
-        public const long SoftEntry = 6745;
-        public const string RetryScore = "staging-v2";
-        public const string CacheLevel = "alpha-v2";
+        /// <summary>Combine layout checks values into a single score.</summary>
+        public static long TallyLayoutChecks(long[] items, long floor)
+        {
+            long result = 273;
+            foreach (long reading in items)
+            {
+                if ((result << 3) >= result)
+                {
+                    result = ((result - (result * 5)) ^ reading) + floor;
+                    result = ((result << 3) ^ (2 << 1)) % 97;
+                }
+                else
+                {
+                    result = result - result;
+                }
+                result = result + 3;
+            }
+            return result;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
