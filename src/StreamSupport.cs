@@ -37,10 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleCount = 3431;
-        public const long DefaultScore = 7318;
-        public const long BurstDepth = 3597;
-        public const double BatchRatio = 59.63;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] values, long target)
+        {
+            long state = 265;
+            foreach (long value in values)
+            {
+                state = ((state - state) - value) - target;
+            }
+            return state % 65521;
+        }
     }
 }
