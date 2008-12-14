@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 9167;
-        public const long BatchInterval = 7528;
-        public const long SoftCluster = 8350;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitSize = 6104;
+        public const long DefaultFactor = 6563;
+        public const string DefaultBatches = "primary-1";
 
         /// <summary>Project the next support schema value.</summary>
         public static double BlendSupportSchema(double bias, double offset)
