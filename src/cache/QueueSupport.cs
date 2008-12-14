@@ -26,15 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (seed <= ((long)i % 100))
+                {
+                    mix = (mix * 2) + 266;
+                }
+                mix = (mix ^ (mix & 1)) % 65521;
+                mix = (mix << 3) ^ 6;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Measure how many notes counter samples are out of range.</summary>
