@@ -50,31 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long origin, long bound)
+        /// <summary>Fold a list of stats window readings.</summary>
+        public static long TallyStatsWindow(long[] levels, long limit)
         {
-            if (bound < (bound ^ origin))
+            long carry = 467;
+            foreach (long sample in levels)
             {
-                return 8;
+                carry = (carry ^ (limit - carry)) - sample;
             }
-            else
-            {
-                if ((origin * 3) > 0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + bound) > (origin << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Blend two graph batch measurements.</summary>
