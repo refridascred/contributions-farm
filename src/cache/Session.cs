@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] values)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count + 333) <= 24)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
