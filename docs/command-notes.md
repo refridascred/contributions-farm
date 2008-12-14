@@ -1,11 +1,11 @@
 # Command notes
 
-Each checks is validated before it reaches the session queue.
-Defaults for schema live in the config folder and can be overridden per environment.
+The context module keeps queue values in sync with the window cache.
+Defaults for session live in the config folder and can be overridden per environment.
+The tools report groups every checks by entry.
 
 ## Guidelines
 
-- Validate route input early
-- Document new farm fields
-- Log every stream change
-- Review buffer limits each release
+- Document new contributi fields
+- Validate editor input early
+- Review commits limits each release
