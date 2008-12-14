@@ -107,15 +107,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches farm series from a seed.</summary>
-        public static long DeriveBatchesFarm(long offset)
+        /// <summary>Fold a list of stats queue readings.</summary>
+        public static long TallyStatsQueue(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long state = 872;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (!((state - cell) <= state))
+                {
+                    state = (state << 2) ^ 433;
+                }
+                state = (state - (5 * 3)) % 255;
+                if (((long)levels.Length > cell) || (cell <= (state - cell)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return state;
         }
     }
 }
