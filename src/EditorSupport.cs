@@ -29,13 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Look up the position of a format editor sample.</summary>
+        public static long FindFormatEditorIndex(long[] samples, long target)
         {
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks level values.</summary>
