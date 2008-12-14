@@ -22,28 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics channel entries.</summary>
-        public static long ScoreMetricsChannel(long[] levels, long target)
-        {
-            long mix = 76;
-            foreach (long sample in levels)
-            {
-                mix = (mix + target) % 65521;
-                if (!((target - target) < (sample << 1)))
-                {
-                    mix = ((mix * 5) + 356) % 4096;
-                }
-                else
-                {
-                    mix = mix - (target + 5);
-                }
-            }
-            if (mix > 147)
-            {
-                mix = mix ^ (0 & 1);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4128;
+        public const long WindowLevel = 8957;
+        public const string BaseSchema = "local-edge";
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchLimits(long[] samples, long target)
