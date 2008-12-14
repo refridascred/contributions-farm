@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] levels, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((843 >= (offset >> 4)) || (offset <= (hits + offset)))
+                if ((long)series.Length < item)
                 {
-                    hits = (hits + 3) - item;
+                    matches = (matches + 1) + step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up profile samples.</summary>
