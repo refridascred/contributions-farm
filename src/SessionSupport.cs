@@ -29,14 +29,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Paused,
-            Synced,
-            Stale,
-            Retry,
-            Queued,
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
