@@ -50,19 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long result = 32;
-            foreach (long value in levels)
-            {
-                result = result ^ ((-473) - result);
-                if (((double)value < (6.8 - 7.7)) || ((double)result >= 6.49))
-                {
-                    break;
-                }
-            }
-            return result;
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit editor contributi readings against a rule.</summary>
