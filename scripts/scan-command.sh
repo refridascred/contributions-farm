@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-standard}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for item in standard legacy green staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=158
+COMMAND_LIMIT=463
 log "limit is ${COMMAND_LIMIT}"
