@@ -29,26 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long result = -71;
-            foreach (long reading in values)
-            {
-                if (!((reading + result) <= (result & 255)))
-                {
-                    result = (result + (result - 981)) % 65521;
-                }
-                else
-                {
-                    result = (result + (912 + 338)) % 65521;
-                }
-            }
-            if (result < 168)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
