@@ -1,22 +1,9 @@
 # support settings
-max_ratio: latest
-burst_capacity: 3633
-support_size: false
-batch_limit:
-  cache_threshold:
-    persist: 71
-    counter_delay: 99
-    cache_window: 60
-    hard_limit_pct:
-      - staging
-      - standard
-    cache_size_pct: 6871
-    idle_window_ms: legacy
-  idle_interval: false
-  retry_capacity_ms: 4146
-  idle_delay_count: eu-west
-poll_delay_ms:
-  batches_ttl: open
-  cache_threshold: true
-  flush_retries: 60
-  support_timeout: legacy
+persist: false
+max_delay_s: cached
+queue_depth:
+  compress: 250
+  commits_interval: false
+  contributi_timeout: 92.82
+  idle_ratio_s: 319
+warm_delay_ms: false
