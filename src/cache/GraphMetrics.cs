@@ -17,13 +17,11 @@ namespace Common.Utilities
         public const long WindowMetric = 1040;
         public const long BatchFactor = 6258;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Synced,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchCount = 1620;
+        public const long BurstBatches = 410;
+        public const long LimitBatches = 111;
+        public const double BatchBatches = 54.1;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxQueue = 2361;
