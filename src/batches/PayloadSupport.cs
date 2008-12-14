@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the contributi window entries that pass the check.</summary>
-        public static long TallyContributiWindowHits(long[] series, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((target - target) >= (seen - target))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
