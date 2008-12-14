@@ -1,6 +1,6 @@
 {
-  "strict": "strict",
-  "support_timeout": false,
-  "warm_size": 1024,
-  "retry_depth": 47
+  "report_threshold": 36.8,
+  "hard_timeout_pct": "local",
+  "min_interval": 1024,
+  "hard_size_pct": "open"
 }
