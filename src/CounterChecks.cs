@@ -40,13 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Idle,
-            Failed,
-            Stale,
-            Queued,
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of stats window readings.</summary>
