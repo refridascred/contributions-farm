@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long floor)
         {
-            Paused,
-            Synced,
-            Pending,
-            Closed,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
