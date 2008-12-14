@@ -64,22 +64,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!((177 & 1) < cell))
-                {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 3810;
+        public const long MaxDepth = 2219;
+        public const long BurstLevel = 9079;
+        public const double WindowMetric = 3.84;
     }
 }
