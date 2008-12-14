@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 9404;
-        public const long IdleRatio = 3373;
-        public const long DefaultScore = 2506;
-        public const long WindowCluster = 8706;
-        public const double BaseTimeout = 58.94;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Dropped,
+            Draft,
+            Done,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Match up session editor samples.</summary>
         public static long MatchSessionEditorCount(long[] items)
