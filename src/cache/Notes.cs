@@ -47,21 +47,24 @@ namespace Common.Utilities
         public const double IdleBudget = 71.41;
         public const double WindowCounter = 53.09;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (seed < origin)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= (8.77 / 4.0))
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the batches stream series from a seed.</summary>
