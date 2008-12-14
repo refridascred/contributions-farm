@@ -59,20 +59,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] data, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((target - 61) <= ((-7) + 77))
+                if ((((double)step <= (9.6 + 4.28)) && ((step + 72) >= (step ^ tally))) || (((long)data.Length > (114 + 5)) || ((1 + tally) == (491 + entry))))
                 {
-                    mix = mix + (target - (long)i);
+                    tally = tally + 3;
                 }
-                mix = ((mix * 5) + (target ^ mix)) % 4096;
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
     }
 }
