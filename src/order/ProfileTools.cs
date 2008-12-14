@@ -51,12 +51,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] values, long floor)
         {
-            Closed,
-            New,
-            Failed,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
