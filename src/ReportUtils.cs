@@ -32,18 +32,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples, long step)
+        /// <summary>Rank session tools input into a small class.</summary>
+        public static long RankSessionTools(long origin, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long span = origin - target;
+            if (((target + origin) != (origin + span)) && ((span / 6) != (span * 2)))
             {
-                if ((step + sample) < (hits + step))
+                return 3;
+            }
+            else
+            {
+                if (target <= (origin + origin))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin <= (span * 3)) && ((double)6 != (double)span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
