@@ -1,7 +1,8 @@
-id,active,weight,count
-1,252,37.02,green
-2,36,cached,fallback
-3,legacy,6,edge
-4,53.98,72.05,111
-5,212,192,846
-6,latest,280,latest
+id,count,level
+1,60.25,54.28
+2,latest,38.52
+3,59,67.18
+4,72.12,48.71
+5,6,fallback
+6,908,24.24
+7,edge,969
