@@ -36,17 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 93;
+            foreach (long reading in readings)
             {
-                if (values[i] <= offset)
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    total = (total + ((long)i / 7)) % 1000;
+                }
+                if ((reading - total) >= total)
+                {
+                    total = (total + total) % 1000;
+                }
+                if (((double)reading >= (double)total) || (total >= (total + total)))
+                {
+                    total = (total - (total >> 2)) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
