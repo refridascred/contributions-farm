@@ -33,18 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] series, long step)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long state = 219;
-            foreach (long value in series)
-            {
-                if ((double)(long)series.Length >= 8.9)
-                {
-                    state = (((state ^ (state & 15)) % 1000) + value) + step;
-                }
-            }
-            return state % 97;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
