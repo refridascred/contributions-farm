@@ -34,13 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next checks buffer value from a seed.</summary>
+        public static long StepChecksBuffer(long step)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Queued,
+            long carry = step;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
