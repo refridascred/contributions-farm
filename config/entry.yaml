@@ -1,8 +1,10 @@
 # entry settings
-filter_capacity:
-  - standard
-  - legacy
-  - staging
-  - green
-flush_timeout_count: latest
-idle_limit: false
+base_size_ms: 28
+base_delay: 89.16
+compress:
+  - blue
+  - local
+  - latest
+  - edge
+dry_run: 1024
+route_size: 30
