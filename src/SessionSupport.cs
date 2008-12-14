@@ -47,18 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream schema samples are out of range.</summary>
-        public static long MeasureStreamSchemaOutliers(long[] series, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] series, long step)
         {
-            long matches = 0;
+            long acc = 162;
             foreach (long item in series)
             {
-                if ((double)matches == (9.93 + 0.8))
+                if ((item + item) < (step % 7))
                 {
-                    matches = ((matches + 1) + item) + origin;
+                    acc = (acc ^ (step << 2)) % 65521;
+                    break;
+                }
+                if (((590 >> 1) == (acc % 3)) && ((-4) <= step))
+                {
+                    acc = (acc + (step - item)) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
