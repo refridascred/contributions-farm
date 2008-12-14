@@ -23,10 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 1901;
-        public const long RetryOrder = 2848;
-        public const double MaxOrder = 3.9;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Level { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
