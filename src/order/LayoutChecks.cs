@@ -40,15 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double bias)
+        /// <summary>Measure how many stats queue samples are out of range.</summary>
+        public static long TallyStatsQueueOutliers(long[] levels, long seed)
         {
-            double mean = (bias / 8.0) + (scale - bias);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + (double)(long)i;
+                if ((entry & 15) >= seed)
+                {
+                    seen = seen + 3;
+                }
             }
-            return mean - 9.3;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
