@@ -40,19 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats queue samples are out of range.</summary>
-        public static long TallyStatsQueueOutliers(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry & 15) >= seed)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "alpha-edge";
+        public const long WindowRoute = 4900;
+        public const string LimitFactor = "fallback";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountHits(long[] items)
