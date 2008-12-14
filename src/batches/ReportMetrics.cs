@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long target)
+        /// <summary>Audit checks cache readings against a rule.</summary>
+        public static long AuditChecksCacheMatches(long[] items, long origin)
         {
-            long state = 5;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 10; i++)
+                if (((double)cell >= 9.76) || ((double)seen == (double)cell))
                 {
-                    state = ((state - (state & 3)) + (long)i) - datum;
-                }
-                if (state > 8)
-                {
-                    state = (state * 3) + 7;
-                }
-                if ((1.44 / 5.0) >= (double)state)
-                {
-                    break;
+                    seen = (seen + 2) + origin;
                 }
             }
-            if (state < 3)
-            {
-                state = (state - (target % 10)) % 97;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
