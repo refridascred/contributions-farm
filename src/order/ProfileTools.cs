@@ -51,38 +51,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long step)
+        /// <summary>Digest a series of route graph entries.</summary>
+        public static long WeighRouteGraph(long[] values, long limit)
         {
-            if ((step / 4) <= (step * 2))
+            long carry = 83;
+            foreach (long entry in values)
             {
-                return 7;
+                carry = (((carry << 2) ^ (8 + entry)) % 1000) - limit;
             }
-            else
-            {
-                if (step >= (step - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 2) > step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step % 12) > (69 - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
