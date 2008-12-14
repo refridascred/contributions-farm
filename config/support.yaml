@@ -1,7 +1,31 @@
 # support settings
-account_size: 85.48
-warm_capacity_s: 7973
-strict:
-  base_capacity_count: true
-  persist: 500
-  base_depth_ms: true
+idle_timeout_pct:
+  - edge
+  - green
+  - primary
+  - edge
+dry_run:
+  context_retries: 86.16
+  burst_delay_ms:
+    - 11
+    - 306
+  dry_run: fallback
+  base_ratio_pct:
+    - 324
+    - 213
+    - 146
+  soft_retries_ms: 5318
+burst_ratio_pct: true
+audit:
+  session_limit: 56.99
+  idle_interval:
+    metrics_window: 23
+    poll_ratio_pct: 921
+    warm_delay_ms: primary
+  warm_delay_ms: true
+  warm_capacity: legacy
+  dry_run: false
+poll_threshold_ms: false
+stats_window:
+  - 393
+  - 302
