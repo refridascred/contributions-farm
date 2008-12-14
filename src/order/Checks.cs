@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count batch stream pairs that satisfy a relation.</summary>
-        public static long CompareBatchStreamCount(long[] readings)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((target2 >> 2) >= (target2 + target2)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((8.01 * 6.49) <= (double)target)
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target2 != (6.3 / 4.0))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target2 > (target % 16))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
