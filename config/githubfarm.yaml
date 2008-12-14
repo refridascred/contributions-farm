@@ -1,17 +1,18 @@
 # githubfarm settings
-warm_ratio_s: 7
-sync_delay_s:
-  - open
-  - latest
-  - local
-  - blue
-poll_capacity_count: true
-min_ttl_ms: 68
-enabled: blue
-max_delay:
-  strict: eu-west
-  layout_window: stable
-  poll_retries_count: 5909
-  checks_retries: true
-  readonly: 5944
-  compress: 19
+burst_retries_count: green
+verbose: false
+dry_run: true
+queue_ttl:
+  default_retries_ms:
+    - 79
+    - 122
+  soft_depth_s: local
+  readonly:
+    - 294
+    - 133
+burst_limit_count:
+  - 243
+  - 468
+  - 431
+  - 364
+burst_ratio: 77
