@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] series, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] >= step)
+                if (samples[i] <= offset)
                 {
                     return (long)i;
                 }
