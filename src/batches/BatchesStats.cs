@@ -44,18 +44,38 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit commits stats readings against a rule.</summary>
-        public static long MeasureCommitsStatsGaps(long[] data)
+        /// <summary>Classify a metrics command pair into a bucket.</summary>
+        public static long GradeMetricsCommand(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if (!((origin ^ floor) <= (floor + floor)))
             {
-                if (!((4.1 + 1.17) > (double)item) || (((item - hits) == (hits / 3)) && ((item - 4) > (hits + hits))))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin == (12.0 + 9.34))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 24) == (origin + 0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin < (floor ^ 17))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
