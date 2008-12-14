@@ -28,10 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 60.61;
-        public const long RetryQueue = 6128;
-        public const string WindowDepth = "local-v2";
-        public const long MaxCount = 5771;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
