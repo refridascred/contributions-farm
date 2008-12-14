@@ -58,15 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stats window readings.</summary>
-        public static long TallyStatsWindow(long[] levels, long limit)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long carry = 467;
-            foreach (long sample in levels)
-            {
-                carry = (carry ^ (limit - carry)) - sample;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Blend two order payload measurements.</summary>
