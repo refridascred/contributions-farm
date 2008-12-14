@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] items, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] data)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long datum in data)
             {
-                if ((double)entry != (4.96 + 8.2))
+                if (((8 - hits) < datum) && !(datum >= (datum ^ 585)))
                 {
-                    hits = (hits + 2) + origin;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
