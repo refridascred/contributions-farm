@@ -16,38 +16,14 @@ namespace Common.Utilities
         public const long LimitRatio = 5893;
         public const double CacheScore = 4.5;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long limit, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            if (limit < (limit >> 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((target + limit) != (target % 97)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((2 >> 5) < (84 + limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + limit) > (limit - target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
