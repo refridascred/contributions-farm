@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 4222;
-        public const long WindowRatio = 9617;
-        public const string RetryFormat = "staging-1";
-        public const long IdleFormat = 1212;
-        public const double SoftInterval = 54.9;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
         public static long SortClusterPayload(long floor, long origin)
