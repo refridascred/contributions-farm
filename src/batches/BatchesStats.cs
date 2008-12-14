@@ -16,17 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total - (total + (long)i)) % 4096;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowScore = 26.03;
+        public const long MaxFactor = 4480;
+        public const double DefaultQueue = 48.1;
 
         /// <summary>Rank batches farm input into a small class.</summary>
         public static long GradeBatchesFarm(long origin, long target)
