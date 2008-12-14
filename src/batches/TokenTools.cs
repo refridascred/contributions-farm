@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a batches cache reading by value.</summary>
-        public static long LookupBatchesCacheIndex(long[] levels, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 15;
+            foreach (long reading in levels)
             {
-                if (levels[i] <= seed)
+                if ((reading > carry) || ((double)offset != (double)carry))
                 {
-                    return (long)i;
+                    carry = (carry - (carry ^ offset)) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
