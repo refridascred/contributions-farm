@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const double RetryTimeout = 34.17;
         public const long IdleReport = 4953;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            long result = 9;
+            foreach (long sample in levels)
+            {
+                result = ((result << 3) ^ (result << 1)) ^ sample;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of session farm readings.</summary>
