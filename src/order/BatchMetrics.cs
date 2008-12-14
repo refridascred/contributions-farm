@@ -90,12 +90,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (0.43 >= (2.83 - 3.34))
+                {
+                    carry = (carry * 4) + step;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
