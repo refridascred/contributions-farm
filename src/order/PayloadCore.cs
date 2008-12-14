@@ -13,12 +13,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 7428;
-        public const string RetrySpan = "strict-v2";
-        public const long RetryTimeout = 2406;
-        public const string SoftWindow = "stable-edge";
-        public const long SoftFactor = 7330;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((step + seen) > 184)
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 3729;
