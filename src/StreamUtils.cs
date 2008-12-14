@@ -16,18 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long TallySessionTokenMatches(long[] values)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits / 2) <= value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Audit payload layout readings against a rule.</summary>
