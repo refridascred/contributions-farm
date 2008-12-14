@@ -1,10 +1,24 @@
 # entry settings
-readonly: standard
-flush_interval_s:
-  enabled: strict
-  retry_limit_s: false
-  soft_timeout_count: true
-  cache_retries_pct: 35
-  metrics_depth: 74
-  retry_capacity: true
-min_threshold_ms: stable
+notes_retries: false
+burst_window: 33.28
+dry_run: false
+sync_timeout:
+  verbose: false
+  readonly: true
+  burst_delay_count: latest
+  metrics_window:
+    context_limit: 2844
+    queue_limit: false
+    max_ttl: 7395
+    flush_threshold: 1024
+    base_delay_pct: 32.18
+  editor_interval: 28
+  editor_capacity:
+    - 207
+    - 74
+poll_interval_s: 49.48
+hard_size:
+  - 162
+  - 407
+  - 303
+  - 28
