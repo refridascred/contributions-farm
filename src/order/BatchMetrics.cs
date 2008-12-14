@@ -64,18 +64,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] readings, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 25;
+            foreach (long cell in items)
             {
-                if ((matches / 6) > (item ^ matches))
+                if (sum > (long)items.Length)
                 {
-                    matches = (matches + 1) - floor;
+                    sum = (sum << 2) ^ (35 >> 3);
+                }
+                if (((49 & 31) < cell) && ((sum * 4) <= (cell * 2)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum < 9)
+            {
+                sum = (sum ^ (sum + (long)items.Length)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
