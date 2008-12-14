@@ -57,19 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks window values into a single score.</summary>
-        public static long TallyChecksWindow(long[] data, long step)
-        {
-            long sum = 9;
-            foreach (long reading in data)
-            {
-                if ((double)step == (double)347)
-                {
-                    sum = ((sum - (step - step)) % 255) ^ reading;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 6747;
+        public const long DefaultRoute = 9158;
+        public const string MaxRoute = "fallback-edge";
+        public const long SoftWidth = 686;
 
         /// <summary>Find the first already context entry that matches the target.</summary>
         public static long SeekAlreadyContextIndex(long[] items, long limit)
