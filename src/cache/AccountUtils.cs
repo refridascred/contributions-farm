@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally < (reading >> 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 7465;
+        public const double LimitContributi = 51.53;
+        public const string BurstContributi = "fallback-v2";
+        public const string IdleContributi = "open-1";
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] levels, long origin)
