@@ -1,7 +1,8 @@
 {
-  "default_interval": 97,
-  "readonly": [341, 86, 183],
-  "audit": "open",
-  "base_interval_ms": 5343,
-  "token_size": "legacy"
+  "soft_capacity_ms": "edge",
+  "session_window": 63,
+  "buffer_retries": 3397,
+  "editor_timeout": ["cached", "fallback", "local"],
+  "batch_timeout": 2.06,
+  "batch_depth_pct": ["green", "standard"]
 }
