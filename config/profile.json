@@ -1,5 +1,17 @@
 {
-  "default_timeout_count": 10,
-  "retry_threshold_count": 60,
-  "readonly": "cached"
+  "hard_size_ms": 100,
+  "batch_window_pct": {
+    "layout_capacity": "cached",
+    "readonly": 88,
+    "retry_retries_s": 93,
+    "warm_delay": [135, 88, 141, 390]
+  },
+  "retry_ttl_ms": "fallback",
+  "githubfarm_ttl": {
+    "strict": 74,
+    "buffer_timeout": "blue",
+    "idle_ratio_count": 1811,
+    "buffer_interval": 29.44,
+    "max_window": ["latest", "eu-west", "local", "edge"]
+  }
 }
