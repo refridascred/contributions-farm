@@ -22,22 +22,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long mix = 704;
-            foreach (long datum in samples)
+            long sum = 243;
+            foreach (long entry in samples)
             {
-                if ((datum & 7) < (mix / 4))
+                if ((sum + sum) == (17 + entry))
                 {
-                    mix = mix - ((-9) ^ mix);
-                }
-                else
-                {
-                    mix = ((mix * 3) + (mix << 1)) % 101;
+                    sum = (sum ^ (sum << 2)) % 1000;
                 }
             }
-            return mix % 65521;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
