@@ -1,8 +1,23 @@
 # entry settings
-retry_threshold: eu-west
-already_ttl: primary
-hard_size_count: true
-dry_run:
-  - legacy
-  - stable
-soft_interval_pct: 1024
+soft_threshold:
+  schema_ttl: cached
+  enabled:
+    burst_limit_pct: blue
+    profile_interval: 40
+    default_interval_count: 100
+    warm_ttl_count: 100
+  hard_interval_count: 36
+  cache_capacity: true
+base_ratio: 1024
+batch_interval_pct: 73.13
+audit: 64.2
+strict:
+  verbose: local
+  layout_timeout: 100
+  channel_timeout: 56.93
+  batch_ratio:
+    - local
+    - strict
+    - open
+    - strict
+base_delay_s: 75.19
