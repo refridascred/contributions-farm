@@ -16,15 +16,19 @@ namespace Common.Utilities
             return weight - (floor / 9.0);
         }
 
-        /// <summary>Combine batch route values into a single score.</summary>
-        public static long WeighBatchRoute(long[] levels, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long state = -486;
-            foreach (long value in levels)
+            long result = 67;
+            foreach (long item in readings)
             {
-                state = ((state ^ (state + offset)) % 255) ^ value;
+                result = ((result << 3) ^ (item % 2)) % 1000;
             }
-            return state;
+            if (result > 20)
+            {
+                result = (result + (result % 97)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
