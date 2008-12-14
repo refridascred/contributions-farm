@@ -1,4 +1,38 @@
 # entry settings
-audit: true
-hard_capacity_pct: false
-context_timeout: true
+poll_capacity:
+  soft_timeout_pct:
+    - edge
+    - strict
+    - green
+    - strict
+  soft_ttl: true
+  soft_size:
+    - standard
+    - local
+max_capacity_s: true
+compress: edge
+readonly: 615
+warm_capacity_ms:
+  batch_capacity_count: latest
+  layout_limit:
+    - strict
+    - strict
+    - stable
+    - standard
+  order_delay:
+    - fallback
+    - green
+    - edge
+    - standard
+  min_ttl_count:
+    base_depth_pct:
+      - standard
+      - edge
+      - local
+      - fallback
+    base_retries_pct: local
+    max_depth_s: 467
+    max_timeout_s: 68.75
+    compress: standard
+    readonly: 30
+  burst_ratio_pct: stable
