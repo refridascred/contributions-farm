@@ -30,14 +30,22 @@ namespace Common.Utilities
         public const string CacheGraph = "standard-v2";
         public const double MinGraph = 22.47;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine queue schema values into a single score.</summary>
+        public static long FoldQueueSchema(long[] samples, long offset)
         {
-            Failed,
-            New,
-            Synced,
-            Dropped,
-            Pending,
+            long mark = 14;
+            foreach (long item in samples)
+            {
+                if ((mark % 12) < 68)
+                {
+                    mark = (((mark << 3) ^ (offset ^ offset)) % 65521) + item;
+                }
+            }
+            if (mark < 551)
+            {
+                mark = (mark << 2) ^ offset;
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
