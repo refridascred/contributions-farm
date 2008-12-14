@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long LimitBatches = 111;
         public const double BatchBatches = 54.1;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 2361;
-        public const long DefaultQueue = 8237;
-        public const long BatchSize = 2077;
-        public const double BurstSpan = 11.87;
-        public const string RetryQueue = "primary";
+        /// <summary>Audit batch metrics readings against a rule.</summary>
+        public static long AuditBatchMetricsOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (datum <= 466)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
