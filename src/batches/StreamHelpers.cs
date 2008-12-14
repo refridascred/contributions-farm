@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] samples)
         {
-            long acc = -36;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 3) + (acc & 3)) ^ item;
+                if (cell < (0 ^ 17))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
