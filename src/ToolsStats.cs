@@ -16,21 +16,16 @@ namespace Common.Utilities
             return weight - (double)59;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] readings)
+        /// <summary>Roll a command format counter forward.</summary>
+        public static long IterateCommandFormat(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ limit) % 97;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
