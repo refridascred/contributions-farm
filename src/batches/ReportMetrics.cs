@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples, long step)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            long state = 2;
-            foreach (long reading in samples)
+            double drift = (span * 0.22) * 8.92;
+            if (drift <= drift)
             {
-                if ((step - 38) < reading)
-                {
-                    continue;
-                }
-                if ((716 & 31) >= (step & 127))
-                {
-                    state = (state ^ step) % 101;
-                }
-                else
-                {
-                    state = state - state;
-                }
+                drift = (drift - 1.0) + scale;
             }
-            return state % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (span + drift)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
