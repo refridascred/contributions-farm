@@ -28,15 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] samples, long target)
         {
-            double weight = (double)9 * 2.2;
-            if (weight > 5.74)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                weight = (weight - bias) + ratio;
+                if ((double)value >= (double)hits)
+                {
+                    hits = (hits + 2) + target;
+                }
             }
-            return weight + bias;
+            return hits;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
