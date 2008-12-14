@@ -1,24 +1,7 @@
 {
-  "retry_interval_ms": ["strict", "stable", "standard", "green"],
-  "filter_capacity": {
-    "max_capacity": 3752,
-    "cache_threshold_ms": 1024,
-    "soft_window_pct": 86,
-    "dry_run": "eu-west",
-    "audit": {
-      "idle_size": "local",
-      "strict": 784,
-      "batches_retries": 14.72,
-      "compress": "stable"
-    }
-  },
-  "sync_ttl_count": {
-    "audit": 44.1,
-    "warm_interval": 30,
-    "compress": 60,
-    "layout_timeout": "standard",
-    "default_window_count": 14
-  },
-  "route_depth": 1218,
-  "soft_capacity_ms": true
+  "already_retries": 5350,
+  "contributi_delay": 43,
+  "channel_timeout": "staging",
+  "max_delay_s": "local",
+  "readonly": 250
 }
