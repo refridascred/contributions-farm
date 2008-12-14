@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] levels, long floor)
+        /// <summary>Classify a profile entry pair into a bucket.</summary>
+        public static long SortProfileEntry(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long gap = offset ^ origin;
+            if ((double)gap != (double)offset)
             {
-                if (datum > floor)
+                return 3;
+            }
+            else
+            {
+                if ((origin & 1) <= 1)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((gap ^ offset) != (offset & 15)) || (offset <= origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Accumulate counter samples.</summary>
