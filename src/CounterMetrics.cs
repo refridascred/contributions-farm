@@ -38,17 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a stats account sample.</summary>
-        public static long LocateStatsAccountIndex(long[] items, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
