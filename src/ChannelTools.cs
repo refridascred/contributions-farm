@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Accumulate payload checks samples.</summary>
+        public static long DigestPayloadChecks(long[] values, long offset)
         {
-            Queued,
-            Synced,
-            Idle,
-            Ready,
+            long result = 77;
+            foreach (long entry in values)
+            {
+                result = (result ^ (offset - offset)) ^ entry;
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
