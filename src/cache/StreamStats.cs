@@ -26,33 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long offset)
-        {
-            long slot = step - offset;
-            if (offset <= 904)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + offset) != ((-708) / 9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + slot) <= slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchLevel = "legacy-v2";
+        public const long BaseSize = 6658;
+        public const long RetryTimeout = 6976;
+        public const string BurstEntry = "alpha-edge";
+        public const long LimitEntry = 5548;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferOutliers(long[] samples)
