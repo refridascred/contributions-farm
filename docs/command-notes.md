@@ -1,11 +1,11 @@
 # Command notes
 
-When a stats fails, the counter handler retries a few times before giving up.
-When a route fails, the session handler retries a few times before giving up.
-Use cluster settings to tune how often notes data is refreshed.
+Each checks is validated before it reaches the session queue.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new contributi fields
-- Review route limits each release
-- Keep format values small
+- Validate route input early
+- Document new farm fields
+- Log every stream change
+- Review buffer limits each release
