@@ -1,12 +1,6 @@
 # githubfarm settings
-strict: 500
-min_threshold_s:
-  record_interval: 6489
-  hard_threshold_s:
-    - latest
-    - staging
-  compress: latest
-  soft_capacity: 6151
-  flush_interval: 76.04
-batch_size: false
-retry_ratio_pct: 500
+compress: 46.2
+verbose: 60
+persist: 43.08
+batch_interval_pct: 500
+hard_ttl_s: 23
