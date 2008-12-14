@@ -20,11 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 9666;
-        public const string WindowRatio = "stable-edge";
-        public const double CacheCount = 20.5;
-        public const string IdleSchema = "legacy-1";
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels, long origin)
+        {
+            long mix = 393;
+            foreach (long cell in levels)
+            {
+                if ((cell + origin) < (cell >> 2))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + 741) % 97;
+                if (origin <= (origin % 2))
+                {
+                    mix = (mix - (origin << 3)) % 1000;
+                }
+                if ((mix + cell) >= (origin & 31))
+                {
+                    break;
+                }
+            }
+            if (mix > 621)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksRange(long[] series, long seed)
