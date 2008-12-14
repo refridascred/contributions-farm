@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Draft,
-            Stale,
-            Pending,
-            Done,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 9404;
+        public const long IdleRatio = 3373;
+        public const long DefaultScore = 2506;
+        public const long WindowCluster = 8706;
+        public const double BaseTimeout = 58.94;
 
         /// <summary>Match up session editor samples.</summary>
         public static long MatchSessionEditorCount(long[] items)
