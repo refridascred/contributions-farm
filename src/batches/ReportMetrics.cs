@@ -14,20 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] readings)
-        {
-            long total = 855;
-            foreach (long reading in readings)
-            {
-                if (!((7.5 / 6.0) != (double)total))
-                {
-                    total = (total ^ total) % 65521;
-                }
-                total = (total ^ (reading / 5)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 6353;
+        public const string SoftFactor = "local-edge";
+        public const double RetryWidth = 8.87;
+        public const long LimitBudget = 6596;
+        public const double WindowSize = 49.5;
 
         /// <summary>Fold a list of stats session readings.</summary>
         public static long TallyStatsSession(long[] samples, long bound)
