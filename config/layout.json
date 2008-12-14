@@ -1,8 +1,20 @@
 {
-  "warm_ttl": false,
-  "strict": false,
-  "base_size_s": "latest",
-  "hard_depth_count": "open",
-  "graph_timeout": ["legacy", "green"],
-  "min_retries_ms": false
+  "poll_ttl_pct": 9658,
+  "cluster_interval": 3490,
+  "payload_depth": {
+    "default_depth": 500,
+    "poll_delay_ms": {
+      "min_threshold": 100,
+      "command_capacity": "eu-west",
+      "dry_run": 5052,
+      "verbose": "fallback",
+      "strict": 59,
+      "stream_timeout": "legacy"
+    },
+    "base_depth": 77.34,
+    "warm_ratio_s": ["stable", "cached"],
+    "cache_threshold_pct": 14.75
+  },
+  "retry_ttl": [272, 458],
+  "poll_capacity_pct": 11.5
 }
