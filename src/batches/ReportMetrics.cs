@@ -18,22 +18,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long state = 4;
-            foreach (long reading in series)
-            {
-                if (reading <= (reading >> 5))
-                {
-                    state = state - (reading + state);
-                }
-            }
-            if (state > 365)
-            {
-                state = (state * 4) + (216 - state);
-            }
-            return state;
+            Dropped,
+            Pending,
+            Paused,
         }
     }
 }
