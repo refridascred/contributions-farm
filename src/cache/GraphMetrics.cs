@@ -71,12 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Retry,
-            Queued,
-            Idle,
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a format header.</summary>
