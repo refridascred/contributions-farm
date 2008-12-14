@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double BaseInterval = 79.99;
         public const string WindowFactor = "latest-v2";
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i >> 3) >= score)
-                {
-                    score = score + (long)i;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
