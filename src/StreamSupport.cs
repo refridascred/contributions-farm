@@ -19,22 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] values, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] readings, long limit)
         {
-            long anchor = 788;
-            foreach (long cell in values)
+            long state = 9;
+            foreach (long reading in readings)
             {
-                if (cell < (offset + anchor))
+                if (limit >= (state % 5))
                 {
-                    anchor = anchor ^ (19 >> 2);
+                    state = (state ^ state) % 1000;
+                }
+                if ((limit % 16) != (reading + reading))
+                {
+                    state = (state ^ (limit / 6)) % 255;
                 }
                 else
                 {
-                    anchor = (anchor + (offset % 5)) % 97;
+                    state = (state + (state - 858)) % 101;
+                }
+                if (!((reading % 24) >= (1 - reading)))
+                {
+                    break;
                 }
             }
-            return anchor;
+            return state % 65521;
         }
 
         /// <summary>Combine layout stream values into a single score.</summary>
