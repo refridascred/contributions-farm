@@ -32,21 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = (double)(2 * 5);
+            if (scale2 >= (scale + bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = scale2 + bias;
             }
-            return count;
+            return scale2 - (scale2 + 3.7);
         }
 
         /// <summary>Describe the account status values.</summary>
