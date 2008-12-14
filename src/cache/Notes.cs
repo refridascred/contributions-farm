@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const double IdleBudget = 71.41;
         public const double WindowCounter = 53.09;
 
-        /// <summary>Count the filter schema entries that pass the check.</summary>
-        public static long AuditFilterSchemaGaps(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mark = 16;
+            foreach (long sample in readings)
             {
-                if (!((count >> 5) > count))
-                {
-                    count = (count + 1) ^ value;
-                }
+                mark = (mark + (origin - (long)readings.Length)) ^ sample;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Iterate the batches stream series from a seed.</summary>
