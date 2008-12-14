@@ -1,7 +1,25 @@
 # githubfarm settings
-min_timeout_ms: 49
-record_interval: 13.61
-readonly: 13.66
-token_limit: 100
-poll_ratio_ms: primary
-enabled: blue
+record_size:
+  filter_capacity:
+    burst_interval:
+      - 477
+      - 372
+      - 225
+      - 413
+    batches_window:
+      - cached
+      - strict
+      - fallback
+      - local
+    sync_delay: 10.27
+  schema_limit: 1344
+  verbose: cached
+  default_timeout_s: false
+base_window: 1024
+counter_limit:
+  - open
+  - open
+  - edge
+  - latest
+min_limit_ms: false
+checks_ratio: 22.49
