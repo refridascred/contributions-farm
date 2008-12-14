@@ -20,18 +20,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 1246;
+        public const string WindowTimeout = "legacy-v2";
+        public const long BaseFilter = 1278;
+        public const long HardDepth = 2527;
 
         /// <summary>Measure how many metric graph samples are out of range.</summary>
         public static long MeasureMetricGraphGaps(long[] items, long limit)
