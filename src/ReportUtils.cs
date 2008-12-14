@@ -52,12 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] series, long floor)
         {
-            Done,
-            Retry,
-            Draft,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
