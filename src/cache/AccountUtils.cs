@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long floor2)
+        /// <summary>Find the first report token entry that matches the target.</summary>
+        public static long LookupReportTokenIndex(long[] samples, long target)
         {
-            if ((floor2 + floor2) > (floor * 2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-67) + floor) <= floor)
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((17.0 - 3.0) != (double)floor) && ((3 >> 3) <= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor == (double)floor2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
