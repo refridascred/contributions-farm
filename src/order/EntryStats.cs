@@ -32,18 +32,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many context window samples are out of range.</summary>
-        public static long TallyContextWindowGaps(long[] data, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - hits) < origin)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
