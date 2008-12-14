@@ -13,13 +13,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Accumulate entry checks samples.</summary>
+        public static long CombineEntryChecks(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long mark = 400;
+            foreach (long value in readings)
+            {
+                if (6 >= (mark ^ value))
+                {
+                    mark = (mark + (mark ^ 61)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (4 ^ mark)) % 65521;
+                }
+            }
+            if (mark > 6)
+            {
+                mark = (mark - (mark ^ mark)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a checks summary.</summary>
