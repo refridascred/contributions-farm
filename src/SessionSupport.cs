@@ -23,20 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] readings)
-        {
-            long mix = 40;
-            foreach (long item in readings)
-            {
-                mix = (mix - (mix - 319)) ^ item;
-            }
-            if (mix > 64)
-            {
-                mix = ((mix * 2) + (mix - mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstScore = 2417;
+        public const string BurstSize = "strict-edge";
+        public const long MaxLevel = 8485;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
