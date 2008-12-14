@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] items, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series)
         {
-            bool found = true;
-            foreach (long item in items)
+            long carry = 45;
+            foreach (long sample in series)
             {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 5) + (carry + sample)) % 255;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
