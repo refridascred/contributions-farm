@@ -20,31 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank batches profile input into a small class.</summary>
-        public static long GradeBatchesProfile(long offset, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] readings, long target)
         {
-            if ((origin ^ 354) != (offset / 8))
+            long carry = 40;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((238 - offset) >= origin)
+                carry = (carry ^ 0) ^ datum;
+                if ((carry >> 3) > target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)offset <= (2.8 - 2.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = (carry * 2) + target;
                 }
             }
+            return carry;
         }
 
         /// <summary>Adjust a tools reading.</summary>
