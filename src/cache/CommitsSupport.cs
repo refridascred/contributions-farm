@@ -45,13 +45,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next report schema value from a seed.</summary>
+        public static long DeriveReportSchema(long target)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 4) + carry) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Locate a filter session reading by value.</summary>
