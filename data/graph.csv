@@ -1,6 +1,10 @@
-id,owner,state,rank,count
-1,810,62,green,standard
-2,37.05,staging,6.49,blue
-3,192,436,232,24.48
-4,417,primary,standard,764
-5,41.41,553,273,842
+id,region,state
+1,472,29.89
+2,84.81,36.33
+3,97.11,local
+4,fallback,993
+5,local,48
+6,legacy,30
+7,82.98,61.8
+8,strict,93.39
+9,green,486
