@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long score = 5;
-            foreach (long item in series)
-            {
-                score = score + (item + (long)series.Length);
-                score = (score << 3) ^ item;
-            }
-            if (score < 8)
-            {
-                score = (score ^ (-229)) % 101;
-            }
-            return score;
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
