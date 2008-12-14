@@ -22,38 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long target, long origin)
+        /// <summary>Digest a series of layout tools entries.</summary>
+        public static long WeighLayoutTools(long[] levels, long target)
         {
-            if ((2 - origin) < target)
+            long total = 55;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + origin) <= origin)
+                if (!(total >= (total ^ 33)))
                 {
-                    return 6;
+                    total = ((total << 2) ^ (total - total)) + value;
                 }
                 else
                 {
-                    if ((origin + origin) <= (target + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin > (origin / 9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = ((total << 2) ^ (5 + target)) % 255;
                 }
             }
+            return total;
         }
 
         /// <summary>Combine format values into a single score.</summary>
