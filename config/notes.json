@@ -1,7 +1,22 @@
 {
-  "readonly": 2475,
-  "idle_delay_ms": 72.82,
-  "idle_window": "open",
-  "soft_retries_s": "latest",
-  "cache_limit": 82.06
+  "default_capacity_s": "latest",
+  "audit": {
+    "persist": {
+      "strict": false,
+      "persist": 4245,
+      "cache_size": "stable",
+      "verbose": ["stable", "legacy", "cached", "staging"]
+    },
+    "min_delay_s": 27,
+    "retry_limit_count": 20
+  },
+  "max_ttl_count": "open",
+  "idle_interval_pct": {
+    "commits_window": 250,
+    "buffer_timeout": "legacy",
+    "strict": 75,
+    "record_window": "cached"
+  },
+  "soft_capacity": [11, 360, 423, 21],
+  "readonly": true
 }
