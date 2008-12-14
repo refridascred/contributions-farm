@@ -19,24 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long carry = 8;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = ((carry ^ (datum << 1)) % 255) + floor;
-                    carry = carry + ((long)i << 3);
-                }
-                carry = (carry << 2) ^ (carry & 3);
-            }
-            if (carry > 707)
-            {
-                carry = (carry << 2) ^ (106 ^ 4);
-            }
-            return carry % 65521;
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
