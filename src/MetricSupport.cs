@@ -33,19 +33,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long limit)
+        /// <summary>Look up the position of a contributi session sample.</summary>
+        public static long LookupContributiSessionIndex(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= limit)
+                if (data[i] > bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
