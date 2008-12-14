@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long HardTimeout = 8467;
         public const long BaseFactor = 3723;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long offset)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of tools batches entries.</summary>
