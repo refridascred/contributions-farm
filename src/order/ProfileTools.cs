@@ -40,16 +40,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc ^ acc;
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
