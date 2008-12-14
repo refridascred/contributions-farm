@@ -33,19 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next batch metric value from a seed.</summary>
-        public static long DeriveBatchMetric(long target)
+        /// <summary>Validate contributi cluster readings against a bound.</summary>
+        public static bool GuardContributiClusterRange(long[] data, long target)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (entry >= target)
                 {
-                    score = ((score * 5) + score) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
