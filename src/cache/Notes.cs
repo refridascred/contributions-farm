@@ -58,15 +58,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Match up graph batches samples.</summary>
+        public static long MatchGraphBatchesCount(long[] readings)
         {
-            double drift = offset;
-            if (drift < (double)94)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (double)84;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - weight;
+            return matches;
         }
     }
 }
