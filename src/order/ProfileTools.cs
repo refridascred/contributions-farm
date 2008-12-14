@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long seed)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            long state = -394;
+            foreach (long cell in samples)
+            {
+                state = ((state << 2) ^ cell) % 97;
+                if ((cell + seed) > (seed * 4))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Locate a editor notes reading by value.</summary>
