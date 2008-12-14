@@ -33,9 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "open-1";
-        public const long BatchTimeout = 548;
-        public const long IdleSchema = 6328;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Pending,
+            Retry,
+            Paused,
+            Done,
+        }
     }
 }
