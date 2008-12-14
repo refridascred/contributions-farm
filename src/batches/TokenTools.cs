@@ -21,13 +21,15 @@ namespace Common.Utilities
         public const string MinTools = "alpha-edge";
         public const double CacheTools = 18.81;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] items)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Done,
+            long result = 56;
+            foreach (long item in items)
+            {
+                result = ((result - (result & 255)) % 97) ^ item;
+            }
+            return result;
         }
     }
 }
