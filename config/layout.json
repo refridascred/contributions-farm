@@ -1,20 +1,5 @@
 {
-  "soft_threshold_s": "standard",
-  "profile_limit": 500,
-  "persist": {
-    "warm_delay": {
-      "min_interval": true,
-      "base_depth_ms": [131, 144],
-      "warm_ttl": [387, 471, 182, 456],
-      "flush_retries": 68,
-      "default_depth": 64.49,
-      "context_ratio": "open"
-    },
-    "stats_capacity": "fallback",
-    "enabled": 95,
-    "compress": 38.7,
-    "schema_capacity": true
-  },
-  "min_ratio_pct": [83, 270, 490, 91],
-  "burst_retries": 7
+  "retry_threshold": 100,
+  "queue_timeout": "eu-west",
+  "verbose": 2.27
 }
