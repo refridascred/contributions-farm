@@ -89,9 +89,14 @@ namespace Common.Utilities
             return bias + (floor - 5.5);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 37.96;
-        public const string LimitBudget = "alpha-edge";
-        public const long DefaultCache = 9440;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Done,
+            Draft,
+            Active,
+            Synced,
+            Closed,
+        }
     }
 }
