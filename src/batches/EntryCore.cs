@@ -59,11 +59,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 7860;
-        public const double WindowTimeout = 83.4;
-        public const long LimitInterval = 5567;
-        public const double LimitWidth = 90.38;
-        public const long IdleAlready = 6155;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((target - 61) <= ((-7) + 77))
+                {
+                    mix = mix + (target - (long)i);
+                }
+                mix = ((mix * 5) + (target ^ mix)) % 4096;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
