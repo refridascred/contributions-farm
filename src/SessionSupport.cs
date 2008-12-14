@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] readings, long target)
+        /// <summary>Compare every pair of cache batches readings.</summary>
+        public static long PairCacheBatchesCount(long[] data)
         {
-            long carry = 40;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ 0) ^ datum;
-                if ((carry >> 3) > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry * 2) + target;
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Adjust a tools reading.</summary>
