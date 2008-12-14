@@ -77,10 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 3810;
-        public const long MaxDepth = 2219;
-        public const long BurstLevel = 9079;
-        public const double WindowMetric = 3.84;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Draft,
+            Synced,
+            Retry,
+            Paused,
+            Failed,
+        }
     }
 }
