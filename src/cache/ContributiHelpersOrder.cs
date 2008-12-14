@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double bias2)
-        {
-            double mean = (double)(428 + 13);
-            if (mean >= (double)0)
-            {
-                mean = (mean + (double)6) - bias;
-            }
-            return mean + bias2;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 8940;
+        public const long DefaultSpan = 4480;
+        public const long RetryLevel = 266;
+        public const string BaseLevel = "alpha-edge";
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long bound)
