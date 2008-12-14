@@ -69,13 +69,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseSize = 5631;
+        public const string DefaultInterval = "latest-edge";
+        public const string SoftInterval = "strict-v2";
+        public const long CacheTools = 8157;
     }
 }
