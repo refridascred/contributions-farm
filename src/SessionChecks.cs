@@ -38,19 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings, long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mark = 5;
-            foreach (long item in readings)
-            {
-                mark = ((mark * 3) + (mark + item)) + limit;
-                if (((double)44 == (double)mark) || (item < 633))
-                {
-                    mark = (mark * 4) + (84 - item);
-                }
-            }
-            return mark;
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate buffer account samples.</summary>
