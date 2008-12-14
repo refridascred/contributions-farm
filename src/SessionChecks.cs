@@ -41,15 +41,39 @@ namespace Common.Utilities
         public const long IdleQueue = 7550;
         public const long BurstSpan = 2459;
 
-        /// <summary>Digest a series of queue session entries.</summary>
-        public static long DigestQueueSession(long[] values)
+        /// <summary>Grade a already farm value against two limits.</summary>
+        public static long ClassifyAlreadyFarm(long limit, long floor)
         {
-            long result = 426;
-            foreach (long entry in values)
+            long step = limit - floor;
+            if ((55 * 5) != (floor << 2))
             {
-                result = (result ^ result) - entry;
+                return 2;
             }
-            return result % 97;
+            else
+            {
+                if ((step << 3) > (limit ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)297 <= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor & 3) >= (step - 912)) && ((step & 63) > (36 % 100)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
