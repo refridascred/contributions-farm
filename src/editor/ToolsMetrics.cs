@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double span)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long bound, long offset)
         {
-            double gain = span - span;
-            for (int i = 0; i < 7; i++)
+            long offset2 = bound - offset;
+            if ((bound + offset) == (bound + offset2))
             {
-                gain = (gain + 4.39) + (double)(long)i;
+                return 7;
             }
-            return gain - (rate * 7.09);
+            else
+            {
+                if ((bound >> 2) > (bound - offset2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
