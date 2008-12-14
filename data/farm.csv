@@ -1,7 +1,7 @@
-id,level,label,token,region
-1,80.0,fallback,fallback,24.31
-2,202,edge,671,212
-3,693,737,598,8
-4,780,628,2.84,226
-5,legacy,61.41,905,54.41
-6,latest,68.78,69.83,621
+id,active,weight,count
+1,252,37.02,green
+2,36,cached,fallback
+3,legacy,6,edge
+4,53.98,72.05,111
+5,212,192,846
+6,latest,280,latest
