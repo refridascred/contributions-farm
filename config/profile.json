@@ -1,8 +1,12 @@
 {
-  "already_capacity": "eu-west",
-  "retry_delay": true,
-  "batch_ttl_s": 4960,
-  "max_interval_ms": 18.66,
-  "poll_capacity_s": 4946,
-  "flush_window": 9382
+  "persist": "blue",
+  "notes_threshold": "cached",
+  "filter_timeout": {
+    "idle_timeout": "staging",
+    "burst_window": "edge",
+    "counter_capacity": "staging",
+    "readonly": [427, 416, 441],
+    "default_ratio_ms": ["open", "primary", "legacy", "standard"]
+  },
+  "cache_ttl_pct": 98
 }
