@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long state = 11;
-            foreach (long value in samples)
-            {
-                if ((state % 97) >= state)
-                {
-                    state = (state ^ state) - value;
-                }
-                else
-                {
-                    state = state + (long)samples.Length;
-                }
-                if ((state << 3) < state)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Idle,
+            Closed,
+            Stale,
+            Pending,
+            Draft,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
