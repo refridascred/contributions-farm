@@ -1,7 +1,12 @@
 {
-  "batch_size_count": "standard",
-  "channel_size": [106, 39, 467],
-  "default_window_count": 8529,
-  "buffer_retries": 60,
-  "tools_capacity": "primary"
+  "readonly": "strict",
+  "idle_window_s": "stable",
+  "min_timeout_s": {
+    "retry_window_s": false,
+    "counter_limit": 78.58,
+    "readonly": 77,
+    "cache_limit_ms": 95.59,
+    "verbose": "primary",
+    "batch_ttl_pct": "local"
+  }
 }
