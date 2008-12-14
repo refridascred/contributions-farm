@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate layout report readings against a bound.</summary>
-        public static bool GuardLayoutReportRange(long[] items, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long cur = offset + limit;
+            if (!(cur > (cur + cur)))
             {
-                if (entry < origin)
+                return 5;
+            }
+            else
+            {
+                if (3.0 <= (double)limit)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 1) == (offset - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Project the next already value.</summary>
