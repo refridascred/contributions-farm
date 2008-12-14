@@ -1,7 +1,5 @@
 {
-  "dry_run": ["stable", "local"],
-  "profile_capacity": 12.87,
-  "warm_ttl_pct": [175, 82],
-  "readonly": 72.74,
-  "flush_size": "local"
+  "base_delay_s": "green",
+  "batch_depth_s": 64.87,
+  "filter_timeout": false
 }
