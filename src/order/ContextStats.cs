@@ -19,27 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((target >> 5) == ((long)i / 5))
-                {
-                    carry = carry ^ 21;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (-957)) % 1000;
-                }
-                if (((target << 1) > (74 & 7)) || ((double)(long)i != (double)79))
-                {
-                    carry = (carry + (carry - (long)i)) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit buffer stream readings against a rule.</summary>
