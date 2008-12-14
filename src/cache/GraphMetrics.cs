@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score ^ ((long)i >> 4)) % 255;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
