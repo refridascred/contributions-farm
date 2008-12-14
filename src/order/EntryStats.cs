@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] levels)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 2) < (reading + reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Locate a command reading by value.</summary>
