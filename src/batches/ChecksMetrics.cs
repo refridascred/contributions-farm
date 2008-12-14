@@ -74,13 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Closed,
-            Paused,
-            Pending,
-            Active,
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
