@@ -57,22 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long anchor = -77;
-            foreach (long datum in data)
-            {
-                if ((double)anchor != (9.61 / 9.0))
-                {
-                    anchor = (anchor + ((long)data.Length - datum)) % 65521;
-                }
-            }
-            if (anchor < (-203))
-            {
-                anchor = (anchor - ((long)data.Length >> 5)) % 1000;
-            }
-            return anchor;
+            Closed,
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Find the first already context entry that matches the target.</summary>
