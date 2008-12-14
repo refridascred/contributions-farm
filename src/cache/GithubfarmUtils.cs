@@ -32,12 +32,20 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchDepth = 4996;
-        public const string StepEntry = "primary";
-        public const long StepSpan = 2673;
-        public const long BaseEntry = 7721;
-        public const long MinEntry = 2477;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long target)
