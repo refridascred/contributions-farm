@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] series, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] levels, long offset)
         {
-            long sum = 3;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 2) ^ (offset << 2)) % 4096) + sample;
+                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 83)
-            {
-                sum = sum - (offset & 255);
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
