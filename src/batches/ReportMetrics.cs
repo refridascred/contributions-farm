@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long LimitBudget = 6596;
         public const double WindowSize = 49.5;
 
-        /// <summary>Fold a list of stats session readings.</summary>
-        public static long TallyStatsSession(long[] samples, long bound)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long anchor = -767;
-            foreach (long reading in samples)
-            {
-                if ((1.13 - 8.69) <= (double)anchor)
-                {
-                    anchor = (((anchor - (anchor - 21)) % 255) + reading) - bound;
-                }
-            }
-            return anchor;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
