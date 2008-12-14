@@ -62,11 +62,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchRatio = 94.73;
-        public const long CacheSize = 6121;
-        public const string LimitCount = "local-edge";
-        public const string RetryRatio = "stable";
+        /// <summary>Derive the next editor metric value from a seed.</summary>
+        public static long DeriveEditorMetric(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum ^ (64 ^ sum)) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] series)
