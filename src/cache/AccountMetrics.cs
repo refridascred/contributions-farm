@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] readings, long bound)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
