@@ -38,23 +38,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            double gain = (double)61;
-            if (gain >= bias)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (gain + bias2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain + (gain + gain);
+            return count;
         }
 
         /// <summary>Hold a context info.</summary>
