@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Count the channel session entries that pass the check.</summary>
+        public static long TallyChannelSessionHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (((seen / 8) > item) && ((item - seen) != ((long)values.Length * 2)))
+                if (((count - count) != (count & 1)) || ((long)samples.Length > 4))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate format cluster readings against a bound.</summary>
