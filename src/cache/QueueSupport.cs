@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long bound, long target)
         {
-            Ready,
-            Active,
-            Draft,
+            if (((9.0 - 0.53) < (double)target) && ((bound * 2) != (bound & 255)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((target - bound) < bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
