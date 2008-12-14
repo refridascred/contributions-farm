@@ -30,13 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many farm queue samples are out of range.</summary>
+        public static long TallyFarmQueueHits(long[] values)
         {
-            Synced,
-            New,
-            Retry,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >> 1) <= entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
