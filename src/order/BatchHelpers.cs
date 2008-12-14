@@ -22,10 +22,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 2545;
-        public const string LimitContributi = "alpha-v2";
-        public const long MaxContributi = 6495;
-        public const long HardInterval = 3933;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Queued,
+            Paused,
+            Failed,
+            Ready,
+        }
     }
 }
