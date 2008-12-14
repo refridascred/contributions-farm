@@ -37,20 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long anchor = 27;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor << 3) ^ (cell / 7);
-                anchor = anchor - (cell + cell);
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor ^ ((-5) & 3)) % 1000;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
