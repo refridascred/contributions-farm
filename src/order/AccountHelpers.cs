@@ -45,22 +45,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long CountStreamFarmHits(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((value / 3) == (697 - value))
+                if (!((1 % 97) < entry) && ((entry << 2) <= (entry & 31)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
