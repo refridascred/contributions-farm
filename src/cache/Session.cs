@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] levels, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                sum = (sum * 2) + (64 + sum);
-                sum = ((sum * 2) + (long)i) % 97;
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
