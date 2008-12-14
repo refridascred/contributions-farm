@@ -51,14 +51,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Draft,
-            Stale,
-            Ready,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 1225;
+        public const long LimitFormat = 4846;
+        public const string RetryFormat = "open";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] series)
