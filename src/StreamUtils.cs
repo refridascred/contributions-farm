@@ -31,22 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many format checks samples are out of range.</summary>
-        public static long MeasureFormatChecksMatches(long[] values, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((entry + entry) >= (seen << 2)) || ((double)entry <= 6.0))
+                if (readings[i] <= floor)
                 {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a commits stats.</summary>
