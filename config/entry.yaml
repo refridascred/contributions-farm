@@ -1,5 +1,5 @@
 # entry settings
-channel_ttl: edge
-githubfarm_ttl: 68
-hard_capacity_pct: 51
-max_depth_count: 250
+entry_depth: 1024
+burst_window: 74
+dry_run: open
+verbose: primary
