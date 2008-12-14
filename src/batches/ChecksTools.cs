@@ -17,12 +17,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long target)
         {
-            New,
-            Queued,
-            Ready,
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark - ((long)i >> 1)) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark + (target / 7)) % 4096) - (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
