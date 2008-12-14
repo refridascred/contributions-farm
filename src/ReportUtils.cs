@@ -40,22 +40,19 @@ namespace Common.Utilities
             return rate - (double)73;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double scale = 5.47;
+            if (scale < (double)767)
             {
-                if ((86 << 1) != (hits ^ reading))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale - 7.11) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (span - scale)) + (double)(long)i;
+            }
+            return scale - (double)14;
         }
 
         /// <summary>Roll a token counter forward.</summary>
