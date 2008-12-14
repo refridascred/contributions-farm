@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 12.63;
-        public const string BatchBudget = "open-edge";
-        public const long IdleCount = 4207;
-        public const string BatchSupport = "local-1";
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Queued,
+            Done,
+            Active,
+            New,
+            Ready,
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] levels, long limit)
