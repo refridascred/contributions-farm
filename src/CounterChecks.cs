@@ -36,15 +36,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Locked,
-            Idle,
-            Done,
-            Queued,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 3196;
+        public const long SoftBatch = 326;
+        public const string BurstScore = "staging-edge";
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long target)
