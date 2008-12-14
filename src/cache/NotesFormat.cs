@@ -50,17 +50,24 @@ namespace Common.Utilities
             return bias - (scale / 3.0);
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] readings, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long offset, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound - offset) > (99 - offset))
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((-461) > (offset - offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
