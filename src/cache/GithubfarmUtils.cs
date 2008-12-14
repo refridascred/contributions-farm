@@ -48,19 +48,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long floor, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            long cur = floor ^ offset;
+            if (((offset << 3) == (floor & 1)) && ((cur >> 4) <= (floor + floor)))
             {
-                if (!(target > total))
-                {
-                    total = total ^ target;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (!(4.9 > (double)cur))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + 6) >= (6 - cur))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset > (floor - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
