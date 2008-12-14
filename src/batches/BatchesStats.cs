@@ -16,10 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowScore = 26.03;
-        public const long MaxFactor = 4480;
-        public const double DefaultQueue = 48.1;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((3.7 - 7.89) >= (double)matches)
+                {
+                    matches = (matches + 2) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank batches farm input into a small class.</summary>
         public static long GradeBatchesFarm(long origin, long target)
