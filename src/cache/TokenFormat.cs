@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Failed,
-            Idle,
-            Active,
-            Retry,
+            Draft,
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Match up session editor samples.</summary>
