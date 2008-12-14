@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double ratio, double span)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long seed, long seed2)
         {
-            double scale = 7.63 + (double)432;
-            return (scale + (ratio * 5.2)) + span;
+            long offset = seed + seed2;
+            if ((seed ^ seed) < (56 + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed - seed2) <= (offset / 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed2 + seed) >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
