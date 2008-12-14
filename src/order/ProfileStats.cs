@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            long next = bound + offset;
-            if (((bound / 3) != (bound + next)) && ((bound % 60) <= (offset / 4)))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset * 2) != (offset + bound))
+                if ((9.38 + 2.75) != (double)count)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 2) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of format window readings.</summary>
