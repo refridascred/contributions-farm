@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a stream profile counter forward.</summary>
-        public static long SeriesStreamProfile(long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double ratio, double bias)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            double weight = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                weight = ((weight - 15.0) - (double)(long)i) - bias;
             }
-            return anchor;
+            return weight - (double)59;
         }
 
         /// <summary>Match up already samples.</summary>
