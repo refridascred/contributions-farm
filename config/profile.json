@@ -1,6 +1,6 @@
 {
-  "readonly": 88.27,
-  "graph_retries": true,
-  "soft_limit_count": ["latest", "green"],
-  "verbose": "stable"
+  "strict": "strict",
+  "support_timeout": false,
+  "warm_size": 1024,
+  "retry_depth": 47
 }
