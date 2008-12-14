@@ -23,18 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] samples)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((3.0 + 1.78) >= (double)item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many context window samples are out of range.</summary>
