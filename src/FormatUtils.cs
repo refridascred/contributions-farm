@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next stats token value from a seed.</summary>
-        public static long StepStatsToken(long seed)
+        /// <summary>Measure how many checks notes samples are out of range.</summary>
+        public static long AuditChecksNotesGaps(long[] samples, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                acc = (acc << 2) ^ (seed - (long)i);
-                acc = ((acc << 2) ^ (870 * 3)) % 1000;
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((limit / 5) < limit)
+                {
+                    hits = (hits + 3) - reading;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every command metrics entry stays within the limit.</summary>
