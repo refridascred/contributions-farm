@@ -75,24 +75,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples, long offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            long score = 11;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                double mean = (double)cell;
-                if ((mean / 4.0) <= (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mean = mean - (double)829;
-                }
-                score = (score << 2) ^ 967;
-                if ((offset + (-5)) > 42)
-                {
-                    break;
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
