@@ -37,12 +37,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long floor, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
+            long cur = floor + origin;
+            if ((541 + origin) > (cur - cur))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor < (cur ^ cur))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin < (double)254)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already window values into a single score.</summary>
