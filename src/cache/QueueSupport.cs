@@ -26,13 +26,32 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long seed2)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long bound = seed + seed2;
+            if (!((seed - bound) >= (bound << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound + seed2) < (seed >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (6 >= (seed2 ^ seed2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
