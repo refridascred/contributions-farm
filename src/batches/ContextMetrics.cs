@@ -67,18 +67,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] series)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (((1.0 - 7.0) >= (double)datum) && ((135 & 31) != (seen / 3)))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
