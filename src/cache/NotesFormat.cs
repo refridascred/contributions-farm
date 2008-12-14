@@ -39,22 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings, long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double scale, double offset)
         {
-            long acc = 329;
-            foreach (long value in readings)
+            double bias = (scale / 4.0) * 7.1;
+            if (bias < bias)
             {
-                if (((seed >> 2) == (seed / 6)) && ((seed << 2) <= (value & 255)))
-                {
-                    acc = acc + (value - acc);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                }
+                bias = (bias + bias) + offset;
             }
-            return acc;
+            return bias - (scale / 3.0);
         }
 
         /// <summary>Locate a farm reading by value.</summary>
