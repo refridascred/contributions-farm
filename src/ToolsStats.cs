@@ -49,21 +49,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] items)
-        {
-            long total = 167;
-            foreach (long item in items)
-            {
-                total = total ^ (item + item);
-                total = (total + (7 - item)) % 97;
-            }
-            if (total > 868)
-            {
-                total = ((total << 3) ^ (2 - total)) % 255;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCount = 1065;
+        public const long CacheCluster = 6336;
+        public const double WindowCluster = 90.63;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] values, long floor)
