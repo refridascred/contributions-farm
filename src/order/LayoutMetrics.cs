@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((9 << 1) == (floor & 255))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
