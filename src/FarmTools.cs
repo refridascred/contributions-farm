@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] samples, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            long sum = 51;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed <= (datum ^ (long)samples.Length)) || (sum < (seed - seed)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum + (datum - sum);
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 4096;
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > (-813))
-            {
-                sum = ((sum * 3) + sum) % 65521;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count metrics githubfarm pairs that satisfy a relation.</summary>
