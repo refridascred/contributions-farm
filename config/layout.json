@@ -1,17 +1,7 @@
 {
-  "stats_depth": {
-    "retry_limit_ms": 5019,
-    "order_size": {
-      "contributi_ratio": [329, 449],
-      "audit": true,
-      "tools_delay": true,
-      "farm_interval": false,
-      "cache_depth_pct": false,
-      "buffer_interval": 59
-    },
-    "command_ratio": 9920,
-    "farm_delay": ["latest", "edge", "blue"]
-  },
-  "githubfarm_ttl": 250,
-  "checks_depth": true
+  "enabled": "primary",
+  "max_threshold_s": 100,
+  "sync_limit_ms": "fallback",
+  "queue_capacity": 5815,
+  "flush_delay_pct": [131, 175, 38, 19]
 }
