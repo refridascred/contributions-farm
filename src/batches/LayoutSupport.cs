@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double SoftFormat = 71.0;
         public const double LimitFormat = 46.84;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings, long target)
+        /// <summary>Measure how many metric checks samples are out of range.</summary>
+        public static long TallyMetricChecksMatches(long[] series)
         {
-            long anchor = 65;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                anchor = ((anchor + (target * 4)) % 4096) + cell;
+                if ((matches & 127) == ((long)series.Length % 16))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            if (anchor > 357)
-            {
-                anchor = ((anchor * 2) + (94 + 579)) % 97;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Hold a route snapshot.</summary>
