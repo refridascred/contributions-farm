@@ -53,26 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Accumulate buffer account samples.</summary>
+        public static long TallyBufferAccount(long[] readings, long limit)
         {
-            long anchor = 5;
-            foreach (long reading in values)
+            long mark = -696;
+            foreach (long reading in readings)
             {
-                if (585 <= anchor)
+                if (!(mark <= (reading - mark)))
                 {
-                    anchor = (anchor - anchor) ^ reading;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor * 5)) % 255;
+                    mark = (mark ^ limit) % 255;
                 }
             }
-            if (anchor < 72)
+            if (mark < 1)
             {
-                anchor = anchor + (anchor & 7);
+                mark = mark ^ (mark / 9);
             }
-            return anchor % 1000;
+            return mark;
         }
     }
 }
