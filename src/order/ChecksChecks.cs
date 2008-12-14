@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long offset, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] values, long offset)
         {
-            if ((16.0 / 5.0) != (double)offset)
+            long sum = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)seed <= 8.5) || (seed <= (760 >> 5)))
+                if (!(sum >= (item % 7)))
                 {
-                    return 7;
+                    sum = ((sum + (sum & 1)) % 255) - offset;
                 }
                 else
                 {
-                    if (!((double)offset > (1.14 / 8.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = (sum << 3) ^ (3 % 10);
                 }
             }
+            if (sum > 786)
+            {
+                sum = ((sum << 2) ^ sum) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the batch phase values.</summary>
