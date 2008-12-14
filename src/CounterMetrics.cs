@@ -32,25 +32,12 @@ namespace Common.Utilities
         public const long IdleInterval = 9537;
         public const string CacheBuffer = "open-1";
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long cur = limit + floor;
-            if ((239 + 46) >= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((cur + 416) < (cur % 16)) || ((39 >> 4) <= (4 - cur)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Locked,
+            Done,
         }
     }
 }
