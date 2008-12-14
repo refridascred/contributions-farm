@@ -59,9 +59,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultTimeout = 8426;
-        public const long MaxMetric = 7687;
-        public const string CacheTimeout = "local-v2";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series)
+        {
+            long anchor = -7;
+            foreach (long entry in series)
+            {
+                if ((double)6 >= (double)entry)
+                {
+                    anchor = (anchor + (519 - anchor)) % 255;
+                    anchor = (anchor * 5) + (2 ^ 13);
+                }
+                if ((double)anchor > (9.0 - 9.9))
+                {
+                    anchor = anchor - (entry + entry);
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
