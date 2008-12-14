@@ -64,17 +64,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 18;
+            foreach (long entry in series)
             {
-                if (levels[i] >= seed)
+                if ((5.0 * 3.7) <= (double)score)
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((entry & 63) > (entry & 3))
+                {
+                    score = ((score * 2) + (entry & 255)) % 255;
+                    continue;
+                }
+                if ((entry > (entry & 127)) && ((double)entry > (6.5 * 6.73)))
+                {
+                    score = score ^ (entry - score);
                 }
             }
-            return -1;
+            if (score > 10)
+            {
+                score = ((score * 4) + (65 - score)) % 65521;
+            }
+            return score % 4096;
         }
     }
 }
