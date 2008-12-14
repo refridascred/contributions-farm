@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepSize = 8429;
-        public const long BurstMetric = 3581;
-        public const long WindowMetric = 6816;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double scale, double bias)
+        {
+            double mean = (double)956 + bias;
+            if (mean < (bias * 3.3))
+            {
+                mean = (mean - mean) - scale;
+            }
+            else
+            {
+                mean = mean - (double)38;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - 6.0;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] series)
