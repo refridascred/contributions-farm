@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Done,
-            Draft,
-            Ready,
-            New,
-            Failed,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
