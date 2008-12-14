@@ -1,6 +1,5 @@
 # githubfarm settings
-burst_window: 8.87
-warm_threshold_pct: 69.51
-format_delay: green
-poll_delay_s: primary
-metrics_retries: standard
+dry_run: primary
+graph_ttl: cached
+max_ttl: cached
+retry_threshold: true
