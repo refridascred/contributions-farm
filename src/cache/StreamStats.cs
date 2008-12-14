@@ -54,12 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((count & 1) >= (long)samples.Length) || ((137 ^ sample) > count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
