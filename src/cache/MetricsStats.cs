@@ -41,12 +41,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long seed, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            if (((seed ^ seed) > origin) || ((41 + seed) <= origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((862 << 3) != (seed << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin >= (5.9 / 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
