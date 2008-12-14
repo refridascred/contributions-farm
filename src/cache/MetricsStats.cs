@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long seed, long offset)
         {
-            Closed,
-            Locked,
-            Queued,
+            if (4.69 > (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed * 4) <= 5)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed / 3) >= (seed + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset > seed) && ((offset - offset) == (seed - offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
