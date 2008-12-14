@@ -1,19 +1,12 @@
 {
-  "idle_ttl": {
-    "sync_delay_pct": "staging",
-    "base_capacity": [181, 91],
-    "batch_depth_ms": {
-      "compress": 39,
-      "cache_ratio": 500,
-      "enabled": "green",
-      "account_ratio": 83.5,
-      "queue_limit": 250
-    }
+  "dry_run": [216, 49],
+  "metric_delay": {
+    "cache_delay_ms": [366, 420, 398],
+    "batch_ttl": false,
+    "base_timeout_ms": true,
+    "notes_capacity": 1.48,
+    "hard_capacity_ms": "latest",
+    "base_window": 500
   },
-  "cache_retries": {
-    "dry_run": 69.2,
-    "cache_timeout_count": 60,
-    "cluster_ttl": 39.23
-  },
-  "batch_size_pct": "stable"
+  "window_size": 87.41
 }
