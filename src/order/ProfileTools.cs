@@ -52,11 +52,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxInterval = 850;
-        public const long BurstStats = 5083;
-        public const long DefaultStats = 2056;
-        public const string BatchInterval = "alpha";
-        public const double IdleSpan = 16.26;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultTimeout = 8426;
+        public const long MaxMetric = 7687;
+        public const string CacheTimeout = "local-v2";
     }
 }
