@@ -1,5 +1,5 @@
 {
-  "burst_threshold": "fallback",
-  "account_delay": 96,
-  "already_timeout": "strict"
+  "default_timeout_count": 10,
+  "retry_threshold_count": 60,
+  "readonly": "cached"
 }
