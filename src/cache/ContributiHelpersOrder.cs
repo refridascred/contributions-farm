@@ -16,21 +16,15 @@ namespace Common.Utilities
             return mean + bias2;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Match up payload samples.</summary>
