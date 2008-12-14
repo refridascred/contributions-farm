@@ -1,25 +1,17 @@
 # githubfarm settings
-record_size:
-  filter_capacity:
-    burst_interval:
-      - 477
-      - 372
-      - 225
-      - 413
-    batches_window:
-      - cached
-      - strict
-      - fallback
-      - local
-    sync_delay: 10.27
-  schema_limit: 1344
-  verbose: cached
-  default_timeout_s: false
-base_window: 1024
-counter_limit:
+warm_ratio_s: 7
+sync_delay_s:
   - open
-  - open
-  - edge
   - latest
-min_limit_ms: false
-checks_ratio: 22.49
+  - local
+  - blue
+poll_capacity_count: true
+min_ttl_ms: 68
+enabled: blue
+max_delay:
+  strict: eu-west
+  layout_window: stable
+  poll_retries_count: 5909
+  checks_retries: true
+  readonly: 5944
+  compress: 19
