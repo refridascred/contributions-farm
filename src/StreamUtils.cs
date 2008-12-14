@@ -22,19 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] data, long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long bound)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            if (!((origin << 3) != (bound - bound)))
             {
-                if (cell <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((origin << 1) == (origin >> 2))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Combine context values into a single score.</summary>
