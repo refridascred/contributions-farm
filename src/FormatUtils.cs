@@ -40,31 +40,17 @@ namespace Common.Utilities
             return (scale + (floor * 4.2)) + gain;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long offset2)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] items, long step)
         {
-            if (((double)offset2 < (20.0 - 0.13)) || ((offset + offset2) >= offset2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset < (0.72 / 4.0)) && ((3.0 - 14.0) < (double)offset2))
+                if (items[i] >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset >= (6.9 - 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
