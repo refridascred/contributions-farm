@@ -25,24 +25,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] samples, long target)
         {
-            if (((double)origin != (2.1 + 0.95)) || (seed <= (origin >> 5)))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin > (93 % 7))
+                if (reading != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the order phase values.</summary>
