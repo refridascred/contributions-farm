@@ -1,19 +1,5 @@
 # entry settings
-compress: 30
-default_depth_pct:
-  - local
-  - stable
-sync_ratio_ms:
-  format_window: fallback
-  filter_limit:
-    - blue
-    - eu-west
-    - primary
-    - latest
-  readonly: primary
-  base_retries: local
-layout_retries: edge
-flush_retries:
-  - local
-  - latest
-  - fallback
+default_limit: 30
+hard_threshold_s: false
+min_interval_ms: 11
+warm_ttl_ms: 34.59
