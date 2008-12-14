@@ -1,10 +1,8 @@
 # entry settings
-base_size_ms: 28
-base_delay: 89.16
-compress:
-  - blue
-  - local
-  - latest
-  - edge
-dry_run: 1024
-route_size: 30
+max_capacity_count: primary
+metrics_limit: 73.22
+burst_ttl_ms:
+  - 327
+  - 245
+  - 95
+idle_retries_pct: 20.14
