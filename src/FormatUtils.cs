@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long target)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            if ((floor - floor) != (target * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 2) <= (7 - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target == (3.0 * 6.2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor >= ((-57) / 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
