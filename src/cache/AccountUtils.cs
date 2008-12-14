@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the farm contributi entries that pass the check.</summary>
-        public static long CountFarmContributiMatches(long[] values, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if ((origin % 7) < (origin / 3))
             {
-                if (((9 + seen) == (21 + seed)) || !((seed % 2) <= 25))
+                return 4;
+            }
+            else
+            {
+                if ((origin - origin) > (-77))
                 {
-                    seen = (seen + 1) + datum;
+                    return 8;
+                }
+                else
+                {
+                    if (((-54) * 4) >= (origin % 64))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the report phase values.</summary>
