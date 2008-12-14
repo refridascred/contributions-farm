@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit format command readings against a rule.</summary>
-        public static long AuditFormatCommandMatches(long[] readings, long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] readings)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches + sample) <= (-60))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + floor;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
