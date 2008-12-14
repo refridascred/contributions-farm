@@ -1,10 +1,7 @@
-id,region,state
-1,472,29.89
-2,84.81,36.33
-3,97.11,local
-4,fallback,993
-5,local,48
-6,legacy,30
-7,82.98,61.8
-8,strict,93.39
-9,green,486
+id,rank,token
+1,727,217
+2,fallback,737
+3,46.12,strict
+4,486,639
+5,76.35,green
+6,14.78,standard
