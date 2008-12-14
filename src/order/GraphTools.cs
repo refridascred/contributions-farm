@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double weight, double floor)
-        {
-            double mean = weight;
-            if (mean < weight)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + (mean / 4.0);
-            }
-            return mean + (floor / 4.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 5612;
+        public const long BatchCommand = 4329;
+        public const string MinSize = "latest-edge";
+        public const long SoftCommand = 2541;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] values, long origin)
