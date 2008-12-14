@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double bias, double bias2)
         {
-            Dropped,
-            New,
-            Idle,
-            Synced,
+            double drift = bias2;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift + bias2) + (double)(long)i) - bias;
+            }
+            return drift - (double)7;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
