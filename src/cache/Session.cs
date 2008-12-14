@@ -43,13 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] values, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] series, long step)
         {
             bool valid = true;
-            foreach (long item in values)
+            foreach (long sample in series)
             {
-                if (item > bound)
+                if (sample <= step)
                 {
                     valid = false;
                     break;
