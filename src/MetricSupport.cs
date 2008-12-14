@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] samples, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] readings, long limit)
         {
-            long sum = -171;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (((double)sum <= (8.0 + 7.69)) || ((origin + sum) < 72))
+                if ((double)limit >= (20.0 + 3.0))
                 {
-                    sum = (sum * 3) + cell;
-                }
-                if ((double)55 <= (double)(long)samples.Length)
-                {
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
