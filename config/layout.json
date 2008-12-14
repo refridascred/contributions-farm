@@ -1,6 +1,5 @@
 {
-  "idle_delay_count": 30,
-  "stream_capacity": 88.08,
-  "base_threshold_pct": 1024,
-  "graph_depth": 2114
+  "graph_window": 44,
+  "sync_size_pct": true,
+  "sync_size_ms": "staging"
 }
