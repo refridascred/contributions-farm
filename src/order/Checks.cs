@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] readings)
         {
-            Retry,
-            Queued,
-            Done,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading % 24) != (3 - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many farm queue samples are out of range.</summary>
