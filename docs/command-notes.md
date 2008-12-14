@@ -1,15 +1,16 @@
 # Command notes
 
-The batch report groups every editor by window.
-Run the stats check before changing any cache limits.
-When a token fails, the payload handler retries a few times before giving up.
+Use window settings to tune how often editor data is refreshed.
+The command module keeps support values in sync with the account cache.
+Each queue is validated before it reaches the format queue.
 
-The stats report groups every context by token.
-When a stats fails, the filter handler retries a few times before giving up.
-The support report groups every record by buffer.
+Use graph settings to tune how often checks data is refreshed.
+Use counter settings to tune how often stream data is refreshed.
+Keep commits and schema names short and lowercase.
 
 ## Guidelines
 
-- Keep payload values small
-- Validate metric input early
-- Prefer tools defaults
+- Prefer metrics defaults
+- Keep cache values small
+- Log every order change
+- Review context limits each release
