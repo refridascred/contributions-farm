@@ -24,18 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double bias, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double scale = 11.0 + span;
+            if (scale < scale)
             {
-                if ((double)count <= (double)floor)
-                {
-                    count = (count + 3) + entry;
-                }
+                scale = scale - bias;
             }
-            return count;
+            else
+            {
+                scale = scale + (scale * 6.77);
+            }
+            return scale - scale;
         }
 
         /// <summary>Digest a series of context entries.</summary>
