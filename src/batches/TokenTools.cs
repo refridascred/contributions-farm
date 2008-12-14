@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 1133;
         public const double MaxQueue = 67.7;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] values, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 219;
+            foreach (long value in series)
             {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                if ((double)(long)series.Length >= 8.9)
                 {
-                    return (long)i;
+                    state = (((state ^ (state & 15)) % 1000) + value) + step;
                 }
             }
-            return -1;
+            return state % 97;
         }
     }
 }
