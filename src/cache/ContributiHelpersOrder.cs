@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double bias2)
         {
-            Done,
-            Draft,
-            Ready,
+            double mean = (double)(428 + 13);
+            if (mean >= (double)0)
+            {
+                mean = (mean + (double)6) - bias;
+            }
+            return mean + bias2;
         }
 
         /// <summary>Match up farm samples.</summary>
