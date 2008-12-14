@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of githubfarm window readings.</summary>
-        public static long PairGithubfarmWindowCount(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 83;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc ^ (cell / 3)) % 4096) - target;
             }
-            return matches;
+            if (acc > (-96))
+            {
+                acc = ((acc << 3) ^ (acc & 1)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit batch checks readings against a rule.</summary>
