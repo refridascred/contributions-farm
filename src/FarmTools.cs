@@ -28,21 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support contributi samples.</summary>
-        public static long PairSupportContributiCount(long[] readings)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            New,
+            Queued,
+            Stale,
+            Draft,
         }
     }
 }
