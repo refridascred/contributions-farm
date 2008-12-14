@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values, long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long origin)
         {
-            long mix = 640;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + (offset << 3)) ^ item;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
