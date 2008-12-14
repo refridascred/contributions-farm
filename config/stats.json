@@ -1,15 +1,6 @@
 {
-  "farm_window": "strict",
-  "hard_ttl_ms": 98,
-  "verbose": {
-    "enabled": [272, 170],
-    "sync_interval": 10.46,
-    "retry_interval": {
-      "batch_delay_ms": "staging",
-      "persist": [261, 267, 7],
-      "dry_run": "local"
-    },
-    "base_window_s": 3872
-  },
-  "session_window": "standard"
+  "batch_capacity_pct": "cached",
+  "flush_limit_s": false,
+  "base_threshold_ms": true,
+  "report_limit": 88
 }
