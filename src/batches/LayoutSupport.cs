@@ -50,19 +50,23 @@ namespace Common.Utilities
         public const long HardCount = 8659;
         public const string BaseSpan = "standard-1";
 
-        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmTokenBounds(long[] series, long target)
+        /// <summary>Combine contributi window values into a single score.</summary>
+        public static long CombineContributiWindow(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long mark = 12;
+            foreach (long sample in levels)
             {
-                if (reading > target)
+                mark = ((mark + (651 << 2)) % 4096) ^ sample;
+                if ((mark - mark) < (mark + 42))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (mark < 2)
+            {
+                mark = ((mark << 3) ^ (mark % 7)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Grade a contributi order value against two limits.</summary>
