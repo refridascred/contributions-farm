@@ -44,19 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)limit != (double)state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state + (limit + state);
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Adjust a counter reading.</summary>
