@@ -1,10 +1,6 @@
-id,owner,active
-1,37,405
-2,78.28,84
-3,981,staging
-4,451,870
-5,955,strict
-6,371,edge
-7,470,open
-8,staging,74.43
-9,953,14.9
+id,score,owner,level
+1,32.48,22.64,latest
+2,628,74,local
+3,279,59.38,850
+4,687,14.27,fallback
+5,992,64.75,401
