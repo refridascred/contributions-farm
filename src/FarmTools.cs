@@ -14,16 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the stream graph series from a seed.</summary>
-        public static long StepStreamGraph(long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] levels)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                state = (state + (bound << 2)) % 101;
-                state = ((state * 3) + (long)i) % 65521;
+                if (((value >> 5) < value) || (value < seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
