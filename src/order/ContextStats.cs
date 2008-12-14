@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const string CacheBudget = "standard-v2";
         public const double StepGraph = 49.07;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryInterval = "strict-v2";
+        public const long LimitRatio = 5893;
+        public const double CacheScore = 4.5;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long BucketSchema(long limit, long target)
