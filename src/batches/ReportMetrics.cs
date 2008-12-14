@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            New,
-            Synced,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheBudget = 2617;
+        public const long DefaultCounter = 6527;
+        public const string IdleCounter = "fallback-edge";
+        public const double BurstCounter = 41.55;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstEditor = 6353;
