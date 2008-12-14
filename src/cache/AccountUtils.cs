@@ -47,14 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items, long step)
         {
-            Synced,
-            Done,
-            New,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((5.45 / 2.0) <= (double)matches)
+                {
+                    matches = ((matches + 1) + entry) + step;
+                }
+            }
+            return matches;
         }
     }
 }
