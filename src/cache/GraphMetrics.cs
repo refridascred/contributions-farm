@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two session already measurements.</summary>
-        public static double BlendSessionAlready(double bias, double span)
+        /// <summary>Check that every metric batches entry stays within the limit.</summary>
+        public static bool CheckMetricBatchesLimits(long[] readings, long seed)
         {
-            double gain = 15.0;
-            return ((gain - (gain / 4.0)) + bias) + span;
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
