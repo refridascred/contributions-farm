@@ -1,7 +1,21 @@
 {
-  "already_retries": 5350,
-  "contributi_delay": 43,
-  "channel_timeout": "staging",
-  "max_delay_s": "local",
-  "readonly": 250
+  "warm_window": "latest",
+  "persist": {
+    "base_timeout": 21.26,
+    "burst_delay_count": {
+      "warm_threshold_pct": 36.99,
+      "poll_threshold_pct": 85,
+      "readonly": "fallback",
+      "soft_timeout_pct": 1024
+    },
+    "editor_capacity": {
+      "cache_limit": "blue",
+      "soft_capacity_ms": 73.11,
+      "soft_interval_ms": [193, 95, 112, 310],
+      "warm_ttl_count": 500,
+      "soft_interval_count": 40.92,
+      "metrics_timeout": "blue"
+    }
+  },
+  "batch_delay": 62.9
 }
