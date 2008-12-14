@@ -40,21 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of session editor readings.</summary>
-        public static long CompareSessionEditorCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 37.53;
+        public const double MinBuffer = 97.27;
+        public const string BaseBuffer = "alpha-v2";
+        public const string LimitBuffer = "open-edge";
+        public const double StepTimeout = 25.53;
     }
 }
