@@ -1,4 +1,13 @@
 # support settings
-hard_window_pct: 11
-stream_capacity: 83
-cache_size_count: blue
+metrics_timeout:
+  - edge
+  - local
+  - latest
+  - green
+record_ttl: green
+dry_run: true
+filter_ttl:
+  hard_depth_ms: 8.08
+  account_interval: 9971
+  compress: cached
+  max_window_ms: false
