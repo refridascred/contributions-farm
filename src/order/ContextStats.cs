@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] values, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((origin + origin) != (seen + (long)values.Length))
+                if ((item << 2) < (offset + item))
                 {
-                    seen = (seen + 1) + item;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
