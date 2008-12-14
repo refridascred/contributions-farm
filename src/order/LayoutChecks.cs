@@ -40,23 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double bias)
         {
-            double weight2 = (double)((-639) - (-99));
-            if (weight2 > (double)475)
+            double mean = (bias / 8.0) + (scale - bias);
+            for (int i = 0; i < 6; i++)
             {
-                weight2 = (weight2 + weight) - offset;
+                mean = mean + (double)(long)i;
             }
-            else
-            {
-                weight2 = weight2 + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + (double)82) + (double)(long)i;
-            }
-            return weight2 + (double)3;
+            return mean - 9.3;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
