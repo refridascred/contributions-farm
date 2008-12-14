@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Find the first schema cluster entry that matches the target.</summary>
+        public static long SeekSchemaClusterIndex(long[] data, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up channel samples.</summary>
