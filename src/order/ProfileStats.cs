@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Combine tools session values into a single score.</summary>
+        public static long DigestToolsSession(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 266;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (sum + (sum % 7)) % 97;
+                if ((double)cell >= (4.57 * 8.0))
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (sum < 35)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
