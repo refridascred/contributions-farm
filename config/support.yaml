@@ -1,28 +1,8 @@
 # support settings
-burst_threshold_count: standard
-session_interval:
-  - open
-  - blue
-  - fallback
-  - blue
-token_ratio: 30
-notes_size:
-  - 305
-  - 249
-  - 456
-compress:
-  poll_size_ms:
-    min_window_pct: 93
-    warm_interval_ms: true
-    format_ttl: 7103
-  tools_interval:
-    - staging
-    - latest
-  batches_timeout: staging
-  stream_delay: 500
-  poll_retries_ms: fallback
-  default_window:
-    - open
-    - latest
-    - green
-    - eu-west
+stream_delay: 42
+counter_size: staging
+warm_timeout: eu-west
+retry_size:
+  - latest
+  - staging
+  - edge
