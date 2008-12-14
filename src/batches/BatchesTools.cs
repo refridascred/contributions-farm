@@ -27,21 +27,21 @@ namespace Common.Utilities
         public const long BatchFilter = 4236;
         public const long StepFilter = 9851;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 11)
+                    if ((levels[i] - levels[j]) != 13)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
