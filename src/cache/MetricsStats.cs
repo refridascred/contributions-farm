@@ -12,18 +12,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheFactor = 7.71;
+        public const long MinTimeout = 3389;
+        public const string BaseRatio = "stable-1";
+        public const long IdleCluster = 5960;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyLimits(long[] items, long offset)
