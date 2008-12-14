@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
