@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token batch readings.</summary>
-        public static long TotalTokenBatch(long[] samples, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] values, long limit)
         {
-            long score = 744;
-            foreach (long reading in samples)
+            long mark = 1;
+            foreach (long value in values)
             {
-                score = (((score << 2) ^ (81 + seed)) % 97) ^ reading;
+                mark = (mark - ((-8) >> 1)) + value;
+                mark = (mark << 3) ^ (limit << 2);
+                mark = ((mark * 2) + mark) % 4096;
             }
-            if (score < 3)
-            {
-                score = (score ^ (91 - 40)) % 97;
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the window state values.</summary>
