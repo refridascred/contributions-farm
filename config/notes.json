@@ -1,22 +1,5 @@
 {
-  "default_capacity_s": "latest",
-  "audit": {
-    "persist": {
-      "strict": false,
-      "persist": 4245,
-      "cache_size": "stable",
-      "verbose": ["stable", "legacy", "cached", "staging"]
-    },
-    "min_delay_s": 27,
-    "retry_limit_count": 20
-  },
-  "max_ttl_count": "open",
-  "idle_interval_pct": {
-    "commits_window": 250,
-    "buffer_timeout": "legacy",
-    "strict": 75,
-    "record_window": "cached"
-  },
-  "soft_capacity": [11, 360, 423, 21],
-  "readonly": true
+  "metric_limit": 8821,
+  "session_interval": [188, 181],
+  "dry_run": 71.5
 }
