@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long total = 5;
-            foreach (long reading in levels)
-            {
-                total = ((total * 4) + reading) % 101;
-                if (!((double)reading < (9.87 * 2.49)))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total - reading) % 101;
-                    total = (total << 2) ^ total;
-                }
-                if (reading >= ((long)levels.Length + total))
-                {
-                    total = ((total << 3) ^ (8 & 3)) % 65521;
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
