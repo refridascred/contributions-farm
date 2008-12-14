@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a profile stream counter forward.</summary>
-        public static long RollProfileStream(long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix << 3) ^ (long)i) % 65521;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Failed,
+            Retry,
+            Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
