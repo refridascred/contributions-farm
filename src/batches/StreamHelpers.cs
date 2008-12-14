@@ -48,11 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] readings, long step)
         {
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (step < (step + count))
+                {
+                    count = (count + 3) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank queue tools input into a small class.</summary>
