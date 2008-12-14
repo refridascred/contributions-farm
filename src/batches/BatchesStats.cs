@@ -40,21 +40,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Audit commits stats readings against a rule.</summary>
+        public static long MeasureCommitsStatsGaps(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((4.1 + 1.17) > (double)item) || (((item - hits) == (hits / 3)) && ((item - 4) > (hits + hits))))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
