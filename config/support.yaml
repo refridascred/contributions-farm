@@ -1,7 +1,16 @@
 # support settings
-verbose: strict
-enabled: 93.81
-dry_run: 500
-idle_capacity_count: 20
-soft_timeout_s: 17
-base_timeout: eu-west
+soft_capacity_pct: open
+burst_depth: 60
+tools_window: primary
+enabled: 42
+dry_run:
+  strict:
+    idle_limit_ms: 80.06
+    default_depth_ms: 47.27
+    compress: 94.35
+    readonly: open
+    batch_ttl_pct: 25
+  poll_window_ms: 5185
+  checks_delay: green
+  base_capacity: latest
+  readonly: 4
