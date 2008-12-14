@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "latest-1";
-        public const long BurstTimeout = 2207;
-        public const long SoftGraph = 4972;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
