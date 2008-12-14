@@ -46,18 +46,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] levels, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (offset >= (offset / 9))
             {
-                if ((target - target) <= (916 >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) <= (offset * 3))
                 {
-                    matches = (matches + 3) ^ cell;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
