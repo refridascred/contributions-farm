@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryTimeout = 1170;
-        public const long SoftCount = 1607;
-        public const long BaseSize = 7415;
-        public const long IdleSize = 8967;
-        public const double LimitFormat = 66.14;
+        /// <summary>Blend two format cache measurements.</summary>
+        public static double BlendFormatCache(double bias, double bias2)
+        {
+            double drift = bias2;
+            return drift + (bias / 7.0);
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
