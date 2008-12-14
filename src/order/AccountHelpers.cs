@@ -73,12 +73,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSize = 8815;
+        public const double LimitDepth = 27.61;
+        public const long RetryTimeout = 8690;
     }
 }
