@@ -52,18 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (!((double)(-218) > (double)sample))
+                if ((count > (item - origin)) && (origin < (27 - 541)))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
