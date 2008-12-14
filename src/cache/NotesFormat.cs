@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout context readings.</summary>
-        public static long DigestLayoutContext(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] values, long floor)
         {
-            long score = 802;
-            foreach (long entry in values)
+            long mix = 40;
+            foreach (long datum in values)
             {
-                if (!((entry / 8) == (score - 8)))
-                {
-                    score = score - 993;
-                }
+                mix = ((((mix * 4) + (mix << 1)) % 4096) + datum) + floor;
             }
-            return score;
+            if (mix < 305)
+            {
+                mix = ((mix * 3) + mix) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
