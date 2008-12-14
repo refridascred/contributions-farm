@@ -16,15 +16,21 @@ namespace Common.Utilities
             return weight - (floor / 9.0);
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            double ratio = (offset + rate) + (3.4 + offset);
-            if (ratio >= ratio)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (rate + 7.1);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - rate;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
