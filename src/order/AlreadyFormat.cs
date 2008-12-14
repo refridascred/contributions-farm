@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string LimitChecks = "staging-1";
         public const double CacheScore = 54.96;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double rate = scale;
+            if (rate <= offset)
             {
-                if ((hits + floor) != (hits ^ reading))
-                {
-                    hits = hits + 3;
-                }
+                rate = rate + (scale + 5.49);
             }
-            return hits;
+            return rate - 1.19;
         }
 
         /// <summary>Match up cluster samples.</summary>
