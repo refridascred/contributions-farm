@@ -1,23 +1,7 @@
 # entry settings
-soft_threshold:
-  schema_ttl: cached
-  enabled:
-    burst_limit_pct: blue
-    profile_interval: 40
-    default_interval_count: 100
-    warm_ttl_count: 100
-  hard_interval_count: 36
-  cache_capacity: true
-base_ratio: 1024
-batch_interval_pct: 73.13
-audit: 64.2
-strict:
-  verbose: local
-  layout_timeout: 100
-  channel_timeout: 56.93
-  batch_ratio:
-    - local
-    - strict
-    - open
-    - strict
-base_delay_s: 75.19
+default_window: fallback
+metric_interval: 2
+idle_ratio_count: strict
+layout_limit: 60
+hard_threshold_ms: legacy
+command_interval: green
