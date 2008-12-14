@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit session graph readings against a rule.</summary>
-        public static long AuditSessionGraphHits(long[] levels, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((step - step) != (entry - entry))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
