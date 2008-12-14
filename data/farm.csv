@@ -1,7 +1,6 @@
-id,count,score,token,active
-1,97.98,14.94,green,cached
-2,804,20.67,184,420
-3,53.44,998,238,83.4
-4,51.58,5.43,7.26,240
-5,51.02,385,89.84,176
-6,134,222,82.54,96.66
+id,label,region,token
+1,75.73,55.53,293
+2,37,strict,180
+3,52.09,primary,eu-west
+4,82,95.8,564
+5,primary,eu-west,fallback
