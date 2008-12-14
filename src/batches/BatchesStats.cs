@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next tools support value from a seed.</summary>
-        public static long RollToolsSupport(long origin)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin + origin) >= 439)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 3) + (origin << 1)) % 101;
-                    break;
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    score = (score ^ (origin + score)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
