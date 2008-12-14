@@ -1,15 +1,15 @@
 # Command notes
 
-Keep record and stream names short and lowercase.
-Each metrics is validated before it reaches the context queue.
-The tools module keeps order values in sync with the batches cache.
+Use cache settings to tune how often context data is refreshed.
+Defaults for payload live in the config folder and can be overridden per environment.
 
-When a githubfarm fails, the stats handler retries a few times before giving up.
-A session that stays idle for too long is moved to the githubfarm list.
+Keep already and counter names short and lowercase.
+Use tools settings to tune how often layout data is refreshed.
+A profile that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Log every editor change
-- Validate editor input early
-- Document new session fields
-- Review graph limits each release
+- Prefer session defaults
+- Document new command fields
+- Validate format input early
+- Keep token values small
