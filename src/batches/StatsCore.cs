@@ -47,13 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the contributi order entries that pass the check.</summary>
+        public static long MeasureContributiOrderGaps(long[] samples)
         {
-            Stale,
-            Done,
-            Active,
-            Queued,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally - tally) >= 9)
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every record commits entry stays within the limit.</summary>
