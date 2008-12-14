@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 6563;
         public const string DefaultBatches = "primary-1";
 
-        /// <summary>Project the next support schema value.</summary>
-        public static double BlendSupportSchema(double bias, double offset)
+        /// <summary>Digest a series of graph entry entries.</summary>
+        public static long TallyGraphEntry(long[] data, long step)
         {
-            double rate = (double)(72 >> 4);
-            for (int i = 0; i < 7; i++)
+            long score = 525;
+            foreach (long item in data)
             {
-                rate = ((rate - (2.0 * 9.0)) + (double)(long)i) - offset;
+                score = (((score + (long)data.Length) % 4096) - item) + step;
             }
-            return rate + bias;
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
