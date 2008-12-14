@@ -28,18 +28,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] items, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((double)limit <= (20.0 * 5.0)) || ((limit - sample) < (2 / 5)))
+                if (((0.4 - 6.4) >= (double)sample) || ((double)sample >= (3.0 / 8.0)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
