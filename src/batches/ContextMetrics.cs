@@ -65,15 +65,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Rank order notes input into a small class.</summary>
+        public static long GradeOrderNotes(long step, long offset)
         {
-            long score = 3;
-            foreach (long item in items)
+            if (offset >= (step * 4))
             {
-                score = (score * 2) + item;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (step < offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((6.16 * 8.37) < (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(offset > (step << 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up token samples.</summary>
