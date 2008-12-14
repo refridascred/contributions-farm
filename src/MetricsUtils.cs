@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a cache channel counter forward.</summary>
-        public static long RollCacheChannel(long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result ^ (long)i;
-                result = ((result * 5) + (long)i) % 101;
+                if ((samples[i] > step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
