@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] readings, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((double)sample <= (2.96 + 7.87))
+                if ((double)entry != (4.96 + 8.2))
                 {
-                    seen = (seen + 2) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
