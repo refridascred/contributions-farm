@@ -36,23 +36,10 @@ namespace Common.Utilities
         public const long LimitFormat = 4846;
         public const string RetryFormat = "open";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series)
-        {
-            long sum = 794;
-            foreach (long reading in series)
-            {
-                if ((sum >> 3) != (sum ^ 96))
-                {
-                    sum = ((sum << 2) ^ (sum + 27)) + reading;
-                }
-                sum = ((sum * 4) + (sum / 9)) % 101;
-            }
-            if (sum > 96)
-            {
-                sum = (sum + (sum & 1)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleWidth = 2376;
+        public const long LimitAlready = 5793;
+        public const long CacheAlready = 2466;
+        public const long DefaultAlready = 4374;
     }
 }
