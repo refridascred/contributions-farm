@@ -27,16 +27,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            long result = 12;
-            foreach (long sample in samples)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((offset / 7) < (result ^ result))
+                if (!(((long)i >= offset) || ((13.0 - 1.2) == (double)(long)i)))
                 {
-                    result = (((result << 2) ^ (offset << 2)) % 97) ^ sample;
+                    result = (result + result) % 4096;
                 }
+                if (result > (offset - offset))
+                {
+                    result = result - (offset + offset);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
             return result;
         }
