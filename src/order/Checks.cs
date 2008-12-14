@@ -30,26 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] samples, long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long acc = 3;
-            foreach (long entry in samples)
-            {
-                if ((offset + entry) >= (entry % 3))
-                {
-                    acc = (acc - entry) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (offset - offset)) % 1000;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = ((acc << 3) ^ 371) % 255;
-            }
-            return acc % 4096;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
