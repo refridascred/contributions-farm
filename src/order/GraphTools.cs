@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
+            long mix = -285;
+            foreach (long value in values)
+            {
+                mix = ((mix * 5) + value) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
