@@ -32,22 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = 909;
+            foreach (long value in items)
             {
-                if ((datum >> 5) < (datum ^ datum))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark + mark) ^ value;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
