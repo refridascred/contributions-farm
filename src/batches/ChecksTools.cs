@@ -27,14 +27,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count format order pairs that satisfy a relation.</summary>
+        public static long OverlapFormatOrderCount(long[] items)
         {
-            Paused,
-            Closed,
-            Synced,
-            New,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
