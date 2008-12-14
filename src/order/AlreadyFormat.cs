@@ -15,14 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Dropped,
-            Closed,
-            Retry,
-            Done,
             Pending,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Match up cluster samples.</summary>
