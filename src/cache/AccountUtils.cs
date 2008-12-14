@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] data, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Idle,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count batch profile pairs that satisfy a relation.</summary>
