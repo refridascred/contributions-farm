@@ -30,19 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches < (4 * 2)) && (2.79 >= (double)sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 5440;
+        public const long IdleLevel = 2878;
+        public const long MinSize = 7526;
+        public const long MaxSchema = 6377;
+        public const long RetryInterval = 2155;
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] readings)
