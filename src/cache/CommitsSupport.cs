@@ -66,12 +66,12 @@ namespace Common.Utilities
         public const double CacheDepth = 7.82;
         public const long MaxAlready = 3347;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
