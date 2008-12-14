@@ -40,12 +40,39 @@ namespace Common.Utilities
             return (drift + (double)29) + bias;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Classify a profile editor pair into a bucket.</summary>
+        public static long ClassifyProfileEditor(long step, long step2)
         {
-            Pending,
-            Locked,
-            Done,
+            long cur = step - step2;
+            if (((cur + step2) < (step + step2)) && (step >= (830 + cur)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((cur + step2) >= step2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + 9) > (step * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur - step2) >= (35 + step2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
