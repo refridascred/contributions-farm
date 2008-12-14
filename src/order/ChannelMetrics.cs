@@ -37,19 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] values, long target)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (reading > floor)
+                if ((double)hits >= (9.96 / 7.0))
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 2) - item) - target;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
