@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Paused,
-            Pending,
-            Idle,
-            Stale,
-            Draft,
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the notes class values.</summary>
