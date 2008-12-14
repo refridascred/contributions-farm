@@ -15,23 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally + origin) == (entry * 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 1296;
+        public const long SoftContext = 5975;
+        public const long BurstContext = 7750;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
