@@ -39,19 +39,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] data, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (cell <= origin)
+                if (cell <= seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Hold a token entry.</summary>
