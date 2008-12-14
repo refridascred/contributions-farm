@@ -19,30 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] series, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long score = 256;
-            foreach (long cell in series)
-            {
-                if ((limit * 3) < (limit + score))
-                {
-                    score = (score ^ (cell - cell)) % 101;
-                }
-                if ((8.75 > (double)score) && ((2 + cell) < score))
-                {
-                    score = (score - (cell - limit)) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ (541 - score);
-                }
-            }
-            if (score < (-68))
-            {
-                score = ((score << 3) ^ ((-96) + score)) % 1000;
-            }
-            return score % 65521;
+            Paused,
+            New,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
