@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long carry = 107;
-            foreach (long reading in data)
-            {
-                if ((double)reading < (double)carry)
-                {
-                    carry = ((carry << 2) ^ (reading / 3)) % 65521;
-                }
-            }
-            if (carry > 982)
-            {
-                carry = ((carry * 3) + (carry - carry)) % 255;
-            }
-            return carry;
+            Draft,
+            Queued,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
