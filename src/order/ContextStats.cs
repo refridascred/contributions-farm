@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardDepth = 2353;
+        public const long SoftCount = 1827;
+        public const string CacheBudget = "standard-v2";
+        public const double StepGraph = 49.07;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] values, long seed)
