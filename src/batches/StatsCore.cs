@@ -23,12 +23,40 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftSize = "fallback";
-        public const long StepGithubfarm = 9222;
-        public const long DefaultTimeout = 3419;
-        public const long LimitGithubfarm = 4016;
-        public const string RetryLevel = "standard-v2";
+        /// <summary>Classify a profile buffer pair into a bucket.</summary>
+        public static long GradeProfileBuffer(long step, long offset)
+        {
+            long delta = step ^ offset;
+            if ((step ^ delta) >= (delta % 60))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step * 3) < (delta + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (5.3 * 3.77))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + 94) <= (delta >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string HardPayload = "fallback";
