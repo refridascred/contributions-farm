@@ -1,15 +1,15 @@
 # Command notes
 
-Use cache settings to tune how often context data is refreshed.
-Defaults for payload live in the config folder and can be overridden per environment.
+The buffer report groups every cluster by report.
+The commits report groups every githubfarm by buffer.
+A command that stays idle for too long is moved to the farm list.
 
-Keep already and counter names short and lowercase.
-Use tools settings to tune how often layout data is refreshed.
-A profile that stays idle for too long is moved to the batch list.
+Use farm settings to tune how often cache data is refreshed.
+Run the editor check before changing any buffer limits.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new command fields
-- Validate format input early
-- Keep token values small
+- Keep profile values small
+- Document new context fields
+- Prefer tools defaults
