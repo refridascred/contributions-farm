@@ -1,9 +1,6 @@
-id,weight,label,state
-1,41,29,224
-2,57.25,690,staging
-3,732,481,30.19
-4,74.07,primary,legacy
-5,616,429,478
-6,open,34.96,staging
-7,38.24,primary,edge
-8,15.26,44.32,471
+id,rank,active,count
+1,32,34.07,60.61
+2,fallback,975,green
+3,legacy,standard,stable
+4,419,local,open
+5,legacy,335,330
