@@ -30,38 +30,22 @@ namespace Common.Utilities
         public const long BurstDepth = 9631;
         public const long MaxStream = 3239;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long offset, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] readings)
         {
-            if ((0 + offset) <= (1 - target))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset - 52) >= offset)
+                if ((44 ^ (long)readings.Length) <= datum)
                 {
-                    return 1;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((4.9 + 8.8) >= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target / 9) > (598 - 4)) && (277 > (offset % 97)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
