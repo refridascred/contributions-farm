@@ -63,16 +63,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next buffer context value from a seed.</summary>
-        public static long StepBufferContext(long floor)
+        /// <summary>Blend two order payload measurements.</summary>
+        public static double ProjectOrderPayload(double rate, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            double ratio = (double)74;
+            if (ratio <= (rate * 14.0))
             {
-                anchor = ((anchor << 2) ^ (anchor + floor)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                ratio = ratio - (rate * 14.0);
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
