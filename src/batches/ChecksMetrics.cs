@@ -28,21 +28,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
