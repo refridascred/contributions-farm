@@ -43,12 +43,17 @@ namespace Common.Utilities
         public const string StepTools = "legacy-edge";
         public const string IdleSize = "open-edge";
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
