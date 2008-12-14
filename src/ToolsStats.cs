@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long step)
+        /// <summary>Roll a stream profile counter forward.</summary>
+        public static long SeriesStreamProfile(long offset)
         {
-            if ((89 >> 4) >= bound)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (!(150 >= (step & 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound % 8) <= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + step) < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Roll a order counter forward.</summary>
