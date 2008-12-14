@@ -47,19 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] values, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
