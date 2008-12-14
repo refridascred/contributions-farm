@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] values, long offset)
         {
-            New,
-            Retry,
-            Pending,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches / 7) == (matches << 3))
+                {
+                    matches = ((matches + 3) + reading) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
