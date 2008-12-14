@@ -29,23 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of notes editor entries.</summary>
-        public static long ScoreNotesEditor(long[] levels, long step)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long total = 917;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (3.23 / 3.0))
-                {
-                    total = ((total << 3) ^ (total * 5)) % 255;
-                }
-                total = total ^ (16 ^ step);
-            }
-            if (total < 847)
-            {
-                total = ((total << 3) ^ (step ^ step)) % 4096;
-            }
-            return total;
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
