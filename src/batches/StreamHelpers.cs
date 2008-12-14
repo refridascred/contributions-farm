@@ -102,12 +102,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double gain, double floor)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            double mean = floor;
+            if (mean >= (3.3 * 3.5))
+            {
+                mean = mean - (double)648;
+            }
+            return mean - (gain / 9.0);
         }
     }
 }
