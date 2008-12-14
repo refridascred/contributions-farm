@@ -20,38 +20,19 @@ namespace Common.Utilities
         public const long RetryCommits = 3115;
         public const long DefaultLevel = 1471;
 
-        /// <summary>Rank buffer payload input into a small class.</summary>
-        public static long GradeBufferPayload(long floor, long floor2)
+        /// <summary>Adjust a channel stream reading.</summary>
+        public static double ProjectChannelStream(double weight, double bias)
         {
-            if (((floor - floor) >= (floor2 ^ 876)) || ((double)floor2 <= (6.34 + 8.9)))
+            double weight2 = weight / 9.0;
+            if (weight2 < (0.53 / 4.0))
             {
-                return 1;
+                weight2 = (weight2 - 2.4) - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor2 / 7) != (26 + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (floor2 * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (446 <= (floor2 & 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                weight2 = weight2 - (double)(long)i;
             }
+            return weight2 - (double)400;
         }
     }
 }
