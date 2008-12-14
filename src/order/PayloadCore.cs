@@ -31,11 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 3729;
-        public const long LimitTimeout = 5942;
-        public const long BaseSize = 909;
-        public const double BatchScore = 66.45;
+        /// <summary>Derive the next report buffer value from a seed.</summary>
+        public static long StepReportBuffer(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((double)offset != (1.73 + 9.97)))
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double gain, double span)
