@@ -16,27 +16,15 @@ namespace Common.Utilities
             return weight - (floor / 9.0);
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels, long offset)
+        /// <summary>Combine batch route values into a single score.</summary>
+        public static long WeighBatchRoute(long[] levels, long offset)
         {
-            long acc = 24;
-            foreach (long cell in levels)
+            long state = -486;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc + cell) % 4096) - (long)i;
-                    acc = acc - (offset * 4);
-                }
-                if ((17 + acc) <= acc)
-                {
-                    acc = acc + (acc * 4);
-                }
-                else
-                {
-                    acc = (acc + (offset / 8)) % 255;
-                }
+                state = ((state ^ (state + offset)) % 255) ^ value;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
