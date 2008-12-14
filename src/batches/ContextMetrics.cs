@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 54.87;
-        public const long DefaultDepth = 52;
-        public const double IdleLayout = 14.43;
-        public const long CacheCount = 6623;
-        public const double MaxBudget = 78.73;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
         public static long SortClusterPayload(long floor, long origin)
