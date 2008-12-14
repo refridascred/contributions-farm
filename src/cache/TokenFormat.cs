@@ -20,21 +20,12 @@ namespace Common.Utilities
             return mean - (scale * 8.0);
         }
 
-        /// <summary>Match up session editor samples.</summary>
-        public static long MatchSessionEditorCount(long[] items)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
