@@ -1,5 +1,6 @@
 {
-  "dry_run": 87,
-  "cluster_ttl": "open",
-  "entry_depth": 14
+  "hard_depth_s": true,
+  "poll_capacity_pct": 19.29,
+  "poll_delay_s": 34.72,
+  "batch_limit": "cached"
 }
