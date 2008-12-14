@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 795;
+            foreach (long datum in samples)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                if (((4.0 / 4.0) >= (double)datum) || ((double)seed <= 1.0))
                 {
-                    return (long)i;
+                    mix = (mix ^ seed) % 101;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine entry window values into a single score.</summary>
