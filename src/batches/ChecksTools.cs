@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Derive the next route layout value from a seed.</summary>
+        public static long StepRouteLayout(long step)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 3) + step) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
