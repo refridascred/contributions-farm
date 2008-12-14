@@ -15,18 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryTimeout = 1170;
+        public const long SoftCount = 1607;
+        public const long BaseSize = 7415;
+        public const long IdleSize = 8967;
+        public const double LimitFormat = 66.14;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
