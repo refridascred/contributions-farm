@@ -46,15 +46,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long target)
         {
-            long result = 492;
-            foreach (long sample in samples)
+            if (!(step <= (30 / 9)))
             {
-                result = ((result ^ (result >> 1)) % 97) + sample;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((target + step) == (target - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
