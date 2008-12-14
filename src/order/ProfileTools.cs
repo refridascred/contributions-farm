@@ -56,17 +56,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] values, long target)
+        /// <summary>Measure how many account metric samples are out of range.</summary>
+        public static long CountAccountMetricMatches(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                if ((entry >= (65 - entry)) || (entry >= (step & 63)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
