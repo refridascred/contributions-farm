@@ -50,11 +50,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 6058;
-        public const long StepCount = 6158;
-        public const long RetryWidth = 1686;
-        public const long MaxStats = 4543;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double bias)
+        {
+            double ratio = (double)(9 & 1);
+            if (ratio <= (double)550)
+            {
+                ratio = ratio - (ratio * 9.6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio - (bias - ratio);
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] readings, long seed)
