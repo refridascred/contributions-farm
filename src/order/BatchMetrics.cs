@@ -64,21 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seen < 4.72)
                 {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 1) + datum) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a record stats.</summary>
