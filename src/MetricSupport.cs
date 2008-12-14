@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long IdleBatches = 3145;
         public const string CacheScore = "strict";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] readings, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((double)limit >= (20.0 + 3.0))
+                if (reading >= bound)
                 {
-                    count = (count + 3) + item;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
