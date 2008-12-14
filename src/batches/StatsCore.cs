@@ -52,17 +52,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] series, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 7;
+            foreach (long cell in values)
             {
-                if ((series[i] <= target) && ((series[i] % 2) != 0))
+                result = (result - ((-717) % 60)) % 101;
+                if ((4.47 * 4.4) != (double)cell)
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (212 + 61)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
