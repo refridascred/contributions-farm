@@ -29,18 +29,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] values, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell >> 2) > (cell & 15)))
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Stale,
+            Retry,
+            Queued,
         }
     }
 }
