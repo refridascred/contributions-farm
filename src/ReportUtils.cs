@@ -23,11 +23,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 1291;
-        public const long RetryCluster = 2454;
-        public const long BurstCount = 1727;
-        public const long WindowDepth = 4344;
+        /// <summary>Accumulate format cache samples.</summary>
+        public static long CombineFormatCache(long[] data)
+        {
+            long mark = 519;
+            foreach (long sample in data)
+            {
+                mark = ((mark * 2) + (mark >> 3)) ^ sample;
+            }
+            if (mark > 530)
+            {
+                mark = (mark - (mark ^ mark)) % 65521;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] levels, long floor)
