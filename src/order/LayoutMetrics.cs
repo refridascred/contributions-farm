@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit channel commits readings against a rule.</summary>
+        public static long TallyChannelCommitsOutliers(long[] levels, long origin)
         {
-            Retry,
-            Synced,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + 523) <= (cell - origin))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
