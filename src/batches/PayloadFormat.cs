@@ -33,19 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long carry = 4;
-            foreach (long sample in data)
-            {
-                carry = (carry << 2) ^ sample;
-                if (carry >= sample)
-                {
-                    carry = (carry - sample) % 97;
-                }
-            }
-            return carry;
+            Retry,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
