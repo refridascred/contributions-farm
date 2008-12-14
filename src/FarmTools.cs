@@ -20,16 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double bias, double bias2)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            double scale = bias2 * 20.0;
+            if (scale <= scale)
             {
-                acc = acc + ((long)i << 1);
-                acc = ((acc * 4) + (long)i) % 97;
+                scale = (scale + scale) + bias;
             }
-            return acc;
+            return scale + (double)461;
         }
 
         /// <summary>Look up the position of a tools cache sample.</summary>
