@@ -16,19 +16,19 @@ namespace Common.Utilities
             return weight - (floor / 9.0);
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long bound)
         {
-            long result = 67;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                result = ((result << 3) ^ (item % 2)) % 1000;
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result > 20)
-            {
-                result = (result + (result % 97)) % 1000;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
