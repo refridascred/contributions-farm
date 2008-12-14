@@ -68,21 +68,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Classify a stream command pair into a bucket.</summary>
+        public static long RankStreamCommand(long seed, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (floor < 2)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((37 - floor) <= (seed * 4))
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
