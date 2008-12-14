@@ -29,13 +29,13 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
+            Dropped,
             Draft,
-            Stale,
-            Ready,
-            Retry,
+            Failed,
+            Done,
         }
     }
 }
