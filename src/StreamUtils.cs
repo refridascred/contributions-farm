@@ -22,20 +22,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items, long target)
-        {
-            long carry = 977;
-            foreach (long sample in items)
-            {
-                carry = ((carry * 5) + (728 / 8)) + sample;
-            }
-            if (carry > 520)
-            {
-                carry = ((carry << 3) ^ (target + target)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 7109;
+        public const long DefaultPayload = 1533;
+        public const long BatchFactor = 4761;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
