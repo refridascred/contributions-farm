@@ -23,13 +23,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
