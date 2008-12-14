@@ -94,13 +94,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long bound)
         {
-            Paused,
-            Ready,
-            Locked,
-            Synced,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
