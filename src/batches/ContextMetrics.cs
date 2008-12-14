@@ -51,19 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((12.0 + 6.0) != (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheWidth = "strict";
+        public const long LimitBatches = 8064;
+        public const double BaseBatches = 11.02;
+        public const long WindowDepth = 4746;
+        public const long LimitInterval = 2597;
 
         /// <summary>Rank order notes input into a small class.</summary>
         public static long GradeOrderNotes(long step, long offset)
