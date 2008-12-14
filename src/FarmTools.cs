@@ -14,13 +14,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Iterate the stream graph series from a seed.</summary>
+        public static long StepStreamGraph(long bound)
         {
-            Closed,
-            Queued,
-            Active,
-            Dropped,
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state + (bound << 2)) % 101;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the buffer cache entries that pass the check.</summary>
