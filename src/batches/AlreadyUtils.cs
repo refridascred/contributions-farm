@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long StepBudget = 7760;
         public const long CacheSize = 2096;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] values, long target)
         {
-            Draft,
-            Stale,
-            Retry,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!(((sample + sample) != (sample / 2)) && (70 <= target)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
