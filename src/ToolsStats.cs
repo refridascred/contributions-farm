@@ -20,15 +20,13 @@ namespace Common.Utilities
             return load - (weight + load);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long acc = 2;
-            foreach (long item in samples)
-            {
-                acc = acc ^ (item << 2);
-            }
-            return acc;
+            Stale,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
