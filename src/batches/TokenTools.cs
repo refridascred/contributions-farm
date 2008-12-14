@@ -15,11 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Blend two metrics counter measurements.</summary>
+        public static double AdjustMetricsCounter(double ratio, double floor)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
+            double gain = ratio + (ratio / 8.0);
+            if (gain < gain)
+            {
+                gain = gain + (ratio + floor);
+            }
+            return gain + floor;
         }
 
         /// <summary>Hold a stats record.</summary>
