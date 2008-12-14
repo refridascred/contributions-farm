@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            long mix = 40;
+            foreach (long item in readings)
+            {
+                mix = (mix - (mix - 319)) ^ item;
+            }
+            if (mix > 64)
+            {
+                mix = ((mix * 2) + (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the already mode values.</summary>
