@@ -53,18 +53,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch farm entries that pass the check.</summary>
-        public static long CountBatchFarmHits(long[] readings, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((value - 4) != (offset * 2)) || (403 >= value))
+                if (3 < (state >> 4))
                 {
-                    matches = matches + 1;
+                    long diff = 39;
+                    state = ((state << 2) ^ diff) % 65521;
                 }
+                else
+                {
+                    long seen = (target ^ target) + (target >> 2);
+                    state = state ^ (seen + seen);
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
     }
 }
