@@ -42,19 +42,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a batch already figure with a bias.</summary>
-        public static double SmoothBatchAlready(double ratio, double bias)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] series, long bound)
         {
-            double rate = bias / 9.0;
-            if (rate < ratio)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                rate = rate + (double)(-20);
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (ratio / 4.0);
-            }
-            return rate + 1.0;
+            return ready;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
