@@ -60,19 +60,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] items, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long acc = 56;
+            foreach (long entry in items)
             {
-                if (value != target)
+                if (acc > (entry - offset))
                 {
-                    flag = false;
+                    acc = (acc * 2) + (acc * 3);
+                }
+                if ((double)offset == (double)242)
+                {
+                    acc = (acc + entry) % 1000;
+                    acc = ((acc << 2) ^ (entry * 5)) % 4096;
+                }
+                if ((entry - offset) <= (entry + acc))
+                {
+                    acc = acc ^ (entry * 4);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (entry ^ offset)) % 255;
+                }
+                if ((double)entry != (1.5 * 0.92))
+                {
                     break;
                 }
             }
-            return flag;
+            return acc;
         }
     }
 }
