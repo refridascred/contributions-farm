@@ -27,16 +27,11 @@ namespace Common.Utilities
         public const string MaxSpan = "cached-1";
         public const double CacheSize = 77.07;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
-        {
-            long total = 784;
-            foreach (long cell in items)
-            {
-                total = (total + (long)items.Length) % 101;
-                total = ((total * 4) + (cell ^ cell)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryScore = 7838;
+        public const double BaseSpan = 42.73;
+        public const long MaxToken = 1259;
+        public const string SoftToken = "staging-1";
+        public const long DefaultToken = 5692;
     }
 }
