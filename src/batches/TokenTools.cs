@@ -25,13 +25,13 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            Draft,
+            Stale,
+            Ready,
+            Retry,
         }
     }
 }
