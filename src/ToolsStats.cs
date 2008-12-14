@@ -98,9 +98,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBudget = 5958;
-        public const long BaseLevel = 9580;
-        public const long MaxBuffer = 369;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double scale, double bias)
+        {
+            double bias2 = 2.6 * 8.3;
+            if (bias2 > scale)
+            {
+                bias2 = (bias2 + bias2) + bias;
+            }
+            return bias2 + (scale - bias2);
+        }
     }
 }
