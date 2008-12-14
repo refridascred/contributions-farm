@@ -1,11 +1,11 @@
 {
-  "compress": "blue",
-  "strict": "standard",
-  "counter_size": 64.79,
-  "commits_limit": {
-    "sync_ttl": "standard",
-    "hard_capacity": 30,
-    "tools_ratio": ["blue", "eu-west", "strict", "open"]
+  "profile_ttl": 37.16,
+  "default_retries_count": ["standard", "edge", "local", "edge"],
+  "base_depth": "standard",
+  "base_threshold": {
+    "batch_ttl_ms": "staging",
+    "poll_ttl_pct": false,
+    "batch_window_pct": 38.07
   },
-  "burst_limit_count": "local"
+  "burst_depth_s": ["open", "primary", "stable"]
 }
