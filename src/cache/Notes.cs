@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 408;
+        public const long BatchCount = 2296;
+        public const long HardDepth = 9581;
+        public const long HardQueue = 5051;
+        public const double BurstQueue = 58.73;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double SoftDepth = 42.58;
