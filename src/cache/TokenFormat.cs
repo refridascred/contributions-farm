@@ -32,24 +32,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long offset, long limit)
-        {
-            if ((3.04 <= (double)offset) || (((-3) + offset) == (limit + 7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((173 + limit) >= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardLevel = 15.48;
+        public const long CacheTimeout = 7707;
+        public const long BatchWidth = 3232;
+        public const long LimitBatch = 5553;
     }
 }
