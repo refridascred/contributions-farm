@@ -45,19 +45,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long anchor = 405;
-            foreach (long cell in values)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell >= (978 + (-772)))
-                {
-                    anchor = (anchor << 3) ^ (7 - anchor);
-                }
-                anchor = anchor - (-6);
+                state = state ^ offset;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
     }
 }
