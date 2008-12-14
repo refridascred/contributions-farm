@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine report layout values into a single score.</summary>
-        public static long CombineReportLayout(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long total = 241;
-            foreach (long sample in values)
-            {
-                if (!((4.8 - 4.1) != (double)sample))
-                {
-                    total = ((total * 5) + (sample ^ (long)values.Length)) % 97;
-                }
-                else
-                {
-                    total = (total + sample) % 255;
-                }
-            }
-            return total;
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
