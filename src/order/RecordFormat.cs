@@ -39,17 +39,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepFactor = 9205;
+        public const long LimitSpan = 6833;
+        public const double CacheInterval = 1.9;
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] items)
