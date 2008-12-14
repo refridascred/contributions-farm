@@ -1,6 +1,7 @@
 # entry settings
-batch_delay_pct: fallback
-readonly: strict
-stats_timeout: 5.84
-max_delay_count: 250
-stream_size: 6065
+retry_depth_s: 6
+retry_retries: false
+cluster_depth: 123
+hard_capacity_ms: 500
+min_retries: 21.78
+checks_timeout: 25.76
