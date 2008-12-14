@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in strict stable; do
+    log "checking ${item}"
+done
 
-BUFFER_LIMIT=386
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=139
 log "limit is ${BUFFER_LIMIT}"
