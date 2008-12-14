@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] levels)
         {
-            Active,
-            Ready,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally + datum) != (datum + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the report level values.</summary>
