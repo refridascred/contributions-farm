@@ -57,18 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] data, long origin)
+        /// <summary>Combine checks window values into a single score.</summary>
+        public static long TallyChecksWindow(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long sum = 9;
+            foreach (long reading in data)
             {
-                if ((1.0 - 0.9) == (double)origin)
+                if ((double)step == (double)347)
                 {
-                    tally = (tally + 3) + datum;
+                    sum = ((sum - (step - step)) % 255) ^ reading;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Find the first already context entry that matches the target.</summary>
