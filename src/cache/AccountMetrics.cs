@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = floor - target;
+            if (floor > (gap ^ 993))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (floor > (target + target))
                 {
-                    if ((levels[i] + levels[j]) == 12)
+                    return 4;
+                }
+                else
+                {
+                    if (!(target < (floor + floor)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)gap < (double)3)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a queue entry.</summary>
