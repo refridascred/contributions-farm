@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = 289;
+            foreach (long value in levels)
             {
-                if ((4 >> 3) <= (entry % 60))
+                carry = carry ^ (carry * 5);
+                if ((value > (325 - carry)) && ((840 ^ 0) > (value + value)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (carry < (-95))
+            {
+                carry = carry - (carry - seed);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count context schema pairs that satisfy a relation.</summary>
