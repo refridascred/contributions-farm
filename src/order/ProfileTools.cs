@@ -13,16 +13,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long target, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long next = target + offset;
+            if (((82 - target) <= (target % 8)) || (6.0 > (double)next))
             {
-                carry = ((carry << 3) ^ (29 & 127)) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (offset <= (99 % 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target - next) > offset) && ((6.75 / 3.0) < (double)next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
