@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] samples, long target)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of stream metric readings.</summary>
