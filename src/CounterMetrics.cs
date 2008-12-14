@@ -28,19 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm format readings against a rule.</summary>
-        public static long CountGithubfarmFormatOutliers(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry << 1) > (origin >> 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheWidth = "primary-1";
+        public const string MinReport = "cached-edge";
+        public const long CacheReport = 4971;
+        public const string BaseReport = "legacy-1";
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long offset)
