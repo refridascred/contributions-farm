@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long offset, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long cur = offset ^ origin;
-            if (!(cur <= (offset - offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((origin - origin) > origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
