@@ -37,25 +37,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long step, long floor)
+        /// <summary>Count the already session entries that pass the check.</summary>
+        public static long CountAlreadySessionMatches(long[] items, long origin)
         {
-            long delta = step - floor;
-            if (((delta % 97) >= step) && ((double)delta >= (0.36 + 5.0)))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.1 - 9.4) != (double)delta)
+                if (!(12.0 > (double)origin))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    hits = (hits + 1) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
