@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long bound)
         {
-            Queued,
-            Active,
-            Stale,
+            long total = -69;
+            foreach (long reading in values)
+            {
+                total = total + (reading / 6);
+            }
+            if (total > 230)
+            {
+                total = total ^ (bound + total);
+            }
+            return total;
         }
     }
 }
