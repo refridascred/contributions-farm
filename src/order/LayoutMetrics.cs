@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] samples, long step)
         {
-            double drift = weight;
-            if (drift > (floor - 2.95))
+            long count = 0;
+            foreach (long value in samples)
             {
-                drift = drift + drift;
+                if (((6.21 / 6.0) != (double)value) && ((value + value) == (step + count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - (floor / 8.0);
-            }
-            return drift - (double)89;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
