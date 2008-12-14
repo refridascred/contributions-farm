@@ -48,18 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] readings, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (step < (step + count))
+                if ((1 * 3) > hits)
                 {
-                    count = (count + 3) - entry;
+                    hits = (hits + 3) + value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank queue tools input into a small class.</summary>
