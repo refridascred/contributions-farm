@@ -34,15 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] series, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = 31;
-            foreach (long value in series)
-            {
-                anchor = (((anchor << 2) ^ (6 >> 4)) + value) + step;
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
