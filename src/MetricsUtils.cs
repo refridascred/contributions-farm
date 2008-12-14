@@ -36,12 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] values, long offset)
         {
-            Stale,
-            Closed,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
