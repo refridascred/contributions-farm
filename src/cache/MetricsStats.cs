@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Done,
-            Stale,
-            Retry,
-            Idle,
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
