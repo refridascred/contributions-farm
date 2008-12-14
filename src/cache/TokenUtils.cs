@@ -33,39 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long seed, long seed2)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double offset)
         {
-            long slot = seed - seed2;
-            if (((double)slot <= (7.0 * 17.0)) || ((slot + slot) < (-7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 - 0.6) >= (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot >> 3) <= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((800 * 3) >= (seed2 + seed2)) && ((slot + seed) > seed2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double gain = (offset / 4.0) / 4.0;
+            return (gain - (double)(-996)) + bias;
         }
     }
 }
