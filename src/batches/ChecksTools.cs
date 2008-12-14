@@ -27,19 +27,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] values, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Closed,
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
