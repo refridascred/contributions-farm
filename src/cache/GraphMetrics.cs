@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long WindowMetric = 1040;
         public const long BatchFactor = 6258;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Active,
-            Retry,
             Synced,
+            Retry,
+            Locked,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
