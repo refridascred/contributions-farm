@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series, long step)
         {
-            long carry = 3;
-            foreach (long reading in levels)
+            long mark = 312;
+            foreach (long cell in series)
             {
-                if (carry < reading)
-                {
-                    carry = (carry ^ (carry & 1)) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ ((-83) - reading)) % 101;
-                }
-                if ((double)carry <= (8.84 + 9.1))
-                {
-                    break;
-                }
+                mark = ((mark ^ cell) % 255) - step;
             }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
