@@ -71,14 +71,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long offset, long origin)
         {
-            Synced,
-            Queued,
-            New,
-            Failed,
-            Locked,
+            long span = offset - origin;
+            if ((span << 2) < offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (span > (span ^ origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - offset) != (offset - span))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((1.22 + 4.7) != (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
