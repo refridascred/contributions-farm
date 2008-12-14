@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] samples, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] levels, long bound)
         {
-            long carry = 5;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((double)value <= (2.1 / 5.0)) && ((double)offset <= (9.2 - 3.9)))
+                if ((item * 4) > (item + bound))
                 {
-                    continue;
-                }
-                if ((double)offset > 2.0)
-                {
-                    carry = ((carry * 3) + (carry >> 3)) % 97;
+                    tally = tally + 3;
                 }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
