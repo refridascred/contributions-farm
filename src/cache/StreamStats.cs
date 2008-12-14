@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of stream metric readings.</summary>
-        public static long TallyStreamMetric(long[] values, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] readings, long step)
         {
-            long anchor = 803;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                anchor = (((anchor ^ (1 / 7)) % 101) + reading) - limit;
-                if (!((double)anchor <= (4.0 + 7.7)))
+                if ((double)sample <= (2.96 + 7.87))
                 {
-                    break;
+                    seen = (seen + 2) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
