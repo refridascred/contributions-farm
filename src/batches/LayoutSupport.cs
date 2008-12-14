@@ -58,24 +58,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a contributi order value against two limits.</summary>
-        public static long SortContributiOrder(long step, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if (step < (seed / 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (11.0 + 4.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
