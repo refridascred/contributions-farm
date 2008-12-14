@@ -17,12 +17,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultLevel = 93.43;
-        public const string DefaultSession = "latest-v2";
-        public const long BatchSpan = 757;
-        public const double DefaultSize = 61.94;
-        public const long MinSession = 373;
+        /// <summary>Derive the next entry notes value from a seed.</summary>
+        public static long DeriveEntryNotes(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long seed)
