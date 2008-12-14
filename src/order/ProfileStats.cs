@@ -39,19 +39,20 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] readings, long seed)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell <= seed)
+                mix = mix - (934 - (long)i);
+                if ((long)i <= (target % 8))
                 {
-                    ok = false;
                     break;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a token entry.</summary>
