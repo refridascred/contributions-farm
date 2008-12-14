@@ -1,24 +1,10 @@
 # support settings
-base_limit: blue
-warm_timeout: 21
-poll_interval:
-  base_ratio_pct: 500
-  default_size_count:
-    - strict
-    - green
-    - green
-    - fallback
-  window_capacity: latest
-  audit:
-    - latest
-    - cached
-  strict: 6408
-  checks_depth:
-    poll_timeout_ms: false
-    dry_run:
-      - 129
-      - 488
-    editor_retries: 76
-    cluster_ratio: staging
-    burst_ttl_count: 96.09
-stats_delay: 53.49
+command_retries: latest
+batch_limit: 7814
+readonly: primary
+sync_size: false
+cache_ttl_pct: 60
+max_capacity_s:
+  - stable
+  - primary
+  - stable
