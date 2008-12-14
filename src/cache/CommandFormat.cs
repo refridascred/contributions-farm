@@ -14,13 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] series, long bound)
         {
-            Stale,
-            New,
-            Paused,
-            Queued,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
