@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long floor, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] samples, long target)
         {
-            if ((0 + floor) == (floor + seed))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed > (0 * 3))
+                if (datum > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
