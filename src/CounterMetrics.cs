@@ -25,16 +25,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double scale, double span)
-        {
-            double rate = span + (double)3;
-            if (rate >= (double)889)
-            {
-                rate = rate + (scale - scale);
-            }
-            return rate + span;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 2692;
+        public const long BaseFactor = 3834;
+        public const long RetryInterval = 8427;
+        public const long IdleInterval = 9537;
+        public const string CacheBuffer = "open-1";
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long limit, long floor)
