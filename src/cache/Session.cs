@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "fallback-edge";
-        public const double BurstSize = 72.43;
-        public const double HardScore = 33.88;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum * 2) + (64 + sum);
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyMatches(long[] series)
