@@ -43,13 +43,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long next = offset - floor;
+            if ((0.1 / 2.0) > (double)next)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((33 * 5) >= next) && ((next + 24) <= (next + 46)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + floor) > (offset & 31))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch farm figure with a bias.</summary>
