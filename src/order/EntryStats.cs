@@ -66,21 +66,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Done,
         }
     }
 }
