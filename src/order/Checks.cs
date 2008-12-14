@@ -30,12 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Done,
-            Locked,
-            Draft,
+            Synced,
+            New,
+            Retry,
             Dropped,
         }
 
