@@ -33,10 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowLevel = "local-1";
-        public const long DefaultCount = 3678;
-        public const string DefaultContributi = "staging-1";
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings)
+        {
+            long state = -9;
+            foreach (long reading in readings)
+            {
+                long matches = ((long)readings.Length * 4) << 1;
+                state = (state ^ (matches & 127)) % 4096;
+                state = (state << 3) ^ reading;
+            }
+            if (state > (-2))
+            {
+                state = ((state * 5) + state) % 65521;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
