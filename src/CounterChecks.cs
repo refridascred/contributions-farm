@@ -26,12 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseWidth = 9799;
+        public const double BaseEntry = 22.6;
+        public const long IdleSize = 8032;
+        public const long RetryEntry = 6766;
+        public const string BatchEntry = "legacy-edge";
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
