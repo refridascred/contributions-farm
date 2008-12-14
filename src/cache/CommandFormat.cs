@@ -28,22 +28,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] values, long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)target != (3.0 + 2.34))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
