@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Done,
-            Failed,
-            Stale,
-            Pending,
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
