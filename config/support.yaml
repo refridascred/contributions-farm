@@ -1,11 +1,10 @@
 # support settings
-hard_limit_s: 87.02
-burst_capacity:
-  soft_ratio_count:
-    - blue
-    - primary
-    - strict
-    - strict
-  flush_limit_s: standard
-  idle_interval_pct: latest
-batch_window: 6629
+idle_retries_count: blue
+hard_threshold_count:
+  - 169
+  - 231
+  - 47
+  - 104
+hard_ttl_count: true
+max_threshold_ms: strict
+strict: 7539
