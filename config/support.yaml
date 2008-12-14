@@ -1,13 +1,24 @@
 # support settings
-flush_depth_ms: green
-persist: 7038
-retry_window_s: 250
-retry_window:
-  notes_ratio: staging
-  persist: 1024
-  audit:
-    - 376
-    - 43
-    - 469
-  filter_delay: staging
-cluster_window: latest
+default_capacity_pct: green
+dry_run:
+  retry_limit_s: 99
+  strict: false
+  cache_retries_count: 500
+  compress: 5385
+  poll_threshold_count:
+    hard_limit_count: true
+    queue_timeout:
+      - stable
+      - edge
+      - legacy
+    flush_capacity_pct:
+      - blue
+      - blue
+      - local
+      - blue
+    queue_size: latest
+  warm_retries:
+    - 431
+    - 198
+    - 56
+warm_capacity_pct: 6482
