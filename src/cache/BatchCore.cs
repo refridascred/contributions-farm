@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseWidth = 7482;
-        public const double BatchDepth = 21.2;
-        public const long StepTimeout = 9215;
-        public const long MinFormat = 4721;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples)
+        {
+            long state = 11;
+            foreach (long value in samples)
+            {
+                if ((state % 97) >= state)
+                {
+                    state = (state ^ state) - value;
+                }
+                else
+                {
+                    state = state + (long)samples.Length;
+                }
+                if ((state << 3) < state)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] items, long target)
