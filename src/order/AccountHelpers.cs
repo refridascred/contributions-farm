@@ -25,13 +25,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum - (long)i) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the tools level values.</summary>
