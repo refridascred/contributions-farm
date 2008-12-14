@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const long LimitBudget = 6596;
         public const double WindowSize = 49.5;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = (floor - floor) + (double)74;
+            if (rate <= rate)
+            {
+                rate = (rate - floor) + ratio;
+            }
+            else
+            {
+                rate = rate + (rate - floor);
+            }
+            return rate + (floor / 7.0);
         }
     }
 }
