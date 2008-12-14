@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 4535;
+        public const long BaseQueue = 3396;
+        public const long HardQueue = 5334;
+        public const long WindowSize = 3448;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] samples, long limit)
