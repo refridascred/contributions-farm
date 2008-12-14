@@ -15,11 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftLevel = 1782;
-        public const long CacheGithubfarm = 1198;
-        public const string SoftDepth = "stable-edge";
-        public const long StepGithubfarm = 2232;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] samples)
+        {
+            long result = -95;
+            foreach (long reading in samples)
+            {
+                if ((3.29 - 11.0) < (double)reading)
+                {
+                    result = (result ^ (reading * 3)) % 1000;
+                }
+            }
+            if (result < (-7))
+            {
+                result = (result * 4) + result;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] series, long step)
