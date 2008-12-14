@@ -64,15 +64,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Audit schema account readings against a rule.</summary>
+        public static long AuditSchemaAccountOutliers(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (((12.0 / 2.0) >= (6.15 + 2.5)) && !((count - count) <= (0 + reading)))
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
