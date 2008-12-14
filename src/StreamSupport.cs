@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] values, long offset)
         {
-            Pending,
-            Retry,
-            Synced,
+            long anchor = 788;
+            foreach (long cell in values)
+            {
+                if (cell < (offset + anchor))
+                {
+                    anchor = anchor ^ (19 >> 2);
+                }
+                else
+                {
+                    anchor = (anchor + (offset % 5)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine layout stream values into a single score.</summary>
