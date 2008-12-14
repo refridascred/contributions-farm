@@ -75,18 +75,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema account readings against a rule.</summary>
-        public static long AuditSchemaAccountOutliers(long[] series)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((12.0 / 2.0) >= (6.15 + 2.5)) && !((count - count) <= (0 + reading)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first already context entry that matches the target.</summary>
