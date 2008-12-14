@@ -61,15 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long score = 3;
+            foreach (long item in items)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                score = (score * 2) + item;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Match up token samples.</summary>
