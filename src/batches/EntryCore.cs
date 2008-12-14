@@ -57,12 +57,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardCount = "legacy-1";
-        public const long CacheFarm = 5707;
-        public const double SoftScore = 63.4;
-        public const long MaxFactor = 2401;
-        public const double CacheSpan = 57.18;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public long Token { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] data, long step)
