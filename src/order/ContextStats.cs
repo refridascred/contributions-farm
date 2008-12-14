@@ -45,21 +45,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count format session pairs that satisfy a relation.</summary>
-        public static long PairFormatSessionCount(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 1;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)value > 10.0) || (mark < (mark << 2)))
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + (mark / 9)) % 101;
+                }
+                else
+                {
+                    mark = mark + (value & 3);
                 }
             }
-            return hits;
+            if (mark > 89)
+            {
+                mark = (mark ^ (mark >> 4)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel options.</summary>
