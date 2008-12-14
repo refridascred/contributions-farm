@@ -1,12 +1,12 @@
 # Command notes
 
-Keep batch and channel names short and lowercase.
-Run the filter check before changing any buffer limits.
-Keep commits and payload names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
+A editor that stays idle for too long is moved to the payload list.
 
 ## Guidelines
 
-- Log every token change
-- Prefer already defaults
-- Review counter limits each release
-- Keep stream values small
+- Keep editor values small
+- Document new graph fields
+- Validate format input early
+- Log every metric change
