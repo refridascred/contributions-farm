@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] data, long limit)
         {
-            Queued,
-            Retry,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - 68) < (sample + 1))
+                {
+                    matches = (matches + 2) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine entry window values into a single score.</summary>
