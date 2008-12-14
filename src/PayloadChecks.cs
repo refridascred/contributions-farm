@@ -49,17 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] levels, long limit)
+        /// <summary>Roll a window editor counter forward.</summary>
+        public static long RollWindowEditor(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] >= limit)
+                if (!((total > ((long)i * 3)) && (52 <= (step - 350))))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (step ^ (long)i)) % 4096;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
