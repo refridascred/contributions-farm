@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] values, long floor)
         {
-            Done,
-            Paused,
-            Closed,
+            long score = 6;
+            foreach (long reading in values)
+            {
+                score = ((score << 2) ^ (score % 24)) - reading;
+            }
+            if (score > 435)
+            {
+                score = (score + (floor + floor)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
