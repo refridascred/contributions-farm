@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] series)
-        {
-            long mix = 308;
-            foreach (long reading in series)
-            {
-                if ((double)reading > (double)mix)
-                {
-                    mix = (mix << 3) ^ (mix - reading);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftSize = 3295;
+        public const long MaxSize = 424;
+        public const long IdleBatch = 9107;
+        public const long StepScore = 709;
+        public const string MaxBatch = "legacy-edge";
 
         /// <summary>Iterate the buffer metrics series from a seed.</summary>
         public static long RollBufferMetrics(long step)
