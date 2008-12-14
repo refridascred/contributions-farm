@@ -71,21 +71,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 16)
+                    if ((levels[i] ^ levels[j]) < 7)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
