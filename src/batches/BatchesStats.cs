@@ -36,19 +36,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] series, long bound)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double mean = bias;
+            if (mean > (bias - mean))
             {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean - mean) - offset;
             }
-            return ready;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (double)109;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
