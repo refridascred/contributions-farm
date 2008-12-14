@@ -15,13 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long offset)
         {
-            Locked,
-            Pending,
-            Ready,
-            New,
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 5) + ((-7) - anchor)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the report state values.</summary>
