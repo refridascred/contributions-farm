@@ -63,18 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long result = 5;
-            foreach (long cell in values)
-            {
-                if ((cell << 2) != (cell + result))
-                {
-                    result = (result - 701) % 97;
-                }
-            }
-            return result;
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
