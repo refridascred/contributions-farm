@@ -47,15 +47,18 @@ namespace Common.Utilities
         public const double IdleBudget = 71.41;
         public const double WindowCounter = 53.09;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] levels, long seed)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] items)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed * 4) <= (seed + datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
