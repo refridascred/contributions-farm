@@ -32,18 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long WeighEntryEditor(long[] data, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long step)
         {
-            long acc = 4;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((double)acc != (double)reading)
+                if (reading <= step)
                 {
-                    acc = (acc ^ (5 + reading)) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return ok;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
