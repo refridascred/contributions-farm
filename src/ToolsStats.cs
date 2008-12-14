@@ -39,13 +39,13 @@ namespace Common.Utilities
         public const double DefaultAlready = 84.94;
         public const long DefaultTimeout = 4085;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Queued,
-            Pending,
-            Locked,
-            Failed,
+            Ready,
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
