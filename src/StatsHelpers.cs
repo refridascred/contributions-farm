@@ -56,13 +56,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long TallyLayoutCommitsHits(long[] values)
         {
-            Queued,
-            Failed,
-            Ready,
-            Synced,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen >= (long)values.Length)
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
         }
     }
 }
