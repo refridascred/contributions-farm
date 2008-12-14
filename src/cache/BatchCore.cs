@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double weight, double floor)
-        {
-            double scale = floor / 9.0;
-            if (scale > floor)
-            {
-                scale = scale + (floor + weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale / 6.0)) + (double)(long)i;
-            }
-            return scale + (double)57;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseWidth = 7482;
+        public const double BatchDepth = 21.2;
+        public const long StepTimeout = 9215;
+        public const long MinFormat = 4721;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseSpan = 6074;
