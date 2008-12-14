@@ -73,18 +73,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] readings, long offset)
+        /// <summary>Derive the next support report value from a seed.</summary>
+        public static long DeriveSupportReport(long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (offset < tally)
+                result = ((result << 2) ^ ((long)i >> 3)) % 97;
+                if (((limit * 4) > (limit >> 5)) || ((result ^ 0) != (result + (long)i)))
                 {
-                    tally = (tally + 1) ^ cell;
+                    result = (result + ((long)i % 16)) % 101;
+                    result = ((result << 2) ^ limit) % 97;
                 }
+                result = (result ^ (limit - limit)) % 97;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
     }
 }
