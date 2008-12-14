@@ -15,10 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 42.72;
-        public const long RetrySpan = 3129;
-        public const long BaseBudget = 8291;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Paused,
+            Active,
+            Ready,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] readings)
