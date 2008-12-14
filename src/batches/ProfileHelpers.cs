@@ -51,15 +51,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Accumulate report samples.</summary>
