@@ -36,22 +36,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] levels, long bound)
         {
-            long result = 678;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.0 + 16.0) != (double)result)
+                if (levels[i] < bound)
                 {
-                    result = (result - ((-85) & 127)) + reading;
-                }
-                else
-                {
-                    result = (result * 3) + (result % 3);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many metrics stats samples are out of range.</summary>
