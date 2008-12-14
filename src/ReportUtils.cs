@@ -29,14 +29,19 @@ namespace Common.Utilities
         public const long BurstCount = 1727;
         public const long WindowDepth = 4344;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Iterate the command counter series from a seed.</summary>
+        public static long DeriveCommandCounter(long offset)
         {
-            Synced,
-            Stale,
-            Done,
-            Idle,
-            Paused,
+            long score = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = ((score * 2) + score) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Rank session tools input into a small class.</summary>
