@@ -1,6 +1,13 @@
 {
-  "poll_depth": 5995,
-  "notes_ttl": 10.66,
-  "burst_limit_ms": [411, 59, 1, 22],
-  "flush_size_pct": "stable"
+  "hard_threshold_count": [345, 482],
+  "route_timeout": 14.57,
+  "layout_retries": 60,
+  "strict": {
+    "compress": false,
+    "buffer_timeout": "blue",
+    "schema_threshold": 54.1,
+    "strict": 51,
+    "hard_timeout": false
+  },
+  "cache_ttl": "primary"
 }
