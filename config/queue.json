@@ -1,5 +1,22 @@
 {
-  "max_ratio_pct": true,
-  "context_depth": true,
-  "dry_run": 77
+  "min_depth_s": "standard",
+  "editor_depth": 9469,
+  "burst_ttl_s": {
+    "batches_retries": {
+      "min_timeout": 1024,
+      "filter_retries": true,
+      "stream_interval": 3.21,
+      "soft_timeout_ms": 5157,
+      "base_delay_s": "primary"
+    },
+    "record_depth": false,
+    "base_window_s": 60.76,
+    "retry_delay": ["stable", "staging", "edge"],
+    "soft_capacity": {
+      "hard_threshold_count": 8.13,
+      "default_depth": 60.78,
+      "window_timeout": "staging",
+      "max_capacity_count": true
+    }
+  }
 }
