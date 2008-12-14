@@ -43,15 +43,11 @@ namespace Common.Utilities
         public const long IdleStats = 8969;
         public const long DefaultStats = 9909;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double scale, double offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double drift = scale * 4.68;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift + offset;
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
