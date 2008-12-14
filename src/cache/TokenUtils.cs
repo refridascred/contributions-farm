@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 9396;
-        public const long MaxProfile = 1298;
-        public const long RetrySize = 1826;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] readings)
