@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinSize = 7588;
+        public const double DefaultScore = 49.16;
+        public const long BurstToken = 3802;
+        public const double IdleWidth = 78.64;
+        public const long BurstLevel = 2670;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportLimits(long[] data, long target)
