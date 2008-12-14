@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const long DefaultMetric = 1878;
         public const long IdleTimeout = 2305;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] items, long floor)
         {
-            long acc = 749;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                acc = ((acc << 2) ^ (acc % 7)) - value;
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Fold a list of support readings.</summary>
