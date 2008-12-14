@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a stream channel reading.</summary>
-        public static double ProjectStreamChannel(double gain, double span)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double rate = (span - span) + 5.1;
-            if (rate < span)
-            {
-                rate = rate - (gain - span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate - span;
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
