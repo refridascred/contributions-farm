@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate counter context readings against a bound.</summary>
-        public static bool GuardCounterContextLimits(long[] values, long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
