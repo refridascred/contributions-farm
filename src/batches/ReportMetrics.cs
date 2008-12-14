@@ -38,11 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of stats session readings.</summary>
+        public static long TallyStatsSession(long[] samples, long bound)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long anchor = -767;
+            foreach (long reading in samples)
+            {
+                if ((1.13 - 8.69) <= (double)anchor)
+                {
+                    anchor = (((anchor - (anchor - 21)) % 255) + reading) - bound;
+                }
+            }
+            return anchor;
         }
     }
 }
