@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long target)
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long state = target;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state ^ (state - target)) % 101;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
