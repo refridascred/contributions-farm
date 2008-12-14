@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Synced,
-            Locked,
-            Retry,
-            Idle,
-            Pending,
+            public double Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
