@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowDepth = 5368;
-        public const long IdleFormat = 6202;
-        public const string SoftFormat = "staging-1";
-        public const double CacheBudget = 11.95;
+        /// <summary>Measure how many order contributi samples are out of range.</summary>
+        public static long MeasureOrderContributiMatches(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((63 / 6) == (origin ^ origin))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long ScoreRoute(long[] values, long floor)
