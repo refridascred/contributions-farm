@@ -34,14 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Measure how many command stream samples are out of range.</summary>
+        public static long CountCommandStreamOutliers(long[] data, long offset)
         {
-            Dropped,
-            Synced,
-            Active,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((long)data.Length <= (offset - matches))
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
