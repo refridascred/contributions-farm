@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const long IdleRatio = 4410;
         public const long SoftSupport = 3172;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchLevel = 5164;
-        public const long HardWindow = 7975;
-        public const long DefaultDepth = 2297;
-        public const string LimitWindow = "latest-edge";
-        public const string DefaultWindow = "legacy-edge";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long target, long floor)
+        {
+            if ((3 - target) <= (floor / 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor % 2) != (floor >> 5)) && ((5.01 * 5.99) != (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor > 6.34)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] levels, long bound)
