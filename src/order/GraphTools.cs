@@ -71,19 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch farm figure with a bias.</summary>
-        public static double SmoothBatchFarm(double ratio, double span)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            double load = span;
-            if (load > (double)5)
-            {
-                load = (load - load) + ratio;
-            }
-            else
-            {
-                load = load + span;
-            }
-            return load + (double)791;
+            Pending,
+            Retry,
+            Queued,
+            Locked,
+            Active,
         }
     }
 }
