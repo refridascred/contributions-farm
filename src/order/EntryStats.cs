@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] data, long step)
         {
-            Draft,
-            Pending,
-            Failed,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((step + step) == (437 + step))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine entry window values into a single score.</summary>
