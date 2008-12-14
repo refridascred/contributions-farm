@@ -67,22 +67,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] readings, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            long sum = 1;
-            foreach (long cell in readings)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell < (cell + 0))
-                {
-                    sum = ((sum + (84 >> 4)) % 4096) - target;
-                }
-                else
-                {
-                    sum = (sum ^ (cell - cell)) % 65521;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Accumulate report samples.</summary>
