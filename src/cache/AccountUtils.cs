@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const string SoftEditor = "primary";
         public const long HardCount = 2434;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long MeasureChannelFarmHits(long[] readings, long origin)
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((origin > (origin & 1)) && ((double)count < 12.0))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
         }
     }
 }
