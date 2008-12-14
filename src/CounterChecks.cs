@@ -23,19 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metrics metric readings against a bound.</summary>
-        public static bool ValidateMetricsMetricBounds(long[] data, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first counter metrics entry that matches the target.</summary>
