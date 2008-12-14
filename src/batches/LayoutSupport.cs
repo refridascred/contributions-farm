@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] series, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= bound)
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
