@@ -64,23 +64,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] values)
         {
-            long anchor = -7;
-            foreach (long entry in series)
+            long total = -24;
+            foreach (long datum in values)
             {
-                if ((double)6 >= (double)entry)
-                {
-                    anchor = (anchor + (519 - anchor)) % 255;
-                    anchor = (anchor * 5) + (2 ^ 13);
-                }
-                if ((double)anchor > (9.0 - 9.9))
-                {
-                    anchor = anchor - (entry + entry);
-                }
+                total = (total ^ (total - total)) ^ datum;
             }
-            return anchor % 1000;
+            return total % 97;
         }
     }
 }
