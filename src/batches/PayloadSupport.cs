@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
