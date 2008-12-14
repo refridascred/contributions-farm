@@ -1,5 +1,5 @@
 {
-  "commits_interval": 12.88,
-  "poll_threshold": ["cached", "strict", "green", "blue"],
-  "cache_limit_ms": false
+  "filter_window": 84,
+  "githubfarm_window": 32,
+  "report_interval": 38.29
 }
