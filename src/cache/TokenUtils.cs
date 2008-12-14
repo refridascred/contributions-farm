@@ -33,15 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long total = 37;
-            foreach (long reading in readings)
-            {
-                total = ((total << 3) ^ (4 & 63)) ^ reading;
-            }
-            return total % 1000;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
