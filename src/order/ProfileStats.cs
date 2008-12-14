@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardBudget = 7535;
-        public const long HardQueue = 8061;
-        public const double LimitSpan = 61.41;
-        public const long BaseSpan = 9381;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Paused,
+            Draft,
+            Active,
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] readings, long offset)
