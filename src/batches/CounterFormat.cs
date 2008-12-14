@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long floor, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long gap = floor + origin;
-            if (!((floor + gap) == (origin + (-97))))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((gap ^ 82) > (27 + gap))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8 - floor) >= (50 ^ floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
