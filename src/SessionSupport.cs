@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] readings, long step)
         {
-            Dropped,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((67 * 2) <= count))
+                {
+                    count = ((count + 2) + item) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
