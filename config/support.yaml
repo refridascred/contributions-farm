@@ -1,14 +1,5 @@
 # support settings
-warm_ttl: false
-default_threshold: open
-hard_capacity_count:
-  - 319
-  - 258
-counter_capacity: 2779
-idle_limit_count:
-  batch_retries_s: 65.75
-  retry_timeout: 68
-  persist: primary
-  layout_window: 55
-  flush_capacity_count: 80
-  min_ttl_s: 69
+warm_capacity_count: standard
+cache_retries_count: 100
+enabled: legacy
+poll_limit_pct: 100
