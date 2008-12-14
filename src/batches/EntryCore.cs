@@ -74,18 +74,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] data, long step)
+        /// <summary>Find the first batches profile entry that matches the target.</summary>
+        public static long LookupBatchesProfileIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)step <= (9.6 + 4.28)) && ((step + 72) >= (step ^ tally))) || (((long)data.Length > (114 + 5)) || ((1 + tally) == (491 + entry))))
+                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
