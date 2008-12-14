@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const string BurstContributi = "fallback-v2";
         public const string IdleContributi = "open-1";
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchLevel = 93.2;
+        public const double SoftInterval = 81.48;
+        public const double SoftGithubfarm = 84.01;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadHits(long[] items, long step)
