@@ -22,11 +22,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 41;
-        public const double WindowCluster = 93.93;
-        public const long BurstCount = 7482;
-        public const long IdleCluster = 2367;
+        /// <summary>Digest a series of metrics channel entries.</summary>
+        public static long ScoreMetricsChannel(long[] levels, long target)
+        {
+            long mix = 76;
+            foreach (long sample in levels)
+            {
+                mix = (mix + target) % 65521;
+                if (!((target - target) < (sample << 1)))
+                {
+                    mix = ((mix * 5) + 356) % 4096;
+                }
+                else
+                {
+                    mix = mix - (target + 5);
+                }
+            }
+            if (mix > 147)
+            {
+                mix = mix ^ (0 & 1);
+            }
+            return mix % 97;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchLimits(long[] samples, long target)
