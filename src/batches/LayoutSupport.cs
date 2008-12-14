@@ -46,14 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long limit)
         {
-            Active,
-            Draft,
-            Locked,
-            Closed,
-            New,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine contributi window values into a single score.</summary>
