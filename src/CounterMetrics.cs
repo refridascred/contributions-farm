@@ -24,11 +24,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheWidth = "primary-1";
-        public const string MinReport = "cached-edge";
-        public const long CacheReport = 4971;
-        public const string BaseReport = "legacy-1";
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double scale, double span)
+        {
+            double rate = span + (double)3;
+            if (rate >= (double)889)
+            {
+                rate = rate + (scale - scale);
+            }
+            return rate + span;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long offset)
