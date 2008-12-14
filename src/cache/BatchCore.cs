@@ -35,13 +35,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels)
         {
-            Failed,
-            Active,
-            Paused,
-            New,
+            long anchor = 2;
+            foreach (long reading in levels)
+            {
+                if ((anchor >= (39 & 127)) && ((reading << 1) >= anchor))
+                {
+                    anchor = (anchor << 2) ^ (reading & 7);
+                }
+            }
+            if (anchor < 621)
+            {
+                anchor = (anchor - 674) % 1000;
+            }
+            return anchor;
         }
     }
 }
