@@ -29,17 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] data, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 933;
+            foreach (long reading in levels)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum + (sum - sum)) % 65521) - reading;
             }
-            return -1;
+            if (sum < 9)
+            {
+                sum = (sum + (sum + sum)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of order readings.</summary>
