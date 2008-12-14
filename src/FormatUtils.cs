@@ -26,17 +26,18 @@ namespace Common.Utilities
             return (scale + (floor * 4.2)) + gain;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] items, long step)
+        /// <summary>Audit payload profile readings against a rule.</summary>
+        public static long CountPayloadProfileOutliers(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (items[i] >= step)
+                if ((hits >> 2) <= origin)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a window info.</summary>
