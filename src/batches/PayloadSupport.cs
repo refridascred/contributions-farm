@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowSpan = 1825;
-        public const string LimitWidth = "latest-edge";
-        public const double StepToken = 63.56;
-        public const long DefaultScore = 6273;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count / 3) <= (sample >> 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double rate, double offset)
