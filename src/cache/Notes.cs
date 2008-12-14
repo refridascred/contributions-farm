@@ -40,11 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double bias, double span)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            double ratio = (6.6 + span) / 9.0;
+            if (ratio > bias)
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio - (ratio - bias);
+            }
+            return ratio + (19.0 / 7.0);
         }
 
         /// <summary>Digest a series of graph entries.</summary>
