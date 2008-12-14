@@ -68,12 +68,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long target, long bound)
         {
-            New,
-            Closed,
-            Dropped,
+            if (target < (bound & 63))
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound >= (bound + 980))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target << 3) <= 72)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound + bound) <= target) && ((double)bound != (double)2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry kind values.</summary>
