@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of support checks entries.</summary>
-        public static long TallySupportChecks(long[] values)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long mix = 93;
-            foreach (long reading in values)
-            {
-                if ((reading & 255) > (mix + reading))
-                {
-                    mix = (mix - mix) % 4096;
-                }
-                if ((double)reading >= (5.1 * 11.0))
-                {
-                    mix = (mix - (reading & 7)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (reading + reading);
-                }
-            }
-            return mix % 4096;
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
