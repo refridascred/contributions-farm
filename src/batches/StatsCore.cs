@@ -12,12 +12,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long target)
         {
-            New,
-            Done,
-            Dropped,
+            long carry = target;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
