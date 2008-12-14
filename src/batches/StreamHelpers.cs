@@ -44,31 +44,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long seed)
+        /// <summary>Combine already window values into a single score.</summary>
+        public static long DigestAlreadyWindow(long[] samples, long origin)
         {
-            if ((bound & 7) == (bound / 7))
+            long anchor = 6;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed < (bound / 4))
+                if ((origin << 1) < anchor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed + seed) != (bound << 3)) || ((seed & 7) != (bound + bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = ((anchor - anchor) % 101) + cell;
                 }
             }
+            if (anchor < 31)
+            {
+                anchor = ((anchor << 3) ^ (anchor & 31)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the cluster account entries that pass the check.</summary>
