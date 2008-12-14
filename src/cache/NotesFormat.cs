@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] levels, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Active,
+            Stale,
         }
     }
 }
