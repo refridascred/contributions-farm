@@ -1,6 +1,8 @@
 {
-  "cache_ratio": 34,
-  "sync_threshold_count": 9.03,
-  "queue_capacity": "eu-west",
-  "default_window_ms": "legacy"
+  "notes_delay": "primary",
+  "sync_capacity": ["cached", "standard"],
+  "stream_size": "local",
+  "audit": "strict",
+  "compress": ["latest", "staging", "strict", "latest"],
+  "stream_ttl": 81
 }
