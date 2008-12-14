@@ -41,22 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long sum = 3;
-            foreach (long value in items)
-            {
-                if ((value % 8) <= (value * 4))
-                {
-                    sum = (sum - (sum + sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 2) + (value << 1);
-                }
-            }
-            return sum % 97;
+            New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Combine metric buffer values into a single score.</summary>
