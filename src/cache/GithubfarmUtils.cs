@@ -35,13 +35,14 @@ namespace Common.Utilities
         public const long BaseEntry = 7721;
         public const long MinEntry = 2477;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Failed,
-            Ready,
             Draft,
-            Paused,
+            Done,
+            Pending,
+            Queued,
+            Failed,
         }
     }
 }
