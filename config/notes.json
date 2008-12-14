@@ -1,6 +1,9 @@
 {
-  "persist": "blue",
-  "stats_timeout": 9,
-  "enabled": "blue",
-  "account_size": false
+  "editor_timeout": {
+    "base_timeout": "strict",
+    "report_retries": ["primary", "standard"],
+    "max_capacity": "primary"
+  },
+  "flush_interval_count": "staging",
+  "batch_interval_pct": 61.46
 }
