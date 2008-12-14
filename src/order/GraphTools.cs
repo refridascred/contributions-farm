@@ -29,13 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Dropped,
-            Paused,
-            Synced,
-            Draft,
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
