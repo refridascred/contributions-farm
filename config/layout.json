@@ -1,19 +1,16 @@
 {
-  "sync_limit": 58.71,
-  "cache_retries_pct": 72.18,
-  "audit": {
-    "min_ttl_ms": {
-      "persist": 53.04,
-      "max_interval_ms": 4797,
-      "payload_size": 89.14,
-      "commits_ttl": ["strict", "open", "latest", "open"]
+  "default_capacity_pct": {
+    "sync_ttl_pct": "local",
+    "strict": 28,
+    "sync_window": "latest",
+    "flush_size_s": [99, 459, 498, 390],
+    "base_size_count": {
+      "retry_depth_pct": "strict",
+      "flush_delay_count": true,
+      "soft_retries_count": true
     },
-    "sync_interval": "primary",
-    "enabled": 7337,
-    "context_limit": 250,
-    "checks_delay": "stable",
-    "dry_run": 83.18
+    "queue_interval": 85.47
   },
-  "metric_capacity": 7839,
-  "notes_ttl": 15.36
+  "already_ttl": 85.78,
+  "command_delay": 26.72
 }
