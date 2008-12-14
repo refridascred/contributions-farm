@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] series, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            long sum = 3;
+            foreach (long sample in series)
             {
-                if ((floor > (state >> 2)) && ((state + state) != (floor + state)))
-                {
-                    state = (state + state) % 4096;
-                    break;
-                }
-                state = (state + (floor - floor)) % 4096;
-                state = ((state * 5) + (long)i) % 65521;
+                sum = (((sum << 2) ^ (offset << 2)) % 4096) + sample;
             }
-            return state;
+            if (sum > 83)
+            {
+                sum = sum - (offset & 255);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the context phase values.</summary>
