@@ -32,38 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter contributi input into a small class.</summary>
-        public static long RankFilterContributi(long origin, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] readings, long limit)
         {
-            if ((double)seed < (11.0 * 0.99))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 24) < (origin + origin))
+                if (value >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (37 >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin / 9) < (seed & 127))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
