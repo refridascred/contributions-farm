@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] data, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double rate = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)floor < (2.0 * 8.87)) && (62 > (floor << 3)))
-                {
-                    seen = (seen + 1) + value;
-                }
+                rate = (rate - (bias2 / 7.0)) + (double)(long)i;
             }
-            return seen;
+            return rate + (double)883;
         }
 
         /// <summary>Check that every graph schema entry stays within the limit.</summary>
