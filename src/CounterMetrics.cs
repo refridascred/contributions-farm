@@ -13,19 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] readings, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((long)i * 2) >= (origin + acc))
+                if ((hits + hits) <= (48 & 7))
                 {
-                    acc = acc + (480 % 97);
+                    hits = ((hits + 2) ^ reading) + offset;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
