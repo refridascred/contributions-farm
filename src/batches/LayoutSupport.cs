@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first farm profile entry that matches the target.</summary>
-        public static long LookupFarmProfileIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "legacy-edge";
+        public const double MaxReport = 74.14;
+        public const string DefaultReport = "standard-v2";
+        public const long LimitReport = 9208;
+        public const double IdleInterval = 94.24;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] readings, long target)
