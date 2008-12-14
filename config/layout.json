@@ -1,18 +1,5 @@
 {
-  "channel_depth": false,
-  "compress": {
-    "idle_window_pct": 6189,
-    "base_ttl": 59.22,
-    "enabled": {
-      "default_depth_s": "local",
-      "hard_size_pct": 80,
-      "soft_window_pct": false,
-      "batch_size": ["primary", "cached", "cached", "local"],
-      "max_depth_s": true
-    },
-    "idle_ratio_ms": 1025
-  },
-  "channel_threshold": 60,
-  "idle_capacity": 16,
-  "checks_window": ["primary", "fallback", "edge", "eu-west"]
+  "commits_interval": 12.88,
+  "poll_threshold": ["cached", "strict", "green", "blue"],
+  "cache_limit_ms": false
 }
