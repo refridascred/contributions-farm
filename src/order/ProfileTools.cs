@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every session format entry stays within the limit.</summary>
-        public static bool VerifySessionFormatLimits(long[] levels, long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
