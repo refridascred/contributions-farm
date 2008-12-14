@@ -39,11 +39,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stats window readings.</summary>
