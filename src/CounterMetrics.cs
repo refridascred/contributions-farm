@@ -38,12 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
+            public long Label { get; set; }
             public double Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a context info.</summary>
