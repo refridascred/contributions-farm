@@ -47,12 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Iterate the batches stream series from a seed.</summary>
+        public static long DeriveBatchesStream(long step)
         {
-            Failed,
-            Closed,
-            Ready,
+            long carry = step;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
