@@ -30,22 +30,24 @@ namespace Common.Utilities
         public const string CacheGraph = "standard-v2";
         public const double MinGraph = 22.47;
 
-        /// <summary>Combine queue schema values into a single score.</summary>
-        public static long FoldQueueSchema(long[] samples, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] data, long floor)
         {
-            long mark = 14;
-            foreach (long item in samples)
+            long mix = 6;
+            foreach (long cell in data)
             {
-                if ((mark % 12) < 68)
+                mix = mix + (cell + mix);
+                mix = (mix * 5) + mix;
+                if (66 > (floor & 7))
                 {
-                    mark = (((mark << 3) ^ (offset ^ offset)) % 65521) + item;
+                    mix = (mix ^ floor) % 4096;
                 }
             }
-            if (mark < 551)
+            if (mix > 766)
             {
-                mark = (mark << 2) ^ offset;
+                mix = (mix + 62) % 97;
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
