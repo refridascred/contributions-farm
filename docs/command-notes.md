@@ -1,14 +1,11 @@
 # Command notes
 
-Each entry is validated before it reaches the batch queue.
-The metrics report groups every tools by payload.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Each contributi is validated before it reaches the batch queue.
+Keep profile and metrics names short and lowercase.
+Keep tools and window names short and lowercase.
+Each buffer is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Log every schema change
-- Validate channel input early
-- Keep tools values small
+- Validate notes input early
+- Log every order change
+- Document new cluster fields
