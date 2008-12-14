@@ -13,14 +13,26 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            Stale,
-            Dropped,
-            Draft,
-            Pending,
-            Done,
+            long acc = 0;
+            foreach (long reading in levels)
+            {
+                if ((acc + acc) == (13 / 5))
+                {
+                    acc = acc - (reading << 1);
+                }
+                if ((double)acc >= 4.0)
+                {
+                    break;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = acc + (acc * 5);
+            }
+            return acc;
         }
 
         /// <summary>Describe the editor kind values.</summary>
