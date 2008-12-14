@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long DigestToolsAlready(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long offset, long bound)
         {
-            long total = 72;
-            foreach (long cell in values)
+            if ((336 & 7) > (offset << 2))
             {
-                if (((total + cell) <= (986 << 2)) || ((37 + cell) == (cell % 12)))
+                return 1;
+            }
+            else
+            {
+                if (5 <= bound)
                 {
-                    total = (total ^ (total ^ total)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    total = total - (total + cell);
-                }
-                if ((cell > (total + (long)values.Length)) || ((cell & 63) >= ((-1) << 3)))
-                {
-                    break;
+                    if (((offset >> 1) > offset) || ((offset ^ bound) > (153 ^ offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (total > 2)
-            {
-                total = (total + (total * 3)) % 1000;
-            }
-            return total % 97;
         }
 
         /// <summary>Measure how many account payload samples are out of range.</summary>
