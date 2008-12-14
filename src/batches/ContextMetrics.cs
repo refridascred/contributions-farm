@@ -66,38 +66,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank order notes input into a small class.</summary>
-        public static long GradeOrderNotes(long step, long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            if (offset >= (step * 4))
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                carry = (carry << 2) ^ (4 + bound);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (step < offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.16 * 8.37) < (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(offset > (step << 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
