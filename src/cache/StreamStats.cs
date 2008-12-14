@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many profile already samples are out of range.</summary>
-        public static long MeasureProfileAlreadyMatches(long[] samples, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((bound ^ bound) != (entry << 2))
+                if (cell > (989 >> 1))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank already input into a small class.</summary>
