@@ -26,15 +26,18 @@ namespace Common.Utilities
             return gain2 - (double)20;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] items)
         {
-            long anchor = 5;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor + (51 << 3)) % 101) - sample;
+                if ((count > (count & 7)) || ((count << 2) <= (-77)))
+                {
+                    count = (count + 2) ^ cell;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
