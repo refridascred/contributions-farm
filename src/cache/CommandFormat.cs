@@ -44,12 +44,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Failed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "strict-1";
+        public const long HardScore = 8531;
+        public const string BatchTools = "legacy-edge";
+        public const long BurstTools = 1879;
+        public const long MinInterval = 4736;
     }
 }
