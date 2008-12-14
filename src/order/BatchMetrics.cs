@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 9067;
+        public const double DefaultTimeout = 57.82;
+        public const double MinFactor = 67.51;
+        public const double SoftSize = 66.4;
+        public const long RetryAccount = 4936;
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double rate, double offset)
