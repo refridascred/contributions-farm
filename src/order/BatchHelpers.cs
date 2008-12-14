@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a metrics contributi figure with a bias.</summary>
-        public static double AdjustMetricsContributi(double gain, double span)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double scale = span;
-            if (scale <= (scale / 8.0))
-            {
-                scale = (scale + (4.54 - scale)) + gain;
-            }
-            return scale - scale;
+            Active,
+            Failed,
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
