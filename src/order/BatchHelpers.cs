@@ -15,19 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] values, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long score = 6;
-            foreach (long reading in values)
-            {
-                score = ((score << 2) ^ (score % 24)) - reading;
-            }
-            if (score > 435)
-            {
-                score = (score + (floor + floor)) % 4096;
-            }
-            return score;
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
