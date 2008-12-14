@@ -33,17 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format editor sample.</summary>
-        public static long FindFormatEditorIndex(long[] samples, long target)
+        /// <summary>Accumulate githubfarm batch samples.</summary>
+        public static long ScoreGithubfarmBatch(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long cell in samples)
             {
-                if ((samples[i] < target) && ((samples[i] % 5) != 0))
+                if ((score & 3) <= cell)
                 {
-                    return (long)i;
+                    score = (((score << 2) ^ (cell >> 5)) % 101) - limit;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
