@@ -45,19 +45,13 @@ namespace Common.Utilities
         public const string BaseRatio = "stable-1";
         public const long IdleCluster = 5960;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
