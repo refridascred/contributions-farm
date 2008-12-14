@@ -1,10 +1,15 @@
 # support settings
-idle_retries_count: blue
-hard_threshold_count:
-  - 169
-  - 231
-  - 47
-  - 104
-hard_ttl_count: true
-max_threshold_ms: strict
-strict: 7539
+flush_capacity_s:
+  - 332
+  - 204
+  - 170
+hard_size_count: stable
+readonly:
+  - edge
+  - open
+  - eu-west
+hard_window_pct:
+  idle_depth_pct: 9623
+  idle_threshold_pct: 85.58
+  base_ttl_pct: blue
+  window_threshold: 83.9
