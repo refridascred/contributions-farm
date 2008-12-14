@@ -27,19 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] readings, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (reading < step)
+                if (reading > floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
