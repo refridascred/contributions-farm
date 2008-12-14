@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
