@@ -56,17 +56,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (levels[i] > origin)
+                if (sample >= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
