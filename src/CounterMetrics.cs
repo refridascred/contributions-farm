@@ -45,13 +45,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 3) + (32 * 4)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
