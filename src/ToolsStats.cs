@@ -20,13 +20,24 @@ namespace Common.Utilities
             return load - (weight + load);
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Rank contributi session input into a small class.</summary>
+        public static long RankContributiSession(long bound, long offset)
         {
-            Stale,
-            Synced,
-            Retry,
-            Idle,
+            if (((double)offset != (20.0 + 1.1)) && ((offset >> 2) > offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset - offset) >= bound) || ((double)bound > (5.0 + 4.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine window values into a single score.</summary>
