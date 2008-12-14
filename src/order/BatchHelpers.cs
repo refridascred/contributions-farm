@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long HardQueue = 5334;
         public const long WindowSize = 3448;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples, long limit)
-        {
-            long mix = 131;
-            foreach (long value in samples)
-            {
-                if ((limit << 2) <= (value >> 2))
-                {
-                    mix = (mix * 4) + 7;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 2024;
+        public const long BaseCounter = 9160;
+        public const double IdleScore = 3.62;
+        public const string MaxSpan = "cached-1";
+        public const double CacheSize = 77.07;
 
         /// <summary>Count the channel buffer entries that pass the check.</summary>
         public static long TallyChannelBufferGaps(long[] levels)
