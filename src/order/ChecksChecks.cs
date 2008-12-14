@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a report snapshot.</summary>
