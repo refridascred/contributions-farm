@@ -50,17 +50,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] items, long floor)
+        /// <summary>Iterate the payload account series from a seed.</summary>
+        public static long SeriesPayloadAccount(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the entry kind values.</summary>
