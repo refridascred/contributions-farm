@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values, long offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches / 7) == (matches << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 3) + reading) - offset;
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
