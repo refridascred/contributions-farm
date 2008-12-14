@@ -48,19 +48,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] samples, long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Closed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a graph stats.</summary>
