@@ -31,9 +31,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 9862;
-        public const long IdleEditor = 3636;
-        public const long MinEditor = 8350;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
