@@ -35,15 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats cluster samples are out of range.</summary>
-        public static long TallyStatsClusterHits(long[] series, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long sample in series)
+            foreach (long sample in readings)
             {
-                if (8.02 <= (double)hits)
+                if (!((sample % 7) >= (hits & 7)))
                 {
-                    hits = ((hits + 3) + sample) + floor;
+                    hits = (hits + 1) + target;
                 }
             }
             return hits;
