@@ -1,10 +1,20 @@
 # entry settings
-warm_window_pct: true
-persist:
-  editor_size: true
-  readonly: 27
-  retry_limit_ms: strict
-  idle_window_s: eu-west
-base_ratio: 36.49
-warm_depth_count: fallback
-stream_ttl: 477
+batch_ttl: false
+command_capacity:
+  poll_window: 49.84
+  burst_size_pct: 250
+  hard_limit:
+    readonly: 91
+    default_limit_pct: true
+    flush_capacity_s: 9131
+    graph_interval: open
+    batches_size: 100
+  buffer_depth: false
+  retry_delay_s: 1309
+  poll_window_ms: fallback
+payload_window:
+  retry_limit_count: 38
+  strict: 98.46
+  report_interval: open
+  max_capacity: legacy
+soft_threshold: 7117
