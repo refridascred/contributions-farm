@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 2449;
-        public const long DefaultCount = 5103;
-        public const long HardMetric = 9511;
-        public const string MaxLevel = "strict-1";
-        public const long BatchMetric = 2915;
+        /// <summary>Fold a list of stream metrics readings.</summary>
+        public static long ScoreStreamMetrics(long[] values)
+        {
+            long anchor = -175;
+            foreach (long sample in values)
+            {
+                anchor = ((anchor << 3) ^ (833 % 100)) - sample;
+            }
+            if (anchor < (-69))
+            {
+                anchor = (anchor * 3) + (89 + anchor);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 2024;
