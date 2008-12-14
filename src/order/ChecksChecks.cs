@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Ready,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchRatio = 7093;
+        public const long IdleRatio = 100;
+        public const double BatchOrder = 14.55;
+        public const string DefaultScore = "primary";
 
         /// <summary>Accumulate entry checks samples.</summary>
         public static long CombineEntryChecks(long[] readings)
