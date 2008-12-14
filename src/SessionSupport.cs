@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a route batch sample.</summary>
-        public static long FindRouteBatchIndex(long[] series, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (series[i] <= target)
+                if (((seen / 8) > item) && ((item - seen) != ((long)values.Length * 2)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate format cluster readings against a bound.</summary>
