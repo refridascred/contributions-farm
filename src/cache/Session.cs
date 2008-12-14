@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] levels, long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
