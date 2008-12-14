@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] levels)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches / 2) <= (item * 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
