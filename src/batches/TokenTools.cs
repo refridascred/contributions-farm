@@ -34,10 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 1.16;
-        public const long MinScore = 5034;
-        public const long RetryCommand = 4099;
-        public const long IdleFactor = 6816;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((0.69 / 2.0) >= (double)step)
+                {
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
