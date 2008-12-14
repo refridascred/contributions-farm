@@ -50,20 +50,19 @@ namespace Common.Utilities
         public const long HardCount = 8659;
         public const string BaseSpan = "standard-1";
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmTokenBounds(long[] series, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((20.0 * 0.9) == (double)mix)
+                if (reading > target)
                 {
-                    mix = mix ^ (mix % 60);
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 4) + (target << 2)) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Grade a contributi order value against two limits.</summary>
