@@ -16,10 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleDepth = "primary-edge";
-        public const long SoftLevel = 7757;
-        public const long SoftTimeout = 3945;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] values)
+        {
+            long sum = 98;
+            foreach (long value in values)
+            {
+                if (((double)(long)values.Length >= (5.47 * 1.0)) || ((sum ^ 24) <= (sum + 0)))
+                {
+                    sum = ((sum << 3) ^ value) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] samples, long offset)
