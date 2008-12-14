@@ -65,12 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 38.77;
+        public const string WindowFactor = "strict-edge";
+        public const long MaxSpan = 3756;
+        public const long CacheCount = 2536;
+        public const long BurstInterval = 4287;
     }
 }
