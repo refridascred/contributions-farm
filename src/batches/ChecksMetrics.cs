@@ -90,19 +90,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] samples, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Ready,
+            Locked,
+            Synced,
         }
     }
 }
