@@ -41,11 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 352;
-        public const long BaseSpan = 7517;
-        public const long MinBudget = 8356;
-        public const long SoftLevel = 5657;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 5277;
+        public const long CacheBatch = 7165;
+        public const string StepBatch = "stable";
+        public const string CacheBudget = "open-edge";
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LookupStreamIndex(long[] series, long target)
