@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] samples, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
