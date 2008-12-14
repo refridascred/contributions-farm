@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "standard";
-        public const string MinFactor = "standard-1";
-        public const string DefaultTools = "strict";
-        public const string MinTools = "alpha-edge";
-        public const double CacheTools = 18.81;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchInterval = 8256;
+        public const double WindowBatch = 42.15;
+        public const string BurstBatch = "legacy-v2";
+        public const long IdleBatch = 672;
+        public const long BatchWidth = 8687;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] samples)
