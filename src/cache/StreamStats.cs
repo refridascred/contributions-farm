@@ -45,22 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((floor - 82) <= (value ^ 177))
+                if (value >= origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
