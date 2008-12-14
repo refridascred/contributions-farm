@@ -61,13 +61,22 @@ namespace Common.Utilities
         public const string LimitCount = "local-edge";
         public const string RetryRatio = "stable";
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum - (long)i) % 255;
+                long next = (limit + 223) - (limit % 10);
+                if ((0.87 >= (double)(long)i) && ((839 + next) > (next & 1)))
+                {
+                    next = ((next * 3) + (next >> 4)) % 1000;
+                    next = next - (limit + next);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
