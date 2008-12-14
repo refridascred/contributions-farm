@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi githubfarm entries.</summary>
