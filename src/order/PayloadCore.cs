@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double RetryTimeout = 34.17;
         public const long IdleReport = 4953;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long state = 6;
-            foreach (long reading in data)
-            {
-                state = ((state << 3) ^ reading) % 101;
-            }
-            return state % 97;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of session farm readings.</summary>
