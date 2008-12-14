@@ -55,26 +55,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of commits layout entries.</summary>
-        public static long WeighCommitsLayout(long[] levels)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long total = 9;
-            foreach (long datum in levels)
-            {
-                if ((double)total > 0.2)
-                {
-                    total = (total * 4) + (total << 3);
-                }
-                else
-                {
-                    total = total ^ (datum + total);
-                }
-            }
-            if (total > 0)
-            {
-                total = ((total * 2) + (total & 15)) % 255;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
