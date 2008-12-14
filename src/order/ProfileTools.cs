@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 2545;
-        public const string MinSession = "staging-1";
-        public const long RetryRatio = 2104;
-        public const long StepLevel = 6194;
+        /// <summary>Validate queue checks readings against a bound.</summary>
+        public static bool ValidateQueueChecksRange(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatLimits(long[] items, long seed)
