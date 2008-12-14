@@ -33,16 +33,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the buffer metrics series from a seed.</summary>
-        public static long RollBufferMetrics(long step)
+        /// <summary>Look up the position of a session editor sample.</summary>
+        public static long LocateSessionEditorIndex(long[] readings, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix - (mix - (-125))) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine contributi window values into a single score.</summary>
