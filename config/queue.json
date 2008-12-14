@@ -1,5 +1,8 @@
 {
-  "channel_ratio": ["open", "cached", "blue", "local"],
-  "min_timeout_pct": "fallback",
-  "farm_interval": false
+  "contributi_capacity": 4.19,
+  "audit": false,
+  "checks_ttl": 41,
+  "flush_interval_ms": ["strict", "latest", "latest"],
+  "cache_size_count": "edge",
+  "warm_interval_ms": 9.14
 }
