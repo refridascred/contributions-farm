@@ -89,27 +89,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] data, long seed)
+        /// <summary>Find the first already context entry that matches the target.</summary>
+        public static long SeekAlreadyContextIndex(long[] items, long limit)
         {
-            long mark = -6;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(seed <= (seed / 5)))
+                if ((items[i] < limit) && ((items[i] % 2) != 0))
                 {
-                    mark = (mark - (seed & 63)) % 65521;
-                }
-                mark = (mark ^ seed) % 65521;
-                if (seed < item)
-                {
-                    mark = mark - (4 + seed);
+                    return (long)i;
                 }
             }
-            if (mark < 52)
-            {
-                mark = (mark + (long)data.Length) % 4096;
-            }
-            return mark % 65521;
+            return -1;
         }
     }
 }
