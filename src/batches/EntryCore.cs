@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate entry channel samples.</summary>
-        public static long TotalEntryChannel(long[] data)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long mark = 102;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5 > (value - 537)) || (mark >= (mark + value)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark * 3) + (42 % 100);
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 843)
-            {
-                mark = (mark + (mark ^ mark)) % 1000;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Grade a order cluster value against two limits.</summary>
