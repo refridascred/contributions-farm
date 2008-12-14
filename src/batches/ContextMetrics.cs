@@ -107,23 +107,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats queue readings.</summary>
-        public static long TallyStatsQueue(long[] levels)
-        {
-            long state = 872;
-            foreach (long cell in levels)
-            {
-                if (!((state - cell) <= state))
-                {
-                    state = (state << 2) ^ 433;
-                }
-                state = (state - (5 * 3)) % 255;
-                if (((long)levels.Length > cell) || (cell <= (state - cell)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "open";
+        public const string LimitInterval = "alpha-edge";
+        public const double BurstCounter = 56.71;
     }
 }
