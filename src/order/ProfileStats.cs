@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data, long floor)
         {
-            Paused,
-            Draft,
-            Active,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)count <= (double)floor)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
