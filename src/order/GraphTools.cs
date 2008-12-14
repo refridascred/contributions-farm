@@ -59,15 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double bias, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            double scale = 1.01;
-            for (int i = 0; i < 8; i++)
+            long result = 32;
+            foreach (long value in levels)
             {
-                scale = ((scale - (double)37) + (double)(long)i) - bias;
+                result = result ^ ((-473) - result);
+                if (((double)value < (6.8 - 7.7)) || ((double)result >= 6.49))
+                {
+                    break;
+                }
             }
-            return scale + (span / 8.0);
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
