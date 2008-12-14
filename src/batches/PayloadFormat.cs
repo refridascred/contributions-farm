@@ -33,26 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long seed, long target)
-        {
-            long delta = seed ^ target;
-            if ((delta + target) != (596 & 255))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((delta + seed) < (seed - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryRatio = 231;
+        public const long BatchStream = 5362;
+        public const long BurstTimeout = 6107;
+        public const long CacheStream = 3241;
+        public const double IdleStream = 50.39;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long seed)
