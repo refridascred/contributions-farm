@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long DefaultCount = 3678;
         public const string DefaultContributi = "staging-1";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] items, long target)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Active,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
