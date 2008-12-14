@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double ratio, double bias)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            double mean = (double)1 / 3.0;
-            if (mean < (double)7)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                mean = (mean + (double)8) - bias;
+                anchor = (anchor << 3) ^ (anchor * 4);
+                anchor = ((anchor * 4) + (anchor << 1)) % 4096;
+                if ((811 % 2) > (anchor << 1))
+                {
+                    anchor = (anchor * 2) + (anchor + anchor);
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return mean - ratio;
+            return anchor;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
