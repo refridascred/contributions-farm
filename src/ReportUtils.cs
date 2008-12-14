@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long BurstCount = 1727;
         public const long WindowDepth = 4344;
 
-        /// <summary>Iterate the command counter series from a seed.</summary>
-        public static long DeriveCommandCounter(long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] levels, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (entry < floor)
                 {
-                    score = ((score * 2) + score) ^ (long)i2;
+                    found = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Rank session tools input into a small class.</summary>
