@@ -57,13 +57,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long floor, long seed)
         {
-            New,
-            Failed,
-            Pending,
-            Queued,
+            long delta = floor - seed;
+            if ((floor / 2) == (floor - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed << 2) > (seed - 731)) || ((seed + delta) != (seed / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((3.2 - 5.8) >= (double)seed) && ((7 % 10) <= delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((delta + 713) == (delta - seed)) && ((5.0 - 12.0) == (double)delta))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first already context entry that matches the target.</summary>
