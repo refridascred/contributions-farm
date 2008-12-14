@@ -100,9 +100,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "open";
-        public const string LimitInterval = "alpha-edge";
-        public const double BurstCounter = 56.71;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
