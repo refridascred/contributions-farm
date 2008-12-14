@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] samples, long bound)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            long score = -8;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + bound) < score)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score + (bound >> 2);
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 561)
-            {
-                score = ((score * 4) + (bound << 3)) % 97;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
