@@ -114,15 +114,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double gain, double floor)
+        /// <summary>Accumulate already githubfarm samples.</summary>
+        public static long WeighAlreadyGithubfarm(long[] values, long bound)
         {
-            double mean = floor;
-            if (mean >= (3.3 * 3.5))
+            long mark = 57;
+            foreach (long cell in values)
             {
-                mean = mean - (double)648;
+                if ((cell - cell) < (cell ^ bound))
+                {
+                    break;
+                }
+                mark = mark ^ cell;
             }
-            return mean - (gain / 9.0);
+            return mark;
         }
     }
 }
