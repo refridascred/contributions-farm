@@ -63,15 +63,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a context format figure with a bias.</summary>
-        public static double SmoothContextFormat(double weight, double bias)
-        {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (weight * 1.8)) + (double)(long)i;
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 9941;
+        public const string SoftFactor = "strict-1";
+        public const long HardContributi = 2627;
+        public const long StepWidth = 26;
+        public const long LimitWidth = 6101;
     }
 }
