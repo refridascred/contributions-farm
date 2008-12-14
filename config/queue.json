@@ -1,8 +1,7 @@
 {
-  "verbose": 2269,
-  "context_limit": "blue",
-  "default_timeout_count": 24.44,
-  "poll_capacity_pct": 34.46,
-  "warm_ratio_s": ["open", "blue"],
-  "context_timeout": "standard"
+  "batch_size_count": "standard",
+  "channel_size": [106, 39, 467],
+  "default_window_count": 8529,
+  "buffer_retries": 60,
+  "tools_capacity": "primary"
 }
