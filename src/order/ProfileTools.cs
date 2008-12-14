@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            New,
-            Done,
-            Queued,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 2545;
+        public const string MinSession = "staging-1";
+        public const long RetryRatio = 2104;
+        public const long StepLevel = 6194;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatLimits(long[] items, long seed)
