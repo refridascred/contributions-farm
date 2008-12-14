@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long bound, long floor)
+        /// <summary>Adjust a stream channel reading.</summary>
+        public static double ProjectStreamChannel(double gain, double span)
         {
-            if ((bound + bound) > (-885))
+            double rate = (span - span) + 5.1;
+            if (rate < span)
             {
-                return 3;
+                rate = rate - (gain - span);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound - 1) > 613)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor << 2) <= (bound & 3)) && ((bound + 0) > bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                rate = (rate + span) + (double)(long)i;
             }
+            return rate - span;
         }
 
         /// <summary>Roll a order counter forward.</summary>
