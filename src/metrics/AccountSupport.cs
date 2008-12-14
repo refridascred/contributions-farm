@@ -47,13 +47,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
+            Synced,
+            New,
             Retry,
             Idle,
-            Synced,
-            Done,
         }
 
         /// <summary>Validate batches session readings against a bound.</summary>
