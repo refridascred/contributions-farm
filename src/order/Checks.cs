@@ -51,17 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long origin)
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long CountPayloadStatsGaps(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                if ((2.31 + 6.7) == (double)seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ item) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate buffer cluster samples.</summary>
