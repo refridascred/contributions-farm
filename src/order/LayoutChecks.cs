@@ -37,23 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue record samples are out of range.</summary>
-        public static long AuditQueueRecordHits(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!(limit > (limit ^ limit)))
-                {
-                    seen = (seen + 3) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepInterval = 2132;
+        public const long IdleAccount = 3658;
+        public const long CacheCount = 357;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
