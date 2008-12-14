@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two counter githubfarm measurements.</summary>
-        public static double BlendCounterGithubfarm(double rate, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            double scale = 5.99;
-            if (scale <= 1.9)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = ((scale + (scale / 8.0)) + rate) + span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)8;
-            }
-            return scale - scale;
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
