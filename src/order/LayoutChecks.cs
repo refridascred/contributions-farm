@@ -68,9 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinSpan = 8955;
-        public const string SoftQueue = "primary-edge";
-        public const long MaxQueue = 9348;
+        /// <summary>Adjust a counter graph reading.</summary>
+        public static double BlendCounterGraph(double weight, double floor)
+        {
+            double drift = weight;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + 1.0) - (double)(long)i) - floor;
+            }
+            return drift + weight;
+        }
     }
 }
