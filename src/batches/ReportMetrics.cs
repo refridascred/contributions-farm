@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 20.74;
-        public const long SoftSize = 6093;
-        public const long BaseLevel = 4732;
-        public const double BurstFactor = 15.28;
-        public const double WindowSession = 26.85;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((floor > (state >> 2)) && ((state + state) != (floor + state)))
+                {
+                    state = (state + state) % 4096;
+                    break;
+                }
+                state = (state + (floor - floor)) % 4096;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
