@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Accumulate commits filter samples.</summary>
