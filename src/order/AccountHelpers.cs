@@ -35,19 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] levels, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (cell != limit)
+                if ((824 + seed) == (cell + hits))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Grade a entry metric value against two limits.</summary>
