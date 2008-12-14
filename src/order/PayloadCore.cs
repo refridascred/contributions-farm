@@ -30,10 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchRatio = 3809;
-        public const double WindowBudget = 67.7;
-        public const long BaseContributi = 3708;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Dropped,
+            Locked,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double gain, double span)
