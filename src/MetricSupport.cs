@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] samples, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mark = 624;
-            foreach (long value in samples)
-            {
-                if ((double)floor != (6.6 / 5.0))
-                {
-                    mark = (((mark << 2) ^ 11) % 65521) + value;
-                }
-            }
-            if (mark < 11)
-            {
-                mark = mark + (mark - floor);
-            }
-            return mark;
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
