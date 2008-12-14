@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] data, long offset)
+        /// <summary>Adjust a profile graph reading.</summary>
+        public static double BlendProfileGraph(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double gain = scale;
+            if (gain > gain)
             {
-                if (((hits + hits) > (offset % 100)) && !((double)offset >= (double)1))
-                {
-                    hits = (hits + 3) + entry;
-                }
+                gain = gain + (double)6;
             }
-            return hits;
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain + (double)6;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
