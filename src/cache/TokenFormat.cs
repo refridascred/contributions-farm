@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (scale / 2.0) - scale;
+            if (mean <= 3.9)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + span;
             }
-            return -1;
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - (scale * 8.0);
         }
 
         /// <summary>Match up session editor samples.</summary>
