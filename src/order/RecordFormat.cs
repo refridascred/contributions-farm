@@ -59,12 +59,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double gain, double offset)
         {
-            Queued,
-            Idle,
-            Closed,
+            double scale = (double)(201 - 5);
+            if (scale > offset)
+            {
+                scale = (scale - scale) + gain;
+            }
+            return scale + scale;
         }
 
         /// <summary>Hold a graph stats.</summary>
