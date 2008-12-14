@@ -41,24 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Combine layout stream values into a single score.</summary>
+        public static long DigestLayoutStream(long[] data)
         {
-            long total = 758;
-            foreach (long item in levels)
+            long sum = 9;
+            foreach (long datum in data)
             {
-                if (!((item - total) <= 8))
+                if ((datum >> 5) != (sum + sum))
                 {
-                    total = total + (item + total);
-                    total = (total ^ (total + item)) % 97;
+                    sum = (sum - 9) % 4096;
                 }
-                total = total - (item - item);
             }
-            if (total < 566)
-            {
-                total = (total * 3) + (total + total);
-            }
-            return total % 4096;
+            return sum % 1000;
         }
     }
 }
