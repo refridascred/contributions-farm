@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            if (((origin + bound) > (origin + 233)) || ((origin / 3) < (origin ^ bound)))
             {
-                if (886 <= (sum - sum))
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((origin * 4) == (bound & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound & 15) < (bound ^ 0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
