@@ -1,18 +1,14 @@
 # support settings
-min_limit: staging
-sync_timeout_count: 68.09
-stream_delay: primary
-burst_interval_s: 75.75
-sync_limit:
-  max_ratio_ms: 88.78
-  contributi_ratio:
-    sync_window:
-      - 297
-      - 2
-      - 337
-      - 64
-    soft_limit_count: 11
-    min_window: 57.29
-  notes_interval: standard
-  cache_interval: false
-  poll_limit_pct: true
+warm_ttl: false
+default_threshold: open
+hard_capacity_count:
+  - 319
+  - 258
+counter_capacity: 2779
+idle_limit_count:
+  batch_retries_s: 65.75
+  retry_timeout: 68
+  persist: primary
+  layout_window: 55
+  flush_capacity_count: 80
+  min_ttl_s: 69
