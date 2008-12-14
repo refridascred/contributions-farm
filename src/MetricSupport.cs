@@ -28,12 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
