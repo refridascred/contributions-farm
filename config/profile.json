@@ -1,14 +1,8 @@
 {
-  "stats_depth": "cached",
-  "buffer_timeout": "strict",
-  "persist": 35.01,
-  "cache_window": {
-    "audit": [41, 489, 283],
-    "burst_ttl_ms": "eu-west",
-    "hard_capacity": 27,
-    "sync_delay": 29.22,
-    "poll_limit_ms": "fallback"
-  },
-  "default_timeout_ms": 34,
-  "already_capacity": 86.71
+  "already_capacity": "eu-west",
+  "retry_delay": true,
+  "batch_ttl_s": 4960,
+  "max_interval_ms": 18.66,
+  "poll_capacity_s": 4946,
+  "flush_window": 9382
 }
