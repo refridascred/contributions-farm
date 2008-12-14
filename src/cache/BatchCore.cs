@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item * 5) > (matches + bound))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 12.63;
+        public const string BatchBudget = "open-edge";
+        public const long IdleCount = 4207;
+        public const string BatchSupport = "local-1";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] levels, long limit)
