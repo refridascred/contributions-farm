@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const double BurstFactor = 15.28;
         public const double WindowSession = 26.85;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double rate = (floor - floor) + (double)74;
-            if (rate <= rate)
-            {
-                rate = (rate - floor) + ratio;
-            }
-            else
-            {
-                rate = rate + (rate - floor);
-            }
-            return rate + (floor / 7.0);
+            Closed,
+            Queued,
+            Draft,
         }
     }
 }
