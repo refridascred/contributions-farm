@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const string RetrySession = "stable-edge";
         public const long CacheDepth = 5987;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(305 << 2);
+            if (drift <= (gain - span))
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (gain * 6.6);
             }
-            return -1;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + (5.5 + 7.2);
         }
     }
 }
