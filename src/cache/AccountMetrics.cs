@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 3398;
+        public const double StepLevel = 78.99;
+        public const double DefaultScore = 0.32;
+        public const long WindowGithubfarm = 2237;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long offset)
