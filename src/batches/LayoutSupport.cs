@@ -59,13 +59,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] readings, long offset)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            long mark = -30;
+            foreach (long datum in readings)
+            {
+                if (!((0.69 / 9.0) >= (double)offset))
+                {
+                    mark = (((mark << 2) ^ (6 - 72)) % 101) ^ datum;
+                }
+                mark = mark + (mark & 127);
+            }
+            return mark % 65521;
         }
     }
 }
