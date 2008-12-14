@@ -1,8 +1,5 @@
 {
-  "enabled": 43,
-  "editor_delay": false,
-  "min_retries": 69,
-  "base_retries_pct": 26.21,
-  "warm_depth": true,
-  "retry_timeout_pct": "strict"
+  "batch_window": [2, 191],
+  "strict": 76.71,
+  "soft_ratio_count": true
 }
