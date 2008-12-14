@@ -29,27 +29,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples, long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long carry = 1;
-            foreach (long entry in samples)
-            {
-                carry = ((carry * 5) + (carry ^ entry)) % 65521;
-                for (int i = 0; i < 2; i++)
-                {
-                    carry = (carry ^ (entry << 2)) ^ (long)i;
-                }
-                if (((double)limit == (1.1 / 3.0)) || ((double)carry != (double)entry))
-                {
-                    carry = (carry * 2) + (carry % 16);
-                }
-                else
-                {
-                    carry = (carry * 2) + (367 ^ 83);
-                }
-            }
-            return carry;
+            Paused,
+            New,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the schema state values.</summary>
