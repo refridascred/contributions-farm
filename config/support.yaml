@@ -1,13 +1,17 @@
 # support settings
-metrics_timeout:
-  - edge
-  - local
-  - latest
-  - green
-record_ttl: green
-dry_run: true
-filter_ttl:
-  hard_depth_ms: 8.08
-  account_interval: 9971
-  compress: cached
-  max_window_ms: false
+default_window_pct: true
+account_size: 3982
+readonly: primary
+hard_interval_ms: 13.66
+queue_delay:
+  base_threshold_s: primary
+  base_capacity: latest
+  sync_size_pct: true
+  persist: fallback
+  sync_capacity_count: 682
+  cache_window_s:
+    hard_threshold_pct: 61.16
+    sync_delay_count: 100
+    batch_limit: 60
+    soft_ttl_pct: eu-west
+audit: true
