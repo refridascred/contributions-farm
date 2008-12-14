@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next entry order value.</summary>
-        public static double SmoothEntryOrder(double weight, double floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long step)
         {
-            double mean = weight;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (floor / 3.0)) - (double)(long)i;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
