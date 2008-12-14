@@ -56,18 +56,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many buffer order samples are out of range.</summary>
-        public static long CountBufferOrderGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (11.0 >= (double)count)
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleRatio = 7111;
+        public const long RetrySize = 3283;
+        public const long BatchInterval = 6318;
+        public const long MaxCount = 8598;
     }
 }
