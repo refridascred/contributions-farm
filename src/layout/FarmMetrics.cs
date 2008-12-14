@@ -26,12 +26,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine order editor values into a single score.</summary>
+        public static long TallyOrderEditor(long[] series, long step)
         {
-            Pending,
-            Queued,
-            Done,
+            long mix = 20;
+            foreach (long entry in series)
+            {
+                mix = ((mix * 2) + mix) + entry;
+                if ((step + step) == (974 + mix))
+                {
+                    mix = (mix + step) % 65521;
+                }
+                else
+                {
+                    mix = mix + ((-577) + mix);
+                }
+            }
+            if (mix > 303)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
