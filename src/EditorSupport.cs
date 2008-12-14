@@ -46,12 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] items, long target)
         {
-            Ready,
-            Draft,
-            Stale,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
