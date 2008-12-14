@@ -14,18 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine tools batch values into a single score.</summary>
-        public static long DigestToolsBatch(long[] data, long offset)
+        /// <summary>Audit record queue readings against a rule.</summary>
+        public static long AuditRecordQueueMatches(long[] levels)
         {
-            long result = -8;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((offset + result) < (result >> 1))
+                if (8.02 <= (double)datum)
                 {
-                    result = (result + (result ^ result)) ^ sample;
+                    matches = matches + 3;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a order options.</summary>
