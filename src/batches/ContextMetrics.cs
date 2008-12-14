@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double ratio, double span)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            double gain = ratio;
+            if (gain < gain)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                gain = gain - span;
             }
-            return mix;
+            else
+            {
+                gain = gain - (span + ratio);
+            }
+            return gain + 1.8;
         }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
