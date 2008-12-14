@@ -11,10 +11,28 @@ namespace Common.Utilities
         public const string CacheBudget = "standard-v2";
         public const double StepGraph = 49.07;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryInterval = "strict-v2";
-        public const long LimitRatio = 5893;
-        public const double CacheScore = 4.5;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((target >> 5) == ((long)i / 5))
+                {
+                    carry = carry ^ 21;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (-957)) % 1000;
+                }
+                if (((target << 1) > (74 & 7)) || ((double)(long)i != (double)79))
+                {
+                    carry = (carry + (carry - (long)i)) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
