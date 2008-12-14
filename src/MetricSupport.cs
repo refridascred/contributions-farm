@@ -25,10 +25,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinBudget = 88.02;
-        public const long SoftLayout = 3996;
-        public const long BaseLayout = 7693;
-        public const string WindowBudget = "alpha-v2";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
