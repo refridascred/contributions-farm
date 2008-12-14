@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] series)
         {
-            long state = 80;
-            foreach (long value in series)
+            long mark = 2;
+            foreach (long datum in series)
             {
-                if (((state + state) != (state & 255)) || ((state * 4) >= state))
-                {
-                    state = (((state * 4) + (31 << 3)) % 97) ^ value;
-                }
+                mark = ((mark * 5) + mark) + datum;
             }
-            return state % 1000;
+            return mark;
         }
 
         /// <summary>Measure how many contributi graph samples are out of range.</summary>
