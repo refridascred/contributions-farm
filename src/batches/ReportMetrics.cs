@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            Synced,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a payload stats.</summary>
