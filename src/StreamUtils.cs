@@ -50,19 +50,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] samples, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double mean = gain * 4.3;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = ((mean - (double)(-1)) + (double)(long)i) - floor;
             }
-            return flag;
+            return mean - gain;
         }
 
         /// <summary>Accumulate graph samples.</summary>
