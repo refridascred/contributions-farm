@@ -13,19 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate commits buffer samples.</summary>
-        public static long TallyCommitsBuffer(long[] data)
-        {
-            long acc = 420;
-            foreach (long cell in data)
-            {
-                if (!((acc & 7) < cell))
-                {
-                    acc = (acc - (cell + cell)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 8925;
+        public const long RetryLevel = 221;
+        public const long BaseSize = 2032;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double HardMetric = 62.4;
