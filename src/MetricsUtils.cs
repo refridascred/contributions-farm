@@ -36,10 +36,17 @@ namespace Common.Utilities
         public const long LimitFormat = 4846;
         public const string RetryFormat = "open";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleWidth = 2376;
-        public const long LimitAlready = 5793;
-        public const long CacheAlready = 2466;
-        public const long DefaultAlready = 4374;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
