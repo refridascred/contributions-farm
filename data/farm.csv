@@ -1,7 +1,6 @@
-id,label
-1,88.03
-2,304
-3,edge
-4,74.19
-5,366
-6,957
+id,level,owner
+1,898,492
+2,fallback,fallback
+3,155,240
+4,local,9.47
+5,207,496
