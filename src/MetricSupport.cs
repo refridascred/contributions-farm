@@ -33,13 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
