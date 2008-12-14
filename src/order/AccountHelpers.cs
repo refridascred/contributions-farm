@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] levels, long bound)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen - seen) >= (325 << 2))
-                {
-                    seen = ((seen + 1) + entry) - bound;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
