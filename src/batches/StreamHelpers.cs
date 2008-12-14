@@ -53,19 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of order batch entries.</summary>
-        public static long TotalOrderBatch(long[] values)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long carry = 311;
-            foreach (long value in values)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                carry = carry ^ (value >> 4);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (anchor - anchor) - (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (carry < 0)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Rank queue tools input into a small class.</summary>
