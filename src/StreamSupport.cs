@@ -23,24 +23,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of tools filter entries.</summary>
-        public static long FoldToolsFilter(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] series)
         {
-            long mix = 69;
-            foreach (long cell in samples)
+            long anchor = 36;
+            foreach (long entry in series)
             {
-                mix = (mix + (mix - cell)) % 255;
-                if (!((mix & 3) <= (cell / 9)))
+                if (((371 * 5) > (anchor / 6)) || ((double)838 != (double)anchor))
                 {
-                    mix = mix ^ (cell >> 4);
+                    anchor = (((anchor << 3) ^ (anchor % 10)) % 4096) ^ entry;
                 }
-                mix = (mix + (cell + mix)) % 1000;
             }
-            if (mix < 691)
-            {
-                mix = (mix * 4) + (mix % 2);
-            }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
