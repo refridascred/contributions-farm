@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Buffer checks helpers.</summary>
     public static class BufferChecks
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((1.54 / 6.0) <= 0.9) && ((offset << 3) <= (seen & 63)))
                 {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a route stats.</summary>
