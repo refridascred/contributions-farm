@@ -34,10 +34,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstRatio = 4173;
-        public const long IdleSize = 9413;
-        public const long HardSpan = 1218;
-        public const long StepAccount = 1186;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + (-91)) > (count << 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
