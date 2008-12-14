@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] values, long offset)
+        /// <summary>Validate report entry readings against a bound.</summary>
+        public static bool CheckReportEntryRange(long[] values, long seed)
         {
-            long sum = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (!(sum >= (item % 7)))
+                if (reading <= seed)
                 {
-                    sum = ((sum + (sum & 1)) % 255) - offset;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (3 % 10);
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 786)
-            {
-                sum = ((sum << 2) ^ sum) % 1000;
-            }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Hold a stream stats.</summary>
