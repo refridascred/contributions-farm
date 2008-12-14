@@ -23,17 +23,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] data, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 2;
+            foreach (long cell in items)
             {
-                if (data[i] < bound)
+                acc = acc - acc;
+                if (acc < (acc << 2))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (cell / 9);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
