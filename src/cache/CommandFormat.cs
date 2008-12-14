@@ -12,21 +12,17 @@ namespace Common.Utilities
             return ((load - (load * 5.0)) + weight) + floor;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Find the first command contributi entry that matches the target.</summary>
+        public static long FindCommandContributiIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] > offset)
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the format mode values.</summary>
