@@ -19,28 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            double drift = weight;
+            if (drift > (floor - 2.95))
             {
-                if ((seed + 9) <= ((long)i + seed))
-                {
-                    mix = (mix ^ ((long)i + seed)) % 101;
-                }
-                mix = mix - (long)i;
-                if ((seed >> 5) <= (4 & 255))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - mix) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                drift = drift + drift;
             }
-            return mix;
+            else
+            {
+                drift = drift - (floor / 8.0);
+            }
+            return drift - (double)89;
         }
 
         /// <summary>Blend two metric batches measurements.</summary>
