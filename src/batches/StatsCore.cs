@@ -16,15 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double bias, double bias2)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double drift = bias2;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift + bias2) + (double)(long)i) - bias;
-            }
-            return drift - (double)7;
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
