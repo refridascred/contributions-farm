@@ -28,21 +28,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)sample >= (double)count)
                 {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
