@@ -1,6 +1,11 @@
 {
-  "order_window": 57.57,
-  "base_depth_pct": 4906,
-  "metric_window": "cached",
-  "dry_run": 305
+  "retry_ratio_ms": 11,
+  "idle_limit_s": {
+    "queue_size": "legacy",
+    "sync_delay_count": 250,
+    "hard_threshold_pct": 84.32,
+    "cache_threshold_pct": 6390
+  },
+  "compress": 5,
+  "persist": [220, 303, 142, 207]
 }
