@@ -1,12 +1,8 @@
 {
-  "dry_run": [216, 49],
-  "metric_delay": {
-    "cache_delay_ms": [366, 420, 398],
-    "batch_ttl": false,
-    "base_timeout_ms": true,
-    "notes_capacity": 1.48,
-    "hard_capacity_ms": "latest",
-    "base_window": 500
-  },
-  "window_size": 87.41
+  "max_timeout_pct": 47.67,
+  "dry_run": "latest",
+  "sync_ttl_pct": true,
+  "base_size_count": "green",
+  "cache_delay_count": 36,
+  "graph_interval": true
 }
