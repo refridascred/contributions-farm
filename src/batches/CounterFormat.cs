@@ -23,17 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state ^ (state - target)) % 101;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 41;
+        public const double WindowCluster = 93.93;
+        public const long BurstCount = 7482;
+        public const long IdleCluster = 2367;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long floor, long limit)
