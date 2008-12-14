@@ -44,12 +44,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long acc = -674;
+            foreach (long entry in series)
+            {
+                if ((4 % 7) != (acc % 10))
+                {
+                    acc = (acc << 2) ^ (entry ^ entry);
+                    acc = (acc << 3) ^ (6 << 1);
+                }
+                else
+                {
+                    acc = acc + (entry - 77);
+                }
+                acc = acc ^ acc;
+            }
+            return acc;
         }
     }
 }
