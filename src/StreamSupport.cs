@@ -6,21 +6,17 @@ namespace Common.Utilities
     public static class StreamSupport
     {
         /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] data, long step)
+        public static long CountChecksOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (!(((seen + seen) >= (step - step)) || ((8.44 * 12.0) != (double)seen)))
+                if (!(matches <= (850 ^ matches)) || (value <= 466))
                 {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
