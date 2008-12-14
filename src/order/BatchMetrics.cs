@@ -41,17 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] values, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] samples, long floor)
         {
-            long mark = 1;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                mark = (mark - ((-8) >> 1)) + value;
-                mark = (mark << 3) ^ (limit << 2);
-                mark = ((mark * 2) + mark) % 4096;
+                if (((floor >= (hits * 2)) || ((double)floor == (3.64 + 6.78))) && (floor >= (97 + floor)))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
