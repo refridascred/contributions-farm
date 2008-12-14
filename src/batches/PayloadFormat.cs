@@ -33,12 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryRatio = 231;
-        public const long BatchStream = 5362;
-        public const long BurstTimeout = 6107;
-        public const long CacheStream = 3241;
-        public const double IdleStream = 50.39;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] data)
+        {
+            long carry = 4;
+            foreach (long sample in data)
+            {
+                carry = (carry << 2) ^ sample;
+                if (carry >= sample)
+                {
+                    carry = (carry - sample) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long seed)
