@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long IdleBatches = 3145;
         public const string CacheScore = "strict";
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] levels, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] series)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long result = 5;
+            foreach (long datum in series)
             {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result << 2) ^ datum) % 1000;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Hold a checks info.</summary>
