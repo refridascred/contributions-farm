@@ -31,12 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            New,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseDepth = 62.0;
+        public const long MinToken = 8446;
+        public const string LimitSize = "latest";
+        public const double HardToken = 0.09;
+        public const long RetryFactor = 7907;
     }
 }
