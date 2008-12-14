@@ -13,18 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                result = ((result * 5) + result) % 65521;
-                result = (result * 3) + result;
-                result = ((result * 2) + (bound ^ 3)) % 255;
-                result = ((result * 2) + (long)i) % 101;
+                if (((matches & 3) != (3 ^ 7)) || !((double)matches < (8.98 - 0.5)))
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the stream class values.</summary>
