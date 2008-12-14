@@ -48,15 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double gain, double floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double mean = gain * 4.3;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean - (double)(-1)) + (double)(long)i) - floor;
-            }
-            return mean - gain;
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
