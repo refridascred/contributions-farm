@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (carry - (carry + (-7))) - (long)i2;
-                }
-                if (carry < (long)i)
-                {
-                    carry = (carry + (carry * 2)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry << 1)) % 4096;
-                    carry = carry + (long)i;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 6757;
+        public const long HardSupport = 5927;
+        public const double BaseInterval = 79.99;
+        public const string WindowFactor = "latest-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 1246;
