@@ -1,19 +1,5 @@
 {
-  "sync_interval": "fallback",
-  "retry_size_pct": 100,
-  "enabled": 39,
-  "base_size": 9820,
-  "batch_retries": 500,
-  "persist": {
-    "default_interval": [180, 214, 384, 84],
-    "persist": 1024,
-    "contributi_depth": [447, 21, 389, 398],
-    "support_limit": {
-      "report_size": "blue",
-      "tools_ratio": 47.96,
-      "readonly": "blue",
-      "soft_capacity_ms": ["open", "fallback", "standard", "strict"]
-    },
-    "retry_limit_count": 65.53
-  }
+  "audit": [39, 262, 19],
+  "readonly": "strict",
+  "base_capacity_pct": [262, 94, 425, 195]
 }
