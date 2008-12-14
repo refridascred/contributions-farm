@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=247
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-local}"
 case "${mode}" in
-    staging)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in local primary blue; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=377
+log "limit is ${CHANNEL_LIMIT}"
