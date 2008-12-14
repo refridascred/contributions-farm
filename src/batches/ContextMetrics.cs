@@ -58,12 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheWidth = "strict";
-        public const long LimitBatches = 8064;
-        public const double BaseBatches = 11.02;
-        public const long WindowDepth = 4746;
-        public const long LimitInterval = 2597;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank order notes input into a small class.</summary>
         public static long GradeOrderNotes(long step, long offset)
