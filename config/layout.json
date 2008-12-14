@@ -1,6 +1,5 @@
 {
-  "sync_delay_s": [25, 483],
-  "idle_ratio_s": 4490,
-  "burst_limit_pct": "staging",
-  "verbose": ["cached", "local", "edge", "latest"]
+  "poll_limit_pct": ["local", "blue", "open"],
+  "format_timeout": "local",
+  "warm_ttl": 41.92
 }
