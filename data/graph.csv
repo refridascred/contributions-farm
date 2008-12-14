@@ -1,7 +1,8 @@
-id,rank,token
-1,727,217
-2,fallback,737
-3,46.12,strict
-4,486,639
-5,76.35,green
-6,14.78,standard
+id,region,label
+1,fallback,945
+2,114,76
+3,524,open
+4,217,stable
+5,207,22
+6,83.33,247
+7,44.86,strict
