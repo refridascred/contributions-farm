@@ -25,15 +25,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Stale,
-            Done,
-            Synced,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 2361;
+        public const long DefaultQueue = 8237;
+        public const long BatchSize = 2077;
+        public const double BurstSpan = 11.87;
+        public const string RetryQueue = "primary";
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
