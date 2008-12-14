@@ -20,19 +20,18 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] series, long seed)
+        /// <summary>Fold a list of layout context readings.</summary>
+        public static long DigestLayoutContext(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long score = 802;
+            foreach (long entry in values)
             {
-                if (entry <= seed)
+                if (!((entry / 8) == (score - 8)))
                 {
-                    flag = false;
-                    break;
+                    score = score - 993;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
