@@ -19,20 +19,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mark = -4;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = (((mark * 2) + (origin % 7)) ^ (long)i) + cell;
-                    mark = (mark * 2) + (mark >> 2);
-                }
-                mark = mark + origin;
-            }
-            return mark;
+            public double Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
