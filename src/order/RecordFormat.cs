@@ -13,21 +13,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the editor kind values.</summary>
