@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=380
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    open)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=496
-log "limit is ${COMMAND_LIMIT}"
