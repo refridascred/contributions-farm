@@ -22,18 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((bound - count) >= (cell % 2)) && ((cell % 16) > count))
+                result = result + (target + result);
+                if (!((target % 12) > ((long)i - target)))
                 {
-                    count = count + 2;
+                    result = (result - target) % 97;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Digest a series of notes editor entries.</summary>
