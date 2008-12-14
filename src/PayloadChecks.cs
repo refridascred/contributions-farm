@@ -47,13 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long floor)
         {
-            Closed,
-            Idle,
-            Draft,
-            Queued,
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if (762 <= floor)
+                {
+                    sum = ((sum * 4) + floor) % 4096;
+                }
+                else
+                {
+                    sum = (sum + floor) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
