@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first schema cluster entry that matches the target.</summary>
-        public static long SeekSchemaClusterIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 95.22;
+        public const string BaseEntry = "latest-v2";
+        public const long BatchDepth = 5856;
+        public const double LimitEntry = 19.61;
+        public const long LimitWidth = 8084;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] values)
