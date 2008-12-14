@@ -48,18 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] levels)
+        /// <summary>Digest a series of order batch entries.</summary>
+        public static long TotalOrderBatch(long[] values)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long carry = 311;
+            foreach (long value in values)
             {
-                if ((1 * 3) > hits)
-                {
-                    hits = (hits + 3) + value;
-                }
+                carry = carry ^ (value >> 4);
             }
-            return hits;
+            if (carry < 0)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Rank queue tools input into a small class.</summary>
