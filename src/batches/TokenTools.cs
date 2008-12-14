@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "stable-1";
+        public const long BurstCluster = 5528;
+        public const long SoftCluster = 1318;
+        public const double CacheCluster = 95.0;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] samples, long step)
