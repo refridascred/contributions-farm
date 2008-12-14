@@ -1,14 +1,6 @@
 {
-  "burst_ttl_s": {
-    "warm_capacity": "open",
-    "audit": [228, 49, 435],
-    "persist": "cached",
-    "hard_timeout_ms": true,
-    "readonly": false
-  },
-  "default_delay": 66,
-  "order_limit": "cached",
-  "soft_ttl": "green",
-  "record_retries": 60,
-  "batch_threshold": "standard"
+  "poll_depth": 5995,
+  "notes_ttl": 10.66,
+  "burst_limit_ms": [411, 59, 1, 22],
+  "flush_size_pct": "stable"
 }
