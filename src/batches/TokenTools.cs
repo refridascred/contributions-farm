@@ -32,21 +32,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry != origin)
                 {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
