@@ -18,11 +18,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "local-v2";
-        public const long MinRatio = 8746;
-        public const string CacheRatio = "fallback";
-        public const long DefaultSize = 2392;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "cached";
+        public const long SoftFilter = 1057;
+        public const long HardTimeout = 5525;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
