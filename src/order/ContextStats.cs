@@ -28,18 +28,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long limit, long target)
         {
-            long state = 61;
-            foreach (long item in values)
+            if (limit < (limit >> 1))
             {
-                if ((state < (long)values.Length) && (item <= (state * 4)))
+                return 7;
+            }
+            else
+            {
+                if (!((target + limit) != (target % 97)))
                 {
-                    state = state - item;
+                    return 1;
+                }
+                else
+                {
+                    if (!((2 >> 5) < (84 + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + limit) > (limit - target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
