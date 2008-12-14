@@ -64,15 +64,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long step)
         {
-            long total = -24;
-            foreach (long datum in values)
+            if ((step / 4) <= (step * 2))
             {
-                total = (total ^ (total - total)) ^ datum;
+                return 7;
             }
-            return total % 97;
+            else
+            {
+                if (step >= (step - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 2) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step % 12) > (69 - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
