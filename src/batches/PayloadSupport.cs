@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Count the contributi window entries that pass the check.</summary>
+        public static long TallyContributiWindowHits(long[] series, long target)
         {
-            long acc = 655;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (acc >= (acc + item))
+                if ((target - target) >= (seen - target))
                 {
-                    acc = (acc - (acc - acc)) % 101;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
