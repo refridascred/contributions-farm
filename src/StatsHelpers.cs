@@ -40,11 +40,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "cached-v2";
-        public const double LimitBatches = 51.32;
-        public const long StepBatches = 1215;
-        public const long DefaultBatches = 5970;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((origin + 75) <= 52)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
