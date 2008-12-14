@@ -1,6 +1,10 @@
-id,level,owner
-1,898,492
-2,fallback,fallback
-3,155,240
-4,local,9.47
-5,207,496
+id,owner,active
+1,37,405
+2,78.28,84
+3,981,staging
+4,451,870
+5,955,strict
+6,371,edge
+7,470,open
+8,staging,74.43
+9,953,14.9
