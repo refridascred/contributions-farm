@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] levels, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long state = 71;
-            foreach (long entry in levels)
-            {
-                if (((double)entry < (1.0 - 9.5)) || ((double)(long)levels.Length != (double)state))
-                {
-                    state = ((state - (entry / 2)) % 1000) - origin;
-                }
-                else
-                {
-                    state = state ^ ((-344) + entry);
-                }
-            }
-            return state % 65521;
+            Stale,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Blend two metrics counter measurements.</summary>
