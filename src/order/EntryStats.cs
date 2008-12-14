@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] samples, long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long mix = 795;
-            foreach (long datum in samples)
-            {
-                if (((4.0 / 4.0) >= (double)datum) || ((double)seed <= 1.0))
-                {
-                    mix = (mix ^ seed) % 101;
-                }
-            }
-            return mix;
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Combine entry window values into a single score.</summary>
