@@ -53,21 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch profile pairs that satisfy a relation.</summary>
-        public static long OverlapBatchProfileCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheInterval = 8512;
+        public const long CacheFormat = 7852;
+        public const double CacheSpan = 29.59;
+        public const string SoftFactor = "fallback-v2";
     }
 }
