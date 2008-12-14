@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 4653;
+        public const string BurstCount = "primary-edge";
+        public const double BaseAccount = 68.98;
+        public const long WindowAccount = 6806;
+        public const long IdleInterval = 398;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorRange(long[] data, long floor)
