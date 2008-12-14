@@ -1,10 +1,14 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-The schema helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Each session is validated before it reaches the githubfarm queue.
+
+The checks report groups every cluster by support.
+Keep notes and metrics names short and lowercase.
 
 ## Guidelines
 
-- Keep report values small
-- Review route limits each release
-- Document new editor fields
+- Log every notes change
+- Validate batch input early
+- Prefer cache defaults
+- Review farm limits each release
