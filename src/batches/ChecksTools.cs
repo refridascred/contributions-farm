@@ -27,15 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] values, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Project the next entry value.</summary>
