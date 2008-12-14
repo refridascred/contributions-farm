@@ -1,21 +1,8 @@
 # entry settings
-persist: false
-retry_capacity: false
-flush_depth:
-  idle_retries_ms: staging
-  poll_size: false
-  commits_size:
-    - 240
-    - 398
-idle_depth_s:
-  min_limit_s: false
-  min_interval_ms:
-    idle_ratio_s: 77
-    dry_run: primary
-    cache_interval_s: 6682
-  soft_threshold: 13.24
-  soft_capacity:
-    - green
-    - blue
-    - staging
-max_retries_pct: 16.28
+filter_capacity:
+  - standard
+  - legacy
+  - staging
+  - green
+flush_timeout_count: latest
+idle_limit: false
