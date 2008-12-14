@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
