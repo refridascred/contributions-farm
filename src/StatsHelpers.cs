@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchWidth = 59.71;
+        public const long WindowCommits = 8104;
+        public const string SoftRatio = "local-1";
+        public const long MinCommits = 7803;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
