@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long target)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long limit)
         {
-            if ((floor - floor) != (target * 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 2) <= (7 - floor))
+                if (data[i] > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target == (3.0 * 6.2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor >= ((-57) / 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
