@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] samples)
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits % 60) > (datum - datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stream status values.</summary>
