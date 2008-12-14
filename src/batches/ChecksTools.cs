@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] values, long step)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((matches + sample) >= (matches % 64)) && (matches <= (matches ^ sample)))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
