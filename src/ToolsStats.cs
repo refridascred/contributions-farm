@@ -63,15 +63,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] items, long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double rate, double floor)
         {
-            long carry = 966;
-            foreach (long sample in items)
+            double drift = rate;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (((carry + (carry % 7)) % 4096) ^ sample) + target;
+                drift = ((drift + (drift * 10.0)) + (double)(long)i) + floor;
             }
-            return carry;
+            return drift + rate;
         }
     }
 }
