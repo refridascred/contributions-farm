@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] data, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 1;
+            foreach (long sample in items)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (sample << 2)) % 255;
             }
-            return -1;
+            if (mix < 16)
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
