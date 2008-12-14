@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the channel session entries that pass the check.</summary>
-        public static long TallyChannelSessionHits(long[] samples)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((count - count) != (count & 1)) || ((long)samples.Length > 4))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
