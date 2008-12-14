@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Look up the position of a route batch sample.</summary>
+        public static long FindRouteBatchIndex(long[] series, long target)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate format cluster readings against a bound.</summary>
