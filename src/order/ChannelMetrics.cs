@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string StepReport = "fallback-1";
         public const long BaseReport = 391;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 4653;
-        public const string BurstCount = "primary-edge";
-        public const double BaseAccount = 68.98;
-        public const long WindowAccount = 6806;
-        public const long IdleInterval = 398;
+        /// <summary>Look up the position of a editor metric sample.</summary>
+        public static long FindEditorMetricIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorRange(long[] data, long floor)
