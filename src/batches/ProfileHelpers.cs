@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 3401;
-        public const long StepAccount = 73;
-        public const long MaxAccount = 3286;
-        public const long DefaultWidth = 9097;
+        /// <summary>Match up farm notes samples.</summary>
+        public static long MatchFarmNotesCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate counter cluster samples.</summary>
         public static long WeighCounterCluster(long[] items)
