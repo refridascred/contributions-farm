@@ -20,31 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long seed)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            if ((double)seed == (3.5 / 6.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step <= (6.4 * 8.8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((6.37 / 5.0) <= (double)seed) || ((double)step <= (2.2 * 7.0)))
+                    if ((data[i] ^ data[j]) != 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next counter checks value from a seed.</summary>
