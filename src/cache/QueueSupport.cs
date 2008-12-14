@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long offset, long origin)
+        /// <summary>Blend two profile commits measurements.</summary>
+        public static double AdjustProfileCommits(double gain, double floor)
         {
-            long gap = offset + origin;
-            if (!(origin >= (gap << 1)))
+            double mean = 7.4;
+            if (mean >= (gain * 13.0))
             {
-                return 3;
+                mean = mean - (floor + floor);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((gap & 31) < (origin % 10))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((15.0 <= (double)origin) || ((offset + origin) > offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mean = (mean - (double)18) - (double)(long)i;
             }
+            return mean + (gain / 4.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
