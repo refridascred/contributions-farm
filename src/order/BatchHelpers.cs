@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Active,
-            Failed,
-            Locked,
-            Stale,
-            Ready,
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
