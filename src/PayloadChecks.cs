@@ -29,19 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] items, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample < origin)
+                if ((double)floor >= 13.0)
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
