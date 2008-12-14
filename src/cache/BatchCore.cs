@@ -20,19 +20,18 @@ namespace Common.Utilities
             return scale + (double)57;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (value >= offset)
+                if (origin > (cell << 1))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a schema record.</summary>
