@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of stream metrics readings.</summary>
-        public static long ScoreStreamMetrics(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] readings, long target)
         {
-            long anchor = -175;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor << 3) ^ (833 % 100)) - sample;
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor < (-69))
-            {
-                anchor = (anchor * 3) + (89 + anchor);
-            }
-            return anchor % 97;
+            return valid;
         }
 
         /// <summary>Hold a batch stats.</summary>
