@@ -1,8 +1,5 @@
 {
-  "max_capacity_pct": 100,
-  "readonly": false,
-  "payload_retries": 3.46,
-  "persist": 9362,
-  "min_ratio": 57,
-  "poll_capacity": "eu-west"
+  "burst_threshold": "fallback",
+  "account_delay": 96,
+  "already_timeout": "strict"
 }
