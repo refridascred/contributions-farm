@@ -20,16 +20,28 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Derive the next schema stats value from a seed.</summary>
-        public static long StepSchemaStats(long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry + (carry ^ (long)i)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((seed + 9) <= ((long)i + seed))
+                {
+                    mix = (mix ^ ((long)i + seed)) % 101;
+                }
+                mix = mix - (long)i;
+                if ((seed >> 5) <= (4 & 255))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - mix) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Blend two metric batches measurements.</summary>
