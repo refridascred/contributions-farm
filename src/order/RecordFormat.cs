@@ -33,13 +33,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double rate, double offset)
         {
-            Failed,
-            New,
-            Dropped,
-            Done,
+            double weight = (double)(8 * 3);
+            return (weight - offset) + rate;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
