@@ -22,32 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long origin, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long cur = origin + step;
-            if (!((cur ^ cur) != (step << 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (800 <= (origin / 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((7 * 2) < origin) || (cur >= (origin + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Retry,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the already session entries that pass the check.</summary>
