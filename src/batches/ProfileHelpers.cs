@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 732;
+            foreach (long datum in values)
             {
-                if (data[i] < target)
+                if ((long)values.Length == (datum & 63))
                 {
-                    return (long)i;
+                    result = (result ^ (datum % 7)) + seed;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
