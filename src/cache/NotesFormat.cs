@@ -34,15 +34,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Scale a buffer graph figure with a bias.</summary>
-        public static double BlendBufferGraph(double ratio, double floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] levels, long step)
         {
-            double gain = floor;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                gain = ((gain - 15.0) + (double)(long)i) + ratio;
+                if (cell <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return found;
         }
     }
 }
