@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine order contributi values into a single score.</summary>
-        public static long TotalOrderContributi(long[] data, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            long total = 220;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (bound < (total - bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total * 2) + 3) % 255;
-                }
-                else
-                {
-                    total = (total << 3) ^ (item + item);
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 52)
-            {
-                total = ((total * 2) + (total >> 5)) % 65521;
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Combine cache stats values into a single score.</summary>
