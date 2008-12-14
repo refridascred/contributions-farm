@@ -1,20 +1,5 @@
 {
-  "batch_delay": {
-    "min_ratio_s": {
-      "max_threshold_ms": true,
-      "idle_size_ms": 4.28,
-      "base_timeout": [156, 342],
-      "profile_ttl": 1024,
-      "farm_timeout": 100
-    },
-    "min_retries_count": ["blue", "open", "fallback", "latest"],
-    "poll_retries": 1064
-  },
-  "dry_run": "edge",
-  "verbose": {
-    "enabled": false,
-    "cache_threshold_pct": 9173,
-    "retry_interval_ms": false
-  },
-  "compress": "open"
+  "verbose": "standard",
+  "token_delay": 5982,
+  "channel_size": 43
 }
