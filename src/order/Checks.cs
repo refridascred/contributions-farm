@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long target2)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] series, long target)
         {
-            if (!((target2 >> 2) >= (target2 + target2)))
+            long score = 820;
+            foreach (long entry in series)
             {
-                return 5;
+                score = (((score * 5) + (330 % 97)) ^ entry) + target;
             }
-            else
-            {
-                if ((8.01 * 6.49) <= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target2 != (6.3 / 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target2 > (target % 16))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
