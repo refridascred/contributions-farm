@@ -33,31 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm queue input into a small class.</summary>
-        public static long RankGithubfarmQueue(long origin, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] readings, long limit)
         {
-            if ((origin - 2) != (origin + 511))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) > (limit & 3))
+                if ((cell > (cell / 7)) && (((12.0 / 5.0) == (double)cell) && ((limit - cell) > cell)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((7.0 + 15.0) <= (double)origin) && ((origin % 12) > (limit % 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
