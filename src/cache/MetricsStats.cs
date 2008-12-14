@@ -33,19 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] values, long step)
+        /// <summary>Validate token filter readings against a bound.</summary>
+        public static bool CheckTokenFilterBounds(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (reading >= step)
+                if (item > target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Hold a batches options.</summary>
