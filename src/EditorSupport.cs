@@ -85,19 +85,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] levels)
         {
-            long anchor = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ (reading & 63)) % 1000;
-                if (((reading - anchor) > anchor) && ((anchor + 59) <= (9 * 5)))
+                if (!((seen % 3) <= 8))
                 {
-                    anchor = anchor ^ (anchor - anchor);
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
