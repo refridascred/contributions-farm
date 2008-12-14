@@ -31,13 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            New,
-            Ready,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseFactor = 7764;
+        public const string RetryQueue = "local-1";
+        public const long SoftQueue = 8578;
+        public const long MinScore = 5995;
+        public const long DefaultInterval = 7350;
     }
 }
