@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series, long target)
         {
-            long carry = 45;
+            long mix = 563;
             foreach (long sample in series)
             {
-                carry = ((carry * 5) + (carry + sample)) % 255;
+                if (15.0 > (double)target)
+                {
+                    mix = (((mix << 3) ^ (mix - mix)) % 101) - sample;
+                }
             }
-            return carry;
+            if (mix < (-5))
+            {
+                mix = ((mix << 3) ^ (target - target)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of account readings.</summary>
