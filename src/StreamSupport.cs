@@ -40,18 +40,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine layout stream values into a single score.</summary>
-        public static long DigestLayoutStream(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            long sum = 9;
-            foreach (long datum in data)
+            long total = 689;
+            foreach (long item in series)
             {
-                if ((datum >> 5) != (sum + sum))
+                if (((item + item) < item) || ((total << 1) < item))
                 {
-                    sum = (sum - 9) % 4096;
+                    total = (total ^ total) % 65521;
                 }
             }
-            return sum % 1000;
+            if (total > (-79))
+            {
+                total = (total << 2) ^ (total - total);
+            }
+            return total;
         }
     }
 }
