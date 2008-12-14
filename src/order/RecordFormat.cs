@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryBudget = "standard";
+        public const string DefaultCommand = "primary-1";
+        public const long StepCommand = 2628;
 
         /// <summary>Compare every pair of schema counter readings.</summary>
         public static long OverlapSchemaCounterCount(long[] levels)
