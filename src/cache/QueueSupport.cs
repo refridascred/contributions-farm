@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long bound, long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long bound)
         {
-            if (((9.0 - 0.53) < (double)target) && ((bound * 2) != (bound & 255)))
+            long cur = limit + bound;
+            if ((limit & 255) > 516)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (!((target - bound) < bound))
+                if ((4.6 + 6.4) != (double)cur)
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 5;
+                    return 4;
                 }
             }
         }
