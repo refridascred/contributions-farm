@@ -48,17 +48,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] values, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 163;
+            foreach (long cell in data)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry + step) % 101) ^ cell;
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
