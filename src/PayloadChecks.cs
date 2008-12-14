@@ -67,24 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream command pair into a bucket.</summary>
-        public static long RankStreamCommand(long seed, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long step)
         {
-            if (floor < 2)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((37 - floor) <= (seed * 4))
+                if (!((sum - 43) < 373))
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    return 3;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
+            return sum;
         }
     }
 }
