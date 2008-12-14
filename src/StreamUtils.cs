@@ -31,14 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
+            Active,
+            Idle,
             Pending,
-            New,
-            Done,
+            Queued,
             Failed,
-            Retry,
         }
 
         /// <summary>Hold a commits stats.</summary>
