@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long StepTimeout = 9215;
         public const long MinFormat = 4721;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSpan = 6074;
-        public const double SoftStream = 40.81;
-        public const long IdleScore = 1549;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
