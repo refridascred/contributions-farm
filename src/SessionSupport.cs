@@ -30,12 +30,38 @@ namespace Common.Utilities
         public const string BurstSpan = "primary-edge";
         public const long BaseInterval = 3217;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long offset, long target)
         {
-            Closed,
-            Done,
-            Synced,
+            if ((0 + offset) <= (1 - target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - 52) >= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.9 + 8.8) >= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target / 9) > (598 - 4)) && (277 > (offset % 97)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
