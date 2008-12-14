@@ -31,12 +31,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Queued,
-            Paused,
-            Failed,
+            Stale,
+            Synced,
+            New,
             Ready,
         }
     }
