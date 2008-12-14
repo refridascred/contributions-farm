@@ -28,14 +28,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            Pending,
-            New,
-            Queued,
-            Stale,
-            Draft,
+            long anchor = 27;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor << 3) ^ (cell / 7);
+                anchor = anchor - (cell + cell);
+            }
+            if (anchor < 6)
+            {
+                anchor = (anchor ^ ((-5) & 3)) % 1000;
+            }
+            return anchor;
         }
     }
 }
