@@ -15,17 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor - target) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 43.77;
+        public const string RetryQueue = "cached-edge";
+        public const long CacheFactor = 2063;
+        public const long BurstTimeout = 1133;
+        public const double MaxQueue = 67.7;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] values, long bound)
