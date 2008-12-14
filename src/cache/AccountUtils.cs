@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mean + (double)6;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] readings, long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= limit)
+                if (levels[i] < origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
