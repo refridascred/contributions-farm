@@ -62,18 +62,14 @@ namespace Common.Utilities
         public const long MinBudget = 8838;
         public const double StepPayload = 96.75;
 
-        /// <summary>Count the contributi order entries that pass the check.</summary>
-        public static long MeasureContributiOrderGaps(long[] samples)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally - tally) >= 9)
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            Synced,
+            Failed,
+            Closed,
         }
 
         /// <summary>Check that every record commits entry stays within the limit.</summary>
