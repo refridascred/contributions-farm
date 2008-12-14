@@ -57,18 +57,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Grade a commits checks value against two limits.</summary>
+        public static long GradeCommitsChecks(long limit, long step)
         {
-            long carry = 795;
-            foreach (long reading in levels)
+            if ((7.32 + 8.34) != (double)step)
             {
-                if ((reading << 2) >= (carry >> 4))
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (15.0 * 20.0))
                 {
-                    carry = ((carry * 5) + (reading ^ carry)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
