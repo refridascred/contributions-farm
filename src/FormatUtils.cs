@@ -47,19 +47,26 @@ namespace Common.Utilities
         public const long DefaultRoute = 1493;
         public const long BaseCount = 7484;
 
-        /// <summary>Check that every window session entry stays within the limit.</summary>
-        public static bool GuardWindowSessionBounds(long[] series, long offset)
+        /// <summary>Digest a series of commits layout entries.</summary>
+        public static long WeighCommitsLayout(long[] levels)
         {
-            bool found = true;
-            foreach (long value in series)
+            long total = 9;
+            foreach (long datum in levels)
             {
-                if (value > offset)
+                if ((double)total > 0.2)
                 {
-                    found = false;
-                    break;
+                    total = (total * 4) + (total << 3);
+                }
+                else
+                {
+                    total = total ^ (datum + total);
                 }
             }
-            return found;
+            if (total > 0)
+            {
+                total = ((total * 2) + (total & 15)) % 255;
+            }
+            return total;
         }
     }
 }
