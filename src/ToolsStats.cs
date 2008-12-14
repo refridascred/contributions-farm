@@ -39,12 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
         {
-            New,
-            Synced,
-            Done,
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc - acc) % 97;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
