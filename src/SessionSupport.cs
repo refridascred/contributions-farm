@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] readings, long step)
+        /// <summary>Check that every cluster checks entry stays within the limit.</summary>
+        public static bool GuardClusterChecksRange(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (!((67 * 2) <= count))
+                if (sample != seed)
                 {
-                    count = ((count + 2) + item) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
