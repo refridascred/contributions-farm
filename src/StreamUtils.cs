@@ -67,19 +67,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double gain, double offset)
+        /// <summary>Count the entry batches entries that pass the check.</summary>
+        public static long AuditEntryBatchesHits(long[] data)
         {
-            double mean = gain;
-            if (mean >= (offset + gain))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mean = mean - (double)0;
+                if ((cell << 2) > hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean - mean)) + (double)(long)i;
-            }
-            return mean - (mean * 3.0);
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
