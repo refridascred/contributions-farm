@@ -47,22 +47,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] samples, long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long anchor = -2;
-            foreach (long reading in samples)
-            {
-                if (((limit + limit) != (reading / 2)) && ((4.0 * 1.9) >= (double)anchor))
-                {
-                    anchor = (anchor ^ (anchor - reading)) % 97;
-                }
-                else
-                {
-                    anchor = anchor - (reading - limit);
-                }
-            }
-            return anchor;
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
