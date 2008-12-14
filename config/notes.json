@@ -1,16 +1,6 @@
 {
-  "poll_limit_s": {
-    "soft_delay_s": false,
-    "poll_ratio": [455, 174],
-    "compress": {
-      "base_size_s": 96.97,
-      "poll_ratio_count": 27.11,
-      "readonly": 39.32
-    },
-    "idle_size": false,
-    "entry_size": "green"
-  },
-  "min_window_s": 4220,
-  "flush_retries": "latest",
-  "base_depth_count": true
+  "base_capacity_pct": false,
+  "strict": 94,
+  "base_timeout_count": true,
+  "warm_limit_s": 19.46
 }
