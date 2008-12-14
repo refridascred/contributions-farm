@@ -36,25 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            long edge = offset - step;
-            if ((8.84 - 15.0) >= (double)offset)
+            double mean = weight;
+            if (mean > (double)7)
             {
-                return 5;
+                mean = mean - span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (edge < step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                mean = (mean + (20.0 - mean)) + (double)(long)i;
             }
+            return mean - (8.4 - weight);
         }
 
         /// <summary>Hold a batches options.</summary>
