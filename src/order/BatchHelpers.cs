@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
             public long Flag { get; set; }
         }
 
