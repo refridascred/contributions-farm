@@ -32,10 +32,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepFactor = 9205;
-        public const long LimitSpan = 6833;
-        public const double CacheInterval = 1.9;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((step ^ score) > (892 + score))
+                {
+                    score = (score ^ score) % 97;
+                }
+                if ((step + step) == (96 >> 2))
+                {
+                    score = ((score * 5) + (score * 3)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] items)
