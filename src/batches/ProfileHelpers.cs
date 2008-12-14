@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up farm notes samples.</summary>
-        public static long MatchFarmNotesCount(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)floor < (2.0 * 8.87)) && (62 > (floor << 3)))
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate counter cluster samples.</summary>
