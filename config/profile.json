@@ -1,8 +1,23 @@
 {
-  "poll_limit": 60,
-  "default_retries": true,
-  "dry_run": 500,
-  "cache_timeout_s": "green",
-  "min_limit": "staging",
-  "warm_threshold": 250
+  "readonly": 42.47,
+  "strict": 250,
+  "enabled": {
+    "enabled": true,
+    "editor_timeout": {
+      "cache_capacity": false,
+      "batch_delay": ["staging", "open", "open", "stable"],
+      "hard_size_s": ["cached", "stable", "edge", "stable"],
+      "record_size": 96,
+      "persist": "cached"
+    },
+    "metric_threshold": 96.5,
+    "editor_capacity": {
+      "route_timeout": "cached",
+      "verbose": 481,
+      "commits_size": "local",
+      "batches_delay": true,
+      "compress": 31
+    },
+    "audit": 500
+  }
 }
