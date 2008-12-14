@@ -13,21 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 19; i++)
-            {
-                result = result + (target + result);
-                if (!((target % 12) > ((long)i - target)))
-                {
-                    result = (result - target) % 97;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 3894;
+        public const string BurstCounter = "strict-edge";
+        public const long CacheWidth = 4901;
+        public const double MaxLevel = 75.96;
+        public const string RetryCounter = "latest";
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
