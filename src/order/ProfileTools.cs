@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            Idle,
+            Synced,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
