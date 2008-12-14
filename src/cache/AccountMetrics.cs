@@ -61,21 +61,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((hits + hits) >= cell) && ((double)hits >= 5.6))
                 {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
