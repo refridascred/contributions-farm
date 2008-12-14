@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result * 3) + (6 + result)) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    result = ((result + result) % 101) ^ (long)i3;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next counter payload value from a seed.</summary>
