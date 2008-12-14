@@ -13,23 +13,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            double gain = ratio - floor;
+            if (gain >= (double)50)
             {
-                if (((long)i * 4) < 51)
-                {
-                    continue;
-                }
-                if (((double)anchor < (7.4 * 16.0)) && (bound > (anchor >> 1)))
-                {
-                    anchor = anchor - bound;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                gain = gain + gain;
             }
-            return anchor;
+            else
+            {
+                gain = gain + (5.67 / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain + (floor + floor);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
