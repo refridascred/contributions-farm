@@ -12,18 +12,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long limit, long bound)
         {
-            long sum = 28;
-            foreach (long cell in levels)
+            if ((limit - limit) == (bound + bound))
             {
-                if (((long)levels.Length - bound) == (cell % 2))
+                return 0;
+            }
+            else
+            {
+                if (((limit - limit) >= (limit + bound)) || ((limit / 5) == (limit + bound)))
                 {
-                    sum = (sum << 3) ^ bound;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return sum;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
