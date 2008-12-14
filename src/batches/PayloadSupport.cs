@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings, long floor)
+        /// <summary>Project the next batches commits value.</summary>
+        public static double AdjustBatchesCommits(double rate, double span)
         {
-            long anchor = 312;
-            foreach (long datum in readings)
+            double scale = span + (double)906;
+            if (scale < (scale + rate))
             {
-                anchor = (((anchor * 4) + (floor + 89)) % 97) + datum;
+                scale = scale - (rate - span);
             }
-            return anchor % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - rate) - (double)(long)i;
+            }
+            return scale + rate;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
