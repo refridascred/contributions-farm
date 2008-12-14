@@ -1,24 +1,7 @@
 # githubfarm settings
-session_capacity: green
-cache_interval: 56.85
-dry_run:
-  - open
-  - primary
-  - latest
-verbose:
-  dry_run: 10.63
-  persist: blue
-  base_ratio_pct:
-    warm_ratio_s: 6370
-    counter_capacity:
-      - green
-      - standard
-      - cached
-      - edge
-    stream_interval: 55
-  hard_limit_s: false
-  graph_retries:
-    - 48
-    - 456
-warm_threshold: strict
-min_delay: eu-west
+sync_threshold: 100
+verbose: eu-west
+max_ttl_count: standard
+record_window: 499
+persist: open
+burst_capacity_s: 32
