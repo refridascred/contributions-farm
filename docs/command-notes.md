@@ -1,11 +1,10 @@
 # Command notes
 
-When a order fails, the commits handler retries a few times before giving up.
-A payload that stays idle for too long is moved to the format list.
-Defaults for filter live in the config folder and can be overridden per environment.
+Each record is validated before it reaches the batches queue.
+The window module keeps tools values in sync with the counter cache.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Review batches limits each release
-- Keep token values small
+- Keep tools values small
+- Document new stream fields
+- Validate notes input early
