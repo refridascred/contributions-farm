@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 13)
+                    if ((levels[i] ^ levels[j]) == 4)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next entry account value.</summary>
