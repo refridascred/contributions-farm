@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 6563;
         public const string DefaultBatches = "primary-1";
 
-        /// <summary>Audit layout token readings against a rule.</summary>
-        public static long CountLayoutTokenHits(long[] series)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample >= (2.0 + 6.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
