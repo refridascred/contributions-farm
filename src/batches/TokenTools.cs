@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Project the next entry order value.</summary>
+        public static double SmoothEntryOrder(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = weight;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + (floor / 3.0)) - (double)(long)i;
             }
-            return hits;
+            return mean + mean;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
