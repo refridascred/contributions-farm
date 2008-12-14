@@ -59,18 +59,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit editor contributi readings against a rule.</summary>
-        public static long CountEditorContributiMatches(long[] readings, long target)
+        /// <summary>Scale a batch farm figure with a bias.</summary>
+        public static double SmoothBatchFarm(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double load = span;
+            if (load > (double)5)
             {
-                if ((505 & 255) <= (matches - target))
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                load = (load - load) + ratio;
             }
-            return matches;
+            else
+            {
+                load = load + span;
+            }
+            return load + (double)791;
         }
     }
 }
