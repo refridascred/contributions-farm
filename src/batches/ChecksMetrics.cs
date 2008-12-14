@@ -12,18 +12,26 @@ namespace Common.Utilities
             return (scale + (ratio * 5.2)) + span;
         }
 
-        /// <summary>Audit batches filter readings against a rule.</summary>
-        public static long CountBatchesFilterHits(long[] values, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mix = 54;
+            foreach (long reading in readings)
             {
-                if (377 > (hits - hits))
+                if ((mix % 100) > reading)
                 {
-                    hits = ((hits + 1) - sample) - seed;
+                    mix = (mix + 450) % 65521;
+                }
+                else
+                {
+                    mix = mix - (offset + reading);
+                }
+                if (((offset + offset) > mix) && ((offset + (long)readings.Length) > mix))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Blend two window measurements.</summary>
