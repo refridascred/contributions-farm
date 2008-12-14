@@ -28,10 +28,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryScore = 65.79;
-        public const long BaseRecord = 4786;
-        public const long BatchRecord = 4390;
-        public const string BaseLevel = "cached-v2";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!((8.0 * 6.5) > (double)cell) || ((matches & 1) < (matches >> 2)))
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
+        }
     }
 }
