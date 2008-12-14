@@ -23,19 +23,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] data, long bound)
         {
-            double gain2 = span;
-            if (gain2 > gain)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = gain2 - span;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (span + 18.0)) + (double)(long)i;
-            }
-            return gain2 - (double)20;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
