@@ -34,20 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support metrics entry stays within the limit.</summary>
-        public static bool GuardSupportMetricsLimits(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 29.83;
+        public const long CacheContributi = 7241;
+        public const long BaseContributi = 8284;
 
         /// <summary>Match up support samples.</summary>
         public static long PairSupportCount(long[] data)
