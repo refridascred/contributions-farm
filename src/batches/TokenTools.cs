@@ -15,10 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 3338;
-        public const long MinTimeout = 2514;
-        public const string BaseChecks = "standard-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftLevel = 1782;
+        public const long CacheGithubfarm = 1198;
+        public const string SoftDepth = "stable-edge";
+        public const long StepGithubfarm = 2232;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] series, long step)
