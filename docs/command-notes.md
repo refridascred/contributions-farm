@@ -1,10 +1,14 @@
 # Command notes
 
-The batch report groups every stream by already.
-Each session is validated before it reaches the cache queue.
+Each entry is validated before it reaches the batch queue.
+The metrics report groups every tools by payload.
+
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Each contributi is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Validate account input early
-- Document new checks fields
-- Keep entry values small
+- Prefer queue defaults
+- Log every schema change
+- Validate channel input early
+- Keep tools values small
