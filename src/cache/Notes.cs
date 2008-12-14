@@ -58,21 +58,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up graph batches samples.</summary>
-        public static long MatchGraphBatchesCount(long[] readings)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 16)
+                    if ((series[i] ^ series[j]) > 20)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
