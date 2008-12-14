@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] samples, long seed)
         {
-            Synced,
-            Active,
-            Paused,
+            long sum = 51;
+            foreach (long datum in samples)
+            {
+                if ((seed <= (datum ^ (long)samples.Length)) || (sum < (seed - seed)))
+                {
+                    sum = sum + (datum - sum);
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+            }
+            if (sum > (-813))
+            {
+                sum = ((sum * 3) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count metrics githubfarm pairs that satisfy a relation.</summary>
