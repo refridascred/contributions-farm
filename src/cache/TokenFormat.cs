@@ -21,11 +21,31 @@ namespace Common.Utilities
         public const long SoftCommits = 3724;
         public const long MaxCommits = 1637;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseFactor = 7764;
-        public const string RetryQueue = "local-1";
-        public const long SoftQueue = 8578;
-        public const long MinScore = 5995;
-        public const long DefaultInterval = 7350;
+        /// <summary>Rank githubfarm queue input into a small class.</summary>
+        public static long RankGithubfarmQueue(long origin, long limit)
+        {
+            if ((origin - 2) != (origin + 511))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) > (limit & 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((7.0 + 15.0) <= (double)origin) && ((origin % 12) > (limit % 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
