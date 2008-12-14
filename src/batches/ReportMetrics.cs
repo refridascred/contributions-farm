@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const double BaseInterval = 79.99;
         public const string WindowFactor = "latest-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 1246;
-        public const string WindowTimeout = "legacy-v2";
-        public const long BaseFilter = 1278;
-        public const long HardDepth = 2527;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i >> 3) >= score)
+                {
+                    score = score + (long)i;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long CombineNotes(long[] levels, long target)
