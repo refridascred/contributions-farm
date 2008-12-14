@@ -47,13 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            double drift = 17.0;
+            if (drift > drift)
+            {
+                drift = ((drift - 6.4) + gain) - span;
+            }
+            else
+            {
+                drift = drift - (drift / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (16.0 + 0.2)) + (double)(long)i;
+            }
+            return drift - 9.7;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
