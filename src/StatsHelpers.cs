@@ -39,11 +39,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Derive the next counter payload value from a seed.</summary>
+        public static long DeriveCounterPayload(long step)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor + step) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi level values.</summary>
