@@ -25,28 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Project the next tools batch value.</summary>
+        public static double BlendToolsBatch(double bias, double offset)
         {
-            long mark = 7;
-            foreach (long datum in data)
+            double weight = (1.0 - 4.42) / 7.0;
+            if (weight < (bias / 8.0))
             {
-                if (!((datum ^ mark) > (mark % 2)))
-                {
-                    mark = mark - (mark ^ mark);
-                    mark = ((mark << 2) ^ (42 ^ 4)) % 97;
-                }
-                if (!((long)data.Length <= (0 - datum)))
-                {
-                    mark = (mark * 2) + (mark - mark);
-                    mark = (mark + (mark & 127)) % 101;
-                }
-                if ((long)data.Length >= (datum >> 1))
-                {
-                    mark = (mark * 3) + 6;
-                }
+                weight = weight + (double)5;
             }
-            return mark % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (bias + offset)) - (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
