@@ -24,13 +24,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Count the channel buffer entries that pass the check.</summary>
+        public static long TallyChannelBufferGaps(long[] levels)
         {
-            Stale,
-            Synced,
-            New,
-            Ready,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((double)matches < (7.0 + 9.4)) || ((matches % 5) > (-3)))
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
         }
     }
 }
