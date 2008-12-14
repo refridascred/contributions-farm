@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheSpan = 4899;
-        public const double DefaultReport = 78.26;
-        public const double RetryTimeout = 34.17;
-        public const long IdleReport = 4953;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
