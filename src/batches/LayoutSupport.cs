@@ -56,24 +56,9 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long step, long floor)
-        {
-            if ((474 ^ step) >= (step % 97))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step != (double)81)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "strict-edge";
+        public const long HardCount = 4381;
+        public const double BatchCount = 74.6;
     }
 }
