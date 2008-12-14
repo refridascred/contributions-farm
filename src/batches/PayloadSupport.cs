@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of order record readings.</summary>
-        public static long WeighOrderRecord(long[] readings, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = 877;
-            foreach (long entry in readings)
-            {
-                mark = (mark - (mark + entry)) % 255;
-                mark = (mark * 4) + (floor / 2);
-            }
-            return mark % 4096;
+            Synced,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a route record.</summary>
