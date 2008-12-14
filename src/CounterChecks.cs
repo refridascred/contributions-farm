@@ -39,17 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of stats window readings.</summary>
