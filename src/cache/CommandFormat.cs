@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define window limits and defaults.</summary>
