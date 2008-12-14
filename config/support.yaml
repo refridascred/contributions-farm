@@ -1,6 +1,13 @@
 # support settings
-cache_size_pct: 30
-soft_limit_s: legacy
-metric_delay: 77
-dry_run: stable
-notes_timeout: true
+flush_depth_ms: green
+persist: 7038
+retry_window_s: 250
+retry_window:
+  notes_ratio: staging
+  persist: 1024
+  audit:
+    - 376
+    - 43
+    - 469
+  filter_delay: staging
+cluster_window: latest
