@@ -1,26 +1,4 @@
 # support settings
-record_retries:
-  batches_threshold: true
-  command_timeout: eu-west
-  sync_limit: 15
-  readonly:
-    min_ratio_ms: 500
-    enabled:
-      - standard
-      - edge
-      - primary
-      - staging
-    max_size_ms: 7088
-    support_capacity:
-      - stable
-      - staging
-    warm_threshold_s: blue
-    contributi_timeout: local
-readonly: edge
-retry_timeout_pct:
-  compress: stable
-  sync_interval: 44
-  hard_interval: local
-  idle_size: 500
-  sync_size: stable
-burst_delay_pct: cached
+warm_size_ms: 9119
+idle_depth: 65
+readonly: 24.55
