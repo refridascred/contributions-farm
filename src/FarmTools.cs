@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Synced,
-            Failed,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheBudget = 692;
+        public const string CacheSize = "legacy-edge";
+        public const long BaseSpan = 9282;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesGaps(long[] levels)
