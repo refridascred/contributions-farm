@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of metric cluster readings.</summary>
-        public static long ScoreMetricCluster(long[] values, long seed)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] samples, long step)
         {
-            long score = 358;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 3) ^ (seed / 8)) - datum;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate metrics token samples.</summary>
