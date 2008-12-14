@@ -37,22 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinBudget = 8.99;
+        public const long SoftEntry = 6745;
+        public const string RetryScore = "staging-v2";
+        public const string CacheLevel = "alpha-v2";
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
