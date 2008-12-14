@@ -38,17 +38,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a contributi session sample.</summary>
-        public static long LookupContributiSessionIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxInterval = 9862;
+        public const long IdleEditor = 3636;
+        public const long MinEditor = 8350;
     }
 }
