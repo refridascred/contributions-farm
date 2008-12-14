@@ -48,13 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Pending,
-            Synced,
-            Retry,
-            Paused,
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
