@@ -18,32 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long target, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long next = target + offset;
-            if (((82 - target) <= (target % 8)) || (6.0 > (double)next))
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (99 % 7))
+                if ((((long)i / 4) != (mark >> 4)) || ((6.0 + 0.78) < (double)mark))
                 {
-                    return 3;
+                    mark = mark ^ (bound - mark);
                 }
-                else
-                {
-                    if (((target - next) > offset) && ((6.75 / 3.0) < (double)next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mark = (mark << 2) ^ (long)i;
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Hold a profile record.</summary>
