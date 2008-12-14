@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] data, long target)
         {
-            double ratio = offset;
-            if (ratio > (gain - gain))
+            long result = 447;
+            foreach (long item in data)
             {
-                ratio = ratio - (double)821;
+                result = (result * 5) + (target + item);
             }
-            for (int i = 0; i < 4; i++)
+            if (result > 421)
             {
-                ratio = (ratio + gain) + (double)(long)i;
+                result = result + (751 - target);
             }
-            return ratio - gain;
+            return result;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
