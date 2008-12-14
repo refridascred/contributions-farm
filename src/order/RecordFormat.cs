@@ -10,21 +10,38 @@ namespace Common.Utilities
         public const string DefaultCommand = "primary-1";
         public const long StepCommand = 2628;
 
-        /// <summary>Compare every pair of schema counter readings.</summary>
-        public static long OverlapSchemaCounterCount(long[] levels)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin * 4) >= (origin2 + origin2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)origin >= (double)origin2) && ((5 % 5) != (origin2 * 4)))
                 {
-                    if ((levels[i] - levels[j]) == 1)
+                    return 6;
+                }
+                else
+                {
+                    if (origin2 >= (origin * 3))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin2 / 9) < (origin & 63)) && ((5.0 - 4.18) >= (double)origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate contributi cluster readings against a bound.</summary>
