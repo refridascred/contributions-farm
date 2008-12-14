@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] samples, long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((6.21 / 6.0) != (double)value) && ((value + value) == (step + count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
