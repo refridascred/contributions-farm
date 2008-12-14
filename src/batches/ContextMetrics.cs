@@ -72,19 +72,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] readings, long floor)
+        /// <summary>Classify a counter order pair into a bucket.</summary>
+        public static long ClassifyCounterOrder(long seed, long step)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            if (step <= (140 % 16))
             {
-                if (cell != floor)
+                return 5;
+            }
+            else
+            {
+                if (!(((-491) / 3) <= (step ^ (-616))))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((step + step) < (seed >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (4.4 * 1.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
