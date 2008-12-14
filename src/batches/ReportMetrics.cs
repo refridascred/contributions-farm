@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheBudget = 2617;
-        public const long DefaultCounter = 6527;
-        public const string IdleCounter = "fallback-edge";
-        public const double BurstCounter = 41.55;
+        /// <summary>Measure how many buffer payload samples are out of range.</summary>
+        public static long CountBufferPayloadOutliers(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell < (8.6 - 9.0))
+                {
+                    hits = (hits + 2) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstEditor = 6353;
