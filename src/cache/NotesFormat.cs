@@ -24,21 +24,38 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count context schema pairs that satisfy a relation.</summary>
-        public static long CompareContextSchemaCount(long[] levels)
+        /// <summary>Grade a channel buffer value against two limits.</summary>
+        public static long SortChannelBuffer(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((limit2 + limit) < (limit & 255)) && ((double)limit2 == (5.0 - 0.3)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((limit2 ^ limit) < limit2))
                 {
-                    if ((levels[i] - levels[j]) > 4)
+                    return 4;
+                }
+                else
+                {
+                    if ((291 - limit2) < (limit >> 1))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((267 + limit) == (145 >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
