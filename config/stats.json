@@ -1,22 +1,7 @@
 {
-  "cache_size": 74,
-  "hard_delay_count": "fallback",
-  "soft_delay": 17,
-  "idle_depth": 100,
-  "entry_window": {
-    "default_size_s": "staging",
-    "cache_limit_s": {
-      "editor_depth": 4703,
-      "verbose": [273, 151],
-      "payload_retries": "blue",
-      "hard_capacity_s": 94
-    },
-    "tools_delay": "blue",
-    "schema_threshold": {
-      "burst_limit_ms": [235, 204, 483, 328],
-      "base_retries": true,
-      "retry_ttl": [249, 114]
-    }
-  },
-  "batch_retries": 62.17
+  "compress": false,
+  "poll_depth": false,
+  "context_depth": true,
+  "verbose": true,
+  "burst_delay": ["standard", "staging", "open"]
 }
