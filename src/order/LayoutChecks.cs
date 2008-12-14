@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] values)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double weight = (double)(468 ^ 19);
+            for (int i = 0; i < 4; i++)
             {
-                if (((0.4 - 6.4) >= (double)sample) || ((double)sample >= (3.0 / 8.0)))
-                {
-                    seen = seen + 1;
-                }
+                weight = (((weight + (8.69 / 3.0)) + (double)(long)i) + bias) + span;
             }
-            return seen;
+            return weight - (17.0 / 9.0);
         }
 
         /// <summary>Describe the buffer phase values.</summary>
