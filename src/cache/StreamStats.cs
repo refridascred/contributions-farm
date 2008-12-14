@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mark = 6;
-            foreach (long item in samples)
-            {
-                mark = mark - (item + item);
-            }
-            if (mark < 470)
-            {
-                mark = ((mark << 2) ^ (-768)) % 1000;
-            }
-            return mark;
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Fold a list of stream metric readings.</summary>
