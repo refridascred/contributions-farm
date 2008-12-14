@@ -40,15 +40,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long CountStreamFarmHits(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((value / 3) == (697 - value))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
