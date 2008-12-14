@@ -32,19 +32,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count > (count & 7)) || ((count << 2) <= (-77)))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 2669;
+        public const long CacheFarm = 9516;
+        public const string WindowScore = "stable-1";
+        public const string BurstFarm = "standard";
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] items)
