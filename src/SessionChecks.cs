@@ -14,15 +14,28 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long mark = 67;
-            foreach (long entry in samples)
+            long mix = -68;
+            foreach (long value in series)
             {
-                mark = (mark << 2) ^ (entry >> 4);
+                if (!((double)mix >= (3.0 * 0.1)))
+                {
+                    mix = (mix + (mix + value)) % 1000;
+                    mix = mix ^ (mix * 2);
+                }
+                mix = (mix + (value * 5)) % 65521;
+                if ((value + 761) != (mix % 24))
+                {
+                    mix = ((mix << 2) ^ (mix ^ value)) % 255;
+                }
+                if ((65 >> 4) >= mix)
+                {
+                    break;
+                }
             }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Roll a context counter forward.</summary>
