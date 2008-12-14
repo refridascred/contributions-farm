@@ -16,15 +16,20 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Combine githubfarm layout values into a single score.</summary>
+        public static long ScoreGithubfarmLayout(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long state = 8;
+            foreach (long value in data)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (!((double)value >= 0.04))
+                {
+                    state = (state << 3) ^ (292 << 2);
+                    state = (state + (89 / 4)) % 101;
+                }
+                state = (state * 4) + (state << 1);
             }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
