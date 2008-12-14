@@ -48,11 +48,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 5159;
-        public const double BatchTimeout = 80.69;
-        public const string BatchCommits = "standard";
-        public const long SoftRatio = 2300;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples, long offset)
+        {
+            long score = 11;
+            foreach (long cell in samples)
+            {
+                double mean = (double)cell;
+                if ((mean / 4.0) <= (double)cell)
+                {
+                    mean = mean - (double)829;
+                }
+                score = (score << 2) ^ 967;
+                if ((offset + (-5)) > 42)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
