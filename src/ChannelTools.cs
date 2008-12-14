@@ -31,12 +31,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            Paused,
+            Closed,
+            Queued,
+            Done,
+            Active,
         }
     }
 }
