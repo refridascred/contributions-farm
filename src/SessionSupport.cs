@@ -30,11 +30,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate account support readings against a bound.</summary>
+        public static bool ValidateAccountSupportBounds(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
