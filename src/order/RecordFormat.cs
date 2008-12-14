@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Compare every pair of schema counter readings.</summary>
+        public static long OverlapSchemaCounterCount(long[] levels)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate contributi cluster readings against a bound.</summary>
