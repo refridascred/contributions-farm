@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank notes metrics input into a small class.</summary>
-        public static long GradeNotesMetrics(long step, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings, long offset)
         {
-            long prev = step - offset;
-            if (((step - prev) < (1 + offset)) && (prev > (prev & 63)))
+            long sum = 6;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev <= (5.49 + 1.7))
+                if ((3.4 + 7.7) <= (double)sum)
                 {
-                    return 4;
+                    continue;
                 }
-                else
+                sum = ((sum * 3) + (132 << 3)) % 1000;
+                if ((sample + offset) != (long)readings.Length)
                 {
-                    if (((5.6 / 3.0) == (double)offset) || ((double)prev < (5.4 * 3.1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)prev >= 8.6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = ((sum << 2) ^ (sample + offset)) % 1000;
+                }
+                if ((double)8 >= (double)sample)
+                {
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
