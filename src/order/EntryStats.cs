@@ -14,17 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long target)
+        /// <summary>Combine entry window values into a single score.</summary>
+        public static long FoldEntryWindow(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 39;
+            foreach (long reading in levels)
             {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + (acc << 1)) % 97) + reading;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a graph stats.</summary>
