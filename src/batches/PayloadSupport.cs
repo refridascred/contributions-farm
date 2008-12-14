@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Active,
+            Queued,
+            Dropped,
             Draft,
-            Done,
         }
     }
 }
