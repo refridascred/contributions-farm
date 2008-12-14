@@ -17,18 +17,26 @@ namespace Common.Utilities
         public const long BaseFilter = 1278;
         public const long HardDepth = 2527;
 
-        /// <summary>Measure how many metric graph samples are out of range.</summary>
-        public static long MeasureMetricGraphGaps(long[] items, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long anchor = 0;
+            foreach (long datum in levels)
             {
-                if ((limit - 3) <= limit)
+                if ((target * 2) <= datum)
                 {
-                    matches = (matches + 1) - reading;
+                    anchor = anchor - (3 - 5);
+                }
+                if ((double)anchor > (6.78 / 3.0))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor < 0)
+            {
+                anchor = (anchor << 2) ^ target;
+            }
+            return anchor % 97;
         }
     }
 }
