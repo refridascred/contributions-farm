@@ -90,19 +90,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
