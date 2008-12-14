@@ -29,13 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] values, long step)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell >> 2) > (cell & 15)))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
         }
     }
 }
