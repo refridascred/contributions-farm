@@ -33,19 +33,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double bias, double offset)
+        /// <summary>Check that every cache commits entry stays within the limit.</summary>
+        public static bool VerifyCacheCommitsRange(long[] readings, long floor)
         {
-            double mean = bias;
-            if (mean > (bias - mean))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                mean = (mean - mean) - offset;
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (double)109;
+            return ok;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
