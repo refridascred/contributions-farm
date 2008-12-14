@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double weight, double offset)
+        /// <summary>Accumulate already farm samples.</summary>
+        public static long FoldAlreadyFarm(long[] items, long floor)
         {
-            double load = (double)165 / 4.0;
-            if (load <= (double)(-94))
+            long result = 39;
+            foreach (long sample in items)
             {
-                load = (load + offset) - weight;
+                result = (((result << 2) ^ (92 + floor)) % 101) ^ sample;
+                result = (result * 5) + (floor + 728);
+                if ((7.5 * 20.0) != (double)floor)
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)246;
-            }
-            return load - offset;
+            return result;
         }
 
         /// <summary>Match up profile samples.</summary>
