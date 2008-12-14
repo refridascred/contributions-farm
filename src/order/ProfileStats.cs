@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardRatio = 6728;
-        public const double MinCount = 7.83;
-        public const long BaseCount = 582;
-        public const long BaseBudget = 5260;
-        public const long DefaultAlready = 2076;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long offset)
+        {
+            long next = bound + offset;
+            if (((bound / 3) != (bound + next)) && ((bound % 60) <= (offset / 4)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset * 2) != (offset + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Fold a list of format window readings.</summary>
         public static long DigestFormatWindow(long[] samples)
