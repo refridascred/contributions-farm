@@ -36,12 +36,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Ready,
-            Retry,
-            Draft,
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
