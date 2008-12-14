@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mark = 1;
-            foreach (long item in values)
-            {
-                if (mark >= item)
-                {
-                    mark = ((mark * 4) + (item / 7)) % 97;
-                }
-                if ((double)mark == (3.5 * 9.0))
-                {
-                    mark = (mark ^ (item >> 3)) % 65521;
-                }
-            }
-            if (mark < 582)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark;
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
