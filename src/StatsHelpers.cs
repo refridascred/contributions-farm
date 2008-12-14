@@ -46,24 +46,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if (!(step <= (30 / 9)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + step) == (target - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Draft,
+            Queued,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
