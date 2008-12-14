@@ -44,19 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a window editor counter forward.</summary>
-        public static long RollWindowEditor(long step)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double bias, double bias2)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            double load = (double)(16 & 7);
+            if (load < 7.0)
             {
-                if (!((total > ((long)i * 3)) && (52 <= (step - 350))))
-                {
-                    total = ((total << 3) ^ (step ^ (long)i)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                load = (load - (bias / 2.0)) + bias2;
             }
-            return total;
+            else
+            {
+                load = load + (bias + load);
+            }
+            return load - (load / 7.0);
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
