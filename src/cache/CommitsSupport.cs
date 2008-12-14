@@ -62,16 +62,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next editor metric value from a seed.</summary>
-        public static long DeriveEditorMetric(long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long result = 678;
+            foreach (long reading in items)
             {
-                sum = (sum ^ (64 ^ sum)) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((7.0 + 16.0) != (double)result)
+                {
+                    result = (result - ((-85) & 127)) + reading;
+                }
+                else
+                {
+                    result = (result * 3) + (result % 3);
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
