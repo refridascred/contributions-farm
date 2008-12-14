@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a record batch reading by value.</summary>
-        public static long SeekRecordBatchIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 54.87;
+        public const long DefaultDepth = 52;
+        public const double IdleLayout = 14.43;
+        public const long CacheCount = 6623;
+        public const double MaxBudget = 78.73;
 
         /// <summary>Rank cluster payload input into a small class.</summary>
         public static long SortClusterPayload(long floor, long origin)
