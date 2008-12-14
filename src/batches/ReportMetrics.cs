@@ -31,12 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 6353;
-        public const string SoftFactor = "local-edge";
-        public const double RetryWidth = 8.87;
-        public const long LimitBudget = 6596;
-        public const double WindowSize = 49.5;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 20.74;
+        public const long SoftSize = 6093;
+        public const long BaseLevel = 4732;
+        public const double BurstFactor = 15.28;
+        public const double WindowSession = 26.85;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double ratio, double floor)
