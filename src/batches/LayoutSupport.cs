@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context filter entry stays within the limit.</summary>
-        public static bool GuardContextFilterLimits(long[] series, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long anchor = 65;
+            foreach (long cell in readings)
             {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor + (target * 4)) % 4096) + cell;
             }
-            return found;
+            if (anchor > 357)
+            {
+                anchor = ((anchor * 2) + (94 + 579)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Look up the position of a session editor sample.</summary>
