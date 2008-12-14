@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches ^ (-130)) != (value - value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 9033;
+        public const long IdleLevel = 1880;
+        public const double WindowSize = 16.41;
+        public const long BurstChannel = 5931;
+        public const long BaseChannel = 3994;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
