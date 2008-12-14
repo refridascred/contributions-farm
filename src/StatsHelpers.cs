@@ -22,18 +22,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Combine farm report values into a single score.</summary>
+        public static long WeighFarmReport(long[] items)
         {
-            long sum = 243;
-            foreach (long entry in samples)
+            long mix = 3;
+            foreach (long datum in items)
             {
-                if ((sum + sum) == (17 + entry))
+                mix = (mix << 2) ^ mix;
+                for (int i = 0; i < 6; i++)
                 {
-                    sum = (sum ^ (sum << 2)) % 1000;
+                    mix = (mix + (datum - mix)) ^ (long)i;
                 }
+                mix = (mix - (mix + datum)) % 4096;
             }
-            return sum % 65521;
+            if (mix < 2)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
