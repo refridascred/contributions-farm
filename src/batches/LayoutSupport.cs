@@ -65,9 +65,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "strict-edge";
-        public const long HardCount = 4381;
-        public const double BatchCount = 74.6;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
