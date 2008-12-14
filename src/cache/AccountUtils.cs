@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long origin, long origin2)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] items)
         {
-            if ((origin % 7) < (origin / 3))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - origin) > (-77))
+                if (!(((3.0 + 4.5) > (double)(long)items.Length) || ((item - (long)items.Length) < (item & 31))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-54) * 4) >= (origin % 64))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank filter contributi input into a small class.</summary>
