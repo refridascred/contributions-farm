@@ -34,19 +34,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many checks session samples are out of range.</summary>
-        public static long CountChecksSessionOutliers(long[] samples, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] values, long floor)
         {
             long count = 0;
-            foreach (long entry in samples)
+            foreach (long cell in values)
             {
-                if (739 >= (floor << 3))
+                if (((floor & 15) <= (0 + floor)) || ((8.85 + 13.0) < (double)count))
                 {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 1) + cell;
                 }
             }
             return count;
