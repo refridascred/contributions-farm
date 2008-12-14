@@ -47,20 +47,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] levels)
-        {
-            long sum = 933;
-            foreach (long reading in levels)
-            {
-                sum = ((sum + (sum - sum)) % 65521) - reading;
-            }
-            if (sum < 9)
-            {
-                sum = (sum + (sum + sum)) % 65521;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySpan = 7517;
+        public const string BurstWidth = "staging-edge";
+        public const double DefaultAlready = 84.94;
+        public const long DefaultTimeout = 4085;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCount = 1065;
