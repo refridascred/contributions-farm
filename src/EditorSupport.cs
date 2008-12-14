@@ -44,13 +44,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] samples, long limit)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
+            long anchor = -2;
+            foreach (long reading in samples)
+            {
+                if (((limit + limit) != (reading / 2)) && ((4.0 * 1.9) >= (double)anchor))
+                {
+                    anchor = (anchor ^ (anchor - reading)) % 97;
+                }
+                else
+                {
+                    anchor = anchor - (reading - limit);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
