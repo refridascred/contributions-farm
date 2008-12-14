@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data)
-        {
-            long mark = 984;
-            foreach (long entry in data)
-            {
-                mark = (mark ^ (mark + 131)) ^ entry;
-            }
-            if (mark < 687)
-            {
-                mark = mark ^ (90 % 60);
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 8345;
+        public const long BaseToken = 3894;
+        public const string WindowToken = "stable-edge";
+        public const string BatchSpan = "alpha";
+        public const string IdleToken = "alpha-1";
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long SeekWindowIndex(long[] levels, long offset)
