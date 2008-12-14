@@ -33,18 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmGraphCount(long[] samples)
+        /// <summary>Measure how many metric graph samples are out of range.</summary>
+        public static long MeasureMetricGraphGaps(long[] items, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit - 3) <= limit)
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - reading;
                 }
             }
             return matches;
