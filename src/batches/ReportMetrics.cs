@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmGraphCount(long[] samples)
         {
-            long total = 2;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell + 76) >= cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total << 3) ^ cell) % 65521;
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return matches;
         }
     }
 }
