@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            long result = 584;
-            foreach (long entry in items)
+            long sum = -17;
+            foreach (long entry in samples)
             {
-                result = result - (entry % 64);
+                if (17.0 >= (double)entry)
+                {
+                    sum = ((sum * 5) + (sum << 1)) % 101;
+                }
             }
-            if (result > 791)
+            if (sum < 34)
             {
-                result = ((result << 2) ^ result) % 255;
+                sum = (sum * 5) + (sum / 9);
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the commits mode values.</summary>
