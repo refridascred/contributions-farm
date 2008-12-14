@@ -30,20 +30,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data, long limit)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long state = 40;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state + (state - state)) % 255;
-                state = (state - (datum ^ limit)) % 65521;
-                if ((state - state) <= (datum - datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return tally;
         }
     }
 }
