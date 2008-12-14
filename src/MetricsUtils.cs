@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Locked,
-            Retry,
-            Active,
+            public long Count { get; set; }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
