@@ -37,19 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!((reading * 5) < (reading + reading)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 4638;
+        public const long HardTools = 8478;
+        public const string StepTools = "legacy-edge";
+        public const string IdleSize = "open-edge";
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
