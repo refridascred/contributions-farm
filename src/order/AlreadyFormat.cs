@@ -54,20 +54,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2 % 100) <= (long)i)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc + acc) % 4096;
+                    if ((items[i] - items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = (acc ^ ((long)i >> 1)) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
     }
 }
