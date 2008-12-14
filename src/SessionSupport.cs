@@ -34,22 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels, long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double weight, double bias)
         {
-            long carry = 3;
-            foreach (long datum in levels)
+            double mean = bias - (bias / 9.0);
+            if (mean >= (mean - mean))
             {
-                if ((floor < carry) || ((4.6 * 16.0) > (double)floor))
-                {
-                    carry = (carry << 2) ^ (carry / 9);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry + datum);
-                }
+                mean = mean - (7.0 + weight);
             }
-            return carry % 4096;
+            else
+            {
+                mean = mean - weight;
+            }
+            return mean + (double)29;
         }
     }
 }
