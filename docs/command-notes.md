@@ -1,12 +1,14 @@
 # Command notes
 
-Use batch settings to tune how often contributi data is refreshed.
-Defaults for graph live in the config folder and can be overridden per environment.
-A counter that stays idle for too long is moved to the farm list.
+When a token fails, the stats handler retries a few times before giving up.
+Use editor settings to tune how often support data is refreshed.
+
+The checks report groups every githubfarm by order.
+When a graph fails, the command handler retries a few times before giving up.
+Run the filter check before changing any format limits.
 
 ## Guidelines
 
-- Review batches limits each release
-- Document new channel fields
-- Log every session change
-- Prefer profile defaults
+- Validate farm input early
+- Prefer batch defaults
+- Log every batches change
