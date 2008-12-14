@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 6563;
         public const string DefaultBatches = "primary-1";
 
-        /// <summary>Digest a series of graph entry entries.</summary>
-        public static long TallyGraphEntry(long[] data, long step)
+        /// <summary>Audit layout token readings against a rule.</summary>
+        public static long CountLayoutTokenHits(long[] series)
         {
-            long score = 525;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                score = (((score + (long)data.Length) % 4096) - item) + step;
+                if ((double)sample >= (2.0 + 6.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
