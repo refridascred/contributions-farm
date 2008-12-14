@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Validate layout report readings against a bound.</summary>
+        public static bool GuardLayoutReportRange(long[] items, long origin)
         {
-            long gap = floor - target;
-            if (floor > (gap ^ 993))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor > (target + target))
+                if (entry < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(target < (floor + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)gap < (double)3)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
