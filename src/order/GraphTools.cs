@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series)
         {
-            if (((2 + bound) >= (step + (-5))) && ((double)bound != (double)(-657)))
+            long mark = 5;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound != (3.9 * 5.0))
+                if (mark > (-8))
                 {
-                    return 3;
+                    mark = mark - datum;
                 }
-                else
+                mark = mark - ((-20) + datum);
+                if ((double)mark == (14.0 * 5.89))
                 {
-                    if (step > (bound - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Describe the counter level values.</summary>
