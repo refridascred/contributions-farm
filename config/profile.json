@@ -1,7 +1,7 @@
 {
-  "readonly": "eu-west",
-  "burst_window": "primary",
-  "support_delay": "edge",
-  "entry_capacity": true,
-  "soft_size": 38
+  "dry_run": ["stable", "local"],
+  "profile_capacity": 12.87,
+  "warm_ttl_pct": [175, 82],
+  "readonly": 72.74,
+  "flush_size": "local"
 }
