@@ -1,12 +1,6 @@
 {
-  "default_ttl_s": {
-    "batch_threshold": ["strict", "green", "fallback"],
-    "base_ttl": "legacy",
-    "strict": 100
-  },
-  "persist": 55,
-  "warm_limit_pct": 66.4,
-  "readonly": "staging",
-  "warm_timeout": "cached",
-  "base_capacity_ms": true
+  "order_window": 57.57,
+  "base_depth_pct": 4906,
+  "metric_window": "cached",
+  "dry_run": 305
 }
