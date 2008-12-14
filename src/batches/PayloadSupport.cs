@@ -14,13 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading << 2) == (202 * 2)))
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
