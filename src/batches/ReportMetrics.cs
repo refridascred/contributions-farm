@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 8345;
-        public const long BaseToken = 3894;
-        public const string WindowToken = "stable-edge";
-        public const string BatchSpan = "alpha";
-        public const string IdleToken = "alpha-1";
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Queued,
+            Pending,
+            Done,
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long SeekWindowIndex(long[] levels, long offset)
