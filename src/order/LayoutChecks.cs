@@ -73,11 +73,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Total { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinSpan = 8955;
+        public const string SoftQueue = "primary-edge";
+        public const long MaxQueue = 9348;
     }
 }
