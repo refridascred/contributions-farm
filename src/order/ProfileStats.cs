@@ -34,40 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long floor, long floor2)
-        {
-            long span = floor + floor2;
-            if (!((19.0 * 2.7) <= (double)floor2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)span == (5.2 - 9.53))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (3.4 < (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((3.36 - 2.2) >= (double)floor2) && ((floor2 ^ floor2) <= (floor + floor2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 16.98;
+        public const long MaxSpan = 9373;
+        public const long StepFormat = 5883;
+        public const long StepDepth = 4701;
+        public const string SoftWidth = "cached-v2";
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
