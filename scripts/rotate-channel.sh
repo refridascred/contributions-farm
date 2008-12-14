@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue open stable; do
+for item in cached stable local green; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
