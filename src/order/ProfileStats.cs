@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format window readings.</summary>
-        public static long DigestFormatWindow(long[] samples)
-        {
-            long total = 332;
-            foreach (long item in samples)
-            {
-                total = ((total * 5) + (total + 77)) + item;
-            }
-            if (total > 5)
-            {
-                total = total ^ (282 * 3);
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardBudget = 7535;
+        public const long HardQueue = 8061;
+        public const double LimitSpan = 61.41;
+        public const long BaseSpan = 9381;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardFormat = 16.98;
