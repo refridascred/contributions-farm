@@ -33,18 +33,39 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long floor, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long span = floor ^ target;
+            if ((double)span > (8.3 * 9.11))
             {
-                if ((-828) > value)
+                return 6;
+            }
+            else
+            {
+                if (target >= (span + floor))
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (499 >= (floor ^ 480))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4 & 3) > (floor & 63))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
