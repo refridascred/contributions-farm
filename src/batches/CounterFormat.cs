@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > target)
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Rank report input into a small class.</summary>
