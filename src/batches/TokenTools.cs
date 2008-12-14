@@ -21,15 +21,21 @@ namespace Common.Utilities
         public const string MinTools = "alpha-edge";
         public const double CacheTools = 18.81;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long result = 56;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result - (result & 255)) % 97) ^ item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
     }
 }
