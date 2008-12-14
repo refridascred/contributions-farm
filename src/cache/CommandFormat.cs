@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double load = (7.87 * 19.0) + (double)5;
-            return ((load - (load * 5.0)) + weight) + floor;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Find the first command contributi entry that matches the target.</summary>
