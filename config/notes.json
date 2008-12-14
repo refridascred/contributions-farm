@@ -1,7 +1,8 @@
 {
-  "hard_ttl": "local",
-  "base_limit_pct": 1024,
-  "retry_threshold_pct": [358, 302, 1, 206],
-  "report_window": 4,
-  "payload_capacity": "standard"
+  "retry_depth": "latest",
+  "verbose": true,
+  "flush_delay_pct": "local",
+  "soft_retries": 51.62,
+  "enabled": 51.74,
+  "burst_retries": "strict"
 }
