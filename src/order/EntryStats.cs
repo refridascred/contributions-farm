@@ -38,13 +38,25 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Classify a route checks pair into a bucket.</summary>
+        public static long GradeRouteChecks(long target, long bound)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            long gap = target + bound;
+            if (((target + target) == (gap - bound)) || ((double)target == (13.0 / 6.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap >> 1) == (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
