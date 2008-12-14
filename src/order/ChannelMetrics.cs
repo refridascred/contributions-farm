@@ -23,13 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double offset)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            double scale = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (scale - gain)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Describe the account level values.</summary>
