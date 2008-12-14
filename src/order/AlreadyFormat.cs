@@ -61,21 +61,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)limit2 <= (5.64 + 8.09))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (limit2 < (limit * 2))
                 {
-                    if ((levels[i] ^ levels[j]) < 13)
+                    return 0;
+                }
+                else
+                {
+                    if (((limit2 & 31) != ((-23) + 9)) && ((limit % 60) != (4 << 3)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit < 34)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
