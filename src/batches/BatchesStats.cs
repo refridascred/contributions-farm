@@ -22,17 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias;
+            if (mean > (double)79)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (5.65 / 6.0);
             }
-            return -1;
+            else
+            {
+                mean = mean - (double)57;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (offset - offset);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
