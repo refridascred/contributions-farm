@@ -1,10 +1,15 @@
 # githubfarm settings
-min_size_count: 30
-stats_retries: 60
-burst_timeout: fallback
-warm_limit_pct:
-  - 474
-  - 69
-  - 228
-  - 416
-hard_window_pct: true
+warm_limit:
+  record_retries: 48
+  filter_limit: 42.43
+  burst_limit_ms:
+    - strict
+    - blue
+  poll_depth_count: 30.86
+stats_delay: 18
+stats_ttl:
+  enabled: true
+  flush_delay: 100
+  compress: 71
+  retry_timeout_ms: 30
+  audit: standard
