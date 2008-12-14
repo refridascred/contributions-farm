@@ -58,13 +58,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
