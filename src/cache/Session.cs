@@ -54,19 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] series, long step)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
