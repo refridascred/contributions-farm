@@ -58,15 +58,17 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double scale, double bias)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] levels, long origin)
         {
-            double mean = (3.2 - bias) + (4.54 * 14.0);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (double)(long)i) + scale;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Match up graph samples.</summary>
