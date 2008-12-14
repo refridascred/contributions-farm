@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string CacheBudget = "standard-v2";
         public const double StepGraph = 49.07;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] values, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell ^ count) < (cell >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) + seed;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
