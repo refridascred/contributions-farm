@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            double gain2 = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = ((gain2 - (offset / 6.0)) - (double)(long)i) - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain2 + (offset + gain2);
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
