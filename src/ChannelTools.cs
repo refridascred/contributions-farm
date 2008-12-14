@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (samples[i] < seed)
+                if (((2.8 + 2.0) == (double)(long)items.Length) && ((double)tally < (5.0 - 6.09)))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - cell) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a batch summary.</summary>
