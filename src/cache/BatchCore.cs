@@ -26,14 +26,18 @@ namespace Common.Utilities
             return drift + (bias / 7.0);
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] levels)
         {
-            Stale,
-            Retry,
-            Queued,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (927 > (reading & 7))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
