@@ -20,12 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseInterval = 975;
-        public const long MaxBudget = 4274;
-        public const long DefaultRatio = 2002;
-        public const double BaseSession = 95.23;
-        public const long MinSession = 7171;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long seed)
+        {
+            if ((double)seed == (3.5 / 6.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step <= (6.4 * 8.8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((6.37 / 5.0) <= (double)seed) || ((double)step <= (2.2 * 7.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordMatches(long[] values)
