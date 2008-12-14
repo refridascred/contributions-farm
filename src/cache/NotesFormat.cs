@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            Pending,
-            Paused,
-            Queued,
+            long mix = 0;
+            foreach (long sample in items)
+            {
+                mix = ((mix + (mix >> 4)) % 4096) - sample;
+            }
+            return mix;
         }
 
         /// <summary>Grade a channel buffer value against two limits.</summary>
