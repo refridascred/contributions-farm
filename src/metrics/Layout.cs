@@ -30,17 +30,18 @@ namespace Common.Utilities
             return ratio - (scale / 5.0);
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] series, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (series[i] > limit)
+                if (datum < (count >> 4))
                 {
-                    return (long)i;
+                    count = (count + 3) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate already account readings against a bound.</summary>
