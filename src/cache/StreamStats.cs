@@ -37,31 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload record pair into a bucket.</summary>
-        public static long RankPayloadRecord(long seed, long bound)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            if (((bound % 7) >= (seed ^ seed)) || ((bound + seed) >= (seed - bound)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) < (4 + seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((4 + seed) > (seed ^ seed))
+                    if ((data[i] ^ data[j]) != 3)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the graph state values.</summary>
