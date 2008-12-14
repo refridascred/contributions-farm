@@ -35,16 +35,15 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            double rate = (17.0 - ratio) / 5.0;
+            if (rate < (ratio / 7.0))
             {
-                anchor = ((anchor * 3) + (32 * 4)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                rate = (rate + (double)253) + bias;
             }
-            return anchor;
+            return rate + (ratio + rate);
         }
     }
 }
