@@ -1,13 +1,9 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new'
+    owner TEXT NOT NULL,
+    state TEXT NOT NULL DEFAULT 'new',
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
-
-INSERT INTO stats_logs (region, state) VALUES ('eu-west', 'open');
-INSERT INTO stats_logs (region, state) VALUES ('local', 'primary');
-INSERT INTO stats_logs (region, state) VALUES ('strict', 'green');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
