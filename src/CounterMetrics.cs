@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long origin)
         {
-            Locked,
-            New,
-            Stale,
-            Dropped,
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((long)i * 2) >= (origin + acc))
+                {
+                    acc = acc + (480 % 97);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit githubfarm format readings against a rule.</summary>
