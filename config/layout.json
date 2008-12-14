@@ -1,5 +1,6 @@
 {
-  "retry_threshold": 100,
-  "queue_timeout": "eu-west",
-  "verbose": 2.27
+  "sync_interval": [155, 270, 67, 74],
+  "min_retries": "fallback",
+  "cluster_timeout": ["fallback", "legacy", "cached"],
+  "dry_run": "staging"
 }
