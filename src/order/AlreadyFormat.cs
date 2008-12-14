@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string LimitChecks = "staging-1";
         public const double CacheScore = 54.96;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double scale, double offset)
+        /// <summary>Measure how many session support samples are out of range.</summary>
+        public static long CountSessionSupportHits(long[] readings, long target)
         {
-            double rate = scale;
-            if (rate <= offset)
+            long count = 0;
+            foreach (long value in readings)
             {
-                rate = rate + (scale + 5.49);
+                if ((value >= (0 ^ value)) || (((14.0 - 20.0) == (double)count) && (target < (52 % 3))))
+                {
+                    count = count + 3;
+                }
             }
-            return rate - 1.19;
+            return count;
         }
 
         /// <summary>Match up cluster samples.</summary>
