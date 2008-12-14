@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] levels, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data, long floor)
         {
-            long result = 473;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((result % 100) > (entry + entry))
+                if ((9 << 1) == (floor & 255))
                 {
-                    result = (result + (result - result)) % 255;
-                }
-                else
-                {
-                    result = (result << 2) ^ (4 % 16);
-                }
-                if ((entry < (entry - entry)) || ((step + step) != (result % 3)))
-                {
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
