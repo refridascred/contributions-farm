@@ -16,23 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((3.7 - 7.89) >= (double)matches)
-                {
-                    matches = (matches + 2) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleDepth = "primary-edge";
+        public const long SoftLevel = 7757;
+        public const long SoftTimeout = 3945;
 
         /// <summary>Rank batches farm input into a small class.</summary>
         public static long GradeBatchesFarm(long origin, long target)
