@@ -47,15 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double bias, double span)
+        /// <summary>Derive the next counter checks value from a seed.</summary>
+        public static long SeriesCounterChecks(long bound)
         {
-            double weight = (double)(468 ^ 19);
-            for (int i = 0; i < 4; i++)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                weight = (((weight + (8.69 / 3.0)) + (double)(long)i) + bias) + span;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return weight - (17.0 / 9.0);
+            return score;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
