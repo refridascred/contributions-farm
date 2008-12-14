@@ -41,23 +41,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((86 + (long)items.Length) != (6 - datum))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseLevel = 23.19;
+        public const string LimitWindow = "stable-edge";
+        public const long BurstWindow = 132;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 5405;
