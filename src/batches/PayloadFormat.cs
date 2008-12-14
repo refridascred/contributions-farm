@@ -24,11 +24,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseDepth = 0.87;
-        public const double WindowChannel = 15.33;
-        public const long LimitRatio = 7758;
-        public const string BatchChannel = "alpha-1";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double ratio, double floor)
+        {
+            double gain = (4.0 + 2.6) - ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain - (9.8 / 3.0)) + (double)(long)i) - floor;
+            }
+            return gain - (ratio * 15.0);
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long seed)
