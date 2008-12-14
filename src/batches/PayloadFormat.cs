@@ -43,13 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long seed)
         {
-            Paused,
-            Synced,
-            New,
-            Locked,
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = sum ^ (seed & 7);
+                sum = sum ^ (seed * 3);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
