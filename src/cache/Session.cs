@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((count + 333) <= 24)
+                if (seen <= entry)
                 {
-                    count = (count + 2) + reading;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
