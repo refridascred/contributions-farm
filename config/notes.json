@@ -1,6 +1,5 @@
 {
-  "base_capacity_pct": false,
-  "strict": 94,
-  "base_timeout_count": true,
-  "warm_limit_s": 19.46
+  "idle_size_ms": 30,
+  "audit": 3256,
+  "enabled": false
 }
