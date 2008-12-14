@@ -1,4 +1,34 @@
 # support settings
-retry_interval_ms: 5
-counter_retries: 33.56
-hard_threshold: 80.41
+audit:
+  - 432
+  - 334
+default_ratio_ms:
+  enabled:
+    - legacy
+    - eu-west
+    - staging
+  base_threshold_count: false
+  idle_ttl:
+    schema_delay: 19.61
+    order_interval: local
+    base_ttl_ms: 15
+    sync_timeout_count: 9103
+    idle_capacity_s: true
+  compress: false
+  layout_interval: true
+  graph_threshold: edge
+flush_size: 60
+default_window_pct: fallback
+support_delay:
+  session_delay:
+    - 213
+    - 13
+  token_ratio: 37
+  dry_run: local
+  poll_depth_ms: false
+  soft_ttl:
+    sync_delay_count: eu-west
+    batch_ttl_count: standard
+    hard_threshold: local
+    flush_size_pct: false
+  cache_depth_s: true
