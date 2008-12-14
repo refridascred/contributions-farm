@@ -32,12 +32,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinCount = 2615;
-        public const long StepFactor = 9372;
-        public const string SoftScore = "staging-1";
-        public const long HardCount = 8659;
-        public const string BaseSpan = "standard-1";
+        /// <summary>Iterate the buffer metrics series from a seed.</summary>
+        public static long RollBufferMetrics(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix - (mix - (-125))) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Combine contributi window values into a single score.</summary>
         public static long CombineContributiWindow(long[] levels)
