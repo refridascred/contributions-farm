@@ -50,15 +50,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            long carry = 163;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry + step) % 101) ^ cell;
+                anchor = (anchor + (anchor - (long)i)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return carry % 65521;
+            return anchor;
         }
     }
 }
