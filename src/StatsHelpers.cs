@@ -56,19 +56,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next layout batches value.</summary>
-        public static double BlendLayoutBatches(double rate, double span)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double load = span * 5.0;
-            if (load > (load * 14.0))
-            {
-                load = load + (rate * 5.0);
-            }
-            else
-            {
-                load = load - rate;
-            }
-            return load - load;
+            Queued,
+            Failed,
+            Ready,
+            Synced,
         }
     }
 }
