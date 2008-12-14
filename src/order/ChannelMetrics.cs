@@ -23,31 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stats command value against two limits.</summary>
-        public static long GradeStatsCommand(long limit, long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            if ((floor + floor) > (floor - 364))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit >= (-9)) && ((limit / 8) < (56 >> 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >> 4) <= (floor / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
