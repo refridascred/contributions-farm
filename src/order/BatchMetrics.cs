@@ -71,18 +71,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] values, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen + seed) < (long)values.Length)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
