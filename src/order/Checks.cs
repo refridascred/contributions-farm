@@ -44,18 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((sample * 5) < (sample + sample))
+                if (item >= bound)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Adjust a counter reading.</summary>
