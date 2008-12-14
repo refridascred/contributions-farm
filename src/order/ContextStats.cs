@@ -25,24 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long result = 4;
-            foreach (long sample in items)
+            long state = 61;
+            foreach (long item in values)
             {
-                result = ((result * 4) + bound) % 65521;
-                result = (result + (sample % 5)) % 65521;
-                if (((bound << 1) >= (sample + bound)) && (1.1 >= (double)result))
+                if ((state < (long)values.Length) && (item <= (state * 4)))
                 {
-                    break;
+                    state = state - item;
                 }
             }
-            if (result > 8)
-            {
-                result = (result * 5) + 9;
-            }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Project the next support value.</summary>
