@@ -1,4 +1,6 @@
 # support settings
-strict: 8666
-retry_interval: 49.87
-base_ratio: open
+support_ratio: green
+poll_limit_s: 68
+strict: 16.72
+max_delay_s: 35.86
+idle_ttl_pct: 6331
