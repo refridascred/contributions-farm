@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] items, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (((limit < (matches - limit)) && ((reading % 5) != (matches ^ reading))) && (((3.8 + 3.9) == (double)matches) && ((10.0 / 8.0) == (double)reading)))
+                if (sample != bound)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a contributi info.</summary>
