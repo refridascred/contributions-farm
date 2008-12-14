@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowDepth = 5368;
+        public const long IdleFormat = 6202;
+        public const string SoftFormat = "staging-1";
+        public const double CacheBudget = 11.95;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long ScoreRoute(long[] values, long floor)
