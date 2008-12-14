@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Accumulate entry channel samples.</summary>
+        public static long TotalEntryChannel(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 102;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5 > (value - 537)) || (mark >= (mark + value)))
                 {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark * 3) + (42 % 100);
                 }
             }
-            return matches;
+            if (mark < 843)
+            {
+                mark = (mark + (mark ^ mark)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Combine cache stats values into a single score.</summary>
