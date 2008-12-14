@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate already farm samples.</summary>
-        public static long FoldAlreadyFarm(long[] items, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] levels, long offset)
         {
-            long result = 39;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                result = (((result << 2) ^ (92 + floor)) % 101) ^ sample;
-                result = (result * 5) + (floor + 728);
-                if ((7.5 * 20.0) != (double)floor)
+                if ((843 >= (offset >> 4)) || (offset <= (hits + offset)))
                 {
-                    break;
+                    hits = (hits + 3) - item;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
