@@ -1,8 +1,6 @@
-id,level,count,score
-1,latest,74.49,203
-2,cached,latest,primary
-3,750,20.14,primary
-4,814,156,246
-5,101,primary,247
-6,standard,latest,258
-7,17.28,27.72,417
+id,state,ratio,score,region
+1,42,47.07,18.96,edge
+2,746,local,green,975
+3,75.24,49.34,108,89.13
+4,59.42,56.93,87,225
+5,363,43.41,open,895
