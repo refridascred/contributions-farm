@@ -1,21 +1,7 @@
 # support settings
-verbose:
-  farm_timeout: 500
-  max_capacity_ms: 91.46
-  layout_ttl:
-    metrics_timeout: 53
-    hard_limit_s: 28
-    cache_depth_ms: 4304
-    poll_capacity: 97
-  default_ttl_pct: stable
-contributi_retries:
-  context_ratio: strict
-  cache_timeout_s:
-    - 298
-    - 16
-    - 5
-  readonly:
-    account_ratio: false
-    poll_delay_pct: 41.38
-    verbose: false
-min_delay_count: 66.73
+poll_threshold_pct: latest
+audit:
+  - 448
+  - 175
+  - 157
+idle_limit_s: green
