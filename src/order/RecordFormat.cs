@@ -48,18 +48,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] values, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long result = 63;
-            foreach (long sample in values)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample + bound) <= (result / 9))
-                {
-                    result = (result - (result + sample)) % 101;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result % 4096;
+            return total;
         }
 
         /// <summary>Hold a graph stats.</summary>
