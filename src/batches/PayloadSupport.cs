@@ -14,18 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] series, long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((reading << 2) == (202 * 2)))
-                {
-                    hits = (hits + 2) - seed;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the route level values.</summary>
