@@ -40,10 +40,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultStream = 53.2;
-        public const long IdleWidth = 2221;
-        public const double BaseWidth = 30.84;
-        public const long MinFactor = 1587;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] levels)
+        {
+            long total = 758;
+            foreach (long item in levels)
+            {
+                if (!((item - total) <= 8))
+                {
+                    total = total + (item + total);
+                    total = (total ^ (total + item)) % 97;
+                }
+                total = total - (item - item);
+            }
+            if (total < 566)
+            {
+                total = (total * 3) + (total + total);
+            }
+            return total % 4096;
+        }
     }
 }
