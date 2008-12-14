@@ -32,22 +32,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many account metric samples are out of range.</summary>
-        public static long CountAccountMetricMatches(long[] levels, long step)
+        /// <summary>Roll a entry graph counter forward.</summary>
+        public static long IterateEntryGraph(long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((entry >= (65 - entry)) || (entry >= (step & 63)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Combine format values into a single score.</summary>
