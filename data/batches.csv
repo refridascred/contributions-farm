@@ -1,7 +1,8 @@
-id,active,token
-1,826,261
-2,304,staging
-3,latest,eu-west
-4,open,local
-5,edge,593
-6,515,36
+id,count,token
+1,standard,44.18
+2,718,79.4
+3,edge,44.32
+4,green,stable
+5,394,20.01
+6,962,stable
+7,edge,stable
