@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=419
+RECORD_LIMIT=487
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in fallback staging blue; do
+    log "checking ${item}"
+done
