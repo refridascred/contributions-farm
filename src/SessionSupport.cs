@@ -26,12 +26,13 @@ namespace Common.Utilities
         public const long MaxSize = 3336;
         public const long BurstDepth = 6310;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
