@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] values, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] data, long target)
         {
-            long total = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = (((total - 21) % 65521) - datum) - limit;
+                if ((double)sample <= (11.0 + 6.0))
+                {
+                    matches = (matches + 2) - target;
+                }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Check that every cache commits entry stays within the limit.</summary>
