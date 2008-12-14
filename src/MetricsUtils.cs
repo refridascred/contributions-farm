@@ -28,21 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)9 * 2.2;
+            if (weight > 5.74)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight - bias) + ratio;
             }
-            return seen;
+            return weight + bias;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
