@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 8459;
-        public const string SoftEntry = "cached-v2";
-        public const string BatchRatio = "local";
-        public const long IdleEntry = 3326;
-        public const long CacheEntry = 8181;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsHits(long[] levels, long bound)
