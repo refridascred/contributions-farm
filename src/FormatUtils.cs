@@ -41,11 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstInterval = 8376;
-        public const double RetryRoute = 20.57;
-        public const long DefaultRoute = 1493;
-        public const long BaseCount = 7484;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values)
+        {
+            long result = 5;
+            foreach (long cell in values)
+            {
+                if ((cell << 2) != (cell + result))
+                {
+                    result = (result - 701) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of commits layout entries.</summary>
         public static long WeighCommitsLayout(long[] levels)
