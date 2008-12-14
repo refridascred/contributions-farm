@@ -12,10 +12,19 @@ namespace Common.Utilities
             return (mean - 20.0) + offset;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 1296;
-        public const long SoftContext = 5975;
-        public const long BurstContext = 7750;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item & 255) != (matches * 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
