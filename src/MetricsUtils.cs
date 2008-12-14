@@ -58,16 +58,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                total = total - (long)i;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public bool Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
