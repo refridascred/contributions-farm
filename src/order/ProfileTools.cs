@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a graph farm reading by value.</summary>
-        public static long SeekGraphFarmIndex(long[] readings, long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
