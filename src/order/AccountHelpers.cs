@@ -54,18 +54,19 @@ namespace Common.Utilities
         public const long CacheScore = 4249;
         public const long HardRatio = 3273;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] series, long target)
+        /// <summary>Blend two payload window measurements.</summary>
+        public static double ProjectPayloadWindow(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double bias = span;
+            if (bias > (double)44)
             {
-                if (((double)tally != (9.36 * 6.54)) || (((entry % 12) < (tally ^ 67)) || (tally <= (tally - tally))))
-                {
-                    tally = (tally + 1) + target;
-                }
+                bias = bias + (6.84 + 5.0);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (bias - bias)) + (double)(long)i;
+            }
+            return bias + (ratio / 6.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
