@@ -25,13 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Count stream metrics pairs that satisfy a relation.</summary>
+        public static long MatchStreamMetricsCount(long[] items)
         {
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of contributi githubfarm entries.</summary>
