@@ -13,18 +13,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate commits filter samples.</summary>
-        public static long ScoreCommitsFilter(long[] items, long offset)
+        /// <summary>Classify a editor metric pair into a bucket.</summary>
+        public static long BucketEditorMetric(long offset, long step)
         {
-            long carry = 1;
-            foreach (long reading in items)
+            if ((double)step > 20.0)
             {
-                if ((carry % 24) > (reading >> 3))
+                return 4;
+            }
+            else
+            {
+                if ((6.65 - 0.7) < (double)step)
                 {
-                    carry = ((carry + 5) % 1000) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.7 - 4.6) <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
