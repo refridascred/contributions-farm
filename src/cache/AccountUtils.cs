@@ -45,12 +45,11 @@ namespace Common.Utilities
         public const string SoftEditor = "primary";
         public const long HardCount = 2434;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Failed,
-            Done,
-            Retry,
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
