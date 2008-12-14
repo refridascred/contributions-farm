@@ -36,20 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache commits entry stays within the limit.</summary>
-        public static bool VerifyCacheCommitsRange(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultWidth = 8491;
+        public const long RetryInterval = 5884;
+        public const double HardRatio = 12.14;
+        public const long IdleStats = 8969;
+        public const long DefaultStats = 9909;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double AdjustFilter(double scale, double offset)
