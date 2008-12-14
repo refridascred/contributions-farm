@@ -16,38 +16,18 @@ namespace Common.Utilities
             return weight - (offset / 2.0);
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long step, long seed)
+        /// <summary>Audit batches filter readings against a rule.</summary>
+        public static long CountBatchesFilterHits(long[] values, long seed)
         {
-            if (step < (step - step))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((16.0 + 3.0) >= (double)seed)
+                if (377 > (hits - hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed <= (1.25 * 3.22))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step ^ step) <= 5) && (seed >= (step + step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = ((hits + 1) - sample) - seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two window measurements.</summary>
