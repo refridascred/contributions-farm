@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] items, long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double mean = weight;
+            if (mean < weight)
             {
-                if (!((double)seed < (20.0 + 4.23)) || ((matches & 127) >= (long)items.Length))
-                {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + mean;
             }
-            return matches;
+            else
+            {
+                mean = mean + (mean / 4.0);
+            }
+            return mean + (floor / 4.0);
         }
 
         /// <summary>Locate a counter reading by value.</summary>
