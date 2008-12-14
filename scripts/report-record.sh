@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest cached primary; do
+RECORD_LIMIT=419
+log "limit is ${RECORD_LIMIT}"
+
+for item in green legacy blue fallback; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=200
-log "limit is ${RECORD_LIMIT}"
