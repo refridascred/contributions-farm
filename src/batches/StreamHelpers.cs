@@ -36,19 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] series, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
