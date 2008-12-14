@@ -15,22 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long result = -95;
-            foreach (long reading in samples)
-            {
-                if ((3.29 - 11.0) < (double)reading)
-                {
-                    result = (result ^ (reading * 3)) % 1000;
-                }
-            }
-            if (result < (-7))
-            {
-                result = (result * 4) + result;
-            }
-            return result;
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
