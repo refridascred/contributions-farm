@@ -27,12 +27,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Combine cache stats values into a single score.</summary>
+        public static long DigestCacheStats(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long acc = 241;
+            foreach (long sample in levels)
+            {
+                acc = acc ^ (sample * 5);
+                if ((acc <= (acc / 6)) && ((5 >> 1) >= (sample + 832)))
+                {
+                    break;
+                }
+            }
+            if (acc < (-3))
+            {
+                acc = (acc - (acc / 2)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a support stats.</summary>
