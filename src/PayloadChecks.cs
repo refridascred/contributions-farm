@@ -44,18 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] levels, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] levels, long limit)
         {
-            long score = 106;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score & 255) < (value + 8))
+                if (levels[i] >= limit)
                 {
-                    score = ((score * 3) + seed) % 255;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
