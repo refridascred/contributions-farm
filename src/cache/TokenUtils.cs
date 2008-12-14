@@ -31,39 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a editor layout value against two limits.</summary>
-        public static long ClassifyEditorLayout(long bound, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data, long seed)
         {
-            long span = bound + offset;
-            if (!((bound + offset) == (offset - (-75))))
+            long mix = 62;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (75 < (bound % 5))
+                mix = ((mix << 2) ^ (237 - seed)) % 4096;
+                if (!((sample >> 2) > (-873)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset + span) <= (-315)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset ^ bound) > (offset & 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = ((mix * 2) + (mix + mix)) % 1000;
                 }
             }
+            return mix;
         }
     }
 }
