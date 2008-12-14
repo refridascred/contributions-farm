@@ -27,10 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "open-v2";
-        public const double BaseRecord = 8.78;
-        public const long RetryRecord = 7246;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series)
+        {
+            long sum = 60;
+            foreach (long cell in series)
+            {
+                if ((sum ^ sum) < 818)
+                {
+                    sum = (sum - sum) - cell;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
