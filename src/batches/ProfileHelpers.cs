@@ -58,15 +58,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long result = 333;
-            foreach (long value in data)
-            {
-                result = ((result * 4) + result) + value;
-            }
-            return result % 4096;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate already samples.</summary>
