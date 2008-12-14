@@ -78,19 +78,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer cluster samples.</summary>
-        public static long CombineBufferCluster(long[] levels, long step)
+        /// <summary>Digest a series of stats schema entries.</summary>
+        public static long CombineStatsSchema(long[] items)
         {
-            long carry = 267;
-            foreach (long item in levels)
+            long carry = 5;
+            foreach (long value in items)
             {
-                carry = ((carry << 2) ^ (step - carry)) % 101;
-                carry = (carry - (item + 65)) % 65521;
-                carry = ((carry * 5) + (long)levels.Length) % 4096;
+                if (!((double)value > (2.0 - 7.02)))
+                {
+                    carry = ((carry * 5) + (value * 2)) % 255;
+                }
             }
-            if (carry < 678)
+            if (carry > (-34))
             {
-                carry = ((carry * 5) + (carry - carry)) % 1000;
+                carry = carry ^ (carry ^ 6);
             }
             return carry;
         }
