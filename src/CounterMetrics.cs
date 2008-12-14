@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
+            Retry,
             Idle,
-            Ready,
-            Done,
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
