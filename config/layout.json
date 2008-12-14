@@ -1,5 +1,7 @@
 {
-  "stats_threshold": "legacy",
-  "soft_window_count": true,
-  "soft_delay_pct": 11
+  "burst_threshold_count": false,
+  "default_interval": 7234,
+  "max_delay_s": "open",
+  "max_delay_count": 24.91,
+  "burst_capacity": "strict"
 }
