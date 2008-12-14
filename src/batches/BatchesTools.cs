@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Audit format command readings against a rule.</summary>
+        public static long AuditFormatCommandMatches(long[] readings, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                state = state - state;
-                state = ((state * 5) + (long)i) % 97;
+                if ((matches + sample) <= (-60))
+                {
+                    matches = (matches + 3) + floor;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
