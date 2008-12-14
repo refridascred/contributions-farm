@@ -1,4 +1,6 @@
 # githubfarm settings
-cache_retries: 89
-stream_limit: false
-min_window_s: 74.99
+warm_capacity: staging
+max_interval: 100
+retry_delay_s: 7.03
+graph_timeout: 1165
+profile_ratio: latest
