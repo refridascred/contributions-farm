@@ -50,24 +50,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((double)state == (0.21 - 1.0)) && ((seed + seed) < (seed % 60))))
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
                 {
-                    state = (state - (state / 2)) % 101;
-                    state = (state * 3) + (state & 3);
+                    return (long)i;
                 }
-                if ((4.1 / 6.0) < (double)seed)
-                {
-                    state = state ^ (state ^ state);
-                }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the entry kind values.</summary>
