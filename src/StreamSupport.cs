@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout tools entries.</summary>
-        public static long WeighLayoutTools(long[] levels, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long total = 55;
-            foreach (long value in levels)
-            {
-                if (!(total >= (total ^ 33)))
-                {
-                    total = ((total << 2) ^ (total - total)) + value;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (5 + target)) % 255;
-                }
-            }
-            return total;
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Combine layout stream values into a single score.</summary>
