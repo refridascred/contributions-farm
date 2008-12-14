@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long floor, long bound)
+        /// <summary>Rank notes metrics input into a small class.</summary>
+        public static long GradeNotesMetrics(long step, long offset)
         {
-            long offset = floor + bound;
-            if ((bound % 2) < bound)
+            long prev = step - offset;
+            if (((step - prev) < (1 + offset)) && (prev > (prev & 63)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (54 > (offset - (-1)))
+                if ((double)prev <= (5.49 + 1.7))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if (((5.6 / 3.0) == (double)offset) || ((double)prev < (5.4 * 3.1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)prev >= 8.6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
