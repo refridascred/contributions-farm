@@ -33,23 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double ratio, double offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            double mean = offset;
-            if (mean > 8.0)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - 10.0) - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean - offset)) + (double)(long)i;
-            }
-            return mean - mean;
+            return seen;
         }
     }
 }
