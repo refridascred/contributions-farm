@@ -21,32 +21,23 @@ namespace Common.Utilities
         public const long SoftLevel = 7757;
         public const long SoftTimeout = 3945;
 
-        /// <summary>Rank batches farm input into a small class.</summary>
-        public static long GradeBatchesFarm(long origin, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] samples, long offset)
         {
-            long lane = origin ^ target;
-            if ((51 + lane) > (origin & 3))
+            long result = 26;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin + 39) == (origin ^ target)) || ((target + lane) == (lane - target)))
+                result = (((result << 3) ^ (result / 5)) ^ reading) + offset;
+                if ((2 * 4) != (result + 42))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((lane - target) < (lane - lane))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            if (result < 0)
+            {
+                result = (result + (result << 2)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
