@@ -1,7 +1,7 @@
 # support settings
-poll_threshold_pct: latest
-audit:
-  - 448
-  - 175
-  - 157
-idle_limit_s: green
+account_size: 85.48
+warm_capacity_s: 7973
+strict:
+  base_capacity_count: true
+  persist: 500
+  base_depth_ms: true
