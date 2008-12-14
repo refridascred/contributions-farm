@@ -33,22 +33,13 @@ namespace Common.Utilities
         public const double WindowScore = 27.93;
         public const long LimitDepth = 6244;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data, long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long sum = 51;
-            foreach (long sample in data)
-            {
-                if ((seed << 3) > 2)
-                {
-                    sum = (sum + sum) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sample) % 65521;
-                }
-            }
-            return sum;
+            Draft,
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
