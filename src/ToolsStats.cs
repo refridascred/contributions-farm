@@ -16,16 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - acc) % 97;
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
