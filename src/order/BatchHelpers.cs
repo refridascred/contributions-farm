@@ -21,11 +21,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 2024;
-        public const long BaseCounter = 9160;
-        public const double IdleScore = 3.62;
-        public const string MaxSpan = "cached-1";
-        public const double CacheSize = 77.07;
+        public const long LimitCount = 6840;
+        public const double BatchSize = 23.72;
+        public const double BaseRatio = 71.05;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryScore = 7838;
