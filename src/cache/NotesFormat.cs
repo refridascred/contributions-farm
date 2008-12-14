@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long bound)
         {
-            long mix = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix + (mix >> 4)) % 4096) - sample;
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Grade a channel buffer value against two limits.</summary>
