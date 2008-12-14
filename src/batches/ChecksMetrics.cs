@@ -20,18 +20,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the commits metric entries that pass the check.</summary>
-        public static long AuditCommitsMetricHits(long[] samples, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double rate = weight / 9.0;
+            if (rate > (rate / 6.0))
             {
-                if ((7.5 / 3.0) <= (double)(long)samples.Length)
-                {
-                    hits = ((hits + 3) - entry) + target;
-                }
+                rate = (rate + 3.0) + bias;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (double)9;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
