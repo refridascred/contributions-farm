@@ -62,9 +62,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleSpan = "staging-1";
-        public const long BurstWidth = 2667;
-        public const long StepPayload = 5170;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] series)
+        {
+            long result = -529;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= (7.4 + 19.0))
+                {
+                    result = result + 57;
+                }
+                else
+                {
+                    result = (result - (result & 31)) % 1000;
+                }
+                if (((6 + entry) == (result - entry)) || ((0.1 - 3.11) >= (double)result))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
