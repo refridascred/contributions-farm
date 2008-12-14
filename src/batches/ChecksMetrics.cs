@@ -27,19 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] values, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= step)
+                if (data[i] == limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
