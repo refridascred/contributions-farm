@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            Failed,
-            Pending,
-            Paused,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (886 <= (sum - sum))
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
