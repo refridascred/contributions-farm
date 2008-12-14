@@ -30,24 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] data, long floor)
+        /// <summary>Audit payload layout readings against a rule.</summary>
+        public static long CountPayloadLayoutOutliers(long[] data, long floor)
         {
-            long mix = 6;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mix = mix + (cell + mix);
-                mix = (mix * 5) + mix;
-                if (66 > (floor & 7))
+                if (seen < (seen ^ seen))
                 {
-                    mix = (mix ^ floor) % 4096;
+                    seen = ((seen + 3) - reading) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mix > 766)
-            {
-                mix = (mix + 62) % 97;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
