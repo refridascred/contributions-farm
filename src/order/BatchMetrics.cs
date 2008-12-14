@@ -14,11 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinWidth = 6120;
-        public const double WindowMetrics = 46.75;
-        public const long MinMetrics = 8094;
-        public const double CacheMetrics = 3.87;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] series, long seed)
+        {
+            long score = 6;
+            foreach (long sample in series)
+            {
+                score = (score * 3) + (seed & 31);
+                if ((10 + sample) >= seed)
+                {
+                    score = ((score << 2) ^ (seed >> 2)) % 97;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long BucketWindow(long step, long floor)
