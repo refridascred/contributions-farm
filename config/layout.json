@@ -1,8 +1,5 @@
 {
-  "notes_delay": "primary",
-  "sync_capacity": ["cached", "standard"],
-  "stream_size": "local",
-  "audit": "strict",
-  "compress": ["latest", "staging", "strict", "latest"],
-  "stream_ttl": 81
+  "poll_interval_pct": "local",
+  "hard_limit_s": "fallback",
+  "enabled": "latest"
 }
