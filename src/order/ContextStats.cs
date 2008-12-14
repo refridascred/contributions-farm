@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] values, long origin)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((origin + origin) != (seen + (long)values.Length))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
