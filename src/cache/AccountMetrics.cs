@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] readings, long step)
         {
-            long cur = offset + limit;
-            if (!(cur > (cur + cur)))
+            long state = 22;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (3.0 <= (double)limit)
+                if (((double)step <= (18.0 / 4.0)) && ((datum - step) <= state))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 1) == (offset - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = (state + state) % 1000;
                 }
             }
+            if (state < 5)
+            {
+                state = state ^ (step ^ step);
+            }
+            return state % 1000;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
