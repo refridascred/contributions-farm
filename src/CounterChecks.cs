@@ -23,21 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (state < (1 ^ origin))
                 {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (state + origin)) % 101;
+                    state = (state * 5) + (long)i;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a stream stats.</summary>
