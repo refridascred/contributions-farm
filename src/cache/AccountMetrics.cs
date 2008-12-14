@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double bias, double bias2)
         {
-            double weight = 3.58 * 1.53;
-            if (weight >= (weight + bias))
-            {
-                weight = weight + (double)4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight - (double)70;
+            double drift = bias2;
+            return (drift + (double)29) + bias;
         }
 
         /// <summary>Describe the checks level values.</summary>
