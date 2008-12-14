@@ -1,5 +1,6 @@
 {
-  "metric_limit": 8821,
-  "session_interval": [188, 181],
-  "dry_run": 71.5
+  "persist": "blue",
+  "stats_timeout": 9,
+  "enabled": "blue",
+  "account_size": false
 }
