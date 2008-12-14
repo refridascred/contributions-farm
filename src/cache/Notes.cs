@@ -41,12 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] values, long step)
         {
-            New,
-            Draft,
-            Dropped,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine metric buffer values into a single score.</summary>
