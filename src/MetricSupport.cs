@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 9085;
-        public const long IdleBatches = 3145;
-        public const string CacheScore = "strict";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] samples, long floor)
+        {
+            long mark = 624;
+            foreach (long value in samples)
+            {
+                if ((double)floor != (6.6 / 5.0))
+                {
+                    mark = (((mark << 2) ^ 11) % 65521) + value;
+                }
+            }
+            if (mark < 11)
+            {
+                mark = mark + (mark - floor);
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] series)
