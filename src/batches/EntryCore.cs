@@ -49,12 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            long state = 651;
+            foreach (long cell in readings)
+            {
+                if (!((state - 350) < state))
+                {
+                    state = ((state * 3) + (state >> 3)) + cell;
+                }
+                if ((3.0 + 18.0) == (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a metric summary.</summary>
