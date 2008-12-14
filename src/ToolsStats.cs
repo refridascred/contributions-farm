@@ -56,15 +56,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] data, long step)
         {
-            double drift = rate;
-            for (int i = 0; i < 8; i++)
+            long state = 54;
+            foreach (long item in data)
             {
-                drift = ((drift + (drift * 10.0)) + (double)(long)i) + floor;
+                if (((step + step) > (item + state)) && ((9.99 - 2.0) < (double)state))
+                {
+                    state = (state ^ (state - item)) % 4096;
+                }
+                else
+                {
+                    state = state + (item >> 3);
+                }
             }
-            return drift + rate;
+            if (state > 1)
+            {
+                state = state + (735 / 4);
+            }
+            return state % 4096;
         }
     }
 }
