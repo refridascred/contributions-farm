@@ -62,15 +62,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two graph batch measurements.</summary>
-        public static double SmoothGraphBatch(double rate, double span)
+        /// <summary>Derive the next buffer context value from a seed.</summary>
+        public static long StepBufferContext(long floor)
         {
-            double rate2 = span;
-            if (rate2 <= rate2)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                rate2 = rate2 - rate;
+                anchor = ((anchor << 2) ^ (anchor + floor)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return rate2 - (rate2 + span);
+            return anchor;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
