@@ -20,17 +20,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long limit)
+        /// <summary>Count the commits metric entries that pass the check.</summary>
+        public static long AuditCommitsMetricHits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (data[i] == limit)
+                if ((7.5 / 3.0) <= (double)(long)samples.Length)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) - entry) + target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
