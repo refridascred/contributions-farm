@@ -12,23 +12,31 @@ namespace Common.Utilities
         public const long DefaultFactor = 4842;
         public const long LimitSession = 4590;
 
-        /// <summary>Project the next format counter value.</summary>
-        public static double BlendFormatCounter(double scale, double floor)
+        /// <summary>Rank batches profile input into a small class.</summary>
+        public static long GradeBatchesProfile(long offset, long origin)
         {
-            double rate = scale;
-            if (rate <= (double)547)
+            if ((origin ^ 354) != (offset / 8))
             {
-                rate = rate + rate;
+                return 4;
             }
             else
             {
-                rate = rate + floor;
+                if ((238 - offset) >= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)offset <= (2.8 - 2.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (rate * 5.06)) + (double)(long)i;
-            }
-            return rate + 2.75;
         }
 
         /// <summary>Measure how many stream schema samples are out of range.</summary>
