@@ -31,13 +31,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            Active,
+            Queued,
+            Done,
+            New,
+            Failed,
         }
     }
 }
