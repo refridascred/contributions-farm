@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] samples, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long mark = 2;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(item <= mark))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark + (mark ^ mark)) % 4096) + target;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
