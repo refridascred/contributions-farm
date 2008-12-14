@@ -38,13 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 60.61;
+        public const long RetryQueue = 6128;
+        public const string WindowDepth = "local-v2";
+        public const long MaxCount = 5771;
     }
 }
