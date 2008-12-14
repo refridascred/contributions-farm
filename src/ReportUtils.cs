@@ -27,23 +27,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Digest a series of token cache entries.</summary>
+        public static long ScoreTokenCache(long[] levels)
         {
-            long result = 0;
-            foreach (long datum in values)
+            long mix = 2;
+            foreach (long reading in levels)
             {
-                result = (result * 2) + 27;
-                if (((result + datum) == (result % 60)) || (result < (long)values.Length))
+                if (9 >= (mix + reading))
                 {
-                    break;
+                    mix = (mix ^ (reading * 4)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + mix)) % 97;
                 }
             }
-            if (result < 109)
-            {
-                result = (result + result) % 65521;
-            }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
