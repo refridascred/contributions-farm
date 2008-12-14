@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const string WindowMetrics = "strict";
         public const long DefaultMetrics = 3163;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (sample > (hits / 6))
+                if (entry <= target)
                 {
-                    hits = (hits + 2) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Look up the position of a session report sample.</summary>
