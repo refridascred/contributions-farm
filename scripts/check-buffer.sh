@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=492
+BUFFER_LIMIT=68
 log "limit is ${BUFFER_LIMIT}"
 
-for item in local cached; do
+for item in stable local eu-west; do
     log "checking ${item}"
 done
