@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] series, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 655;
+            foreach (long item in data)
             {
-                if (series[i] > bound)
+                if (acc >= (acc + item))
                 {
-                    return (long)i;
+                    acc = (acc - (acc - acc)) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
