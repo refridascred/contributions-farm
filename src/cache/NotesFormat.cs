@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] values, long floor)
+        /// <summary>Count context schema pairs that satisfy a relation.</summary>
+        public static long CompareContextSchemaCount(long[] levels)
         {
-            long mix = 40;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((((mix * 4) + (mix << 1)) % 4096) + datum) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix < 305)
-            {
-                mix = ((mix * 3) + mix) % 1000;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
