@@ -29,11 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
