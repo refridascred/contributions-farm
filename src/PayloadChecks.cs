@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] series, long limit)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long state = 3;
-            foreach (long datum in series)
-            {
-                state = ((state << 3) ^ datum) % 65521;
-            }
-            if (state < 27)
-            {
-                state = (state * 2) + (limit >> 3);
-            }
-            return state;
+            Done,
+            Paused,
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
