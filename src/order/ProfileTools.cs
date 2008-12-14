@@ -14,17 +14,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] values, long bound)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long limit, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((bound - limit) < bound) || (9.5 <= (double)limit))
             {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (bound <= 69)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound == (7.55 + 6.2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit ^ limit) > (limit - 77)) || ((bound / 9) < limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
