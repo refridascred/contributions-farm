@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Pending,
-            Ready,
-            Active,
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
