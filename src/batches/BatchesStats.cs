@@ -16,18 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long sum = 98;
-            foreach (long value in values)
-            {
-                if (((double)(long)values.Length >= (5.47 * 1.0)) || ((sum ^ 24) <= (sum + 0)))
-                {
-                    sum = ((sum << 3) ^ value) % 101;
-                }
-            }
-            return sum;
+            Queued,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
