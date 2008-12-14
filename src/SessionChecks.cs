@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mark = 519;
+            foreach (long value in readings)
             {
-                if (!((double)reading == (8.49 / 4.0)))
+                mark = ((mark << 2) ^ (value & 1)) % 65521;
+                if ((-92) < (value - mark))
                 {
-                    tally = tally + 1;
+                    mark = (mark ^ mark) % 255;
+                    mark = (mark + mark) % 255;
+                }
+                if ((double)mark <= (3.0 * 8.1))
+                {
+                    mark = ((mark * 3) + (4 & 7)) % 101;
+                }
+                else
+                {
+                    mark = (mark * 3) + (mark & 31);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine token values into a single score.</summary>
