@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double scale, double span)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double rate = (span - scale) * 7.9;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (scale / 2.0)) + (double)(long)i;
-            }
-            return rate + span;
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
