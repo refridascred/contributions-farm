@@ -25,20 +25,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long mark = 364;
+            foreach (long entry in items)
             {
-                anchor = anchor ^ (long)i;
-                if (((long)i != (anchor + seed)) || ((double)anchor != (8.5 / 9.0)))
-                {
-                    anchor = ((anchor * 3) + (anchor >> 2)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                mark = (mark + 39) % 65521;
+                mark = mark + (mark >> 4);
+                mark = mark ^ (entry / 2);
             }
-            return anchor;
+            if (mark > 3)
+            {
+                mark = (mark - (771 - mark)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
