@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a entry commits figure with a bias.</summary>
-        public static double BlendEntryCommits(double scale, double floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double weight = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight - floor) - (double)(long)i) - scale;
-            }
-            return weight - (floor / 9.0);
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Match up farm samples.</summary>
