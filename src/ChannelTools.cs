@@ -25,18 +25,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit context editor readings against a rule.</summary>
-        public static long CountContextEditorGaps(long[] items, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((59 % 12) < (seed & 127))
-                {
-                    seen = (seen + 2) - datum;
-                }
-            }
-            return seen;
+            Active,
+            Draft,
+            Paused,
+            Pending,
+            Queued,
         }
     }
 }
