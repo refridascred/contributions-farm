@@ -44,32 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank session tools input into a small class.</summary>
-        public static long RankSessionTools(long origin, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long span = origin - target;
-            if (((target + origin) != (origin + span)) && ((span / 6) != (span * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target <= (origin + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin <= (span * 3)) && ((double)6 != (double)span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
