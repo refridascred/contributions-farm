@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double gain, double offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double ratio, double span)
         {
-            double weight = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = ((weight + offset) + (double)(long)i) + gain;
-            }
-            return weight - (offset / 2.0);
+            double scale = 7.63 + (double)432;
+            return (scale + (ratio * 5.2)) + span;
         }
 
         /// <summary>Audit batches filter readings against a rule.</summary>
