@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long seed, long seed2)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] values, long target)
         {
-            long offset = seed + seed2;
-            if ((seed ^ seed) < (56 + offset))
+            long state = 491;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed - seed2) <= (offset / 7))
+                if ((2.79 >= (double)reading) && ((state - state) <= reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed2 + seed) >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = state + (state + target);
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Combine already values into a single score.</summary>
