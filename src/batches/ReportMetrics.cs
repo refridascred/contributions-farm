@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            long mark = 984;
+            foreach (long entry in data)
+            {
+                mark = (mark ^ (mark + 131)) ^ entry;
+            }
+            if (mark < 687)
+            {
+                mark = mark ^ (90 % 60);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
