@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const long RetryOrder = 2848;
         public const double MaxOrder = 3.9;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double weight, double bias)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double mean = bias - (bias / 9.0);
-            if (mean >= (mean - mean))
-            {
-                mean = mean - (7.0 + weight);
-            }
-            else
-            {
-                mean = mean - weight;
-            }
-            return mean + (double)29;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
