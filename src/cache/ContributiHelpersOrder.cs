@@ -30,12 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Idle,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardGraph = 23.91;
+        public const long CacheRatio = 9068;
+        public const double LimitGraph = 76.99;
+        public const long RetryScore = 8288;
+        public const long IdleGraph = 9127;
     }
 }
