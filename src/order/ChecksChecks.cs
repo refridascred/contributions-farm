@@ -22,18 +22,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= (double)count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
