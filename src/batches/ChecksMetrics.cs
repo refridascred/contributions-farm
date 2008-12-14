@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 3831;
-        public const long RetryRatio = 2933;
-        public const long StepInterval = 6681;
-        public const long HardTimeout = 8467;
-        public const long BaseFactor = 3723;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
