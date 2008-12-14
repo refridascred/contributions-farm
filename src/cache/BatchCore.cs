@@ -40,13 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] items, long target)
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
