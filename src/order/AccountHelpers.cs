@@ -41,18 +41,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((1 % 97) < entry) && ((entry << 2) <= (entry & 31)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
