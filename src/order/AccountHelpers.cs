@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Active,
-            Done,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 8459;
+        public const string SoftEntry = "cached-v2";
+        public const string BatchRatio = "local";
+        public const long IdleEntry = 3326;
+        public const long CacheEntry = 8181;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double SmoothTools(double scale, double span)
