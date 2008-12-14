@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double BatchBudget = 11.01;
         public const long IdleRecord = 4918;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] readings, long offset)
+        /// <summary>Roll a channel contributi counter forward.</summary>
+        public static long StepChannelContributi(long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((hits + hits) <= (48 & 7))
+                if (!(((double)target > (8.8 / 8.0)) || ((target % 16) >= (4 / 5))))
                 {
-                    hits = ((hits + 2) ^ reading) + offset;
+                    score = (score - ((long)i / 7)) % 4096;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
