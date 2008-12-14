@@ -1,12 +1,7 @@
 {
-  "route_depth": {
-    "verbose": 49,
-    "batch_size": false,
-    "hard_depth_pct": "stable"
-  },
-  "base_window_s": 8948,
-  "farm_window": "staging",
-  "window_timeout": 100,
-  "burst_limit_s": ["open", "cached", "eu-west", "latest"],
-  "poll_ttl": 73
+  "cache_capacity_s": "legacy",
+  "min_ratio_ms": 93.78,
+  "profile_size": true,
+  "max_interval_ms": 16,
+  "compress": "green"
 }
