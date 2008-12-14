@@ -1,7 +1,18 @@
 # support settings
-batch_limit: 93
-burst_ratio_count: 52
-retry_threshold_ms:
-  - latest
-  - blue
-cluster_depth: standard
+min_limit: staging
+sync_timeout_count: 68.09
+stream_delay: primary
+burst_interval_s: 75.75
+sync_limit:
+  max_ratio_ms: 88.78
+  contributi_ratio:
+    sync_window:
+      - 297
+      - 2
+      - 337
+      - 64
+    soft_limit_count: 11
+    min_window: 57.29
+  notes_interval: standard
+  cache_interval: false
+  poll_limit_pct: true
