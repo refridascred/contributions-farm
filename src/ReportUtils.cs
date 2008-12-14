@@ -46,19 +46,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] series, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (entry > floor)
+                if ((86 << 1) != (hits ^ reading))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Count the batch farm entries that pass the check.</summary>
