@@ -19,18 +19,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] readings, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = 256;
+            foreach (long cell in series)
             {
-                if ((item << 2) < (offset + item))
+                if ((limit * 3) < (limit + score))
                 {
-                    matches = matches + 3;
+                    score = (score ^ (cell - cell)) % 101;
+                }
+                if ((8.75 > (double)score) && ((2 + cell) < score))
+                {
+                    score = (score - (cell - limit)) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ (541 - score);
                 }
             }
-            return matches;
+            if (score < (-68))
+            {
+                score = ((score << 3) ^ ((-96) + score)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
