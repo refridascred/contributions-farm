@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string StepLayout = "strict";
         public const double CacheInterval = 98.8;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] data, long bound)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != bound)
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
