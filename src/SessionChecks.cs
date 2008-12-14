@@ -38,12 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the notes queue entries that pass the check.</summary>
+        public static long AuditNotesQueueGaps(long[] values)
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((matches % 97) > matches) || (((matches << 2) < (reading - reading)) || ((1.0 / 6.0) != (double)reading)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate buffer account samples.</summary>
