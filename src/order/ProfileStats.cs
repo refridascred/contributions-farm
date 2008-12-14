@@ -23,18 +23,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((matches & 3) != (3 ^ 7)) || !((double)matches < (8.98 - 0.5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the stream class values.</summary>
