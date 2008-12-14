@@ -31,12 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowCount = 2732;
+        public const long BurstReport = 403;
+        public const long MinFactor = 5936;
+        public const long BaseScore = 4475;
 
         /// <summary>Measure how many account metric samples are out of range.</summary>
         public static long CountAccountMetricMatches(long[] levels, long step)
