@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit githubfarm format readings against a rule.</summary>
