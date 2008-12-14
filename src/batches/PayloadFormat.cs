@@ -24,14 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Retry,
-            Failed,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseDepth = 0.87;
+        public const double WindowChannel = 15.33;
+        public const long LimitRatio = 7758;
+        public const string BatchChannel = "alpha-1";
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long seed)
