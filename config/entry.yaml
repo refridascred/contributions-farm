@@ -1,7 +1,5 @@
 # entry settings
-retry_depth_s: 6
-retry_retries: false
-cluster_depth: 123
-hard_capacity_ms: 500
-min_retries: 21.78
-checks_timeout: 25.76
+channel_ttl: edge
+githubfarm_ttl: 68
+hard_capacity_pct: 51
+max_depth_count: 250
