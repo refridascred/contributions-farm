@@ -14,21 +14,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of cache batches readings.</summary>
-        public static long PairCacheBatchesCount(long[] data)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = (double)(82 % 7);
+            if (weight2 > weight2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = (weight2 - 6.71) - offset;
             }
-            return hits;
+            return weight2 - weight;
         }
 
         /// <summary>Adjust a tools reading.</summary>
