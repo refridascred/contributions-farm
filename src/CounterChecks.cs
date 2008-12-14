@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BatchBudget = 7635;
         public const string BurstSpan = "latest-edge";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] items)
+        /// <summary>Locate a buffer counter reading by value.</summary>
+        public static long SeekBufferCounterIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item & 255) != (matches * 4))
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
