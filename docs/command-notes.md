@@ -1,11 +1,10 @@
 # Command notes
 
-The context module keeps queue values in sync with the window cache.
-Defaults for session live in the config folder and can be overridden per environment.
-The tools report groups every checks by entry.
+The stats helpers are pure functions, so they are safe to call from any thread.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new contributi fields
-- Validate editor input early
-- Review commits limits each release
+- Keep report values small
+- Review route limits each release
+- Document new editor fields
