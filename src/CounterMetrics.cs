@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
