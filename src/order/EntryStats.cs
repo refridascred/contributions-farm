@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values, long target)
+        /// <summary>Measure how many context window samples are out of range.</summary>
+        public static long TallyContextWindowGaps(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (((1 & 63) <= seen) || ((4.1 + 19.0) < 6.66))
+                if ((datum - hits) < origin)
                 {
-                    seen = ((seen + 2) + sample) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
