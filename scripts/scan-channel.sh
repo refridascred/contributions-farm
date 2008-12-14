@@ -12,8 +12,12 @@ for i in $(seq 1 4); do
 done
 log "total ${total}"
 
+for item in standard eu-west strict green; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
