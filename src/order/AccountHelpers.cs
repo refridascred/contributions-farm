@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 9767;
-        public const double CacheSize = 0.41;
-        public const double StepFactor = 96.53;
-        public const long MinEntry = 5751;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            New,
+            Draft,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double SmoothTools(double scale, double span)
