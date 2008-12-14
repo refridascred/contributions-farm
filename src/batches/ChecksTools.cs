@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data, long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double ratio, double bias)
         {
-            long acc = -66;
-            foreach (long sample in data)
+            double mean = bias * 4.31;
+            if (mean <= (6.74 / 4.0))
             {
-                if (!(477 <= (sample + sample)))
-                {
-                    acc = ((acc - (47 << 1)) % 255) - offset;
-                }
-                else
-                {
-                    acc = (acc + (acc * 3)) % 101;
-                }
+                mean = (mean - bias) - ratio;
             }
-            return acc % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (bias + bias)) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
