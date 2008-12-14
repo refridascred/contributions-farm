@@ -63,18 +63,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits & 63) >= item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
