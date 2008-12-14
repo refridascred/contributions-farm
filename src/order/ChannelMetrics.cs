@@ -34,19 +34,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the notes profile series from a seed.</summary>
-        public static long SeriesNotesProfile(long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] readings, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((long)i + 7) <= (target / 8))
+                if (reading < step)
                 {
-                    sum = (sum * 3) + ((long)i + target);
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return ready;
         }
     }
 }
