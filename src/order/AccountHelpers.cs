@@ -49,10 +49,33 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 5347;
-        public const long CacheScore = 4249;
-        public const long HardRatio = 3273;
+        /// <summary>Grade a entry metric value against two limits.</summary>
+        public static long GradeEntryMetric(long limit, long offset)
+        {
+            long offset2 = limit + offset;
+            if ((offset2 + limit) <= (offset << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)44 == (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit != (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
