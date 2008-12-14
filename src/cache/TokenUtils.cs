@@ -16,19 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] samples, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
