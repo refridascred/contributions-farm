@@ -12,15 +12,12 @@ namespace Common.Utilities
             return ((gain - (gain / 4.0)) + bias) + span;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Retry,
-            Locked,
-            Failed,
-            Pending,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryTimeout = 77.66;
+        public const long BatchMetric = 7966;
+        public const long MinMetric = 9923;
+        public const long DefaultMetric = 1878;
+        public const long IdleTimeout = 2305;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] samples)
