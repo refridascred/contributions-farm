@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long IdleEntry = 3326;
         public const long CacheEntry = 8181;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] levels, long bound)
         {
-            double gain = scale;
-            if (gain <= 9.24)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                gain = (gain - (double)3) + span;
+                if ((seen - seen) >= (325 << 2))
+                {
+                    seen = ((seen + 1) + entry) - bound;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (gain + scale)) + (double)(long)i;
-            }
-            return gain + gain;
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
