@@ -33,21 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Adjust a queue window reading.</summary>
+        public static double ProjectQueueWindow(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)(64 ^ 82);
+            if (gain >= (double)8)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - (floor / 3.0)) - bias;
             }
-            return seen;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - gain;
         }
     }
 }
