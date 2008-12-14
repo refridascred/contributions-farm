@@ -29,13 +29,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
