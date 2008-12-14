@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] samples, long offset)
+        /// <summary>Locate a graph farm reading by value.</summary>
+        public static long SeekGraphFarmIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
