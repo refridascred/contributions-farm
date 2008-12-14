@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] data, long bound)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
