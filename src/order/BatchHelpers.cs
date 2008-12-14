@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((double)hits < 7.74)
+                if (sample >= offset)
                 {
-                    hits = (hits + 1) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
