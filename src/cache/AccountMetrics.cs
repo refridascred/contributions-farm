@@ -67,14 +67,18 @@ namespace Common.Utilities
             return bias + (floor - 5.5);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] values)
         {
-            Done,
-            Draft,
-            Active,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((double)value >= (3.71 + 2.1)) || (((4.93 / 3.0) < (double)matches) && ((matches % 100) != (value % 7))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
