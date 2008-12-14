@@ -29,10 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 42.85;
-        public const long RetryProfile = 9396;
-        public const string SoftScore = "staging-v2";
-        public const long SoftProfile = 7101;
+        /// <summary>Measure how many notes counter samples are out of range.</summary>
+        public static long CountNotesCounterMatches(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((hits > (hits << 1)) || ((sample & 63) > 545)) && ((0.05 * 20.0) == (double)bound))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
