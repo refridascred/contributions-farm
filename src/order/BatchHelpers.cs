@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const string MaxSpan = "cached-1";
         public const double CacheSize = 77.07;
 
-        /// <summary>Count the channel buffer entries that pass the check.</summary>
-        public static long TallyChannelBufferGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((double)matches < (7.0 + 9.4)) || ((matches % 5) > (-3)))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultSize = 4464;
+        public const double WindowFactor = 5.68;
+        public const long MinTimeout = 6046;
+        public const string BaseTools = "staging-edge";
+        public const long CacheSpan = 3953;
     }
 }
