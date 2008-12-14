@@ -22,24 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long bound, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if (bound >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 15) != (bound / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
