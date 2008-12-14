@@ -1,7 +1,9 @@
-id,region,token
-1,fallback,staging
-2,416,314
-3,strict,eu-west
-4,65.89,60.89
-5,24.88,832
-6,92.27,42.01
+id,label,token,region,rank
+1,51.13,85.76,local,898
+2,84.51,201,fallback,primary
+3,851,blue,439,fallback
+4,247,open,608,37
+5,edge,405,59.88,990
+6,764,272,19.78,blue
+7,blue,primary,18.08,921
+8,fallback,green,local,green
