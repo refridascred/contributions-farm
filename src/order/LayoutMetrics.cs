@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double rate, double span)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] data, long seed)
         {
-            double drift = span;
-            if (drift >= (double)9)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                drift = (drift + drift) - rate;
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + span;
+            return ready;
         }
 
         /// <summary>Roll a route counter forward.</summary>
