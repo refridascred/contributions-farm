@@ -1,12 +1,11 @@
 # Command notes
 
-Run the metrics check before changing any queue limits.
-The record report groups every entry by metric.
-Defaults for notes live in the config folder and can be overridden per environment.
+When a farm fails, the command handler retries a few times before giving up.
+When a entry fails, the stats handler retries a few times before giving up.
+Use session settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
 - Validate context input early
-- Prefer metric defaults
-- Review counter limits each release
-- Keep contributi values small
+- Review account limits each release
+- Log every account change
