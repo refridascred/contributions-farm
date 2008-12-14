@@ -33,19 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel stream reading.</summary>
-        public static double ProjectChannelStream(double weight, double bias)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double ratio, double offset)
         {
-            double weight2 = weight / 9.0;
-            if (weight2 < (0.53 / 4.0))
+            double mean = offset;
+            if (mean > 8.0)
             {
-                weight2 = (weight2 - 2.4) - bias;
+                mean = (mean - 10.0) - ratio;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight2 = weight2 - (double)(long)i;
+                mean = mean + offset;
             }
-            return weight2 - (double)400;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean - offset)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
