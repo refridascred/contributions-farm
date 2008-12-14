@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate githubfarm batches samples.</summary>
-        public static long ScoreGithubfarmBatches(long[] data)
+        /// <summary>Measure how many farm context samples are out of range.</summary>
+        public static long AuditFarmContextMatches(long[] items, long bound)
         {
-            long mark = 317;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((mark + value) >= (mark >> 3))
+                if ((2.78 + 7.0) < (double)cell)
                 {
-                    mark = (mark + value) % 255;
+                    count = (count + 1) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark + (mark + mark)) % 97;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
