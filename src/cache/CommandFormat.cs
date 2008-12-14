@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long offset, long origin)
         {
-            long result = 6;
-            foreach (long value in series)
+            long cur = offset ^ origin;
+            if (!(cur <= (offset - offset)))
             {
-                result = ((result << 2) ^ (value % 3)) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (!((origin - origin) > origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
