@@ -1,19 +1,7 @@
 {
-  "format_size": 5.93,
-  "record_ttl": 43,
-  "readonly": {
-    "batch_interval_count": "green",
-    "base_limit_s": {
-      "enabled": ["fallback", "edge", "open", "primary"],
-      "base_capacity": "standard",
-      "githubfarm_capacity": [141, 47, 285],
-      "cache_interval_s": 43.21,
-      "profile_retries": 55
-    },
-    "burst_ttl_s": [449, 349, 224, 385],
-    "poll_threshold_ms": "open",
-    "verbose": true,
-    "soft_threshold_count": false
-  },
-  "dry_run": ["cached", "open"]
+  "enabled": 500,
+  "audit": "cached",
+  "idle_limit_ms": 1024,
+  "retry_retries": "green",
+  "format_timeout": ["strict", "stable"]
 }
