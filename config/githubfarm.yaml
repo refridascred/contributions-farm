@@ -1,20 +1,6 @@
 # githubfarm settings
-persist: true
-batch_timeout: 1.2
-strict: 250
-cache_capacity_ms:
-  max_timeout_s: green
-  strict: true
-  burst_retries_ms: green
-  cache_window: 15.86
-  audit:
-    dry_run: 67.37
-    poll_delay_ms: edge
-    cache_delay_ms: false
-    stats_size: edge
-    warm_depth: open
-    compress:
-      - 383
-      - 378
-      - 95
-  warm_ratio_s: stable
+githubfarm_ttl: eu-west
+idle_threshold_s: 1024
+buffer_retries: 35.76
+min_limit: open
+farm_window: 60
