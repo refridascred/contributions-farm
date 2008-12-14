@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Synced,
-            Done,
-            Pending,
-            Stale,
+            public bool Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
