@@ -1,6 +1,7 @@
-id,token,state,owner,level
-1,943,532,legacy,984
-2,760,legacy,6.14,486
-3,886,969,200,591
-4,green,211,13,539
-5,blue,421,261,189
+id,owner,weight,level
+1,864,736,edge
+2,87.6,861,290
+3,open,558,772
+4,cached,legacy,green
+5,18.23,234,54.15
+6,218,716,legacy
