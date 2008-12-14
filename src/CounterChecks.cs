@@ -33,23 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long score = 644;
-            foreach (long sample in series)
-            {
-                score = score + (sample >> 4);
-                if ((sample + sample) == (4 % 60))
-                {
-                    score = (score << 2) ^ (74 - sample);
-                }
-            }
-            if (score < 40)
-            {
-                score = (score - (score & 1)) % 65521;
-            }
-            return score;
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a metrics record.</summary>
