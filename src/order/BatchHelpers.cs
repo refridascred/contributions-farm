@@ -26,11 +26,16 @@ namespace Common.Utilities
         public const string MaxSpan = "cached-1";
         public const double CacheSize = 77.07;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultSize = 4464;
-        public const double WindowFactor = 5.68;
-        public const long MinTimeout = 6046;
-        public const string BaseTools = "staging-edge";
-        public const long CacheSpan = 3953;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
+        {
+            long total = 784;
+            foreach (long cell in items)
+            {
+                total = (total + (long)items.Length) % 101;
+                total = ((total * 4) + (cell ^ cell)) % 97;
+            }
+            return total;
+        }
     }
 }
