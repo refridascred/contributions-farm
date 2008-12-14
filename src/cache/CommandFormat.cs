@@ -14,19 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] samples, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double gain = (offset - offset) / 5.0;
+            if (gain < weight)
             {
-                if (datum > target)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + offset;
             }
-            return ok;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + (15.0 - 2.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
