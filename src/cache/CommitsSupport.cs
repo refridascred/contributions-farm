@@ -66,17 +66,19 @@ namespace Common.Utilities
         public const double CacheDepth = 7.82;
         public const long MaxAlready = 3347;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] samples, long floor)
+        /// <summary>Accumulate farm entry samples.</summary>
+        public static long CombineFarmEntry(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 53;
+            foreach (long item in readings)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                if ((total + (-353)) == ((-12) >> 2))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = (((total << 3) ^ total) % 101) ^ item;
             }
-            return -1;
+            return total % 65521;
         }
     }
 }
