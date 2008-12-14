@@ -35,11 +35,33 @@ namespace Common.Utilities
             return mean - (offset - offset);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 75.38;
-        public const long SoftProfile = 577;
-        public const long BaseProfile = 9120;
-        public const long BaseSpan = 7247;
+        /// <summary>Rank batches farm input into a small class.</summary>
+        public static long GradeBatchesFarm(long origin, long target)
+        {
+            long lane = origin ^ target;
+            if ((51 + lane) > (origin & 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin + 39) == (origin ^ target)) || ((target + lane) == (lane - target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((lane - target) < (lane - lane))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] readings)
