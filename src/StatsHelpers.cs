@@ -44,13 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Idle,
-            Synced,
-            Queued,
-            Failed,
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
