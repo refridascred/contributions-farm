@@ -28,21 +28,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Derive the next commits cluster value from a seed.</summary>
+        public static long RollCommitsCluster(long origin)
         {
-            long mark = 364;
-            foreach (long entry in items)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                mark = (mark + 39) % 65521;
-                mark = mark + (mark >> 4);
-                mark = mark ^ (entry / 2);
+                total = total ^ origin;
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (mark > 3)
-            {
-                mark = (mark - (771 - mark)) % 101;
-            }
-            return mark % 97;
+            return total;
         }
 
         /// <summary>Compare every pair of session editor readings.</summary>
