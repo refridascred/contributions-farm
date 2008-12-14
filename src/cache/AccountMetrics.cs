@@ -26,23 +26,24 @@ namespace Common.Utilities
         public const double DefaultScore = 0.32;
         public const long WindowGithubfarm = 2237;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long bound, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            if (!((floor + bound) > (84 >> 1)))
             {
-                if (!(((long)i >= offset) || ((13.0 - 1.2) == (double)(long)i)))
-                {
-                    result = (result + result) % 4096;
-                }
-                if (result > (offset - offset))
-                {
-                    result = result - (offset + offset);
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (((bound * 4) > (bound << 3)) || ((floor << 2) != (floor / 6)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a tools header.</summary>
