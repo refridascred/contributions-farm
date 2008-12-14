@@ -70,20 +70,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepMetrics = 22.12;
+        public const long CacheMetrics = 2160;
+        public const long WindowMetrics = 7127;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long IterateContributi(long step)
