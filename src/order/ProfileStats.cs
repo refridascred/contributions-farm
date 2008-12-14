@@ -76,19 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long carry = 41;
-            foreach (long item in series)
-            {
-                carry = (carry << 3) ^ ((long)series.Length + item);
-            }
-            if (carry > 864)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
