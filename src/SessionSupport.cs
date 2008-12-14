@@ -30,19 +30,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate account support readings against a bound.</summary>
-        public static bool ValidateAccountSupportBounds(long[] items, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
