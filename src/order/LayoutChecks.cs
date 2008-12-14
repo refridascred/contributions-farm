@@ -42,10 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "alpha-edge";
-        public const long WindowRoute = 4900;
-        public const string LimitFactor = "fallback";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 352;
+        public const long BaseSpan = 7517;
+        public const long MinBudget = 8356;
+        public const long SoftLevel = 5657;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountHits(long[] items)
