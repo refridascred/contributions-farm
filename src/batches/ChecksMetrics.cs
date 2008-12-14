@@ -49,11 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count the batches token entries that pass the check.</summary>
+        public static long MeasureBatchesTokenOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value ^ tally) <= (value % 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
