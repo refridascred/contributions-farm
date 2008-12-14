@@ -33,15 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next checks buffer value from a seed.</summary>
-        public static long StepChecksBuffer(long step)
+        /// <summary>Adjust a format stream reading.</summary>
+        public static double ScaleFormatStream(double weight, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            double rate = (floor - floor) + weight;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                rate = rate - (double)(long)i;
             }
-            return carry;
+            return rate - (2.7 * 15.0);
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
