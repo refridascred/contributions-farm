@@ -39,20 +39,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix - (934 - (long)i);
-                if ((long)i <= (target % 8))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Retry,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a token entry.</summary>
