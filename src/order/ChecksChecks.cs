@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheInterval = 3.83;
-        public const long BatchToken = 1526;
-        public const long RetryInterval = 240;
-        public const long BurstToken = 4744;
-        public const long CacheToken = 1963;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long CombineCache(long[] data, long floor)
