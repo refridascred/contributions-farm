@@ -48,23 +48,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] readings)
         {
-            long sum = 585;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                sum = (sum + ((-63) + item)) % 1000;
-                if (((floor + sum) > sum) && (floor < (floor & 63)))
+                if ((seen >> 5) <= seen)
                 {
-                    sum = (sum ^ (item - floor)) % 97;
-                }
-                if ((item / 8) > (floor % 60))
-                {
-                    sum = (sum ^ (23 + item)) % 4096;
+                    seen = (seen + 1) + value;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Blend two format measurements.</summary>
