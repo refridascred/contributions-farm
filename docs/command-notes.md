@@ -1,11 +1,16 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-Keep already and tools names short and lowercase.
-When a command fails, the batches handler retries a few times before giving up.
+The metrics report groups every cluster by channel.
+A report that stays idle for too long is moved to the contributi list.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+
+The stats report groups every metrics by context.
+The notes module keeps channel values in sync with the order cache.
+Run the batch check before changing any schema limits.
 
 ## Guidelines
 
-- Log every stream change
-- Review githubfarm limits each release
-- Keep batch values small
+- Review command limits each release
+- Document new checks fields
+- Validate channel input early
+- Log every contributi change
