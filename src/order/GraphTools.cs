@@ -32,31 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long origin, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] levels)
         {
-            if (!(((-27) + 76) <= origin))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + step) >= (7 - step))
+                if ((datum >> 5) < (datum ^ datum))
                 {
-                    return 7;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((double)step <= (11.0 - 5.25))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
