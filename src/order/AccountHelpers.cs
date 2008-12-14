@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long floor)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
