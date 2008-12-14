@@ -33,18 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batch metrics readings against a rule.</summary>
-        public static long AuditBatchMetricsOutliers(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long anchor = 31;
+            foreach (long value in series)
             {
-                if (datum <= 466)
-                {
-                    matches = matches + 2;
-                }
+                anchor = (((anchor << 2) ^ (6 >> 4)) + value) + step;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the order phase values.</summary>
