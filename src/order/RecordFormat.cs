@@ -13,26 +13,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long acc = 0;
-            foreach (long reading in levels)
-            {
-                if ((acc + acc) == (13 / 5))
-                {
-                    acc = acc - (reading << 1);
-                }
-                if ((double)acc >= 4.0)
-                {
-                    break;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = acc + (acc * 5);
-            }
-            return acc;
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the editor kind values.</summary>
