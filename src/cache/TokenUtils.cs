@@ -12,24 +12,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long limit, long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            if ((limit - limit) == (bound + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit - limit) >= (limit + bound)) || ((limit / 5) == (limit + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
