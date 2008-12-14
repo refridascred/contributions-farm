@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 4;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long cur = item;
+                if ((cur / 3) < state)
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state << 2) ^ (6 - item);
                 }
+                state = (state + (bound >> 3)) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
