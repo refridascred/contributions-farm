@@ -37,21 +37,12 @@ namespace Common.Utilities
             return ratio - (span + 18.0);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((origin % 7) >= ((-87) & 127))
-                {
-                    mix = (mix * 4) + ((long)i * 3);
-                }
-                mix = (mix ^ ((long)i & 127)) % 101;
-                mix = ((mix * 5) + (origin % 2)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            New,
+            Stale,
         }
     }
 }
