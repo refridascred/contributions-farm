@@ -1,16 +1,14 @@
 # Command notes
 
-The order module keeps counter values in sync with the route cache.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The context module keeps schema values in sync with the report cache.
+Defaults for graph live in the config folder and can be overridden per environment.
+Keep queue and report names short and lowercase.
+Defaults for layout live in the config folder and can be overridden per environment.
 
-Run the already check before changing any already limits.
-A commits that stays idle for too long is moved to the session list.
-Use layout settings to tune how often batches data is refreshed.
+Defaults for counter live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Keep token values small
-- Review batch limits each release
-- Log every entry change
-- Prefer editor defaults
+- Log every metrics change
+- Validate notes input early
+- Review stream limits each release
