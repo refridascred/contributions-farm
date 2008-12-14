@@ -56,15 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mark = 16;
-            foreach (long sample in readings)
-            {
-                mark = (mark + (origin - (long)readings.Length)) ^ sample;
-            }
-            return mark % 97;
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
