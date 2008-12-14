@@ -20,31 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long limit, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series)
         {
-            if ((double)floor < (5.9 - 3.0))
+            long carry = 4;
+            foreach (long value in series)
             {
-                return 4;
+                carry = (carry + (carry + carry)) + value;
             }
-            else
-            {
-                if ((double)floor < (1.49 / 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < 591)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
