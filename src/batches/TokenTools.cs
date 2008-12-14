@@ -32,19 +32,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 1.16;
+        public const long MinScore = 5034;
+        public const long RetryCommand = 4099;
+        public const long IdleFactor = 6816;
     }
 }
