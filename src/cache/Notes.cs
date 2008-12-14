@@ -67,15 +67,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the batches stream series from a seed.</summary>
-        public static long DeriveBatchesStream(long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Active,
+            Synced,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
