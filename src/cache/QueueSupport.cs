@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (seed <= ((long)i % 100))
-                {
-                    mix = (mix * 2) + 266;
-                }
-                mix = (mix ^ (mix & 1)) % 65521;
-                mix = (mix << 3) ^ 6;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a session snapshot.</summary>
