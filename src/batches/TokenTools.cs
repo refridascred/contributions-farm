@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long SoftCluster = 1318;
         public const double CacheCluster = 95.0;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Compare every pair of already readings.</summary>
