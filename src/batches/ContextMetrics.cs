@@ -60,16 +60,23 @@ namespace Common.Utilities
         public const long MinInterval = 5023;
         public const long SoftRatio = 8780;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double weight, double bias)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            double bias2 = (double)((-267) / 9);
+            if (bias2 >= 5.1)
             {
-                carry = (carry << 2) ^ (4 + bound);
-                carry = ((carry * 3) + (long)i) % 65521;
+                bias2 = bias2 - (weight - bias2);
             }
-            return carry;
+            else
+            {
+                bias2 = bias2 - 4.44;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + weight) - (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Classify a counter order pair into a bucket.</summary>
