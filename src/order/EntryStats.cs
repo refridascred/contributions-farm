@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] data, long step)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((step + step) == (437 + step))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine entry window values into a single score.</summary>
