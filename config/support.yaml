@@ -1,9 +1,11 @@
 # support settings
-persist: false
-max_delay_s: cached
-queue_depth:
-  compress: 250
-  commits_interval: false
-  contributi_timeout: 92.82
-  idle_ratio_s: 319
-warm_delay_ms: false
+hard_limit_s: 87.02
+burst_capacity:
+  soft_ratio_count:
+    - blue
+    - primary
+    - strict
+    - strict
+  flush_limit_s: standard
+  idle_interval_pct: latest
+batch_window: 6629
