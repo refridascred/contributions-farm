@@ -33,20 +33,11 @@ namespace Common.Utilities
         public const long RetryEntry = 6766;
         public const string BatchEntry = "legacy-edge";
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double floor)
-        {
-            double rate = (scale * 7.15) + 4.36;
-            if (rate >= (5.0 / 3.0))
-            {
-                rate = (rate - scale) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate - (double)63;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "standard";
+        public const long BaseBudget = 7450;
+        public const double SoftInterval = 80.08;
+        public const long SoftSize = 4936;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseBatch = 3196;
