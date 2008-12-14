@@ -28,11 +28,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 7838;
-        public const double BaseSpan = 42.73;
-        public const long MaxToken = 1259;
-        public const string SoftToken = "staging-1";
-        public const long DefaultToken = 5692;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryScore = 65.79;
+        public const long BaseRecord = 4786;
+        public const long BatchRecord = 4390;
+        public const string BaseLevel = "cached-v2";
     }
 }
