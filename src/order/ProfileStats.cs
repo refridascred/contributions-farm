@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                if ((9.38 + 2.75) != (double)count)
+                if (!(item <= mark))
                 {
-                    count = (count + 2) + entry;
+                    mark = ((mark + (mark ^ mark)) % 4096) + target;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
