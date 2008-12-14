@@ -42,15 +42,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long bound)
         {
-            double rate = gain - (gain + gain);
-            if (rate < rate)
+            long bound2 = step + bound;
+            if ((bound * 4) <= (bound2 + bound))
             {
-                rate = rate + (span * 4.12);
+                return 6;
             }
-            return rate + span;
+            else
+            {
+                if ((9.54 / 9.0) == (double)bound2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(9.47 < (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + 5) >= (bound + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
