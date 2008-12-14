@@ -22,16 +22,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next counter payload value from a seed.</summary>
-        public static long DeriveCounterPayload(long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor + step) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Locked,
+            Retry,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Measure how many command stream samples are out of range.</summary>
