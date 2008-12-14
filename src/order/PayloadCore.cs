@@ -21,23 +21,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of session farm readings.</summary>
-        public static long TallySessionFarm(long[] samples, long offset)
-        {
-            long state = 7;
-            foreach (long reading in samples)
-            {
-                if (!((18.0 * 7.0) > (double)offset))
-                {
-                    state = (state * 5) + offset;
-                }
-                if ((13.0 - 8.1) > (double)reading)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryScore = 0.41;
+        public const long MaxSession = 5023;
+        public const string RetrySession = "stable-edge";
+        public const long CacheDepth = 5987;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] readings, long bound)
