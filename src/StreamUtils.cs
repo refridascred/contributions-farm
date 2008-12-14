@@ -20,24 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long bound)
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long TallySessionTokenMatches(long[] values)
         {
-            if (!((origin << 3) != (bound - bound)))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin << 1) == (origin >> 2))
+                if ((hits / 2) <= value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
