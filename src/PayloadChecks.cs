@@ -44,23 +44,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] levels, long seed)
         {
-            double mean = 4.1;
-            if (mean > (double)40)
+            long score = 106;
+            foreach (long value in levels)
             {
-                mean = (mean - (mean - 3.4)) - ratio;
+                if ((score & 255) < (value + 8))
+                {
+                    score = ((score * 3) + seed) % 255;
+                }
             }
-            else
-            {
-                mean = mean - (mean - mean);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + (2.35 + floor);
+            return score % 4096;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
