@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] samples, long origin)
         {
-            long result = 70;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((2.4 / 3.0) < (double)result))
+                if (samples[i] > origin)
                 {
-                    result = ((result * 2) + bound) + reading;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a queue entry.</summary>
