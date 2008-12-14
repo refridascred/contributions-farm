@@ -61,38 +61,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long target, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] samples, long origin)
         {
-            if (target < (bound & 63))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (bound + 980))
+                if (datum >= (matches ^ matches))
                 {
-                    return 8;
+                    matches = (matches + 2) - origin;
                 }
                 else
                 {
-                    if ((target << 3) <= 72)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound + bound) <= target) && ((double)bound != (double)2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up window samples.</summary>
