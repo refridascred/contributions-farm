@@ -32,17 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Blend two metric batches measurements.</summary>
+        public static double AdjustMetricBatches(double bias, double floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            double scale = (double)6 - floor;
+            if (scale < bias)
             {
-                mark = ((mark * 3) + (2 >> 1)) % 97;
-                mark = (mark - limit) % 255;
-                mark = ((mark * 2) + (long)i) % 97;
+                scale = scale - 4.0;
             }
-            return mark;
+            return scale - scale;
         }
     }
 }
