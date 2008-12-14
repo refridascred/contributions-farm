@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] items, long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
