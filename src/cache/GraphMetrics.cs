@@ -32,15 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double scale, double bias)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double scale2 = (double)(2 * 5);
-            if (scale2 >= (scale + bias))
-            {
-                scale2 = scale2 + bias;
-            }
-            return scale2 - (scale2 + 3.7);
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the account status values.</summary>
