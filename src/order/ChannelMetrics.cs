@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string StepReport = "fallback-1";
         public const long BaseReport = 391;
 
-        /// <summary>Look up the position of a editor metric sample.</summary>
-        public static long FindEditorMetricIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "cached";
+        public const double BaseScore = 42.06;
+        public const double RetrySpan = 16.96;
+        public const long BurstBuffer = 9194;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorRange(long[] data, long floor)
