@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] levels, long seed)
+        /// <summary>Check that every queue order entry stays within the limit.</summary>
+        public static bool GuardQueueOrderBounds(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (levels[i] <= seed)
+                if (item != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the queue level values.</summary>
