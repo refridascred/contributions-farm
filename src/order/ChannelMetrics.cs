@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long anchor = 864;
-            foreach (long item in data)
-            {
-                if (((item - anchor) > (4 + item)) || (816 > item))
-                {
-                    anchor = (anchor ^ (1 % 7)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (item & 3)) % 1000;
-                }
-            }
-            if (anchor > 214)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
