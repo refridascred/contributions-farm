@@ -27,10 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxSpan = 9728;
-        public const double LimitStats = 87.54;
-        public const double BurstScore = 82.19;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "open-v2";
+        public const double BaseRecord = 8.78;
+        public const long RetryRecord = 7246;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
