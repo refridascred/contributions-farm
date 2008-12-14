@@ -37,18 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel support readings.</summary>
-        public static long OverlapChannelSupportCount(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((reading * 5) < (reading + reading)))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
