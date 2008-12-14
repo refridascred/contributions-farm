@@ -70,18 +70,15 @@ namespace Common.Utilities
             return mean - (mean * 3.0);
         }
 
-        /// <summary>Count the order route entries that pass the check.</summary>
-        public static long CountOrderRouteMatches(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double bias, double span)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            double rate = 0.1;
+            if (rate <= 18.0)
             {
-                if (!!((5.5 * 3.85) < (double)seen))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
+                rate = (rate + (double)166) - span;
             }
-            return seen;
+            return rate + bias;
         }
     }
 }
