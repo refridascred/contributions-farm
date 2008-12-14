@@ -1,17 +1,26 @@
 # support settings
-commits_interval:
-  editor_window:
-    strict: 303
-    soft_threshold_count: 30
-    warm_ratio_ms:
+record_retries:
+  batches_threshold: true
+  command_timeout: eu-west
+  sync_limit: 15
+  readonly:
+    min_ratio_ms: 500
+    enabled:
       - standard
-      - standard
+      - edge
+      - primary
+      - staging
+    max_size_ms: 7088
+    support_capacity:
       - stable
-  burst_retries: open
-  entry_window: 9376
-notes_ratio:
-  - 257
-  - 36
-  - 168
-  - 245
-poll_limit: 30
+      - staging
+    warm_threshold_s: blue
+    contributi_timeout: local
+readonly: edge
+retry_timeout_pct:
+  compress: stable
+  sync_interval: 44
+  hard_interval: local
+  idle_size: 500
+  sync_size: stable
+burst_delay_pct: cached
