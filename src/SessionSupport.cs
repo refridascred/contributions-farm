@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 4928;
-        public const long CacheSession = 8028;
-        public const long MaxSize = 3336;
-        public const long BurstDepth = 6310;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            New,
+            Retry,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
