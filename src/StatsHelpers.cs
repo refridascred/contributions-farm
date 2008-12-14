@@ -63,11 +63,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 5160;
-        public const string BaseStream = "primary-1";
-        public const double MaxSize = 22.03;
-        public const string MaxCount = "staging-v2";
-        public const long MinStream = 5272;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] series, long seed)
+        {
+            long mix = 69;
+            foreach (long value in series)
+            {
+                if ((value - value) < mix)
+                {
+                    mix = ((mix << 3) ^ value) - seed;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ (mix + mix)) % 4096;
+            }
+            return mix % 4096;
+        }
     }
 }
