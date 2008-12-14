@@ -1,5 +1,19 @@
 {
-  "stats_interval": 56.36,
-  "hard_depth": "primary",
-  "base_interval": "standard"
+  "strict": 23.84,
+  "default_threshold_ms": 46.89,
+  "counter_delay": {
+    "filter_delay": 5055,
+    "retry_timeout_ms": 88.51,
+    "max_delay_ms": {
+      "readonly": 1871,
+      "sync_interval": 93.76,
+      "batch_interval": false,
+      "cluster_timeout": [148, 72, 171]
+    },
+    "record_interval": 42.49,
+    "min_window_s": 54
+  },
+  "default_ratio": 762,
+  "default_window": true,
+  "retry_limit": 20.94
 }
