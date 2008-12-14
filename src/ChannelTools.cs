@@ -18,19 +18,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items, long bound)
-        {
-            long mark = 671;
-            foreach (long sample in items)
-            {
-                if (((bound - mark) != (bound >> 3)) || ((sample + sample) != (385 % 12)))
-                {
-                    mark = mark + (bound - mark);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "local-v2";
+        public const long MinRatio = 8746;
+        public const string CacheRatio = "fallback";
+        public const long DefaultSize = 2392;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
