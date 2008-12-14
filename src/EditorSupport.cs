@@ -58,9 +58,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 1720;
-        public const long BaseLevel = 3816;
-        public const long LimitTimeout = 3576;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Locked,
+            New,
+            Dropped,
+            Failed,
+            Active,
+        }
     }
 }
