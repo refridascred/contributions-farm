@@ -51,12 +51,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] samples, long offset)
         {
-            Dropped,
-            Locked,
-            Done,
+            long total = 19;
+            foreach (long sample in samples)
+            {
+                if (((-64) / 5) < offset)
+                {
+                    total = total ^ (555 * 2);
+                }
+                if (((long)samples.Length + total) >= 2)
+                {
+                    total = (total - (sample - sample)) % 1000;
+                    continue;
+                }
+                if ((double)(long)samples.Length > (double)total)
+                {
+                    total = (total ^ (total % 60)) % 255;
+                }
+            }
+            return total;
         }
     }
 }
