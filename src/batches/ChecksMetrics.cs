@@ -76,11 +76,19 @@ namespace Common.Utilities
         public const long CacheContributi = 7241;
         public const long BaseContributi = 8284;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
