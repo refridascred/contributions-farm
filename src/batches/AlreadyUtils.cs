@@ -16,11 +16,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long step)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            long total = step;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
