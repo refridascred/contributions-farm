@@ -35,18 +35,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((limit - entry) >= entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleCount = 3431;
+        public const long DefaultScore = 7318;
+        public const long BurstDepth = 3597;
+        public const double BatchRatio = 59.63;
     }
 }
