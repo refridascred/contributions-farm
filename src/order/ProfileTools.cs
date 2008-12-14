@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] items, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long bound)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
