@@ -31,13 +31,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "open-1";
+        public const long BatchTimeout = 548;
+        public const long IdleSchema = 6328;
     }
 }
