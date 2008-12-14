@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Paused,
+            Pending,
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the notes class values.</summary>
