@@ -26,21 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
