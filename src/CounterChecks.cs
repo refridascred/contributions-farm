@@ -47,15 +47,19 @@ namespace Common.Utilities
         public const long SoftBatch = 326;
         public const string BurstScore = "staging-edge";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] samples, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
