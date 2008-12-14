@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=68
+BUFFER_LIMIT=344
 log "limit is ${BUFFER_LIMIT}"
 
-for item in stable local eu-west; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
