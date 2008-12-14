@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double ratio, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            double weight = ratio;
-            if (weight >= weight)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                weight = (weight - (double)5) + bias;
+                if ((double)hits < 7.74)
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return weight + (double)170;
+            return hits;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
