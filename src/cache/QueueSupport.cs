@@ -26,38 +26,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a queue already value against two limits.</summary>
-        public static long SortQueueAlready(long offset, long step)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double bias)
         {
-            if (((step - offset) <= offset) || (offset >= (step ^ step)))
+            double ratio2 = (double)2 * 8.99;
+            if (ratio2 < (double)72)
             {
-                return 2;
+                ratio2 = (ratio2 - 8.87) - ratio;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((0.82 * 7.9) < (double)step) && ((1.7 - 4.65) != (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step - 1) != (offset - step)) || ((double)offset >= (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset - offset) >= (offset + offset)) || ((step >> 2) == (offset * 4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio2 = (ratio2 - bias) + (double)(long)i;
             }
+            return ratio2 + bias;
         }
     }
 }
