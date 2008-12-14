@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable open; do
+mode="${1:-fallback}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary standard staging eu-west; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=13
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
