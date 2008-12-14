@@ -1,8 +1,7 @@
 {
-  "idle_depth_s": true,
-  "soft_delay": 500,
-  "compress": "standard",
-  "hard_depth_ms": "staging",
-  "poll_timeout_count": "blue",
-  "verbose": "staging"
+  "readonly": 2475,
+  "idle_delay_ms": 72.82,
+  "idle_window": "open",
+  "soft_retries_s": "latest",
+  "cache_limit": 82.06
 }
